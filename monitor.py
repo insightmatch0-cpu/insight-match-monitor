@@ -278,7 +278,10 @@ def main() -> None:
             if analysis:
                 msg += f"\n🤖 التوقع:\n{analysis}"
             send_telegram(msg)
-            entry = {"score": score, "status": status}
+            entry = {
+                "score": score, "status": status, "minute": minute,
+                "home": home, "away": away, "league": league_line,
+            }
             if ar_names:
                 entry["ar"] = ar_names
             state[fid] = entry
@@ -286,7 +289,10 @@ def main() -> None:
 
         if prev is None:
             # مباراة بحالة غير حية (توقف/تأجيل) — نسجلها بدون تنبيه
-            state[fid] = {"score": score, "status": status}
+            state[fid] = {
+                "score": score, "status": status, "minute": minute,
+                "home": home, "away": away, "league": league_line,
+            }
             continue
 
         # --- حدث 2: تغير النتيجة (هدف) ---
@@ -326,7 +332,10 @@ def main() -> None:
                 f"{h_disp} {gh} - {ga} {a_disp}"
             )
 
-        entry = {"score": score, "status": status}
+        entry = {
+            "score": score, "status": status, "minute": minute,
+            "home": home, "away": away, "league": league_line,
+        }
         if ar_names:
             entry["ar"] = ar_names
         state[fid] = entry
