@@ -27,6 +27,13 @@ STATE_FILE = Path("state.json")          # ذاكرة البوت بين التش
 MAX_ANALYSES_PER_RUN = 20                # حد أقصى لتحليلات Claude في التشغيلة الواحدة
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"
 
+# ---- المحرك 2 المباشر (للدوريات الكبرى فقط) ----
+# يسحب إحصائيات وأحداث المباراة الحية (نداءان API لكل مباراة) ويحلل عبر
+# النموذج الأقوى بتوقع كل السيناريوهات: هدف قادم، ركنيات، كرات ثابتة،
+# اللاعب الأخطر، بطاقات. مقيد بعدد مباريات لكل تشغيلة حفاظاً على الرصيد.
+CLAUDE_MODEL_V2 = "claude-fable-5"
+MAX_LIVE_ENRICHED_PER_RUN = 6
+
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة في العالم توصلك مع توقع (استهلاك رصيد أعلى)
 # ANALYZE_ALL = False → التوقع للدوريات الكبرى فقط، والباقي إشعار نتيجة بدون تحليل
@@ -119,9 +126,9 @@ def should_analyze(league: dict, used: int) -> bool:
     return league.get("id") in TOP_LEAGUE_IDS
 
 
-def get_live_fixtures() -> list:
+def api_football(path: str) -> list:
     resp = requests.get(
-        "https://v3.football.api-sports.io/fixtures?live=all",
+        f"https://v3.football.api-sports.io/{path}",
         headers={"x-apisports-key": API_FOOTBALL_KEY},
         timeout=30,
     )
@@ -132,22 +139,89 @@ def get_live_fixtures() -> list:
     return data.get("response", [])
 
 
-def analyze_with_claude(context_text: str) -> str:
+def get_live_fixtures() -> list:
+    return api_football("fixtures?live=all")
+
+
+# إحصائيات مهمة تُلخص لتحليل المحرك 2 المباشر
+KEY_LIVE_STATS = {
+    "Shots on Goal", "Total Shots", "Ball Possession", "Corner Kicks",
+    "Yellow Cards", "Red Cards", "expected_goals", "Goalkeeper Saves", "Fouls",
+}
+
+
+def get_live_details(fid: str) -> str:
+    """نداءان API: إحصائيات المباراة الحية + أحداثها، يرجع سياقاً نصياً مضغوطاً.
+    أي فشل يرجع نصاً أقصر — لا يوقف التحليل أبداً."""
+    parts = []
+    try:
+        team_lines = []
+        for side in api_football(f"fixtures/statistics?fixture={fid}"):
+            name = (side.get("team") or {}).get("name", "?")
+            vals = [
+                f"{s.get('type')}: {s.get('value')}"
+                for s in (side.get("statistics") or [])
+                if s.get("type") in KEY_LIVE_STATS and s.get("value") is not None
+            ]
+            if vals:
+                team_lines.append(f"{name} — " + ", ".join(vals))
+        if team_lines:
+            parts.append("Live stats:\n" + "\n".join(team_lines))
+    except Exception as e:
+        print("فشل سحب الإحصائيات الحية:", e)
+    try:
+        ev_lines = []
+        for ev in api_football(f"fixtures/events?fixture={fid}")[-15:]:
+            minute = ((ev.get("time") or {}).get("elapsed"))
+            team = (ev.get("team") or {}).get("name", "?")
+            player = (ev.get("player") or {}).get("name") or ""
+            etype = ev.get("type") or "?"
+            detail = ev.get("detail") or ""
+            ev_lines.append(f"{minute}' {etype} ({detail}) {player} [{team}]")
+        if ev_lines:
+            parts.append("Match events:\n" + "\n".join(ev_lines))
+    except Exception as e:
+        print("فشل سحب أحداث المباراة:", e)
+    return "\n".join(parts)
+
+
+SYSTEM_PROMPT_BASIC = (
+    "أنت محلل وخبير توقع مباريات كرة قدم. سيصلك وضع مباراة بأسماء إنجليزية. "
+    "أرجع ردك بهذا الشكل بالضبط:\n"
+    "الأسماء: [الفريق المضيف بالعربي] | [الفريق الضيف بالعربي] | [البطولة بالعربي (الدولة بالعربي)]\n"
+    "ثم سطران إلى ثلاثة: تحليل مختصر مبني على معرفتك بالفريقين والنتيجة والدقيقة، "
+    "ينتهي بسطر: التوقع: [اسم الفريق بالعربي أو تعادل] — ثقة X%\n"
+    "استخدم الأسماء العربية الشائعة في الإعلام الرياضي "
+    "(مثال: Real Madrid → ريال مدريد، Manchester City → مانشستر سيتي)، "
+    "وإذا كان الاسم غير مشهور فاكتبه بحروف عربية. "
+    "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
+)
+
+SYSTEM_PROMPT_LIVE_V2 = (
+    "أنت محلل مباريات حية من الطراز الأول. سيصلك وضع مباراة جارية بأسماء إنجليزية، "
+    "وقد يتضمن إحصائيات حية (تسديدات، استحواذ، ركنيات، xG، بطاقات) وقائمة أحداث "
+    "(أهداف بأسماء المسجلين، بطاقات، تبديلات). اعتمد على هذه البيانات أولاً.\n"
+    "أرجع ردك بهذا الشكل بالضبط:\n"
+    "الأسماء: [الفريق المضيف بالعربي] | [الفريق الضيف بالعربي] | [البطولة بالعربي (الدولة بالعربي)]\n"
+    "ثم قراءة مركزة في 2-3 أسطر: من يسيطر فعلياً (الاستحواذ وحده يخدع — اربطه بالخطورة)، "
+    "وأثر أي طرد أو تبديل هجومي.\n"
+    "ثم سطر يبدأ بـ: السيناريو: أخطر سيناريو متوقع قادم — هدف قادم ومن أي فريق، "
+    "اللاعب الأخطر بالاسم إن دلت الأحداث عليه، خطورة الركنيات أو الكرات الثابتة، "
+    "احتمال بطاقة تغير المباراة، أو إغلاق المتقدم للمباراة.\n"
+    "ثم سطر أخير: التوقع: [اسم الفريق بالعربي أو تعادل] — ثقة X%\n"
+    "استخدم الأسماء العربية الشائعة في الإعلام الرياضي، وإذا كان الاسم غير مشهور "
+    "فاكتبه بحروف عربية. "
+    "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
+)
+
+
+def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
+                        system_prompt: str = SYSTEM_PROMPT_BASIC,
+                        max_tokens: int = 400) -> str:
     """يرسل وضع المباراة لـ Claude ويرجع الأسماء بالعربي + توقعاً مختصراً."""
-    system_prompt = (
-        "أنت محلل وخبير توقع مباريات كرة قدم. سيصلك وضع مباراة بأسماء إنجليزية. "
-        "أرجع ردك بهذا الشكل بالضبط:\n"
-        "الأسماء: [الفريق المضيف بالعربي] | [الفريق الضيف بالعربي] | [البطولة بالعربي (الدولة بالعربي)]\n"
-        "ثم سطران إلى ثلاثة: تحليل مختصر مبني على معرفتك بالفريقين والنتيجة والدقيقة، "
-        "ينتهي بسطر: التوقع: [اسم الفريق بالعربي أو تعادل] — ثقة X%\n"
-        "استخدم الأسماء العربية الشائعة في الإعلام الرياضي "
-        "(مثال: Real Madrid → ريال مدريد، Manchester City → مانشستر سيتي)، "
-        "وإذا كان الاسم غير مشهور فاكتبه بحروف عربية. "
-        "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
-    )
     body = {
-        "model": CLAUDE_MODEL,
-        "max_tokens": 400,
+        "model": model,
+        "max_tokens": max_tokens,
         "system": system_prompt,
         "messages": [{"role": "user", "content": context_text}],
     }
@@ -173,6 +247,21 @@ def analyze_with_claude(context_text: str) -> str:
     except Exception as e:
         print("Claude error:", e)
         return "(تعذر التحليل حالياً — تحقق من رصيد مفتاح Claude)"
+
+
+def analyze_match(prompt_base: str, league: dict, fid: str, live_budget: dict):
+    """يختار التحليل المناسب: المحرك 2 المباشر (دوريات كبرى، ببيانات حية)
+    أو التحليل الأساسي. يرجع (نص التحليل، هل هو تحليل المحرك 2؟)."""
+    if league.get("id") in TOP_LEAGUE_IDS and live_budget["used"] < MAX_LIVE_ENRICHED_PER_RUN:
+        live_budget["used"] += 1
+        details = get_live_details(fid)
+        text = prompt_base + (("\n\n" + details) if details else "")
+        raw = analyze_with_claude(
+            text, model=CLAUDE_MODEL_V2,
+            system_prompt=SYSTEM_PROMPT_LIVE_V2, max_tokens=600,
+        )
+        return raw, True
+    return analyze_with_claude(prompt_base), False
 
 
 def parse_claude_reply(text: str):
@@ -220,6 +309,7 @@ def main() -> None:
 
     state = load_state()
     analyses_used = 0
+    live_budget = {"used": 0}   # عداد مباريات المحرك 2 المباشر في هذه التشغيلة
 
     try:
         fixtures = get_live_fixtures()
@@ -262,11 +352,13 @@ def main() -> None:
         if prev is None and status in LIVE_STATUSES:
             ar_names = None
             analysis = ""
+            enriched = False
             if should_analyze(league, analyses_used):
-                raw = analyze_with_claude(
+                raw, enriched = analyze_match(
                     f"مباراة حية بدأت الآن: {home} ضد {away} — {league_line}. "
                     f"النتيجة {score}، الدقيقة {minute}. "
-                    f"أعطني توقعك النهائي لهذه المباراة."
+                    f"أعطني توقعك النهائي لهذه المباراة.",
+                    league, fid, live_budget,
                 )
                 analyses_used += 1
                 ar_names, analysis = parse_claude_reply(raw)
@@ -279,7 +371,8 @@ def main() -> None:
                 f"{h_disp} 🆚 {a_disp}\n"
             )
             if analysis:
-                msg += f"\n🤖 التوقع:\n{analysis}"
+                label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 التوقع"
+                msg += f"\n{label}:\n{analysis}"
             send_telegram(msg)
             entry = {
                 "score": score, "status": status, "minute": minute,
@@ -304,11 +397,13 @@ def main() -> None:
         ar_names = prev.get("ar")
         if score != prev.get("score") and status in LIVE_STATUSES:
             analysis = ""
+            enriched = False
             if should_analyze(league, analyses_used):
-                raw = analyze_with_claude(
+                raw, enriched = analyze_match(
                     f"تحديث مباراة حية: {home} ضد {away} — {league_line}. "
                     f"النتيجة الآن {score} بعد هدف جديد، الدقيقة {minute}. "
-                    f"هل يتغير توقعك؟ أعطني قراءة الموقف والتوقع النهائي."
+                    f"هل يتغير توقعك؟ أعطني قراءة الموقف والتوقع النهائي.",
+                    league, fid, live_budget,
                 )
                 analyses_used += 1
                 ar_new, analysis = parse_claude_reply(raw)
@@ -323,7 +418,8 @@ def main() -> None:
                 f"{h_disp} {gh} - {ga} {a_disp} (د{minute})\n"
             )
             if analysis:
-                msg += f"\n🤖 قراءة المباراة الآن:\n{analysis}"
+                label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 قراءة المباراة الآن"
+                msg += f"\n{label}:\n{analysis}"
             send_telegram(msg)
 
         # --- حدث 3: نهاية المباراة ---
@@ -352,7 +448,10 @@ def main() -> None:
             del state[fid]
 
     save_state(state)
-    print(f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}")
+    print(
+        f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}، "
+        f"منها بالمحرك 2 المباشر: {live_budget['used']}"
+    )
 
 
 if __name__ == "__main__":
