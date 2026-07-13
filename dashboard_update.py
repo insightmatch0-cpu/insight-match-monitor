@@ -23,9 +23,12 @@ import requests
 STATE_FILE          = Path("state.json")
 PREDICTIONS_FILE    = Path("predictions.json")
 PREDICTIONS_V2_FILE = Path("predictions_v2.json")
+LESSONS_V2_FILE     = Path("lessons_v2.json")
 NEWS_FILE           = Path("news.json")
 DATA_FILE           = Path("data.json")
 DATA_V2_FILE        = Path("data_v2.json")
+
+LESSONS_ON_DASHBOARD = 10   # أحدث الدروس المعروضة في لوحة المحرك 2
 
 NEWS_MAX_AGE_HOURS = 3     # لا نحدّث الأخبار قبل مرور هذه المدة
 NEWS_MAX_ITEMS     = 15
@@ -165,7 +168,7 @@ def build_upcoming(store: dict) -> list:
             continue
         if kickoff < cutoff:
             continue
-        upcoming.append({
+        item = {
             "fid": fid,
             "kickoff": p.get("kickoff"),
             "home": p.get("ar_home") or p.get("home", "?"),
@@ -180,7 +183,13 @@ def build_upcoming(store: dict) -> list:
             "pick": p.get("pick"),
             "confidence": p.get("confidence"),
             "reason": p.get("reason", ""),
-        })
+        }
+        # المحرك 2 يخزن احتمالات النتائج الثلاث — تظهر على اللوحة إن وجدت
+        if p.get("prob_home") is not None:
+            item["prob_home"] = p.get("prob_home")
+            item["prob_draw"] = p.get("prob_draw")
+            item["prob_away"] = p.get("prob_away")
+        upcoming.append(item)
     upcoming.sort(key=lambda m: (not m["top"], m["kickoff"]))
     return upcoming
 
@@ -188,7 +197,7 @@ def build_upcoming(store: dict) -> list:
 def build_recent_results(store: dict) -> list:
     out = []
     for r in (store.get("resolved") or [])[-20:]:
-        out.append({
+        item = {
             "date": r.get("date"),
             "home": r.get("ar_home") or r.get("home", "?"),
             "away": r.get("ar_away") or r.get("away", "?"),
@@ -198,8 +207,31 @@ def build_recent_results(store: dict) -> list:
             "pick": r.get("pick"),
             "confidence": r.get("confidence"),
             "score": r.get("score"),
+            "actual": r.get("actual"),
             "correct": bool(r.get("correct")),
-        })
+        }
+        if r.get("prob_home") is not None:
+            item["prob_home"] = r.get("prob_home")
+            item["prob_draw"] = r.get("prob_draw")
+            item["prob_away"] = r.get("prob_away")
+        out.append(item)
+    out.reverse()
+    return out
+
+
+def recent_lessons() -> list:
+    """أحدث دروس المحرك 2 (المرحلة 3) لعرضها على اللوحة."""
+    data = load_json(LESSONS_V2_FILE, {"lessons": []})
+    out = []
+    for it in (data.get("lessons") or [])[-LESSONS_ON_DASHBOARD:]:
+        if isinstance(it, dict) and (it.get("text") or "").strip():
+            out.append({
+                "date": it.get("date", ""),
+                "match": it.get("match", ""),
+                "text": it["text"].strip(),
+            })
+        elif isinstance(it, str) and it.strip():
+            out.append({"date": "", "match": "", "text": it.strip()})
     out.reverse()
     return out
 
@@ -221,6 +253,7 @@ def build_data_v2() -> None:
         "recent_results": build_recent_results(store),
         "accuracy": (store.get("meta") or {}).get("stats") or {},
         "news": [],
+        "lessons": recent_lessons(),
     }
     existing = load_json(DATA_V2_FILE, {})
     existing.pop("updated", None)
