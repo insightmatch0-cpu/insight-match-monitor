@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InsightMatch — رادار المباريات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B120F; --panel:#121B16; --raised:#17231D; --line:#24342A;
+    --ink:#EAF2EC; --muted:#92A79A; --amber:#FFB224; --green:#57C785;
+    --red:#E5605E; --chip:#1D2B23;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;
+    font-size:15px; line-height:1.55;
+    font-feature-settings:"tnum";
+    min-height:100vh;
+  }
+  a{color:inherit}
+  button{font-family:inherit;cursor:pointer}
+
+  /* ======== الشريط العلوي ======== */
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(11,18,15,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:10px 16px;
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+  }
+  .brand{font-family:Changa;font-weight:700;font-size:20px;letter-spacing:.3px}
+  .brand em{color:var(--amber);font-style:normal}
+  .meta-row{display:flex;align-items:center;gap:8px}
+  #updated{font-size:11.5px;color:var(--muted);white-space:nowrap}
+  #langBtn{
+    background:var(--chip);border:1px solid var(--line);color:var(--ink);
+    border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:600;
+  }
+  #langBtn:focus-visible,button:focus-visible,details summary:focus-visible{
+    outline:2px solid var(--amber);outline-offset:2px;
+  }
+
+  main{max-width:680px;margin:0 auto;padding:16px 16px 56px}
+
+  /* ======== عناوين الأقسام (بأسلوب رسوميات البث) ======== */
+  .sec{margin-top:26px}
+  .sec-head{
+    display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  }
+  .sec-head h2{
+    font-family:Changa;font-weight:600;font-size:17px;letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+  .sec-head .rule{flex:1;height:1px;background:var(--line)}
+  .sec-head .count{
+    font-size:12px;color:var(--muted);background:var(--chip);
+    border:1px solid var(--line);border-radius:999px;padding:1px 10px;
+  }
+  .dot{
+    width:9px;height:9px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 0 rgba(255,178,36,.5);animation:pulse 1.6s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,178,36,.45)}
+    70%{box-shadow:0 0 0 9px rgba(255,178,36,0)}
+    100%{box-shadow:0 0 0 0 rgba(255,178,36,0)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .dot{animation:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ======== بطاقات النتائج الحية (لوحة نتائج البث) ======== */
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;margin-bottom:10px;
+  }
+  .league-eyebrow{
+    font-size:11.5px;color:var(--muted);letter-spacing:.2px;margin-bottom:8px;
+    display:flex;justify-content:space-between;gap:8px;
+  }
+  .scoreboard{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
+  }
+  .team{font-weight:600;font-size:15.5px}
+  .team.h{text-align:start}
+  .team.a{text-align:end}
+  .score{
+    font-family:Changa;font-weight:700;font-size:34px;line-height:1;
+    letter-spacing:2px;text-align:center;white-space:nowrap;
+    direction:ltr;
+  }
+  .minute{
+    display:inline-block;margin-top:6px;
+    background:rgba(255,178,36,.12);color:var(--amber);
+    border:1px solid rgba(255,178,36,.35);
+    border-radius:999px;padding:1px 10px;font-size:12px;font-weight:600;
+    direction:ltr;
+  }
+
+  /* ======== التوقعات ======== */
+  .league-group{margin-bottom:14px}
+  .league-title{
+    font-size:13px;font-weight:600;color:var(--muted);
+    margin:14px 0 8px;display:flex;align-items:center;gap:6px;
+  }
+  .league-title .star{color:var(--amber);font-size:12px}
+  .pred{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    margin-bottom:8px;overflow:hidden;
+  }
+  .pred summary{
+    list-style:none;padding:12px 14px;display:block;
+  }
+  .pred summary::-webkit-details-marker{display:none}
+  .pred-row1{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  }
+  .pred-teams{font-weight:600;font-size:14.5px}
+  .ko{
+    font-size:12px;color:var(--muted);white-space:nowrap;direction:ltr;
+    background:var(--chip);border:1px solid var(--line);
+    border-radius:6px;padding:1px 7px;
+  }
+  .pred-row2{
+    margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .pick{
+    font-size:12.5px;font-weight:600;color:var(--green);
+    background:rgba(87,199,133,.1);border:1px solid rgba(87,199,133,.3);
+    border-radius:999px;padding:2px 11px;
+  }
+  .pick.draw{
+    color:var(--amber);background:rgba(255,178,36,.1);
+    border-color:rgba(255,178,36,.3);
+  }
+  /* عدّاد الثقة المقسّم — بأسلوب أشرطة إحصائيات البث */
+  .meter{display:flex;gap:2.5px;direction:ltr}
+  .meter i{
+    width:9px;height:12px;border-radius:2px;background:var(--chip);
+    border:1px solid var(--line);
+  }
+  .meter i.on{background:var(--green);border-color:var(--green)}
+  .conf-num{font-size:12.5px;color:var(--muted)}
+  .reason{
+    padding:0 14px 12px;font-size:13.5px;color:var(--muted);
+    border-top:1px dashed var(--line);padding-top:10px;margin:0 14px 12px;
+  }
+
+  /* ======== الدقة ======== */
+  .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .acc-box{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;
+  }
+  .acc-box .label{font-size:12px;color:var(--muted)}
+  .acc-box .value{
+    font-family:Changa;font-weight:700;font-size:26px;margin-top:2px;
+    direction:ltr;text-align:start;
+  }
+  .acc-box .sub{font-size:11.5px;color:var(--muted);direction:ltr;text-align:start}
+  .buckets{margin-top:10px}
+  .bucket{
+    display:flex;align-items:center;gap:10px;font-size:12.5px;
+    color:var(--muted);margin-bottom:6px;
+  }
+  .bucket b{color:var(--ink);min-width:52px;direction:ltr;text-align:start}
+  .bar{flex:1;height:7px;background:var(--chip);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--green);border-radius:99px}
+  .days{
+    display:flex;align-items:flex-end;gap:3px;height:56px;margin-top:12px;
+    direction:ltr;
+  }
+  .day{flex:1;background:var(--chip);border-radius:3px 3px 0 0;position:relative;min-height:3px}
+  .day i{
+    position:absolute;bottom:0;left:0;right:0;background:var(--green);
+    border-radius:3px 3px 0 0;
+  }
+  .result-line{
+    display:flex;justify-content:space-between;gap:10px;align-items:center;
+    padding:9px 2px;border-bottom:1px solid var(--line);font-size:13.5px;
+  }
+  .result-line:last-child{border-bottom:none}
+  .mark{font-weight:700}
+  .mark.ok{color:var(--green)}
+  .mark.no{color:var(--red)}
+  .result-score{direction:ltr;color:var(--muted);font-size:12.5px;white-space:nowrap}
+
+  /* ======== الأخبار ======== */
+  .news-item{
+    display:block;text-decoration:none;
+    padding:11px 2px;border-bottom:1px solid var(--line);
+  }
+  .news-item:last-child{border-bottom:none}
+  .news-item .t{font-size:14px;font-weight:500}
+  .news-item .s{font-size:11.5px;color:var(--muted);margin-top:3px}
+
+  /* ======== حالات فارغة ======== */
+  .empty{
+    background:var(--panel);border:1px dashed var(--line);border-radius:12px;
+    padding:22px 16px;text-align:center;color:var(--muted);font-size:13.5px;
+  }
+  footer{
+    max-width:680px;margin:30px auto 0;padding:0 16px;
+    font-size:11.5px;color:var(--muted);text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Insight<em>Match</em></div>
+  <div class="meta-row">
+    <span id="updated"></span>
+    <button id="langBtn" aria-label="Switch language">EN</button>
+  </div>
+</header>
+
+<main>
+  <section class="sec" id="sec-live">
+    <div class="sec-head">
+      <span class="dot" aria-hidden="true"></span>
+      <h2 data-i18n="live">مباشر الآن</h2>
+      <span class="rule"></span>
+      <span class="count" id="live-count">0</span>
+    </div>
+    <div id="live-list"></div>
+  </section>
+
+  <section class="sec" id="sec-upcoming">
+    <div class="sec-head">
+      <h2 data-i18n="upcoming">توقعات الـ 24 ساعة</h2>
+      <span class="rule"></span>
+      <span class="count" id="up-count">0</span>
+    </div>
+    <div id="upcoming-list"></div>
+  </section>
+
+  <section class="sec" id="sec-acc">
+    <div class="sec-head">
+      <h2 data-i18n="accuracy">دقة النظام</h2>
+      <span class="rule"></span>
+    </div>
+    <div id="acc-body"></div>
+  </section>
+
+  <section class="sec" id="sec-news">
+    <div class="sec-head">
+      <h2 data-i18n="news">الأخبار</h2>
+      <span class="rule"></span>
+    </div>
+    <div id="news-list" class="card" style="padding:4px 14px"></div>
+  </section>
+</main>
+
+<footer id="foot"></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= اللغة ================= */
+  var STR = {
+    ar: {
+      live:"مباشر الآن", upcoming:"توقعات الـ 24 ساعة", accuracy:"دقة النظام",
+      news:"الأخبار", updated:"آخر تحديث", justNow:"الآن", minAgo:"د",
+      noLive:"لا توجد مباريات حية الآن في الدوريات المشمولة.",
+      noUpcoming:"لا توجد توقعات بعد — شغّل \"Daily Predictions\" من تبويب Actions أو انتظر التشغيلة الصباحية.",
+      noAcc:"سجل الدقة يبدأ بالتراكم بعد أول يوم توقعات.",
+      noNews:"لا توجد أخبار محفوظة بعد.",
+      pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل", conf:"ثقة",
+      last30:"آخر 30 يوماً", overall:"الإجمالي", topL:"الدوريات الكبرى",
+      otherL:"بقية الدوريات", byConf:"حسب مستوى الثقة", recent:"آخر النتائج",
+      minute:"د", otherLeagues:"بقية الدوريات",
+      disclaimer:"توقعات تحليلية مبنية على المعطيات وليست ضمانات — كرة القدم مليئة بالمفاجآت.",
+      stale:"تعذر التحديث — البيانات المعروضة قديمة"
+    },
+    en: {
+      live:"Live now", upcoming:"Next 24h predictions", accuracy:"System accuracy",
+      news:"News", updated:"Updated", justNow:"now", minAgo:"m",
+      noLive:"No live matches right now in covered leagues.",
+      noUpcoming:"No predictions yet — run \"Daily Predictions\" from the Actions tab or wait for the morning run.",
+      noAcc:"Accuracy history starts building after the first prediction day.",
+      noNews:"No cached news yet.",
+      pickHome:"Win", pickAway:"Win", pickDraw:"Draw", conf:"conf.",
+      last30:"Last 30 days", overall:"All time", topL:"Top leagues",
+      otherL:"Other leagues", byConf:"By confidence level", recent:"Recent results",
+      minute:"'", otherLeagues:"Other leagues",
+      disclaimer:"Analytical predictions based on data — never guarantees. Football is full of surprises.",
+      stale:"Refresh failed — showing older data"
+    }
+  };
+
+  var lang = "ar";
+  try {
+    var qs = new URLSearchParams(location.search).get("lang");
+    lang = qs || localStorage.getItem("im_lang") || "ar";
+  } catch(e){}
+  if (lang !== "en") lang = "ar";
+
+  function t(k){ return STR[lang][k] || k; }
+
+  function applyLang(){
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    document.getElementById("langBtn").textContent = (lang === "ar") ? "EN" : "ع";
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i=0;i<nodes.length;i++) nodes[i].textContent = t(nodes[i].getAttribute("data-i18n"));
+    document.getElementById("foot").textContent = t("disclaimer");
+  }
+
+  document.getElementById("langBtn").addEventListener("click", function(){
+    lang = (lang === "ar") ? "en" : "ar";
+    try { localStorage.setItem("im_lang", lang); } catch(e){}
+    applyLang();
+    if (lastData) render(lastData);
+  });
+
+  /* ================= أدوات ================= */
+  function esc(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;");
+  }
+  function timeLocal(iso){
+    try {
+      var d = new Date(iso);
+      return d.toLocaleTimeString(lang === "ar" ? "ar-u-nu-latn" : "en-GB",
+        {hour:"2-digit", minute:"2-digit"});
+    } catch(e){ return ""; }
+  }
+  function pctOf(o){
+    if (!o || !o.total) return null;
+    return Math.round(100 * o.correct / o.total);
+  }
+
+  /* ================= العرض ================= */
+  function renderLive(list){
+    var el = document.getElementById("live-list");
+    document.getElementById("live-count").textContent = list.length;
+    if (!list.length){ el.innerHTML = '<div class="empty">'+t("noLive")+"</div>"; return; }
+    var h = "";
+    for (var i=0;i<list.length;i++){
+      var m = list[i];
+      var sc = esc(m.score).split("-");
+      h += '<div class="card">'
+        + '<div class="league-eyebrow"><span>'+esc(m.league)+'</span></div>'
+        + '<div class="scoreboard">'
+        + '<div class="team h">'+esc(m.home)+'</div>'
+        + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
+        + '<div style="text-align:center"><span class="minute">'
+        + (m.status==="HT" ? "HT" : esc(m.minute)+"'") + '</span></div></div>'
+        + '<div class="team a">'+esc(m.away)+'</div>'
+        + '</div></div>';
+    }
+    el.innerHTML = h;
+  }
+
+  function meterHTML(conf){
+    var on = Math.round((conf||0)/10), h = '<span class="meter" aria-hidden="true">';
+    for (var i=1;i<=10;i++) h += '<i class="'+(i<=on?"on":"")+'"></i>';
+    return h + "</span>";
+  }
+  function pickText(p){
+    if (p.pick === "draw") return t("pickDraw");
+    var name = (p.pick === "home") ? p.home : p.away;
+    return t(p.pick === "home" ? "pickHome" : "pickAway") + " " + name;
+  }
+
+  function renderUpcoming(list){
+    var el = document.getElementById("upcoming-list");
+    document.getElementById("up-count").textContent = list.length;
+    if (!list.length){ el.innerHTML = '<div class="empty">'+t("noUpcoming")+"</div>"; return; }
+
+    var h = "", curLeague = null, inOther = false;
+    for (var i=0;i<list.length;i++){
+      var p = list[i];
+      if (!p.top && !inOther){
+        h += '<div class="league-title">'+t("otherLeagues")+'</div>';
+        inOther = true; curLeague = null;
+      }
+      if (p.top && p.league !== curLeague){
+        h += '<div class="league-title"><span class="star">★</span>'+esc(p.league)+'</div>';
+        curLeague = p.league;
+      }
+      var home = (lang==="en" && p.home_en) ? p.home_en : p.home;
+      var away = (lang==="en" && p.away_en) ? p.away_en : p.away;
+      var pk = pickText({pick:p.pick, home:home, away:away});
+      h += '<details class="pred"><summary>'
+        + '<div class="pred-row1"><span class="pred-teams">'+esc(home)+' × '+esc(away)+'</span>'
+        + '<span class="ko">'+timeLocal(p.kickoff)+'</span></div>'
+        + '<div class="pred-row2">'
+        + '<span class="pick '+(p.pick==="draw"?"draw":"")+'">'+esc(pk)+'</span>'
+        + meterHTML(p.confidence)
+        + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
+        + '</div>'
+        + (!p.top ? '<div class="league-eyebrow" style="margin:6px 0 0">'+esc(p.league)+'</div>' : "")
+        + '</summary>'
+        + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")
+        + '</details>';
+    }
+    el.innerHTML = h;
+  }
+
+  function accBox(label, obj){
+    var p = pctOf(obj);
+    return '<div class="acc-box"><div class="label">'+label+'</div>'
+      + '<div class="value">'+(p===null?"—":p+"%")+'</div>'
+      + '<div class="sub">'+(obj&&obj.total? obj.correct+"/"+obj.total : "")+'</div></div>';
+  }
+
+  function renderAccuracy(acc, recent){
+    var el = document.getElementById("acc-body");
+    if (!acc || !acc.overall || !acc.overall.total){
+      el.innerHTML = '<div class="empty">'+t("noAcc")+"</div>"; return;
+    }
+    var h = '<div class="acc-grid">'
+      + accBox(t("last30"), acc.last30)
+      + accBox(t("overall"), acc.overall)
+      + accBox(t("topL"), acc.top_leagues)
+      + accBox(t("otherL"), acc.other_leagues)
+      + '</div>';
+
+    h += '<div class="card buckets" style="margin-top:10px">'
+      + '<div class="label" style="font-size:12px;color:var(--muted);margin-bottom:8px">'+t("byConf")+'</div>';
+    var order = ["70+","60-69","50-59","<50"];
+    for (var i=0;i<order.length;i++){
+      var b = (acc.by_confidence||{})[order[i]];
+      if (!b || !b.total) continue;
+      var p = pctOf(b);
+      h += '<div class="bucket"><b>'+order[i]+'%</b>'
+        + '<span class="bar"><i style="width:'+p+'%"></i></span>'
+        + '<span style="direction:ltr">'+p+'% ('+b.correct+'/'+b.total+')</span></div>';
+    }
+    h += "</div>";
+
+    var days = acc.daily || {};
+    var keys = Object.keys(days).sort();
+    if (keys.length > 1){
+      h += '<div class="card" style="margin-top:10px"><div class="days">';
+      for (var j=0;j<keys.length;j++){
+        var d = days[keys[j]];
+        var r = d.total ? Math.round(100*d.correct/d.total) : 0;
+        h += '<div class="day" style="height:100%" title="'+keys[j]+': '+r+'%">'
+          + '<i style="height:'+r+'%"></i></div>';
+      }
+      h += "</div></div>";
+    }
+
+    if (recent && recent.length){
+      h += '<div class="card" style="margin-top:10px;padding:6px 14px">'
+        + '<div class="label" style="font-size:12px;color:var(--muted);padding:8px 0 2px">'+t("recent")+'</div>';
+      for (var k=0;k<Math.min(recent.length,10);k++){
+        var r2 = recent[k];
+        h += '<div class="result-line">'
+          + '<span class="mark '+(r2.correct?"ok":"no")+'">'+(r2.correct?"✓":"✗")+'</span>'
+          + '<span style="flex:1">'+esc(r2.home)+' × '+esc(r2.away)+'</span>'
+          + '<span class="result-score">'+esc(r2.score)+' · '+esc(r2.confidence)+'%</span>'
+          + '</div>';
+      }
+      h += "</div>";
+    }
+    el.innerHTML = h;
+  }
+
+  function renderNews(items){
+    var el = document.getElementById("news-list");
+    if (!items || !items.length){
+      el.innerHTML = '<div class="empty" style="border:none">'+t("noNews")+"</div>"; return;
+    }
+    var h = "";
+    for (var i=0;i<items.length;i++){
+      var n = items[i];
+      var when = "";
+      if (n.time){
+        try {
+          var mins = Math.max(0, Math.round((Date.now() - new Date(n.time).getTime())/60000));
+          when = mins < 60 ? mins + t("minAgo")
+               : Math.round(mins/60) + (lang==="ar" ? " س" : "h");
+        } catch(e){}
+      }
+      h += '<a class="news-item" href="'+esc(n.link)+'" target="_blank" rel="noopener">'
+        + '<div class="t">'+esc(n.title)+'</div>'
+        + '<div class="s">'+esc(n.source)+(when ? " · "+when : "")+'</div></a>';
+    }
+    el.innerHTML = h;
+  }
+
+  /* ================= التحديث ================= */
+  var lastData = null;
+
+  function render(data){
+    renderLive(data.live || []);
+    renderUpcoming(data.upcoming || []);
+    renderAccuracy(data.accuracy, data.recent_results);
+    renderNews(data.news);
+    var up = document.getElementById("updated");
+    try {
+      var mins = Math.max(0, Math.round((Date.now() - new Date(data.updated).getTime())/60000));
+      up.textContent = t("updated") + ": " + (mins < 1 ? t("justNow") : mins + t("minAgo"));
+    } catch(e){ up.textContent = ""; }
+  }
+
+  function load(){
+    fetch("data.json?t=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(data){ lastData = data; render(data); })
+      .catch(function(){
+        if (!lastData){
+          document.getElementById("live-list").innerHTML =
+            '<div class="empty">'+t("noUpcoming")+"</div>";
+        } else {
+          document.getElementById("updated").textContent = t("stale");
+        }
+      });
+  }
+
+  applyLang();
+  load();
+  setInterval(load, 90000);
+})();
+</script>
+</body>
+</html>
