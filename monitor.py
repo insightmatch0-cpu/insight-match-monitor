@@ -133,12 +133,17 @@ def get_live_fixtures() -> list:
 
 
 def analyze_with_claude(context_text: str) -> str:
-    """يرسل وضع المباراة لـ Claude ويرجع توقعاً مختصراً بالعربي."""
+    """يرسل وضع المباراة لـ Claude ويرجع الأسماء بالعربي + توقعاً مختصراً."""
     system_prompt = (
-        "أنت محلل وخبير توقع مباريات كرة قدم. اعتمد على معرفتك بقوة الفريقين "
-        "ومستواهما العام، وعلى النتيجة الحالية والدقيقة وطبيعة البطولة. "
-        "رد بالعربي، مباشر وبدون مقدمات، 3 أسطر كحد أقصى. "
-        "اختم دائماً بسطر بهذا الشكل: التوقع: [اسم الفريق أو تعادل] — ثقة X%"
+        "أنت محلل وخبير توقع مباريات كرة قدم. سيصلك وضع مباراة بأسماء إنجليزية. "
+        "أرجع ردك بهذا الشكل بالضبط:\n"
+        "الأسماء: [الفريق المضيف بالعربي] | [الفريق الضيف بالعربي] | [البطولة بالعربي (الدولة بالعربي)]\n"
+        "ثم سطران إلى ثلاثة: تحليل مختصر مبني على معرفتك بالفريقين والنتيجة والدقيقة، "
+        "ينتهي بسطر: التوقع: [اسم الفريق بالعربي أو تعادل] — ثقة X%\n"
+        "استخدم الأسماء العربية الشائعة في الإعلام الرياضي "
+        "(مثال: Real Madrid → ريال مدريد، Manchester City → مانشستر سيتي)، "
+        "وإذا كان الاسم غير مشهور فاكتبه بحروف عربية. "
+        "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
     )
     body = {
         "model": CLAUDE_MODEL,
@@ -168,6 +173,22 @@ def analyze_with_claude(context_text: str) -> str:
     except Exception as e:
         print("Claude error:", e)
         return "(تعذر التحليل حالياً — تحقق من رصيد مفتاح Claude)"
+
+
+def parse_claude_reply(text: str):
+    """يفصل سطر الأسماء العربية عن نص التحليل. يرجع (dict أو None, التحليل)."""
+    names = None
+    body = []
+    for line in text.splitlines():
+        s = line.strip()
+        if names is None and s.startswith("الأسماء:"):
+            parts = [p.strip() for p in s[len("الأسماء:"):].split("|")]
+            if len(parts) == 3 and all(parts):
+                names = {"home": parts[0], "away": parts[1], "league": parts[2]}
+            continue
+        if s:
+            body.append(s)
+    return names, "\n".join(body)
 
 
 def send_telegram(text: str) -> None:
@@ -236,23 +257,31 @@ def main() -> None:
 
         # --- حدث 1: مباراة جديدة بدأت ---
         if prev is None and status in LIVE_STATUSES:
+            ar_names = None
             analysis = ""
             if should_analyze(league, analyses_used):
-                analysis = analyze_with_claude(
+                raw = analyze_with_claude(
                     f"مباراة حية بدأت الآن: {home} ضد {away} — {league_line}. "
                     f"النتيجة {score}، الدقيقة {minute}. "
                     f"أعطني توقعك النهائي لهذه المباراة."
                 )
                 analyses_used += 1
+                ar_names, analysis = parse_claude_reply(raw)
+            h_disp = ar_names["home"] if ar_names else home
+            a_disp = ar_names["away"] if ar_names else away
+            l_disp = ar_names["league"] if ar_names else league_line
             msg = (
                 f"⚽️ بدأت المباراة\n"
-                f"🏆 {league_line}\n"
-                f"{home} 🆚 {away}\n"
+                f"🏆 {l_disp}\n"
+                f"{h_disp} 🆚 {a_disp}\n"
             )
             if analysis:
                 msg += f"\n🤖 التوقع:\n{analysis}"
             send_telegram(msg)
-            state[fid] = {"score": score, "status": status}
+            entry = {"score": score, "status": status}
+            if ar_names:
+                entry["ar"] = ar_names
+            state[fid] = entry
             continue
 
         if prev is None:
@@ -261,19 +290,26 @@ def main() -> None:
             continue
 
         # --- حدث 2: تغير النتيجة (هدف) ---
+        ar_names = prev.get("ar")
         if score != prev.get("score") and status in LIVE_STATUSES:
             analysis = ""
             if should_analyze(league, analyses_used):
-                analysis = analyze_with_claude(
+                raw = analyze_with_claude(
                     f"تحديث مباراة حية: {home} ضد {away} — {league_line}. "
                     f"النتيجة الآن {score} بعد هدف جديد، الدقيقة {minute}. "
                     f"هل يتغير توقعك؟ أعطني قراءة الموقف والتوقع النهائي."
                 )
                 analyses_used += 1
+                ar_new, analysis = parse_claude_reply(raw)
+                if ar_new:
+                    ar_names = ar_new
+            h_disp = ar_names["home"] if ar_names else home
+            a_disp = ar_names["away"] if ar_names else away
+            l_disp = ar_names["league"] if ar_names else league_line
             msg = (
                 f"🚨 هدف!\n"
-                f"🏆 {league_line}\n"
-                f"{home} {gh} - {ga} {away} (د{minute})\n"
+                f"🏆 {l_disp}\n"
+                f"{h_disp} {gh} - {ga} {a_disp} (د{minute})\n"
             )
             if analysis:
                 msg += f"\n🤖 قراءة المباراة الآن:\n{analysis}"
@@ -281,13 +317,19 @@ def main() -> None:
 
         # --- حدث 3: نهاية المباراة ---
         if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES:
+            h_disp = ar_names["home"] if ar_names else home
+            a_disp = ar_names["away"] if ar_names else away
+            l_disp = ar_names["league"] if ar_names else league_line
             send_telegram(
                 f"🏁 انتهت المباراة\n"
-                f"🏆 {league_line}\n"
-                f"{home} {gh} - {ga} {away}"
+                f"🏆 {l_disp}\n"
+                f"{h_disp} {gh} - {ga} {a_disp}"
             )
 
-        state[fid] = {"score": score, "status": status}
+        entry = {"score": score, "status": status}
+        if ar_names:
+            entry["ar"] = ar_names
+        state[fid] = entry
 
     # تنظيف الذاكرة: نحذف المباريات التي لم تعد حية
     for fid in list(state.keys()):
