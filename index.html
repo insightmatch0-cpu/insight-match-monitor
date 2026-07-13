@@ -214,6 +214,29 @@
   .res .mark.ok{color:var(--green)}
   .res .mark.no{color:var(--red)}
 
+  /* ======== احتمالات المحرك 2 (1X2) ======== */
+  .probbar{display:flex;height:6px;border-radius:999px;overflow:hidden;background:var(--chip);margin-top:9px}
+  .probbar i{display:block;height:100%}
+  .probbar .ph{background:var(--green)}
+  .probbar .pd{background:var(--muted)}
+  .probbar .pa{background:var(--live)}
+  .prob-nums{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:3px}
+  .prob-nums .ph-n{color:var(--green)}
+  .prob-nums .pa-n{color:var(--live)}
+  .probs-sm{font-size:10.5px;color:var(--muted);white-space:nowrap}
+
+  /* ======== مخطط الدقة اليومي ======== */
+  .trend{margin-top:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .trend .t-label{font-size:11px;color:var(--muted);margin-bottom:6px}
+  .t-bars{display:flex;align-items:flex-end;gap:3px;height:46px}
+  .t-bar{flex:1;background:var(--engine);border-radius:3px 3px 0 0;min-height:2px;opacity:.85}
+  .t-bar.zero{background:var(--chip)}
+
+  /* ======== دروس التعلم (المحرك 2) ======== */
+  .lesson{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:8px}
+  .lesson .l-text{font-size:13px;line-height:1.55}
+  .lesson .l-meta{font-size:11px;color:var(--muted);margin-top:4px}
+
   /* ======== لوحة "قيد الإنشاء" للمحرك 2 ======== */
   .construct{
     background:var(--panel);border:1px solid var(--v2);border-radius:16px;
@@ -307,6 +330,16 @@
       <div id="res-list"></div>
     </section>
 
+    <!-- دروس التعلم المستمر — يظهر في تبويب المحرك 2 فقط -->
+    <section class="sec" id="lessons-sec" style="display:none">
+      <div class="sec-head">
+        <h2 data-i="lessons">📚 دروس يتعلمها المحرك</h2>
+        <span class="rule"></span>
+        <span class="count" id="lessons-count">0</span>
+      </div>
+      <div id="lessons-list"></div>
+    </section>
+
   </div>
 
   <!-- الأخبار (مشتركة) -->
@@ -342,6 +375,9 @@ var I18N = {
     accTop:"الدوريات الكبرى", accOther:"بقية الدوريات",
     otherLeagues:"دوريات أخرى",
     updated:"آخر تحديث",
+    lessons:"📚 دروس يتعلمها المحرك",
+    trend:"الدقة يوماً بيوم (آخر 14 يوماً)",
+    probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
     v2p:"محرك توقعات من جيل جديد يجري بناؤه الآن، وسيعمل جنباً إلى جنب مع المحرك 1 للمقارنة المباشرة:",
     v2f1:"يعمل بنموذج Claude Fable 5 — الأذكى لدى Anthropic",
@@ -365,6 +401,9 @@ var I18N = {
     accTop:"Top leagues", accOther:"Other leagues",
     otherLeagues:"Other leagues",
     updated:"Updated",
+    lessons:"📚 Lessons the engine learned",
+    trend:"Day-by-day accuracy (last 14 days)",
+    probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
     v2p:"A new-generation prediction engine is being built now. It will run side by side with Engine 1 for a live comparison:",
     v2f1:"Powered by Claude Fable 5 — Anthropic's smartest model",
@@ -470,6 +509,21 @@ function pickText(p, home, away){
   return (p === "home" ? t("pickHome")+" "+home : t("pickAway")+" "+away);
 }
 
+/* شريط احتمالات المحرك 2 (فوز/تعادل/فوز) — يظهر فقط عند توفر الاحتمالات */
+function probRow(p){
+  if (p.prob_home == null) return "";
+  return '<div class="probbar" aria-hidden="true">'
+    + '<i class="ph" style="width:'+p.prob_home+'%"></i>'
+    + '<i class="pd" style="width:'+p.prob_draw+'%"></i>'
+    + '<i class="pa" style="width:'+p.prob_away+'%"></i>'
+    + '</div>'
+    + '<div class="prob-nums">'
+    + '<span class="ph-n">'+t("probHome")+' '+esc(p.prob_home)+'%</span>'
+    + '<span>'+t("probDraw")+' '+esc(p.prob_draw)+'%</span>'
+    + '<span class="pa-n">'+t("probAway")+' '+esc(p.prob_away)+'%</span>'
+    + '</div>';
+}
+
 function renderUpcoming(list){
   var el = document.getElementById("upcoming-list");
   document.getElementById("up-count").textContent = list.length;
@@ -504,6 +558,7 @@ function renderUpcoming(list){
       + '<span class="confbar"><i style="width:'+(p.confidence||0)+'%"></i></span>'
       + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
       + '</div>'
+      + probRow(p)
       + (!p.top ? '<div class="league-eyebrow" style="margin:8px 0 0">'+esc(p.league)+'</div>' : "")
       + '</summary>'
       + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")
@@ -542,7 +597,40 @@ function renderAccuracy(acc){
       + '<div class="b-val">'+(p===null?"—":p+"%")+'</div></div>';
   }
   bh += '</div>';
-  el.innerHTML = h + (any ? bh : "");
+
+  /* الدقة يوماً بيوم — أعمدة صغيرة لآخر 14 يوماً */
+  var th = "";
+  var daily = acc.daily || {};
+  var days = Object.keys(daily).sort().slice(-14);
+  if (days.length >= 3){
+    th = '<div class="trend"><div class="t-label">'+t("trend")+'</div><div class="t-bars">';
+    for (var j=0;j<days.length;j++){
+      var o = daily[days[j]];
+      var pc = pctOf(o);
+      th += '<span class="t-bar'+(pc===null||pc===0?" zero":"")+'" '
+        + 'style="height:'+Math.max(4,(pc||0))+'%" '
+        + 'title="'+esc(days[j])+': '+(o?o.correct+"/"+o.total:"")+'"></span>';
+    }
+    th += '</div></div>';
+  }
+  el.innerHTML = h + (any ? bh : "") + th;
+}
+
+function renderLessons(){
+  var sec = document.getElementById("lessons-sec");
+  var list = (engine === "v2" && v2exists && lastV2 && lastV2.lessons) ? lastV2.lessons : [];
+  sec.style.display = list.length ? "" : "none";
+  document.getElementById("lessons-count").textContent = list.length;
+  if (!list.length){ document.getElementById("lessons-list").innerHTML = ""; return; }
+  var h = "";
+  for (var i=0;i<list.length;i++){
+    var x = list[i];
+    var meta = [x.match, x.date].filter(Boolean).join(" · ");
+    h += '<div class="lesson"><div class="l-text">'+esc(x.text)+'</div>'
+      + (meta ? '<div class="l-meta">'+esc(meta)+'</div>' : "")
+      + '</div>';
+  }
+  document.getElementById("lessons-list").innerHTML = h;
 }
 
 function renderResults(list){
@@ -558,6 +646,9 @@ function renderResults(list){
       + badge(r.home, r.home_logo, true)
       + '<span class="names">'+esc(r.home)+' × '+esc(r.away)+'</span>'
       + '</div>'
+      + (r.prob_home != null
+          ? '<span class="probs-sm">'+esc(r.prob_home)+'·'+esc(r.prob_draw)+'·'+esc(r.prob_away)+'</span>'
+          : "")
       + '<span class="fscore">'+esc(r.score)+'</span>'
       + '<span class="conf-num">'+esc(r.confidence)+'%</span>'
       + '</div>';
@@ -616,6 +707,7 @@ function renderAll(){
     renderAccuracy(base.accuracy);
     renderResults(base.recent_results || []);
   }
+  renderLessons();
 }
 
 /* ================= جلب البيانات ================= */

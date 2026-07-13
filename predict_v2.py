@@ -47,6 +47,8 @@ ENRICH_CALL_BUDGET    = 120   # سقف أمان لنداءات السياق ال
 ENRICHED_BATCH_SIZE   = 4     # دفعات صغيرة للمباريات ذات السياق الغني
 BASIC_BATCH_SIZE      = 12    # دفعات المباريات بدون سياق (مثل المحرك 1)
 MAX_LESSONS_IN_PROMPT = 15    # أحدث الدروس التي تُحقن في كل توقع
+MAX_LESSONS_STORED    = 100   # أقصى دروس محفوظة في lessons_v2.json
+MAX_MISTAKES_PER_RUN  = 10    # أقصى أخطاء تُراجع لاستخلاص الدروس في التشغيلة
 
 SEND_TELEGRAM_DIGEST = True
 DIGEST_TOP_ONLY      = True
@@ -203,11 +205,12 @@ def pct(d: dict) -> str:
     return f"{round(100 * d['correct'] / d['total'])}% ({d['correct']}/{d['total']})"
 
 
-def resolve_pending(store: dict) -> int:
-    """يتحقق من نتائج التوقعات المنتظرة ويحوّل ما انتهى إلى سجل الدقة."""
+def resolve_pending(store: dict):
+    """يتحقق من نتائج التوقعات المنتظرة ويحوّل ما انتهى إلى سجل الدقة.
+    يرجع (عدد المُسوَّى، قائمة المُسوَّى حديثاً) — القائمة تُستخدم لاستخلاص الدروس."""
     pending = store.get("pending", {})
     if not pending:
-        return 0
+        return 0, []
 
     today = now_utc().strftime("%Y-%m-%d")
     dates = sorted({p.get("date", "") for p in pending.values() if p.get("date", "") <= today})
@@ -231,13 +234,14 @@ def resolve_pending(store: dict) -> int:
             print(f"فشل سحب نتائج {d}:", e)
 
     resolved_now = 0
+    newly_resolved = []
     drop_before = (now_utc() - timedelta(days=3)).strftime("%Y-%m-%d")
     for fid in list(pending.keys()):
         p = pending[fid]
         status, gh, ga, logos = finals.get(fid, ("", None, None, {}))
         if status in FINAL_STATUSES and gh is not None and ga is not None:
             actual = outcome_from_score(int(gh), int(ga))
-            store.setdefault("resolved", []).append({
+            entry = {
                 "fid": fid,
                 "date": p.get("date"),
                 "home": p.get("home"), "away": p.get("away"),
@@ -255,14 +259,122 @@ def resolve_pending(store: dict) -> int:
                 "actual": actual,
                 "score": f"{gh}-{ga}",
                 "correct": p.get("pick") == actual,
-            })
+            }
+            store.setdefault("resolved", []).append(entry)
+            newly_resolved.append(entry)
             del pending[fid]
             resolved_now += 1
         elif status in DEAD_STATUSES or (p.get("date", "") < drop_before):
             del pending[fid]
 
     store["resolved"] = store.get("resolved", [])[-1000:]
-    return resolved_now
+    return resolved_now, newly_resolved
+
+
+# ================== المرحلة 3: التعلم من الأخطاء ==================
+def claude_request(system_prompt: str, user_text: str, max_tokens: int = 2000) -> str:
+    """نداء Claude عام يرجع النص فقط (فارغ عند الفشل — لا يوقف التشغيلة)."""
+    try:
+        r = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": ANTHROPIC_API_KEY,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+            json={
+                "model": CLAUDE_MODEL,
+                "max_tokens": max_tokens,
+                "system": system_prompt,
+                "messages": [{"role": "user", "content": user_text}],
+            },
+            timeout=180,
+        )
+        r.raise_for_status()
+        return "".join(
+            b.get("text", "")
+            for b in r.json().get("content", [])
+            if b.get("type") == "text"
+        ).strip()
+    except Exception as e:
+        print("Claude error:", e)
+        return ""
+
+
+def parse_json_array(text: str) -> list:
+    """يستخرج مصفوفة JSON من رد Claude بتسامح (أسوار، نص زائد)."""
+    text = (text or "").strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```[a-zA-Z]*\s*|\s*```$", "", text).strip()
+    if not text.startswith("["):
+        m = re.search(r"\[.*\]", text, re.DOTALL)
+        if not m:
+            return []
+        text = m.group(0)
+    try:
+        items = json.loads(text)
+    except Exception as e:
+        print("JSON parse error:", e)
+        return []
+    return items if isinstance(items, list) else []
+
+
+def generate_lessons(newly_resolved: list) -> int:
+    """يستخلص درساً قابلاً للتطبيق من كل توقع خاطئ ويضيفه إلى lessons_v2.json.
+    الدروس الأحدث تُحقن تلقائياً في كل توقع قادم (lessons_text)."""
+    mistakes = [r for r in newly_resolved if not r.get("correct")][:MAX_MISTAKES_PER_RUN]
+    if not mistakes:
+        return 0
+
+    payload = [
+        {
+            "match": f"{r.get('home')} vs {r.get('away')}",
+            "league": r.get("league"),
+            "my_pick": r.get("pick"),
+            "my_probs_home_draw_away":
+                f"{r.get('prob_home', '?')}/{r.get('prob_draw', '?')}/{r.get('prob_away', '?')}",
+            "confidence": r.get("confidence"),
+            "actual_outcome": r.get("actual"),
+            "final_score": r.get("score"),
+            "top_league": bool(r.get("top")),
+        }
+        for r in mistakes
+    ]
+    system_prompt = (
+        "أنت المراجع الذاتي لمحرك توقعات كرة قدم. ستصلك توقعات خاطئة من الأمس "
+        "مع النتائج الفعلية.\n"
+        "استخلص من كل توقع خاطئ درساً واحداً قصيراً وقابلاً للتطبيق في توقعات "
+        "قادمة: نمط عام يجب الانتباه له (مثل المبالغة في قوة صاحب الأرض، أو تجاهل "
+        "احتمال التعادل بين متقاربين) — وليس مجرد وصف لما حدث في تلك المباراة.\n"
+        "أرجع ردك بصيغة JSON فقط — مصفوفة واحدة بدون أي نص قبلها أو بعدها وبدون ```:\n"
+        '[{"match":"...","lesson":"درس من سطر واحد بالعربي"}]\n'
+        "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
+    )
+    raw = claude_request(system_prompt, json.dumps(payload, ensure_ascii=False))
+    items = parse_json_array(raw)
+    if not items:
+        return 0
+
+    data = load_json(LESSONS_FILE, {"lessons": []})
+    data.setdefault("lessons", [])
+    today = now_utc().strftime("%Y-%m-%d")
+    added = 0
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        lesson = str(it.get("lesson") or "").strip()
+        if not lesson:
+            continue
+        data["lessons"].append({
+            "date": today,
+            "match": str(it.get("match") or "").strip(),
+            "text": lesson,
+        })
+        added += 1
+    if added:
+        data["lessons"] = data["lessons"][-MAX_LESSONS_STORED:]
+        save_json(LESSONS_FILE, data)
+    return added
 
 
 # ================== سحب مباريات الـ 24 ساعة القادمة (مطابق للمحرك 1) ==================
@@ -623,7 +735,8 @@ def v1_pending() -> dict:
     return store.get("pending") or {}
 
 
-def build_digest(new_preds: list, stats: dict, v1_preds: dict = None) -> str:
+def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
+                 new_lessons: int = 0) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
     v1_preds = v1_preds or {}
     shown = [p for p in new_preds if p["top"]] if DIGEST_TOP_ONLY else new_preds
@@ -660,6 +773,8 @@ def build_digest(new_preds: list, stats: dict, v1_preds: dict = None) -> str:
         lines.append(DASHBOARD_URL)
     if stats["last30"]["total"]:
         lines.append(f"\n📊 دقة المحرك 2 آخر 30 يوماً: {pct(stats['last30'])}")
+    if new_lessons:
+        lines.append(f"📚 دروس جديدة من أخطاء الأمس: {new_lessons} — تدخل في توقعات اليوم.")
     lines.append("\n⚠️ توقعات تحليلية وليست ضمانات.")
     return "\n".join(lines)
 
@@ -683,9 +798,14 @@ def main() -> None:
     store.setdefault("resolved", [])
 
     # 1) تسوية نتائج الأيام السابقة (التعلم)
-    resolved_now = resolve_pending(store)
+    resolved_now, newly_resolved = resolve_pending(store)
     stats = compute_stats(store["resolved"])
     print(f"المحرك 2: تمت تسوية {resolved_now} توقعاً. السجل: {pct(stats['overall'])}")
+
+    # 1.5) المرحلة 3: استخلاص دروس من أخطاء الأمس
+    new_lessons = generate_lessons(newly_resolved)
+    if new_lessons:
+        print(f"دروس جديدة مستخلصة من الأخطاء: {new_lessons}")
 
     # 2) مباريات الـ 24 ساعة القادمة (نفس اختيار المحرك 1) + إكمال الشعارات الناقصة
     fetched = get_upcoming_24h()
@@ -736,7 +856,7 @@ def main() -> None:
 
     # 5) ملخص تيليجرام (مع مقارنة توقعات المحرك 1 لنفس المباريات)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
-        send_telegram_long(build_digest(new_preds, stats, v1_pending()))
+        send_telegram_long(build_digest(new_preds, stats, v1_pending(), new_lessons))
 
 
 if __name__ == "__main__":

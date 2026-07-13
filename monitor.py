@@ -28,11 +28,13 @@ MAX_ANALYSES_PER_RUN = 20                # حد أقصى لتحليلات Claude
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"
 
 # ---- المحرك 2 المباشر (للدوريات الكبرى فقط) ----
-# يسحب إحصائيات وأحداث المباراة الحية (نداءان API لكل مباراة) ويحلل عبر
-# النموذج الأقوى بتوقع كل السيناريوهات: هدف قادم، ركنيات، كرات ثابتة،
-# اللاعب الأخطر، بطاقات. مقيد بعدد مباريات لكل تشغيلة حفاظاً على الرصيد.
+# يسحب إحصائيات وأحداث وتشكيلات المباراة الحية (3 نداءات API لكل مباراة)
+# ويحلل عبر النموذج الأقوى مع تفكير عميق ممتد قبل الإجابة، بتوقع كل
+# السيناريوهات: هدف قادم، ركنيات، كرات ثابتة، اللاعب الأخطر، بطاقات.
+# مقيد بعدد مباريات لكل تشغيلة حفاظاً على الرصيد.
 CLAUDE_MODEL_V2 = "claude-fable-5"
 MAX_LIVE_ENRICHED_PER_RUN = 6
+LIVE_THINKING_BUDGET = 2048   # ميزانية التفكير العميق (توكنز) لتحليل المحرك 2 المباشر
 
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة في العالم توصلك مع توقع (استهلاك رصيد أعلى)
@@ -151,8 +153,8 @@ KEY_LIVE_STATS = {
 
 
 def get_live_details(fid: str) -> str:
-    """نداءان API: إحصائيات المباراة الحية + أحداثها، يرجع سياقاً نصياً مضغوطاً.
-    أي فشل يرجع نصاً أقصر — لا يوقف التحليل أبداً."""
+    """3 نداءات API: إحصائيات المباراة الحية + أحداثها + التشكيلات،
+    يرجع سياقاً نصياً مضغوطاً. أي فشل يرجع نصاً أقصر — لا يوقف التحليل أبداً."""
     parts = []
     try:
         team_lines = []
@@ -182,6 +184,21 @@ def get_live_details(fid: str) -> str:
             parts.append("Match events:\n" + "\n".join(ev_lines))
     except Exception as e:
         print("فشل سحب أحداث المباراة:", e)
+    try:
+        lu_lines = []
+        for side in api_football(f"fixtures/lineups?fixture={fid}"):
+            team = (side.get("team") or {}).get("name", "?")
+            formation = side.get("formation") or "?"
+            starters = [
+                ((x.get("player") or {}).get("name") or "?")
+                for x in (side.get("startXI") or [])
+            ]
+            if starters:
+                lu_lines.append(f"{team} ({formation}): " + ", ".join(starters))
+        if lu_lines:
+            parts.append("Lineups:\n" + "\n".join(lu_lines))
+    except Exception as e:
+        print("فشل سحب التشكيلات:", e)
     return "\n".join(parts)
 
 
@@ -217,14 +234,19 @@ SYSTEM_PROMPT_LIVE_V2 = (
 
 def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
                         system_prompt: str = SYSTEM_PROMPT_BASIC,
-                        max_tokens: int = 400) -> str:
-    """يرسل وضع المباراة لـ Claude ويرجع الأسماء بالعربي + توقعاً مختصراً."""
+                        max_tokens: int = 400, thinking_budget: int = 0) -> str:
+    """يرسل وضع المباراة لـ Claude ويرجع الأسماء بالعربي + توقعاً مختصراً.
+    thinking_budget > 0 يفعّل التفكير العميق الممتد قبل الإجابة (للمحرك 2 المباشر)."""
     body = {
         "model": model,
         "max_tokens": max_tokens,
         "system": system_prompt,
         "messages": [{"role": "user", "content": context_text}],
     }
+    if thinking_budget > 0:
+        body["thinking"] = {"type": "enabled", "budget_tokens": thinking_budget}
+        # max_tokens يجب أن يتسع للتفكير + الرد النهائي
+        body["max_tokens"] = max(max_tokens, thinking_budget + 800)
     try:
         r = requests.post(
             "https://api.anthropic.com/v1/messages",
@@ -259,6 +281,7 @@ def analyze_match(prompt_base: str, league: dict, fid: str, live_budget: dict):
         raw = analyze_with_claude(
             text, model=CLAUDE_MODEL_V2,
             system_prompt=SYSTEM_PROMPT_LIVE_V2, max_tokens=600,
+            thinking_budget=LIVE_THINKING_BUDGET,
         )
         return raw, True
     return analyze_with_claude(prompt_base), False
