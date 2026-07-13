@@ -94,17 +94,21 @@ def send_telegram(text: str) -> None:
 
 
 def get_batch_predictions(matches: list) -> dict:
-    """نداء Claude واحد يرجع توقعاً من سطر واحد لكل مباراة مرقمة."""
+    """نداء Claude واحد يرجع الأسماء بالعربي + توقعاً لكل مباراة مرقمة."""
     listing = "\n".join(
         f"{i+1}. {m['home']} ضد {m['away']} — {m['league']} ({m['country']}) "
         f"— النتيجة {m['score']} — الدقيقة {m['minute']}"
         for i, m in enumerate(matches)
     )
     system_prompt = (
-        "أنت خبير توقع مباريات كرة قدم. ستصلك قائمة مباريات حية مرقمة. "
-        "أرجع لكل مباراة سطراً واحداً فقط بنفس رقمها بهذا الشكل بالضبط:\n"
-        "1| التوقع: [اسم الفريق أو تعادل] — ثقة X%\n"
-        "اعتمد على معرفتك بالفريقين وعلى النتيجة والدقيقة. "
+        "أنت خبير توقع مباريات كرة قدم. ستصلك قائمة مباريات حية مرقمة بأسماء إنجليزية. "
+        "أرجع لكل مباراة سطراً واحداً فقط بنفس رقمها وبهذا الشكل بالضبط:\n"
+        "1| الفريق المضيف بالعربي | الفريق الضيف بالعربي | البطولة بالعربي (الدولة بالعربي) | "
+        "التوقع: [اسم الفريق بالعربي أو تعادل] — ثقة X%\n"
+        "استخدم الأسماء العربية الشائعة في الإعلام الرياضي "
+        "(مثال: Real Madrid → ريال مدريد)، وإذا كان الاسم غير مشهور فاكتبه بحروف عربية. "
+        "اعتمد في التوقع على معرفتك بالفريقين وعلى النتيجة والدقيقة. "
+        "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً. "
         "لا تكتب أي شيء آخر غير الأسطر المرقمة."
     )
     try:
@@ -133,12 +137,23 @@ def get_batch_predictions(matches: list) -> dict:
         print("Claude error:", e)
         return {}
 
-    predictions = {}
+    results = {}
     for line in text.splitlines():
-        match = re.match(r"^\s*(\d+)\s*[|\.\-:)]\s*(.+)$", line.strip())
-        if match:
-            predictions[int(match.group(1))] = match.group(2).strip()
-    return predictions
+        match = re.match(r"^\s*(\d+)\s*\|(.+)$", line.strip())
+        if not match:
+            continue
+        parts = [p.strip() for p in match.group(2).split("|")]
+        idx = int(match.group(1))
+        if len(parts) >= 4:
+            results[idx] = {
+                "home": parts[0],
+                "away": parts[1],
+                "league": parts[2],
+                "pred": parts[3],
+            }
+        elif parts and parts[-1]:
+            results[idx] = {"pred": parts[-1]}
+    return results
 
 
 def main() -> None:
@@ -207,9 +222,13 @@ def main() -> None:
             lines.append(f"\n{section}")
             lines.append("—" * 20)
             current_section = section
-        lines.append(f"⚽ {m['home']} {m['score']} {m['away']} (د{m['minute']})")
-        lines.append(f"   🏆 {m['league']} ({m['country']})")
-        pred = predictions.get(i + 1)
+        info = predictions.get(i + 1) or {}
+        h_disp = info.get("home") or m["home"]
+        a_disp = info.get("away") or m["away"]
+        l_disp = info.get("league") or f"{m['league']} ({m['country']})"
+        lines.append(f"⚽ {h_disp} {m['score']} {a_disp} (د{m['minute']})")
+        lines.append(f"   🏆 {l_disp}")
+        pred = info.get("pred")
         if pred:
             lines.append(f"   🤖 {pred}")
         lines.append("")
