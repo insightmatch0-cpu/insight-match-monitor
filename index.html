@@ -6,12 +6,15 @@
 <title>InsightMatch — رادار المباريات</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B120F; --panel:#121B16; --raised:#17231D; --line:#24342A;
-    --ink:#EAF2EC; --muted:#92A79A; --amber:#FFB224; --green:#57C785;
-    --red:#E5605E; --chip:#1D2B23;
+    --bg:#0A100D; --panel:#121B16; --raised:#18251E; --line:#25382C;
+    --ink:#F0F6F1; --muted:#8FA697; --chip:#1C2B22;
+    --v1:#FFB224; --v1-soft:rgba(255,178,36,.14);
+    --v2:#4ED9EA; --v2-soft:rgba(78,217,234,.14);
+    --green:#53C57F; --red:#E2615E; --live:#FF5D5B;
+    --engine:var(--v1); --engine-soft:var(--v1-soft);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -22,193 +25,218 @@
     font-feature-settings:"tnum";
     min-height:100vh;
   }
+  body::before{ /* خط منتصف الملعب — خيط ضوئي خافت أعلى الصفحة */
+    content:""; position:fixed; inset:0 0 auto 0; height:2px; z-index:30;
+    background:linear-gradient(90deg,transparent,var(--engine),transparent);
+    opacity:.85; transition:background .3s;
+  }
   a{color:inherit}
-  button{font-family:inherit;cursor:pointer}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  img{display:block}
 
   /* ======== الشريط العلوي ======== */
   header{
-    position:sticky;top:0;z-index:10;
-    background:rgba(11,18,15,.92);backdrop-filter:blur(8px);
+    position:sticky;top:0;z-index:20;
+    background:rgba(10,16,13,.92);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
     padding:10px 16px;
     display:flex;align-items:center;justify-content:space-between;gap:8px;
   }
-  .brand{font-family:Changa;font-weight:700;font-size:20px;letter-spacing:.3px}
-  .brand em{color:var(--amber);font-style:normal}
+  .brand{font-family:Changa;font-weight:800;font-size:21px;letter-spacing:.3px}
+  .brand em{color:var(--engine);font-style:normal;transition:color .3s}
   .meta-row{display:flex;align-items:center;gap:8px}
   #updated{font-size:11.5px;color:var(--muted);white-space:nowrap}
   #langBtn{
-    background:var(--chip);border:1px solid var(--line);color:var(--ink);
+    background:var(--chip);border:1px solid var(--line);
     border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:600;
   }
-  #langBtn:focus-visible,button:focus-visible,details summary:focus-visible{
-    outline:2px solid var(--amber);outline-offset:2px;
+  button:focus-visible,details summary:focus-visible{
+    outline:2px solid var(--engine);outline-offset:2px;
   }
 
-  main{max-width:680px;margin:0 auto;padding:16px 16px 56px}
+  main{max-width:680px;margin:0 auto;padding:16px 16px 60px}
 
-  /* ======== عناوين الأقسام (بأسلوب رسوميات البث) ======== */
+  /* ======== مبدّل المحركات (لوحتا قناة بث) ======== */
+  .engines{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 6px;
+  }
+  .engine-tab{
+    position:relative;border:1px solid var(--line);border-radius:14px;
+    background:var(--panel);padding:12px 14px 10px;text-align:start;
+    transition:border-color .2s, background .2s;
+  }
+  .engine-tab .tag{
+    font-family:Changa;font-weight:700;font-size:11px;letter-spacing:1.5px;
+    color:var(--muted);text-transform:uppercase;
+  }
+  .engine-tab .name{font-family:Changa;font-weight:700;font-size:18px;margin-top:2px}
+  .engine-tab .desc{font-size:11px;color:var(--muted);margin-top:1px}
+  .engine-tab .lamp{
+    position:absolute;top:12px;inset-inline-end:12px;width:8px;height:8px;border-radius:50%;
+    background:var(--line);
+  }
+  .engine-tab.active{background:var(--raised)}
+  .engine-tab.e1.active{border-color:var(--v1)}
+  .engine-tab.e1.active .lamp{background:var(--v1);box-shadow:0 0 10px var(--v1)}
+  .engine-tab.e1.active .name{color:var(--v1)}
+  .engine-tab.e2.active{border-color:var(--v2)}
+  .engine-tab.e2.active .lamp{background:var(--v2);box-shadow:0 0 10px var(--v2)}
+  .engine-tab.e2.active .name{color:var(--v2)}
+
+  /* ======== عناوين الأقسام ======== */
   .sec{margin-top:26px}
-  .sec-head{
-    display:flex;align-items:center;gap:10px;margin-bottom:12px;
-  }
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
   .sec-head h2{
-    font-family:Changa;font-weight:600;font-size:17px;letter-spacing:.4px;
+    font-family:Changa;font-weight:600;font-size:16px;letter-spacing:.5px;
     text-transform:uppercase;
   }
   .sec-head .rule{flex:1;height:1px;background:var(--line)}
   .sec-head .count{
-    font-size:12px;color:var(--muted);background:var(--chip);
-    border:1px solid var(--line);border-radius:999px;padding:1px 10px;
+    background:var(--chip);border:1px solid var(--line);color:var(--muted);
+    font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 10px;min-width:30px;text-align:center;
   }
-  .dot{
-    width:9px;height:9px;border-radius:50%;background:var(--amber);
-    box-shadow:0 0 0 0 rgba(255,178,36,.5);animation:pulse 1.6s infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(255,178,36,.45)}
-    70%{box-shadow:0 0 0 9px rgba(255,178,36,0)}
-    100%{box-shadow:0 0 0 0 rgba(255,178,36,0)}
-  }
+  .live-dot{width:9px;height:9px;border-radius:50%;background:var(--live);
+    box-shadow:0 0 8px var(--live);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
   @media (prefers-reduced-motion:reduce){
-    .dot{animation:none}
+    .live-dot{animation:none}
     html{scroll-behavior:auto}
   }
 
-  /* ======== بطاقات النتائج الحية (لوحة نتائج البث) ======== */
+  .empty{
+    background:var(--panel);border:1px dashed var(--line);border-radius:14px;
+    color:var(--muted);text-align:center;padding:22px 14px;font-size:13.5px;
+  }
+
+  /* ======== شارات الفرق (شعار أو حرف) ======== */
+  .badge{
+    position:relative;width:44px;height:44px;border-radius:50%;flex:0 0 44px;
+    background:var(--chip);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:Changa;font-weight:700;font-size:18px;color:var(--muted);
+    overflow:hidden;
+  }
+  .badge img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:5px;background:var(--chip)}
+  .badge.sm{width:22px;height:22px;flex:0 0 22px;font-size:11px}
+  .badge.sm img{padding:2px}
+
+  /* ======== بطاقات المباريات الحية ======== */
   .card{
-    background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:14px 16px;margin-bottom:10px;
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:14px;margin-bottom:10px;
   }
   .league-eyebrow{
-    font-size:11.5px;color:var(--muted);letter-spacing:.2px;margin-bottom:8px;
-    display:flex;justify-content:space-between;gap:8px;
+    display:flex;align-items:center;gap:7px;
+    font-size:11.5px;color:var(--muted);margin-bottom:10px;
   }
   .scoreboard{
-    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
+    display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;
   }
-  .team{font-weight:600;font-size:15.5px}
-  .team.h{text-align:start}
-  .team.a{text-align:end}
+  .side{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+  .side .tname{font-weight:600;font-size:13.5px;line-height:1.3}
   .score{
-    font-family:Changa;font-weight:700;font-size:34px;line-height:1;
-    letter-spacing:2px;text-align:center;white-space:nowrap;
-    direction:ltr;
+    font-family:Changa;font-weight:800;font-size:30px;letter-spacing:1px;
+    text-align:center;white-space:nowrap;
   }
   .minute{
-    display:inline-block;margin-top:6px;
-    background:rgba(255,178,36,.12);color:var(--amber);
-    border:1px solid rgba(255,178,36,.35);
-    border-radius:999px;padding:1px 10px;font-size:12px;font-weight:600;
-    direction:ltr;
+    display:inline-block;background:var(--v1-soft);color:var(--v1);
+    border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700;margin-top:2px;
   }
 
-  /* ======== التوقعات ======== */
-  .league-group{margin-bottom:14px}
+  /* ======== بطاقات التوقعات ======== */
   .league-title{
-    font-size:13px;font-weight:600;color:var(--muted);
-    margin:14px 0 8px;display:flex;align-items:center;gap:6px;
+    display:flex;align-items:center;gap:8px;
+    font-family:Changa;font-weight:600;font-size:14px;color:var(--muted);
+    margin:18px 2px 8px;
   }
-  .league-title .star{color:var(--amber);font-size:12px}
-  .pred{
-    background:var(--panel);border:1px solid var(--line);border-radius:12px;
-    margin-bottom:8px;overflow:hidden;
+  .league-title .star{color:var(--engine)}
+  details.pred{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    margin-bottom:10px;overflow:hidden;
   }
-  .pred summary{
-    list-style:none;padding:12px 14px;display:block;
+  details.pred summary{list-style:none;cursor:pointer;padding:13px 14px 12px}
+  details.pred summary::-webkit-details-marker{display:none}
+  details.pred[open]{border-color:var(--engine)}
+  .duel{
+    display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:8px;align-items:center;
   }
-  .pred summary::-webkit-details-marker{display:none}
-  .pred-row1{
-    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
-  }
-  .pred-teams{font-weight:600;font-size:14.5px}
+  .duel .tname{font-weight:600;font-size:13.5px;line-height:1.3}
+  .duel .tname.h{text-align:start}
+  .duel .tname.a{text-align:end}
   .ko{
-    font-size:12px;color:var(--muted);white-space:nowrap;direction:ltr;
-    background:var(--chip);border:1px solid var(--line);
-    border-radius:6px;padding:1px 7px;
+    font-family:Changa;font-weight:700;font-size:13px;color:var(--muted);
+    background:var(--chip);border:1px solid var(--line);border-radius:10px;
+    padding:3px 9px;white-space:nowrap;text-align:center;
   }
-  .pred-row2{
-    margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  .verdict{
+    display:flex;align-items:center;gap:10px;margin-top:11px;
   }
   .pick{
-    font-size:12.5px;font-weight:600;color:var(--green);
-    background:rgba(87,199,133,.1);border:1px solid rgba(87,199,133,.3);
-    border-radius:999px;padding:2px 11px;
+    font-size:12.5px;font-weight:700;color:var(--engine);
+    background:var(--engine-soft);border-radius:999px;padding:3px 12px;
+    white-space:nowrap;max-width:60%;overflow:hidden;text-overflow:ellipsis;
   }
-  .pick.draw{
-    color:var(--amber);background:rgba(255,178,36,.1);
-    border-color:rgba(255,178,36,.3);
-  }
-  /* عدّاد الثقة المقسّم — بأسلوب أشرطة إحصائيات البث */
-  .meter{display:flex;gap:2.5px;direction:ltr}
-  .meter i{
-    width:9px;height:12px;border-radius:2px;background:var(--chip);
-    border:1px solid var(--line);
-  }
-  .meter i.on{background:var(--green);border-color:var(--green)}
-  .conf-num{font-size:12.5px;color:var(--muted)}
+  .pick.draw{color:var(--muted);background:var(--chip)}
+  .confbar{flex:1;height:6px;border-radius:999px;background:var(--chip);overflow:hidden}
+  .confbar i{display:block;height:100%;border-radius:999px;background:var(--engine);transition:width .4s}
+  .conf-num{font-family:Changa;font-weight:700;font-size:14px;min-width:38px;text-align:end}
   .reason{
-    padding:0 14px 12px;font-size:13.5px;color:var(--muted);
-    border-top:1px dashed var(--line);padding-top:10px;margin:0 14px 12px;
+    border-top:1px solid var(--line);padding:11px 14px;font-size:13px;color:var(--muted);
   }
 
-  /* ======== الدقة ======== */
-  .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  /* ======== سجل الدقة ======== */
+  .acc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
   .acc-box{
-    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
     padding:12px 14px;
   }
-  .acc-box .label{font-size:12px;color:var(--muted)}
-  .acc-box .value{
-    font-family:Changa;font-weight:700;font-size:26px;margin-top:2px;
-    direction:ltr;text-align:start;
-  }
-  .acc-box .sub{font-size:11.5px;color:var(--muted);direction:ltr;text-align:start}
-  .buckets{margin-top:10px}
+  .acc-box .label{font-size:11.5px;color:var(--muted)}
+  .acc-box .value{font-family:Changa;font-weight:800;font-size:26px;color:var(--engine);margin-top:2px}
+  .acc-box .sub{font-size:11px;color:var(--muted)}
+  .buckets{margin-top:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
   .bucket{
-    display:flex;align-items:center;gap:10px;font-size:12.5px;
-    color:var(--muted);margin-bottom:6px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    text-align:center;padding:8px 4px;
   }
-  .bucket b{color:var(--ink);min-width:52px;direction:ltr;text-align:start}
-  .bar{flex:1;height:7px;background:var(--chip);border-radius:99px;overflow:hidden}
-  .bar i{display:block;height:100%;background:var(--green);border-radius:99px}
-  .days{
-    display:flex;align-items:flex-end;gap:3px;height:56px;margin-top:12px;
-    direction:ltr;
+  .bucket .b-label{font-size:10.5px;color:var(--muted)}
+  .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
+
+  /* ======== النتائج الأخيرة ======== */
+  .res{
+    display:flex;align-items:center;gap:10px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:10px 12px;margin-bottom:8px;font-size:13px;
   }
-  .day{flex:1;background:var(--chip);border-radius:3px 3px 0 0;position:relative;min-height:3px}
-  .day i{
-    position:absolute;bottom:0;left:0;right:0;background:var(--green);
-    border-radius:3px 3px 0 0;
+  .res .pair{display:flex;align-items:center;gap:6px;flex:1;min-width:0}
+  .res .names{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .res .fscore{font-family:Changa;font-weight:700;white-space:nowrap}
+  .res .mark{font-family:Changa;font-weight:800;font-size:15px;flex:0 0 auto}
+  .res .mark.ok{color:var(--green)}
+  .res .mark.no{color:var(--red)}
+
+  /* ======== لوحة "قيد الإنشاء" للمحرك 2 ======== */
+  .construct{
+    background:var(--panel);border:1px solid var(--v2);border-radius:16px;
+    padding:20px 16px;
   }
-  .result-line{
-    display:flex;justify-content:space-between;gap:10px;align-items:center;
-    padding:9px 2px;border-bottom:1px solid var(--line);font-size:13.5px;
-  }
-  .result-line:last-child{border-bottom:none}
-  .mark{font-weight:700}
-  .mark.ok{color:var(--green)}
-  .mark.no{color:var(--red)}
-  .result-score{direction:ltr;color:var(--muted);font-size:12.5px;white-space:nowrap}
+  .construct h3{font-family:Changa;font-weight:700;font-size:18px;color:var(--v2)}
+  .construct p{font-size:13.5px;color:var(--muted);margin-top:8px}
+  .construct ul{margin:10px 18px 0;font-size:13px;color:var(--ink)}
+  .construct li{margin-bottom:5px}
 
   /* ======== الأخبار ======== */
   .news-item{
-    display:block;text-decoration:none;
-    padding:11px 2px;border-bottom:1px solid var(--line);
+    display:block;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:11px 14px;margin-bottom:8px;text-decoration:none;
   }
-  .news-item:last-child{border-bottom:none}
-  .news-item .t{font-size:14px;font-weight:500}
-  .news-item .s{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .news-item .n-title{font-size:13.5px;font-weight:500;line-height:1.45}
+  .news-item .n-meta{font-size:11px;color:var(--muted);margin-top:4px}
 
-  /* ======== حالات فارغة ======== */
-  .empty{
-    background:var(--panel);border:1px dashed var(--line);border-radius:12px;
-    padding:22px 16px;text-align:center;color:var(--muted);font-size:13.5px;
-  }
   footer{
-    max-width:680px;margin:30px auto 0;padding:0 16px;
-    font-size:11.5px;color:var(--muted);text-align:center;
+    max-width:680px;margin:0 auto;padding:0 16px 30px;
+    font-size:11px;color:var(--muted);text-align:center;
   }
+  .hidden{display:none !important}
 </style>
 </head>
 <body>
@@ -217,313 +245,402 @@
   <div class="brand">Insight<em>Match</em></div>
   <div class="meta-row">
     <span id="updated"></span>
-    <button id="langBtn" aria-label="Switch language">EN</button>
+    <button id="langBtn" aria-label="Language">EN</button>
   </div>
 </header>
 
 <main>
-  <section class="sec" id="sec-live">
+
+  <!-- مبدّل المحركات -->
+  <div class="engines" role="tablist">
+    <button class="engine-tab e1 active" id="tab-v1" role="tab" aria-selected="true">
+      <span class="lamp"></span>
+      <div class="tag">ENGINE</div>
+      <div class="name" data-i="e1name">المحرك 1</div>
+      <div class="desc" data-i="e1desc">التوقعات اليومية</div>
+    </button>
+    <button class="engine-tab e2" id="tab-v2" role="tab" aria-selected="false">
+      <span class="lamp"></span>
+      <div class="tag">ENGINE</div>
+      <div class="name" data-i="e2name">المحرك 2</div>
+      <div class="desc" data-i="e2desc">الجيل الذكي — Fable 5</div>
+    </button>
+  </div>
+
+  <!-- الحية الآن (مشتركة بين المحركين) -->
+  <section class="sec">
     <div class="sec-head">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 data-i18n="live">مباشر الآن</h2>
+      <span class="live-dot" aria-hidden="true"></span>
+      <h2 data-i="live">مباشر الآن</h2>
       <span class="rule"></span>
       <span class="count" id="live-count">0</span>
     </div>
     <div id="live-list"></div>
   </section>
 
-  <section class="sec" id="sec-upcoming">
+  <!-- محتوى المحرك النشط -->
+  <div id="engine-body">
+
+    <section class="sec">
+      <div class="sec-head">
+        <h2 data-i="upcoming">توقعات الـ 24 ساعة</h2>
+        <span class="rule"></span>
+        <span class="count" id="up-count">0</span>
+      </div>
+      <div id="upcoming-list"></div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-head">
+        <h2 data-i="accuracy">سجل الدقة</h2>
+        <span class="rule"></span>
+      </div>
+      <div id="acc-body"></div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-head">
+        <h2 data-i="results">آخر النتائج المُقيَّمة</h2>
+        <span class="rule"></span>
+        <span class="count" id="res-count">0</span>
+      </div>
+      <div id="res-list"></div>
+    </section>
+
+  </div>
+
+  <!-- الأخبار (مشتركة) -->
+  <section class="sec">
     <div class="sec-head">
-      <h2 data-i18n="upcoming">توقعات الـ 24 ساعة</h2>
+      <h2 data-i="news">آخر الأخبار</h2>
       <span class="rule"></span>
-      <span class="count" id="up-count">0</span>
     </div>
-    <div id="upcoming-list"></div>
+    <div id="news-list"></div>
   </section>
 
-  <section class="sec" id="sec-acc">
-    <div class="sec-head">
-      <h2 data-i18n="accuracy">دقة النظام</h2>
-      <span class="rule"></span>
-    </div>
-    <div id="acc-body"></div>
-  </section>
-
-  <section class="sec" id="sec-news">
-    <div class="sec-head">
-      <h2 data-i18n="news">الأخبار</h2>
-      <span class="rule"></span>
-    </div>
-    <div id="news-list" class="card" style="padding:4px 14px"></div>
-  </section>
 </main>
 
-<footer id="foot"></footer>
+<footer data-i="disclaimer">التوقعات آراء تحليلية مبنية على المعطيات — ليست ضمانات.</footer>
 
 <script>
-(function(){
-  "use strict";
+"use strict";
 
-  /* ================= اللغة ================= */
-  var STR = {
-    ar: {
-      live:"مباشر الآن", upcoming:"توقعات الـ 24 ساعة", accuracy:"دقة النظام",
-      news:"الأخبار", updated:"آخر تحديث", justNow:"الآن", minAgo:"د",
-      noLive:"لا توجد مباريات حية الآن في الدوريات المشمولة.",
-      noUpcoming:"لا توجد توقعات بعد — شغّل \"Daily Predictions\" من تبويب Actions أو انتظر التشغيلة الصباحية.",
-      noAcc:"سجل الدقة يبدأ بالتراكم بعد أول يوم توقعات.",
-      noNews:"لا توجد أخبار محفوظة بعد.",
-      pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل", conf:"ثقة",
-      last30:"آخر 30 يوماً", overall:"الإجمالي", topL:"الدوريات الكبرى",
-      otherL:"بقية الدوريات", byConf:"حسب مستوى الثقة", recent:"آخر النتائج",
-      minute:"د", otherLeagues:"بقية الدوريات",
-      disclaimer:"توقعات تحليلية مبنية على المعطيات وليست ضمانات — كرة القدم مليئة بالمفاجآت.",
-      stale:"تعذر التحديث — البيانات المعروضة قديمة"
-    },
-    en: {
-      live:"Live now", upcoming:"Next 24h predictions", accuracy:"System accuracy",
-      news:"News", updated:"Updated", justNow:"now", minAgo:"m",
-      noLive:"No live matches right now in covered leagues.",
-      noUpcoming:"No predictions yet — run \"Daily Predictions\" from the Actions tab or wait for the morning run.",
-      noAcc:"Accuracy history starts building after the first prediction day.",
-      noNews:"No cached news yet.",
-      pickHome:"Win", pickAway:"Win", pickDraw:"Draw", conf:"conf.",
-      last30:"Last 30 days", overall:"All time", topL:"Top leagues",
-      otherL:"Other leagues", byConf:"By confidence level", recent:"Recent results",
-      minute:"'", otherLeagues:"Other leagues",
-      disclaimer:"Analytical predictions based on data — never guarantees. Football is full of surprises.",
-      stale:"Refresh failed — showing older data"
-    }
-  };
+/* ================= الترجمة ================= */
+var I18N = {
+  ar: {
+    e1name:"المحرك 1", e1desc:"التوقعات اليومية",
+    e2name:"المحرك 2", e2desc:"الجيل الذكي — Fable 5",
+    live:"مباشر الآن", upcoming:"توقعات الـ 24 ساعة",
+    accuracy:"سجل الدقة", results:"آخر النتائج المُقيَّمة", news:"آخر الأخبار",
+    noLive:"لا توجد مباريات حية الآن — يوم راحة أو بين الجولات.",
+    noUpcoming:"لا توجد توقعات قادمة حالياً.",
+    noAcc:"لا يوجد سجل بعد — يبدأ الحساب بعد أول نتائج مُقيَّمة.",
+    noRes:"لا توجد نتائج مُقيَّمة بعد.",
+    noNews:"لا توجد أخبار حالياً.",
+    pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل",
+    accOverall:"الإجمالي", acc30:"آخر 30 يوماً",
+    accTop:"الدوريات الكبرى", accOther:"بقية الدوريات",
+    otherLeagues:"دوريات أخرى",
+    updated:"آخر تحديث",
+    v2title:"المحرك 2 قيد الإنشاء",
+    v2p:"محرك توقعات من جيل جديد يجري بناؤه الآن، وسيعمل جنباً إلى جنب مع المحرك 1 للمقارنة المباشرة:",
+    v2f1:"يعمل بنموذج Claude Fable 5 — الأذكى لدى Anthropic",
+    v2f2:"بيانات أعمق لكل مباراة: الترتيب، المواجهات المباشرة، الإصابات، التشكيلات",
+    v2f3:"يتعلم من أخطائه: مراجعة ذاتية مكتوبة لكل توقع خاطئ",
+    v2f4:"احتمالات كاملة للنتائج الثلاث بدل توقع واحد",
+    disclaimer:"التوقعات آراء تحليلية مبنية على المعطيات — ليست ضمانات."
+  },
+  en: {
+    e1name:"Engine 1", e1desc:"Daily predictions",
+    e2name:"Engine 2", e2desc:"Smart gen — Fable 5",
+    live:"LIVE NOW", upcoming:"Next 24h predictions",
+    accuracy:"Accuracy record", results:"Latest graded results", news:"Latest news",
+    noLive:"No live matches right now — rest day or between rounds.",
+    noUpcoming:"No upcoming predictions at the moment.",
+    noAcc:"No record yet — starts after the first graded results.",
+    noRes:"No graded results yet.",
+    noNews:"No news right now.",
+    pickHome:"Win", pickAway:"Win", pickDraw:"Draw",
+    accOverall:"Overall", acc30:"Last 30 days",
+    accTop:"Top leagues", accOther:"Other leagues",
+    otherLeagues:"Other leagues",
+    updated:"Updated",
+    v2title:"Engine 2 is under construction",
+    v2p:"A new-generation prediction engine is being built now. It will run side by side with Engine 1 for a live comparison:",
+    v2f1:"Powered by Claude Fable 5 — Anthropic's smartest model",
+    v2f2:"Deeper data per match: standings, head-to-head, injuries, lineups",
+    v2f3:"Learns from its mistakes: a written self-review of every wrong prediction",
+    v2f4:"Full probabilities for all three outcomes instead of a single pick",
+    disclaimer:"Predictions are analytical opinions based on data — never guarantees."
+  }
+};
+var lang = "ar";
+try { lang = localStorage.getItem("im-lang") || "ar"; } catch(e){}
+function t(k){ return (I18N[lang] && I18N[lang][k]) || I18N.ar[k] || k; }
 
-  var lang = "ar";
+var engine = "v1";
+try { engine = localStorage.getItem("im-engine") || "v1"; } catch(e){}
+
+var lastV1 = null, lastV2 = null, v2exists = false;
+
+/* ================= أدوات ================= */
+function esc(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
+}
+function timeLocal(iso){
   try {
-    var qs = new URLSearchParams(location.search).get("lang");
-    lang = qs || localStorage.getItem("im_lang") || "ar";
-  } catch(e){}
-  if (lang !== "en") lang = "ar";
+    var d = new Date(iso);
+    return d.toLocaleTimeString(lang === "ar" ? "ar-u-nu-latn" : "en-GB",
+      {hour:"2-digit", minute:"2-digit"});
+  } catch(e){ return ""; }
+}
+function pctOf(o){
+  if (!o || !o.total) return null;
+  return Math.round(100 * o.correct / o.total);
+}
+function badge(name, logo, small){
+  var initial = esc(String(name||"?").trim().charAt(0) || "?");
+  var img = logo ? '<img src="'+esc(logo)+'" alt="" loading="lazy" onerror="this.remove()">' : "";
+  return '<span class="badge'+(small?" sm":"")+'" aria-hidden="true">'+initial+img+'</span>';
+}
 
-  function t(k){ return STR[lang][k] || k; }
-
-  function applyLang(){
-    document.documentElement.lang = lang;
-    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
-    document.getElementById("langBtn").textContent = (lang === "ar") ? "EN" : "ع";
-    var nodes = document.querySelectorAll("[data-i18n]");
-    for (var i=0;i<nodes.length;i++) nodes[i].textContent = t(nodes[i].getAttribute("data-i18n"));
-    document.getElementById("foot").textContent = t("disclaimer");
-  }
-
-  document.getElementById("langBtn").addEventListener("click", function(){
-    lang = (lang === "ar") ? "en" : "ar";
-    try { localStorage.setItem("im_lang", lang); } catch(e){}
-    applyLang();
-    if (lastData) render(lastData);
-  });
-
-  /* ================= أدوات ================= */
-  function esc(s){
-    return String(s == null ? "" : s)
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;");
-  }
-  function timeLocal(iso){
-    try {
-      var d = new Date(iso);
-      return d.toLocaleTimeString(lang === "ar" ? "ar-u-nu-latn" : "en-GB",
-        {hour:"2-digit", minute:"2-digit"});
-    } catch(e){ return ""; }
-  }
-  function pctOf(o){
-    if (!o || !o.total) return null;
-    return Math.round(100 * o.correct / o.total);
-  }
-
-  /* ================= العرض ================= */
-  function renderLive(list){
-    var el = document.getElementById("live-list");
-    document.getElementById("live-count").textContent = list.length;
-    if (!list.length){ el.innerHTML = '<div class="empty">'+t("noLive")+"</div>"; return; }
-    var h = "";
-    for (var i=0;i<list.length;i++){
-      var m = list[i];
-      var sc = esc(m.score).split("-");
-      h += '<div class="card">'
-        + '<div class="league-eyebrow"><span>'+esc(m.league)+'</span></div>'
-        + '<div class="scoreboard">'
-        + '<div class="team h">'+esc(m.home)+'</div>'
-        + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
-        + '<div style="text-align:center"><span class="minute">'
-        + (m.status==="HT" ? "HT" : esc(m.minute)+"'") + '</span></div></div>'
-        + '<div class="team a">'+esc(m.away)+'</div>'
-        + '</div></div>';
-    }
-    el.innerHTML = h;
-  }
-
-  function meterHTML(conf){
-    var on = Math.round((conf||0)/10), h = '<span class="meter" aria-hidden="true">';
-    for (var i=1;i<=10;i++) h += '<i class="'+(i<=on?"on":"")+'"></i>';
-    return h + "</span>";
-  }
-  function pickText(p){
-    if (p.pick === "draw") return t("pickDraw");
-    var name = (p.pick === "home") ? p.home : p.away;
-    return t(p.pick === "home" ? "pickHome" : "pickAway") + " " + name;
-  }
-
-  function renderUpcoming(list){
-    var el = document.getElementById("upcoming-list");
-    document.getElementById("up-count").textContent = list.length;
-    if (!list.length){ el.innerHTML = '<div class="empty">'+t("noUpcoming")+"</div>"; return; }
-
-    var h = "", curLeague = null, inOther = false;
-    for (var i=0;i<list.length;i++){
-      var p = list[i];
-      if (!p.top && !inOther){
-        h += '<div class="league-title">'+t("otherLeagues")+'</div>';
-        inOther = true; curLeague = null;
-      }
-      if (p.top && p.league !== curLeague){
-        h += '<div class="league-title"><span class="star">★</span>'+esc(p.league)+'</div>';
-        curLeague = p.league;
-      }
-      var home = (lang==="en" && p.home_en) ? p.home_en : p.home;
-      var away = (lang==="en" && p.away_en) ? p.away_en : p.away;
-      var pk = pickText({pick:p.pick, home:home, away:away});
-      h += '<details class="pred"><summary>'
-        + '<div class="pred-row1"><span class="pred-teams">'+esc(home)+' × '+esc(away)+'</span>'
-        + '<span class="ko">'+timeLocal(p.kickoff)+'</span></div>'
-        + '<div class="pred-row2">'
-        + '<span class="pick '+(p.pick==="draw"?"draw":"")+'">'+esc(pk)+'</span>'
-        + meterHTML(p.confidence)
-        + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
-        + '</div>'
-        + (!p.top ? '<div class="league-eyebrow" style="margin:6px 0 0">'+esc(p.league)+'</div>' : "")
-        + '</summary>'
-        + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")
-        + '</details>';
-    }
-    el.innerHTML = h;
-  }
-
-  function accBox(label, obj){
-    var p = pctOf(obj);
-    return '<div class="acc-box"><div class="label">'+label+'</div>'
-      + '<div class="value">'+(p===null?"—":p+"%")+'</div>'
-      + '<div class="sub">'+(obj&&obj.total? obj.correct+"/"+obj.total : "")+'</div></div>';
-  }
-
-  function renderAccuracy(acc, recent){
-    var el = document.getElementById("acc-body");
-    if (!acc || !acc.overall || !acc.overall.total){
-      el.innerHTML = '<div class="empty">'+t("noAcc")+"</div>"; return;
-    }
-    var h = '<div class="acc-grid">'
-      + accBox(t("last30"), acc.last30)
-      + accBox(t("overall"), acc.overall)
-      + accBox(t("topL"), acc.top_leagues)
-      + accBox(t("otherL"), acc.other_leagues)
-      + '</div>';
-
-    h += '<div class="card buckets" style="margin-top:10px">'
-      + '<div class="label" style="font-size:12px;color:var(--muted);margin-bottom:8px">'+t("byConf")+'</div>';
-    var order = ["70+","60-69","50-59","<50"];
-    for (var i=0;i<order.length;i++){
-      var b = (acc.by_confidence||{})[order[i]];
-      if (!b || !b.total) continue;
-      var p = pctOf(b);
-      h += '<div class="bucket"><b>'+order[i]+'%</b>'
-        + '<span class="bar"><i style="width:'+p+'%"></i></span>'
-        + '<span style="direction:ltr">'+p+'% ('+b.correct+'/'+b.total+')</span></div>';
-    }
-    h += "</div>";
-
-    var days = acc.daily || {};
-    var keys = Object.keys(days).sort();
-    if (keys.length > 1){
-      h += '<div class="card" style="margin-top:10px"><div class="days">';
-      for (var j=0;j<keys.length;j++){
-        var d = days[keys[j]];
-        var r = d.total ? Math.round(100*d.correct/d.total) : 0;
-        h += '<div class="day" style="height:100%" title="'+keys[j]+': '+r+'%">'
-          + '<i style="height:'+r+'%"></i></div>';
-      }
-      h += "</div></div>";
-    }
-
-    if (recent && recent.length){
-      h += '<div class="card" style="margin-top:10px;padding:6px 14px">'
-        + '<div class="label" style="font-size:12px;color:var(--muted);padding:8px 0 2px">'+t("recent")+'</div>';
-      for (var k=0;k<Math.min(recent.length,10);k++){
-        var r2 = recent[k];
-        h += '<div class="result-line">'
-          + '<span class="mark '+(r2.correct?"ok":"no")+'">'+(r2.correct?"✓":"✗")+'</span>'
-          + '<span style="flex:1">'+esc(r2.home)+' × '+esc(r2.away)+'</span>'
-          + '<span class="result-score">'+esc(r2.score)+' · '+esc(r2.confidence)+'%</span>'
-          + '</div>';
-      }
-      h += "</div>";
-    }
-    el.innerHTML = h;
-  }
-
-  function renderNews(items){
-    var el = document.getElementById("news-list");
-    if (!items || !items.length){
-      el.innerHTML = '<div class="empty" style="border:none">'+t("noNews")+"</div>"; return;
-    }
-    var h = "";
-    for (var i=0;i<items.length;i++){
-      var n = items[i];
-      var when = "";
-      if (n.time){
-        try {
-          var mins = Math.max(0, Math.round((Date.now() - new Date(n.time).getTime())/60000));
-          when = mins < 60 ? mins + t("minAgo")
-               : Math.round(mins/60) + (lang==="ar" ? " س" : "h");
-        } catch(e){}
-      }
-      h += '<a class="news-item" href="'+esc(n.link)+'" target="_blank" rel="noopener">'
-        + '<div class="t">'+esc(n.title)+'</div>'
-        + '<div class="s">'+esc(n.source)+(when ? " · "+when : "")+'</div></a>';
-    }
-    el.innerHTML = h;
-  }
-
-  /* ================= التحديث ================= */
-  var lastData = null;
-
-  function render(data){
-    renderLive(data.live || []);
-    renderUpcoming(data.upcoming || []);
-    renderAccuracy(data.accuracy, data.recent_results);
-    renderNews(data.news);
-    var up = document.getElementById("updated");
-    try {
-      var mins = Math.max(0, Math.round((Date.now() - new Date(data.updated).getTime())/60000));
-      up.textContent = t("updated") + ": " + (mins < 1 ? t("justNow") : mins + t("minAgo"));
-    } catch(e){ up.textContent = ""; }
-  }
-
-  function load(){
-    fetch("data.json?t=" + Date.now(), {cache:"no-store"})
-      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function(data){ lastData = data; render(data); })
-      .catch(function(){
-        if (!lastData){
-          document.getElementById("live-list").innerHTML =
-            '<div class="empty">'+t("noUpcoming")+"</div>";
-        } else {
-          document.getElementById("updated").textContent = t("stale");
-        }
-      });
-  }
-
+/* ================= اللغة ================= */
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+  document.getElementById("langBtn").textContent = (lang === "ar") ? "EN" : "ع";
+  var nodes = document.querySelectorAll("[data-i]");
+  for (var i=0;i<nodes.length;i++) nodes[i].textContent = t(nodes[i].getAttribute("data-i"));
+}
+document.getElementById("langBtn").addEventListener("click", function(){
+  lang = (lang === "ar") ? "en" : "ar";
+  try { localStorage.setItem("im-lang", lang); } catch(e){}
   applyLang();
-  load();
-  setInterval(load, 90000);
-})();
+  renderAll();
+});
+
+/* ================= مبدّل المحركات ================= */
+function applyEngine(){
+  var isV2 = (engine === "v2");
+  document.getElementById("tab-v1").classList.toggle("active", !isV2);
+  document.getElementById("tab-v2").classList.toggle("active", isV2);
+  document.getElementById("tab-v1").setAttribute("aria-selected", String(!isV2));
+  document.getElementById("tab-v2").setAttribute("aria-selected", String(isV2));
+  var r = document.documentElement.style;
+  r.setProperty("--engine", isV2 ? "var(--v2)" : "var(--v1)");
+  r.setProperty("--engine-soft", isV2 ? "var(--v2-soft)" : "var(--v1-soft)");
+}
+function setEngine(e){
+  engine = e;
+  try { localStorage.setItem("im-engine", e); } catch(ex){}
+  applyEngine();
+  renderAll();
+}
+document.getElementById("tab-v1").addEventListener("click", function(){ setEngine("v1"); });
+document.getElementById("tab-v2").addEventListener("click", function(){ setEngine("v2"); });
+
+/* ================= العرض ================= */
+function renderLive(list){
+  var el = document.getElementById("live-list");
+  document.getElementById("live-count").textContent = list.length;
+  if (!list.length){ el.innerHTML = '<div class="empty">'+t("noLive")+"</div>"; return; }
+  var h = "";
+  for (var i=0;i<list.length;i++){
+    var m = list[i];
+    var sc = esc(m.score).split("-");
+    h += '<div class="card">'
+      + '<div class="league-eyebrow">'
+      + (m.league_logo ? badge(m.league, m.league_logo, true) : "")
+      + '<span>'+esc(m.league)+'</span></div>'
+      + '<div class="scoreboard">'
+      + '<div class="side">'+badge(m.home, m.home_logo)+'<span class="tname">'+esc(m.home)+'</span></div>'
+      + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
+      + '<div style="text-align:center"><span class="minute">'
+      + (m.status==="HT" ? "HT" : esc(m.minute)+"'") + '</span></div></div>'
+      + '<div class="side">'+badge(m.away, m.away_logo)+'<span class="tname">'+esc(m.away)+'</span></div>'
+      + '</div></div>';
+  }
+  el.innerHTML = h;
+}
+
+function pickText(p, home, away){
+  if (p === "draw") return t("pickDraw");
+  return (p === "home" ? t("pickHome")+" "+home : t("pickAway")+" "+away);
+}
+
+function renderUpcoming(list){
+  var el = document.getElementById("upcoming-list");
+  document.getElementById("up-count").textContent = list.length;
+  if (!list.length){ el.innerHTML = '<div class="empty">'+t("noUpcoming")+"</div>"; return; }
+
+  var h = "", curLeague = null, inOther = false;
+  for (var i=0;i<list.length;i++){
+    var p = list[i];
+    if (!p.top && !inOther){
+      h += '<div class="league-title">'+t("otherLeagues")+'</div>';
+      inOther = true; curLeague = null;
+    }
+    if (p.top && p.league !== curLeague){
+      h += '<div class="league-title"><span class="star">★</span>'
+        + (p.league_logo ? badge(p.league, p.league_logo, true) : "")
+        + esc(p.league)+'</div>';
+      curLeague = p.league;
+    }
+    var home = (lang==="en" && p.home_en) ? p.home_en : p.home;
+    var away = (lang==="en" && p.away_en) ? p.away_en : p.away;
+    var pk = pickText(p.pick, home, away);
+    h += '<details class="pred"><summary>'
+      + '<div class="duel">'
+      + badge(home, p.home_logo)
+      + '<span class="tname h">'+esc(home)+'</span>'
+      + '<span class="ko">'+timeLocal(p.kickoff)+'</span>'
+      + '<span class="tname a">'+esc(away)+'</span>'
+      + badge(away, p.away_logo)
+      + '</div>'
+      + '<div class="verdict">'
+      + '<span class="pick '+(p.pick==="draw"?"draw":"")+'">'+esc(pk)+'</span>'
+      + '<span class="confbar"><i style="width:'+(p.confidence||0)+'%"></i></span>'
+      + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
+      + '</div>'
+      + (!p.top ? '<div class="league-eyebrow" style="margin:8px 0 0">'+esc(p.league)+'</div>' : "")
+      + '</summary>'
+      + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")
+      + '</details>';
+  }
+  el.innerHTML = h;
+}
+
+function accBox(label, obj){
+  var p = pctOf(obj);
+  return '<div class="acc-box"><div class="label">'+label+'</div>'
+    + '<div class="value">'+(p===null?"—":p+"%")+'</div>'
+    + '<div class="sub">'+(obj&&obj.total? obj.correct+"/"+obj.total : "")+'</div></div>';
+}
+
+function renderAccuracy(acc){
+  var el = document.getElementById("acc-body");
+  if (!acc || !acc.overall || !acc.overall.total){
+    el.innerHTML = '<div class="empty">'+t("noAcc")+"</div>"; return;
+  }
+  var h = '<div class="acc-grid">'
+    + accBox(t("accOverall"), acc.overall)
+    + accBox(t("acc30"), acc.last30)
+    + accBox(t("accTop"), acc.top_leagues)
+    + accBox(t("accOther"), acc.other_leagues)
+    + '</div>';
+  var bc = acc.by_confidence || {};
+  var keys = ["70+","60-69","50-59","<50"];
+  var any = false;
+  var bh = '<div class="buckets">';
+  for (var i=0;i<keys.length;i++){
+    var o = bc[keys[i]];
+    var p = pctOf(o);
+    if (p !== null) any = true;
+    bh += '<div class="bucket"><div class="b-label">'+esc(keys[i])+'%</div>'
+      + '<div class="b-val">'+(p===null?"—":p+"%")+'</div></div>';
+  }
+  bh += '</div>';
+  el.innerHTML = h + (any ? bh : "");
+}
+
+function renderResults(list){
+  var el = document.getElementById("res-list");
+  document.getElementById("res-count").textContent = list.length;
+  if (!list.length){ el.innerHTML = '<div class="empty">'+t("noRes")+"</div>"; return; }
+  var h = "";
+  for (var i=0;i<list.length;i++){
+    var r = list[i];
+    h += '<div class="res">'
+      + '<span class="mark '+(r.correct?"ok":"no")+'">'+(r.correct?"✓":"✗")+'</span>'
+      + '<div class="pair">'
+      + badge(r.home, r.home_logo, true)
+      + '<span class="names">'+esc(r.home)+' × '+esc(r.away)+'</span>'
+      + '</div>'
+      + '<span class="fscore">'+esc(r.score)+'</span>'
+      + '<span class="conf-num">'+esc(r.confidence)+'%</span>'
+      + '</div>';
+  }
+  el.innerHTML = h;
+}
+
+function renderNews(list){
+  var el = document.getElementById("news-list");
+  if (!list || !list.length){ el.innerHTML = '<div class="empty">'+t("noNews")+"</div>"; return; }
+  var h = "";
+  for (var i=0;i<list.length;i++){
+    var n = list[i];
+    h += '<a class="news-item" href="'+esc(n.link)+'" target="_blank" rel="noopener">'
+      + '<div class="n-title">'+esc(n.title)+'</div>'
+      + '<div class="n-meta">'+esc(n.source||"")+(n.time? " · "+timeLocal(n.time):"")+'</div>'
+      + '</a>';
+  }
+  el.innerHTML = h;
+}
+
+function renderConstruction(){
+  var h = '<div class="construct">'
+    + '<h3>'+t("v2title")+'</h3>'
+    + '<p>'+t("v2p")+'</p>'
+    + '<ul>'
+    + '<li>'+t("v2f1")+'</li>'
+    + '<li>'+t("v2f2")+'</li>'
+    + '<li>'+t("v2f3")+'</li>'
+    + '<li>'+t("v2f4")+'</li>'
+    + '</ul></div>';
+  document.getElementById("upcoming-list").innerHTML = h;
+  document.getElementById("up-count").textContent = "0";
+  document.getElementById("acc-body").innerHTML = '<div class="empty">'+t("noAcc")+'</div>';
+  document.getElementById("res-list").innerHTML = '<div class="empty">'+t("noRes")+'</div>';
+  document.getElementById("res-count").textContent = "0";
+}
+
+function renderAll(){
+  var base = lastV1 || {};
+  renderLive(base.live || []);
+  renderNews(base.news || []);
+  if (base.updated){
+    document.getElementById("updated").textContent = t("updated")+" "+timeLocal(base.updated);
+  }
+  if (engine === "v2"){
+    if (v2exists && lastV2){
+      renderUpcoming(lastV2.upcoming || []);
+      renderAccuracy(lastV2.accuracy);
+      renderResults(lastV2.recent_results || []);
+    } else {
+      renderConstruction();
+    }
+  } else {
+    renderUpcoming(base.upcoming || []);
+    renderAccuracy(base.accuracy);
+    renderResults(base.recent_results || []);
+  }
+}
+
+/* ================= جلب البيانات ================= */
+function fetchJSON(url){
+  return fetch(url+"?t="+Date.now(), {cache:"no-store"}).then(function(r){
+    if (!r.ok) throw new Error(String(r.status));
+    return r.json();
+  });
+}
+function load(){
+  fetchJSON("data.json").then(function(d){
+    lastV1 = d; renderAll();
+  }).catch(function(){ /* نبقي آخر بيانات معروضة */ });
+
+  fetchJSON("data_v2.json").then(function(d){
+    lastV2 = d; v2exists = true;
+    if (engine === "v2") renderAll();
+  }).catch(function(){ v2exists = false; });
+}
+
+applyLang();
+applyEngine();
+renderAll();
+load();
+setInterval(load, 90000);
 </script>
 </body>
 </html>

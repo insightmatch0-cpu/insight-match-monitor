@@ -245,6 +245,9 @@ def main() -> None:
         minute = ((fixture.get("status") or {}).get("elapsed")) or 0
         home = (teams.get("home") or {}).get("name", "?")
         away = (teams.get("away") or {}).get("name", "?")
+        home_logo = (teams.get("home") or {}).get("logo", "")
+        away_logo = (teams.get("away") or {}).get("logo", "")
+        league_logo = league.get("logo", "")
         gh = goals.get("home")
         ga = goals.get("away")
         gh = 0 if gh is None else gh
@@ -281,6 +284,7 @@ def main() -> None:
             entry = {
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
+                "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
             }
             if ar_names:
                 entry["ar"] = ar_names
@@ -292,6 +296,7 @@ def main() -> None:
             state[fid] = {
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
+                "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
             }
             continue
 
@@ -335,6 +340,7 @@ def main() -> None:
         entry = {
             "score": score, "status": status, "minute": minute,
             "home": home, "away": away, "league": league_line,
+                "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
         }
         if ar_names:
             entry["ar"] = ar_names
