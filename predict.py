@@ -24,10 +24,10 @@ from pathlib import Path
 import requests
 
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
-API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "")
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "")
-TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "")
+API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
+TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
 # ================== الإعدادات ==================
 PREDICTIONS_FILE = Path("predictions.json")   # سجل التوقعات الدائم (ذاكرة التعلم)
