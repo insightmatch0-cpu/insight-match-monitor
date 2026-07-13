@@ -214,7 +214,13 @@ def resolve_pending(store: dict) -> int:
                 fid = str((fx.get("fixture") or {}).get("id"))
                 status = (((fx.get("fixture") or {}).get("status")) or {}).get("short") or ""
                 goals = fx.get("goals") or {}
-                finals[fid] = (status, goals.get("home"), goals.get("away"))
+                teams = fx.get("teams") or {}
+                logos = {
+                    "home_logo": (teams.get("home") or {}).get("logo", ""),
+                    "away_logo": (teams.get("away") or {}).get("logo", ""),
+                    "league_logo": (fx.get("league") or {}).get("logo", ""),
+                }
+                finals[fid] = (status, goals.get("home"), goals.get("away"), logos)
         except Exception as e:
             print(f"فشل سحب نتائج {d}:", e)
 
@@ -222,7 +228,7 @@ def resolve_pending(store: dict) -> int:
     drop_before = (now_utc() - timedelta(days=3)).strftime("%Y-%m-%d")
     for fid in list(pending.keys()):
         p = pending[fid]
-        status, gh, ga = finals.get(fid, ("", None, None))
+        status, gh, ga, logos = finals.get(fid, ("", None, None, {}))
         if status in FINAL_STATUSES and gh is not None and ga is not None:
             actual = outcome_from_score(int(gh), int(ga))
             store.setdefault("resolved", []).append({
@@ -230,8 +236,9 @@ def resolve_pending(store: dict) -> int:
                 "date": p.get("date"),
                 "home": p.get("home"), "away": p.get("away"),
                 "ar_home": p.get("ar_home"), "ar_away": p.get("ar_away"),
-                "home_logo": p.get("home_logo", ""), "away_logo": p.get("away_logo", ""),
-                "league_logo": p.get("league_logo", ""),
+                "home_logo": p.get("home_logo") or logos.get("home_logo", ""),
+                "away_logo": p.get("away_logo") or logos.get("away_logo", ""),
+                "league_logo": p.get("league_logo") or logos.get("league_logo", ""),
                 "league": p.get("league"), "ar_league": p.get("ar_league"),
                 "top": p.get("top", False),
                 "pick": p.get("pick"),
@@ -309,6 +316,19 @@ def get_upcoming_24h() -> list:
     # الدوريات الكبرى أولاً، ثم حسب وقت الانطلاق
     out.sort(key=lambda m: (not m["top"], m["kickoff"]))
     return out[:MAX_PREDICTIONS_24H]
+
+
+def backfill_logos(store: dict, fetched: list) -> int:
+    """يكمل شعارات الفرق للتوقعات المنتظرة القديمة من بيانات المباريات المسحوبة
+    (بدون أي نداء API إضافي)."""
+    fixed = 0
+    for m in fetched:
+        p = (store.get("pending") or {}).get(m["fid"])
+        if p is not None and not p.get("home_logo"):
+            for k in ("home_logo", "away_logo", "league_logo"):
+                p[k] = m.get(k, "")
+            fixed += 1
+    return fixed
 
 
 # ================== توقعات Claude (على دفعات) ==================
@@ -500,8 +520,12 @@ def main() -> None:
     stats = compute_stats(store["resolved"])
     print(f"تمت تسوية {resolved_now} توقعاً. السجل: {pct(stats['overall'])}")
 
-    # 2) مباريات الـ 24 ساعة القادمة
-    upcoming = [m for m in get_upcoming_24h() if m["fid"] not in store["pending"]]
+    # 2) مباريات الـ 24 ساعة القادمة (+ إكمال شعارات التوقعات القديمة)
+    fetched = get_upcoming_24h()
+    fixed = backfill_logos(store, fetched)
+    if fixed:
+        print(f"تم إكمال شعارات {fixed} توقعاً منتظراً.")
+    upcoming = [m for m in fetched if m["fid"] not in store["pending"]]
     print(f"مباريات جديدة للتوقع: {len(upcoming)}")
 
     # 3) توقعات Claude على دفعات

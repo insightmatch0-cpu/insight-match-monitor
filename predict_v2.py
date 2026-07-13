@@ -33,9 +33,10 @@ TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
 # ================== الإعدادات ==================
-PREDICTIONS_FILE = Path("predictions_v2.json")   # ذاكرة المحرك 2 (مستقلة عن المحرك 1)
-LESSONS_FILE     = Path("lessons_v2.json")       # دروس من الأخطاء (تُملأ في المرحلة 3)
-NEWS_FILE        = Path("news.json")             # آخر عناوين الأخبار (سياق مشترك)
+PREDICTIONS_FILE    = Path("predictions_v2.json")  # ذاكرة المحرك 2 (مستقلة عن المحرك 1)
+V1_PREDICTIONS_FILE = Path("predictions.json")     # ذاكرة المحرك 1 (للمقارنة في الملخص فقط)
+LESSONS_FILE        = Path("lessons_v2.json")      # دروس من الأخطاء (تُملأ في المرحلة 3)
+NEWS_FILE           = Path("news.json")            # آخر عناوين الأخبار (سياق مشترك)
 
 CLAUDE_MODEL = "claude-fable-5"
 
@@ -219,7 +220,13 @@ def resolve_pending(store: dict) -> int:
                 fid = str((fx.get("fixture") or {}).get("id"))
                 status = (((fx.get("fixture") or {}).get("status")) or {}).get("short") or ""
                 goals = fx.get("goals") or {}
-                finals[fid] = (status, goals.get("home"), goals.get("away"))
+                teams = fx.get("teams") or {}
+                logos = {
+                    "home_logo": (teams.get("home") or {}).get("logo", ""),
+                    "away_logo": (teams.get("away") or {}).get("logo", ""),
+                    "league_logo": (fx.get("league") or {}).get("logo", ""),
+                }
+                finals[fid] = (status, goals.get("home"), goals.get("away"), logos)
         except Exception as e:
             print(f"فشل سحب نتائج {d}:", e)
 
@@ -227,7 +234,7 @@ def resolve_pending(store: dict) -> int:
     drop_before = (now_utc() - timedelta(days=3)).strftime("%Y-%m-%d")
     for fid in list(pending.keys()):
         p = pending[fid]
-        status, gh, ga = finals.get(fid, ("", None, None))
+        status, gh, ga, logos = finals.get(fid, ("", None, None, {}))
         if status in FINAL_STATUSES and gh is not None and ga is not None:
             actual = outcome_from_score(int(gh), int(ga))
             store.setdefault("resolved", []).append({
@@ -235,8 +242,9 @@ def resolve_pending(store: dict) -> int:
                 "date": p.get("date"),
                 "home": p.get("home"), "away": p.get("away"),
                 "ar_home": p.get("ar_home"), "ar_away": p.get("ar_away"),
-                "home_logo": p.get("home_logo", ""), "away_logo": p.get("away_logo", ""),
-                "league_logo": p.get("league_logo", ""),
+                "home_logo": p.get("home_logo") or logos.get("home_logo", ""),
+                "away_logo": p.get("away_logo") or logos.get("away_logo", ""),
+                "league_logo": p.get("league_logo") or logos.get("league_logo", ""),
                 "league": p.get("league"), "ar_league": p.get("ar_league"),
                 "top": p.get("top", False),
                 "pick": p.get("pick"),
@@ -609,8 +617,15 @@ def pick_label(p: dict) -> str:
     return PICK_AR[p["pick"]].format(h=h, a=a)
 
 
-def build_digest(new_preds: list, stats: dict) -> str:
+def v1_pending() -> dict:
+    """توقعات المحرك 1 المنتظرة — للمقارنة جنباً إلى جنب في الملخص."""
+    store = load_json(V1_PREDICTIONS_FILE, {})
+    return store.get("pending") or {}
+
+
+def build_digest(new_preds: list, stats: dict, v1_preds: dict = None) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
+    v1_preds = v1_preds or {}
     shown = [p for p in new_preds if p["top"]] if DIGEST_TOP_ONLY else new_preds
     rest = len(new_preds) - len(shown)
 
@@ -630,7 +645,10 @@ def build_digest(new_preds: list, stats: dict) -> str:
         h = p.get("ar_home") or p["home"]
         a = p.get("ar_away") or p["away"]
         lines.append(f"⏰ {t} — {h} 🆚 {a}")
-        lines.append(f"   ↳ {pick_label(p)} — ثقة {p['confidence']}%")
+        v1 = v1_preds.get(p["fid"])
+        if v1 and v1.get("pick") in PICK_AR:
+            lines.append(f"   المحرك 1: {pick_label(v1)} — ثقة {v1.get('confidence', '?')}%")
+        lines.append(f"   المحرك 2: {pick_label(p)} — ثقة {p['confidence']}%")
         lines.append(
             f"   📊 {h} {p['prob_home']}% | تعادل {p['prob_draw']}% | {a} {p['prob_away']}%"
         )
@@ -669,8 +687,14 @@ def main() -> None:
     stats = compute_stats(store["resolved"])
     print(f"المحرك 2: تمت تسوية {resolved_now} توقعاً. السجل: {pct(stats['overall'])}")
 
-    # 2) مباريات الـ 24 ساعة القادمة (نفس اختيار المحرك 1)
-    upcoming = [m for m in get_upcoming_24h() if m["fid"] not in store["pending"]]
+    # 2) مباريات الـ 24 ساعة القادمة (نفس اختيار المحرك 1) + إكمال الشعارات الناقصة
+    fetched = get_upcoming_24h()
+    for m in fetched:
+        p = store["pending"].get(m["fid"])
+        if p is not None and not p.get("home_logo"):
+            for k in ("home_logo", "away_logo", "league_logo"):
+                p[k] = m.get(k, "")
+    upcoming = [m for m in fetched if m["fid"] not in store["pending"]]
     print(f"مباريات جديدة للتوقع: {len(upcoming)}")
 
     # 3) سياق إضافي لمباريات الدوريات الكبرى
@@ -710,9 +734,9 @@ def main() -> None:
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
 
-    # 5) ملخص تيليجرام
+    # 5) ملخص تيليجرام (مع مقارنة توقعات المحرك 1 لنفس المباريات)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
-        send_telegram_long(build_digest(new_preds, stats))
+        send_telegram_long(build_digest(new_preds, stats, v1_pending()))
 
 
 if __name__ == "__main__":
