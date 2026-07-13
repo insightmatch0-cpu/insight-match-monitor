@@ -1,0 +1,48 @@
+name: Daily Predictions
+
+on:
+  schedule:
+    - cron: "15 3 * * *"    # يومياً 03:15 UTC = 06:15 صباحاً بتوقيت السعودية
+  workflow_dispatch:         # زر تشغيل يدوي
+
+permissions:
+  contents: write
+
+concurrency:
+  group: football-monitor
+  cancel-in-progress: false
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run predictions
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python predict.py
+
+      - name: Update dashboard data
+        run: python dashboard_update.py
+
+      - name: Save data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add predictions.json news.json data.json
+          git diff --cached --quiet || git commit -m "daily predictions [skip ci]"
+          git pull --rebase origin main || true
+          git push
