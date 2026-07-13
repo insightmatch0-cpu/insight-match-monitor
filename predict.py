@@ -103,8 +103,10 @@ def api_football(path: str) -> list:
     )
     resp.raise_for_status()
     data = resp.json()
-    if data.get("errors"):
-        print("API-Football errors:", data["errors"])
+    errs = data.get("errors")
+    if errs and (not isinstance(errs, list) or len(errs) > 0):
+        # مفتاح خاطئ / انتهى الرصيد اليومي / خطأ في الطلب — نفشل بوضوح
+        raise RuntimeError(f"API-Football رفض الطلب: {errs}")
     return data.get("response", [])
 
 
@@ -254,11 +256,18 @@ def get_upcoming_24h() -> list:
     days = {start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d")}
 
     matches = []
+    fetch_errors = []
     for d in sorted(days):
         try:
             matches.extend(api_football(f"fixtures?date={d}"))
         except Exception as e:
             print(f"فشل سحب مباريات {d}:", e)
+            fetch_errors.append(str(e))
+    if fetch_errors and not matches:
+        raise RuntimeError(
+            "تعذر سحب أي مباريات — غالباً مفتاح API_FOOTBALL_KEY في Secrets "
+            "قديم أو خاطئ. آخر خطأ: " + fetch_errors[-1]
+        )
 
     out = []
     seen = set()
