@@ -24,16 +24,21 @@ A fully automated football match monitoring, alerting, and self-learning predict
 |---|---|
 | `monitor.py` | Polls live matches every 20 min; Telegram alerts for match start / goals / full-time, each with Claude analysis (max 20 analyses/run via `MAX_ANALYSES_PER_RUN`; `ANALYZE_ALL=True` analyzes every league, `ALERTS_TOP_ONLY=False` is the emergency flood switch). Stores display fields incl. team/league logo URLs in `state.json` |
 | `scan.py` | On-demand worldwide live scan ("مسح حي" command) — one Actions button, one API call, one batched Claude call covering up to `MAX_PREDICTIONS=50` matches, numbered-line reply format |
-| `predict.py` | Daily engine: resolves prior predictions against real results (≤3 API calls via `MAX_RESOLVE_CALLS`), computes accuracy stats, predicts next-24h matches (up to `MAX_PREDICTIONS_24H=60`) in Claude batches of `BATCH_SIZE=12`, injects recent news headlines from `news.json` as context, sends Telegram digest (top leagues only — `DIGEST_TOP_ONLY=True` — with a dashboard link for the rest) |
-| `dashboard_update.py` | Builds `data.json` for the dashboard from `state.json` + `predictions.json`; refreshes `news.json` from free RSS feeds (BBC Arabic, BBC Sport, Sky, Guardian) at most every 3h. Runs after monitor and predict; costs zero API-Football budget |
-| `index.html` | The dashboard (GitHub Pages). Arabic RTL default, EN toggle. Broadcast-scoreboard design with an **Engine 1 / Engine 2 tab switcher**: Engine 1 = the current daily predictions; Engine 2 ("الجيل الذكي") = a placeholder panel for a next-gen prediction engine to run side-by-side for comparison (under construction). Reads `data.json` with 90s auto-refresh |
+| `predict.py` | Daily engine (Engine 1): resolves prior predictions against real results (≤3 API calls via `MAX_RESOLVE_CALLS`), computes accuracy stats, predicts next-24h matches (up to `MAX_PREDICTIONS_24H=60`) in Claude batches of `BATCH_SIZE=12`, injects recent news headlines from `news.json` as context, sends Telegram digest (top leagues only — `DIGEST_TOP_ONLY=True` — with a dashboard link for the rest) |
+| `predict_v2.py` | Daily Engine 2 (V2) — see the "Engine 2 (V2)" section below. Same fixture selection/exclusions as V1, model `claude-fable-5`, probability output, enriched context for top leagues, own memory `predictions_v2.json` + `lessons_v2.json` |
+| `dashboard_update.py` | Builds `data.json` for the dashboard from `state.json` + `predictions.json`, then `data_v2.json` from `predictions_v2.json` (same schema; `live`/`news` empty — dashboard takes those from `data.json`). `data_v2.json` is only created once V2 has real data, and only rewritten when content changes (so monitor runs don't dirty the tree). Also refreshes `news.json` from free RSS feeds (BBC Arabic, BBC Sport, Sky, Guardian) at most every 3h. Runs after monitor and both predict engines; costs zero API-Football budget |
+| `index.html` | The dashboard (GitHub Pages). Arabic RTL default, EN toggle. Broadcast-scoreboard design with an **Engine 1 / Engine 2 tab switcher**. The V2 tab reads `data_v2.json` and shows an "under construction" panel until that file exists. Reads `data.json` with 90s auto-refresh |
 | `Index.html` | ⚠️ Stray near-empty file (capital I, whitespace only). NOT the dashboard — don't confuse it with `index.html`. Safe to delete if the user agrees |
 | `state.json` | Live-match memory between monitor runs (auto-committed) |
 | `predictions.json` | **The learning memory**: `pending` (awaiting results), `resolved` (graded history, capped at 1000), `meta.stats`. Pending entries are dropped without grading if postponed/cancelled or older than 3 days |
-| `news.json` | Cached RSS headlines (max 15, ≤3h old); shown on the dashboard AND injected into prediction prompts |
+| `predictions_v2.json` | Engine 2's learning memory — same structure as `predictions.json`, fully separate. Created on the first V2 run |
+| `lessons_v2.json` | `{"lessons": []}` — Phase 3 will fill it with lessons extracted from V2's wrong predictions; `predict_v2.py` already injects the most recent 15 into every prompt under "دروس من أخطائك السابقة" |
+| `news.json` | Cached RSS headlines (max 15, ≤3h old); shown on the dashboard AND injected into prediction prompts (both engines) |
 | `data.json` | Generated dashboard payload: `live`, `upcoming`, `recent_results` (last 20), `accuracy`, `news` (auto-committed) |
+| `data_v2.json` | Generated Engine 2 dashboard payload (same schema, `live`/`news` empty). Does not exist until V2's first successful run |
 | `.github/workflows/monitor.yml` | Cron `7,27,47 * * * *` (every 20 min) + manual button; runs monitor then dashboard_update, commits state |
 | `.github/workflows/predict.yml` | Cron `15 3 * * *` (06:15 AM KSA daily) + manual button; runs predict then dashboard_update, commits data |
+| `.github/workflows/predict_v2.yml` | Cron `30 3 * * *` (06:30 AM KSA daily, 15 min after V1) + manual button; runs predict_v2 then dashboard_update, commits V2 data |
 | `.github/workflows/scan.yml` | Manual button only; commits nothing |
 
 ## The self-learning loop (core logic — preserve it)
@@ -42,6 +47,20 @@ A fully automated football match monitoring, alerting, and self-learning predict
 2. Next morning, `predict.py` fetches real results and grades each prediction.
 3. Accuracy is computed: overall, last 30 days, top vs other leagues, daily series (last 30 days), and **by confidence bucket** (70+, 60-69, 50-59, <50).
 4. That track record is injected into every new Claude prediction prompt with the instruction: *if your real accuracy is below your stated confidence, lower your confidence — and vice versa.* This calibration IS the learning mechanism. Never remove it.
+
+## Engine 2 (V2)
+
+The second-generation prediction engine (`predict_v2.py`), built to run side-by-side with Engine 1 for a fair, direct comparison. Design decisions — preserve them:
+
+- **Same fixtures as V1**: identical next-24h selection, exclusion lists, `TOP_LEAGUE_IDS`, and `MAX_PREDICTIONS_24H=60`, so accuracy numbers are comparable engine-to-engine.
+- **Model**: `claude-fable-5` (V1 stays on Haiku).
+- **Enriched context for top leagues**: for up to `MAX_ENRICHED_FIXTURES=15` top-league fixtures, extra API-Football data is fetched before predicting — standings of both teams (1 call per league, cached per run), head-to-head last 5, each team's last 5 results, and injuries for the fixture. Capped by `ENRICH_CALL_BUDGET=120` calls/run as a safety net; enrichment failures degrade gracefully to a basic prediction (never kill the run). Non-top fixtures are predicted with basic data only.
+- **Probability output**: each prediction returns `prob_home`/`prob_draw`/`prob_away` as integers summing to 100 (parser normalizes if they don't). `pick` = highest probability; `confidence` = that probability clamped 30–85. Probabilities are stored in pending AND resolved entries.
+- **Batching**: enriched fixtures in batches of `ENRICHED_BATCH_SIZE=4` (context is bulky), basic fixtures in batches of `BASIC_BATCH_SIZE=12` like V1. Strict JSON output, tolerant parser — same rule 6.
+- **Own memory**: `predictions_v2.json` (`pending`/`resolved`/`meta.stats`), fully separate from V1, with the exact same grading, resolution, and calibration-stats logic — the calibration record is injected into every V2 prompt just like V1.
+- **Lessons loop (Phase 3 hook)**: `lessons_v2.json` holds `{"lessons": []}`; when non-empty, the most recent `MAX_LESSONS_IN_PROMPT=15` are injected into every prompt under the header "دروس من أخطائك السابقة". Phase 3 will generate these from graded mistakes.
+- **Telegram digest** is labeled "🤖 المحرك 2" so V1 and V2 messages are distinguishable; it also shows the three probabilities per match.
+- **Budget**: 2 fixture-date calls + ≤3 resolve calls + enrichment (typically ~60-75, hard-capped at 120) ≈ well under 130/day on top of V1's 5.
 
 ## Analysis methodology (the user's expert framework — apply in all analysis)
 
@@ -53,10 +72,10 @@ A fully automated football match monitoring, alerting, and self-learning predict
 
 ## Hard rules (never violate)
 
-1. **Coverage exclusions:** friendlies, African competitions (CAF/AFCON/keyword "africa"), and all leagues from India, Pakistan, Bangladesh. The `EXCLUDED_COUNTRIES` / `EXCLUDED_LEAGUE_KEYWORDS` lists (and `TOP_LEAGUE_IDS`) are duplicated in `monitor.py`, `scan.py`, and `predict.py` — any change must be applied to all three in sync.
+1. **Coverage exclusions:** friendlies, African competitions (CAF/AFCON/keyword "africa"), and all leagues from India, Pakistan, Bangladesh. The `EXCLUDED_COUNTRIES` / `EXCLUDED_LEAGUE_KEYWORDS` lists (and `TOP_LEAGUE_IDS`) are duplicated in `monitor.py`, `scan.py`, `predict.py`, and `predict_v2.py` — any change must be applied to all four in sync.
 2. **Language convention:** ALL Telegram and dashboard-facing output in Arabic — team/league/country names in standard sports-media Arabic — but numerals always Latin digits (0-9), never Arabic-Indic (٠-٩). Arabic names come from Claude calls and are cached (in `state.json` / `predictions.json`) to avoid repeat calls.
 3. **Secrets discipline:** keys live ONLY in GitHub Secrets. Never in code, files, chats, screenshots, or logs. **Never print a key or embed it in an error message** (this caused a real leak once — see history). All scripts `.strip()` env values to survive pasted whitespace.
-4. **API budget awareness:** monitor ≈72 calls/day (3 runs/hour × 1 call), predict ≤5/day (2 fixture-date calls + up to 3 resolve calls). Pro plan allows 7,500/day so there is huge headroom now, but keep calls efficient and batched.
+4. **API budget awareness:** monitor ≈72 calls/day (3 runs/hour × 1 call), predict ≤5/day (2 fixture-date calls + up to 3 resolve calls), predict_v2 ≤130/day (same 5 + enrichment capped at 120). Pro plan allows 7,500/day so there is huge headroom now, but keep calls efficient and batched.
 5. **Empty data ≠ error:** no live matches can simply mean rest day / off-season. Interpret correctly and pivot to upcoming fixtures instead of reporting failure. (`scan.py` already sends a friendly "no live matches" message; `monitor.py` exits cleanly.)
 6. Claude batch predictions must return **strict JSON** (no fences, no prose); parsers are tolerant (fence-stripping, bracket extraction) but don't rely on it. `scan.py` uses a numbered `N| ... | ...` line format instead — equally strict.
 
@@ -71,11 +90,11 @@ When the user says "مسح حي" (or "مسح" / "شنو الشغال الحين"
 - A debug script once leaked a key into a committed file via an exception message; history was force-push scrubbed and the key rotated. Hence rule 3 above.
 - API keys were exposed in a screenshot early on and rotated. Assume any key that ever appeared in plain text is dead.
 - Local standalone HTML was tried and abandoned: iOS Files preview doesn't execute JavaScript. GitHub Pages is the chosen architecture.
-- `monitor.yml` and `predict.yml` share concurrency group `football-monitor` and use `git pull --rebase` before push to avoid commit races; both commit with `[skip ci]`. `scan.yml` commits nothing so it has no concurrency group.
+- `monitor.yml`, `predict.yml`, and `predict_v2.yml` share concurrency group `football-monitor` and use `git pull --rebase` before push to avoid commit races; all commit with `[skip ci]`. `scan.yml` commits nothing so it has no concurrency group.
 
 ## Roadmap (user's stated ambitions)
 
-- **Engine 2**: a next-gen prediction engine to run alongside Engine 1 for direct comparison — the dashboard already has its tab and "under construction" panel; the backend does not exist yet
+- **Engine 2**: Phase 2 (the engine itself) is DONE — see the "Engine 2 (V2)" section. Phase 3 remains: generate lessons from V2's graded mistakes into `lessons_v2.json`
 - Expand news/insight sources feeding prediction context (RSS headlines are already injected into `predict.py` prompts via `news.json`; more feeds, injuries, team news are wanted)
 - Deeper pre-match data per fixture (standings, H2H via API-Football — budget now allows it)
 - Keep improving calibration; the user's dream is maximum realistic accuracy — be honest that world-class models hit ~55-60% on 1X2 and never promise more
@@ -86,7 +105,7 @@ When the user says "مسح حي" (or "مسح" / "شنو الشغال الحين"
 
 - Test Python changes locally before committing: `python -m py_compile <file>.py` at minimum; mock-data runs where possible. Scripts exit early without secrets, so full end-to-end runs happen in Actions.
 - Manual runs: Actions tab → workflow → Run workflow. Verify results via `data.json` / `predictions.json` in the repo, not assumptions.
-- `state.json`, `data.json`, `news.json`, `predictions.json` are bot-written and auto-committed by workflows — expect them to change under you; `git pull --rebase` before pushing.
+- `state.json`, `data.json`, `data_v2.json`, `news.json`, `predictions.json`, `predictions_v2.json` are bot-written and auto-committed by workflows — expect them to change under you; `git pull --rebase` before pushing.
 - Any new alert type must follow the Arabic output convention and respect exclusions.
 - When something fails silently, make it fail loudly first (raise with a clear Arabic message, as `predict.py` does for API failures), diagnose, then fix — but never let error text include secret values.
 - Code comments and docstrings are in Arabic — keep that style when editing.

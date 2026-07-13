@@ -20,10 +20,12 @@ from pathlib import Path
 
 import requests
 
-STATE_FILE       = Path("state.json")
-PREDICTIONS_FILE = Path("predictions.json")
-NEWS_FILE        = Path("news.json")
-DATA_FILE        = Path("data.json")
+STATE_FILE          = Path("state.json")
+PREDICTIONS_FILE    = Path("predictions.json")
+PREDICTIONS_V2_FILE = Path("predictions_v2.json")
+NEWS_FILE           = Path("news.json")
+DATA_FILE           = Path("data.json")
+DATA_V2_FILE        = Path("data_v2.json")
 
 NEWS_MAX_AGE_HOURS = 3     # لا نحدّث الأخبار قبل مرور هذه المدة
 NEWS_MAX_ITEMS     = 15
@@ -202,6 +204,36 @@ def build_recent_results(store: dict) -> list:
     return out
 
 
+def build_data_v2() -> None:
+    """يبني data_v2.json للمحرك 2 بنفس مخطط data.json.
+
+    اللوحة تعرض لوحة "قيد الإنشاء" ما دام الملف غير موجود، لذلك لا نُنشئه
+    قبل أول توقعات فعلية. ولا نعيد كتابته إذا لم يتغير المحتوى — حتى لا
+    يتّسخ مستودع تشغيلات المراقب (التي لا تعمل commit لهذا الملف).
+    """
+    store = load_json(PREDICTIONS_V2_FILE, {})
+    if not (store.get("pending") or store.get("resolved")):
+        return
+
+    data = {
+        "live": [],
+        "upcoming": build_upcoming(store),
+        "recent_results": build_recent_results(store),
+        "accuracy": (store.get("meta") or {}).get("stats") or {},
+        "news": [],
+    }
+    existing = load_json(DATA_V2_FILE, {})
+    existing.pop("updated", None)
+    if existing == data:
+        return
+    data["updated"] = now_utc().isoformat()
+    save_json(DATA_V2_FILE, data)
+    print(
+        f"data_v2.json: {len(data['upcoming'])} قادمة، "
+        f"{len(data['recent_results'])} نتيجة أخيرة."
+    )
+
+
 def main() -> None:
     state = load_json(STATE_FILE, {})
     store = load_json(PREDICTIONS_FILE, {"pending": {}, "resolved": [], "meta": {}})
@@ -222,6 +254,8 @@ def main() -> None:
         f"data.json: {len(data['live'])} حية، {len(data['upcoming'])} قادمة، "
         f"{len(data['news'])} خبراً."
     )
+
+    build_data_v2()
 
 
 if __name__ == "__main__":
