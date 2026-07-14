@@ -777,7 +777,8 @@ def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
         lines.append(f"\n📊 دقة المحرك 2 آخر 30 يوماً: {pct(stats['last30'])}")
     if new_lessons:
         lines.append(f"📚 دروس جديدة من أخطاء الأمس: {new_lessons} — تدخل في توقعات اليوم.")
-    lines.append("\n⚠️ توقعات تحليلية وليست ضمانات.")
+    lines.append("\n⭐ أرسل لي أسماء المباريات التي تهمك اليوم وسأركز تنبيهاتي عليها فقط.")
+    lines.append("⚠️ توقعات تحليلية وليست ضمانات.")
     return "\n".join(lines)
 
 
