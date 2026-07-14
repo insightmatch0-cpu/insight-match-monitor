@@ -72,12 +72,14 @@ def send_telegram(text: str) -> None:
 
 
 def get_new_messages(last_update_id: int):
-    """يرجع (نصوص رسائل مالك البوت الجديدة، آخر update_id). أي محادثة أخرى تُتجاهل."""
+    """يرجع (عناصر جديدة من مالك البوت فقط، آخر update_id). كل عنصر إما
+    {"type":"text","text":...} أو {"type":"callback","data":...,"id":...} (ضغطة زر).
+    أي محادثة أخرى تُتجاهل تماماً."""
     try:
         r = requests.get(
             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates",
             params={"offset": last_update_id + 1, "timeout": 0,
-                    "allowed_updates": '["message"]'},
+                    "allowed_updates": '["message","callback_query"]'},
             timeout=30,
         )
         r.raise_for_status()
@@ -86,15 +88,22 @@ def get_new_messages(last_update_id: int):
         print("getUpdates error:", e)
         return [], last_update_id
 
-    texts = []
+    items = []
     for u in updates:
         last_update_id = max(last_update_id, int(u.get("update_id", 0)))
         msg = u.get("message") or {}
-        chat_id = str((msg.get("chat") or {}).get("id", ""))
-        text = (msg.get("text") or "").strip()
-        if chat_id == TELEGRAM_CHAT_ID and text:
-            texts.append(text)
-    return texts, last_update_id
+        cb = u.get("callback_query") or {}
+        if msg:
+            chat_id = str((msg.get("chat") or {}).get("id", ""))
+            text = (msg.get("text") or "").strip()
+            if chat_id == TELEGRAM_CHAT_ID and text:
+                items.append({"type": "text", "text": text})
+        elif cb:
+            chat_id = str((((cb.get("message") or {}).get("chat")) or {}).get("id", ""))
+            payload = (cb.get("data") or "").strip()
+            if chat_id == TELEGRAM_CHAT_ID and payload:
+                items.append({"type": "callback", "data": payload, "id": cb.get("id")})
+    return items, last_update_id
 
 
 def candidate_matches() -> dict:
@@ -234,6 +243,7 @@ def engines_line(fid: str) -> str:
 def apply_action(action: str, fids: list, candidates: dict, data: dict) -> str:
     """يحدّث القائمة ويبني رسالة التأكيد."""
     matches = data.setdefault("matches", {})
+    data["results_sent"] = False   # القائمة تغيرت → ملخص نهاية اليوم يُعاد تفعيله
     if action == "clear":
         matches.clear()
         return ("🔕 ألغيت قائمة التركيز.\n"
@@ -261,13 +271,62 @@ def apply_action(action: str, fids: list, candidates: dict, data: dict) -> str:
         if eng:
             lines.append(eng)
     lines.append("\n🔔 سأنبهك على هذه المباريات فقط: البداية، كل هدف مع تحليل "
-                 "المحرك 2 المباشر الكامل، والنتيجة النهائية.")
-    lines.append("🎯 وأنت، ما توقعك؟ أرسل توقعك لهذه المباريات (مثال: فوز الأول "
-                 "وتعادل الثانية) وسأسجله وأقارن دقتك مع المحركين كل صباح.")
+                 "المحرك 2 المباشر الكامل، والنتيجة النهائية، "
+                 "وملخص فوري عند انتهاء آخر مباراة.")
+    lines.append("🎯 وأنت؟ اختر توقعك لكل مباراة بالأزرار التالية 👇 "
+                 "(أو اكتبه كنص إن أحببت)")
     return "\n".join(lines)
 
 
 PICK_AR = {"home": "فوز {h}", "draw": "تعادل", "away": "فوز {a}"}
+
+
+def send_pick_buttons(fids: list, candidates: dict) -> None:
+    """يرسل لكل مباراة رسالة بثلاثة أزرار (فوز/تعادل/فوز) — توقع بضغطة واحدة."""
+    for fid in fids:
+        c = candidates.get(fid)
+        if not c:
+            continue
+        h = c.get("ar_home") or c.get("home", "?")
+        a = c.get("ar_away") or c.get("away", "?")
+        keyboard = {"inline_keyboard": [[
+            {"text": f"فوز {h}", "callback_data": f"pick|{fid}|home"},
+            {"text": "تعادل", "callback_data": f"pick|{fid}|draw"},
+            {"text": f"فوز {a}", "callback_data": f"pick|{fid}|away"},
+        ]]}
+        try:
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
+                json={"chat_id": TELEGRAM_CHAT_ID,
+                      "text": f"🎯 توقعك: {h} 🆚 {a}؟",
+                      "reply_markup": keyboard},
+                timeout=30,
+            )
+        except Exception as e:
+            print("Telegram error:", e)
+
+
+def handle_pick_callback(payload: str, candidates: dict) -> str:
+    """يعالج ضغطة زر التوقع: pick|fid|home — بدون أي نداء Claude."""
+    parts = payload.split("|")
+    if (len(parts) == 3 and parts[0] == "pick"
+            and parts[1] in candidates and parts[2] in ("home", "draw", "away")):
+        return record_user_picks([{"fid": parts[1], "pick": parts[2]}], candidates)
+    return ""
+
+
+def answer_callback(callback_id) -> None:
+    """إغلاق مؤشر الانتظار على زر تيليجرام (قد يكون انتهى وقته — نتجاهل الفشل)."""
+    if not callback_id:
+        return
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/answerCallbackQuery",
+            json={"callback_query_id": callback_id, "text": "تم التسجيل ✅"},
+            timeout=15,
+        )
+    except Exception:
+        pass
 
 
 def record_user_picks(picks: list, candidates: dict) -> str:
@@ -346,10 +405,20 @@ def main() -> None:
     data = load_json(WATCHLIST_FILE, {"last_update_id": 0, "matches": {}})
     cleanup_expired(data)
 
-    texts, last_id = get_new_messages(int(data.get("last_update_id", 0)))
+    items, last_id = get_new_messages(int(data.get("last_update_id", 0)))
     data["last_update_id"] = last_id
 
-    for text in texts:
+    for item in items:
+        # ضغطات الأزرار: تسجيل توقع فوري بدون Claude
+        if item["type"] == "callback":
+            candidates = candidate_matches()
+            reply = handle_pick_callback(item["data"], candidates)
+            answer_callback(item.get("id"))
+            if reply:
+                send_telegram(reply)
+            continue
+
+        text = item["text"]
         low = text.strip().lower()
         if any(low == k or low.startswith(k) for k in SCAN_KEYWORDS):
             if fire_scan():
@@ -377,9 +446,11 @@ def main() -> None:
             )
             continue
         send_telegram(apply_action(intent["action"], intent["fids"], candidates, data))
+        if intent["action"] in ("set", "add") and intent["fids"]:
+            send_pick_buttons(intent["fids"], candidates)
 
     save_json(WATCHLIST_FILE, data)
-    print(f"قائمة التركيز: {len(data.get('matches', {}))} مباراة، رسائل جديدة: {len(texts)}")
+    print(f"قائمة التركيز: {len(data.get('matches', {}))} مباراة، عناصر جديدة: {len(items)}")
 
 
 if __name__ == "__main__":
