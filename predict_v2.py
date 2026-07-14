@@ -51,7 +51,9 @@ ENRICHED_BATCH_SIZE   = 4     # دفعات صغيرة للمباريات ذات 
 BASIC_BATCH_SIZE      = 12    # دفعات المباريات بدون سياق (مثل المحرك 1)
 MAX_LESSONS_IN_PROMPT = 15    # أحدث الدروس التي تُحقن في كل توقع
 MAX_LESSONS_STORED    = 100   # أقصى دروس محفوظة في lessons_v2.json
-MAX_MISTAKES_PER_RUN  = 10    # أقصى أخطاء تُراجع لاستخلاص الدروس في التشغيلة
+MAX_MISTAKES_PER_RUN  = 30    # كل أخطاء اليوم عملياً تُراجع لاستخلاص الدروس (نداء واحد)
+CONSOLIDATE_THRESHOLD = 60    # عند تجاوز هذا العدد تُدمج الدروس المتشابهة
+CONSOLIDATE_TARGET    = 30    # عدد المبادئ المركزة بعد الدمج
 
 SEND_TELEGRAM_DIGEST = True
 DIGEST_TOP_ONLY      = True
@@ -378,6 +380,46 @@ def generate_lessons(newly_resolved: list) -> int:
         data["lessons"] = data["lessons"][-MAX_LESSONS_STORED:]
         save_json(LESSONS_FILE, data)
     return added
+
+
+def consolidate_lessons() -> int:
+    """عندما يتضخم دفتر الدروس، يدمج Claude الدروس المتشابهة في مبادئ عامة أقوى
+    وأقل عدداً — فتبقى الدروس المحقونة في كل توقع مركزة بلا تكرار.
+    يرجع عدد المبادئ بعد الدمج (0 = لم يحدث دمج)."""
+    data = load_json(LESSONS_FILE, {"lessons": []})
+    lessons = data.get("lessons") or []
+    if len(lessons) <= CONSOLIDATE_THRESHOLD:
+        return 0
+
+    texts = []
+    for it in lessons:
+        t = it if isinstance(it, str) else (it.get("text") or "")
+        t = str(t).strip()
+        if t:
+            texts.append(t)
+
+    system_prompt = (
+        "أنت محرر معرفة لمحرك توقعات كرة قدم. ستصلك قائمة دروس مستخلصة من أخطاء "
+        f"سابقة، كثير منها متشابه أو متكرر. ادمجها في {CONSOLIDATE_TARGET} مبدأً "
+        "عاماً أو أقل: اجمع المتشابه في مبدأ واحد أقوى وأوضح، واحذف المكرر، "
+        "وحافظ على أي درس فريد مهم.\n"
+        "أرجع ردك بصيغة JSON فقط — مصفوفة نصوص بدون أي شيء آخر وبدون ```:\n"
+        '["مبدأ عام بالعربي من سطر واحد", ...]\n'
+        "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
+    )
+    raw = claude_request(system_prompt, json.dumps(texts, ensure_ascii=False), max_tokens=3000)
+    items = parse_json_array(raw)
+    principles = [str(x).strip() for x in items if str(x).strip() and isinstance(x, (str,))]
+    if not principles:
+        return 0   # فشل الدمج → نبقي الدروس كما هي (لا نخسر شيئاً أبداً)
+
+    today = now_utc().strftime("%Y-%m-%d")
+    data["lessons"] = [
+        {"date": today, "match": "خلاصة مُجمّعة", "text": t}
+        for t in principles[:CONSOLIDATE_TARGET]
+    ]
+    save_json(LESSONS_FILE, data)
+    return len(data["lessons"])
 
 
 # ================== سحب مباريات الـ 24 ساعة القادمة (مطابق للمحرك 1) ==================
@@ -822,10 +864,13 @@ def main() -> None:
     stats = compute_stats(store["resolved"])
     print(f"المحرك 2: تمت تسوية {resolved_now} توقعاً. السجل: {pct(stats['overall'])}")
 
-    # 1.5) المرحلة 3: استخلاص دروس من أخطاء الأمس
+    # 1.5) المرحلة 3: استخلاص دروس من أخطاء الأمس (كلها)، ثم دمجها عند التضخم
     new_lessons = generate_lessons(newly_resolved)
     if new_lessons:
         print(f"دروس جديدة مستخلصة من الأخطاء: {new_lessons}")
+    consolidated = consolidate_lessons()
+    if consolidated:
+        print(f"تم دمج الدروس في {consolidated} مبدأً عاماً.")
 
     # 1.6) تقييم توقعات المالك بنفس المنطق (سباق الدقة الثلاثي)
     user_store = load_json(USER_PREDICTIONS_FILE, {"pending": {}, "resolved": []})
