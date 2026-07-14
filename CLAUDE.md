@@ -36,9 +36,10 @@ A fully automated football match monitoring, alerting, and self-learning predict
 | `news.json` | Cached RSS headlines (max 15, ≤3h old); shown on the dashboard AND injected into prediction prompts (both engines) |
 | `data.json` | Generated dashboard payload: `live`, `upcoming`, `recent_results` (last 20), `accuracy`, `news` (auto-committed) |
 | `data_v2.json` | Generated Engine 2 dashboard payload (same schema plus `lessons`; `live`/`news` empty; upcoming/resolved entries carry `prob_home/draw/away`). Does not exist until V2's first successful run |
-| `.github/workflows/monitor.yml` | Cron `7,27,47 * * * *` (every 20 min) + manual button; runs monitor then dashboard_update, commits state |
-| `.github/workflows/predict.yml` | Cron `15 3 * * *` (06:15 AM KSA daily) + manual button; runs predict then dashboard_update, commits data |
-| `.github/workflows/predict_v2.yml` | Cron `30 3 * * *` (06:30 AM KSA daily, 15 min after V1) + manual button; runs predict_v2 then dashboard_update, commits V2 data |
+| `watchdog.py` | **Scheduler watchdog** (permanent fix for GitHub's unreliable cron): runs in every monitor run; after 04:00 UTC fires `predict.yml` via `gh workflow run` if V1 hasn't run today (per `meta.last_run`), after 04:30 UTC fires `predict_v2.yml` once V1 has run — order preserved for the digest comparison. Sends a Telegram note whenever it intervenes. Zero API-Football calls. Needs `actions: write` + `GH_TOKEN` (both provided in monitor.yml) |
+| `.github/workflows/monitor.yml` | Cron `7,27,47 * * * *` (every 20 min) + manual button; runs monitor, dashboard_update, then the scheduler watchdog; commits state. Has `actions: write` permission for the watchdog |
+| `.github/workflows/predict.yml` | Cron `15 3 * * *` (06:15 AM KSA daily) + backup cron `15 4 * * *` (skipped via a same-day guard if the first succeeded; guard applies to scheduled runs only, manual runs always execute) + manual button; runs predict then dashboard_update, commits data |
+| `.github/workflows/predict_v2.yml` | Cron `30 3 * * *` (06:30 AM KSA daily, 15 min after V1) + backup cron `30 4 * * *` (same same-day guard) + manual button; runs predict_v2 then dashboard_update, commits V2 data |
 | `.github/workflows/scan.yml` | Manual button only; commits nothing |
 
 ## The self-learning loop (core logic — preserve it)
@@ -93,6 +94,7 @@ When the user says "مسح حي" (or "مسح" / "شنو الشغال الحين"
 - API keys were exposed in a screenshot early on and rotated. Assume any key that ever appeared in plain text is dead.
 - Local standalone HTML was tried and abandoned: iOS Files preview doesn't execute JavaScript. GitHub Pages is the chosen architecture.
 - `monitor.yml`, `predict.yml`, and `predict_v2.yml` share concurrency group `football-monitor` and use `git pull --rebase` before push to avoid commit races; all commit with `[skip ci]`. `scan.yml` commits nothing so it has no concurrency group.
+- **GitHub's cron is best-effort, not guaranteed**: on 2026-07-14 GitHub silently skipped both daily prediction runs (03:15/03:30 UTC) and left an 8.5h gap in the 20-min monitor cron. Permanent mitigation (three layers, keep all of them): (1) the scheduler watchdog in every monitor run, (2) backup cron slots one hour after the primary with a same-day guard, (3) duplicate runs are harmless by design — resolve is idempotent, already-pending fixtures are skipped, and no digest is sent when there is nothing new.
 
 ## Roadmap (user's stated ambitions)
 

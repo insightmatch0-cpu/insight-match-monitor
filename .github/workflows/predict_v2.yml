@@ -3,6 +3,7 @@ name: Daily Predictions V2
 on:
   schedule:
     - cron: "30 3 * * *"    # يومياً 03:30 UTC = 06:30 صباحاً بتوقيت السعودية (بعد المحرك 1 بربع ساعة)
+    - cron: "30 4 * * *"    # تشغيلة احتياطية إذا أهملت GitHub الأولى (تُتخطى إن نجحت)
   workflow_dispatch:         # زر تشغيل يدوي
 
 permissions:
@@ -27,7 +28,24 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      # حارس التشغيلة الاحتياطية: إذا نجحت تشغيلة اليوم مسبقاً نتخطى (للجدولة فقط)
+      - name: Skip if already ran today
+        id: guard
+        if: github.event_name == 'schedule'
+        run: |
+          python - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json
+          from datetime import datetime, timezone
+          try:
+              lr = ((json.load(open("predictions_v2.json", encoding="utf-8")).get("meta") or {}).get("last_run") or "")
+          except Exception:
+              lr = ""
+          today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+          print("skip=" + ("true" if lr[:10] == today else "false"))
+          EOF
+
       - name: Run V2 predictions
+        if: steps.guard.outputs.skip != 'true'
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
