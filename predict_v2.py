@@ -33,10 +33,11 @@ TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
 # ================== الإعدادات ==================
-PREDICTIONS_FILE    = Path("predictions_v2.json")  # ذاكرة المحرك 2 (مستقلة عن المحرك 1)
-V1_PREDICTIONS_FILE = Path("predictions.json")     # ذاكرة المحرك 1 (للمقارنة في الملخص فقط)
-LESSONS_FILE        = Path("lessons_v2.json")      # دروس من الأخطاء (تُملأ في المرحلة 3)
-NEWS_FILE           = Path("news.json")            # آخر عناوين الأخبار (سياق مشترك)
+PREDICTIONS_FILE      = Path("predictions_v2.json")   # ذاكرة المحرك 2 (مستقلة عن المحرك 1)
+V1_PREDICTIONS_FILE   = Path("predictions.json")      # ذاكرة المحرك 1 (للمقارنة في الملخص فقط)
+USER_PREDICTIONS_FILE = Path("predictions_user.json") # توقعات المالك (يسجلها عبر تيليجرام)
+LESSONS_FILE          = Path("lessons_v2.json")       # دروس من الأخطاء (تُملأ في المرحلة 3)
+NEWS_FILE             = Path("news.json")             # آخر عناوين الأخبار (سياق مشترك)
 
 CLAUDE_MODEL = "claude-fable-5"
 
@@ -737,8 +738,21 @@ def v1_pending() -> dict:
     return store.get("pending") or {}
 
 
+def race_line(user_stats: dict, v2_stats: dict) -> str:
+    """سطر سباق الدقة الثلاثي: المالك ضد المحركين — يظهر متى وُجد سجل للمالك."""
+    if not (user_stats and user_stats.get("overall", {}).get("total")):
+        return ""
+    v1_stats = (load_json(V1_PREDICTIONS_FILE, {}).get("meta") or {}).get("stats") or {}
+    parts = [f"أنت: {pct(user_stats['overall'])}"]
+    if v1_stats.get("overall", {}).get("total"):
+        parts.append(f"المحرك 1: {pct(v1_stats['overall'])}")
+    if v2_stats.get("overall", {}).get("total"):
+        parts.append(f"المحرك 2: {pct(v2_stats['overall'])}")
+    return "🏆 سباق الدقة — " + " | ".join(parts)
+
+
 def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
-                 new_lessons: int = 0) -> str:
+                 new_lessons: int = 0, user_stats: dict = None) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
     v1_preds = v1_preds or {}
     shown = [p for p in new_preds if p["top"]] if DIGEST_TOP_ONLY else new_preds
@@ -777,6 +791,9 @@ def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
         lines.append(f"\n📊 دقة المحرك 2 آخر 30 يوماً: {pct(stats['last30'])}")
     if new_lessons:
         lines.append(f"📚 دروس جديدة من أخطاء الأمس: {new_lessons} — تدخل في توقعات اليوم.")
+    race = race_line(user_stats, stats)
+    if race:
+        lines.append(race)
     lines.append("\n⭐ أرسل لي أسماء المباريات التي تهمك اليوم وسأركز تنبيهاتي عليها فقط.")
     lines.append("⚠️ توقعات تحليلية وليست ضمانات.")
     return "\n".join(lines)
@@ -809,6 +826,19 @@ def main() -> None:
     new_lessons = generate_lessons(newly_resolved)
     if new_lessons:
         print(f"دروس جديدة مستخلصة من الأخطاء: {new_lessons}")
+
+    # 1.6) تقييم توقعات المالك بنفس المنطق (سباق الدقة الثلاثي)
+    user_store = load_json(USER_PREDICTIONS_FILE, {"pending": {}, "resolved": []})
+    user_store.setdefault("pending", {})
+    user_store.setdefault("resolved", [])
+    user_stats = None
+    user_resolved_now = 0
+    if user_store["pending"] or user_store["resolved"]:
+        user_resolved_now, _ = resolve_pending(user_store)
+        user_stats = compute_stats(user_store["resolved"])
+        user_store["meta"] = {"last_run": now_utc().isoformat(), "stats": user_stats}
+        save_json(USER_PREDICTIONS_FILE, user_store)
+        print(f"توقعات المالك: تم تقييم {user_resolved_now}. السجل: {pct(user_stats['overall'])}")
 
     # 2) مباريات الـ 24 ساعة القادمة (نفس اختيار المحرك 1) + إكمال الشعارات الناقصة
     fetched = get_upcoming_24h()
@@ -857,9 +887,11 @@ def main() -> None:
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
 
-    # 5) ملخص تيليجرام (مع مقارنة توقعات المحرك 1 لنفس المباريات)
+    # 5) ملخص تيليجرام (مقارنة المحرك 1 + سباق الدقة الثلاثي مع المالك)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
-        send_telegram_long(build_digest(new_preds, stats, v1_pending(), new_lessons))
+        send_telegram_long(
+            build_digest(new_preds, stats, v1_pending(), new_lessons, user_stats)
+        )
 
 
 if __name__ == "__main__":

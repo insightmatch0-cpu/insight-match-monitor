@@ -27,9 +27,10 @@ from pathlib import Path
 
 import requests
 
-WATCHLIST_FILE      = Path("watchlist.json")
-PREDICTIONS_FILE    = Path("predictions.json")
-PREDICTIONS_V2_FILE = Path("predictions_v2.json")
+WATCHLIST_FILE        = Path("watchlist.json")
+PREDICTIONS_FILE      = Path("predictions.json")
+PREDICTIONS_V2_FILE   = Path("predictions_v2.json")
+USER_PREDICTIONS_FILE = Path("predictions_user.json")   # توقعات المالك — الطرف الثالث في السباق
 
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"   # تفسير الأوامر مهمة خفيفة — هايكو يكفي
 SCAN_WORKFLOW = "scan.yml"
@@ -130,13 +131,16 @@ def interpret(message: str, candidates: dict) -> dict:
         "أنت مفسّر أوامر لبوت مراقبة مباريات. سيصلك: رسالة من المستخدم (قد تكون "
         "منقولة صوتياً وفيها أخطاء إملائية) وقائمة مباريات قادمة.\n"
         "حدد قصده وأرجع JSON فقط بدون أي نص آخر وبدون ```:\n"
-        '{"action":"set|add|remove|clear|none","fids":["..."]}\n'
+        '{"action":"set|add|remove|clear|predict|none","fids":["..."],'
+        '"picks":[{"fid":"...","pick":"home|draw|away"}]}\n'
         "- set: يريد هذه المباريات قائمة تركيزه (الحالة الأشيع).\n"
         "- add/remove: يضيف أو يزيل مباريات من قائمته الحالية.\n"
         "- clear: يريد إلغاء قائمة التركيز.\n"
-        "- none: الرسالة ليست عن اختيار مباريات.\n"
+        "- predict: يعطي توقعه الشخصي لنتائج مباريات (مثل: الريال يفوز، تعادل فرنسا) "
+        "— حينها املأ picks (home=فوز المضيف، away=فوز الضيف، draw=تعادل) واترك fids فارغة.\n"
+        "- none: الرسالة ليست عن اختيار مباريات ولا توقعات.\n"
         "طابق أسماء الفرق بمرونة (عربي أو إنجليزي، أخطاء إملائية، اسم فريق واحد يكفي "
-        "لتحديد المباراة). fids من القائمة فقط."
+        "لتحديد المباراة). fids/picks من القائمة فقط."
     )
     user_text = json.dumps(
         {"message": message, "matches": listing}, ensure_ascii=False
@@ -176,10 +180,18 @@ def interpret(message: str, candidates: dict) -> dict:
     except Exception:
         return {"action": "none", "fids": []}
     action = data.get("action")
-    if action not in ("set", "add", "remove", "clear", "none"):
+    if action not in ("set", "add", "remove", "clear", "predict", "none"):
         action = "none"
     fids = [str(f) for f in (data.get("fids") or []) if str(f) in candidates]
-    return {"action": action, "fids": fids}
+    picks = []
+    for p in (data.get("picks") or []):
+        if not isinstance(p, dict):
+            continue
+        fid = str(p.get("fid", ""))
+        pick = p.get("pick")
+        if fid in candidates and pick in ("home", "draw", "away"):
+            picks.append({"fid": fid, "pick": pick})
+    return {"action": action, "fids": fids, "picks": picks}
 
 
 def fire_scan() -> bool:
@@ -250,7 +262,71 @@ def apply_action(action: str, fids: list, candidates: dict, data: dict) -> str:
             lines.append(eng)
     lines.append("\n🔔 سأنبهك على هذه المباريات فقط: البداية، كل هدف مع تحليل "
                  "المحرك 2 المباشر الكامل، والنتيجة النهائية.")
+    lines.append("🎯 وأنت، ما توقعك؟ أرسل توقعك لهذه المباريات (مثال: فوز الأول "
+                 "وتعادل الثانية) وسأسجله وأقارن دقتك مع المحركين كل صباح.")
     return "\n".join(lines)
+
+
+PICK_AR = {"home": "فوز {h}", "draw": "تعادل", "away": "فوز {a}"}
+
+
+def record_user_picks(picks: list, candidates: dict) -> str:
+    """يسجل توقعات المالك في predictions_user.json (نفس بنية ذاكرة المحركين)
+    ليجري تقييمها كل صباح بنفس منطق المحركين — سباق دقة ثلاثي."""
+    store = load_json(USER_PREDICTIONS_FILE, {"pending": {}, "resolved": []})
+    store.setdefault("pending", {})
+    store.setdefault("resolved", [])
+    v2_pending = load_json(PREDICTIONS_V2_FILE, {}).get("pending") or {}
+
+    lines = []
+    saved = 0
+    for p in picks:
+        fid = p["fid"]
+        c = candidates[fid]
+        # لا نقبل توقعاً لمباراة بدأت — العدالة أولاً
+        try:
+            kickoff = datetime.fromisoformat(c.get("kickoff", ""))
+            if kickoff <= now_utc():
+                lines.append(f"• {match_label(c)} — بدأت المباراة، لا يُقبل توقع متأخر.")
+                continue
+        except Exception:
+            pass
+        base = v2_pending.get(fid) or {}
+        entry = {
+            "fid": fid,
+            "kickoff": c.get("kickoff", ""),
+            "date": c.get("date") or (c.get("kickoff") or "")[:10],
+            "home": c.get("home", "?"), "away": c.get("away", "?"),
+            "ar_home": base.get("ar_home") or c.get("ar_home", ""),
+            "ar_away": base.get("ar_away") or c.get("ar_away", ""),
+            "ar_league": base.get("ar_league") or "",
+            "league": c.get("league", ""),
+            "league_id": base.get("league_id"),
+            "home_logo": base.get("home_logo", ""),
+            "away_logo": base.get("away_logo", ""),
+            "league_logo": base.get("league_logo", ""),
+            "top": bool(base.get("top")),
+            "pick": p["pick"],
+            "confidence": 60,   # ثقة افتراضية موحدة لتوقعات المالك
+            "reason": "توقع المالك",
+        }
+        store["pending"][fid] = entry   # يجوز تغيير الرأي قبل انطلاق المباراة
+        saved += 1
+        h = entry["ar_home"] or entry["home"]
+        a = entry["ar_away"] or entry["away"]
+        label = PICK_AR[p["pick"]].format(h=h, a=a)
+        lines.append(f"• {h} 🆚 {a} — توقعك: {label}")
+        eng = engines_line(fid)
+        if eng:
+            lines.append(eng)
+
+    save_json(USER_PREDICTIONS_FILE, store)
+    if not saved:
+        return "\n".join(["🎯 لم أسجل توقعات جديدة:"] + lines) if lines else \
+            "لم أتعرف على توقعات في رسالتك."
+    header = f"🎯 سجلت توقعاتك ({saved}):"
+    footer = "\nغداً صباحاً أقيّم النتائج وأقارن دقتك مع المحركين. بالتوفيق! 🏆"
+    return "\n".join([header] + lines) + footer
 
 
 def cleanup_expired(data: dict) -> None:
@@ -284,10 +360,20 @@ def main() -> None:
             continue
         candidates = candidate_matches()
         intent = interpret(text, candidates)
+        if intent["action"] == "predict":
+            if intent["picks"]:
+                send_telegram(record_user_picks(intent["picks"], candidates))
+            else:
+                send_telegram(
+                    "لم أتعرف على توقعاتك. اذكر الفريق والنتيجة "
+                    "(مثال: الريال يفوز وتعادل فرنسا وإسبانيا)."
+                )
+            continue
         if intent["action"] == "none" or (intent["action"] != "clear" and not intent["fids"]):
             send_telegram(
                 "لم أتعرف على مباريات في رسالتك. أرسل أسماء الفرق التي تهمك "
-                "(مثال: ركز على ريال مدريد ومباراة فرنسا) أو \"امسح القائمة\" للإلغاء."
+                "(مثال: ركز على ريال مدريد ومباراة فرنسا)، أو توقعك لنتيجة مباراة، "
+                "أو \"امسح القائمة\" للإلغاء."
             )
             continue
         send_telegram(apply_action(intent["action"], intent["fids"], candidates, data))
