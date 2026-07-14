@@ -376,7 +376,7 @@ var I18N = {
     otherLeagues:"دوريات أخرى",
     updated:"آخر تحديث",
     lessons:"📚 دروس يتعلمها المحرك",
-    trend:"الدقة يوماً بيوم (آخر 14 يوماً)",
+    trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
     v2p:"محرك توقعات من جيل جديد يجري بناؤه الآن، وسيعمل جنباً إلى جنب مع المحرك 1 للمقارنة المباشرة:",
@@ -402,7 +402,7 @@ var I18N = {
     otherLeagues:"Other leagues",
     updated:"Updated",
     lessons:"📚 Lessons the engine learned",
-    trend:"Day-by-day accuracy (last 14 days)",
+    trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
     v2p:"A new-generation prediction engine is being built now. It will run side by side with Engine 1 for a live comparison:",
@@ -598,10 +598,19 @@ function renderAccuracy(acc){
   }
   bh += '</div>';
 
-  /* الدقة يوماً بيوم — أعمدة صغيرة لآخر 14 يوماً */
+  /* الدقة يوماً بيوم — أعمدة صغيرة لآخر 30 يوماً (من الأرشيف الدائم إن وجد) */
   var th = "";
   var daily = acc.daily || {};
-  var days = Object.keys(daily).sort().slice(-14);
+  if (engine === "v2" && lastV2 && lastV2.history){
+    var hd = {};
+    var hkeys = Object.keys(lastV2.history);
+    for (var k=0;k<hkeys.length;k++){
+      var row = lastV2.history[hkeys[k]] || {};
+      if (row.v2 && row.v2.total) hd[hkeys[k]] = row.v2;
+    }
+    if (Object.keys(hd).length) daily = hd;
+  }
+  var days = Object.keys(daily).sort().slice(-30);
   if (days.length >= 3){
     th = '<div class="trend"><div class="t-label">'+t("trend")+'</div><div class="t-bars">';
     for (var j=0;j<days.length;j++){

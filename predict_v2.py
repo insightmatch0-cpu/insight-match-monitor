@@ -37,6 +37,7 @@ PREDICTIONS_FILE      = Path("predictions_v2.json")   # ذاكرة المحرك 
 V1_PREDICTIONS_FILE   = Path("predictions.json")      # ذاكرة المحرك 1 (للمقارنة في الملخص فقط)
 USER_PREDICTIONS_FILE = Path("predictions_user.json") # توقعات المالك (يسجلها عبر تيليجرام)
 LESSONS_FILE          = Path("lessons_v2.json")       # دروس من الأخطاء (تُملأ في المرحلة 3)
+HISTORY_FILE          = Path("history.json")          # الأرشيف الدائم: تقدم الجميع يوماً بيوم (لا يُقص أبداً)
 NEWS_FILE             = Path("news.json")             # آخر عناوين الأخبار (سياق مشترك)
 
 CLAUDE_MODEL = "claude-fable-5"
@@ -780,6 +781,28 @@ def v1_pending() -> dict:
     return store.get("pending") or {}
 
 
+def update_history(v2_stats: dict, user_stats: dict) -> int:
+    """الأرشيف الدائم للتقدم: يدمج أرقام اليوم (صح/مجموع لكل طرف) في history.json.
+    ذاكرة المحرّكات التفصيلية تُقص بعد 1000 نتيجة — هذا الملف لا يُقص أبداً،
+    فهو سجل مسيرة المشروع الكامل يوماً بيوم. الدمج آمن التكرار (idempotent)."""
+    hist = load_json(HISTORY_FILE, {"days": {}})
+    days = hist.setdefault("days", {})
+    v1_stats = (load_json(V1_PREDICTIONS_FILE, {}).get("meta") or {}).get("stats") or {}
+    for key, st in (("v1", v1_stats), ("v2", v2_stats or {}), ("user", user_stats or {})):
+        for d, row in ((st.get("daily") or {}) if st else {}).items():
+            days.setdefault(d, {})[key] = {
+                "correct": int(row.get("correct", 0)),
+                "total": int(row.get("total", 0)),
+            }
+    lessons = load_json(LESSONS_FILE, {"lessons": []}).get("lessons") or []
+    hist["meta"] = {
+        "updated": now_utc().isoformat(),
+        "lessons_stored": len(lessons),
+    }
+    save_json(HISTORY_FILE, hist)
+    return len(days)
+
+
 def race_line(user_stats: dict, v2_stats: dict) -> str:
     """سطر سباق الدقة الثلاثي: المالك ضد المحركين — يظهر متى وُجد سجل للمالك."""
     if not (user_stats and user_stats.get("overall", {}).get("total")):
@@ -931,6 +954,10 @@ def main() -> None:
     }
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
+
+    # الأرشيف الدائم للتقدم (كل الأطراف، لا يُقص أبداً)
+    days_total = update_history(stats, user_stats)
+    print(f"الأرشيف الدائم: {days_total} يوماً مسجلاً.")
 
     # 5) ملخص تيليجرام (مقارنة المحرك 1 + سباق الدقة الثلاثي مع المالك)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
