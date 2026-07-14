@@ -24,6 +24,7 @@ STATE_FILE          = Path("state.json")
 PREDICTIONS_FILE    = Path("predictions.json")
 PREDICTIONS_V2_FILE = Path("predictions_v2.json")
 LESSONS_V2_FILE     = Path("lessons_v2.json")
+HISTORY_FILE        = Path("history.json")
 NEWS_FILE           = Path("news.json")
 DATA_FILE           = Path("data.json")
 DATA_V2_FILE        = Path("data_v2.json")
@@ -254,6 +255,8 @@ def build_data_v2() -> None:
         "accuracy": (store.get("meta") or {}).get("stats") or {},
         "news": [],
         "lessons": recent_lessons(),
+        # الأرشيف الدائم (كل الأيام، كل الأطراف) — للوحة ولأي تحليل مستقبلي
+        "history": load_json(HISTORY_FILE, {}).get("days") or {},
     }
     existing = load_json(DATA_V2_FILE, {})
     existing.pop("updated", None)
