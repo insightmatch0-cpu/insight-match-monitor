@@ -132,19 +132,75 @@ def should_analyze(league: dict, used: int) -> bool:
     return league.get("id") in TOP_LEAGUE_IDS
 
 
-def load_watchlist() -> set:
-    """معرفات مباريات قائمة التركيز الصالحة (غير منتهية الصلاحية)."""
-    data = {}
-    if WATCHLIST_FILE.exists():
+def load_json_file(path: Path, default):
+    if path.exists():
         try:
-            data = json.loads(WATCHLIST_FILE.read_text(encoding="utf-8"))
+            return json.loads(path.read_text(encoding="utf-8"))
         except Exception:
-            data = {}
+            return default
+    return default
+
+
+def load_watchlist_data() -> dict:
+    return load_json_file(WATCHLIST_FILE, {})
+
+
+def valid_watch_fids(data: dict) -> set:
+    """معرفات مباريات قائمة التركيز الصالحة (غير منتهية الصلاحية)."""
     cutoff = (datetime.now(timezone.utc) - timedelta(days=2)).strftime("%Y-%m-%d")
     return {
         fid for fid, e in (data.get("matches") or {}).items()
         if isinstance(e, dict) and (e.get("date") or "9999") >= cutoff
     }
+
+
+def load_watchlist() -> set:
+    return valid_watch_fids(load_watchlist_data())
+
+
+def all_focus_finished(data: dict, watch: set) -> bool:
+    """هل انتهت كل مباريات قائمة التركيز؟ (كل واحدة سجلت نتيجتها النهائية)"""
+    matches = data.get("matches") or {}
+    return bool(watch) and all((matches.get(f) or {}).get("result") for f in watch)
+
+
+def build_focus_summary(matches: dict) -> str:
+    """ملخص فوري عند انتهاء آخر مباراة في القائمة: نتائجك ضد المحركين.
+    التقييم الرسمي (وسجل الدقة الدائم) يبقى لملخص الصباح."""
+    pick_ar = {"home": "فوز {h}", "draw": "تعادل", "away": "فوز {a}"}
+    stores = [
+        ("أنت", (load_json_file(Path("predictions_user.json"), {}).get("pending") or {})),
+        ("المحرك 1", (load_json_file(Path("predictions.json"), {}).get("pending") or {})),
+        ("المحرك 2", (load_json_file(Path("predictions_v2.json"), {}).get("pending") or {})),
+    ]
+    tallies = {name: [0, 0] for name, _ in stores}
+    lines = ["🏁 انتهت كل مباريات قائمة التركيز — النتائج السريعة:"]
+    for fid, e in matches.items():
+        score = e.get("result") or "?"
+        try:
+            gh, ga = (int(x) for x in score.split("-"))
+        except Exception:
+            continue
+        outcome = "home" if gh > ga else ("away" if ga > gh else "draw")
+        lines.append(f"\n• {e.get('label', '?')} — {score}")
+        parts = []
+        for name, pending in stores:
+            p = pending.get(fid)
+            if not p or p.get("pick") not in pick_ar:
+                continue
+            h = p.get("ar_home") or p.get("home", "?")
+            a = p.get("ar_away") or p.get("away", "?")
+            ok = p["pick"] == outcome
+            tallies[name][0] += 1 if ok else 0
+            tallies[name][1] += 1
+            parts.append(f"{name}: {pick_ar[p['pick']].format(h=h, a=a)} {'✅' if ok else '❌'}")
+        if parts:
+            lines.append("   " + " | ".join(parts))
+    totals = [f"{name} {c}/{t}" for name, (c, t) in tallies.items() if t]
+    if totals:
+        lines.append("\n📊 حصيلة اليوم: " + " | ".join(totals))
+    lines.append("التقييم الرسمي والدروس في ملخص الصباح.")
+    return "\n".join(lines)
 
 
 def should_alert(league: dict, fid: str, watch: set) -> bool:
@@ -362,8 +418,10 @@ def main() -> None:
 
     state = load_state()
     analyses_used = 0
-    live_budget = {"used": 0}   # عداد مباريات المحرك 2 المباشر في هذه التشغيلة
-    watch = load_watchlist()    # قائمة التركيز — تتحكم بمن يستحق تنبيه تيليجرام
+    live_budget = {"used": 0}       # عداد مباريات المحرك 2 المباشر في هذه التشغيلة
+    wl_data = load_watchlist_data() # قائمة التركيز — تتحكم بمن يستحق تنبيه تيليجرام
+    watch = valid_watch_fids(wl_data)
+    wl_dirty = False
 
     try:
         fixtures = get_live_fixtures()
@@ -478,15 +536,21 @@ def main() -> None:
             send_telegram(msg)
 
         # --- حدث 3: نهاية المباراة ---
-        if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES and alert_ok:
-            h_disp = ar_names["home"] if ar_names else home
-            a_disp = ar_names["away"] if ar_names else away
-            l_disp = ar_names["league"] if ar_names else league_line
-            send_telegram(
-                f"🏁 انتهت المباراة\n"
-                f"🏆 {l_disp}\n"
-                f"{h_disp} {gh} - {ga} {a_disp}"
-            )
+        if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES:
+            if alert_ok:
+                h_disp = ar_names["home"] if ar_names else home
+                a_disp = ar_names["away"] if ar_names else away
+                l_disp = ar_names["league"] if ar_names else league_line
+                send_telegram(
+                    f"🏁 انتهت المباراة\n"
+                    f"🏆 {l_disp}\n"
+                    f"{h_disp} {gh} - {ga} {a_disp}"
+                )
+            # تسجيل النتيجة النهائية لمباراة من قائمة التركيز (لملخص نهاية اليوم)
+            wl_entry = (wl_data.get("matches") or {}).get(fid)
+            if fid in watch and wl_entry is not None and not wl_entry.get("result"):
+                wl_entry["result"] = f"{gh}-{ga}"
+                wl_dirty = True
 
         entry = {
             "score": score, "status": status, "minute": minute,
@@ -501,6 +565,19 @@ def main() -> None:
     for fid in list(state.keys()):
         if fid not in live_ids:
             del state[fid]
+
+    # ملخص نهاية اليوم: يُرسل فور انتهاء آخر مباراة في قائمة التركيز (مرة واحدة)
+    if watch and not wl_data.get("results_sent") and all_focus_finished(wl_data, watch):
+        focus_matches = {
+            f: e for f, e in (wl_data.get("matches") or {}).items() if f in watch
+        }
+        send_telegram(build_focus_summary(focus_matches))
+        wl_data["results_sent"] = True
+        wl_dirty = True
+    if wl_dirty:
+        WATCHLIST_FILE.write_text(
+            json.dumps(wl_data, ensure_ascii=False, indent=1), encoding="utf-8"
+        )
 
     save_state(state)
     print(
