@@ -22,7 +22,7 @@ A fully automated football match monitoring, alerting, and self-learning predict
 
 | File | Purpose |
 |---|---|
-| `monitor.py` | Polls live matches every 10 min; Telegram alerts for match start / goals / full-time, each with Claude analysis (max 20 analyses/run via `MAX_ANALYSES_PER_RUN`; `ANALYZE_ALL=True` analyzes every league, `ALERTS_TOP_ONLY=False` is the emergency flood switch). **Top-league matches get Engine 2 live analysis**: live statistics + match events + lineups fetched (3 API calls, ≤`MAX_LIVE_ENRICHED_PER_RUN=12` matches/run), analyzed by `claude-fable-5` with extended thinking (2048-token reasoning budget) and an all-scenarios prompt (next goal & which side, most dangerous player by name from events, corner/set-piece danger, game-changing card), labeled "🤖 المحرك 2 (مباشر)". Other leagues keep the basic Haiku analysis. Stores display fields incl. team/league logo URLs in `state.json` |
+| `monitor.py` | Polls live matches every 10 min; Telegram alerts for match start / goals / full-time gated by the Focus List (see that section) — watchlist matches only, or top leagues when the list is empty — each alert with Claude analysis (max 20 analyses/run via `MAX_ANALYSES_PER_RUN`). **Top-league matches get Engine 2 live analysis**: live statistics + match events + lineups fetched (3 API calls, ≤`MAX_LIVE_ENRICHED_PER_RUN=12` matches/run), analyzed by `claude-fable-5` with extended thinking (2048-token reasoning budget) and an all-scenarios prompt (next goal & which side, most dangerous player by name from events, corner/set-piece danger, game-changing card), labeled "🤖 المحرك 2 (مباشر)". Other leagues keep the basic Haiku analysis. Stores display fields incl. team/league logo URLs in `state.json` |
 | `scan.py` | On-demand worldwide live scan ("مسح حي" command) — one Actions button, one API call, one batched Claude call covering up to `MAX_PREDICTIONS=50` matches, numbered-line reply format |
 | `predict.py` | Daily engine (Engine 1): resolves prior predictions against real results (≤3 API calls via `MAX_RESOLVE_CALLS`), computes accuracy stats, predicts next-24h matches (up to `MAX_PREDICTIONS_24H=60`) in Claude batches of `BATCH_SIZE=12`, injects recent news headlines from `news.json` as context, sends Telegram digest (top leagues only — `DIGEST_TOP_ONLY=True` — with a dashboard link for the rest) |
 | `predict_v2.py` | Daily Engine 2 (V2) — see the "Engine 2 (V2)" section below. Same fixture selection/exclusions as V1, model `claude-fable-5`, probability output, enriched context for top leagues, own memory `predictions_v2.json` + `lessons_v2.json` |
@@ -36,8 +36,10 @@ A fully automated football match monitoring, alerting, and self-learning predict
 | `news.json` | Cached RSS headlines (max 15, ≤3h old); shown on the dashboard AND injected into prediction prompts (both engines) |
 | `data.json` | Generated dashboard payload: `live`, `upcoming`, `recent_results` (last 20), `accuracy`, `news` (auto-committed) |
 | `data_v2.json` | Generated Engine 2 dashboard payload (same schema plus `lessons`; `live`/`news` empty; upcoming/resolved entries carry `prob_home/draw/away`). Does not exist until V2's first successful run |
+| `watchlist.py` | **Focus List manager** (see "The Focus List" section): reads the owner's Telegram messages each monitor cycle, interprets them with one Haiku call, maintains `watchlist.json`, fires the Live Scan on "مسح", replies with confirmations incl. both engines' picks |
+| `watchlist.json` | Focus List state: `last_update_id` (Telegram offset) + `matches` `{fid: {label, home, away, date}}` (auto-committed; entries expire after 2 days) |
 | `watchdog.py` | **Scheduler watchdog** (permanent fix for GitHub's unreliable cron): runs in every monitor run; after 04:00 UTC fires `predict.yml` via `gh workflow run` if V1 hasn't run today (per `meta.last_run`), after 04:30 UTC fires `predict_v2.yml` once V1 has run — order preserved for the digest comparison. Sends a Telegram note whenever it intervenes. Zero API-Football calls. Needs `actions: write` + `GH_TOKEN` (both provided in monitor.yml) |
-| `.github/workflows/monitor.yml` | Cron `2,12,22,32,42,52 * * * *` (every 10 min) + manual button; runs monitor, dashboard_update, then the scheduler watchdog; commits state. Has `actions: write` permission for the watchdog |
+| `.github/workflows/monitor.yml` | Cron `2,12,22,32,42,52 * * * *` (every 10 min) + manual button; runs watchlist (Telegram commands), monitor, dashboard_update, then the scheduler watchdog; commits state incl. `watchlist.json`. Has `actions: write` permission for the watchdog and scan trigger |
 | `.github/workflows/predict.yml` | Cron `15 3 * * *` (06:15 AM KSA daily) + backup cron `15 4 * * *` (skipped via a same-day guard if the first succeeded; guard applies to scheduled runs only, manual runs always execute) + manual button; runs predict then dashboard_update, commits data |
 | `.github/workflows/predict_v2.yml` | Cron `30 3 * * *` (06:30 AM KSA daily, 15 min after V1) + backup cron `30 4 * * *` (same same-day guard) + manual button; runs predict_v2 then dashboard_update, commits V2 data |
 | `.github/workflows/scan.yml` | Manual button only; commits nothing |
@@ -81,6 +83,18 @@ The second-generation prediction engine (`predict_v2.py`), built to run side-by-
 4. **Cost philosophy (user's explicit directive 2026-07-14): spend API-Football freely, spend Claude wisely.** API-Football Pro (7,500/day) is prepaid — more calls cost nothing, so never skimp on data that improves predictions. Current usage: monitor ≈144/day polling (every 10 min) + up to 36/run for Engine 2 live context (3 calls × ≤12 top-league matches on start/goal events), predict ≤5/day, predict_v2 ≈300/day (enrichment for all 60 fixtures, capped 400). Total worst case ≈1,000/day — still lots of headroom. The Anthropic API bills per call, however, so keep Claude calls batched and purposeful — that's the real cost driver, not API-Football.
 5. **Empty data ≠ error:** no live matches can simply mean rest day / off-season. Interpret correctly and pivot to upcoming fixtures instead of reporting failure. (`scan.py` already sends a friendly "no live matches" message; `monitor.py` exits cleanly.)
 6. Claude batch predictions must return **strict JSON** (no fences, no prose); parsers are tolerant (fence-stripping, bracket extraction) but don't rely on it. `scan.py` uses a numbered `N| ... | ...` line format instead — equally strict.
+
+## The Focus List (قائمة التركيز)
+
+Telegram is a two-way control channel, not just alerts. `watchlist.py` runs at the start of every monitor cycle (every 10 min):
+
+- It reads new Telegram messages via `getUpdates` (**only** from `TELEGRAM_CHAT_ID` — messages from any other chat are ignored entirely; the offset is stored in `watchlist.json`).
+- The user texts match names in plain Arabic/English (voice-transcribed, typos tolerated); one Haiku call interprets intent (`set`/`add`/`remove`/`clear`) against the day's pending fixtures and updates `watchlist.json`. The bot replies with a confirmation showing both engines' predictions for the chosen matches.
+- Texting "مسح"/"مسح حي" fires the Live Scan workflow directly (no Claude call). "امسح القائمة" clears the list.
+- **Alert gating in `monitor.py`**: watchlist non-empty → Telegram alerts (start/goal/FT) for watchlist matches ONLY; watchlist empty → top leagues only (the default — the old alert-everything mode is gone by user request). Claude live analyses are only spent on matches that will actually be alerted. Data collection, dashboard, and daily predictions still cover everything.
+- Watchlist matches get **VIP live treatment**: they take priority for Engine 2 deep live analysis regardless of league.
+- Entries expire 2 days after their match date so the list never mutes future days.
+- `watchlist.json` is bot-written and auto-committed by monitor.yml.
 
 ## The "مسح حي" command
 

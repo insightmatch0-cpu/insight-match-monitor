@@ -12,6 +12,7 @@
 import json
 import os
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -37,12 +38,15 @@ MAX_LIVE_ENRICHED_PER_RUN = 12   # رصيد API-Football مدفوع مسبقاً
 LIVE_THINKING_BUDGET = 2048   # ميزانية التفكير العميق (توكنز) لتحليل المحرك 2 المباشر
 
 # ---- إعدادات التغطية العالمية ----
-# ANALYZE_ALL = True  → كل مباراة في العالم توصلك مع توقع (استهلاك رصيد أعلى)
-# ANALYZE_ALL = False → التوقع للدوريات الكبرى فقط، والباقي إشعار نتيجة بدون تحليل
+# ANALYZE_ALL = True  → كل مباراة تصلك تنبيهاتها تأتي مع تحليل
+# ANALYZE_ALL = False → التحليل للدوريات الكبرى فقط
 ANALYZE_ALL = True
 
-# ALERTS_TOP_ONLY = True → زر الطوارئ: إشعارات الدوريات الكبرى فقط (إذا غرقت بالرسائل)
-ALERTS_TOP_ONLY = False
+# ---- قائمة التركيز (يديرها المستخدم عبر رسائل تيليجرام — watchlist.py) ----
+# القائمة غير فارغة → التنبيهات لمباريات القائمة فقط (مع أولوية المحرك 2 المباشر).
+# القائمة فارغة    → التنبيهات للدوريات الكبرى فقط (الوضع الافتراضي الهادئ).
+# البيانات واللوحة تغطي كل المباريات دائماً — الفلترة على تيليجرام فقط.
+WATCHLIST_FILE = Path("watchlist.json")
 
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
 TOP_LEAGUE_IDS = {
@@ -125,6 +129,29 @@ def should_analyze(league: dict, used: int) -> bool:
         return False
     if ANALYZE_ALL:
         return True
+    return league.get("id") in TOP_LEAGUE_IDS
+
+
+def load_watchlist() -> set:
+    """معرفات مباريات قائمة التركيز الصالحة (غير منتهية الصلاحية)."""
+    data = {}
+    if WATCHLIST_FILE.exists():
+        try:
+            data = json.loads(WATCHLIST_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            data = {}
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=2)).strftime("%Y-%m-%d")
+    return {
+        fid for fid, e in (data.get("matches") or {}).items()
+        if isinstance(e, dict) and (e.get("date") or "9999") >= cutoff
+    }
+
+
+def should_alert(league: dict, fid: str, watch: set) -> bool:
+    """هل نرسل تنبيه تيليجرام لهذه المباراة؟
+    قائمة تركيز غير فارغة → مبارياتها فقط. فارغة → الدوريات الكبرى فقط."""
+    if watch:
+        return fid in watch
     return league.get("id") in TOP_LEAGUE_IDS
 
 
@@ -271,10 +298,13 @@ def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
         return "(تعذر التحليل حالياً — تحقق من رصيد مفتاح Claude)"
 
 
-def analyze_match(prompt_base: str, league: dict, fid: str, live_budget: dict):
-    """يختار التحليل المناسب: المحرك 2 المباشر (دوريات كبرى، ببيانات حية)
-    أو التحليل الأساسي. يرجع (نص التحليل، هل هو تحليل المحرك 2؟)."""
-    if league.get("id") in TOP_LEAGUE_IDS and live_budget["used"] < MAX_LIVE_ENRICHED_PER_RUN:
+def analyze_match(prompt_base: str, league: dict, fid: str, live_budget: dict,
+                  watch: set = frozenset()):
+    """يختار التحليل المناسب: المحرك 2 المباشر (لمباريات قائمة التركيز — من أي
+    دوري — وللدوريات الكبرى) أو التحليل الأساسي.
+    يرجع (نص التحليل، هل هو تحليل المحرك 2؟)."""
+    vip = fid in watch or league.get("id") in TOP_LEAGUE_IDS
+    if vip and live_budget["used"] < MAX_LIVE_ENRICHED_PER_RUN:
         live_budget["used"] += 1
         details = get_live_details(fid)
         text = prompt_base + (("\n\n" + details) if details else "")
@@ -333,6 +363,7 @@ def main() -> None:
     state = load_state()
     analyses_used = 0
     live_budget = {"used": 0}   # عداد مباريات المحرك 2 المباشر في هذه التشغيلة
+    watch = load_watchlist()    # قائمة التركيز — تتحكم بمن يستحق تنبيه تيليجرام
 
     try:
         fixtures = get_live_fixtures()
@@ -345,8 +376,6 @@ def main() -> None:
     for fx in fixtures:
         league = fx.get("league", {}) or {}
         if is_excluded(league):
-            continue
-        if ALERTS_TOP_ONLY and league.get("id") not in TOP_LEAGUE_IDS:
             continue
 
         fixture = fx.get("fixture", {}) or {}
@@ -370,33 +399,36 @@ def main() -> None:
 
         live_ids.add(fid)
         prev = state.get(fid)
+        alert_ok = should_alert(league, fid, watch)
 
         # --- حدث 1: مباراة جديدة بدأت ---
         if prev is None and status in LIVE_STATUSES:
             ar_names = None
             analysis = ""
             enriched = False
-            if should_analyze(league, analyses_used):
+            # التحليل يُطلب فقط لمباراة سنرسل تنبيهها (توفير Claude)
+            if alert_ok and should_analyze(league, analyses_used):
                 raw, enriched = analyze_match(
                     f"مباراة حية بدأت الآن: {home} ضد {away} — {league_line}. "
                     f"النتيجة {score}، الدقيقة {minute}. "
                     f"أعطني توقعك النهائي لهذه المباراة.",
-                    league, fid, live_budget,
+                    league, fid, live_budget, watch,
                 )
                 analyses_used += 1
                 ar_names, analysis = parse_claude_reply(raw)
             h_disp = ar_names["home"] if ar_names else home
             a_disp = ar_names["away"] if ar_names else away
             l_disp = ar_names["league"] if ar_names else league_line
-            msg = (
-                f"⚽️ بدأت المباراة\n"
-                f"🏆 {l_disp}\n"
-                f"{h_disp} 🆚 {a_disp}\n"
-            )
-            if analysis:
-                label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 التوقع"
-                msg += f"\n{label}:\n{analysis}"
-            send_telegram(msg)
+            if alert_ok:
+                msg = (
+                    f"⚽️ بدأت المباراة\n"
+                    f"🏆 {l_disp}\n"
+                    f"{h_disp} 🆚 {a_disp}\n"
+                )
+                if analysis:
+                    label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 التوقع"
+                    msg += f"\n{label}:\n{analysis}"
+                send_telegram(msg)
             entry = {
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
@@ -418,7 +450,7 @@ def main() -> None:
 
         # --- حدث 2: تغير النتيجة (هدف) ---
         ar_names = prev.get("ar")
-        if score != prev.get("score") and status in LIVE_STATUSES:
+        if score != prev.get("score") and status in LIVE_STATUSES and alert_ok:
             analysis = ""
             enriched = False
             if should_analyze(league, analyses_used):
@@ -426,7 +458,7 @@ def main() -> None:
                     f"تحديث مباراة حية: {home} ضد {away} — {league_line}. "
                     f"النتيجة الآن {score} بعد هدف جديد، الدقيقة {minute}. "
                     f"هل يتغير توقعك؟ أعطني قراءة الموقف والتوقع النهائي.",
-                    league, fid, live_budget,
+                    league, fid, live_budget, watch,
                 )
                 analyses_used += 1
                 ar_new, analysis = parse_claude_reply(raw)
@@ -446,7 +478,7 @@ def main() -> None:
             send_telegram(msg)
 
         # --- حدث 3: نهاية المباراة ---
-        if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES:
+        if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES and alert_ok:
             h_disp = ar_names["home"] if ar_names else home
             a_disp = ar_names["away"] if ar_names else away
             l_disp = ar_names["league"] if ar_names else league_line
@@ -473,7 +505,7 @@ def main() -> None:
     save_state(state)
     print(
         f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}، "
-        f"منها بالمحرك 2 المباشر: {live_budget['used']}"
+        f"منها بالمحرك 2 المباشر: {live_budget['used']}، قائمة التركيز: {len(watch)}"
     )
 
 
