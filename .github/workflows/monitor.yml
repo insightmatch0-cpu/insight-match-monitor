@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write        # يلزم حارس الجدولة لتشغيل توقعات فاتها موعدها
 
 concurrency:
   group: football-monitor
@@ -38,6 +39,14 @@ jobs:
 
       - name: Update dashboard data
         run: python dashboard_update.py
+
+      # حارس الجدولة: إذا أهملت GitHub تشغيلات التوقعات اليومية يشغّلها بنفسه
+      - name: Scheduler watchdog
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python watchdog.py
 
       - name: Save state
         run: |
