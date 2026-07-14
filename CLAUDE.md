@@ -38,6 +38,7 @@ A fully automated football match monitoring, alerting, and self-learning predict
 | `data_v2.json` | Generated Engine 2 dashboard payload (same schema plus `lessons`; `live`/`news` empty; upcoming/resolved entries carry `prob_home/draw/away`). Does not exist until V2's first successful run |
 | `watchlist.py` | **Focus List manager** (see "The Focus List" section): reads the owner's Telegram messages each monitor cycle, interprets them with one Haiku call, maintains `watchlist.json`, fires the Live Scan on "مسح", replies with confirmations incl. both engines' picks |
 | `watchlist.json` | Focus List state: `last_update_id` (Telegram offset) + `matches` `{fid: {label, home, away, date}}` (auto-committed; entries expire after 2 days) |
+| `predictions_user.json` | The owner's personal predictions (texted via Telegram) — same pending/resolved/meta structure as the engines, graded every morning by `predict_v2.py`; feeds the three-way accuracy race in the V2 digest. Created on first use |
 | `watchdog.py` | **Scheduler watchdog** (permanent fix for GitHub's unreliable cron): runs in every monitor run; after 04:00 UTC fires `predict.yml` via `gh workflow run` if V1 hasn't run today (per `meta.last_run`), after 04:30 UTC fires `predict_v2.yml` once V1 has run — order preserved for the digest comparison. Sends a Telegram note whenever it intervenes. Zero API-Football calls. Needs `actions: write` + `GH_TOKEN` (both provided in monitor.yml) |
 | `.github/workflows/monitor.yml` | Cron `2,12,22,32,42,52 * * * *` (every 10 min) + manual button; runs watchlist (Telegram commands), monitor, dashboard_update, then the scheduler watchdog; commits state incl. `watchlist.json`. Has `actions: write` permission for the watchdog and scan trigger |
 | `.github/workflows/predict.yml` | Cron `15 3 * * *` (06:15 AM KSA daily) + backup cron `15 4 * * *` (skipped via a same-day guard if the first succeeded; guard applies to scheduled runs only, manual runs always execute) + manual button; runs predict then dashboard_update, commits data |
@@ -95,6 +96,7 @@ Telegram is a two-way control channel, not just alerts. `watchlist.py` runs at t
 - Watchlist matches get **VIP live treatment**: they take priority for Engine 2 deep live analysis regardless of league.
 - Entries expire 2 days after their match date so the list never mutes future days.
 - `watchlist.json` is bot-written and auto-committed by monitor.yml.
+- **The owner's own predictions (سباق الدقة الثلاثي)**: after confirming a Focus List, the bot asks the owner for HIS prediction. He replies naturally ("الريال يفوز وتعادل فرنسا"); the same Haiku interpreter returns `action:"predict"` with picks; they're stored in `predictions_user.json` (same pending/resolved/meta structure, fixed `confidence: 60`, entries copied from V2 pending for names/logos; picks for already-kicked-off matches are refused; re-predicting before kickoff overwrites). Every morning `predict_v2.py` resolves them with the same `resolve_pending` logic and the V2 digest shows the three-way race line: "🏆 سباق الدقة — أنت | المحرك 1 | المحرك 2". Auto-committed by monitor.yml and predict_v2.yml.
 
 ## The "مسح حي" command
 
