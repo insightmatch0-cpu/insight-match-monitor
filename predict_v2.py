@@ -42,8 +42,10 @@ CLAUDE_MODEL = "claude-fable-5"
 
 MAX_PREDICTIONS_24H   = 60    # نفس حد المحرك 1 — نفس المباريات
 MAX_RESOLVE_CALLS     = 3     # أقصى نداءات API لتسوية نتائج الأيام السابقة
-MAX_ENRICHED_FIXTURES = 15    # أقصى مباريات كبرى تأخذ سياقاً إضافياً
-ENRICH_CALL_BUDGET    = 120   # سقف أمان لنداءات السياق الإضافي
+# رصيد API-Football (خطة Pro: 7500/يوم) مدفوع مسبقاً — نستخدمه بسخاء:
+# كل المباريات تأخذ سياقاً إضافياً (الكبرى أولاً لأن القائمة مرتبة كبرى-أولاً)
+MAX_ENRICHED_FIXTURES = 60    # كل مباريات اليوم (كانت 15 للكبرى فقط)
+ENRICH_CALL_BUDGET    = 400   # سقف أمان لنداءات السياق الإضافي (~265 متوقعة)
 ENRICHED_BATCH_SIZE   = 4     # دفعات صغيرة للمباريات ذات السياق الغني
 BASIC_BATCH_SIZE      = 12    # دفعات المباريات بدون سياق (مثل المحرك 1)
 MAX_LESSONS_IN_PROMPT = 15    # أحدث الدروس التي تُحقن في كل توقع
@@ -817,17 +819,17 @@ def main() -> None:
     upcoming = [m for m in fetched if m["fid"] not in store["pending"]]
     print(f"مباريات جديدة للتوقع: {len(upcoming)}")
 
-    # 3) سياق إضافي لمباريات الدوريات الكبرى
+    # 3) سياق إضافي لكل المباريات (القائمة مرتبة كبرى-أولاً فتأخذ الأولوية عند السقف)
     budget = {"used": 0}
     standings_cache = {}
     enriched, basic = [], []
     for m in upcoming:
-        if m["top"] and len(enriched) < MAX_ENRICHED_FIXTURES:
+        if len(enriched) < MAX_ENRICHED_FIXTURES and budget["used"] < ENRICH_CALL_BUDGET:
             m["context"] = build_context(m, budget, standings_cache)
             enriched.append(m)
         else:
             basic.append(m)
-    print(f"سياق إضافي: {len(enriched)} مباراة كبرى، {budget['used']} نداء API")
+    print(f"سياق إضافي: {len(enriched)} مباراة، {budget['used']} نداء API")
 
     # 4) توقعات Claude على دفعات
     new_preds = []
