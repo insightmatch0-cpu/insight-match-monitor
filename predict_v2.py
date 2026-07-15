@@ -654,6 +654,11 @@ def get_upcoming_24h() -> list:
             "league_id": league.get("id"),
             "season": league.get("season"),
             "round": league.get("round") or "",
+            "venue": ", ".join(x for x in (
+                ((fixture.get("venue") or {}).get("name")),
+                ((fixture.get("venue") or {}).get("city")),
+                league.get("country"),
+            ) if x),
             "top": league.get("id") in TOP_LEAGUE_IDS,
         })
 
@@ -726,13 +731,20 @@ def h2h_context(m: dict, budget: dict) -> str:
 
 
 def form_context(team_id, team_name: str, budget: dict) -> str:
-    """آخر 5 نتائج للفريق (فوز/تعادل/خسارة مع النتيجة والخصم)."""
+    """آخر 5 نتائج للفريق + أيام الراحة منذ آخر مباراة (من نفس النداء —
+    الإرهاق وضغط الجدول عامل حقيقي، خطوة استكشاف البيانات 2)."""
     if not team_id:
         return ""
     lines = []
+    last_dates = []
     for fx in _enrich_call(f"fixtures?team={team_id}&last=5", budget):
         teams = fx.get("teams") or {}
         goals = fx.get("goals") or {}
+        try:
+            last_dates.append(datetime.fromisoformat(
+                ((fx.get("fixture") or {}).get("date") or "").replace("Z", "+00:00")))
+        except Exception:
+            pass
         gh, ga = goals.get("home"), goals.get("away")
         if gh is None or ga is None:
             continue
@@ -743,7 +755,13 @@ def form_context(team_id, team_name: str, budget: dict) -> str:
         opp = (away if at_home else home).get("name", "?")
         letter = "W" if mine > theirs else ("L" if mine < theirs else "D")
         lines.append(f"{letter} {mine}-{theirs} v {opp} ({'H' if at_home else 'A'})")
-    return (f"{team_name} last 5: " + ", ".join(lines)) if lines else ""
+    if not lines:
+        return ""
+    rest = ""
+    if last_dates:
+        days = max(0, (now_utc() - max(last_dates)).days)
+        rest = f" — أيام الراحة منذ آخر مباراة: {days}"
+    return f"{team_name} last 5: " + ", ".join(lines) + rest
 
 
 def injuries_context(m: dict, budget: dict) -> str:
@@ -816,6 +834,22 @@ def competition_context(m: dict) -> str:
             "مختلف عن الدوري — الدوافع، التحفظ، وإدارة النتيجة.")
 
 
+def travel_context(m: dict) -> str:
+    """عبء السفر والبيئة بلا أي نداء API (خطوة استكشاف البيانات 2):
+    ملعب المباراة ومدينته معروفان، والنموذج يعرف مواقع الفرق — فيُطلب منه
+    تقدير مسافة سفر الضيف، فرق التوقيت، المناخ/الارتفاع، وأي عوامل لوجستية
+    (رحلة طيران طويلة قبل المباراة تصنع فرقاً حقيقياً)."""
+    venue = (m.get("venue") or "").strip()
+    if not venue:
+        return ""
+    return (
+        f"ملعب المباراة: {venue}. "
+        f"من معرفتك بموقع فريق {m.get('away', 'الضيف')}: قدّر عبء سفره لهذه "
+        "المباراة — مسافة الرحلة وعدد ساعات الطيران، فرق التوقيت، المناخ أو "
+        "الارتفاع، وأي عوامل لوجستية أو بيئية أخرى تؤثر على الجاهزية."
+    )
+
+
 def coach_context(m: dict, budget: dict) -> str:
     """مدربا الفريقين (نداءان): اسم المدرب وجنسيته وعمره — شخصية المدرب
     وخبرته (مدرب كبير، بداية عهد جديدة، مغامر أم متحفظ) عامل مؤثر."""
@@ -847,6 +881,7 @@ def coach_context(m: dict, budget: dict) -> str:
 def build_context(m: dict, budget: dict, standings_cache: dict) -> str:
     parts = [
         competition_context(m),
+        travel_context(m),
         standings_context(m, budget, standings_cache),
         h2h_context(m, budget),
         form_context(m.get("home_id"), m["home"], budget),
