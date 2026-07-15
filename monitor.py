@@ -11,6 +11,7 @@
 
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timedelta, timezone
@@ -70,6 +71,7 @@ PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 4
 # predict_v2.py صباحاً مقابل البيانات النهائية الحقيقية ويستخلص دروساً
 SCENARIOS_FILE = Path("scenarios_v2.json")
 LESSONS_FILE = Path("lessons_v2.json")   # دروس المحرك 2 — تُحقن في تقرير ما قبل المباراة
+REFEREES_FILE = Path("referees.json")    # قاعدة الحكام الذاتية (يبنيها predict_v2)
 
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة تصلك تنبيهاتها تأتي مع تحليل
@@ -490,6 +492,26 @@ SYSTEM_PROMPT_PREMATCH = (
 )
 
 
+def team_news_headlines(team: str) -> list:
+    """عناوين مستهدفة للفريق من Google News RSS (مجاني) — خطوة استكشاف 5:
+    الأخبار الصغيرة (انتقال، أزمة، غياب) قبل أن تصل للعناوين الكبرى."""
+    if not team:
+        return []
+    try:
+        import html as html_mod
+        r = requests.get(
+            "https://news.google.com/rss/search",
+            params={"q": f'"{team}" football', "hl": "en", "gl": "US",
+                    "ceid": "US:en"},
+            timeout=15,
+        )
+        titles = re.findall(r"<title>(.*?)</title>", r.text)[1:6]
+        return [html_mod.unescape(t).strip() for t in titles if t.strip()]
+    except Exception as e:
+        print("أخبار الفريق — فشل الجلب:", e)
+        return []
+
+
 def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
     """يجمع سياق التقرير: توقعات المحركين والمالك + بيانات API قبل المباراة
     (تشكيلات إن أُعلنت، إصابات، أرقام السوق، التوقع الإحصائي) — 4 نداءات API."""
@@ -551,6 +573,30 @@ def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
                 lines.append(f"مقارنة الفريقين: {json.dumps(comp, ensure_ascii=False)[:600]}")
     except Exception as e:
         print("تقرير ما قبل المباراة — فشل التوقع الإحصائي:", e)
+    # الحكم المعلن + سجله من قاعدتنا الذاتية (بعض الحكام يشهرون بغزارة)
+    try:
+        fx = api_football(f"fixtures?ids={fid}")
+        referee = ((fx[0].get("fixture") or {}).get("referee") or "") if fx else ""
+        if referee:
+            rec = (load_json_file(REFEREES_FILE, {}) or {}).get(referee.strip())
+            if rec and rec.get("matches"):
+                avg_y = round(rec["yellows"] / rec["matches"], 1)
+                lines.append(
+                    f"الحكم: {referee} — من سجلنا: معدل {avg_y} بطاقة صفراء"
+                    f" و{rec.get('reds', 0)} حمراء في {rec['matches']} مباراة."
+                )
+            else:
+                lines.append(f"الحكم: {referee} (استخدم معرفتك بأسلوبه إن كان مشهوراً).")
+    except Exception as e:
+        print("تقرير ما قبل المباراة — فشل جلب الحكم:", e)
+    # أخبار مستهدفة للفريقين (الأخبار الصغيرة تصنع فرقاً — توجيه المالك)
+    news_lines = []
+    for team in (p.get("home"), p.get("away")):
+        for title in team_news_headlines(team):
+            news_lines.append(f"- {title}")
+    if news_lines:
+        lines.append("أخبار حديثة مستهدفة للفريقين (استخدم المؤثر منها فقط):\n"
+                     + "\n".join(news_lines[:10]))
     # دروس المحرك 2 من تقييم تقاريره السابقة — حلقة التعلم الذاتي للسيناريوهات
     lessons = (load_json_file(LESSONS_FILE, {}).get("lessons") or [])[-15:]
     lesson_lines = [f"- {(it.get('text') or '').strip()}" for it in lessons
