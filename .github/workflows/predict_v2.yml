@@ -65,5 +65,11 @@ jobs:
           if [ -f predictions_user.json ]; then git add predictions_user.json; fi
           if [ -f history.json ]; then git add history.json; fi
           git diff --cached --quiet || git commit -m "engine 2 predictions [skip ci]"
-          git pull --rebase origin main || true
-          git push
+          # دفع مع إعادة المحاولة: عند تعارض مع commit موازٍ نحتفظ بملفاتنا المولّدة (الأحدث)
+          ok=0
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -X theirs origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          [ "$ok" = "1" ]

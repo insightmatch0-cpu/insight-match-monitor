@@ -71,6 +71,43 @@ def fire(workflow: str) -> bool:
         return False
 
 
+def recent_activity(workflow: str, cooldown_minutes: int = 25) -> dict:
+    """يفحص آخر تشغيلات الـ workflow حتى لا يطرقه الحارس بلا توقف:
+    - busy: يوجد تشغيل جارٍ/في الانتظار أو تشغيل أحدث من فترة التهدئة
+      (بأي نتيجة — حتى الفاشل، كي لا نكرر محاولة فاشلة كل 10 دقائق).
+    - tried_today: جرت محاولة اليوم (يمنع تكرار إشعار تيليجرام).
+    عند أي فشل في الفحص نرجع قيماً متحفظة تسمح بالتشغيل."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    try:
+        out = subprocess.run(
+            ["gh", "run", "list", "--workflow", workflow, "--repo", repo,
+             "--limit", "10", "--json", "createdAt,status"],
+            check=True, timeout=60, capture_output=True, text=True,
+        ).stdout
+        runs = json.loads(out or "[]")
+    except Exception as e:
+        print(f"الحارس: تعذر فحص تشغيلات {workflow}:", e)
+        return {"busy": False, "tried_today": False}
+
+    now = datetime.now(timezone.utc)
+    today = now.strftime("%Y-%m-%d")
+    busy = False
+    tried_today = False
+    for r in runs:
+        if r.get("status") in ("queued", "in_progress"):
+            busy = True
+        created_raw = r.get("createdAt") or ""
+        try:
+            created = datetime.fromisoformat(created_raw.replace("Z", "+00:00"))
+            if (now - created).total_seconds() < cooldown_minutes * 60:
+                busy = True
+        except Exception:
+            pass
+        if created_raw[:10] == today:
+            tried_today = True
+    return {"busy": busy, "tried_today": tried_today}
+
+
 def notify(text: str) -> None:
     if not (TELEGRAM_TOKEN and TELEGRAM_CHAT_ID):
         return
@@ -93,10 +130,16 @@ def main() -> None:
         last_run_date(V2_FILE),
     )
     if action == "v1":
-        if fire(V1_WORKFLOW):
+        act = recent_activity(V1_WORKFLOW)
+        if act["busy"]:
+            print("الحارس: توجد محاولة حديثة/جارية للمحرك 1 — انتظار (لا طرق متكرر).")
+        elif fire(V1_WORKFLOW) and not act["tried_today"]:
             notify("⏰ جدولة GitHub تأخرت اليوم — شغّلت توقعات المحرك 1 تلقائياً الآن.")
     elif action == "v2":
-        if fire(V2_WORKFLOW):
+        act = recent_activity(V2_WORKFLOW)
+        if act["busy"]:
+            print("الحارس: توجد محاولة حديثة/جارية للمحرك 2 — انتظار (لا طرق متكرر).")
+        elif fire(V2_WORKFLOW) and not act["tried_today"]:
             notify("⏰ شغّلت توقعات المحرك 2 تلقائياً الآن (بعد اكتمال المحرك 1).")
     else:
         print("الحارس: الجدولة سليمة اليوم — لا إجراء.")
