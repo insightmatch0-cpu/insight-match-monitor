@@ -389,8 +389,10 @@ def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
         "messages": [{"role": "user", "content": context_text}],
     }
     if thinking_budget > 0:
-        body["thinking"] = {"type": "enabled", "budget_tokens": thinking_budget}
-        # max_tokens يجب أن يتسع للتفكير + الرد النهائي
+        # نموذج المحرك 2 يفكر تلقائياً دائماً — معامل thinking القديم
+        # ({"type":"enabled","budget_tokens":N}) مرفوض عنده (خطأ 400).
+        # العمق يُضبط عبر effort، مع متسع في max_tokens للتفكير + الرد.
+        body["output_config"] = {"effort": "high"}
         body["max_tokens"] = max(max_tokens, thinking_budget + 800)
     try:
         r = requests.post(
