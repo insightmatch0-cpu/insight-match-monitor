@@ -72,6 +72,7 @@ jobs:
           if [ -f predictions_user.json ]; then git add predictions_user.json; fi
           if [ -f data_v2.json ]; then git add data_v2.json; fi
           if [ -f scenarios_v2.json ]; then git add scenarios_v2.json; fi
+          if [ -f referees.json ]; then git add referees.json; fi
           git diff --cached --quiet || git commit -m "update state [skip ci]"
           # دفع مع إعادة المحاولة: عند تعارض مع commit موازٍ نحتفظ بملفاتنا المولّدة (الأحدث)
           ok=0

@@ -56,6 +56,10 @@ MAX_MISTAKES_PER_RUN  = 30    # كل أخطاء اليوم عملياً تُرا
 CONSOLIDATE_THRESHOLD = 60    # عند تجاوز هذا العدد تُدمج الدروس المتشابهة
 CONSOLIDATE_TARGET    = 30    # عدد المبادئ المركزة بعد الدمج
 
+# قاعدة الحكام الذاتية (خطوة استكشاف 6): تتراكم من المباريات المُقيَّمة —
+# معدل بطاقات الحكم يغذي تقارير ما قبل المباراة (بعض الحكام يشهرون بغزارة)
+REFEREES_FILE = Path("referees.json")
+
 # التقييم الذاتي لتقارير ما قبل المباراة (يكتبها monitor.py في scenarios_v2.json)
 SCENARIOS_FILE = Path("scenarios_v2.json")
 MAX_SCENARIO_GRADES_PER_RUN = 6    # نداء Claude لكل تقرير — قائمة التركيز صغيرة أصلاً
@@ -397,11 +401,28 @@ def generate_lessons(newly_resolved: list) -> int:
     return added
 
 
+def record_referee(name: str, yellows: int, reds: int) -> None:
+    """يراكم سجل الحكم في referees.json — قاعدة بيانات ذاتية تنمو مع كل
+    مباراة مُقيَّمة (لا يوجد مصدر مجاني لإحصائيات الحكام — نبنيها بأنفسنا)."""
+    name = (name or "").strip()
+    if not name:
+        return
+    db = load_json(REFEREES_FILE, {})
+    rec = db.get(name) or {"matches": 0, "yellows": 0, "reds": 0}
+    rec["matches"] += 1
+    rec["yellows"] += max(0, yellows)
+    rec["reds"] += max(0, reds)
+    db[name] = rec
+    save_json(REFEREES_FILE, db)
+
+
 def actual_match_data(fid: str) -> str:
     """البيانات النهائية الحقيقية لمباراة منتهية: النتيجة + الإحصائيات
     (ركنيات، تسديدات، بطاقات، تصديات) + الأحداث (المسجلون والبطاقات بالأسماء).
-    ترجع '' إذا لم تنته المباراة بعد. 3 نداءات API — الرصيد مدفوع مسبقاً."""
+    ترجع '' إذا لم تنته المباراة بعد. 3 نداءات API — الرصيد مدفوع مسبقاً.
+    أثر جانبي مقصود: تحديث قاعدة الحكام من نفس البيانات (بلا نداء إضافي)."""
     parts = []
+    referee = ""
     try:
         fx = api_football(f"fixtures?ids={fid}")
         if not fx:
@@ -409,24 +430,39 @@ def actual_match_data(fid: str) -> str:
         status = (((fx[0].get("fixture") or {}).get("status")) or {}).get("short")
         if status not in ("FT", "AET", "PEN"):
             return ""
+        referee = ((fx[0].get("fixture") or {}).get("referee")) or ""
         goals = fx[0].get("goals") or {}
         ft = (fx[0].get("score") or {}).get("fulltime") or {}
         gh = ft.get("home") if ft.get("home") is not None else goals.get("home")
         ga = ft.get("away") if ft.get("away") is not None else goals.get("away")
         parts.append(f"النتيجة النهائية (90 دقيقة): {gh}-{ga} — الحالة {status}")
+        if referee:
+            parts.append(f"الحكم: {referee}")
     except Exception as e:
         print("تقييم التقرير — فشل جلب النتيجة:", e)
         return ""
+    yellows = reds = 0
     try:
         for side in api_football(f"fixtures/statistics?fixture={fid}"):
             name = (side.get("team") or {}).get("name", "?")
-            vals = [f"{s.get('type')}: {s.get('value')}"
-                    for s in (side.get("statistics") or [])
-                    if s.get("value") is not None]
+            vals = []
+            for s in (side.get("statistics") or []):
+                if s.get("value") is None:
+                    continue
+                vals.append(f"{s.get('type')}: {s.get('value')}")
+                try:
+                    if s.get("type") == "Yellow Cards":
+                        yellows += int(s.get("value") or 0)
+                    elif s.get("type") == "Red Cards":
+                        reds += int(s.get("value") or 0)
+                except Exception:
+                    pass
             if vals:
                 parts.append(f"إحصائيات {name} — " + ", ".join(vals))
     except Exception as e:
         print("تقييم التقرير — فشل الإحصائيات:", e)
+    if referee:
+        record_referee(referee, yellows, reds)
     try:
         ev_lines = []
         for ev in api_football(f"fixtures/events?fixture={fid}"):
@@ -878,6 +914,88 @@ def coach_context(m: dict, budget: dict) -> str:
             + "\n".join(lines))
 
 
+
+# طقس ساعة الانطلاق — Open-Meteo مجاني تماماً وبلا مفتاح (خطوة استكشاف 4)
+WEATHER_GEO_URL = "https://geocoding-api.open-meteo.com/v1/search"
+WEATHER_URL = "https://api.open-meteo.com/v1/forecast"
+_GEO_CACHE: dict = {}   # مدينة → (خط عرض، خط طول) — مرة واحدة لكل تشغيلة
+
+
+def weather_context(m: dict) -> str:
+    """حرارة/أمطار/رياح ساعة الانطلاق في مدينة الملعب — المطر الغزير والرياح
+    القوية والحر الشديد تغيّر أسلوب اللعب. أي فشل يرجع '' بصمت."""
+    venue = m.get("venue") or ""
+    parts = [x.strip() for x in venue.split(",")]
+    city = parts[1] if len(parts) >= 2 else ""
+    if not city:
+        return ""
+    try:
+        if city not in _GEO_CACHE:
+            r = requests.get(WEATHER_GEO_URL,
+                             params={"name": city, "count": 1}, timeout=15)
+            res = (r.json().get("results") or [])
+            _GEO_CACHE[city] = (
+                (res[0].get("latitude"), res[0].get("longitude")) if res else None
+            )
+        loc = _GEO_CACHE.get(city)
+        if not loc:
+            return ""
+        kickoff = datetime.fromisoformat(m["kickoff"])
+        day = kickoff.strftime("%Y-%m-%d")
+        r = requests.get(WEATHER_URL, params={
+            "latitude": loc[0], "longitude": loc[1],
+            "hourly": "temperature_2m,precipitation,wind_speed_10m",
+            "timezone": "UTC", "start_date": day, "end_date": day,
+        }, timeout=15)
+        hourly = r.json().get("hourly") or {}
+        times = hourly.get("time") or []
+        target = kickoff.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:00")
+        if target not in times:
+            return ""
+        i = times.index(target)
+        temp = (hourly.get("temperature_2m") or [])[i]
+        rain = (hourly.get("precipitation") or [])[i]
+        wind = (hourly.get("wind_speed_10m") or [])[i]
+        return (f"طقس ساعة الانطلاق في {city}: حرارة {temp}°م، أمطار {rain} ملم، "
+                f"رياح {wind} كم/س — خذه بالحسبان إن كان مؤثراً على أسلوب اللعب.")
+    except Exception:
+        return ""
+
+
+def transfers_context(m: dict, budget: dict) -> str:
+    """انتقالات آخر 90 يوماً للفريقين (نداءان) — خطوة استكشاف 3: القادمون
+    والمغادرون يغيّرون قوة الفريق قبل أن تعكسها النتائج."""
+    cutoff = (now_utc() - timedelta(days=90)).strftime("%Y-%m-%d")
+    lines = []
+    for team_id, team_name in ((m.get("home_id"), m["home"]),
+                               (m.get("away_id"), m["away"])):
+        if not team_id:
+            continue
+        try:
+            items = _enrich_call(f"transfers?team={team_id}", budget)
+        except Exception:
+            continue
+        recent = []
+        for it in items or []:
+            player = ((it.get("player") or {}).get("name")) or "?"
+            for tr in (it.get("transfers") or []):
+                date = (tr.get("date") or "")[:10]
+                if not date or date < cutoff:
+                    continue
+                t_in = (((tr.get("teams") or {}).get("in")) or {}).get("id")
+                t_out = (((tr.get("teams") or {}).get("out")) or {}).get("id")
+                if t_in == team_id:
+                    recent.append(f"وصل {player} ({date})")
+                elif t_out == team_id:
+                    recent.append(f"غادر {player} ({date})")
+        if recent:
+            lines.append(f"{team_name}: " + "، ".join(sorted(recent, reverse=True)[:6]))
+    if not lines:
+        return ""
+    return ("انتقالات آخر 90 يوماً (قد تغيّر قوة الفريق قبل أن تعكسها النتائج):\n"
+            + "\n".join(lines))
+
+
 def build_context(m: dict, budget: dict, standings_cache: dict) -> str:
     parts = [
         competition_context(m),
@@ -890,6 +1008,8 @@ def build_context(m: dict, budget: dict, standings_cache: dict) -> str:
         odds_context(m, budget),
         api_prediction_context(m, budget),
         coach_context(m, budget),
+        transfers_context(m, budget),
+        weather_context(m),
     ]
     return "\n".join(p for p in parts if p)
 
