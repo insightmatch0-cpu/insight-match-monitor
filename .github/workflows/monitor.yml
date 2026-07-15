@@ -5,6 +5,11 @@ on:
     - cron: "2,12,22,32,42,52 * * * *"
    # كل 10 دقائق — تنبيهات أسرع للأهداف (خطة Pro تتحمل الاستهلاك بسهولة)
   workflow_dispatch:          # زر تشغيل يدوي للتجربة
+    inputs:
+      prematch_window:
+        description: "نافذة تقرير ما قبل المباراة بالدقائق (فارغ = 45)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -44,6 +49,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PREMATCH_WINDOW: ${{ github.event.inputs.prematch_window }}
         run: python monitor.py
 
       - name: Update dashboard data
