@@ -60,6 +60,12 @@ SIG_THRESHOLDS = {
     "Yellow Cards": 1, "Red Cards": 1, "Goalkeeper Saves": 2,
 }
 
+# ---- تقرير ما قبل المباراة (قائمة التركيز فقط) ----
+# قبل ~45 دقيقة من الانطلاق يرسل المحرك 2 تقرير سيناريوهات شاملاً لكل مباراة
+# تركيز (طلب المالك 2026-07-15). يمكن توسيع النافذة مؤقتاً عبر متغير البيئة
+# PREMATCH_WINDOW (زر التشغيل اليدوي في monitor.yml).
+PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 45)
+
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة تصلك تنبيهاتها تأتي مع تحليل
 # ANALYZE_ALL = False → التحليل للدوريات الكبرى فقط
@@ -449,6 +455,141 @@ def live_pulse(fid: str, home: str, away: str, league_line: str,
     return raw.strip()
 
 
+SYSTEM_PROMPT_PREMATCH = (
+    "أنت محلل ما قبل المباراة للمحرك 2 — من الطراز الأول. سيصلك سياق مباراة "
+    "تنطلق قريباً: توقعات المحركين واحتمالاتهما، وقد يتضمن تشكيلات معلنة، "
+    "إصابات، أرقام سوق المراهنات، ومقارنة إحصائية للفريقين. اعتمد على البيانات "
+    "أولاً ثم معرفتك بالفريقين.\n"
+    + SCENARIO_MENU_V2 +
+    "أرجع تقريراً عربياً منظماً بهذه البنود (سطر لكل بند، مع نسبة تقديرية):\n"
+    "⚽ النتيجة المتوقعة وهامش الفوز\n"
+    "🥅 كلا الفريقين يسجلان؟ وإجمالي الأهداف المتوقع (فوق/تحت 2.5)\n"
+    "🎯 المسجل المحتمل بالاسم (وصانع اللعب الأخطر)\n"
+    "🚩 الركنيات: من يكسب أكثر وتقدير إجماليها\n"
+    "🟨 البطاقات: لاعبون مرشحون بالاسم إن أمكن، واحتمال بطاقة حمراء\n"
+    "⚡ الكرات الثابتة: خطورة الركلات الحرة والرميات الطويلة\n"
+    "⏱ نمط الشوطين: أيهما أغزر أهدافاً، واحتمال انقلاب النتيجة\n"
+    "🔑 مفتاح المباراة: المعركة الحاسمة التي تحسم اللقاء\n"
+    "ثم سطر أخير: تذكير: هذه توقعات تحليلية وليست ضمانات.\n"
+    "استخدم الأسماء العربية الشائعة في الإعلام الرياضي والأرقام الإنجليزية "
+    "(0-9) فقط، لا الأرقام العربية (٠-٩)."
+)
+
+
+def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
+    """يجمع سياق التقرير: توقعات المحركين والمالك + بيانات API قبل المباراة
+    (تشكيلات إن أُعلنت، إصابات، أرقام السوق، التوقع الإحصائي) — 4 نداءات API."""
+    p = v2p or v1p or {}
+    lines = [
+        f"مباراة تنطلق قريباً: {p.get('home', '?')} ضد {p.get('away', '?')} — "
+        f"{p.get('league', '')}."
+    ]
+    if v2p:
+        lines.append(
+            f"توقع المحرك 2: {v2p.get('pick')} "
+            f"(احتمالات {v2p.get('prob_home')}/{v2p.get('prob_draw')}/{v2p.get('prob_away')}) — "
+            f"السبب: {v2p.get('reason', '')}"
+        )
+    if v1p:
+        lines.append(f"توقع المحرك 1: {v1p.get('pick')} بثقة {v1p.get('confidence')}%")
+    if userp:
+        lines.append(f"توقع المالك: {userp.get('pick')}")
+    try:
+        lu = []
+        for side in api_football(f"fixtures/lineups?fixture={fid}"):
+            team = (side.get("team") or {}).get("name", "?")
+            formation = side.get("formation") or "?"
+            starters = [((x.get("player") or {}).get("name") or "?")
+                        for x in (side.get("startXI") or [])]
+            if starters:
+                lu.append(f"{team} ({formation}): " + ", ".join(starters))
+        if lu:
+            lines.append("التشكيلات المعلنة:\n" + "\n".join(lu))
+    except Exception as e:
+        print("تقرير ما قبل المباراة — فشل التشكيلات:", e)
+    try:
+        inj = [f"{((i.get('player') or {}).get('name') or '?')} "
+               f"({(i.get('team') or {}).get('name', '?')}: "
+               f"{(i.get('player') or {}).get('reason', '?')})"
+               for i in api_football(f"injuries?fixture={fid}")[:12]]
+        if inj:
+            lines.append("الإصابات/الغيابات: " + "، ".join(inj))
+    except Exception as e:
+        print("تقرير ما قبل المباراة — فشل الإصابات:", e)
+    try:
+        for bk in (api_football(f"odds?fixture={fid}") or [{}])[0].get("bookmakers", [])[:1]:
+            for bet in bk.get("bets", []):
+                if bet.get("name") == "Match Winner":
+                    vals = {v.get("value"): v.get("odd") for v in bet.get("values", [])}
+                    lines.append(f"أرقام السوق (1X2): {vals}")
+    except Exception as e:
+        print("تقرير ما قبل المباراة — فشل أرقام السوق:", e)
+    try:
+        for pr in api_football(f"predictions?fixture={fid}")[:1]:
+            pred = pr.get("predictions") or {}
+            pct = pred.get("percent") or {}
+            lines.append(
+                f"التوقع الإحصائي: {pct} — نصيحة: {pred.get('advice', '')} — "
+                f"فوز مرجح: {((pred.get('winner') or {}).get('name'))}"
+            )
+            comp = pr.get("comparison") or {}
+            if comp:
+                lines.append(f"مقارنة الفريقين: {json.dumps(comp, ensure_ascii=False)[:600]}")
+    except Exception as e:
+        print("تقرير ما قبل المباراة — فشل التوقع الإحصائي:", e)
+    return "\n".join(lines)
+
+
+def prematch_reports(wl_data: dict, watch: set) -> bool:
+    """يرسل تقرير سيناريوهات المحرك 2 لكل مباراة تركيز تنطلق خلال
+    PREMATCH_REPORT_MINUTES دقيقة (مرة واحدة لكل مباراة — علم prematch_sent).
+    يحفظ watchlist.json فوراً عند الإرسال حتى لا يتكرر التقرير لو فشل ما بعده."""
+    if not watch:
+        return False
+    v2_pending = load_json_file(Path("predictions_v2.json"), {}).get("pending") or {}
+    v1_pending = load_json_file(Path("predictions.json"), {}).get("pending") or {}
+    user_pending = load_json_file(Path("predictions_user.json"), {}).get("pending") or {}
+    now = datetime.now(timezone.utc)
+    dirty = False
+    for fid in sorted(watch):
+        entry = (wl_data.get("matches") or {}).get(fid)
+        if entry is None or entry.get("prematch_sent") or entry.get("result"):
+            continue
+        p = v2_pending.get(fid) or v1_pending.get(fid) or {}
+        try:
+            kickoff = datetime.fromisoformat(p.get("kickoff", ""))
+        except Exception:
+            continue
+        if kickoff <= now:                                   # بدأت — فات الوقت
+            continue
+        minutes_left = (kickoff - now).total_seconds() / 60
+        if minutes_left > PREMATCH_REPORT_MINUTES:
+            continue
+        ctx = build_prematch_context(fid, v2_pending.get(fid),
+                                     v1_pending.get(fid), user_pending.get(fid))
+        report = analyze_with_claude(
+            ctx, model=CLAUDE_MODEL_V2, system_prompt=SYSTEM_PROMPT_PREMATCH,
+            max_tokens=900, thinking_budget=LIVE_THINKING_BUDGET,
+        )
+        if report.startswith("(تعذر"):
+            continue                                          # نحاول في الجولة القادمة
+        h = p.get("ar_home") or p.get("home", "?")
+        a = p.get("ar_away") or p.get("away", "?")
+        league = p.get("ar_league") or p.get("league", "")
+        send_telegram(
+            f"📋 تقرير المحرك 2 — ما قبل المباراة\n"
+            f"🏆 {league}\n{h} 🆚 {a}\n"
+            f"⏰ الانطلاق خلال ~{int(minutes_left)} دقيقة\n\n{report}"
+        )
+        entry["prematch_sent"] = True
+        dirty = True
+    if dirty:
+        WATCHLIST_FILE.write_text(
+            json.dumps(wl_data, ensure_ascii=False, indent=1), encoding="utf-8"
+        )
+    return dirty
+
+
 def live_signature(fid: str) -> dict:
     """بصمة أرقام المباراة (نداء API واحد): تحركها يعني حدثاً يستحق نبضة.
     ترجع {} عند أي فشل — فلا نخزنها كأساس."""
@@ -673,6 +814,10 @@ def main() -> None:
     wl_data = load_watchlist_data() # قائمة التركيز — تتحكم بمن يستحق تنبيه تيليجرام
     watch = valid_watch_fids(wl_data)
     wl_dirty = False
+
+    # تقرير سيناريوهات ما قبل المباراة (قبل ~45 دقيقة من انطلاق مباريات القائمة)
+    if prematch_reports(wl_data, watch):
+        wl_dirty = True
 
     try:
         fixtures = get_live_fixtures()
