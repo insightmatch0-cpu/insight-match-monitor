@@ -230,12 +230,17 @@ def resolve_pending(store: dict):
                 status = (((fx.get("fixture") or {}).get("status")) or {}).get("short") or ""
                 goals = fx.get("goals") or {}
                 teams = fx.get("teams") or {}
+                # عرف التوقعات العالمي: النتيجة بعد 90 دقيقة (score.fulltime) —
+                # مباراة محسومة بالأشواط الإضافية تُقيَّم على نتيجة الوقت الأصلي
+                ft = ((fx.get("score") or {}).get("fulltime")) or {}
+                gh = ft.get("home") if ft.get("home") is not None else goals.get("home")
+                ga = ft.get("away") if ft.get("away") is not None else goals.get("away")
                 logos = {
                     "home_logo": (teams.get("home") or {}).get("logo", ""),
                     "away_logo": (teams.get("away") or {}).get("logo", ""),
                     "league_logo": (fx.get("league") or {}).get("logo", ""),
                 }
-                finals[fid] = (status, goals.get("home"), goals.get("away"), logos)
+                finals[fid] = (status, gh, ga, logos)
         except Exception as e:
             print(f"فشل سحب نتائج {d}:", e)
 

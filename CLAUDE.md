@@ -49,7 +49,7 @@ A fully automated football match monitoring, alerting, and self-learning predict
 ## The self-learning loop (core logic — preserve it)
 
 1. Every prediction is stored with pick (`home|draw|away`) + confidence (prompt asks for 40–80; parser clamps to 30–85).
-2. Next morning, `predict.py` fetches real results and grades each prediction.
+2. Next morning, `predict.py` fetches real results and grades each prediction — **on the 90-minute score** (`score.fulltime`, falling back to `goals`): a knockout match decided in extra time/penalties still grades as a draw if level after 90, matching the universal 1X2 convention (and the odds fed to V2).
 3. Accuracy is computed: overall, last 30 days, top vs other leagues, daily series (last 30 days), and **by confidence bucket** (70+, 60-69, 50-59, <50).
 4. That track record is injected into every new Claude prediction prompt with the instruction: *if your real accuracy is below your stated confidence, lower your confidence — and vice versa.* This calibration IS the learning mechanism. Never remove it.
 
