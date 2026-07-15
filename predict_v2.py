@@ -356,9 +356,12 @@ def generate_lessons(newly_resolved: list) -> int:
         '[{"match":"...","lesson":"درس من سطر واحد بالعربي"}]\n'
         "استخدم الأرقام الإنجليزية (0-9) فقط ولا تستخدم الأرقام العربية (٠-٩) أبداً."
     )
-    raw = claude_request(system_prompt, json.dumps(payload, ensure_ascii=False))
+    # حتى 30 درساً عربياً في رد واحد — يلزم سقف إخراج واسع وإلا يُقص الرد ويفشل التحليل
+    raw = claude_request(system_prompt, json.dumps(payload, ensure_ascii=False),
+                         max_tokens=6000)
     items = parse_json_array(raw)
     if not items:
+        print("لم تُستخلص دروس (رد فارغ أو غير صالح) — أخطاء اليوم تبقى في السجل.")
         return 0
 
     data = load_json(LESSONS_FILE, {"lessons": []})
