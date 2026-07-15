@@ -12,6 +12,7 @@
 import json
 import os
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -41,8 +42,23 @@ LIVE_THINKING_BUDGET = 2048   # ميزانية التفكير العميق (تو
 # بين الأحداث (لا هدف ولا بداية/نهاية) يفحص المحرك 2 المباراة كل تشغيلة:
 # إن تشكل سيناريو خطر جديد (هدف قادم، كلا الفريقين يسجلان، موجة ركنيات،
 # لاعب يهدد، بطاقة محتملة، انقلاب سيطرة) يرسل تنبيهاً — وإلا يبقى صامتاً.
-MAX_PULSE_PER_RUN = 6            # حد نداءات Claude للنبض في التشغيلة الواحدة
+MAX_PULSE_PER_RUN = 12           # حد نداءات Claude للنبض في التشغيلة الواحدة
 PULSE_STATUSES = {"1H", "2H", "ET"}   # لا نبض في الاستراحة/الركلات الترجيحية
+
+# ---- الرصد السريع (قائمة التركيز فقط): فحص كل ~90 ثانية بدل 10 دقائق ----
+# بعد الجولة العادية تبقى التشغيلة مستيقظة وتفحص مباريات القائمة الحية كل
+# 90 ثانية (طلب المالك: تنبيه خلال دقيقة إلى دقيقتين). نداء Claude يحدث فقط
+# عند تحرك حقيقي في الأرقام (ركنية، تسديدة على المرمى، بطاقة...) — البصمة أدناه.
+FOCUS_SWEEP_SECONDS = 90
+FOCUS_LOOP_BUDGET_SECONDS = 8 * 60   # ثم نسلّم للتشغيلة التالية (كل 10 دقائق)
+SIG_STATS = {
+    "Corner Kicks", "Shots on Goal", "Total Shots",
+    "Yellow Cards", "Red Cards", "Goalkeeper Saves",
+}
+SIG_THRESHOLDS = {
+    "Corner Kicks": 2, "Shots on Goal": 2, "Total Shots": 3,
+    "Yellow Cards": 1, "Red Cards": 1, "Goalkeeper Saves": 2,
+}
 
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة تصلك تنبيهاتها تأتي مع تحليل
@@ -433,6 +449,180 @@ def live_pulse(fid: str, home: str, away: str, league_line: str,
     return raw.strip()
 
 
+def live_signature(fid: str) -> dict:
+    """بصمة أرقام المباراة (نداء API واحد): تحركها يعني حدثاً يستحق نبضة.
+    ترجع {} عند أي فشل — فلا نخزنها كأساس."""
+    sig = {}
+    try:
+        for side in api_football(f"fixtures/statistics?fixture={fid}"):
+            team = (side.get("team") or {}).get("id")
+            for s in side.get("statistics") or []:
+                t, v = s.get("type"), s.get("value")
+                if t in SIG_STATS and v is not None:
+                    try:
+                        sig[f"{team}:{t}"] = int(str(v).replace("%", ""))
+                    except Exception:
+                        pass
+    except Exception as e:
+        print("فشل سحب بصمة الإحصائيات:", e)
+    return sig
+
+
+def significant_delta(base: dict, now: dict) -> bool:
+    """هل تحركت الأرقام بما يكفي منذ آخر نبضة؟ (ركنيتان، تسديدتان على المرمى،
+    أي بطاقة، ...) — البوابة الحتمية التي توفر نداءات Claude في الرصد السريع."""
+    for key, val in now.items():
+        stat = key.split(":", 1)[-1]
+        if val - base.get(key, 0) >= SIG_THRESHOLDS.get(stat, 10**9):
+            return True
+    return False
+
+
+def focus_fast_watch(state: dict, wl_data: dict, watch: set,
+                     live_budget: dict, pulses: dict) -> bool:
+    """الرصد السريع لمباريات قائمة التركيز: بعد الجولة العادية تبقى التشغيلة
+    مستيقظة حتى ~8 دقائق وتفحص مباريات القائمة كل ~90 ثانية — هدف/بداية/نهاية
+    تُعلن فوراً، والنبض يعمل فقط عند تحرك الأرقام (significant_delta).
+    يرجع True إذا سجل نتيجة نهائية في watchlist (تعديل يجب حفظه)."""
+    if not watch:
+        return False
+    wl_dirty = False
+    deadline = time.monotonic() + FOCUS_LOOP_BUDGET_SECONDS
+    ids = "-".join(sorted(watch))
+    while time.monotonic() < deadline:
+        time.sleep(FOCUS_SWEEP_SECONDS)
+        try:
+            fixtures = api_football(f"fixtures?ids={ids}")
+        except Exception as e:
+            print("الرصد السريع: فشل السحب:", e)
+            continue
+        keep = False
+        for fx in fixtures:
+            fixture = fx.get("fixture", {}) or {}
+            fid = str(fixture.get("id"))
+            if fid not in watch:
+                continue
+            league = fx.get("league", {}) or {}
+            teams = fx.get("teams", {}) or {}
+            goals = fx.get("goals", {}) or {}
+            status = ((fixture.get("status") or {}).get("short")) or ""
+            minute = ((fixture.get("status") or {}).get("elapsed")) or 0
+            home = (teams.get("home") or {}).get("name", "?")
+            away = (teams.get("away") or {}).get("name", "?")
+            gh = goals.get("home") or 0
+            ga = goals.get("away") or 0
+            score = f"{gh}-{ga}"
+            league_line = f"{league.get('name', '?')} ({league.get('country', '?')})"
+
+            if status in LIVE_STATUSES:
+                keep = True
+            elif status == "NS":
+                # لم تبدأ بعد — نواصل الانتظار إن كانت الانطلاقة قريبة
+                try:
+                    ko = datetime.fromisoformat(
+                        (fixture.get("date") or "").replace("Z", "+00:00"))
+                    if ko - datetime.now(timezone.utc) <= timedelta(minutes=12):
+                        keep = True
+                except Exception:
+                    pass
+                continue
+
+            prev = state.get(fid)
+
+            # بداية مباراة التقطها الرصد السريع قبل الجولة القادمة
+            if prev is None and status in LIVE_STATUSES:
+                raw, enriched = analyze_match(
+                    f"مباراة حية بدأت الآن: {home} ضد {away} — {league_line}. "
+                    f"النتيجة {score}، الدقيقة {minute}. "
+                    f"أعطني توقعك النهائي لهذه المباراة.",
+                    league, fid, live_budget, watch,
+                )
+                ar_names, analysis = parse_claude_reply(raw)
+                h = ar_names["home"] if ar_names else home
+                a = ar_names["away"] if ar_names else away
+                l = ar_names["league"] if ar_names else league_line
+                msg = f"⚽️ بدأت المباراة\n🏆 {l}\n{h} 🆚 {a}\n"
+                if analysis:
+                    label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 التوقع"
+                    msg += f"\n{label}:\n{analysis}"
+                send_telegram(msg)
+                entry = {"score": score, "status": status, "minute": minute,
+                         "home": home, "away": away, "league": league_line,
+                         "home_logo": (teams.get("home") or {}).get("logo", ""),
+                         "away_logo": (teams.get("away") or {}).get("logo", ""),
+                         "league_logo": league.get("logo", "")}
+                if ar_names:
+                    entry["ar"] = ar_names
+                if enriched and analysis:
+                    entry["pulse"] = analysis
+                state[fid] = entry
+                continue
+            if prev is None:
+                continue
+
+            ar_names = prev.get("ar")
+            h = ar_names["home"] if ar_names else home
+            a = ar_names["away"] if ar_names else away
+            l = ar_names["league"] if ar_names else league_line
+
+            # هدف — تنبيه فوري مع تحليل المحرك 2 الكامل
+            if score != prev.get("score") and status in LIVE_STATUSES:
+                raw, enriched = analyze_match(
+                    f"تحديث مباراة حية: {home} ضد {away} — {league_line}. "
+                    f"النتيجة الآن {score} بعد هدف جديد، الدقيقة {minute}. "
+                    f"هل يتغير توقعك؟ أعطني قراءة الموقف والتوقع النهائي.",
+                    league, fid, live_budget, watch,
+                )
+                ar_new, analysis = parse_claude_reply(raw)
+                if ar_new:
+                    ar_names = ar_new
+                    prev["ar"] = ar_new
+                    h, a = ar_new["home"], ar_new["away"]
+                    l = ar_new["league"]
+                msg = f"🚨 هدف!\n🏆 {l}\n{h} {gh} - {ga} {a} (د{minute})\n"
+                if analysis:
+                    label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 قراءة المباراة الآن"
+                    msg += f"\n{label}:\n{analysis}"
+                send_telegram(msg)
+                if enriched and analysis:
+                    prev["pulse"] = analysis
+                sig = live_signature(fid)
+                if sig:
+                    prev["sig"] = sig
+                prev.update({"score": score, "status": status, "minute": minute})
+                continue
+
+            # نهاية المباراة
+            if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES:
+                send_telegram(f"🏁 انتهت المباراة\n🏆 {l}\n{h} {gh} - {ga} {a}")
+                wl_entry = (wl_data.get("matches") or {}).get(fid)
+                if wl_entry is not None and not wl_entry.get("result"):
+                    wl_entry["result"] = f"{gh}-{ga}"
+                    wl_dirty = True
+                prev.update({"score": score, "status": status, "minute": minute})
+                continue
+
+            # لا حدث — نبضة مشروطة بتحرك الأرقام فقط (توفير نداءات Claude)
+            if status in PULSE_STATUSES:
+                sig_now = live_signature(fid)
+                base = prev.get("sig")
+                if sig_now and (not base or significant_delta(base, sig_now)) \
+                        and pulses["used"] < MAX_PULSE_PER_RUN:
+                    pulses["used"] += 1
+                    alert = live_pulse(fid, home, away, league_line,
+                                       score, minute, prev.get("pulse") or "")
+                    if alert:
+                        send_telegram(f"👁 عين المحرك 2 — {h} {gh} - {ga} {a} "
+                                      f"(د{minute})\n\n{alert}")
+                        prev["pulse"] = alert
+                    prev["sig"] = sig_now
+            prev.update({"score": score, "status": status, "minute": minute})
+
+        if not keep:
+            break
+    return wl_dirty
+
+
 def parse_claude_reply(text: str):
     """يفصل سطر الأسماء العربية عن نص التحليل. يرجع (dict أو None, التحليل)."""
     names = None
@@ -478,7 +668,7 @@ def main() -> None:
 
     state = load_state()
     analyses_used = 0
-    pulse_used = 0                  # عداد نبضات المحرك 2 في هذه التشغيلة
+    pulses = {"used": 0}            # عداد نبضات المحرك 2 في هذه التشغيلة
     live_budget = {"used": 0}       # عداد مباريات المحرك 2 المباشر في هذه التشغيلة
     wl_data = load_watchlist_data() # قائمة التركيز — تتحكم بمن يستحق تنبيه تيليجرام
     watch = valid_watch_fids(wl_data)
@@ -619,10 +809,11 @@ def main() -> None:
         # --- نبض المحرك 2: مراقبة مستمرة لمباريات قائمة التركيز بين الأحداث ---
         # (لا هدف هذه الجولة — لكن هل يتشكل سيناريو خطر؟ ركنيات، هدف قادم،
         #  كلا الفريقين يسجلان، لاعب يهدد، بطاقة... يرسل فقط عند وجود جديد)
+        sig_val = prev.get("sig")
         if (alert_ok and fid in watch and status in PULSE_STATUSES
                 and score == prev.get("score")
-                and pulse_used < MAX_PULSE_PER_RUN):
-            pulse_used += 1
+                and pulses["used"] < MAX_PULSE_PER_RUN):
+            pulses["used"] += 1
             alert = live_pulse(fid, home, away, league_line, score, minute, pulse_text)
             if alert:
                 h_disp = ar_names["home"] if ar_names else home
@@ -631,6 +822,10 @@ def main() -> None:
                     f"👁 عين المحرك 2 — {h_disp} {gh} - {ga} {a_disp} (د{minute})\n\n{alert}"
                 )
                 pulse_text = alert
+            # بصمة الأرقام الآن = الأساس الذي يقيس عليه الرصد السريع تحرك المباراة
+            new_sig = live_signature(fid)
+            if new_sig:
+                sig_val = new_sig
 
         entry = {
             "score": score, "status": status, "minute": minute,
@@ -641,12 +836,19 @@ def main() -> None:
             entry["ar"] = ar_names
         if pulse_text:
             entry["pulse"] = pulse_text
+        if sig_val:
+            entry["sig"] = sig_val
         state[fid] = entry
 
     # تنظيف الذاكرة: نحذف المباريات التي لم تعد حية
     for fid in list(state.keys()):
         if fid not in live_ids:
             del state[fid]
+
+    # الرصد السريع: تبقى التشغيلة مستيقظة وتفحص مباريات قائمة التركيز
+    # كل ~90 ثانية حتى تسليم الجولة التالية (تنبيه خلال دقيقة إلى دقيقتين)
+    if focus_fast_watch(state, wl_data, watch, live_budget, pulses):
+        wl_dirty = True
 
     # ملخص نهاية اليوم: يُرسل فور انتهاء آخر مباراة في قائمة التركيز (مرة واحدة)
     if watch and not wl_data.get("results_sent") and all_focus_finished(wl_data, watch):
@@ -664,7 +866,7 @@ def main() -> None:
     save_state(state)
     print(
         f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}، "
-        f"منها بالمحرك 2 المباشر: {live_budget['used']}، نبضات: {pulse_used}، "
+        f"منها بالمحرك 2 المباشر: {live_budget['used']}، نبضات: {pulses['used']}، "
         f"قائمة التركيز: {len(watch)}"
     )
 
