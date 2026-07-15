@@ -40,6 +40,8 @@ NEWS_FEEDS = [
     ("BBC Sport",    "https://feeds.bbci.co.uk/sport/football/rss.xml"),
     ("Sky Sports",   "https://www.skysports.com/rss/12040"),
     ("The Guardian", "https://www.theguardian.com/football/rss"),
+    # الأخبار الصغيرة تصنع فرقاً كبيراً (انتقالات، أخبار فرق) — توجيه المالك 2026-07-15
+    ("Sky News",     "https://www.skysports.com/rss/12691"),
 ]
 
 LIVE_STATUSES = {"1H", "HT", "2H", "ET", "BT", "P", "LIVE", "INT"}
