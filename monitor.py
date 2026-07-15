@@ -66,6 +66,11 @@ SIG_THRESHOLDS = {
 # PREMATCH_WINDOW (زر التشغيل اليدوي في monitor.yml).
 PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 45)
 
+# ذاكرة تقارير السيناريوهات: كل تقرير ما قبل مباراة يُحفظ هنا، ويقيّمه
+# predict_v2.py صباحاً مقابل البيانات النهائية الحقيقية ويستخلص دروساً
+SCENARIOS_FILE = Path("scenarios_v2.json")
+LESSONS_FILE = Path("lessons_v2.json")   # دروس المحرك 2 — تُحقن في تقرير ما قبل المباراة
+
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة تصلك تنبيهاتها تأتي مع تحليل
 # ANALYZE_ALL = False → التحليل للدوريات الكبرى فقط
@@ -546,6 +551,13 @@ def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
                 lines.append(f"مقارنة الفريقين: {json.dumps(comp, ensure_ascii=False)[:600]}")
     except Exception as e:
         print("تقرير ما قبل المباراة — فشل التوقع الإحصائي:", e)
+    # دروس المحرك 2 من تقييم تقاريره السابقة — حلقة التعلم الذاتي للسيناريوهات
+    lessons = (load_json_file(LESSONS_FILE, {}).get("lessons") or [])[-15:]
+    lesson_lines = [f"- {(it.get('text') or '').strip()}" for it in lessons
+                    if isinstance(it, dict) and (it.get("text") or "").strip()]
+    if lesson_lines:
+        lines.append("دروس من أخطائك السابقة (طبقها في هذا التقرير):\n"
+                     + "\n".join(lesson_lines))
     return "\n".join(lines)
 
 
@@ -592,6 +604,23 @@ def prematch_reports(wl_data: dict, watch: set) -> bool:
         )
         entry["prematch_sent"] = True
         dirty = True
+        # حفظ التقرير للتقييم الذاتي: predict_v2 يقارنه صباحاً بالبيانات
+        # النهائية الحقيقية ويستخلص دروساً تتحسن بها التقارير القادمة
+        scen = load_json_file(SCENARIOS_FILE, {"pending": {}, "resolved": []})
+        scen.setdefault("pending", {})
+        scen["pending"][fid] = {
+            "fid": fid,
+            "date": p.get("date") or (p.get("kickoff") or "")[:10],
+            "kickoff": p.get("kickoff", ""),
+            "home": p.get("home", "?"), "away": p.get("away", "?"),
+            "ar_home": p.get("ar_home", ""), "ar_away": p.get("ar_away", ""),
+            "league": p.get("ar_league") or p.get("league", ""),
+            "report": report,
+            "sent_at": datetime.now(timezone.utc).isoformat(),
+        }
+        SCENARIOS_FILE.write_text(
+            json.dumps(scen, ensure_ascii=False, indent=1), encoding="utf-8"
+        )
     if dirty:
         WATCHLIST_FILE.write_text(
             json.dumps(wl_data, ensure_ascii=False, indent=1), encoding="utf-8"

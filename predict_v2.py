@@ -56,6 +56,12 @@ MAX_MISTAKES_PER_RUN  = 30    # كل أخطاء اليوم عملياً تُرا
 CONSOLIDATE_THRESHOLD = 60    # عند تجاوز هذا العدد تُدمج الدروس المتشابهة
 CONSOLIDATE_TARGET    = 30    # عدد المبادئ المركزة بعد الدمج
 
+# التقييم الذاتي لتقارير ما قبل المباراة (يكتبها monitor.py في scenarios_v2.json)
+SCENARIOS_FILE = Path("scenarios_v2.json")
+MAX_SCENARIO_GRADES_PER_RUN = 6    # نداء Claude لكل تقرير — قائمة التركيز صغيرة أصلاً
+SCENARIO_MAX_AGE_DAYS = 4          # تقرير بلا بيانات نهائية بعد 4 أيام يُسقط (مؤجلة/ملغاة)
+SCENARIOS_RESOLVED_CAP = 100
+
 SEND_TELEGRAM_DIGEST = True
 DIGEST_TOP_ONLY      = True
 DASHBOARD_URL = "https://insightmatch0-cpu.github.io/insight-match-monitor/"
@@ -389,6 +395,167 @@ def generate_lessons(newly_resolved: list) -> int:
         data["lessons"] = data["lessons"][-MAX_LESSONS_STORED:]
         save_json(LESSONS_FILE, data)
     return added
+
+
+def actual_match_data(fid: str) -> str:
+    """البيانات النهائية الحقيقية لمباراة منتهية: النتيجة + الإحصائيات
+    (ركنيات، تسديدات، بطاقات، تصديات) + الأحداث (المسجلون والبطاقات بالأسماء).
+    ترجع '' إذا لم تنته المباراة بعد. 3 نداءات API — الرصيد مدفوع مسبقاً."""
+    parts = []
+    try:
+        fx = api_football(f"fixtures?ids={fid}")
+        if not fx:
+            return ""
+        status = (((fx[0].get("fixture") or {}).get("status")) or {}).get("short")
+        if status not in ("FT", "AET", "PEN"):
+            return ""
+        goals = fx[0].get("goals") or {}
+        ft = (fx[0].get("score") or {}).get("fulltime") or {}
+        gh = ft.get("home") if ft.get("home") is not None else goals.get("home")
+        ga = ft.get("away") if ft.get("away") is not None else goals.get("away")
+        parts.append(f"النتيجة النهائية (90 دقيقة): {gh}-{ga} — الحالة {status}")
+    except Exception as e:
+        print("تقييم التقرير — فشل جلب النتيجة:", e)
+        return ""
+    try:
+        for side in api_football(f"fixtures/statistics?fixture={fid}"):
+            name = (side.get("team") or {}).get("name", "?")
+            vals = [f"{s.get('type')}: {s.get('value')}"
+                    for s in (side.get("statistics") or [])
+                    if s.get("value") is not None]
+            if vals:
+                parts.append(f"إحصائيات {name} — " + ", ".join(vals))
+    except Exception as e:
+        print("تقييم التقرير — فشل الإحصائيات:", e)
+    try:
+        ev_lines = []
+        for ev in api_football(f"fixtures/events?fixture={fid}"):
+            minute = (ev.get("time") or {}).get("elapsed")
+            team = (ev.get("team") or {}).get("name", "?")
+            player = (ev.get("player") or {}).get("name") or ""
+            ev_lines.append(f"{minute}' {ev.get('type')} ({ev.get('detail')}) "
+                            f"{player} [{team}]")
+        if ev_lines:
+            parts.append("الأحداث:\n" + "\n".join(ev_lines))
+    except Exception as e:
+        print("تقييم التقرير — فشل الأحداث:", e)
+    return "\n".join(parts)
+
+
+def grade_scenario_report(entry: dict, actual: str) -> dict:
+    """نداء Claude واحد: يقارن بنود التقرير المتوقعة بالبيانات النهائية،
+    يرجع {'summary','grades':[{'claim','result'}],'lessons':[...]} أو {} عند الفشل."""
+    system_prompt = (
+        "أنت المقيّم الذاتي لتقارير ما قبل المباراة في محرك توقعات كرة قدم. "
+        "ستصلك بنود تقرير كتبته قبل المباراة (نتيجة متوقعة، كلا الفريقين يسجلان، "
+        "إجمالي الأهداف، مسجل محتمل، ركنيات، بطاقات، كرات ثابتة، نمط الشوطين) "
+        "والبيانات النهائية الحقيقية.\n"
+        "قيّم كل بند تحقق منه البيانات وأرجع JSON فقط بدون أي نص آخر وبدون ```:\n"
+        '{"summary":"سطر واحد: كم أصاب التقرير من بنوده",'
+        '"grades":[{"claim":"البند باختصار","result":"صح|خطأ|جزئي"}],'
+        '"lessons":[{"lesson":"درس عام قابل للتطبيق في تقارير قادمة — سطر واحد"}]}\n'
+        "الدروس تُستخلص من البنود الخاطئة فقط: نمط عام (مثل المبالغة في توقع "
+        "الركنيات في المباريات المغلقة) وليس وصفاً لما حدث. إن لم توجد أخطاء "
+        "أرجع lessons فارغة. استخدم الأرقام الإنجليزية (0-9) فقط."
+    )
+    user_text = json.dumps(
+        {"match": f"{entry.get('home')} vs {entry.get('away')}",
+         "league": entry.get("league"),
+         "prematch_report": entry.get("report", ""),
+         "actual_final_data": actual},
+        ensure_ascii=False,
+    )
+    raw = claude_request(system_prompt, user_text, max_tokens=2500)
+    if not raw:
+        return {}
+    text = raw.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```[a-zA-Z]*\s*|\s*```$", "", text).strip()
+    m = re.search(r"\{.*\}", text, re.DOTALL)
+    if not m:
+        return {}
+    try:
+        data = json.loads(m.group(0))
+    except Exception:
+        return {}
+    return data if isinstance(data, dict) and data.get("grades") else {}
+
+
+def resolve_scenarios() -> int:
+    """حلقة التعلم الذاتي للسيناريوهات: يقيّم كل تقرير ما قبل مباراة محفوظ
+    مقابل البيانات النهائية، يرسل بطاقة التقييم للمالك، ويضيف الدروس إلى
+    lessons_v2.json (فتُحقن تلقائياً في كل تقرير وتوقع قادم)."""
+    scen = load_json(SCENARIOS_FILE, {"pending": {}, "resolved": []})
+    scen.setdefault("pending", {})
+    scen.setdefault("resolved", [])
+    if not scen["pending"]:
+        return 0
+    icon = {"صح": "✅", "خطأ": "❌", "جزئي": "🟡"}
+    graded = 0
+    dirty = False
+    today = now_utc().strftime("%Y-%m-%d")
+    for fid in sorted(list(scen["pending"].keys())):
+        if graded >= MAX_SCENARIO_GRADES_PER_RUN:
+            break
+        entry = scen["pending"][fid]
+        try:
+            kickoff = datetime.fromisoformat(entry.get("kickoff", ""))
+        except Exception:
+            kickoff = None
+        if kickoff and kickoff > now_utc() - timedelta(hours=3):
+            continue                              # لم تنته بعد — دورها لاحقاً
+        actual = actual_match_data(fid)
+        if not actual:
+            # لا بيانات نهائية: مؤجلة/ملغاة أو خلل — نسقطها بعد مهلة
+            age_ok = (entry.get("date") or "9999") >= \
+                (now_utc() - timedelta(days=SCENARIO_MAX_AGE_DAYS)).strftime("%Y-%m-%d")
+            if not age_ok:
+                del scen["pending"][fid]
+                dirty = True
+            continue
+        result = grade_scenario_report(entry, actual)
+        if not result:
+            continue                              # فشل التقييم — إعادة غداً
+        graded += 1
+        dirty = True
+        grades = [g for g in result.get("grades", []) if isinstance(g, dict)]
+        correct = sum(1 for g in grades if g.get("result") == "صح")
+        partial = sum(1 for g in grades if g.get("result") == "جزئي")
+        h = entry.get("ar_home") or entry.get("home", "?")
+        a = entry.get("ar_away") or entry.get("away", "?")
+        lines = [f"📋 تقييم تقرير المحرك 2 — {h} 🆚 {a}",
+                 f"📊 أصاب {correct}/{len(grades)}"
+                 + (f" (+{partial} جزئياً)" if partial else "")]
+        if result.get("summary"):
+            lines.append(str(result["summary"]))
+        for g in grades:
+            lines.append(f"{icon.get(g.get('result'), '•')} {g.get('claim', '')}")
+        # الدروس → نفس دفتر دروس المحرك 2 (يُحقن في التوقعات والتقارير القادمة)
+        lessons = [str((it or {}).get("lesson") or "").strip()
+                   for it in result.get("lessons", []) if isinstance(it, dict)]
+        lessons = [x for x in lessons if x]
+        if lessons:
+            ldata = load_json(LESSONS_FILE, {"lessons": []})
+            ldata.setdefault("lessons", [])
+            for text in lessons:
+                ldata["lessons"].append({
+                    "date": today,
+                    "match": f"{entry.get('home')} vs {entry.get('away')} (تقرير)",
+                    "text": text,
+                })
+            ldata["lessons"] = ldata["lessons"][-MAX_LESSONS_STORED:]
+            save_json(LESSONS_FILE, ldata)
+            lines.append(f"📚 دروس جديدة من هذا التقرير: {len(lessons)}")
+        send_telegram_long("\n".join(lines))
+        entry["graded_on"] = today
+        entry["correct"] = correct
+        entry["total"] = len(grades)
+        scen["resolved"].append(entry)
+        del scen["pending"][fid]
+    if dirty:
+        scen["resolved"] = scen["resolved"][-SCENARIOS_RESOLVED_CAP:]
+        save_json(SCENARIOS_FILE, scen)
+    return graded
 
 
 def consolidate_lessons() -> int:
@@ -955,6 +1122,11 @@ def main() -> None:
     consolidated = consolidate_lessons()
     if consolidated:
         print(f"تم دمج الدروس في {consolidated} مبدأً عاماً.")
+
+    # 1.55) التقييم الذاتي لتقارير ما قبل المباراة (سيناريوهات المحرك 2)
+    scenario_graded = resolve_scenarios()
+    if scenario_graded:
+        print(f"قُيّمت {scenario_graded} من تقارير ما قبل المباراة مقابل البيانات النهائية.")
 
     # 1.6) تقييم توقعات المالك بنفس المنطق (سباق الدقة الثلاثي)
     user_store = load_json(USER_PREDICTIONS_FILE, {"pending": {}, "resolved": []})
