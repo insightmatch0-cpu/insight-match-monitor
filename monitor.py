@@ -389,10 +389,9 @@ def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
         "messages": [{"role": "user", "content": context_text}],
     }
     if thinking_budget > 0:
-        # نموذج المحرك 2 يفكر تلقائياً دائماً — معامل thinking القديم
-        # ({"type":"enabled","budget_tokens":N}) مرفوض عنده (خطأ 400).
-        # العمق يُضبط عبر effort، مع متسع في max_tokens للتفكير + الرد.
-        body["output_config"] = {"effort": "high"}
+        # نموذج المحرك 2 يفكر تلقائياً وبعمق افتراضياً — أي معامل تفكير إضافي
+        # يُرفض (خطأ 400). نكتفي بنفس شكل الطلب البسيط الذي يعمل في predict_v2
+        # مع متسع أكبر في max_tokens للتفكير + الرد النهائي.
         body["max_tokens"] = max(max_tokens, thinking_budget + 800)
     try:
         r = requests.post(
@@ -414,7 +413,15 @@ def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
         ).strip()
         return text or "(تعذر الحصول على تحليل)"
     except Exception as e:
-        print("Claude error:", e)
+        # نص خطأ الـ API (لا يتضمن أي مفتاح) — ضروري لتشخيص أخطاء 400 من السجلات
+        detail = ""
+        resp = getattr(e, "response", None)
+        if resp is not None:
+            try:
+                detail = " — " + resp.text[:300]
+            except Exception:
+                pass
+        print(f"Claude error: {e}{detail}")
         return "(تعذر التحليل حالياً — تحقق من رصيد مفتاح Claude)"
 
 
