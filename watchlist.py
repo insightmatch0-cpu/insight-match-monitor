@@ -148,8 +148,11 @@ def interpret(message: str, candidates: dict) -> dict:
         "- predict: يعطي توقعه الشخصي لنتائج مباريات (مثل: الريال يفوز، تعادل فرنسا) "
         "— حينها املأ picks (home=فوز المضيف، away=فوز الضيف، draw=تعادل) واترك fids فارغة.\n"
         "- none: الرسالة ليست عن اختيار مباريات ولا توقعات.\n"
-        "طابق أسماء الفرق بمرونة (عربي أو إنجليزي، أخطاء إملائية، اسم فريق واحد يكفي "
-        "لتحديد المباراة). fids/picks من القائمة فقط."
+        "طابق أسماء الفرق بأقصى مرونة: عربي أو إنجليزي، أخطاء إملائية، اختصارات "
+        "وبادئات (U.craiova = Universitatea Craiova، kairat = Kairat Almaty)، "
+        "أحرف صغيرة/كبيرة، أسماء منقولة صوتياً، وكلمات مثل 'كمفضلة/المفضلة/فيفوريت' "
+        "تعني قائمة التركيز. اسم فريق واحد يكفي لتحديد المباراة، وعدة أسطر تعني عدة "
+        "مباريات. fids/picks من القائمة فقط."
     )
     user_text = json.dumps(
         {"message": message, "matches": listing}, ensure_ascii=False
@@ -179,6 +182,8 @@ def interpret(message: str, candidates: dict) -> dict:
         print("Claude error:", e)
         return {"action": "none", "fids": []}
 
+    # سطر تشخيصي (لا يتضمن أي سر) — لتتبع أعطال الفهم في سجلات التشغيل
+    print("مفسر الأوامر — أول 200 حرف من الرد:", text[:200].replace("\n", " "))
     if text.startswith("```"):
         text = re.sub(r"^```[a-zA-Z]*\s*|\s*```$", "", text).strip()
     m = re.search(r"\{.*\}", text, re.DOTALL)
@@ -201,6 +206,50 @@ def interpret(message: str, candidates: dict) -> dict:
         if fid in candidates and pick in ("home", "draw", "away"):
             picks.append({"fid": fid, "pick": pick})
     return {"action": action, "fids": fids, "picks": picks}
+
+
+FALLBACK_STOPWORDS = {
+    "the", "and", "with", "match", "matches", "game", "games", "today", "please",
+    "focus", "add", "remove", "delete", "favorite", "favourite", "list",
+    "مباراة", "مباريات", "اليوم", "فريق", "الفريقين", "قائمة", "التركيز",
+    "مفضلة", "كمفضلة", "المفضلة", "أضف", "اضف", "ركز", "احذف", "توقع",
+}
+
+
+def fallback_match(message: str, candidates: dict) -> list:
+    """شبكة أمان حتمية عندما يفشل المفسّر الذكي: مطابقة مقاطع الرسالة
+    (لاتينية أو عربية، مع دعم الاختصارات مثل U.craiova) مع أسماء الفريقين مباشرة.
+    ترجع [] إذا كانت النتيجة غامضة (أكثر من 6 مباريات)."""
+    tokens = []
+    for raw in re.split(r"[^\w؀-ۿ.]+", message.lower()):
+        raw = raw.strip(".")
+        if not raw or raw in FALLBACK_STOPWORDS:
+            continue
+        # U.craiova → craiova ، st.mirren → mirren
+        for part in raw.split("."):
+            # البادئات العربية الشائعة: واو العطف ثم "ال" التعريف (وكايرات → كايرات)
+            variants = {part}
+            if part.startswith("و"):
+                variants.add(part[1:])
+            for v in list(variants):
+                if v.startswith("ال"):
+                    variants.add(v[2:])
+            for v in variants:
+                if len(v) >= 4 and v not in FALLBACK_STOPWORDS:
+                    tokens.append(v)
+    if not tokens:
+        return []
+    fids = []
+    for fid, c in candidates.items():
+        names = " ".join(
+            str(c.get(k) or "").lower()
+            for k in ("home", "away", "ar_home", "ar_away")
+        )
+        if any(t in names for t in tokens):
+            fids.append(fid)
+    if len(fids) > 6:   # مطابقة فضفاضة أكثر من اللازم — أفضل أن نسأل المستخدم
+        return []
+    return fids
 
 
 def fire_scan() -> bool:
@@ -438,6 +487,14 @@ def main() -> None:
                     "(مثال: الريال يفوز وتعادل فرنسا وإسبانيا)."
                 )
             continue
+        # شبكة الأمان الحتمية: إذا لم يتعرف المفسّر على مباريات، نطابق أسماء
+        # الفرق في الرسالة مع المباريات المتاحة مباشرة (اختصارات مثل U.craiova)
+        if intent["action"] == "none" or (intent["action"] in ("set", "add", "remove") and not intent["fids"]):
+            rescued = fallback_match(text, candidates)
+            if rescued:
+                action = intent["action"] if intent["action"] in ("set", "add", "remove") else "add"
+                intent = {"action": action, "fids": rescued, "picks": []}
+                print(f"شبكة الأمان التقطت {len(rescued)} مباراة من الرسالة مباشرة.")
         if intent["action"] == "none" or (intent["action"] != "clear" and not intent["fids"]):
             send_telegram(
                 "لم أتعرف على مباريات في رسالتك. أرسل أسماء الفرق التي تهمك "
