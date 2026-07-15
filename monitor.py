@@ -37,6 +37,13 @@ CLAUDE_MODEL_V2 = "claude-fable-5"
 MAX_LIVE_ENRICHED_PER_RUN = 12   # رصيد API-Football مدفوع مسبقاً — نرفع السقف بسخاء
 LIVE_THINKING_BUDGET = 2048   # ميزانية التفكير العميق (توكنز) لتحليل المحرك 2 المباشر
 
+# ---- نبض المحرك 2 (لمباريات قائمة التركيز فقط) ----
+# بين الأحداث (لا هدف ولا بداية/نهاية) يفحص المحرك 2 المباراة كل تشغيلة:
+# إن تشكل سيناريو خطر جديد (هدف قادم، كلا الفريقين يسجلان، موجة ركنيات،
+# لاعب يهدد، بطاقة محتملة، انقلاب سيطرة) يرسل تنبيهاً — وإلا يبقى صامتاً.
+MAX_PULSE_PER_RUN = 6            # حد نداءات Claude للنبض في التشغيلة الواحدة
+PULSE_STATUSES = {"1H", "2H", "ET"}   # لا نبض في الاستراحة/الركلات الترجيحية
+
 # ---- إعدادات التغطية العالمية ----
 # ANALYZE_ALL = True  → كل مباراة تصلك تنبيهاتها تأتي مع تحليل
 # ANALYZE_ALL = False → التحليل للدوريات الكبرى فقط
@@ -315,6 +322,22 @@ SYSTEM_PROMPT_LIVE_V2 = (
 )
 
 
+SYSTEM_PROMPT_PULSE = (
+    "أنت عين حية على مباراة جارية من قائمة تركيز المستخدم. سيصلك وضع المباراة "
+    "مع إحصائياتها وأحداثها الحية، وقراءتك السابقة قبل نحو 10 دقائق.\n"
+    "مهمتك: هل يتشكل الآن سيناريو مهم جديد يستحق تنبيه المستخدم؟ أمثلة: هدف قادم "
+    "ومن أي فريق، كلا الفريقين سيسجلان، موجة ركنيات أو كرات ثابتة خطرة، لاعب بعينه "
+    "يهدد بالاسم، بطاقة حمراء محتملة تغير المباراة، انقلاب في السيطرة، أو المتقدم "
+    "بدأ يغلق المباراة.\n"
+    "إن لم يكن هناك تغير حقيقي مهم عن قراءتك السابقة فأرجع سطراً واحداً فقط: لا جديد\n"
+    "وإن وجد تغير مهم فأرجع 2-4 أسطر: أولها يبدأ بـ 🔮 وفيه خلاصة السيناريو في جملة، "
+    "ثم التفاصيل (السيناريو المتوقع، اللاعب الأخطر بالاسم إن دلّت الأحداث عليه، "
+    "ونسبة تقديرية للاحتمال).\n"
+    "لا تخلط 'لا جديد' مع أي نص آخر. استخدم الأسماء العربية الشائعة في الإعلام "
+    "الرياضي والأرقام الإنجليزية (0-9) فقط، لا الأرقام العربية (٠-٩)."
+)
+
+
 def analyze_with_claude(context_text: str, model: str = CLAUDE_MODEL,
                         system_prompt: str = SYSTEM_PROMPT_BASIC,
                         max_tokens: int = 400, thinking_budget: int = 0) -> str:
@@ -373,6 +396,26 @@ def analyze_match(prompt_base: str, league: dict, fid: str, live_budget: dict,
     return analyze_with_claude(prompt_base), False
 
 
+def live_pulse(fid: str, home: str, away: str, league_line: str,
+               score: str, minute, prev_pulse: str) -> str:
+    """نبضة مراقبة بين الأحداث لمباراة من قائمة التركيز: يقرأ المحرك 2 الوضع
+    الحي كاملاً ويقارنه بقراءته السابقة. يرجع نص التنبيه أو '' إذا لا جديد."""
+    details = get_live_details(fid)
+    ctx = (
+        f"مباراة جارية: {home} ضد {away} — {league_line}. "
+        f"النتيجة {score}، الدقيقة {minute}.\n"
+        f"قراءتك السابقة:\n{prev_pulse or 'لا توجد قراءة سابقة (هذه أول نبضة).'}"
+        + (("\n\n" + details) if details else "")
+    )
+    raw = analyze_with_claude(
+        ctx, model=CLAUDE_MODEL_V2, system_prompt=SYSTEM_PROMPT_PULSE,
+        max_tokens=600, thinking_budget=LIVE_THINKING_BUDGET,
+    )
+    if not raw or raw.strip().startswith("لا جديد") or raw.startswith("(تعذر"):
+        return ""
+    return raw.strip()
+
+
 def parse_claude_reply(text: str):
     """يفصل سطر الأسماء العربية عن نص التحليل. يرجع (dict أو None, التحليل)."""
     names = None
@@ -418,6 +461,7 @@ def main() -> None:
 
     state = load_state()
     analyses_used = 0
+    pulse_used = 0                  # عداد نبضات المحرك 2 في هذه التشغيلة
     live_budget = {"used": 0}       # عداد مباريات المحرك 2 المباشر في هذه التشغيلة
     wl_data = load_watchlist_data() # قائمة التركيز — تتحكم بمن يستحق تنبيه تيليجرام
     watch = valid_watch_fids(wl_data)
@@ -508,6 +552,7 @@ def main() -> None:
 
         # --- حدث 2: تغير النتيجة (هدف) ---
         ar_names = prev.get("ar")
+        pulse_text = prev.get("pulse") or ""
         if score != prev.get("score") and status in LIVE_STATUSES and alert_ok:
             analysis = ""
             enriched = False
@@ -522,6 +567,8 @@ def main() -> None:
                 ar_new, analysis = parse_claude_reply(raw)
                 if ar_new:
                     ar_names = ar_new
+                if enriched and analysis:
+                    pulse_text = analysis   # قراءة الهدف تصبح المرجع لنبضات ما بعده
             h_disp = ar_names["home"] if ar_names else home
             a_disp = ar_names["away"] if ar_names else away
             l_disp = ar_names["league"] if ar_names else league_line
@@ -552,6 +599,22 @@ def main() -> None:
                 wl_entry["result"] = f"{gh}-{ga}"
                 wl_dirty = True
 
+        # --- نبض المحرك 2: مراقبة مستمرة لمباريات قائمة التركيز بين الأحداث ---
+        # (لا هدف هذه الجولة — لكن هل يتشكل سيناريو خطر؟ ركنيات، هدف قادم،
+        #  كلا الفريقين يسجلان، لاعب يهدد، بطاقة... يرسل فقط عند وجود جديد)
+        if (alert_ok and fid in watch and status in PULSE_STATUSES
+                and score == prev.get("score")
+                and pulse_used < MAX_PULSE_PER_RUN):
+            pulse_used += 1
+            alert = live_pulse(fid, home, away, league_line, score, minute, pulse_text)
+            if alert:
+                h_disp = ar_names["home"] if ar_names else home
+                a_disp = ar_names["away"] if ar_names else away
+                send_telegram(
+                    f"👁 عين المحرك 2 — {h_disp} {gh} - {ga} {a_disp} (د{minute})\n\n{alert}"
+                )
+                pulse_text = alert
+
         entry = {
             "score": score, "status": status, "minute": minute,
             "home": home, "away": away, "league": league_line,
@@ -559,6 +622,8 @@ def main() -> None:
         }
         if ar_names:
             entry["ar"] = ar_names
+        if pulse_text:
+            entry["pulse"] = pulse_text
         state[fid] = entry
 
     # تنظيف الذاكرة: نحذف المباريات التي لم تعد حية
@@ -582,7 +647,8 @@ def main() -> None:
     save_state(state)
     print(
         f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}، "
-        f"منها بالمحرك 2 المباشر: {live_budget['used']}، قائمة التركيز: {len(watch)}"
+        f"منها بالمحرك 2 المباشر: {live_budget['used']}، نبضات: {pulse_used}، "
+        f"قائمة التركيز: {len(watch)}"
     )
 
 
