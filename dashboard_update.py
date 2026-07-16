@@ -198,8 +198,14 @@ def build_upcoming(store: dict) -> list:
 
 
 def build_recent_results(store: dict) -> list:
+    """آخر 20 نتيجة مُقيَّمة — الأحدث أولاً، والدوريات الكبرى في المقدمة
+    حتى لا تدفن مباريات المستخدم المهمة تحت نتائج الدوريات الصغيرة."""
+    pool = (store.get("resolved") or [])[-120:]
+    pool = sorted(pool,
+                  key=lambda r: (r.get("date") or "", 1 if r.get("top") else 0),
+                  reverse=True)
     out = []
-    for r in (store.get("resolved") or [])[-20:]:
+    for r in pool[:20]:
         item = {
             "date": r.get("date"),
             "home": r.get("ar_home") or r.get("home", "?"),
@@ -218,7 +224,6 @@ def build_recent_results(store: dict) -> list:
             item["prob_draw"] = r.get("prob_draw")
             item["prob_away"] = r.get("prob_away")
         out.append(item)
-    out.reverse()
     return out
 
 
