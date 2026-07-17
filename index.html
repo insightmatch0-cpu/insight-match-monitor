@@ -200,6 +200,17 @@
   }
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
+  .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
+
+  /* ======== بحث النتائج ======== */
+  .res-search{
+    width:100%;box-sizing:border-box;margin:2px 0 10px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:14px;padding:10px 12px;
+    outline:none;
+  }
+  .res-search:focus{border-color:var(--v2)}
+  .res-search::placeholder{color:var(--muted)}
 
   /* ======== النتائج الأخيرة ======== */
   .res{
@@ -327,6 +338,8 @@
         <span class="rule"></span>
         <span class="count" id="res-count">0</span>
       </div>
+      <input id="res-search" class="res-search" type="search" autocomplete="off"
+             oninput="onResSearch()" />
       <div id="res-list"></div>
     </section>
 
@@ -369,6 +382,8 @@ var I18N = {
     noUpcoming:"لا توجد توقعات قادمة حالياً.",
     noAcc:"لا يوجد سجل بعد — يبدأ الحساب بعد أول نتائج مُقيَّمة.",
     noRes:"لا توجد نتائج مُقيَّمة بعد.",
+    noResMatch:"لا نتائج تطابق بحثك.",
+    searchPh:"🔍 ابحث عن فريق...",
     noNews:"لا توجد أخبار حالياً.",
     pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل",
     accOverall:"الإجمالي", acc30:"آخر 30 يوماً",
@@ -395,6 +410,8 @@ var I18N = {
     noUpcoming:"No upcoming predictions at the moment.",
     noAcc:"No record yet — starts after the first graded results.",
     noRes:"No graded results yet.",
+    noResMatch:"No results match your search.",
+    searchPh:"🔍 Search for a team...",
     noNews:"No news right now.",
     pickHome:"Win", pickAway:"Win", pickDraw:"Draw",
     accOverall:"Overall", acc30:"Last 30 days",
@@ -452,6 +469,8 @@ function applyLang(){
   document.getElementById("langBtn").textContent = (lang === "ar") ? "EN" : "ع";
   var nodes = document.querySelectorAll("[data-i]");
   for (var i=0;i<nodes.length;i++) nodes[i].textContent = t(nodes[i].getAttribute("data-i"));
+  var sb = document.getElementById("res-search");
+  if (sb) sb.placeholder = t("searchPh");
 }
 document.getElementById("langBtn").addEventListener("click", function(){
   lang = (lang === "ar") ? "en" : "ar";
@@ -593,8 +612,10 @@ function renderAccuracy(acc){
     var o = bc[keys[i]];
     var p = pctOf(o);
     if (p !== null) any = true;
+    var cnt = (o && o.total) ? o.correct+"/"+o.total : "";
     bh += '<div class="bucket"><div class="b-label">'+esc(keys[i])+'%</div>'
-      + '<div class="b-val">'+(p===null?"—":p+"%")+'</div></div>';
+      + '<div class="b-val">'+(p===null?"—":p+"%")+'</div>'
+      + '<div class="b-count">'+cnt+'</div></div>';
   }
   bh += '</div>';
 
@@ -642,10 +663,30 @@ function renderLessons(){
   document.getElementById("lessons-list").innerHTML = h;
 }
 
+var resAll = [];   /* كل النتائج المحمّلة — البحث يصفّي منها بلا إعادة جلب */
+
 function renderResults(list){
+  resAll = list || [];
+  var search = document.getElementById("res-search");
+  if (search){ search.placeholder = t("searchPh"); search.style.display = resAll.length ? "" : "none"; }
+  paintResults();
+}
+
+function onResSearch(){ paintResults(); }
+
+function paintResults(){
   var el = document.getElementById("res-list");
-  document.getElementById("res-count").textContent = list.length;
-  if (!list.length){ el.innerHTML = '<div class="empty">'+t("noRes")+"</div>"; return; }
+  var box = document.getElementById("res-search");
+  var q = (box && box.value ? box.value : "").trim().toLowerCase();
+  var list = resAll;
+  if (q){
+    list = resAll.filter(function(r){
+      return ((r.home||"")+" "+(r.away||"")).toLowerCase().indexOf(q) !== -1;
+    });
+  }
+  document.getElementById("res-count").textContent = q ? (list.length+"/"+resAll.length) : resAll.length;
+  if (!resAll.length){ el.innerHTML = '<div class="empty">'+t("noRes")+"</div>"; return; }
+  if (!list.length){ el.innerHTML = '<div class="empty">'+t("noResMatch")+"</div>"; return; }
   var h = "";
   for (var i=0;i<list.length;i++){
     var r = list[i];
