@@ -50,6 +50,11 @@ MAX_ENRICHED_FIXTURES = 60    # كل مباريات اليوم (كانت 15 لل
 ENRICH_CALL_BUDGET    = 750   # سقف أمان لنداءات السياق الإضافي (~505 متوقعة مع الأودز والمدربين)
 ENRICHED_BATCH_SIZE   = 4     # دفعات صغيرة للمباريات ذات السياق الغني
 BASIC_BATCH_SIZE      = 12    # دفعات المباريات بدون سياق (مثل المحرك 1)
+# توفير التكلفة (توجيه المالك 2026-07-17): السياق الغني (والنموذج المكلف عليه)
+# للدوريات الكبرى فقط — بقية المباريات تُتوقّع بالنمط الخفيف. كل المباريات
+# تبقى مُتوقَّعة ومُقيَّمة (التغطية كاملة، الدماغ والدروس لا يتأثران). للرجوع
+# الفوري إلى تغطية غنية للجميع: اجعل هذه القيمة False.
+ENRICH_TOP_ONLY       = True
 MAX_LESSONS_IN_PROMPT = 15    # أحدث الدروس التي تُحقن في كل توقع
 MAX_LESSONS_STORED    = 100   # أقصى دروس محفوظة في lessons_v2.json
 MAX_MISTAKES_PER_RUN  = 30    # كل أخطاء اليوم عملياً تُراجع لاستخلاص الدروس (نداء واحد)
@@ -1363,12 +1368,15 @@ def main() -> None:
     standings_cache = {}
     enriched, basic = [], []
     for m in upcoming:
-        if len(enriched) < MAX_ENRICHED_FIXTURES and budget["used"] < ENRICH_CALL_BUDGET:
+        # النمط الغني (المكلف) للدوريات الكبرى فقط عند تفعيل التوفير — البقية
+        # تبقى مُتوقَّعة بالنمط الخفيف (تغطية كاملة، تعلّم كامل، تكلفة أقل)
+        want_rich = (m.get("top") or not ENRICH_TOP_ONLY)
+        if want_rich and len(enriched) < MAX_ENRICHED_FIXTURES and budget["used"] < ENRICH_CALL_BUDGET:
             m["context"] = build_context(m, budget, standings_cache)
             enriched.append(m)
         else:
             basic.append(m)
-    print(f"سياق إضافي: {len(enriched)} مباراة، {budget['used']} نداء API")
+    print(f"سياق إضافي: {len(enriched)} مباراة (غنية)، {len(basic)} خفيفة، {budget['used']} نداء API")
 
     # 4) توقعات Claude على دفعات
     new_preds = []
