@@ -29,7 +29,8 @@ NEWS_FILE           = Path("news.json")
 DATA_FILE           = Path("data.json")
 DATA_V2_FILE        = Path("data_v2.json")
 
-LESSONS_ON_DASHBOARD = 10   # أحدث الدروس المعروضة في لوحة المحرك 2
+LESSONS_ON_DASHBOARD = 30   # أحدث الدروس المعروضة في لوحة المحرك 2
+RECENT_RESULTS_SHOWN = 50   # عدد النتائج المُقيَّمة المعروضة (تكفي أياماً لا ساعات)
 
 NEWS_MAX_AGE_HOURS = 3     # لا نحدّث الأخبار قبل مرور هذه المدة
 NEWS_MAX_ITEMS     = 15
@@ -200,12 +201,12 @@ def build_upcoming(store: dict) -> list:
 def build_recent_results(store: dict) -> list:
     """آخر 20 نتيجة مُقيَّمة — الأحدث أولاً، والدوريات الكبرى في المقدمة
     حتى لا تدفن مباريات المستخدم المهمة تحت نتائج الدوريات الصغيرة."""
-    pool = (store.get("resolved") or [])[-120:]
+    pool = (store.get("resolved") or [])[-300:]
     pool = sorted(pool,
                   key=lambda r: (r.get("date") or "", 1 if r.get("top") else 0),
                   reverse=True)
     out = []
-    for r in pool[:20]:
+    for r in pool[:RECENT_RESULTS_SHOWN]:
         item = {
             "date": r.get("date"),
             "home": r.get("ar_home") or r.get("home", "?"),
