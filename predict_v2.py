@@ -76,7 +76,7 @@ DIGEST_TOP_ONLY      = True
 DASHBOARD_URL = "https://insightmatch0-cpu.github.io/insight-match-monitor/"
 
 TOP_LEAGUE_IDS = {
-    1, 2, 3, 4, 9, 13, 15, 39, 61, 71, 78, 88, 94, 128, 135, 140, 253, 307,
+    1, 2, 3, 4, 9, 13, 15, 39, 40, 61, 71, 78, 88, 94, 128, 135, 140, 253, 307, 417, 542,
 }
 
 EXCLUDED_COUNTRIES = {
