@@ -247,6 +247,11 @@
   .lesson{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:8px}
   .lesson .l-text{font-size:13px;line-height:1.55}
   .lesson .l-meta{font-size:11px;color:var(--muted);margin-top:4px}
+  .lesson-day{font-size:11.5px;color:var(--muted);font-weight:600;margin:14px 0 7px;
+    padding-bottom:4px;border-bottom:1px solid var(--line)}
+  .lesson-day:first-child{margin-top:2px}
+  .lesson-day.is-new{color:var(--v2)}
+  .lesson-day .l-new{color:var(--v2);font-weight:700;margin-inline-start:6px}
 
   /* ======== لوحة "قيد الإنشاء" للمحرك 2 ======== */
   .construct{
@@ -391,6 +396,7 @@ var I18N = {
     otherLeagues:"دوريات أخرى",
     updated:"آخر تحديث",
     lessons:"📚 دروس يتعلمها المحرك",
+    lessonsNew:"جديد اليوم",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -419,6 +425,7 @@ var I18N = {
     otherLeagues:"Other leagues",
     updated:"Updated",
     lessons:"📚 Lessons the engine learned",
+    lessonsNew:"new today",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -650,14 +657,29 @@ function renderLessons(){
   var sec = document.getElementById("lessons-sec");
   var list = (engine === "v2" && v2exists && lastV2 && lastV2.lessons) ? lastV2.lessons : [];
   sec.style.display = list.length ? "" : "none";
-  document.getElementById("lessons-count").textContent = list.length;
-  if (!list.length){ document.getElementById("lessons-list").innerHTML = ""; return; }
+  if (!list.length){ document.getElementById("lessons-list").innerHTML = ""; document.getElementById("lessons-count").textContent = 0; return; }
+  /* أحدث تاريخ = الدروس الجديدة اليوم (الذاكرة تحتفظ بالكل — هذا عرض فقط) */
+  var latest = "";
+  for (var i=0;i<list.length;i++){ var dd = list[i].date || ""; if (dd > latest) latest = dd; }
+  var newCount = 0;
+  for (var i=0;i<list.length;i++){ if ((list[i].date||"") === latest) newCount++; }
+  document.getElementById("lessons-count").textContent =
+    newCount ? (list.length + " · 🆕" + newCount) : list.length;
+  /* تجميع حسب اليوم — أحدث يوم موسوم "جديد"، والأقدم أسفله */
   var h = "";
+  var curDate = null;
   for (var i=0;i<list.length;i++){
     var x = list[i];
-    var meta = [x.match, x.date].filter(Boolean).join(" · ");
+    var dd = x.date || "";
+    if (dd !== curDate){
+      curDate = dd;
+      var isNew = (dd === latest);
+      h += '<div class="lesson-day'+(isNew?' is-new':'')+'">'+esc(dd || "—")
+        + (isNew ? '<span class="l-new">🆕 '+esc(t("lessonsNew"))+'</span>' : "")
+        + '</div>';
+    }
     h += '<div class="lesson"><div class="l-text">'+esc(x.text)+'</div>'
-      + (meta ? '<div class="l-meta">'+esc(meta)+'</div>' : "")
+      + (x.match ? '<div class="l-meta">'+esc(x.match)+'</div>' : "")
       + '</div>';
   }
   document.getElementById("lessons-list").innerHTML = h;
