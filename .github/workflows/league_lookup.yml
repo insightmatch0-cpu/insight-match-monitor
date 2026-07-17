@@ -1,0 +1,47 @@
+name: League ID lookup (temporary)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lookup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lookup priority league IDs
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: |
+          python - <<'EOF'
+          import os, json, urllib.parse, urllib.request
+
+          key = (os.environ.get("API_FOOTBALL_KEY") or "").strip()
+          countries = ["England", "Italy", "Germany", "Spain", "France",
+                       "Saudi-Arabia", "Saudi Arabia", "Bahrain", "Iraq"]
+
+          def get(country):
+              url = "https://v3.football.api-sports.io/leagues?country=" + urllib.parse.quote(country)
+              req = urllib.request.Request(url, headers={"x-apisports-key": key})
+              try:
+                  with urllib.request.urlopen(req, timeout=25) as r:
+                      return json.load(r).get("response", [])
+              except Exception as e:
+                  print("  ! error:", e)
+                  return []
+
+          seen = set()
+          for c in countries:
+              if c in seen:
+                  continue
+              seen.add(c)
+              rows = get(c)
+              if not rows:
+                  continue
+              print(f"\n=== {c} ===")
+              for row in rows:
+                  lg = row.get("league", {})
+                  if lg.get("type") == "League":
+                      print(f"  id={lg.get('id')}  name={lg.get('name')}")
+          EOF
