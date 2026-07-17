@@ -318,7 +318,12 @@ def claude_request(system_prompt: str, user_text: str, max_tokens: int = 2000) -
             if b.get("type") == "text"
         ).strip()
     except Exception as e:
-        print("Claude error:", e)
+        detail = ""
+        resp = getattr(e, "response", None)
+        if resp is not None:
+            try: detail = " — " + resp.text[:300]
+            except Exception: pass
+        print(f"Claude error: {e}{detail}")
         return ""
 
 
@@ -1133,7 +1138,12 @@ def claude_predict_batch(batch: list, stats: dict, enriched: bool) -> dict:
         ).strip()
         return parse_predictions_json(text)
     except Exception as e:
-        print("Claude error:", e)
+        detail = ""
+        resp = getattr(e, "response", None)
+        if resp is not None:
+            try: detail = " — " + resp.text[:300]
+            except Exception: pass
+        print(f"Claude error: {e}{detail}")
         return {}
 
 
