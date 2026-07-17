@@ -27,33 +27,6 @@
    "ar_away": "فانكوفر وايتكابس",
    "ar_league": "الدوري الأمريكي الممتاز"
   },
-  "1490328": {
-   "fid": "1490328",
-   "kickoff": "2026-07-17T02:30:00+00:00",
-   "date": "2026-07-17",
-   "home": "Seattle Sounders",
-   "away": "Portland Timbers",
-   "home_id": 1595,
-   "away_id": 1617,
-   "home_logo": "https://media.api-sports.io/football/teams/1595.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1617.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "league": "Major League Soccer (USA)",
-   "league_id": 253,
-   "season": 2026,
-   "round": "Regular Season - 17",
-   "venue": "Lumen Field, USA",
-   "top": true,
-   "pick": "home",
-   "confidence": 58,
-   "prob_home": 58,
-   "prob_draw": 24,
-   "prob_away": 18,
-   "reason": "سياتل أقوى دفاعياً وفاز بآخر مواجهة مباشرة على أرضه، لكن إصاباته الكثيرة وفورمه المتذبذب يستدعيان خفض ثقة السوق قليلاً",
-   "ar_home": "سياتل ساوندرز",
-   "ar_away": "بورتلاند تيمبرز",
-   "ar_league": "الدوري الأمريكي الممتاز"
-  },
   "1589177": {
    "fid": "1589177",
    "kickoff": "2026-07-16T08:45:00+00:00",
@@ -3998,24 +3971,46 @@
    "actual": "home",
    "score": "3-2",
    "correct": true
+  },
+  {
+   "fid": "1490328",
+   "date": "2026-07-17",
+   "home": "Seattle Sounders",
+   "away": "Portland Timbers",
+   "ar_home": "سياتل ساوندرز",
+   "ar_away": "بورتلاند تيمبرز",
+   "home_logo": "https://media.api-sports.io/football/teams/1595.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1617.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "league": "Major League Soccer (USA)",
+   "ar_league": "الدوري الأمريكي الممتاز",
+   "top": true,
+   "pick": "home",
+   "confidence": 58,
+   "prob_home": 58,
+   "prob_draw": 24,
+   "prob_away": 18,
+   "actual": "away",
+   "score": "1-5",
+   "correct": false
   }
  ],
  "meta": {
-  "last_run": "2026-07-17T04:16:05.403619+00:00",
+  "last_run": "2026-07-17T11:07:26.605740+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
     "correct": 104,
-    "total": 178
+    "total": 179
    },
    "last30": {
     "correct": 104,
-    "total": 178
+    "total": 179
    },
    "top_leagues": {
     "correct": 18,
-    "total": 26
+    "total": 27
    },
    "other_leagues": {
     "correct": 86,
@@ -4032,7 +4027,7 @@
     },
     "50-59": {
      "correct": 13,
-     "total": 27
+     "total": 28
     },
     "<50": {
      "correct": 63,
@@ -4058,7 +4053,7 @@
     },
     "2026-07-17": {
      "correct": 1,
-     "total": 1
+     "total": 2
     }
    }
   }
