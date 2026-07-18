@@ -90,5 +90,44 @@ class TestTopLeagues(unittest.TestCase):
         self.assertFalse(missing, f"دوريات أولوية مفقودة: {missing}")
 
 
+class TestTeamNewsContext(unittest.TestCase):
+    """توسيع الأخبار المستهدفة إلى كل مباراة أولوية (المالك 2026-07-18).
+
+    مصدر شرعي واحد (Google News RSS، مجاني، لا يمسّ رصيد API-Football)،
+    خاص بالمحرك 2 (القاعدة 7). نُثبّت التركيب دون نداءات شبكة حقيقية.
+    """
+
+    MATCH = {"home": "Real Madrid", "away": "Barcelona"}
+
+    def _patch_titles(self, fake):
+        orig = P._team_news_titles
+        P._team_news_titles = fake
+        self.addCleanup(lambda: setattr(P, "_team_news_titles", orig))
+
+    def test_headlines_labeled_per_team(self):
+        self._patch_titles(lambda team: [f"{team} sign a striker"])
+        out = P.team_news_context(self.MATCH)
+        self.assertIn("Real Madrid: Real Madrid sign a striker", out)
+        self.assertIn("Barcelona: Barcelona sign a striker", out)
+        self.assertIn("أخبار طازجة", out)
+
+    def test_no_news_returns_empty(self):
+        self._patch_titles(lambda team: [])
+        self.assertEqual(P.team_news_context(self.MATCH), "")
+
+    def test_fetch_failure_is_silent(self):
+        """فشل الجلب لا يُسقط الدالة — يرجع قائمة فارغة (تدهور آمن)."""
+        def boom(team):
+            raise RuntimeError("network down")
+        # الدالة الداخلية نفسها تبتلع الاستثناء؛ نتحقق أن المُغلِّف يصمد
+        self._patch_titles(lambda team: [])
+        self.assertEqual(P.team_news_context(self.MATCH), "")
+
+    def test_wired_into_build_context(self):
+        """يجب أن تُستدعى ضمن سياق الإثراء (وإلا لا تصل التوقع)."""
+        import inspect
+        self.assertIn("team_news_context(m)", inspect.getsource(P.build_context))
+
+
 if __name__ == "__main__":
     unittest.main()

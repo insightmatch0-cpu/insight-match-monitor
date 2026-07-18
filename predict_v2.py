@@ -1028,6 +1028,42 @@ def transfers_context(m: dict, budget: dict) -> str:
             + "\n".join(lines))
 
 
+def _team_news_titles(team: str) -> list:
+    """عناوين مستهدفة للفريق من Google News RSS (مجاني، لا يكلّف رصيد API-Football).
+    نفس نهج team_news_headlines في monitor.py — مصدر شرعي للأخبار الطازجة."""
+    if not team:
+        return []
+    try:
+        import html as html_mod
+        r = requests.get(
+            "https://news.google.com/rss/search",
+            params={"q": f'"{team}" football', "hl": "en", "gl": "US",
+                    "ceid": "US:en"},
+            timeout=15,
+        )
+        titles = re.findall(r"<title>(.*?)</title>", r.text)[1:5]
+        return [html_mod.unescape(t).strip() for t in titles if t.strip()]
+    except Exception as e:
+        print("أخبار الفريق (المحرك 2) — فشل الجلب:", e)
+        return []
+
+
+def team_news_context(m: dict) -> str:
+    """أخبار مستهدفة لكل فريق قبل التوقع اليومي (Google News RSS، مجاني) —
+    توسيع خطوة الاستكشاف: كانت الأخبار المستهدفة تصل تقارير ما قبل المباراة
+    فقط؛ الآن تغذّي كل مباراة من الدوريات ذات الأولوية (المالك 2026-07-18):
+    غياب/انتقال/أزمة طازجة قبل أن تصل العناوين الكبرى — لرفع نسبة الحماية.
+    خاص بالمحرك 2 (القاعدة 7)."""
+    lines = []
+    for team in (m.get("home"), m.get("away")):
+        for title in _team_news_titles(team):
+            lines.append(f"- {team}: {title}")
+    if not lines:
+        return ""
+    return ("أخبار طازجة مستهدفة للفريقين (غياب/انتقال/أزمة قد لا تصل العناوين "
+            "الكبرى بعد):\n" + "\n".join(lines))
+
+
 def build_context(m: dict, budget: dict, standings_cache: dict) -> str:
     parts = [
         competition_context(m),
@@ -1042,6 +1078,7 @@ def build_context(m: dict, budget: dict, standings_cache: dict) -> str:
         coach_context(m, budget),
         transfers_context(m, budget),
         weather_context(m),
+        team_news_context(m),
     ]
     return "\n".join(p for p in parts if p)
 
