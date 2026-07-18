@@ -142,6 +142,11 @@ The set of signals Engine 2 consumes must **keep expanding forever** — explori
 
 ## How to work in this repo
 
+- **Quality Gate / SLA doctrine (owner's directive 2026-07-18 — an IT company with a tester, not a hobby script):**
+  1. **Run the test suite before every merge**: `python -m unittest discover tests`. The `tests/` directory + `.github/workflows/tests.yml` (runs on every code push/PR touching `*.py`, `index.html`, or `tests/`) are the automated tester. A red gate means DO NOT merge.
+  2. **Every bug fixed becomes a permanent regression test in `tests/` in the same PR as the fix.** What was cured must never come back — the construction-panel flash, the cup-guardrail miss, the fallback-match failure, the results sorting are all guarded there already. No fix ships without its test.
+  3. **Enhancements must never degrade what works**: an enhancement PR may not remove or weaken an existing test to pass. If a test blocks an enhancement, that's a design conversation, not a deletion.
+  4. Frontend changes must keep `tests/test_index_html.py` green (JS syntax via node, flash-fix guards, i18n key parity AR↔EN).
 - Test Python changes locally before committing: `python -m py_compile <file>.py` at minimum; mock-data runs where possible. Scripts exit early without secrets, so full end-to-end runs happen in Actions.
 - Manual runs: Actions tab → workflow → Run workflow. Verify results via `data.json` / `predictions.json` in the repo, not assumptions.
 - `state.json`, `data.json`, `data_v2.json`, `news.json`, `predictions.json`, `predictions_v2.json` are bot-written and auto-committed by workflows — expect them to change under you; `git pull --rebase` before pushing.
