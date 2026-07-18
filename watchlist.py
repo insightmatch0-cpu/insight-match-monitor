@@ -355,8 +355,26 @@ def send_pick_buttons(fids: list, candidates: dict) -> None:
             print("Telegram error:", e)
 
 
+def candidate_from_watchlist(wl_data: dict) -> dict:
+    """احتياطي: مباريات قائمة التركيز نفسها كمرشحات للتوقع — حتى لو غابت عن
+    توقعات الـ24 ساعة لحظياً، فنية المالك واضحة لأنه أضافها بنفسه. يضمن ألا
+    يضيع تصويت لمباراة موجودة في القائمة (إصلاح تعثّر زر التوقع 2026-07-18)."""
+    out = {}
+    for fid, m in (wl_data.get("matches") or {}).items():
+        out[str(fid)] = {
+            "fid": str(fid),
+            "home": m.get("home", "?"), "away": m.get("away", "?"),
+            "ar_home": "", "ar_away": "",
+            "league": m.get("label") or "",
+            "kickoff": m.get("kickoff", ""),
+            "date": m.get("date", ""),
+        }
+    return out
+
+
 def handle_pick_callback(payload: str, candidates: dict) -> str:
-    """يعالج ضغطة زر التوقع: pick|fid|home — بدون أي نداء Claude."""
+    """يعالج ضغطة زر التوقع: pick|fid|home — بدون أي نداء Claude.
+    يرجع رسالة التأكيد، أو "" إذا كانت الضغطة غير صالحة (fid غير معروف)."""
     parts = payload.split("|")
     if (len(parts) == 3 and parts[0] == "pick"
             and parts[1] in candidates and parts[2] in ("home", "draw", "away")):
@@ -364,14 +382,15 @@ def handle_pick_callback(payload: str, candidates: dict) -> str:
     return ""
 
 
-def answer_callback(callback_id) -> None:
-    """إغلاق مؤشر الانتظار على زر تيليجرام (قد يكون انتهى وقته — نتجاهل الفشل)."""
+def answer_callback(callback_id, text: str = "تم") -> None:
+    """يغلق مؤشر الانتظار على زر تيليجرام بنصّ يعكس النتيجة الحقيقية (نجاح أو
+    تعذّر) — لا نُظهر "✅" كاذبة. أفضل جهد؛ نتجاهل الفشل (قد ينتهي وقت المؤشر)."""
     if not callback_id:
         return
     try:
         requests.post(
             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/answerCallbackQuery",
-            json={"callback_query_id": callback_id, "text": "تم التسجيل ✅"},
+            json={"callback_query_id": callback_id, "text": text},
             timeout=15,
         )
     except Exception:
@@ -458,13 +477,23 @@ def main() -> None:
     data["last_update_id"] = last_id
 
     for item in items:
+      # عزل الأخطاء لكل عنصر: فشل رسالة واحدة يجب ألا يُسقط بقية الدفعة
+      # (بما فيها ضغطة زر التوقع) — إصلاح فقدان التصويت الصامت 2026-07-18
+      try:
         # ضغطات الأزرار: تسجيل توقع فوري بدون Claude
         if item["type"] == "callback":
             candidates = candidate_matches()
+            # احتياطي: امزج مباريات القائمة حتى لا يضيع تصويت لمباراة أضافها المالك
+            for fid, c in candidate_from_watchlist(data).items():
+                candidates.setdefault(fid, c)
             reply = handle_pick_callback(item["data"], candidates)
-            answer_callback(item.get("id"))
-            if reply:
-                send_telegram(reply)
+            ok = bool(reply)
+            answer_callback(item.get("id"), "تم التسجيل ✅" if ok else "تعذّر التسجيل")
+            # لا صمت أبداً: تأكيد عند النجاح، أو سبب واضح عند الفشل
+            send_telegram(reply if ok else (
+                "⚠️ لم أستطع تسجيل توقعك — المباراة غير متاحة للتوقع الآن "
+                "(ربما انطلقت أو خرجت من القائمة). أعد إرسال اسم الفريق وتوقعك كنص."
+            ))
             continue
 
         text = item["text"]
@@ -505,6 +534,9 @@ def main() -> None:
         send_telegram(apply_action(intent["action"], intent["fids"], candidates, data))
         if intent["action"] in ("set", "add") and intent["fids"]:
             send_pick_buttons(intent["fids"], candidates)
+      except Exception as e:
+        print("خطأ في معالجة عنصر تيليجرام (نتابع البقية):", e)
+        continue
 
     save_json(WATCHLIST_FILE, data)
     print(f"قائمة التركيز: {len(data.get('matches', {}))} مباراة، عناصر جديدة: {len(items)}")
