@@ -16,7 +16,7 @@ class TestScenarioMenu(unittest.TestCase):
 
     def test_penalty_shootout_scenario_present(self):
         self.assertIn("ركلات الترجيح", M.SCENARIO_MENU_V2)
-        self.assertIn("الأشواط", M.SCENARIO_MENU_V2)
+        self.assertIn("الإضافية", M.SCENARIO_MENU_V2)
 
     def test_menu_injected_into_both_prompts(self):
         """القائمة مشتركة بين التحليل الحي وتقرير ما قبل المباراة."""
