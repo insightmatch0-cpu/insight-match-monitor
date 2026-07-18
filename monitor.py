@@ -128,7 +128,15 @@ EXCLUDED_COUNTRIES = {
 }
 
 # كلمات في اسم البطولة تؤدي للاستبعاد (الودية + بطولات أفريقيا القارية)
-EXCLUDED_LEAGUE_KEYWORDS = ["friendl", "caf ", "africa", "afcon"]
+EXCLUDED_LEAGUE_KEYWORDS = [
+    "friendl", "caf ", "africa", "afcon",
+    # بيانات لا نبني عليها التعلم (توجيه المالك 2026-07-18): دوريات السيدات
+    # والفئات السنية والرديف — ضجيج يبطئ بناء دماغ موثوق للموسم
+    "women", "femen", "femin", "frauen", "ladies", "wsl", "girls",
+    "u16", "u17", "u18", "u19", "u20", "u21", "u23",
+    "youth", "primavera", "juvenil", "junioren", "reserve", "reserva",
+    "academy",
+]
 
 # حالات المباراة الحية والمنتهية في API-Football
 LIVE_STATUSES  = {"1H", "HT", "2H", "ET", "BT", "P", "LIVE", "INT"}
