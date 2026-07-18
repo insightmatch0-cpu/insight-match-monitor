@@ -138,7 +138,15 @@ def refresh_news() -> dict:
 
 
 # ================== تجميع data.json ==================
-def build_live(state: dict) -> list:
+def _live_pred(store: dict, fid: str):
+    """توقع المحرك لمباراة حية (من pending) — للعرض على بطاقة المباراة."""
+    p = (store.get("pending") or {}).get(fid)
+    if not p or not p.get("pick"):
+        return None
+    return {"pick": p["pick"], "confidence": p.get("confidence")}
+
+
+def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
     live = []
     for fid, e in state.items():
         if not isinstance(e, dict):
@@ -146,7 +154,7 @@ def build_live(state: dict) -> list:
         if e.get("status") not in LIVE_STATUSES:
             continue
         ar = e.get("ar") or {}
-        live.append({
+        item = {
             "fid": fid,
             "home": ar.get("home") or e.get("home", "?"),
             "away": ar.get("away") or e.get("away", "?"),
@@ -157,7 +165,15 @@ def build_live(state: dict) -> list:
             "score": e.get("score", "0-0"),
             "minute": e.get("minute", 0),
             "status": e.get("status", ""),
-        })
+        }
+        # توقع كل محرك يظهر على البطاقة الحية مباشرة (طلب المالك 2026-07-18)
+        p1 = _live_pred(store_v1, fid)
+        p2 = _live_pred(store_v2, fid)
+        if p1:
+            item["pred_v1"] = p1
+        if p2:
+            item["pred_v2"] = p2
+        live.append(item)
     live.sort(key=lambda m: -(m["minute"] or 0))
     return live
 
@@ -281,13 +297,14 @@ def build_data_v2() -> None:
 def main() -> None:
     state = load_json(STATE_FILE, {})
     store = load_json(PREDICTIONS_FILE, {"pending": {}, "resolved": [], "meta": {}})
+    store_v2 = load_json(PREDICTIONS_V2_FILE, {})
     news = refresh_news()
 
     stats = (store.get("meta") or {}).get("stats") or {}
 
     data = {
         "updated": now_utc().isoformat(),
-        "live": build_live(state),
+        "live": build_live(state, store, store_v2),
         "upcoming": build_upcoming(store),
         "recent_results": build_recent_results(store),
         "accuracy": stats,

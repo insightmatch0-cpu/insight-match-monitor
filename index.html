@@ -253,6 +253,16 @@
   .lesson-day.is-new{color:var(--v2)}
   .lesson-day .l-new{color:var(--v2);font-weight:700;margin-inline-start:6px}
 
+  /* ======== توقعات المحركين على البطاقة الحية (طلب المالك 2026-07-18) ======== */
+  .live-preds{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+  .lp{font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 11px;border:1px solid}
+  .lp b{font-weight:800;opacity:.85;margin-inline-end:4px}
+  .lp.lp1{color:var(--v1);border-color:var(--v1);background:var(--v1-soft)}
+  .lp.lp2{color:var(--v2);border-color:var(--v2);background:var(--v2-soft)}
+  /* شارة "مباشر" الحمراء النابضة لمباراة انطلقت وما تزال في قائمة التوقعات */
+  .ko-live{color:#ff5d5d!important;font-weight:800;letter-spacing:.5px;animation:im-pulse 1.2s infinite}
+  @keyframes im-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
   /* ======== لوحة "قيد الإنشاء" للمحرك 2 ======== */
   .construct{
     background:var(--panel);border:1px solid var(--v2);border-radius:16px;
@@ -405,6 +415,8 @@ var I18N = {
     v2f2:"بيانات أعمق لكل مباراة: الترتيب، المواجهات المباشرة، الإصابات، التشكيلات",
     v2f3:"يتعلم من أخطائه: مراجعة ذاتية مكتوبة لكل توقع خاطئ",
     v2f4:"احتمالات كاملة للنتائج الثلاث بدل توقع واحد",
+    loading:"جارٍ تحميل البيانات...",
+    liveBadge:"مباشر",
     disclaimer:"التوقعات آراء تحليلية مبنية على المعطيات — ليست ضمانات."
   },
   en: {
@@ -434,6 +446,8 @@ var I18N = {
     v2f2:"Deeper data per match: standings, head-to-head, injuries, lineups",
     v2f3:"Learns from its mistakes: a written self-review of every wrong prediction",
     v2f4:"Full probabilities for all three outcomes instead of a single pick",
+    loading:"Loading data...",
+    liveBadge:"LIVE",
     disclaimer:"Predictions are analytical opinions based on data — never guarantees."
   }
 };
@@ -445,6 +459,14 @@ var engine = "v1";
 try { engine = localStorage.getItem("im-engine") || "v1"; } catch(e){}
 
 var lastV1 = null, lastV2 = null, v2exists = false;
+/* حالة ملف المحرك 2: loading (لم نعرف بعد) / ok / missing — تمنع وميض
+   لوحة "قيد الإنشاء" لحظة التحديث قبل وصول data_v2.json (ملاحظة المالك 2026-07-18) */
+var v2state = "loading";
+var liveSet = {};   /* fid المباريات الحية — لإخفائها من قائمة الـ 24 ساعة */
+/* ذاكرة محلية: نعرض آخر بيانات ناجحة فوراً عند فتح الصفحة بلا أي وميض */
+try { lastV1 = JSON.parse(localStorage.getItem("im-cache-v1") || "null"); } catch(e){}
+try { lastV2 = JSON.parse(localStorage.getItem("im-cache-v2") || "null"); } catch(e){}
+if (lastV2) { v2exists = true; v2state = "ok"; }
 
 /* ================= أدوات ================= */
 function esc(s){
@@ -525,9 +547,24 @@ function renderLive(list){
       + '<div style="text-align:center"><span class="minute">'
       + (m.status==="HT" ? "HT" : esc(m.minute)+"'") + '</span></div></div>'
       + '<div class="side">'+badge(m.away, m.away_logo)+'<span class="tname">'+esc(m.away)+'</span></div>'
-      + '</div></div>';
+      + '</div>'
+      + livePredsRow(m)
+      + '</div>';
   }
   el.innerHTML = h;
+}
+
+/* شريحتا توقع المحركين على البطاقة الحية: من كان كل محرك "يحمي"؟ */
+function lpChip(cls, label, pr, m){
+  if (!pr || !pr.pick) return "";
+  var who = pr.pick === "draw" ? t("pickDraw") : (pr.pick === "home" ? m.home : m.away);
+  return '<span class="lp '+cls+'"><b>'+esc(label)+'</b>'+esc(who)
+    + (pr.confidence ? ' · '+esc(pr.confidence)+'%' : '') + '</span>';
+}
+function livePredsRow(m){
+  var h = lpChip("lp1", t("e1name"), m.pred_v1, m)
+        + lpChip("lp2", t("e2name"), m.pred_v2, m);
+  return h ? '<div class="live-preds">'+h+'</div>' : "";
 }
 
 function pickText(p, home, away){
@@ -552,8 +589,11 @@ function probRow(p){
 
 function renderUpcoming(list){
   var el = document.getElementById("upcoming-list");
+  /* مباراة انطلقت وظهرت في القسم الحي تُرفع من هذه القائمة (توقعها معروض هناك) */
+  list = list.filter(function(p){ return !liveSet[p.fid]; });
   document.getElementById("up-count").textContent = list.length;
   if (!list.length){ el.innerHTML = '<div class="empty">'+t("noUpcoming")+"</div>"; return; }
+  var nowMs = Date.now();
 
   var h = "", curLeague = null, inOther = false;
   for (var i=0;i<list.length;i++){
@@ -575,7 +615,10 @@ function renderUpcoming(list){
       + '<div class="duel">'
       + badge(home, p.home_logo)
       + '<span class="tname h">'+esc(home)+'</span>'
-      + '<span class="ko">'+timeLocal(p.kickoff)+'</span>'
+      /* انطلقت لكنها لم تصل للقسم الحي بعد (فارق دورة المراقبة) → شارة حمراء نابضة */
+      + (Date.parse(p.kickoff) < nowMs
+          ? '<span class="ko ko-live">● '+t("liveBadge")+'</span>'
+          : '<span class="ko">'+timeLocal(p.kickoff)+'</span>')
       + '<span class="tname a">'+esc(away)+'</span>'
       + badge(away, p.away_logo)
       + '</div>'
@@ -759,20 +802,33 @@ function renderConstruction(){
   document.getElementById("res-count").textContent = "0";
 }
 
+function renderLoadingState(){
+  /* حالة انتظار هادئة — لا نعرض "قيد الإنشاء" قبل أن نتأكد أن الملف غير موجود */
+  document.getElementById("upcoming-list").innerHTML = '<div class="empty">'+t("loading")+'</div>';
+  document.getElementById("up-count").textContent = "…";
+  document.getElementById("acc-body").innerHTML = '<div class="empty">'+t("loading")+'</div>';
+  document.getElementById("res-list").innerHTML = '<div class="empty">'+t("loading")+'</div>';
+  document.getElementById("res-count").textContent = "…";
+}
+
 function renderAll(){
   var base = lastV1 || {};
+  liveSet = {};
+  (base.live || []).forEach(function(m){ if (m.fid) liveSet[m.fid] = true; });
   renderLive(base.live || []);
   renderNews(base.news || []);
   if (base.updated){
     document.getElementById("updated").textContent = t("updated")+" "+timeLocal(base.updated);
   }
   if (engine === "v2"){
-    if (v2exists && lastV2){
+    if (lastV2){
       renderUpcoming(lastV2.upcoming || []);
       renderAccuracy(lastV2.accuracy);
       renderResults(lastV2.recent_results || []);
+    } else if (v2state === "missing"){
+      renderConstruction();          /* الملف غير موجود فعلاً — V2 لم يعمل بعد */
     } else {
-      renderConstruction();
+      renderLoadingState();          /* ما زلنا ننتظر الشبكة — لا وميض */
     }
   } else {
     renderUpcoming(base.upcoming || []);
@@ -791,13 +847,23 @@ function fetchJSON(url){
 }
 function load(){
   fetchJSON("data.json").then(function(d){
-    lastV1 = d; renderAll();
+    lastV1 = d;
+    try { localStorage.setItem("im-cache-v1", JSON.stringify(d)); } catch(e){}
+    renderAll();
   }).catch(function(){ /* نبقي آخر بيانات معروضة */ });
 
   fetchJSON("data_v2.json").then(function(d){
-    lastV2 = d; v2exists = true;
+    lastV2 = d; v2exists = true; v2state = "ok";
+    try { localStorage.setItem("im-cache-v2", JSON.stringify(d)); } catch(e){}
     if (engine === "v2") renderAll();
-  }).catch(function(){ v2exists = false; });
+  }).catch(function(err){
+    /* 404 = الملف غير موجود فعلاً (V2 لم يعمل بعد) → لوحة "قيد الإنشاء".
+       أي خطأ آخر (انقطاع شبكة/مهلة) → نُبقي آخر بيانات محفوظة كما هي. */
+    if (String(err && err.message) === "404" && !lastV2){
+      v2state = "missing"; v2exists = false;
+      if (engine === "v2") renderAll();
+    }
+  });
 }
 
 applyLang();
