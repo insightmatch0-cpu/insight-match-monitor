@@ -40,6 +40,12 @@ class TestListsInSync(unittest.TestCase):
         self.assertEqual(monitor.TOP_LEAGUE_IDS, predict.TOP_LEAGUE_IDS)
         self.assertEqual(monitor.TOP_LEAGUE_IDS, predict_v2.TOP_LEAGUE_IDS)
 
+    def test_daily_prediction_cap_in_sync(self):
+        """المحركان يتوقعان نفس المباريات — سقف التوقع اليومي يجب أن يتطابق
+        (وإلا اختلّت مقارنة الدقة). رُفع لتغطية مباريات المساء (المالك 2026-07-18)."""
+        self.assertEqual(predict.MAX_PREDICTIONS_24H, predict_v2.MAX_PREDICTIONS_24H)
+        self.assertGreaterEqual(predict_v2.MAX_PREDICTIONS_24H, 150)
+
 
 class TestQualityFilter(unittest.TestCase):
     """السيدات والفئات السنية والرديف تُستبعد — بأسماء دوريات حقيقية."""
