@@ -55,6 +55,14 @@ BASIC_BATCH_SIZE      = 12    # دفعات المباريات بدون سياق 
 # تبقى مُتوقَّعة ومُقيَّمة (التغطية كاملة، الدماغ والدروس لا يتأثران). للرجوع
 # الفوري إلى تغطية غنية للجميع: اجعل هذه القيمة False.
 ENRICH_TOP_ONLY       = True
+# حارس مباريات الكأس/الإقصاء (توجيه المالك 2026-07-18): التعثّر الوحيد في خانة
+# الثقة العالية (72% على كيري×شيلبورن في كأس أيرلندا انتهت 2-2) كان مباراة كأس.
+# الفرق الصغيرة على أرضها تفاجئ الكبار بانتظام في الكأس، لذا نُلزم النموذج
+# بحدّ أدنى للتعادل ونُسقّف الثقة حتى لا تدخل تخمينات الكأس خانة 70%+ العالية.
+# لا يغيّر الطرف المُختار، ولا يمسّ التعلّم. للتعطيل الفوري: False.
+CUP_GUARDRAIL         = True
+CUP_CONF_CAP          = 65    # أقصى ثقة مسموحة في مباريات الكأس/الإقصاء
+CUP_MIN_DRAW          = 25    # أدنى احتمال تعادل نفرضه في مباريات الكأس/الإقصاء
 MAX_LESSONS_IN_PROMPT = 15    # أحدث الدروس التي تُحقن في كل توقع
 MAX_LESSONS_STORED    = 100   # أقصى دروس محفوظة في lessons_v2.json
 MAX_MISTAKES_PER_RUN  = 30    # كل أخطاء اليوم عملياً تُراجع لاستخلاص الدروس (نداء واحد)
@@ -706,6 +714,7 @@ def get_upcoming_24h() -> list:
                 league.get("country"),
             ) if x),
             "top": league.get("id") in TOP_LEAGUE_IDS,
+            "is_cup": is_cup_fixture(league.get("name"), league.get("round")),
         })
 
     out.sort(key=lambda m: (not m["top"], m["kickoff"]))
@@ -1205,6 +1214,55 @@ def parse_predictions_json(text: str) -> dict:
     return out
 
 
+# كلمات تكشف مباريات الكأس (بالاسم) والإقصاء/التصفيات (بالجولة)
+_CUP_NAME_KW = ("cup", "coupe", "copa", "pokal", "beker", "taça", "taca",
+                "cupa", "kupa", "cupen", "supercup", "كأس")
+_CUP_ROUND_KW = ("qualif", "preliminary", "play-off", "playoff", "knockout",
+                 "round of", "replay")
+
+
+def is_cup_fixture(league_name: str, round_str: str) -> bool:
+    """كأس/إقصاء؟ — الأودز غالباً مفقودة لهذه المباريات وهي كثيرة المفاجآت."""
+    ln = (league_name or "").lower()
+    rn = (round_str or "").lower()
+    return (any(k in ln for k in _CUP_NAME_KW)
+            or any(k in rn for k in _CUP_ROUND_KW))
+
+
+def apply_cup_guardrail(entry: dict) -> None:
+    """حارس مباريات الكأس/الإقصاء (توجيه المالك 2026-07-18).
+
+    يعمل بعد النموذج على مباريات الكأس فقط: يرفع احتمال التعادل إلى حدّ أدنى
+    (مفاجآت الكأس كثيرة) ثم يُسقّف الثقة عند CUP_CONF_CAP حتى لا تتسلّل تخمينات
+    الكأس إلى خانة الثقة العالية (70%+). لا يغيّر الطرف المُختار (رفع التعادل
+    لا يتجاوز المرشّح أبداً)، ولا يمسّ التعلّم — المعايرة والدروس تتعلّمان من
+    النتيجة الحقيقية كالمعتاد. للتعطيل: CUP_GUARDRAIL=False."""
+    if not (CUP_GUARDRAIL and entry.get("is_cup")):
+        return
+    try:
+        ph = int(entry["prob_home"]); pd = int(entry["prob_draw"]); pa = int(entry["prob_away"])
+    except (KeyError, TypeError, ValueError):
+        return
+    if pd < CUP_MIN_DRAW:
+        need = CUP_MIN_DRAW - pd
+        rest = ph + pa
+        if rest > 0:
+            ph -= int(round(need * ph / rest))
+            pa -= int(round(need * pa / rest))
+        pd = CUP_MIN_DRAW
+        probs = {"home": max(0, ph), "draw": max(0, pd), "away": max(0, pa)}
+        tot = sum(probs.values()) or 1
+        if tot != 100:
+            probs = {k: round(v * 100 / tot) for k, v in probs.items()}
+            km = max(probs, key=probs.get)
+            probs[km] += 100 - sum(probs.values())
+        entry["prob_home"], entry["prob_draw"], entry["prob_away"] = (
+            probs["home"], probs["draw"], probs["away"])
+        entry["pick"] = max(("home", "draw", "away"), key=lambda k: probs[k])
+    # سقّف الثقة (الطرف المُختار ثابت)
+    entry["confidence"] = max(30, min(CUP_CONF_CAP, int(entry["prob_" + entry["pick"]])))
+
+
 # ================== ملخص تيليجرام ==================
 PICK_AR = {"home": "فوز {h}", "draw": "تعادل", "away": "فوز {a}"}
 
@@ -1391,6 +1449,7 @@ def main() -> None:
                     continue
                 entry = {k: v for k, v in m.items() if k != "context"}
                 entry.update(r)
+                apply_cup_guardrail(entry)   # سقف ثقة الكأس/الإقصاء
                 store["pending"][m["fid"]] = entry
                 new_preds.append(entry)
 
