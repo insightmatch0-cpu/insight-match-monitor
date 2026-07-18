@@ -67,6 +67,12 @@ SIG_THRESHOLDS = {
 # PREMATCH_WINDOW (زر التشغيل اليدوي في monitor.yml).
 PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 45)
 
+# ---- تقارير الظل (توجيه المالك 2026-07-18): تعلم عميق يومي بلا إزعاج ----
+# المحرك 2 يكتب تقرير ما قبل المباراة لمباريات الدوريات الكبرى تلقائياً حتى
+# لو لم تكن في قائمة التركيز، ويحفظه في scenarios_v2.json للتقييم الصباحي
+# واستخلاص الدروس — دون إرسال أي رسالة تيليجرام (تيليجرام لقائمة التركيز فقط).
+SHADOW_REPORTS_PER_DAY = 6   # سقف يومي — تكلفة Fable تبقى تحت السيطرة
+
 # ذاكرة تقارير السيناريوهات: كل تقرير ما قبل مباراة يُحفظ هنا، ويقيّمه
 # predict_v2.py صباحاً مقابل البيانات النهائية الحقيقية ويستخلص دروساً
 SCENARIOS_FILE = Path("scenarios_v2.json")
@@ -688,6 +694,74 @@ def prematch_reports(wl_data: dict, watch: set) -> bool:
     return dirty
 
 
+def select_shadow_fixtures(v2_pending: dict, scen_pending: dict, watch: set,
+                           now: datetime, cap: int) -> list:
+    """يختار مباريات الدوريات الكبرى التي تنطلق خلال نافذة ما قبل المباراة،
+    لم يُلتقط لها تقرير بعد، وليست في قائمة التركيز (تلك لها التقرير العادي).
+    ترجع fids مرتبة بالأقرب انطلاقاً، بحد أقصى cap."""
+    out = []
+    for fid, p in (v2_pending or {}).items():
+        if fid in watch or fid in (scen_pending or {}):
+            continue
+        if not p.get("top"):
+            continue
+        try:
+            kickoff = datetime.fromisoformat(p.get("kickoff", ""))
+        except Exception:
+            continue
+        if kickoff <= now:
+            continue
+        if (kickoff - now).total_seconds() / 60 > PREMATCH_REPORT_MINUTES:
+            continue
+        out.append((kickoff, fid))
+    out.sort()
+    return [fid for _, fid in out[:max(0, cap)]]
+
+
+def shadow_reports(watch: set) -> None:
+    """تقارير الظل: يلتقط تقرير سيناريوهات كاملاً لمباريات الدوريات الكبرى
+    القادمة ويحفظه بعلامة shadow — بلا تيليجرام. يُقيَّم صباحاً كأي تقرير
+    ويغذي دروس lessons_v2.json، فيتدرب المحرك يومياً لا فقط عند طلب المالك."""
+    scen = load_json_file(SCENARIOS_FILE, {"pending": {}, "resolved": []})
+    scen.setdefault("pending", {})
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    used = sum(1 for e in scen["pending"].values()
+               if e.get("shadow") and e.get("date") == today)
+    used += sum(1 for e in (scen.get("resolved") or [])
+                if isinstance(e, dict) and e.get("shadow") and e.get("date") == today)
+    budget = SHADOW_REPORTS_PER_DAY - used
+    if budget <= 0:
+        return
+    v2_pending = load_json_file(Path("predictions_v2.json"), {}).get("pending") or {}
+    v1_pending = load_json_file(Path("predictions.json"), {}).get("pending") or {}
+    now = datetime.now(timezone.utc)
+    for fid in select_shadow_fixtures(v2_pending, scen["pending"], watch, now, budget):
+        p = v2_pending.get(fid) or {}
+        ctx = build_prematch_context(fid, v2_pending.get(fid),
+                                     v1_pending.get(fid), None)
+        report = analyze_with_claude(
+            ctx, model=CLAUDE_MODEL_V2, system_prompt=SYSTEM_PROMPT_PREMATCH,
+            max_tokens=900, thinking_budget=LIVE_THINKING_BUDGET,
+        )
+        if report.startswith("(تعذر"):
+            continue                       # نحاول في الجولة القادمة
+        scen["pending"][fid] = {
+            "fid": fid,
+            "date": p.get("date") or (p.get("kickoff") or "")[:10],
+            "kickoff": p.get("kickoff", ""),
+            "home": p.get("home", "?"), "away": p.get("away", "?"),
+            "ar_home": p.get("ar_home", ""), "ar_away": p.get("ar_away", ""),
+            "league": p.get("ar_league") or p.get("league", ""),
+            "report": report,
+            "shadow": True,                # صامت — التقط للتعلم فقط
+            "sent_at": datetime.now(timezone.utc).isoformat(),
+        }
+        SCENARIOS_FILE.write_text(
+            json.dumps(scen, ensure_ascii=False, indent=1), encoding="utf-8"
+        )
+        print(f"تقرير ظل: {p.get('home', '?')} × {p.get('away', '?')}")
+
+
 def live_signature(fid: str) -> dict:
     """بصمة أرقام المباراة (نداء API واحد): تحركها يعني حدثاً يستحق نبضة.
     ترجع {} عند أي فشل — فلا نخزنها كأساس."""
@@ -916,6 +990,12 @@ def main() -> None:
     # تقرير سيناريوهات ما قبل المباراة (قبل ~45 دقيقة من انطلاق مباريات القائمة)
     if prematch_reports(wl_data, watch):
         wl_dirty = True
+
+    # تقارير الظل: تدريب يومي صامت على مباريات الدوريات الكبرى (بلا تيليجرام)
+    try:
+        shadow_reports(watch)
+    except Exception as e:
+        print("تقارير الظل — خطأ غير متوقع:", e)
 
     try:
         fixtures = get_live_fixtures()

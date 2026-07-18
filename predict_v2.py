@@ -585,7 +585,8 @@ def resolve_scenarios() -> int:
         partial = sum(1 for g in grades if g.get("result") == "جزئي")
         h = entry.get("ar_home") or entry.get("home", "?")
         a = entry.get("ar_away") or entry.get("away", "?")
-        lines = [f"📋 تقييم تقرير المحرك 2 — {h} 🆚 {a}",
+        shadow_tag = " (تقرير ظل — تدريب ذاتي)" if entry.get("shadow") else ""
+        lines = [f"📋 تقييم تقرير المحرك 2{shadow_tag} — {h} 🆚 {a}",
                  f"📊 أصاب {correct}/{len(grades)}"
                  + (f" (+{partial} جزئياً)" if partial else "")]
         if result.get("summary"):
