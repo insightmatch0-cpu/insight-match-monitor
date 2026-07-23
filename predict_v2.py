@@ -547,6 +547,23 @@ def grade_scenario_report(entry: dict, actual: str) -> dict:
     return data if isinstance(data, dict) and data.get("grades") else {}
 
 
+def _scenario_grade_order(pending: dict) -> list:
+    """ترتيب تقارير السيناريوهات للتقييم: الأقدم أولاً (حسب موعد الانطلاق ثم
+    التاريخ) لا حسب رقم المباراة. مع سقف MAX_SCENARIO_GRADES_PER_RUN وتدفق
+    تقارير الظل اليومي (6/يوم)، كان الترتيب الأبجدي لأرقام المباريات يُجوّع
+    الإدخالات الأقدم — رقم مباراة أكبر أبجدياً يُقيَّم أخيراً — فتُسقط بعد
+    SCENARIO_MAX_AGE_DAYS دون تقييم، وتضيع إشارة التعلّم. نصرف ميزانية التقييم
+    على الأقرب لانتهاء المهلة أولاً."""
+    def key(fid):
+        e = pending.get(fid) or {}
+        ko = str(e.get("kickoff") or "")
+        if not ko:
+            d = str(e.get("date") or "")
+            ko = d + "T00:00:00+00:00" if d else ""
+        return (ko, str(fid))
+    return sorted(pending.keys(), key=key)
+
+
 def resolve_scenarios() -> int:
     """حلقة التعلم الذاتي للسيناريوهات: يقيّم كل تقرير ما قبل مباراة محفوظ
     مقابل البيانات النهائية، يرسل بطاقة التقييم للمالك، ويضيف الدروس إلى
@@ -560,7 +577,7 @@ def resolve_scenarios() -> int:
     graded = 0
     dirty = False
     today = now_utc().strftime("%Y-%m-%d")
-    for fid in sorted(list(scen["pending"].keys())):
+    for fid in _scenario_grade_order(scen["pending"]):
         if graded >= MAX_SCENARIO_GRADES_PER_RUN:
             break
         entry = scen["pending"][fid]
