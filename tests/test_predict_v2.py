@@ -129,5 +129,49 @@ class TestTeamNewsContext(unittest.TestCase):
         self.assertIn("team_news_context(m)", inspect.getsource(P.build_context))
 
 
+class TestScenarioGradeOrder(unittest.TestCase):
+    """إصلاح 2026-07-23: تقييم تقارير السيناريوهات يجب أن يبدأ بالأقدم لا
+    بأصغر رقم مباراة أبجدياً. مع سقف 6/تشغيل وتدفق تقارير الظل (6/يوم) كان
+    الترتيب الأبجدي لأرقام المباريات يُجوّع الإدخالات الأقدم فتُسقط بعد 4 أيام
+    دون تقييم — وتضيع إشارة التعلّم التي وُجد التقرير أصلاً لالتقاطها.
+    الحالة الحقيقية: تقرير 19 يوليو (رقم 1591866) ظلّ معلّقاً 4 أيام بينما
+    تُقيَّم مباريات أحدث ذات أرقام أصغر (149xxxx)."""
+
+    def test_oldest_kickoff_first_not_fixture_id(self):
+        pending = {
+            "1490336": {"kickoff": "2026-07-23T00:15:00+00:00", "date": "2026-07-23"},
+            "1591866": {"kickoff": "2026-07-19T19:00:00+00:00", "date": "2026-07-19"},
+            "1591936": {"kickoff": "2026-07-22T17:00:00+00:00", "date": "2026-07-22"},
+        }
+        order = P._scenario_grade_order(pending)
+        # الأقدم موعداً أولاً رغم أن رقمه أكبر أبجدياً من 149xxxx
+        self.assertEqual(order, ["1591866", "1591936", "1490336"])
+        # ليس ترتيب رقم المباراة (الذي كان يضع 1490336 أولاً)
+        self.assertNotEqual(order, sorted(pending.keys()))
+
+    def test_old_entry_wins_grade_budget(self):
+        """الإدخال الأقرب لانتهاء المهلة يجب أن يقع ضمن أول MAX_SCENARIO_GRADES."""
+        pending = {f"149000{i}": {"kickoff": f"2026-07-23T0{i}:00:00+00:00",
+                                  "date": "2026-07-23"} for i in range(7)}
+        pending["1591866"] = {"kickoff": "2026-07-19T19:00:00+00:00",
+                              "date": "2026-07-19"}  # الأقدم، رقم أكبر أبجدياً
+        order = P._scenario_grade_order(pending)
+        self.assertEqual(order[0], "1591866")
+        self.assertIn("1591866", order[:P.MAX_SCENARIO_GRADES_PER_RUN])
+
+    def test_missing_kickoff_falls_back_to_date(self):
+        pending = {
+            "b": {"date": "2026-07-23"},                        # لا kickoff
+            "a": {"kickoff": "2026-07-20T12:00:00+00:00", "date": "2026-07-20"},
+        }
+        self.assertEqual(P._scenario_grade_order(pending), ["a", "b"])
+
+    def test_resolve_uses_the_ordering_helper(self):
+        """حارس: resolve_scenarios يستخدم الترتيب الزمني لا sorted(keys)."""
+        import inspect
+        src = inspect.getsource(P.resolve_scenarios)
+        self.assertIn("_scenario_grade_order(", src)
+
+
 if __name__ == "__main__":
     unittest.main()
