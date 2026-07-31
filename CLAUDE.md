@@ -111,6 +111,22 @@ Telegram is a two-way control channel, not just alerts. `watchlist.py` runs at t
 
 When the user says "مسح حي" (or "مسح" / "شنو الشغال الحين"): run the Live Scan workflow → all live matches worldwide (1200+ leagues), exclusions applied, quick one-line prediction + confidence per match, top leagues first, delivered to Telegram, ending with a prompt for which match to analyze in full detail.
 
+## Continuity & renewal register (owner's directive 2026-07-31 — the agent is the Renewal Director)
+
+The system must never go dark from an expired key, an empty balance, or a lapsed subscription (it happened 3× in July 2026 with the Anthropic balance). The agent owns this register: keep it current — every new dependency added to the project MUST get a row here in the same PR, with its expiry/renewal terms and a canary (the earliest observable failure signal).
+
+| Dependency | Renewal / expiry | Canary (how darkness shows first) | Guard |
+|---|---|---|---|
+| **Anthropic credit balance** (`ANTHROPIC_API_KEY`, funded org) | **Auto-reload ON** since the Jul 26–28 outage fix | `predict.py`/`predict_v2.py` raise loudly → predict workflows FAIL | Heartbeat guard's morning window (04:05–09:00 UTC) retries and messages the owner after 3 consecutive failures; monthly audit reviews it |
+| **API-Football Pro** (`API_FOOTBALL_KEY`, 7,500/day) | Monthly auto-renew on the owner's card | predict.py raises loudly on API failure (morning window catches it); NOTE: monitor.py tolerates empty data by design (rule 5), so a dead key can look like a quiet day intraday — the morning failure is the reliable canary | Same morning-window guard + monthly audit |
+| **Telegram bot** (`TELEGRAM_TOKEN`, `TELEGRAM_CHAT_ID`) | Never expires | Owner stops receiving daily digests (guaranteed daily traffic = natural canary) | Monthly audit confirms recent sends |
+| **GitHub PAT `insightmatch-pinger`** (cron-job.org → workflow dispatch) | No expiration set | monitor runs stale >15 min — masked automatically because the Claude-Routine heartbeat takes over as pinger | Two independent pingers (cron-job.org + 3 Claude Routines); monthly audit checks run cadence |
+| **cron-job.org job "InsightMatch monitor"** | Free account, no expiry; pinned `X-GitHub-Api-Version: 2022-11-28` **sunsets 2028-03-10** | Same as PAT row | One-shot reminder Routine fires **2028-02-01** to bump the header before sunset |
+| **Claude Routines** (3 heartbeat pingers + xG reminders + monthly audit) | Tied to the owner's Claude subscription — if it pauses, Routines suspend | monitor cadence still held by cron-job.org (independent path) | Deliberate redundancy: either pinger alone keeps the system alive |
+| **Sportmonks** (from 2026-08-11) | Trial Aug 11→~25; paid €29/mo only if renewed; cancellable monthly | Shadow collector logs go empty / collector fails silently (by design it never kills runs) | Interim checkpoint Aug 24 (trig_019LGAnn9oqB95VXVeNrrF8K) forces an explicit renew/cancel decision; final verdict early Sep |
+| **GitHub Actions minutes** | Unlimited ONLY while the repo stays **public** | Workflows queue/fail on minute exhaustion | Never make the repo private without redesigning the automation budget |
+| **Monthly continuity audit** | Recurring Routine, 1st of each month 05:30 UTC | — | Audits all rows above + last 24h workflow conclusions + data.json freshness, then sends the owner a short status report (all-green one-liner, or issues with actions) |
+
 ## Project history & lessons learned
 
 - `scan.yml` was once nested at `.github/workflows/.github/workflows/` — invisible to Actions. Fixed. Watch for path mistakes.
