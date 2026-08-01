@@ -226,7 +226,20 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn('id="tab-radar"', HTML)
         self.assertIn('id="radar-sec"', HTML)
         self.assertIn('id="radar-grid"', HTML)
-        self.assertIn('id="radar-tiles"', HTML)
+
+    def test_proactive_funnel_replaces_count_tiles(self):
+        """قمع الاستباق (طلب المالك 2026-08-02): بدل عدادات آمن/إنذار/خطر
+        الوصفية — مراحل متضيقة نحو التنبيه + سطر "الأقرب للتنبيه" مع عدّ
+        تنازلي لأهلية د75. العدادات القديمة "متأخرة" — القمع يستبق."""
+        self.assertIn('id="radar-funnel"', HTML)
+        self.assertIn('id="radar-next"', HTML)
+        self.assertNotIn('id="radar-tiles"', HTML)   # العدادات القديمة أُزيلت
+        for key in ("fTracked", "fBrewing", "fReady", "fSent",
+                    "radarNextUp", "radarEligIn"):
+            self.assertIn(key, SCRIPT)
+        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("funnel.sent", body.group(1))
+        self.assertIn("75 - liveMin(next.m", body.group(1))   # عدّ تنازلي بدقيقة مُقدَّمة
 
     def test_render_functions_exist(self):
         for fn in ("function renderRadar", "function radarCard",
@@ -275,6 +288,34 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("radarLive.matches", body.group(1))
         self.assertIn("15*60*1000", body.group(1))           # طزاجة 15 دقيقة أو تجاهل
         self.assertIn('id="radar-live-at"', HTML)
+
+    def test_update_line(self):
+        """خط التحديث (طلب المالك 2026-08-02): شريط زمني تحت توقعات الـ 24
+        ساعة — آخر تحديث، القادم مع عدّ تنازلي، مؤشر "الآن"، إنذار تأخر،
+        ويختفي بلا بيانات. النوافذ مصفوفة لتستوعب تشغيلاً ثانياً مستقبلاً."""
+        self.assertIn('id="upd-line"', HTML)
+        self.assertIn("function renderUpdLine", SCRIPT)
+        self.assertIn("PRED_SCHED_UTC", SCRIPT)
+        body = re.search(r"function renderUpdLine\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn('display = "none"', body.group(1))     # بلا بيانات → مخفي
+        self.assertIn("updLate", body.group(1))              # إنذار التأخر
+        self.assertIn("upd-track", body.group(1))            # الشريط الزمني
+        ra = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("renderUpdLine()", ra.group(1))
+
+    def test_live_minute_extrapolated(self):
+        """بلاغ المالك 2026-08-02 (اللوحة 65 والواقع 84): الدقيقة المعروضة =
+        المخزنة + ما مضى منذ رصدها، بسقوف واقعية لكل شوط، في كل مواضع العرض."""
+        self.assertIn("function liveMin", SCRIPT)
+        body = re.search(r"function liveMin\(m, fallbackIso\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        for cap in ("50", "97", "125"):
+            self.assertIn(cap, body.group(1))
+        # مواضع الاستخدام: البطاقة الحية، غرفة العمليات، بطاقة الرادار، عدّ القمع
+        self.assertGreaterEqual(SCRIPT.count("liveMin("), 6)
+        # نسخة الرادار الحية تجدد لحظة الرصد عند الدمج
+        self.assertIn("tgt.seen = lm.seen || radarLive.updated", SCRIPT)
 
     def test_drama_alerts_scoreboard(self):
         """🚨 لوحة عقل S3: مجموع تنبيهات الدراما المُقيَّمة يظهر في سطر الصدق."""

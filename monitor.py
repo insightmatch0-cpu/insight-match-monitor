@@ -861,6 +861,7 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
         except Exception as e:
             print("الرصد السريع: فشل السحب:", e)
             continue
+        seen_now = datetime.now(timezone.utc).isoformat()
         keep = False
         for fx in fixtures:
             fixture = fx.get("fixture", {}) or {}
@@ -915,7 +916,7 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                          "home": home, "away": away, "league": league_line,
                          "home_logo": (teams.get("home") or {}).get("logo", ""),
                          "away_logo": (teams.get("away") or {}).get("logo", ""),
-                         "league_logo": league.get("logo", "")}
+                         "league_logo": league.get("logo", ""), "seen": seen_now}
                 if ar_names:
                     entry["ar"] = ar_names
                 if enriched and analysis:
@@ -954,7 +955,8 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                 sig = live_signature(fid)
                 if sig:
                     prev["sig"] = sig
-                prev.update({"score": score, "status": status, "minute": minute})
+                prev.update({"score": score, "status": status, "minute": minute,
+                         "seen": seen_now})
                 continue
 
             # نهاية المباراة
@@ -964,7 +966,8 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                 if wl_entry is not None and not wl_entry.get("result"):
                     wl_entry["result"] = f"{gh}-{ga}"
                     wl_dirty = True
-                prev.update({"score": score, "status": status, "minute": minute})
+                prev.update({"score": score, "status": status, "minute": minute,
+                         "seen": seen_now})
                 continue
 
             # لا حدث — نبضة مشروطة بتحرك الأرقام فقط (توفير نداءات Claude)
@@ -981,7 +984,8 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                                       f"(د{minute})\n\n{alert}")
                         prev["pulse"] = alert
                     prev["sig"] = sig_now
-            prev.update({"score": score, "status": status, "minute": minute})
+            prev.update({"score": score, "status": status, "minute": minute,
+                         "seen": seen_now})
 
         if not keep:
             break
@@ -1041,9 +1045,10 @@ def danger_score(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
     out_now = _radar_outcome(gh, ga)
 
     # 1) لوحة النتيجة (حتى 70): توقع خاسر الآن يشتد خطره كلما اقترب الختام —
-    #    خاسر متأخراً (د84+) أحمر من اللوحة وحدها حتى لو هدأت الأرقام
+    #    خاسر متأخراً (د84+) أحمر من اللوحة وحدها، لكن 0-0 في د5 ليس خطراً
+    #    (ملاحظة المالك 2026-08-02: البداية المبكرة كانت تصنع إنذارات ضجيج)
     if pick and out_now != pick:
-        score += min(70, 40 + int(minute * 0.30))
+        score += min(70, 15 + int(minute * 0.60))
         factors.append(f"النتيجة الحالية {gh}-{ga} تُسقط التوقع (د{minute})")
     elif pick and pick != "draw" and abs(gh - ga) == 1:
         score += 15
@@ -1124,10 +1129,11 @@ def radar_live_payload(state: dict) -> dict:
             "league": ar.get("league") or e.get("league", ""),
             "home_logo": e.get("home_logo", ""), "away_logo": e.get("away_logo", ""),
             "score": e.get("score", "0-0"), "minute": e.get("minute", 0),
-            "status": e.get("status", ""),
+            "status": e.get("status", ""), "seen": e.get("seen", ""),
             "radar": {"score": r.get("score"), "level": r.get("level"),
                       "factors": r.get("factors") or [], "pick": r.get("pick"),
                       "confidence": r.get("confidence"),
+                      "drama": r.get("drama"), "alerted": r.get("alerted"),
                       "trend": _radar_trend(r.get("snaps") or [])},
         })
     return {"updated": datetime.now(timezone.utc).isoformat(), "matches": matches}
@@ -1206,7 +1212,8 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
             goals = fx.get("goals") or {}
             gh = goals.get("home") or 0
             ga = goals.get("away") or 0
-            e.update({"status": st, "minute": minute, "score": f"{gh}-{ga}"})
+            e.update({"status": st, "minute": minute, "score": f"{gh}-{ga}",
+                      "seen": datetime.now(timezone.utc).isoformat()})
             if st not in LIVE_STATUSES:
                 continue
             try:
@@ -1219,8 +1226,13 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
             p = v2_pending.get(fid) or {}
             verdict = danger_score(p.get("pick") or radar.get("pick"),
                                    snaps, minute, gh, ga)
+            d = drama_signal(snaps, gh, ga)
             radar.update({"snaps": snaps, "score": verdict["score"],
-                          "level": verdict["level"], "factors": verdict["factors"]})
+                          "level": verdict["level"], "factors": verdict["factors"],
+                          "drama": {"signal": (d or {}).get("signal", 0),
+                                    "side": (d or {}).get("side"),
+                                    "ready": bool(d and d["dominant"]
+                                                  and d["signal"] >= RADAR_ALERT_SIGNAL_MIN)}})
             e["radar"] = radar
             # 🚨 عقل S3 في المسار السريع: التنبيه يصل خلال ~90 ثانية من الإشارة
             maybe_radar_alert(fid, e, alert_budget)
@@ -1250,41 +1262,48 @@ def _side_momentum(snaps: list, side: str, opp: str):
     return pts, reasons
 
 
-def evaluate_comeback(snaps: list, minute: int, gh: int, ga: int):
-    """عقل S3 للحظات الحاسمة (سيناريوهات المالك 2026-08-01): من الدقيقة 75،
-    هل تقول الأرقام إن المتأخر سيسجل / يتعادل / يقلب النتيجة؟ وفي التعادل:
-    من يضغط لخطف الفوز؟ يرجع الادعاء والإشارة والأسباب — أو None (صمت).
-    رياضيات شفافة كباقي الرادار؛ لوحة التقييم الصباحية تعاير العتبات لاحقاً."""
-    if minute < RADAR_ALERT_MIN or not snaps:
-        return None
+def drama_signal(snaps: list, gh: int, ga: int):
+    """إشارة الدراما الخام (0-95) بمعزل عن شرط الدقيقة — وقود قمع الاستباق
+    على اللوحة: يظهر من يختمر ومن جاهز قبل أن يصل التنبيه نفسه."""
     margin = abs(gh - ga)
-    if margin > 2:
-        return None   # فارق 3+ في آخر ربع ساعة — لا دراما واقعية
+    if not snaps or margin > 2:
+        return None
     if margin == 0:
         ph, rh = _side_momentum(snaps, "h", "a")
         pa, ra = _side_momentum(snaps, "a", "h")
         side, pts, reasons, other = ("home", ph, rh, pa) if ph >= pa else ("away", pa, ra, ph)
-        # في التعادل نطلب هيمنة واضحة لطرف واحد — لا تنبيه على شد وجذب متكافئ
-        if pts < RADAR_ALERT_SIGNAL_MIN or (pts - other) < 20:
-            return None
-        return {"key": "next_goal", "side": side, "signal": min(95, pts),
-                "reasons": reasons, "claim": "الهدف القادم — وربما خطف الفوز"}
+        # في التعادل نطلب هيمنة واضحة لطرف واحد — لا دراما على شد وجذب متكافئ
+        return {"side": side, "signal": max(0, min(95, pts)), "reasons": reasons,
+                "margin": 0, "red": False, "dominant": (pts - other) >= 20}
     side = "home" if gh < ga else "away"
     s, o = ("h", "a") if side == "home" else ("a", "h")
     pts, reasons = _side_momentum(snaps, s, o)
     if margin == 2:
         pts -= 15   # العودة من هدفين أصعب — نطلب إشارة أقوى
-    if pts < RADAR_ALERT_SIGNAL_MIN:
+    red = bool(((snaps[-1].get(o) or {}).get("rc") or 0) > 0)
+    return {"side": side, "signal": max(0, min(95, pts)), "reasons": reasons,
+            "margin": margin, "red": red, "dominant": True}
+
+
+def evaluate_comeback(snaps: list, minute: int, gh: int, ga: int):
+    """عقل S3 للحظات الحاسمة (سيناريوهات المالك 2026-08-01): من الدقيقة 75،
+    هل تقول الأرقام إن المتأخر سيسجل / يتعادل / يقلب النتيجة؟ وفي التعادل:
+    من يضغط لخطف الفوز؟ يرجع الادعاء والإشارة والأسباب — أو None (صمت)."""
+    if minute < RADAR_ALERT_MIN:
         return None
-    red = bool(snaps and ((snaps[-1].get(o) or {}).get("rc") or 0) > 0)
-    if margin == 1 and (red or pts >= 70):
+    d = drama_signal(snaps, gh, ga)
+    if not d or not d["dominant"] or d["signal"] < RADAR_ALERT_SIGNAL_MIN:
+        return None
+    if d["margin"] == 0:
+        key, claim = "next_goal", "الهدف القادم — وربما خطف الفوز"
+    elif d["margin"] == 1 and (d["red"] or d["signal"] >= 70):
         key, claim = "flip", "تعادل قريب — وقلب النتيجة وارد"
-    elif margin == 1:
+    elif d["margin"] == 1:
         key, claim = "equalizer", "هدف التعادل قادم"
     else:
         key, claim = "goal", "هدف يقلّص الفارق قادم"
-    return {"key": key, "side": side, "signal": min(95, pts),
-            "reasons": reasons, "claim": claim}
+    return {"key": key, "side": d["side"], "signal": d["signal"],
+            "reasons": d["reasons"], "claim": claim}
 
 
 def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
@@ -1379,11 +1398,19 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         snaps = merge_fast_snap(radar.get("snaps") or [], snap)
         p = v2_pending.get(fid) or {}
         verdict = danger_score(p.get("pick"), snaps, minute, gh, ga)
+        d = drama_signal(snaps, gh, ga)
         e["radar"] = {
             "snaps": snaps,
             "score": verdict["score"], "level": verdict["level"],
             "factors": verdict["factors"],
             "pick": p.get("pick"), "confidence": p.get("confidence"),
+            # قمع الاستباق: الإشارة الخام + الجاهزية قبل شرط الدقيقة 75
+            "drama": {"signal": (d or {}).get("signal", 0),
+                      "side": (d or {}).get("side"),
+                      "ready": bool(d and d["dominant"]
+                                    and d["signal"] >= RADAR_ALERT_SIGNAL_MIN)},
+            # علم "أُرسل التنبيه" يجب أن ينجو من إعادة البناء — وإلا تكرر التنبيه
+            "alerted": radar.get("alerted"),
         }
         swept += 1
         # 🚨 عقل S3: هل تتشكل دراما اللحظات الأخيرة؟ (د75+، مرة لكل مباراة)
@@ -1478,6 +1505,9 @@ def main() -> None:
     except Exception as e:
         print("فشل سحب المباريات:", e)
         sys.exit(0)  # لا نفشّل التشغيلة، نحاول في الجولة القادمة
+    # طابع لحظة الرصد: اللوحة تُقدّم الدقيقة بما مضى منذها — لا شاشة متجمدة
+    # (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84)
+    seen_now = datetime.now(timezone.utc).isoformat()
 
     live_ids = set()
 
@@ -1544,6 +1574,7 @@ def main() -> None:
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
                 "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
+                "seen": seen_now,
             }
             if ar_names:
                 entry["ar"] = ar_names
@@ -1556,6 +1587,7 @@ def main() -> None:
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
                 "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
+                "seen": seen_now,
             }
             continue
 
@@ -1633,6 +1665,7 @@ def main() -> None:
             "score": score, "status": status, "minute": minute,
             "home": home, "away": away, "league": league_line,
                 "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
+            "seen": seen_now,
         }
         if ar_names:
             entry["ar"] = ar_names

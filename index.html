@@ -90,16 +90,44 @@
 
   /* ======== 🛰 الرادار — شاشة إنذار مبكر لعرض PC/TV (طلب المالك 2026-08-01) ======== */
   main.radar-mode{max-width:1560px}   /* التبويب مصمم ليملأ شاشة كبيرة */
-  .radar-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
-  .radar-tile{
-    background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:12px 14px;text-align:center;
+  /* قمع الاستباق (طلب المالك 2026-08-02): مراحل متضيقة نحو التنبيه — لا عدادات وصفية */
+  .radar-funnel{display:flex;align-items:stretch;gap:8px;margin-bottom:10px}
+  .fstage{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:10px 12px;text-align:center;position:relative;
   }
-  .radar-tile .num{font-family:Changa;font-weight:800;font-size:26px}
-  .radar-tile .lbl{font-size:11.5px;color:var(--muted);margin-top:2px}
-  .radar-tile.t-red .num{color:var(--red)}
-  .radar-tile.t-amber .num{color:var(--amber)}
-  .radar-tile.t-green .num{color:var(--green)}
+  .fstage.f1{flex:2.1}
+  .fstage.f2{flex:1.7}
+  .fstage.f3{flex:1.4}
+  .fstage.f4{flex:1.1}
+  .fstage .num{font-family:Changa;font-weight:800;font-size:22px}
+  .fstage .lbl{font-size:11px;color:var(--muted);margin-top:2px}
+  .fstage.f2 .num{color:var(--amber)}
+  .fstage.f3 .num{color:var(--red)}
+  .fstage.f4 .num{color:var(--radar)}
+  .radar-next{
+    font-size:13px;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:10px 12px;margin-bottom:10px;
+  }
+  .radar-next b{color:var(--radar)}
+
+  /* خط التحديث: شريط زمني من آخر تحديث إلى القادم مع مؤشر "الآن" */
+  .upd-line{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--muted);
+  }
+  .upd-row{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .upd-track{position:relative;height:6px;border-radius:999px;background:var(--chip);margin:8px 0 7px}
+  .upd-track .fill{
+    position:absolute;inset-inline-start:0;top:0;height:100%;
+    border-radius:999px;background:var(--engine);opacity:.55;
+  }
+  .upd-track .dot{
+    position:absolute;top:50%;width:10px;height:10px;border-radius:50%;
+    background:var(--engine);box-shadow:0 0 6px var(--engine);
+    transform:translateY(-50%);margin-inline-start:-5px;
+  }
+  .upd-late{color:var(--amber)}
   .radar-note{font-size:12px;color:var(--muted);margin:2px 0 14px}
   .radar-grid{display:grid;grid-template-columns:1fr;gap:12px}
   @media(min-width:900px){.radar-grid{grid-template-columns:1fr 1fr}}
@@ -490,7 +518,8 @@
       <span class="rule"></span>
       <span class="count" id="radar-count">0</span>
     </div>
-    <div class="radar-tiles" id="radar-tiles"></div>
+    <div class="radar-funnel" id="radar-funnel"></div>
+    <div class="radar-next" id="radar-next" style="display:none"></div>
     <div class="radar-acc" id="radar-acc" style="display:none"></div>
     <div class="radar-note"><span data-i="radarNote">رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.</span> <span id="radar-live-at"></span></div>
     <div class="radar-grid" id="radar-grid"></div>
@@ -548,6 +577,8 @@
         <span class="rule"></span>
         <span class="count" id="up-count">0</span>
       </div>
+      <!-- خط التحديث: متى صدرت توقعات اليوم ومتى القادمة (طلب المالك 2026-08-02) -->
+      <div class="upd-line" id="upd-line" style="display:none"></div>
       <div id="upcoming-list"></div>
     </section>
 
@@ -629,10 +660,24 @@ var I18N = {
     radarNote:"رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.",
     radarLiveAt:"تحديث حي:",
     radarDrama:"تنبيهات الدراما",
-    radarWatched:"قيد الرصد",
+    updLast:"تحديث توقعات اليوم:",
+    updNext:"التحديث القادم:",
+    updIn:"بعد",
+    updH:"س",
+    updM:"د",
+    updWindow:"نافذة تحديث واحدة يومياً — كل صباح",
+    updLate:"⚠️ تحديث اليوم متأخر — حارس الجدولة سيطلقه",
     radarRed:"خطر",
     radarAmber:"إنذار",
-    radarSafe:"آمن",
+    fTracked:"قيد الرصد",
+    fBrewing:"تختمر",
+    fReady:"جاهزة للتنبيه",
+    fSent:"تنبيه أُرسل",
+    radarNextUp:"الأقرب للتنبيه:",
+    radarSignal:"الإشارة",
+    radarNoBrew:"لا دراما تختمر الآن — الأرقام هادئة.",
+    radarEligIn:"باقي {n} د على أهلية التنبيه (د75)",
+    radarAnyMoment:"مؤهلة الآن — قد يصل التنبيه في أي لحظة",
     radarAccLine:"صدق إنذارات الرادار (توقعات سقطت فعلاً بعد التحذير) —",
     radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
     radarPick:"توقع المحرك 2:",
@@ -703,10 +748,24 @@ var I18N = {
     radarNote:"Transparent mathematics, no AI — the fast lane refreshes the most dangerous matches every ~90 seconds.",
     radarLiveAt:"Live update:",
     radarDrama:"Drama alerts",
-    radarWatched:"Tracked",
+    updLast:"Today's predictions updated:",
+    updNext:"Next update:",
+    updIn:"in",
+    updH:"h",
+    updM:"m",
+    updWindow:"One update window per day — every morning",
+    updLate:"⚠️ Today's update is late — the scheduler watchdog will fire it",
     radarRed:"Danger",
     radarAmber:"Warning",
-    radarSafe:"Safe",
+    fTracked:"Tracked",
+    fBrewing:"Brewing",
+    fReady:"Ready to alert",
+    fSent:"Alert sent",
+    radarNextUp:"Closest to alert:",
+    radarSignal:"signal",
+    radarNoBrew:"No drama brewing right now — the numbers are calm.",
+    radarEligIn:"{n} min until alert eligibility (75')",
+    radarAnyMoment:"Eligible now — an alert may land any moment",
     radarAccLine:"Radar warning accuracy (picks that truly fell after the alert) —",
     radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
     radarPick:"Engine 2 pick:",
@@ -794,6 +853,20 @@ function pctOf(o){
   if (!o || !o.total) return null;
   return Math.round(100 * o.correct / o.total);
 }
+/* الدقيقة الحية المقدَّرة: المخزنة + ما مضى منذ رصدها فعلياً — فلا تتجمد
+   الشاشة بين دورات المراقبة (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84).
+   تقدير عرض فقط بسقوف واقعية لكل شوط؛ البيانات المخزنة لا تُمس. */
+function liveMin(m, fallbackIso){
+  var mn = parseInt(m.minute, 10) || 0;
+  var st = m.status || "";
+  if (st !== "1H" && st !== "2H" && st !== "ET") return mn;
+  var base = Date.parse(m.seen || fallbackIso || "");
+  if (isNaN(base)) return mn;
+  var extra = Math.floor((Date.now() - base) / 60000);
+  if (extra <= 0) return mn;
+  return Math.min(mn + extra, st === "1H" ? 50 : (st === "2H" ? 97 : 125));
+}
+
 function badge(name, logo, small){
   var initial = esc(String(name||"?").trim().charAt(0) || "?");
   var img = logo ? '<img src="'+esc(logo)+'" alt="" loading="lazy" onerror="this.remove()">' : "";
@@ -899,7 +972,7 @@ function renderLive(list){
       + '<div class="side">'+badge(m.home, m.home_logo)+'<span class="tname">'+esc(m.home)+'</span></div>'
       + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
       + '<div style="text-align:center"><span class="minute">'
-      + (m.status==="HT" ? "HT" : esc(m.minute)+"'") + '</span></div></div>'
+      + (m.status==="HT" ? "HT" : esc(liveMin(m, lastV1 && lastV1.updated))+"'") + '</span></div></div>'
       + '<div class="side">'+badge(m.away, m.away_logo)+'<span class="tname">'+esc(m.away)+'</span></div>'
       + '</div>'
       + livePredsRow(m)
@@ -1357,7 +1430,7 @@ function renderOpsRoom(){
       if (m.pred_v2.pick === out) t2.ok++;
       else { danger = true; badges.push(["danger", t("e2name")+" — "+t("opsLosing")]); }
     }
-    var mm = parseInt(m.minute, 10) || 0;
+    var mm = liveMin(m, lastV1 && lastV1.updated);
     var pp = String(m.score || "").split("-");
     var margin = Math.abs((parseInt(pp[0],10)||0) - (parseInt(pp[1],10)||0));
     if (mm >= 75 && margin <= 1 && (m.pred_v1 || m.pred_v2))
@@ -1405,7 +1478,7 @@ function renderOpsRoom(){
     var f = focus[i], fm = f.m;
     fh += '<div class="ops-row"><span class="m">'+esc(fm.home)+' × '+esc(fm.away)+'</span>'
       + '<span class="sc">'+esc(fm.score)+'</span>'
-      + '<span class="min">'+(fm.status==="HT" ? "HT" : esc(fm.minute)+"'")+'</span>';
+      + '<span class="min">'+(fm.status==="HT" ? "HT" : esc(liveMin(fm, lastV1 && lastV1.updated))+"'")+'</span>';
     for (var j=0;j<f.badges.length;j++)
       fh += '<span class="ops-badge '+f.badges[j][0]+'">'+f.badges[j][1]+'</span>';
     fh += '</div>';
@@ -1448,7 +1521,7 @@ function radarCard(m){
   var tr = r.trend || {};
   return '<div class="rcard lvl-'+esc(lvl)+'">'
     + '<div class="rtop"><span>'+esc(m.league)+'</span>'
-    + '<span>د'+esc(m.minute)+'</span>'
+    + '<span>د'+esc(liveMin(m, lastV1 && lastV1.updated))+'</span>'
     + '<span class="rscore">'+esc(r.score)+'</span></div>'
     + '<div class="rteams">'+badge(m.home, m.home_logo, true)
     + '<span>'+esc(m.home)+' × '+esc(m.away)+'</span>'
@@ -1489,20 +1562,42 @@ function renderRadar(live, acc){
     for (var g=0;g<radarLive.matches.length;g++){
       var lm = radarLive.matches[g];
       var tgt = byFid[lm.fid];
-      if (tgt){ tgt.score = lm.score; tgt.minute = lm.minute; tgt.radar = lm.radar; }
+      if (tgt){ tgt.score = lm.score; tgt.minute = lm.minute; tgt.radar = lm.radar;
+                tgt.seen = lm.seen || radarLive.updated; }
       else rows.push(lm);
     }
     liveAt.textContent = "⚡ " + t("radarLiveAt") + " " + timeLocal(radarLive.updated);
   }
   rows.sort(function(a,b){ return (b.radar.score||0) - (a.radar.score||0); });
   document.getElementById("radar-count").textContent = rows.length;
-  var counts = {red:0, amber:0, green:0};
-  for (var j=0;j<rows.length;j++) counts[rows[j].radar.level || "green"]++;
-  document.getElementById("radar-tiles").innerHTML =
-      '<div class="radar-tile"><div class="num">'+rows.length+'</div><div class="lbl">'+esc(t("radarWatched"))+'</div></div>'
-    + '<div class="radar-tile t-red"><div class="num">'+counts.red+'</div><div class="lbl">'+esc(t("radarRed"))+'</div></div>'
-    + '<div class="radar-tile t-amber"><div class="num">'+counts.amber+'</div><div class="lbl">'+esc(t("radarAmber"))+'</div></div>'
-    + '<div class="radar-tile t-green"><div class="num">'+counts.green+'</div><div class="lbl">'+esc(t("radarSafe"))+'</div></div>';
+  /* قمع الاستباق: كل مرحلة جزء من سابقتها — مرصود ← تختمر ← جاهزة ← تنبيه أُرسل */
+  var funnel = {tracked: rows.length, brew: 0, ready: 0, sent: 0};
+  var next = null;
+  for (var j=0;j<rows.length;j++){
+    var rr = rows[j].radar, dr = rr.drama || {};
+    var sig = dr.signal || 0;
+    if (rr.alerted){ funnel.sent++; funnel.ready++; funnel.brew++; continue; }
+    if (dr.ready){ funnel.ready++; funnel.brew++; }
+    else if (sig >= 25 || (rr.level && rr.level !== "green")){ funnel.brew++; }
+    /* الأقرب للتنبيه: أعلى إشارة لم تُنبَّه بعد — استباق لا وصف */
+    if (sig >= 25 && (!next || sig > next.sig)) next = {m: rows[j], sig: sig};
+  }
+  document.getElementById("radar-funnel").innerHTML =
+      '<div class="fstage f1"><div class="num">'+funnel.tracked+'</div><div class="lbl">'+esc(t("fTracked"))+'</div></div>'
+    + '<div class="fstage f2"><div class="num">'+funnel.brew+'</div><div class="lbl">'+esc(t("fBrewing"))+'</div></div>'
+    + '<div class="fstage f3"><div class="num">'+funnel.ready+'</div><div class="lbl">'+esc(t("fReady"))+'</div></div>'
+    + '<div class="fstage f4"><div class="num">'+funnel.sent+'</div><div class="lbl">'+esc(t("fSent"))+'</div></div>';
+  var nx = document.getElementById("radar-next");
+  if (next){
+    var wait = Math.max(0, 75 - liveMin(next.m, lastV1 && lastV1.updated));
+    nx.innerHTML = esc(t("radarNextUp"))+" <b>"+esc(next.m.home)+" × "+esc(next.m.away)+"</b> — "
+      + esc(t("radarSignal"))+" "+esc(next.sig)+"% · "
+      + (wait > 0 ? esc(t("radarEligIn")).replace("{n}", wait) : esc(t("radarAnyMoment")));
+    nx.style.display = "";
+  } else {
+    nx.textContent = t("radarNoBrew");
+    nx.style.display = rows.length ? "" : "none";
+  }
   /* لوحة صدق الرادار — تظهر فقط حين توجد إنذارات مُقيَّمة (لا ادعاء بلا قياس) */
   var accEl = document.getElementById("radar-acc");
   var red = acc && acc.red, amb = acc && acc.amber, al = acc && acc.alerts;
@@ -1545,6 +1640,48 @@ function setRadarMode(on){
   document.getElementById("engine-body").style.display = on ? "none" : "";
 }
 
+/* ================= خط التحديث (طلب المالك 2026-08-02) =================
+   شريط زمني بسيط تحت "توقعات الـ 24 ساعة": متى صدرت توقعات اليوم، متى
+   القادمة، وأين "الآن" بينهما — فيعرف المالك بنظرة إن كان يرى تحديث
+   الصباح أو عليه انتظار ساعة. النوافذ مصفوفة: يوم يُعتمد تشغيل ثانٍ
+   يومياً تُضاف نافذته هنا فيعرض الخط النافذتين تلقائياً. */
+var PRED_SCHED_UTC = {v1: [{h:3, m:15}], v2: [{h:3, m:30}]};
+function nextSched(times){
+  var now = new Date(), best = null;
+  for (var i=0;i<times.length;i++){
+    var d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(),
+                              now.getUTCDate(), times[i].h, times[i].m));
+    if (d.getTime() <= now.getTime()) d = new Date(d.getTime() + 24*3600*1000);
+    if (!best || d.getTime() < best.getTime()) best = d;
+  }
+  return best;
+}
+function renderUpdLine(){
+  var el = document.getElementById("upd-line");
+  if (!el) return;
+  var data = (engine === "v2") ? lastV2 : lastV1;
+  var iso = data && data.pred_updated;
+  var last = iso ? new Date(iso) : null;
+  if (!last || isNaN(last.getTime())){ el.style.display = "none"; return; }
+  var nxt = nextSched(PRED_SCHED_UTC[engine === "v2" ? "v2" : "v1"]);
+  var now = Date.now();
+  var span = nxt.getTime() - last.getTime();
+  var pct = span > 0 ? Math.max(0, Math.min(100, Math.round(100*(now - last.getTime())/span))) : 100;
+  var mins = Math.max(0, Math.round((nxt.getTime() - now)/60000));
+  var hrs = Math.floor(mins/60);
+  var waitTxt = (hrs > 0 ? hrs+t("updH")+" " : "") + (mins % 60)+t("updM");
+  var late = (now - last.getTime()) > 26*3600*1000;   /* يوم كامل + سماحية */
+  el.innerHTML =
+      '<div class="upd-row"><span>☀️ '+esc(t("updLast"))+" "+timeLocal(iso)+'</span>'
+    + '<span>'+esc(t("updNext"))+" "+timeLocal(nxt.toISOString())
+    + " · "+esc(t("updIn"))+" "+esc(waitTxt)+'</span></div>'
+    + '<div class="upd-track"><div class="fill" style="width:'+pct+'%"></div>'
+    + '<div class="dot" style="inset-inline-start:'+pct+'%"></div></div>'
+    + '<div class="upd-row"><span>'+esc(t("updWindow"))+'</span>'
+    + (late ? '<span class="upd-late">'+esc(t("updLate"))+'</span>' : '')+'</div>';
+  el.style.display = "";
+}
+
 function renderAll(){
   var base = lastV1 || {};
   liveSet = {};
@@ -1575,6 +1712,7 @@ function renderAll(){
     renderAccuracy(base.accuracy);
     renderResults(base.recent_results || []);
   }
+  renderUpdLine();
   renderLessons();
   renderShadowLab();
   renderOpsRoom();

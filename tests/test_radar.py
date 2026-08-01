@@ -30,6 +30,13 @@ class TestDangerScore(unittest.TestCase):
         self.assertEqual(v["level"], "red")
         self.assertTrue(any("تُسقط التوقع" in f for f in v["factors"]))
 
+    def test_early_minutes_not_amber(self):
+        """ملاحظة المالك 2026-08-02 (لقطة الشاشة): 0-0 في د5 مع توقع فوز
+        ليس "إنذاراً" — كانت المعادلة القديمة تصنع إنذارات ضجيج مبكرة."""
+        v = M.danger_score("home", [snap(5)], 5, 0, 0)
+        self.assertEqual(v["level"], "green")
+        self.assertLess(v["score"], M.RADAR_AMBER)
+
     def test_comfortable_lead_quiet_is_green(self):
         """تقدم 2-0 هادئ = أخضر — لا إنذارات زائفة بلا سبب."""
         s = [snap(60, {"sog": 3}, {"sog": 1}), snap(70, {"sog": 3}, {"sog": 1})]
@@ -327,6 +334,23 @@ class TestDramaAlerts(unittest.TestCase):
         self.assertIn("maybe_radar_alert(", inspect.getsource(M.radar_sweep))
         self.assertIn("maybe_radar_alert(", inspect.getsource(M.radar_fast_watch))
 
+    def test_drama_signal_exposed_for_funnel(self):
+        """قمع الاستباق: الإشارة الخام تُحسب قبل شرط د75 وتصل اللوحة."""
+        s = [snap(40, {"sog": 2, "cor": 3}, {}), snap(50, {"sog": 4, "cor": 5}, {})]
+        d = M.drama_signal(s, 0, 1)
+        self.assertEqual(d["side"], "home")
+        self.assertGreaterEqual(d["signal"], 50)   # جاهزة — تنتظر د75 فقط
+        import inspect
+        for fn in (M.radar_sweep, M.radar_fast_watch, M.radar_live_payload):
+            self.assertIn('"drama"', inspect.getsource(fn))
+
+    def test_alerted_flag_survives_sweep_rebuild(self):
+        """علم "أُرسل التنبيه" يجب أن ينجو من إعادة بناء الرادار كل دورة —
+        وإلا تكرر نفس التنبيه كل 10 دقائق (إزعاج ممنوع)."""
+        import inspect
+        src = inspect.getsource(M.radar_sweep)
+        self.assertIn('"alerted": radar.get("alerted")', src)
+
 
 class TestRadarFastLane(unittest.TestCase):
     """⚡ المسار السريع (طلب المالك 2026-08-01 — "الأسرع"): تحديث ~90 ثانية
@@ -386,6 +410,14 @@ class TestRadarFastLane(unittest.TestCase):
         src = inspect.getsource(M.main)
         self.assertIn("radar_fast_watch(", src)
         self.assertIn("publish_radar_live(", src)
+
+    def test_seen_timestamp_stamped_everywhere(self):
+        """بلاغ المالك 2026-08-02: كل كتابة لحالة مباراة حية تحمل لحظة رصدها —
+        الدورة الرئيسية، الرصد السريع، والمسار السريع للرادار."""
+        import inspect
+        for fn in (M.main, M.focus_fast_watch, M.radar_fast_watch):
+            self.assertIn('"seen"', inspect.getsource(fn), fn.__name__)
+        self.assertIn('"seen"', inspect.getsource(M.radar_live_payload))
 
     def test_monitor_yml_passes_token(self):
         yml = (Path(__file__).resolve().parent.parent

@@ -168,6 +168,8 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
             "score": e.get("score", "0-0"),
             "minute": e.get("minute", 0),
             "status": e.get("status", ""),
+            # لحظة رصد الدقيقة — اللوحة تُقدّمها بما مضى منذها (لا تجمّد)
+            "seen": e.get("seen", ""),
         }
         # توقع كل محرك يظهر على البطاقة الحية مباشرة (طلب المالك 2026-07-18)
         p1 = _live_pred(store_v1, fid)
@@ -186,6 +188,9 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
                 "factors": radar.get("factors") or [],
                 "pick": radar.get("pick"),
                 "confidence": radar.get("confidence"),
+                # قمع الاستباق (طلب المالك 2026-08-02): الإشارة الخام + الجاهزية
+                "drama": radar.get("drama"),
+                "alerted": radar.get("alerted"),
                 "trend": {
                     "min": [s.get("minute", 0) for s in snaps],
                     "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],
@@ -303,7 +308,9 @@ def build_shadow_lab() -> dict:
         if not isinstance(e, dict):
             continue
         rows.append({
-            "date": e.get("graded_on") or e.get("date", ""),
+            # تاريخ المباراة نفسها لا تاريخ التقييم (بلاغ المالك 2026-08-02:
+            # مباراة كأس قديمة ظهرت بتاريخ صباح تقييمها فبدا التاريخ خاطئاً)
+            "date": e.get("date") or e.get("graded_on", ""),
             "home": e.get("ar_home") or e.get("home", "?"),
             "away": e.get("ar_away") or e.get("away", "?"),
             "league": e.get("league", ""),
@@ -369,6 +376,8 @@ def build_data_v2() -> None:
         # الأرشيف الدائم (كل الأيام، كل الأطراف) — للوحة ولأي تحليل مستقبلي
         "history": load_json(HISTORY_FILE, {}).get("days") or {},
         "shadow_lab": build_shadow_lab(),
+        # خط التحديث (طلب المالك 2026-08-02): متى صدرت توقعات هذا المحرك
+        "pred_updated": (store.get("meta") or {}).get("last_run", ""),
     }
     existing = load_json(DATA_V2_FILE, {})
     existing.pop("updated", None)
@@ -399,6 +408,8 @@ def main() -> None:
         "news": news.get("items", []),
         # لوحة صدق الرادار: كم إنذاراً أطلق وكم أصاب (يبنيها predict_v2 صباحاً)
         "radar_acc": (load_json(RADAR_LOG_FILE, {}).get("meta") or {}).get("stats") or {},
+        # خط التحديث (طلب المالك 2026-08-02): متى صدرت توقعات المحرك 1
+        "pred_updated": (store.get("meta") or {}).get("last_run", ""),
     }
     save_json(DATA_FILE, data)
     print(
