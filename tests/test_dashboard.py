@@ -57,6 +57,18 @@ class TestRecentResults(unittest.TestCase):
         self.assertEqual(len(D.build_recent_results(store)), D.RECENT_RESULTS_SHOWN)
         self.assertEqual(D.RECENT_RESULTS_SHOWN, 50)
 
+    def test_reason_carried_when_present(self):
+        """سطر "لماذا" (طلب المالك 2026-08-01): سبب التوقع يصل صف النتيجة."""
+        e = self._mk(1, True, "2026-08-01")
+        e["reason"] = "أفضلية أرض وضغط هجومي"
+        out = D.build_recent_results({"resolved": [e]})
+        self.assertEqual(out[0]["reason"], "أفضلية أرض وضغط هجومي")
+
+    def test_no_reason_no_field(self):
+        """إدخالات المحرك 1 (بلا reason) تمر بلا حقل — لا فراغات على اللوحة."""
+        out = D.build_recent_results({"resolved": [self._mk(1, True, "2026-08-01")]})
+        self.assertNotIn("reason", out[0])
+
 
 class TestUpcoming(unittest.TestCase):
     def test_probabilities_carried_when_present(self):

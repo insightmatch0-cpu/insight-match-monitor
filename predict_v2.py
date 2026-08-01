@@ -323,6 +323,9 @@ def resolve_pending(store: dict):
                 "mkt_home": p.get("mkt_home"),
                 "mkt_draw": p.get("mkt_draw"),
                 "mkt_away": p.get("mkt_away"),
+                # سطر "لماذا" (طلب المالك 2026-08-01): قراءة المحرك قبل المباراة
+                # تبقى مع النتيجة — حين يخطئ التوقع نعرف ماذا كان يفكر
+                "reason": p.get("reason", ""),
                 "actual": actual,
                 "score": f"{gh}-{ga}",
                 "correct": p.get("pick") == actual,
@@ -1408,6 +1411,9 @@ def post_grading_alerts(newly_resolved: list, store: dict) -> None:
                 f"• {e.get('ar_home') or e.get('home')} × {e.get('ar_away') or e.get('away')}"
                 f" — ثقة {e.get('confidence')}% — النتيجة {e.get('score')} ({e.get('league')})"
             )
+            # قراءة المحرك قبل المباراة — تظهر مع الخطأ ليتضح أين كان التفكير الخاطئ
+            if (e.get("reason") or "").strip():
+                lines.append(f"  💭 كان يفكر: {e['reason'].strip()}")
     leaks = find_data_leaks(store) + find_data_leaks(load_json(V1_PREDICTIONS_FILE, {}))
     leaks = list(dict.fromkeys(leaks))
     if leaks:

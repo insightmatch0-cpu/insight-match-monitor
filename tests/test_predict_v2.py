@@ -220,5 +220,29 @@ class TestMarketProbsStored(unittest.TestCase):
             self.assertIn(field, src)
 
 
+class TestWhyLine(unittest.TestCase):
+    """سطر "لماذا" (طلب المالك 2026-08-01): قراءة المحرك قبل المباراة يجب أن
+    تنجو من التقييم — كانت تُحذف مع pending فلا يُعرف ماذا كان يفكر حين أخطأ."""
+
+    def test_resolve_carries_reason(self):
+        import inspect
+        src = inspect.getsource(P.resolve_pending)
+        self.assertIn('"reason"', src, "سجل resolved يجب أن يحمل سبب التوقع")
+
+    def test_parser_extracts_reason(self):
+        """المصدر: المحلل يستخرج reason من رد Claude — لو سقط ضاع السطر كله."""
+        out = P.parse_predictions_json(
+            '[{"id":"4","prob_home":60,"prob_draw":25,"prob_away":15,'
+            '"reason":"ضغط هجومي متواصل"}]')
+        self.assertEqual(out["4"]["reason"], "ضغط هجومي متواصل")
+
+    def test_gold_miss_alert_includes_reason(self):
+        """تنبيه خطأ الـ 70%+ الصباحي يعرض ماذا كان المحرك يفكر."""
+        import inspect
+        src = inspect.getsource(P.post_grading_alerts)
+        self.assertIn("reason", src)
+        self.assertIn("كان يفكر", src)
+
+
 if __name__ == "__main__":
     unittest.main()

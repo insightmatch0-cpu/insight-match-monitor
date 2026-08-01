@@ -192,6 +192,20 @@ class TestShadowLabPanel(unittest.TestCase):
         body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIn("renderOpsRoom()", body.group(1))
 
+    def test_why_line_on_results(self):
+        """سطر "لماذا" (طلب المالك 2026-08-01): صف النتيجة المُقيَّمة يحمل
+        قراءة المحرك قبل المباراة — 💭 مؤشر، نقرة تفتح النص، ولا شيء يظهر
+        لإدخالات بلا سبب (المحرك 1 والسجل القديم)."""
+        self.assertIn("function toggleWhy", SCRIPT)
+        self.assertIn("res-why", SCRIPT)
+        self.assertIn("whyLabel", SCRIPT)
+        body = re.search(r"function paintResults\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("r.reason", body.group(1))
+        self.assertIn("has-why", body.group(1))
+        # بلا سبب: لا مؤشر ولا صندوق — الشرط ثلاثي في كلا الموضعين
+        self.assertIn('why ? ', body.group(1))
+
     def test_v2_visual_upgrade(self):
         """v2 (طلب المالك 2026-08-01): شريط النسبة، عدّاد ✓/✗، النبضة الحمراء
         للمباريات الجارية، والتقرير الأصلي القابل للفتح."""

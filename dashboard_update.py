@@ -244,6 +244,10 @@ def build_recent_results(store: dict) -> list:
             "actual": r.get("actual"),
             "correct": bool(r.get("correct")),
         }
+        # سطر "لماذا" (طلب المالك 2026-08-01): يصل اللوحة مع النتيجة المُقيَّمة
+        # (إدخالات المحرك 1 القديمة بلا reason — تمر بأمان بقيمة فارغة)
+        if (r.get("reason") or "").strip():
+            item["reason"] = r["reason"].strip()
         if r.get("prob_home") is not None:
             item["prob_home"] = r.get("prob_home")
             item["prob_draw"] = r.get("prob_draw")
