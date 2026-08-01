@@ -178,6 +178,20 @@ class TestShadowLabPanel(unittest.TestCase):
         self.assertIn("var fold = !q", body.group(1))
         self.assertIn("m.league", body.group(1))
 
+    def test_ops_room(self):
+        """🎯 غرفة العمليات (طلب المالك 2026-08-01): عدّاد "لو انتهت الآن" لكل
+        محرك، وقائمة تركيز (توقع يخسر/نهاية متقلبة/ذهبية/مخالفة سوق)،
+        والانطلاقات القريبة — إشارات لا زينة."""
+        self.assertIn('id="ops-sec"', HTML)
+        self.assertIn("function renderOpsRoom", SCRIPT)
+        self.assertIn("function currentOutcome", SCRIPT)
+        self.assertIn("opsLosing", SCRIPT)          # التوقع في خطر
+        self.assertIn("opsVolatile", SCRIPT)        # دقيقة 75+ وفارق هدف
+        self.assertIn(">= 75", SCRIPT)
+        self.assertIn("3*3600*1000", SCRIPT)        # نافذة الانطلاقات القريبة
+        body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("renderOpsRoom()", body.group(1))
+
     def test_v2_visual_upgrade(self):
         """v2 (طلب المالك 2026-08-01): شريط النسبة، عدّاد ✓/✗، النبضة الحمراء
         للمباريات الجارية، والتقرير الأصلي القابل للفتح."""
