@@ -201,6 +201,31 @@
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
   .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
+  /* 🎯 غرفة العمليات — إشارات توجه النظر، لا زينة (طلب المالك 2026-08-01) */
+  .ops-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:12px}
+  .ops-tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;text-align:center;padding:9px 6px}
+  .ops-tile .v{font-family:Changa;font-weight:800;font-size:18px}
+  .ops-tile .k{font-size:10.5px;color:var(--muted)}
+  .ops-tile.t1 .v{color:var(--v1,#2a78d6)}
+  .ops-tile.t2 .v{color:var(--engine)}
+  .ops-sub{font-size:12px;font-weight:700;color:var(--muted);margin:6px 0 8px}
+  .ops-grid{display:block}
+  @media (min-width:900px){ .ops-grid{display:grid;grid-template-columns:2fr 1fr;gap:18px} }
+  .ops-row{
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:8px 12px;margin-bottom:7px;font-size:12.5px;
+  }
+  .ops-row .m{font-weight:700;flex:1;min-width:130px}
+  .ops-row .sc{font-family:Changa;font-weight:800;white-space:nowrap;direction:ltr}
+  .ops-row .min{font-size:10.5px;color:var(--muted);white-space:nowrap}
+  .ops-badge{font-size:10.5px;border-radius:99px;padding:2px 9px;white-space:nowrap;border:1px solid var(--line);color:var(--muted)}
+  .ops-badge.danger{border-color:#d64545;color:#ff6b6b;font-weight:700}
+  .ops-badge.ontrack{border-color:#27a35b;color:#27a35b}
+  .ops-badge.volatile{border-color:#d99b26;color:#d99b26}
+  .ops-badge.gold{border-color:#d4a017;color:#e8b923}
+  .ops-badge.mktd{border-color:var(--engine);color:var(--engine)}
+
   /* طي الأقسام بنقرة العنوان + زر "عرض بقية المباريات" (طلب المالك 2026-08-01) */
   .sec-head{cursor:pointer;user-select:none}
   .sec .sec-head h2::before{content:"▾ ";font-size:11px;color:var(--muted)}
@@ -385,6 +410,26 @@
     </button>
   </div>
 
+  <!-- 🎯 غرفة العمليات — أين يجب أن تنظر الآن (طلب المالك 2026-08-01) -->
+  <section class="sec" id="ops-sec" style="display:none">
+    <div class="sec-head">
+      <h2 data-i="ops">🎯 غرفة العمليات</h2>
+      <span class="rule"></span>
+      <span class="count" id="ops-count">0</span>
+    </div>
+    <div class="ops-tiles" id="ops-tiles"></div>
+    <div class="ops-grid">
+      <div>
+        <div class="ops-sub" data-i="opsFocus">🔎 ركّز هنا الآن</div>
+        <div id="ops-focus"></div>
+      </div>
+      <div>
+        <div class="ops-sub" data-i="opsSoon">⏰ تنطلق خلال 3 ساعات</div>
+        <div id="ops-soon"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- الحية الآن (مشتركة بين المحركين) -->
   <section class="sec">
     <div class="sec-head">
@@ -515,6 +560,16 @@ var I18N = {
     labNoBreakdown:"التفصيل بنداً‑ببند متاح للتقارير المقيَّمة من الآن فصاعداً — هذا التقرير قُيِّم قبل تفعيل الميزة",
     liveMore:"⌄ عرض بقية المباريات الحية ({n})",
     liveLess:"⌃ إخفاء المباريات الإضافية",
+    ops:"🎯 غرفة العمليات",
+    opsFocus:"🔎 ركّز هنا الآن",
+    opsSoon:"⏰ تنطلق خلال 3 ساعات",
+    opsNow:"لو انتهت الآن",
+    opsLosing:"توقعه يخسر",
+    opsVolatile:"نهاية متقلبة",
+    opsGold:"ذهبية 70%+",
+    opsFocusCount:"تحتاج نظرك",
+    opsAllCalm:"كل التوقعات على المسار — لا خطر حالياً ✅",
+    opsNoSoon:"لا انطلاقات خلال الساعات الثلاث القادمة.",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -562,6 +617,16 @@ var I18N = {
     labNoBreakdown:"Claim-by-claim detail is available for reports graded from now on — this one was graded before the feature",
     liveMore:"⌄ show the rest of the live matches ({n})",
     liveLess:"⌃ hide extra matches",
+    ops:"🎯 Ops room",
+    opsFocus:"🔎 Focus here now",
+    opsSoon:"⏰ kicking off within 3 hours",
+    opsNow:"if it ended now",
+    opsLosing:"pick is losing",
+    opsVolatile:"volatile endgame",
+    opsGold:"gold 70%+",
+    opsFocusCount:"need your eyes",
+    opsAllCalm:"All picks on track — no danger right now ✅",
+    opsNoSoon:"No kickoffs in the next three hours.",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -1125,6 +1190,107 @@ function renderLoadingState(){
   document.getElementById("res-count").textContent = "…";
 }
 
+/* 🎯 غرفة العمليات — إشارات لا زينة (طلب المالك 2026-08-01): من يخسر توقعه
+   الآن، النهايات المتقلبة، الاختيارات الذهبية الجارية، مخالفات السوق،
+   وعدّاد "لو انتهت الآن" لكل محرك + الانطلاقات القريبة */
+function currentOutcome(score){
+  var p = String(score || "").split("-");
+  var h = parseInt(p[0], 10) || 0, a = parseInt(p[1], 10) || 0;
+  return h > a ? "home" : (a > h ? "away" : "draw");
+}
+
+function renderOpsRoom(){
+  var sec = document.getElementById("ops-sec");
+  var base = lastV1 || {};
+  var live = base.live || [];
+  var v2up = (lastV2 && lastV2.upcoming) || [];
+  var upByFid = {};
+  for (var i=0;i<v2up.length;i++) upByFid[v2up[i].fid] = v2up[i];
+
+  var t1 = {ok:0, tot:0}, t2 = {ok:0, tot:0};
+  var focus = [];
+  for (var i=0;i<live.length;i++){
+    var m = live[i];
+    var out = currentOutcome(m.score);
+    var badges = [], danger = false;
+    if (m.pred_v1 && m.pred_v1.pick){
+      t1.tot++;
+      if (m.pred_v1.pick === out) t1.ok++;
+      else { danger = true; badges.push(["danger", t("e1name")+" — "+t("opsLosing")]); }
+    }
+    if (m.pred_v2 && m.pred_v2.pick){
+      t2.tot++;
+      if (m.pred_v2.pick === out) t2.ok++;
+      else { danger = true; badges.push(["danger", t("e2name")+" — "+t("opsLosing")]); }
+    }
+    var mm = parseInt(m.minute, 10) || 0;
+    var pp = String(m.score || "").split("-");
+    var margin = Math.abs((parseInt(pp[0],10)||0) - (parseInt(pp[1],10)||0));
+    if (mm >= 75 && margin <= 1 && (m.pred_v1 || m.pred_v2))
+      badges.push(["volatile", t("opsVolatile")]);
+    if (m.pred_v2 && (m.pred_v2.confidence || 0) >= 70)
+      badges.push(["gold", t("opsGold")]);
+    var u = upByFid[m.fid];
+    if (u && u.mkt_home != null && u.pick){
+      var mk = {home:u.mkt_home, draw:u.mkt_draw, away:u.mkt_away};
+      var fav = "home";
+      if ((mk.draw||0) > (mk[fav]||0)) fav = "draw";
+      if ((mk.away||0) > (mk[fav]||0)) fav = "away";
+      if (fav !== u.pick) badges.push(["mktd", t("mktDiff")]);
+    }
+    if (badges.length) focus.push({m:m, badges:badges, danger:danger, mm:mm});
+  }
+  /* الخطر أولاً، ثم الأقرب للنهاية — حيث كل دقيقة تحسم */
+  focus.sort(function(a,b){ return (b.danger?1:0)-(a.danger?1:0) || b.mm-a.mm; });
+
+  var soon = [];
+  var up = (engine === "v2") ? v2up : (base.upcoming || []);
+  var nowMs = Date.now();
+  for (var i=0;i<up.length;i++){
+    var ko = Date.parse(up[i].kickoff);
+    if (!isNaN(ko) && ko > nowMs && ko - nowMs <= 3*3600*1000 && !liveSet[up[i].fid])
+      soon.push(up[i]);
+  }
+  soon.sort(function(a,b){ return Date.parse(a.kickoff) - Date.parse(b.kickoff); });
+  soon = soon.slice(0, 8);
+
+  var show = live.length && (focus.length || t1.tot || t2.tot || soon.length);
+  sec.style.display = show ? "" : "none";
+  if (!show) return;
+  document.getElementById("ops-count").textContent = focus.length;
+
+  var tiles = ""
+    + '<div class="ops-tile t1"><div class="v">'+(t1.tot ? t1.ok+"/"+t1.tot : "—")+'</div><div class="k">'+t("e1name")+" · "+t("opsNow")+'</div></div>'
+    + '<div class="ops-tile t2"><div class="v">'+(t2.tot ? t2.ok+"/"+t2.tot : "—")+'</div><div class="k">'+t("e2name")+" · "+t("opsNow")+'</div></div>'
+    + '<div class="ops-tile"><div class="v">'+live.length+'</div><div class="k">'+t("live")+'</div></div>'
+    + '<div class="ops-tile"><div class="v">'+focus.length+'</div><div class="k">'+t("opsFocusCount")+'</div></div>';
+  document.getElementById("ops-tiles").innerHTML = tiles;
+
+  var fh = "";
+  for (var i=0;i<focus.length && i<12;i++){
+    var f = focus[i], fm = f.m;
+    fh += '<div class="ops-row"><span class="m">'+esc(fm.home)+' × '+esc(fm.away)+'</span>'
+      + '<span class="sc">'+esc(fm.score)+'</span>'
+      + '<span class="min">'+(fm.status==="HT" ? "HT" : esc(fm.minute)+"'")+'</span>';
+    for (var j=0;j<f.badges.length;j++)
+      fh += '<span class="ops-badge '+f.badges[j][0]+'">'+f.badges[j][1]+'</span>';
+    fh += '</div>';
+  }
+  document.getElementById("ops-focus").innerHTML =
+    fh || '<div class="empty">'+t("opsAllCalm")+'</div>';
+
+  var sh = "";
+  for (var i=0;i<soon.length;i++){
+    var u = soon[i];
+    sh += '<div class="ops-row"><span class="m">'+esc(u.home)+' × '+esc(u.away)+'</span>'
+      + '<span class="min">'+timeLocal(u.kickoff)+'</span>'
+      + ((u.confidence||0) >= 70 ? '<span class="ops-badge gold">'+t("opsGold")+'</span>' : "")
+      + '</div>';
+  }
+  document.getElementById("ops-soon").innerHTML =
+    sh || '<div class="empty">'+t("opsNoSoon")+'</div>';
+}
+
 function renderAll(){
   var base = lastV1 || {};
   liveSet = {};
@@ -1151,6 +1317,7 @@ function renderAll(){
   }
   renderLessons();
   renderShadowLab();
+  renderOpsRoom();
 }
 
 /* ================= جلب البيانات ================= */
