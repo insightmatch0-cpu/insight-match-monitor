@@ -192,6 +192,16 @@ class TestShadowLabPanel(unittest.TestCase):
         body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIn("renderOpsRoom()", body.group(1))
 
+    def test_collapsed_section_cannot_look_broken(self):
+        """درس 2026-08-02: قسم مطوي بدا للمالك قسماً معطلاً — الآن سهم كهرماني
+        + تلميح نصي واضح، وأي خطأ برمجي يظهر بلافتة حمراء لا بصمت."""
+        self.assertIn('data-hint', SCRIPT)
+        self.assertIn("collapsedHint", SCRIPT)
+        self.assertIn("attr(data-hint)", HTML)
+        self.assertIn('id="err-banner"', HTML)
+        self.assertIn("window.onerror", SCRIPT)
+        self.assertIn("jsError", SCRIPT)
+
     def test_team_names_follow_language(self):
         """طلب المالك 2026-08-02: عند اختيار EN تظهر أسماء الأندية بالإنجليزية
         في كل الأقسام — القائمة الحية، النتائج، مختبر الظل، غرفة العمليات،
