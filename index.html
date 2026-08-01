@@ -201,6 +201,29 @@
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
   .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
+  /* طي الأقسام بنقرة العنوان + زر "عرض بقية المباريات" (طلب المالك 2026-08-01) */
+  .sec-head{cursor:pointer;user-select:none}
+  .sec .sec-head h2::before{content:"▾ ";font-size:11px;color:var(--muted)}
+  .sec.collapsed .sec-head h2::before{content:"◂ "}
+  .sec.collapsed > :not(.sec-head){display:none !important}
+  .live-more{
+    display:block;width:100%;margin:4px 0 10px;padding:10px;
+    background:var(--panel);border:1px dashed var(--line);border-radius:12px;
+    color:var(--muted);font-size:12.5px;font-family:inherit;cursor:pointer;
+  }
+  .live-more:hover{border-color:var(--engine);color:var(--engine)}
+
+  /* تفصيل التصحيح بنداً‑ببند داخل بطاقة المختبر */
+  .lab-bd{border-top:1px solid var(--line);padding:11px 13px 4px}
+  .lab-bd-title{font-size:11px;color:var(--muted);font-weight:700;margin:8px 13px 6px}
+  .lab-bd .lab-bd-title{margin:0 0 8px}
+  .lab-bd-row{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.55;margin-bottom:6px}
+  .lab-bd-row .ic{flex:none}
+  .lab-bd-row.ok .cl{color:inherit}
+  .lab-bd-row.no .cl{opacity:.85}
+  .lab-bd-sum{font-size:12px;color:var(--muted);margin:8px 0 4px}
+  .lab-bd-note{font-size:11.5px;color:var(--muted);padding:10px 13px 0;border-top:1px solid var(--line)}
+
   /* 🔬 مختبر الظل v2 — بطاقات بصرية تشرح نفسها (طلب المالك 2026-08-01) */
   .lab-explain{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px}
   .lab-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
@@ -484,6 +507,12 @@ var I18N = {
     labWaitKO:"بانتظار انطلاق المباراة", labWaitGrade:"المباراة جارية — التصحيح صباحاً",
     labReadReport:"انقر لقراءة التقرير الأصلي كاملاً",
     labOfClaims:"من {n} بنود",
+    labWaitData:"انتهت المباراة — بانتظار بياناتها النهائية (تُتابع كل صباح وتُنظَّف آلياً إن تعذّرت)",
+    labBreakdown:"تصحيح البنود — ما نجح وما فشل",
+    labOrig:"التقرير الأصلي كما كُتب قبل المباراة",
+    labNoBreakdown:"التفصيل بنداً‑ببند متاح للتقارير المقيَّمة من الآن فصاعداً — هذا التقرير قُيِّم قبل تفعيل الميزة",
+    liveMore:"⌄ عرض بقية المباريات الحية ({n})",
+    liveLess:"⌃ إخفاء المباريات الإضافية",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -525,6 +554,12 @@ var I18N = {
     labWaitKO:"awaiting kickoff", labWaitGrade:"match in play — graded in the morning",
     labReadReport:"tap to read the full original report",
     labOfClaims:"of {n} claims",
+    labWaitData:"match finished — awaiting final data (checked every morning, auto-cleaned if unavailable)",
+    labBreakdown:"Claim-by-claim grading — what hit and what missed",
+    labOrig:"Original report as written before the match",
+    labNoBreakdown:"Claim-by-claim detail is available for reports graded from now on — this one was graded before the feature",
+    liveMore:"⌄ show the rest of the live matches ({n})",
+    liveLess:"⌃ hide extra matches",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -616,6 +651,21 @@ document.getElementById("tab-v1").addEventListener("click", function(){ setEngin
 document.getElementById("tab-v2").addEventListener("click", function(){ setEngine("v2"); });
 
 /* ================= العرض ================= */
+/* عدد البطاقات الحية الظاهرة قبل زر "عرض البقية" — يقتل التمرير الطويل
+   في ليالي الـ 100+ مباراة (طلب المالك 2026-08-01) */
+var LIVE_VISIBLE = 12;
+
+function toggleLiveMore(){
+  var more = document.getElementById("live-more");
+  var btn = document.getElementById("live-more-btn");
+  if (!more || !btn) return;
+  var open = more.style.display !== "none";
+  more.style.display = open ? "none" : "";
+  btn.textContent = open
+    ? t("liveMore").replace("{n}", btn.getAttribute("data-n"))
+    : t("liveLess");
+}
+
 function renderLive(list){
   var el = document.getElementById("live-list");
   document.getElementById("live-count").textContent = list.length;
@@ -623,6 +673,12 @@ function renderLive(list){
   var h = "";
   for (var i=0;i<list.length;i++){
     var m = list[i];
+    if (i === LIVE_VISIBLE){
+      var hidden = list.length - LIVE_VISIBLE;
+      h += '<button type="button" id="live-more-btn" class="live-more" data-n="'+hidden+'" '
+        + 'onclick="toggleLiveMore()">'+t("liveMore").replace("{n}", String(hidden))+'</button>'
+        + '<div id="live-more" style="display:none">';
+    }
     var sc = esc(m.score).split("-");
     h += '<div class="card">'
       + '<div class="league-eyebrow">'
@@ -638,6 +694,7 @@ function renderLive(list){
       + livePredsRow(m)
       + '</div>';
   }
+  if (list.length > LIVE_VISIBLE) h += '</div>';   /* إغلاق حاوية "بقية المباريات" */
   el.innerHTML = h;
 }
 
@@ -826,7 +883,31 @@ function renderAccuracy(acc){
 /* 🔬 مختبر الظل v2 — بطاقات بصرية تشرح نفسها (طلب المالك 2026-08-01):
    شريط نسبة أخضر/أحمر، عدّاد ✓/✗، نقطة حمراء نابضة للتقارير التي مباراتها
    جارية، والتقرير الأصلي كاملاً بنقرة واحدة. تبويب المحرك 2 فقط */
+/* تفصيل التصحيح بنداً‑ببند — ماذا نجح وماذا فشل بالضبط (طلب المالك 2026-08-01) */
+function labBreakdown(r){
+  var h = "";
+  var gs = r.grades || [];
+  if (gs.length){
+    h += '<div class="lab-bd"><div class="lab-bd-title">'+t("labBreakdown")+'</div>';
+    for (var i=0;i<gs.length;i++){
+      var res = gs[i].result || "";
+      var cls = res === "صح" ? "ok" : (res === "خطأ" ? "no" : "part");
+      var ic  = res === "صح" ? "✅" : (res === "خطأ" ? "❌" : "🟡");
+      h += '<div class="lab-bd-row '+cls+'"><span class="ic">'+ic+'</span>'
+        + '<span class="cl">'+esc(gs[i].claim)+'</span></div>';
+    }
+    if (r.grade_summary) h += '<div class="lab-bd-sum">'+esc(r.grade_summary)+'</div>';
+    h += '</div>';
+  } else if (r.total){
+    h += '<div class="lab-bd-note">'+t("labNoBreakdown")+'</div>';
+  }
+  if (r.report) h += '<div class="lab-bd-title">'+t("labOrig")+'</div>'
+    + '<div class="lab-report">'+esc(r.report)+'</div>';
+  return h;
+}
+
 function labCard(r, statusHtml, verdictHtml){
+  var body = labBreakdown(r);
   return '<details class="lab-card"><summary>'
     + '<div class="lab-top">'
     + '<span class="lab-match">'+esc(r.home)+' × '+esc(r.away)+'</span>'
@@ -836,9 +917,9 @@ function labCard(r, statusHtml, verdictHtml){
     + '</div>'
     + (r.league ? '<div class="lab-league">'+esc(r.league)+'</div>' : "")
     + '<div class="lab-verdict">'+statusHtml+verdictHtml+'</div>'
-    + (r.report ? '<div class="lab-hint">👆 '+t("labReadReport")+'</div>' : "")
+    + (body ? '<div class="lab-hint">👆 '+t("labReadReport")+'</div>' : "")
     + '</summary>'
-    + (r.report ? '<div class="lab-report">'+esc(r.report)+'</div>' : "")
+    + body
     + '</details>';
 }
 
@@ -874,10 +955,18 @@ function renderShadowLab(){
   /* أولاً: التقارير المنتظرة — الحية منها تنبض بالأحمر مثل كاميرا تسجيل */
   for (var i=0;i<waiting.length;i++){
     var w = waiting[i];
-    var started = w.kickoff && Date.parse(w.kickoff) < nowMs;
-    var st = started
-      ? '<span class="lab-live"><span class="dot"></span>'+t("labWaitGrade")+'</span>'
-      : '<span class="lab-wait">⏳ '+t("labWaitKO")+(w.kickoff?" · "+timeLocal(w.kickoff):"")+'</span>';
+    var koMs = w.kickoff ? Date.parse(w.kickoff) : NaN;
+    var st;
+    if (!isNaN(koMs) && koMs < nowMs && (nowMs - koMs) < 4*3600*1000){
+      /* جارية فعلاً (خلال 4 ساعات من الانطلاق) — نبضة حمراء */
+      st = '<span class="lab-live"><span class="dot"></span>'+t("labWaitGrade")+'</span>';
+    } else if (!isNaN(koMs) && koMs < nowMs){
+      /* انتهت منذ مدة لكن بياناتها النهائية لم تصل بعد — حالة انتظار صادقة،
+         لا "مباشر" زائف (ملاحظة المالك 2026-08-01 على تقرير 29 يوليو) */
+      st = '<span class="lab-wait">🕓 '+t("labWaitData")+'</span>';
+    } else {
+      st = '<span class="lab-wait">⏳ '+t("labWaitKO")+(w.kickoff?" · "+timeLocal(w.kickoff):"")+'</span>';
+    }
     h += labCard(w, st, "");
   }
   /* ثم المُقيَّمة — شريط أخضر/أحمر + عدّاد ✓/✗ + نسبة ملوّنة */
@@ -1073,6 +1162,24 @@ function load(){
 
 applyLang();
 applyEngine();
+/* طي/فتح أي قسم بنقرة على عنوانه — والحالة محفوظة بين الزيارات
+   (طلب المالك 2026-08-01: "التمرير طويل جداً — جمّعها") */
+function initSecToggles(){
+  var secs = document.querySelectorAll("main .sec");
+  for (var i=0;i<secs.length;i++)(function(sec, idx){
+    var head = sec.querySelector(".sec-head");
+    if (!head) return;
+    var h2 = head.querySelector("h2");
+    var key = "im-sec-" + ((h2 && h2.getAttribute("data-i")) || idx);
+    try { if (localStorage.getItem(key) === "1") sec.classList.add("collapsed"); } catch(e){}
+    head.addEventListener("click", function(){
+      sec.classList.toggle("collapsed");
+      try { localStorage.setItem(key, sec.classList.contains("collapsed") ? "1" : "0"); } catch(e){}
+    });
+  })(secs[i], i);
+}
+initSecToggles();
+
 renderAll();
 load();
 setInterval(load, 90000);

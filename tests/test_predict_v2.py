@@ -204,6 +204,14 @@ class TestMarketProbsStored(unittest.TestCase):
         self.assertEqual(m["mkt_draw"], 28)
         self.assertEqual(m["mkt_away"], 24)
 
+    def test_scenario_grading_stores_claim_breakdown(self):
+        """طلب المالك 2026-08-01: التصحيح بنداً‑ببند يُحفظ مع التقرير المُقيَّم
+        (grades + grade_summary) ليظهر تفصيله في مختبر الظل."""
+        import inspect
+        src = inspect.getsource(P.resolve_scenarios)
+        self.assertIn('entry["grades"]', src)
+        self.assertIn("grade_summary", src)
+
     def test_resolve_carries_market_probs(self):
         """سجل resolved يجب أن يحمل حقول السوق — وإلا ضاع القياس عند التقييم."""
         import inspect
