@@ -628,6 +628,7 @@ var I18N = {
     radarTitle:"🛰 الرادار — من يهدد التوقعات الآن",
     radarNote:"رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.",
     radarLiveAt:"تحديث حي:",
+    radarDrama:"تنبيهات الدراما",
     radarWatched:"قيد الرصد",
     radarRed:"خطر",
     radarAmber:"إنذار",
@@ -701,6 +702,7 @@ var I18N = {
     radarTitle:"🛰 The Radar — what threatens the picks right now",
     radarNote:"Transparent mathematics, no AI — the fast lane refreshes the most dangerous matches every ~90 seconds.",
     radarLiveAt:"Live update:",
+    radarDrama:"Drama alerts",
     radarWatched:"Tracked",
     radarRed:"Danger",
     radarAmber:"Warning",
@@ -1503,11 +1505,17 @@ function renderRadar(live, acc){
     + '<div class="radar-tile t-green"><div class="num">'+counts.green+'</div><div class="lbl">'+esc(t("radarSafe"))+'</div></div>';
   /* لوحة صدق الرادار — تظهر فقط حين توجد إنذارات مُقيَّمة (لا ادعاء بلا قياس) */
   var accEl = document.getElementById("radar-acc");
-  var red = acc && acc.red, amb = acc && acc.amber;
-  if ((red && red.fired) || (amb && amb.fired)){
-    var parts = [];
-    if (red && red.fired) parts.push(t("radarRed")+": "+red.hit+"/"+red.fired);
-    if (amb && amb.fired) parts.push(t("radarAmber")+": "+amb.hit+"/"+amb.fired);
+  var red = acc && acc.red, amb = acc && acc.amber, al = acc && acc.alerts;
+  var parts = [];
+  if (red && red.fired) parts.push(t("radarRed")+": "+red.hit+"/"+red.fired);
+  if (amb && amb.fired) parts.push(t("radarAmber")+": "+amb.hit+"/"+amb.fired);
+  if (al){
+    /* لوحة عقل S3: مجموع تنبيهات الدراما المُقيَّمة (هدف/تعادل/قلب نتيجة) */
+    var tf = 0, th = 0;
+    for (var ak in al){ tf += al[ak].fired || 0; th += al[ak].hit || 0; }
+    if (tf) parts.push(t("radarDrama")+": "+th+"/"+tf);
+  }
+  if (parts.length){
     accEl.textContent = t("radarAccLine")+" "+parts.join(" · ");
     accEl.style.display = "";
   } else {

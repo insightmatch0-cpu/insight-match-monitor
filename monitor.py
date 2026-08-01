@@ -112,6 +112,16 @@ RADAR_SNAP_MIN_GAP_MIN = 8    # لقطة أحدث من نفس نافذة الـ 
 GH_TOKEN = os.environ.get("GH_TOKEN", "").strip()
 GH_REPO = os.environ.get("GITHUB_REPOSITORY", "").strip() or "insightmatch0-cpu/insight-match-monitor"
 
+# 🚨 تنبيهات الدراما (طلب المالك 2026-08-01 — عقل S3 الأول): من الدقيقة 75
+# فصاعداً، إذا قالت الأرقام إن المتأخر سيسجل/يتعادل/يقلبها (أو من سيخطف
+# فوزاً من تعادل) يصل تنبيه تيليجرام فوراً — بشرط المالك الصريح تُرسل هذه
+# التنبيهات لكل مباريات الرادار بمعزل عن بوابة قائمة التركيز (نادرة بالبناء:
+# د75+، عتبة إشارة، مرة لكل مباراة، سقف 5/تشغيلة). تُقيَّم صباحاً بلوحتها الخاصة.
+RADAR_ALERT_MIN = 75          # شرط المالك: لا تنبيهات دراما قبل الدقيقة 75
+RADAR_ALERT_SIGNAL_MIN = 50   # عتبة الإشارة (0-100) لإرسال التنبيه
+RADAR_ALERT_CAP_PER_RUN = 5   # سقف تنبيهات الدراما في التشغيلة — ضد الضجيج
+_ALERT_RANK = {"goal": 1, "equalizer": 2, "next_goal": 2, "flip": 3}
+
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
 TOP_LEAGUE_IDS = {
     1,    # كأس العالم
@@ -1161,12 +1171,15 @@ def publish_radar_live(state: dict) -> bool:
         return False
 
 
-def radar_fast_watch(state: dict, watch: set, deadline: float) -> int:
+def radar_fast_watch(state: dict, watch: set, deadline: float,
+                     alert_budget: dict = None) -> int:
     """المسار السريع (طلب المالك 2026-08-01): يحدّث أخطر مباريات الرادار كل
     ~90 ثانية فيما تبقى من ميزانية التشغيلة وينشر كل جولة إلى radar-live.
     ليالي قائمة التركيز يستهلك رصدها السريع الميزانية أولاً — لا ازدواج،
     فمباريات القائمة هي نفسها أولوية الرادار وتتحدث عبر الدورة العادية."""
     v2_pending = (load_json_file(RADAR_PREDICTIONS_FILE, {}) or {}).get("pending") or {}
+    if alert_budget is None:
+        alert_budget = {"used": 0}
     published = 0
     while time.monotonic() < deadline:
         cands = []
@@ -1209,9 +1222,113 @@ def radar_fast_watch(state: dict, watch: set, deadline: float) -> int:
             radar.update({"snaps": snaps, "score": verdict["score"],
                           "level": verdict["level"], "factors": verdict["factors"]})
             e["radar"] = radar
+            # 🚨 عقل S3 في المسار السريع: التنبيه يصل خلال ~90 ثانية من الإشارة
+            maybe_radar_alert(fid, e, alert_budget)
         if publish_radar_live(state):
             published += 1
     return published
+
+
+def _side_momentum(snaps: list, side: str, opp: str):
+    """نقاط زخم طرف واحد في اللحظات الأخيرة + أسبابها بالكلمات."""
+    pts, reasons = 0, []
+    if _radar_delta(snaps, side, "sog") >= 2:
+        pts += 30
+        reasons.append("موجة تسديد على المرمى")
+    if _radar_delta(snaps, side, "cor") >= 2:
+        pts += 20
+        reasons.append("موجة ركنيات")
+    if _radar_delta(snaps, side, "shots") >= 3:
+        pts += 15
+        reasons.append("ضغط هجومي متصاعد")
+    if snaps and ((snaps[-1].get(opp) or {}).get("rc") or 0) > 0:
+        pts += 35
+        reasons.append("نقص عددي عند الخصم (طرد)")
+    if _radar_delta(snaps, opp, "sv") >= 2:
+        pts += 20
+        reasons.append("حارس الخصم تحت الحصار")
+    return pts, reasons
+
+
+def evaluate_comeback(snaps: list, minute: int, gh: int, ga: int):
+    """عقل S3 للحظات الحاسمة (سيناريوهات المالك 2026-08-01): من الدقيقة 75،
+    هل تقول الأرقام إن المتأخر سيسجل / يتعادل / يقلب النتيجة؟ وفي التعادل:
+    من يضغط لخطف الفوز؟ يرجع الادعاء والإشارة والأسباب — أو None (صمت).
+    رياضيات شفافة كباقي الرادار؛ لوحة التقييم الصباحية تعاير العتبات لاحقاً."""
+    if minute < RADAR_ALERT_MIN or not snaps:
+        return None
+    margin = abs(gh - ga)
+    if margin > 2:
+        return None   # فارق 3+ في آخر ربع ساعة — لا دراما واقعية
+    if margin == 0:
+        ph, rh = _side_momentum(snaps, "h", "a")
+        pa, ra = _side_momentum(snaps, "a", "h")
+        side, pts, reasons, other = ("home", ph, rh, pa) if ph >= pa else ("away", pa, ra, ph)
+        # في التعادل نطلب هيمنة واضحة لطرف واحد — لا تنبيه على شد وجذب متكافئ
+        if pts < RADAR_ALERT_SIGNAL_MIN or (pts - other) < 20:
+            return None
+        return {"key": "next_goal", "side": side, "signal": min(95, pts),
+                "reasons": reasons, "claim": "الهدف القادم — وربما خطف الفوز"}
+    side = "home" if gh < ga else "away"
+    s, o = ("h", "a") if side == "home" else ("a", "h")
+    pts, reasons = _side_momentum(snaps, s, o)
+    if margin == 2:
+        pts -= 15   # العودة من هدفين أصعب — نطلب إشارة أقوى
+    if pts < RADAR_ALERT_SIGNAL_MIN:
+        return None
+    red = bool(snaps and ((snaps[-1].get(o) or {}).get("rc") or 0) > 0)
+    if margin == 1 and (red or pts >= 70):
+        key, claim = "flip", "تعادل قريب — وقلب النتيجة وارد"
+    elif margin == 1:
+        key, claim = "equalizer", "هدف التعادل قادم"
+    else:
+        key, claim = "goal", "هدف يقلّص الفارق قادم"
+    return {"key": key, "side": side, "signal": min(95, pts),
+            "reasons": reasons, "claim": claim}
+
+
+def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
+    """يرسل تنبيه الدراما مرة واحدة لكل مباراة (يُرقّى فقط لادعاء أقوى —
+    مثال: تنبيه تعادل ثم طرد يرفعه لقلب نتيجة)، ويسجله في radar_log.json
+    ليقيَّم صباحاً على النتيجة الحقيقية — عقل S3 له لوحة صدق خاصة به."""
+    try:
+        gh, ga = (int(x) for x in (e.get("score") or "0-0").split("-")[:2])
+    except ValueError:
+        return False
+    radar = e.get("radar") or {}
+    verdict = evaluate_comeback(radar.get("snaps") or [], e.get("minute") or 0, gh, ga)
+    if not verdict:
+        return False
+    prev = radar.get("alerted")
+    if prev and _ALERT_RANK.get(verdict["key"], 0) <= _ALERT_RANK.get(prev, 0):
+        return False
+    if budget["used"] >= RADAR_ALERT_CAP_PER_RUN:
+        return False
+    budget["used"] += 1
+    ar = e.get("ar") or {}
+    h = ar.get("home") or e.get("home", "?")
+    a = ar.get("away") or e.get("away", "?")
+    target = h if verdict["side"] == "home" else a
+    send_telegram(
+        f"🛰🚨 تنبيه الرادار — د{e.get('minute')}\n"
+        f"{h} {gh} - {ga} {a}\n"
+        f"التوقع: {verdict['claim']} لصالح {target} (إشارة {verdict['signal']}%)\n"
+        f"الأسباب: " + "، ".join(verdict["reasons"])
+    )
+    radar["alerted"] = verdict["key"]
+    e["radar"] = radar
+    log = load_json_file(RADAR_FILE, {}) or {}
+    log.setdefault("alerts", []).append({
+        "fid": fid, "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "minute": e.get("minute"), "score_at": f"{gh}-{ga}",
+        "side": verdict["side"], "key": verdict["key"],
+        "signal": verdict["signal"], "home": e.get("home"), "away": e.get("away"),
+        "league": e.get("league"),
+    })
+    log["alerts"] = log["alerts"][-RADAR_MAX_WARNINGS:]
+    RADAR_FILE.write_text(
+        json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    return True
 
 
 def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
@@ -1230,7 +1347,7 @@ def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
     return [fid for _, fid in sorted(cands)][:RADAR_STATS_CAP]
 
 
-def radar_sweep(state: dict, watch: set) -> int:
+def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
     """دورة الرادار: لقطة أرقام + درجة خطر لكل مباراة حية عليها توقع، وتسجيل
     الإنذارات (كهرماني/أحمر) في radar_log.json ليقيَّم صدقها صباحاً.
     أي فشل لمباراة واحدة لا يوقف البقية — والفشل الكامل لا يوقف التشغيلة."""
@@ -1238,6 +1355,8 @@ def radar_sweep(state: dict, watch: set) -> int:
     targets = select_radar_fixtures(state, v2_pending, watch)
     if not targets:
         return 0
+    if alert_budget is None:
+        alert_budget = {"used": 0}
     log = load_json_file(RADAR_FILE, {}) or {}
     log.setdefault("warnings", [])
     log.setdefault("resolved", [])
@@ -1267,6 +1386,8 @@ def radar_sweep(state: dict, watch: set) -> int:
             "pick": p.get("pick"), "confidence": p.get("confidence"),
         }
         swept += 1
+        # 🚨 عقل S3: هل تتشكل دراما اللحظات الأخيرة؟ (د75+، مرة لكل مباراة)
+        maybe_radar_alert(fid, e, alert_budget)
         if verdict["level"] in ("amber", "red"):
             w = next((w for w in log["warnings"] if str(w.get("fid")) == fid), None)
             if w is None:
@@ -1530,8 +1651,9 @@ def main() -> None:
 
     # الرادار: إنذار مبكر رياضي لكل توقعات المحرك 2 الحية (صفر Claude)
     radar_count = 0
+    radar_alerts = {"used": 0}   # سقف تنبيهات الدراما مشترك بين الدورة والمسار السريع
     try:
-        radar_count = radar_sweep(state, watch)
+        radar_count = radar_sweep(state, watch, radar_alerts)
         publish_radar_live(state)   # أول نسخة حية لهذه الدورة (فشلها صامت)
     except Exception as e:
         print("الرادار — خطأ غير متوقع:", e)
@@ -1546,7 +1668,7 @@ def main() -> None:
     # أخطر المباريات كل ~90 ثانية ونشرها الحي (طلب المالك 2026-08-01)
     radar_published = 0
     try:
-        radar_published = radar_fast_watch(state, watch, fast_deadline)
+        radar_published = radar_fast_watch(state, watch, fast_deadline, radar_alerts)
     except Exception as e:
         print("الرادار السريع — خطأ غير متوقع:", e)
 
