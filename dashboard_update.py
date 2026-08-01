@@ -287,9 +287,36 @@ def build_shadow_lab() -> dict:
             "shadow": bool(e.get("shadow")),
             "correct": e.get("correct"),
             "total": e.get("total"),
+            # نص التقرير الأصلي — يُفتح من البطاقة ليقرأ المالك ماذا قال
+            # المحرك قبل المباراة حرفياً (شفافية كاملة، لا أرقام معلقة)
+            "report": e.get("report", ""),
         })
+    # التقارير المنتظرة (أُرسلت/التُقطت ولم تُقيَّم بعد) — تظهر بحالة حية
+    waiting = []
+    for p in (sc.get("pending") or {}).values():
+        if not isinstance(p, dict):
+            continue
+        waiting.append({
+            "date": p.get("date", ""),
+            "kickoff": p.get("kickoff", ""),
+            "home": p.get("ar_home") or p.get("home", "?"),
+            "away": p.get("ar_away") or p.get("away", "?"),
+            "league": p.get("league", ""),
+            "shadow": bool(p.get("shadow")),
+            "report": p.get("report", ""),
+        })
+    waiting.sort(key=lambda x: x.get("kickoff") or "")
+    # دقة كل نوع على السجل الكامل (لا العينة المعروضة فقط)
+    def acc(flag):
+        sub = [e for e in resolved if bool(e.get("shadow")) == flag]
+        return {"correct": sum(e.get("correct") or 0 for e in sub),
+                "total": sum(e.get("total") or 0 for e in sub),
+                "reports": len(sub)}
     return {
         "reports": rows,
+        "waiting": waiting,
+        "shadow_acc": acc(True),
+        "watch_acc": acc(False),
         "graded_total": len(resolved),
         "pending": len(sc.get("pending") or {}),
     }

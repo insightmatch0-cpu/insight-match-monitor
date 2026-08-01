@@ -201,18 +201,39 @@
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
   .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
-  /* 🔬 مختبر الظل — صفوف بطاقات التقييم */
-  .lab-summary{font-size:11.5px;color:var(--muted);margin-bottom:9px}
-  .lab-row{
-    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    background:var(--panel);border:1px solid var(--line);border-radius:12px;
-    padding:9px 12px;margin-bottom:7px;font-size:12.5px;
+  /* 🔬 مختبر الظل v2 — بطاقات بصرية تشرح نفسها (طلب المالك 2026-08-01) */
+  .lab-explain{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+  .lab-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+  .lab-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;text-align:center;padding:8px 6px}
+  .lab-stat .v{font-family:Changa;font-weight:700;font-size:17px}
+  .lab-stat .k{font-size:10.5px;color:var(--muted)}
+  details.lab-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    margin-bottom:8px;overflow:hidden;
   }
-  .lab-date{color:var(--muted);font-size:11px;white-space:nowrap}
-  .lab-match{flex:1;min-width:140px;font-weight:600}
-  .lab-type{font-size:10.5px;border:1px solid var(--line);border-radius:99px;padding:2px 9px;color:var(--muted)}
+  details.lab-card summary{list-style:none;cursor:pointer;padding:11px 13px}
+  details.lab-card summary::-webkit-details-marker{display:none}
+  details.lab-card[open]{border-color:var(--engine)}
+  .lab-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .lab-match{font-weight:700;font-size:13.5px;flex:1;min-width:150px}
+  .lab-type{font-size:10.5px;border:1px solid var(--line);border-radius:99px;padding:2px 9px;color:var(--muted);white-space:nowrap}
   .lab-type.is-shadow{border-color:var(--v2);color:var(--v2)}
-  .lab-score{font-family:Changa;font-weight:700;white-space:nowrap}
+  .lab-date{color:var(--muted);font-size:10.5px;white-space:nowrap}
+  .lab-league{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .lab-verdict{display:flex;align-items:center;gap:10px;margin-top:9px;flex-wrap:wrap}
+  .lab-bar{flex:1;min-width:120px;height:10px;border-radius:99px;background:rgba(214,69,69,.35);overflow:hidden;direction:ltr}
+  .lab-bar i{display:block;height:100%;background:#27a35b;border-radius:99px 0 0 99px}
+  .lab-pct{font-family:Changa;font-weight:800;font-size:16px;white-space:nowrap}
+  .lab-pct.good{color:#27a35b}.lab-pct.mid{color:#d99b26}.lab-pct.bad{color:#d64545}
+  .lab-ticks{font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .lab-ticks .ok{color:#27a35b;font-weight:700}
+  .lab-ticks .no{color:#d64545;font-weight:700}
+  .lab-live{color:#ff4d4d;font-weight:700;font-size:11.5px;white-space:nowrap}
+  .lab-live .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff4d4d;margin-inline-end:4px;animation:labpulse 1.2s infinite}
+  @keyframes labpulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .lab-wait{color:var(--muted);font-size:11.5px;white-space:nowrap}
+  .lab-report{border-top:1px solid var(--line);padding:11px 13px;font-size:12.5px;line-height:1.7;white-space:pre-wrap;color:var(--text,inherit)}
+  .lab-hint{font-size:10.5px;color:var(--muted);margin-top:7px}
 
   /* ⚖️ المحرك ضد السوق — شريحة صغيرة أسفل الاحتمالات؛ تتوهج عند الاختلاف */
   .mkt{margin-top:7px;font-size:11.5px;color:var(--muted)}
@@ -458,6 +479,11 @@ var I18N = {
     shadowLab:"🔬 مختبر الظل — تقييم التقارير",
     labShadow:"تقرير ظل", labWatch:"قائمة التركيز",
     labGraded:"إجمالي التقييمات", labPending:"بانتظار التقييم",
+    labExplain:"قبل كل مباراة مهمة يكتب المحرك 2 تقريراً يتنبأ بتفاصيلها (النتيجة، الأهداف، الركنيات، البطاقات، الهداف…). في صباح اليوم التالي يُصحَّح التقرير آلياً مقابل ما حدث فعلاً: ✓ لكل بند أصاب، ✗ لكل بند أخطأ. تقارير الظل 🕶 تدريب صامت يختاره المحرك بنفسه — وتقارير قائمة التركيز ⭐ هي مباريات اخترتها أنت.",
+    labShadowAcc:"دقة تقارير الظل", labWatchAcc:"دقة تقارير القائمة",
+    labWaitKO:"بانتظار انطلاق المباراة", labWaitGrade:"المباراة جارية — التصحيح صباحاً",
+    labReadReport:"انقر لقراءة التقرير الأصلي كاملاً",
+    labOfClaims:"من {n} بنود",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -494,6 +520,11 @@ var I18N = {
     shadowLab:"🔬 Shadow lab — report scorecards",
     labShadow:"shadow report", labWatch:"focus list",
     labGraded:"Total graded", labPending:"Awaiting grading",
+    labExplain:"Before every key match, Engine 2 writes a report predicting its details (result, goals, corners, cards, scorer…). Next morning the report is auto-graded against what really happened: ✓ per correct claim, ✗ per wrong one. Shadow reports 🕶 are silent self-training picked by the engine — focus-list reports ⭐ are matches you chose.",
+    labShadowAcc:"Shadow reports accuracy", labWatchAcc:"Focus-list accuracy",
+    labWaitKO:"awaiting kickoff", labWaitGrade:"match in play — graded in the morning",
+    labReadReport:"tap to read the full original report",
+    labOfClaims:"of {n} claims",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -792,12 +823,37 @@ function renderAccuracy(acc){
   el.innerHTML = h + (any ? bh : "") + th;
 }
 
-/* 🔬 مختبر الظل — بطاقات تقييم تقارير ما قبل المباراة (قائمة + ظل صامت).
-   تبويب المحرك 2 فقط؛ يختفي كلياً حين لا توجد تقييمات بعد */
+/* 🔬 مختبر الظل v2 — بطاقات بصرية تشرح نفسها (طلب المالك 2026-08-01):
+   شريط نسبة أخضر/أحمر، عدّاد ✓/✗، نقطة حمراء نابضة للتقارير التي مباراتها
+   جارية، والتقرير الأصلي كاملاً بنقرة واحدة. تبويب المحرك 2 فقط */
+function labCard(r, statusHtml, verdictHtml){
+  return '<details class="lab-card"><summary>'
+    + '<div class="lab-top">'
+    + '<span class="lab-match">'+esc(r.home)+' × '+esc(r.away)+'</span>'
+    + '<span class="lab-type'+(r.shadow?" is-shadow":"")+'">'
+    + (r.shadow ? "🕶 "+t("labShadow") : "⭐ "+t("labWatch"))+'</span>'
+    + '<span class="lab-date">'+esc(r.date||"")+'</span>'
+    + '</div>'
+    + (r.league ? '<div class="lab-league">'+esc(r.league)+'</div>' : "")
+    + '<div class="lab-verdict">'+statusHtml+verdictHtml+'</div>'
+    + (r.report ? '<div class="lab-hint">👆 '+t("labReadReport")+'</div>' : "")
+    + '</summary>'
+    + (r.report ? '<div class="lab-report">'+esc(r.report)+'</div>' : "")
+    + '</details>';
+}
+
+function labAccStat(label, a){
+  var p = (a && a.total) ? Math.round(100*a.correct/a.total) : null;
+  return '<div class="lab-stat"><div class="v">'+(p===null?"—":p+"%")+'</div>'
+    + '<div class="k">'+label+(a&&a.reports? " ("+a.reports+")":"")+'</div></div>';
+}
+
 function renderShadowLab(){
   var sec = document.getElementById("shadow-sec");
   var lab = (engine === "v2" && v2exists && lastV2 && lastV2.shadow_lab) ? lastV2.shadow_lab : null;
-  var rows = (lab && lab.reports) || [];
+  var graded = (lab && lab.reports) || [];
+  var waiting = (lab && lab.waiting) || [];
+  var rows = graded.concat(waiting);
   sec.style.display = rows.length ? "" : "none";
   if (!rows.length){
     document.getElementById("shadow-list").innerHTML = "";
@@ -805,21 +861,39 @@ function renderShadowLab(){
     document.getElementById("shadow-count").textContent = 0;
     return;
   }
-  document.getElementById("shadow-count").textContent = lab.graded_total || rows.length;
+  document.getElementById("shadow-count").textContent = lab.graded_total || graded.length;
   document.getElementById("shadow-summary").innerHTML =
-    t("labGraded")+": "+esc(lab.graded_total||0)
-    + (lab.pending ? " · "+t("labPending")+": "+esc(lab.pending) : "");
-  var h = "";
-  for (var i=0;i<rows.length;i++){
-    var r = rows[i];
+    '<div class="lab-explain">'+t("labExplain")+'</div>'
+    + '<div class="lab-summary">'
+    + labAccStat(t("labShadowAcc"), lab.shadow_acc)
+    + labAccStat(t("labWatchAcc"), lab.watch_acc)
+    + '<div class="lab-stat"><div class="v">'+esc(lab.graded_total||0)+'</div><div class="k">'+t("labGraded")+'</div></div>'
+    + '<div class="lab-stat"><div class="v">'+esc(lab.pending||0)+'</div><div class="k">'+t("labPending")+'</div></div>'
+    + '</div>';
+  var nowMs = Date.now(), h = "";
+  /* أولاً: التقارير المنتظرة — الحية منها تنبض بالأحمر مثل كاميرا تسجيل */
+  for (var i=0;i<waiting.length;i++){
+    var w = waiting[i];
+    var started = w.kickoff && Date.parse(w.kickoff) < nowMs;
+    var st = started
+      ? '<span class="lab-live"><span class="dot"></span>'+t("labWaitGrade")+'</span>'
+      : '<span class="lab-wait">⏳ '+t("labWaitKO")+(w.kickoff?" · "+timeLocal(w.kickoff):"")+'</span>';
+    h += labCard(w, st, "");
+  }
+  /* ثم المُقيَّمة — شريط أخضر/أحمر + عدّاد ✓/✗ + نسبة ملوّنة */
+  for (var j=0;j<graded.length;j++){
+    var r = graded[j];
     var pc = (r.total ? Math.round(100*(r.correct||0)/r.total) : null);
-    h += '<div class="lab-row">'
-      + '<span class="lab-date">'+esc(r.date||"—")+'</span>'
-      + '<span class="lab-match">'+esc(r.home)+' × '+esc(r.away)+'</span>'
-      + '<span class="lab-type'+(r.shadow?" is-shadow":"")+'">'
-      + (r.shadow ? t("labShadow") : t("labWatch"))+'</span>'
-      + '<span class="lab-score">'+(r.total ? "✅ "+esc(r.correct)+"/"+esc(r.total)+" ("+pc+"%)" : "—")+'</span>'
-      + '</div>';
+    var cls = pc===null ? "" : (pc>=60 ? "good" : (pc>=40 ? "mid" : "bad"));
+    var verdict = "";
+    if (pc !== null){
+      verdict = '<span class="lab-bar"><i style="width:'+pc+'%"></i></span>'
+        + '<span class="lab-pct '+cls+'">'+pc+'%</span>'
+        + '<span class="lab-ticks"><span class="ok">✓ '+esc(r.correct)+'</span> · '
+        + '<span class="no">✗ '+esc((r.total||0)-(r.correct||0))+'</span> '
+        + t("labOfClaims").replace("{n}", esc(r.total))+'</span>';
+    }
+    h += labCard(r, "", verdict);
   }
   document.getElementById("shadow-list").innerHTML = h;
 }

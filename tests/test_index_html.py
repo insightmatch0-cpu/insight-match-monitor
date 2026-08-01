@@ -150,6 +150,17 @@ class TestShadowLabPanel(unittest.TestCase):
         self.assertIsNotNone(body)
         self.assertIn("renderShadowLab()", body.group(1))
 
+    def test_v2_visual_upgrade(self):
+        """v2 (طلب المالك 2026-08-01): شريط النسبة، عدّاد ✓/✗، النبضة الحمراء
+        للمباريات الجارية، والتقرير الأصلي القابل للفتح."""
+        self.assertIn("lab-bar", SCRIPT)                    # شريط أخضر/أحمر
+        self.assertIn("lab-ticks", SCRIPT)                  # عدّاد ✓/✗
+        self.assertIn("labpulse", HTML)                     # النبضة الحمراء
+        self.assertIn("labWaitGrade", SCRIPT)               # حالة "جارية"
+        self.assertIn('class="lab-report"', SCRIPT)         # التقرير الأصلي
+        self.assertIn("lab.waiting", SCRIPT)                # المنتظرة تُعرض
+        self.assertIn("labExplain", SCRIPT)                 # سطر الشرح الذاتي
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -124,6 +124,27 @@ class TestShadowLab(unittest.TestCase):
         self.assertEqual(len(lab["reports"]), D.SHADOW_LAB_ROWS)
         self.assertEqual(lab["graded_total"], 20)
 
+    def test_v2_waiting_and_per_type_accuracy(self):
+        """v2 (طلب المالك 2026-08-01): المنتظرة تظهر ببياناتها، والدقة
+        تُحسب لكل نوع على السجل الكامل، والتقرير الأصلي يصل اللوحة."""
+        lab = self._with_tmp_scenarios({
+            "pending": {"p1": {"date": "2026-08-01", "kickoff": "2026-08-01T18:00:00+00:00",
+                               "ar_home": "الهلال", "ar_away": "النصر",
+                               "league": "دوري روشن", "shadow": False, "report": "نص"}},
+            "resolved": [
+                {"graded_on": "2026-07-30", "home": "A", "away": "B",
+                 "shadow": True, "correct": 3, "total": 8, "report": "تقرير ظل"},
+                {"graded_on": "2026-07-31", "home": "C", "away": "D",
+                 "shadow": False, "correct": 5, "total": 7, "report": "تقرير قائمة"},
+            ],
+        })
+        self.assertEqual(len(lab["waiting"]), 1)
+        self.assertEqual(lab["waiting"][0]["home"], "الهلال")
+        self.assertIn("kickoff", lab["waiting"][0])
+        self.assertEqual(lab["shadow_acc"], {"correct": 3, "total": 8, "reports": 1})
+        self.assertEqual(lab["watch_acc"], {"correct": 5, "total": 7, "reports": 1})
+        self.assertEqual(lab["reports"][0]["report"], "تقرير قائمة")
+
 
 if __name__ == "__main__":
     unittest.main()
