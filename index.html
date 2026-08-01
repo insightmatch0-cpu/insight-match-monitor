@@ -48,6 +48,7 @@
   .brand em{color:var(--engine);font-style:normal;transition:color .3s}
   .meta-row{display:flex;align-items:center;gap:8px}
   #updated{font-size:11.5px;color:var(--muted);white-space:nowrap}
+  #updated.stale{color:var(--amber);font-weight:700}
   #langBtn{
     background:var(--chip);border:1px solid var(--line);
     border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:600;
@@ -639,6 +640,10 @@
 
 <script>
 "use strict";
+/* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
+   التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
+   نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
+var IM_BUILD = 62;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -667,6 +672,7 @@ var I18N = {
     updM:"د",
     updWindow:"نافذة تحديث واحدة يومياً — كل صباح",
     updLate:"⚠️ تحديث اليوم متأخر — حارس الجدولة سيطلقه",
+    staleWarn:"البيانات متأخرة عن الواقع",
     radarRed:"خطر",
     radarAmber:"إنذار",
     fTracked:"قيد الرصد",
@@ -755,6 +761,7 @@ var I18N = {
     updM:"m",
     updWindow:"One update window per day — every morning",
     updLate:"⚠️ Today's update is late — the scheduler watchdog will fire it",
+    staleWarn:"data is behind reality",
     radarRed:"Danger",
     radarAmber:"Warning",
     fTracked:"Tracked",
@@ -1687,7 +1694,14 @@ function renderAll(){
   liveSet = {};
   (base.live || []).forEach(function(m){ if (m.fid) liveSet[m.fid] = true; });
   if (base.updated){
-    document.getElementById("updated").textContent = t("updated")+" "+timeLocal(base.updated);
+    /* حارس الطزاجة المرئي: بيانات أقدم من 20 دقيقة مع مباريات حية = تحذير
+       كهرماني واضح — الشاشة تعترف بتقادمها بدل أن توهم بالحاضر */
+    var updEl = document.getElementById("updated");
+    var ageMin = Math.round((Date.now() - Date.parse(base.updated)) / 60000);
+    var stale = ageMin > 20 && (base.live || []).length > 0;
+    updEl.textContent = t("updated")+" "+timeLocal(base.updated)
+      + (stale ? " · ⚠️ "+t("staleWarn") : "");
+    updEl.classList.toggle("stale", stale);
   }
   var radarMode = (engine === "radar");
   setRadarMode(radarMode);
@@ -1770,6 +1784,20 @@ renderAll();
 load();
 pollRadarLive();   /* إن فُتحت الصفحة على تبويب الرادار — نسخة حية فوراً */
 setInterval(load, 90000);
+
+/* التحديث الذاتي: تبويب مفتوح منذ أيام يلتقط أي إصلاح منشور خلال ≤10 دقائق —
+   يقارن رقم البناء المنشور برقمه ويعيد التحميل عند وجود أحدث (درس 2026-08-02:
+   إصلاح الدقيقة وصل المستودع ولم يصل الشاشة المفتوحة) */
+function checkSelfUpdate(){
+  fetch("index.html?t="+Date.now(), {cache:"no-store"})
+    .then(function(r){ if (!r.ok) throw new Error("skip"); return r.text(); })
+    .then(function(txt){
+      var m = txt.match(/IM_BUILD = (\d+)/);
+      if (m && parseInt(m[1], 10) > IM_BUILD) location.reload();
+    })
+    .catch(function(){ /* انقطاع شبكة — نحاول في الدورة القادمة */ });
+}
+setInterval(checkSelfUpdate, 10*60*1000);
 </script>
 </body>
 </html>

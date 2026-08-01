@@ -391,6 +391,29 @@ def build_data_v2() -> None:
     )
 
 
+def freshness_warnings(state: dict) -> list:
+    """حارس الطزاجة (بلاغ المالك 2026-08-02 — اللوحة 9 والواقع 18): يفحص عمر
+    لقطات المباريات الحية وقت بناء اللوحة. طابع رصد مفقود أو أقدم من 20 دقيقة
+    يعني أن الشاشة ستعرض ماضياً على أنه حاضر — يُطبع صاخباً في سجل التشغيل،
+    واللوحة نفسها تعرض تحذيراً كهرمانياً للمالك (فحص العميل المستقل)."""
+    warns = []
+    for fid, e in (state or {}).items():
+        if not isinstance(e, dict) or e.get("status") not in LIVE_STATUSES:
+            continue
+        seen = e.get("seen")
+        label = f"{e.get('home', '?')} × {e.get('away', '?')}"
+        if not seen:
+            warns.append(f"{label}: بلا طابع رصد (seen)")
+            continue
+        try:
+            age = (now_utc() - datetime.fromisoformat(seen)).total_seconds() / 60
+            if age > 20:
+                warns.append(f"{label}: لقطة عمرها {int(age)} دقيقة")
+        except ValueError:
+            warns.append(f"{label}: طابع رصد تالف")
+    return warns
+
+
 def main() -> None:
     state = load_json(STATE_FILE, {})
     store = load_json(PREDICTIONS_FILE, {"pending": {}, "resolved": [], "meta": {}})
@@ -416,6 +439,8 @@ def main() -> None:
         f"data.json: {len(data['live'])} حية، {len(data['upcoming'])} قادمة، "
         f"{len(data['news'])} خبراً."
     )
+    for w in freshness_warnings(state):
+        print("⚠️ حارس الطزاجة:", w)
 
     build_data_v2()
 
