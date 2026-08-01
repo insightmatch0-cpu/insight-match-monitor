@@ -13,7 +13,9 @@
     --ink:#F0F6F1; --muted:#8FA697; --chip:#1C2B22;
     --v1:#FFB224; --v1-soft:rgba(255,178,36,.14);
     --v2:#4ED9EA; --v2-soft:rgba(78,217,234,.14);
+    --radar:#B48CFF; --radar-soft:rgba(180,140,255,.14);
     --green:#53C57F; --red:#E2615E; --live:#FF5D5B;
+    --amber:#FFB224;
     --engine:var(--v1); --engine-soft:var(--v1-soft);
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -58,7 +60,7 @@
 
   /* ======== مبدّل المحركات (لوحتا قناة بث) ======== */
   .engines{
-    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 6px;
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:4px 0 6px;
   }
   .engine-tab{
     position:relative;border:1px solid var(--line);border-radius:14px;
@@ -82,6 +84,61 @@
   .engine-tab.e2.active{border-color:var(--v2)}
   .engine-tab.e2.active .lamp{background:var(--v2);box-shadow:0 0 10px var(--v2)}
   .engine-tab.e2.active .name{color:var(--v2)}
+  .engine-tab.e3.active{border-color:var(--radar)}
+  .engine-tab.e3.active .lamp{background:var(--radar);box-shadow:0 0 10px var(--radar)}
+  .engine-tab.e3.active .name{color:var(--radar)}
+
+  /* ======== 🛰 الرادار — شاشة إنذار مبكر لعرض PC/TV (طلب المالك 2026-08-01) ======== */
+  main.radar-mode{max-width:1560px}   /* التبويب مصمم ليملأ شاشة كبيرة */
+  .radar-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+  .radar-tile{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:12px 14px;text-align:center;
+  }
+  .radar-tile .num{font-family:Changa;font-weight:800;font-size:26px}
+  .radar-tile .lbl{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .radar-tile.t-red .num{color:var(--red)}
+  .radar-tile.t-amber .num{color:var(--amber)}
+  .radar-tile.t-green .num{color:var(--green)}
+  .radar-note{font-size:12px;color:var(--muted);margin:2px 0 14px}
+  .radar-grid{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:900px){.radar-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1380px){.radar-grid{grid-template-columns:1fr 1fr 1fr}}
+  .rcard{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:14px;border-inline-start:4px solid var(--green);
+  }
+  .rcard.lvl-amber{border-inline-start-color:var(--amber)}
+  .rcard.lvl-red{border-inline-start-color:var(--red);
+    animation:radarpulse 1.6s ease-in-out infinite}
+  @keyframes radarpulse{50%{box-shadow:0 0 14px rgba(226,97,94,.35)}}
+  .rcard .rtop{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+  .rcard .rscore{
+    margin-inline-start:auto;font-family:Changa;font-weight:800;font-size:22px;
+  }
+  .rcard.lvl-green .rscore{color:var(--green)}
+  .rcard.lvl-amber .rscore{color:var(--amber)}
+  .rcard.lvl-red .rscore{color:var(--red)}
+  .rcard .rteams{display:flex;align-items:center;gap:8px;margin:9px 0;font-weight:700}
+  .rcard .rsc{font-family:Changa;font-weight:800;margin-inline-start:auto;white-space:nowrap}
+  .rgauge{height:8px;border-radius:999px;background:var(--chip);overflow:hidden;margin:4px 0 10px}
+  .rgauge i{display:block;height:100%;border-radius:999px}
+  .rcard.lvl-green .rgauge i{background:var(--green)}
+  .rcard.lvl-amber .rgauge i{background:var(--amber)}
+  .rcard.lvl-red .rgauge i{background:var(--red)}
+  .rfactors{margin:0 0 10px;padding:0;list-style:none;font-size:12.5px;color:var(--muted)}
+  .rfactors li{padding:2px 0}
+  .rfactors li::before{content:"⟶ ";color:var(--radar)}
+  .rspark{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
+  .rspark .lbl{min-width:86px}
+  .rspark .bars{display:flex;align-items:flex-end;gap:2px;height:22px;flex:1}
+  .rspark .bars span{flex:1;min-width:3px;border-radius:2px 2px 0 0;background:var(--chip)}
+  .rspark.s-h .bars span{background:var(--v2)}
+  .rspark.s-a .bars span{background:var(--v1)}
+  .radar-acc{
+    font-size:12.5px;color:var(--muted);background:var(--panel);
+    border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:12px;
+  }
 
   /* ======== عناوين الأقسام ======== */
   .sec{margin-top:26px}
@@ -418,7 +475,26 @@
       <div class="name" data-i="e2name">المحرك 2</div>
       <div class="desc" data-i="e2desc">الجيل الذكي — Fable 5</div>
     </button>
+    <button class="engine-tab e3" id="tab-radar" role="tab" aria-selected="false">
+      <span class="lamp"></span>
+      <div class="tag">LIVE</div>
+      <div class="name" data-i="radarName">🛰 الرادار</div>
+      <div class="desc" data-i="radarDesc">إنذار مبكر قبل سقوط التوقع</div>
+    </button>
   </div>
+
+  <!-- 🛰 الرادار — شاشة الإنذار المبكر بملء الشاشة (طلب المالك 2026-08-01) -->
+  <section class="sec" id="radar-sec" style="display:none">
+    <div class="sec-head">
+      <h2 data-i="radarTitle">🛰 الرادار — من يهدد التوقعات الآن</h2>
+      <span class="rule"></span>
+      <span class="count" id="radar-count">0</span>
+    </div>
+    <div class="radar-tiles" id="radar-tiles"></div>
+    <div class="radar-acc" id="radar-acc" style="display:none"></div>
+    <div class="radar-note" data-i="radarNote">رياضيات شفافة بلا ذكاء اصطناعي — تتحدث الأرقام تلقائياً كل ~10 دقائق مع دورة المراقبة.</div>
+    <div class="radar-grid" id="radar-grid"></div>
+  </section>
 
   <!-- 🎯 غرفة العمليات — أين يجب أن تنظر الآن (طلب المالك 2026-08-01) -->
   <section class="sec" id="ops-sec" style="display:none">
@@ -441,7 +517,7 @@
   </section>
 
   <!-- الحية الآن (مشتركة بين المحركين) -->
-  <section class="sec">
+  <section class="sec" id="live-sec">
     <div class="sec-head">
       <span class="live-dot" aria-hidden="true"></span>
       <h2 data-i="live">مباشر الآن</h2>
@@ -518,7 +594,7 @@
   </div>
 
   <!-- الأخبار (مشتركة) -->
-  <section class="sec">
+  <section class="sec" id="news-sec">
     <div class="sec-head">
       <h2 data-i="news">آخر الأخبار</h2>
       <span class="rule"></span>
@@ -547,6 +623,20 @@ var I18N = {
     noResMatch:"لا نتائج تطابق بحثك.",
     searchPh:"🔍 ابحث عن فريق...",
     whyLabel:"قراءة المحرك قبل المباراة:",
+    radarName:"🛰 الرادار",
+    radarDesc:"إنذار مبكر قبل سقوط التوقع",
+    radarTitle:"🛰 الرادار — من يهدد التوقعات الآن",
+    radarNote:"رياضيات شفافة بلا ذكاء اصطناعي — تتحدث الأرقام تلقائياً كل ~10 دقائق مع دورة المراقبة.",
+    radarWatched:"قيد الرصد",
+    radarRed:"خطر",
+    radarAmber:"إنذار",
+    radarSafe:"آمن",
+    radarAccLine:"صدق إنذارات الرادار (توقعات سقطت فعلاً بعد التحذير) —",
+    radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
+    radarPick:"توقع المحرك 2:",
+    radarCalm:"لا إشارات خطر — الأرقام هادئة حتى الآن.",
+    radarSogH:"تسديد المضيف",
+    radarSogA:"تسديد الضيف",
     noNews:"لا توجد أخبار حالياً.",
     pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل",
     accOverall:"الإجمالي", acc30:"آخر 30 يوماً",
@@ -605,6 +695,20 @@ var I18N = {
     noResMatch:"No results match your search.",
     searchPh:"🔍 Search for a team...",
     whyLabel:"Engine's pre-match read:",
+    radarName:"🛰 The Radar",
+    radarDesc:"Early warning before a pick falls",
+    radarTitle:"🛰 The Radar — what threatens the picks right now",
+    radarNote:"Transparent mathematics, no AI — numbers refresh automatically every ~10 minutes with the monitoring cycle.",
+    radarWatched:"Tracked",
+    radarRed:"Danger",
+    radarAmber:"Warning",
+    radarSafe:"Safe",
+    radarAccLine:"Radar warning accuracy (picks that truly fell after the alert) —",
+    radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
+    radarPick:"Engine 2 pick:",
+    radarCalm:"No danger signals — the numbers are calm so far.",
+    radarSogH:"Home shots on goal",
+    radarSogA:"Away shots on goal",
     noNews:"No news right now.",
     pickHome:"Win", pickAway:"Win", pickDraw:"Draw",
     accOverall:"Overall", acc30:"Last 30 days",
@@ -711,16 +815,19 @@ document.getElementById("langBtn").addEventListener("click", function(){
   renderAll();
 });
 
-/* ================= مبدّل المحركات ================= */
+/* ================= مبدّل المحركات (v1 / v2 / الرادار) ================= */
 function applyEngine(){
-  var isV2 = (engine === "v2");
-  document.getElementById("tab-v1").classList.toggle("active", !isV2);
+  var isV2 = (engine === "v2"), isRadar = (engine === "radar");
+  document.getElementById("tab-v1").classList.toggle("active", !isV2 && !isRadar);
   document.getElementById("tab-v2").classList.toggle("active", isV2);
-  document.getElementById("tab-v1").setAttribute("aria-selected", String(!isV2));
+  document.getElementById("tab-radar").classList.toggle("active", isRadar);
+  document.getElementById("tab-v1").setAttribute("aria-selected", String(!isV2 && !isRadar));
   document.getElementById("tab-v2").setAttribute("aria-selected", String(isV2));
+  document.getElementById("tab-radar").setAttribute("aria-selected", String(isRadar));
   var r = document.documentElement.style;
-  r.setProperty("--engine", isV2 ? "var(--v2)" : "var(--v1)");
-  r.setProperty("--engine-soft", isV2 ? "var(--v2-soft)" : "var(--v1-soft)");
+  r.setProperty("--engine", isRadar ? "var(--radar)" : (isV2 ? "var(--v2)" : "var(--v1)"));
+  r.setProperty("--engine-soft",
+    isRadar ? "var(--radar-soft)" : (isV2 ? "var(--v2-soft)" : "var(--v1-soft)"));
 }
 function setEngine(e){
   engine = e;
@@ -730,6 +837,7 @@ function setEngine(e){
 }
 document.getElementById("tab-v1").addEventListener("click", function(){ setEngine("v1"); });
 document.getElementById("tab-v2").addEventListener("click", function(){ setEngine("v2"); });
+document.getElementById("tab-radar").addEventListener("click", function(){ setEngine("radar"); });
 
 /* ================= العرض ================= */
 /* عدد البطاقات الحية الظاهرة قبل زر "عرض البقية" — يقتل التمرير الطويل
@@ -1312,15 +1420,107 @@ function renderOpsRoom(){
     sh || '<div class="empty">'+t("opsNoSoon")+'</div>';
 }
 
+/* ================= 🛰 الرادار: شاشة الإنذار المبكر ================= */
+function sparkRow(cls, label, vals){
+  if (!vals || vals.length < 2) return "";
+  var max = 1;
+  for (var i=0;i<vals.length;i++) if ((vals[i]||0) > max) max = vals[i];
+  var bars = "";
+  for (var j=0;j<vals.length;j++){
+    var h = Math.max(8, Math.round(100 * (vals[j]||0) / max));
+    bars += '<span style="height:'+h+'%" title="'+esc(vals[j]||0)+'"></span>';
+  }
+  return '<div class="rspark '+cls+'"><span class="lbl">'+esc(label)+'</span>'
+    + '<div class="bars">'+bars+'</div></div>';
+}
+
+function radarCard(m){
+  var r = m.radar;
+  var lvl = r.level || "green";
+  var pickTxt = r.pick === "home" ? m.home : (r.pick === "away" ? m.away : t("pickDraw"));
+  var facts = "";
+  for (var i=0;i<(r.factors||[]).length;i++) facts += "<li>"+esc(r.factors[i])+"</li>";
+  var tr = r.trend || {};
+  return '<div class="rcard lvl-'+esc(lvl)+'">'
+    + '<div class="rtop"><span>'+esc(m.league)+'</span>'
+    + '<span>د'+esc(m.minute)+'</span>'
+    + '<span class="rscore">'+esc(r.score)+'</span></div>'
+    + '<div class="rteams">'+badge(m.home, m.home_logo, true)
+    + '<span>'+esc(m.home)+' × '+esc(m.away)+'</span>'
+    + '<span class="rsc">'+esc(m.score)+'</span></div>'
+    + '<div class="rgauge"><i style="width:'+Math.max(3, r.score||0)+'%"></i></div>'
+    + '<div class="rtop" style="margin-bottom:6px"><span>'+esc(t("radarPick"))+" "
+    + esc(pickTxt)+(r.confidence ? " ("+esc(r.confidence)+"%)" : "")+'</span></div>'
+    + (facts ? '<ul class="rfactors">'+facts+'</ul>'
+             : '<div class="rfactors" style="padding:2px 0">'+esc(t("radarCalm"))+'</div>')
+    + sparkRow("s-h", t("radarSogH"), tr.h_sog)
+    + sparkRow("s-a", t("radarSogA"), tr.a_sog)
+    + '</div>';
+}
+
+function renderRadar(live, acc){
+  var rows = [];
+  for (var i=0;i<live.length;i++) if (live[i].radar && live[i].radar.score != null) rows.push(live[i]);
+  rows.sort(function(a,b){ return (b.radar.score||0) - (a.radar.score||0); });
+  document.getElementById("radar-count").textContent = rows.length;
+  var counts = {red:0, amber:0, green:0};
+  for (var j=0;j<rows.length;j++) counts[rows[j].radar.level || "green"]++;
+  document.getElementById("radar-tiles").innerHTML =
+      '<div class="radar-tile"><div class="num">'+rows.length+'</div><div class="lbl">'+esc(t("radarWatched"))+'</div></div>'
+    + '<div class="radar-tile t-red"><div class="num">'+counts.red+'</div><div class="lbl">'+esc(t("radarRed"))+'</div></div>'
+    + '<div class="radar-tile t-amber"><div class="num">'+counts.amber+'</div><div class="lbl">'+esc(t("radarAmber"))+'</div></div>'
+    + '<div class="radar-tile t-green"><div class="num">'+counts.green+'</div><div class="lbl">'+esc(t("radarSafe"))+'</div></div>';
+  /* لوحة صدق الرادار — تظهر فقط حين توجد إنذارات مُقيَّمة (لا ادعاء بلا قياس) */
+  var accEl = document.getElementById("radar-acc");
+  var red = acc && acc.red, amb = acc && acc.amber;
+  if ((red && red.fired) || (amb && amb.fired)){
+    var parts = [];
+    if (red && red.fired) parts.push(t("radarRed")+": "+red.hit+"/"+red.fired);
+    if (amb && amb.fired) parts.push(t("radarAmber")+": "+amb.hit+"/"+amb.fired);
+    accEl.textContent = t("radarAccLine")+" "+parts.join(" · ");
+    accEl.style.display = "";
+  } else {
+    accEl.style.display = "none";
+  }
+  var grid = document.getElementById("radar-grid");
+  if (!rows.length){
+    grid.innerHTML = '<div class="empty">'+t("radarEmpty")+'</div>';
+    return;
+  }
+  var h = "";
+  for (var k=0;k<rows.length;k++) h += radarCard(rows[k]);
+  grid.innerHTML = h;
+}
+
+/* إظهار/إخفاء وضع الرادار: شاشة واحدة نظيفة تملأ PC/TV بلا أقسام أخرى */
+function setRadarMode(on){
+  document.querySelector("main").classList.toggle("radar-mode", on);
+  document.getElementById("radar-sec").style.display = on ? "" : "none";
+  var hide = ["live-sec", "news-sec", "ops-sec"];
+  for (var i=0;i<hide.length;i++){
+    var el = document.getElementById(hide[i]);
+    if (el && on) el.style.display = "none";
+    else if (el && hide[i] !== "ops-sec") el.style.display = "";
+    /* ops-sec يدير ظهوره renderOpsRoom بنفسه خارج وضع الرادار */
+  }
+  document.getElementById("engine-body").style.display = on ? "none" : "";
+}
+
 function renderAll(){
   var base = lastV1 || {};
   liveSet = {};
   (base.live || []).forEach(function(m){ if (m.fid) liveSet[m.fid] = true; });
-  renderLive(base.live || []);
-  renderNews(base.news || []);
   if (base.updated){
     document.getElementById("updated").textContent = t("updated")+" "+timeLocal(base.updated);
   }
+  var radarMode = (engine === "radar");
+  setRadarMode(radarMode);
+  if (radarMode){
+    renderRadar(base.live || [], base.radar_acc || {});
+    return;
+  }
+  renderLive(base.live || []);
+  renderNews(base.news || []);
   if (engine === "v2"){
     if (lastV2){
       renderUpcoming(lastV2.upcoming || []);

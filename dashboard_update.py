@@ -29,6 +29,7 @@ NEWS_FILE           = Path("news.json")
 DATA_FILE           = Path("data.json")
 DATA_V2_FILE        = Path("data_v2.json")
 SCENARIOS_V2_FILE   = Path("scenarios_v2.json")
+RADAR_LOG_FILE      = Path("radar_log.json")   # إنذارات الرادار + إحصاءات صدقها
 SHADOW_LAB_ROWS     = 10   # أحدث بطاقات التقييم المعروضة في مختبر الظل
 
 LESSONS_ON_DASHBOARD = 30   # أحدث الدروس المعروضة في لوحة المحرك 2
@@ -175,6 +176,24 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
             item["pred_v1"] = p1
         if p2:
             item["pred_v2"] = p2
+        # الرادار (طلب المالك 2026-08-01): درجة الخطر وعواملها واتجاهات الأرقام
+        radar = e.get("radar") or {}
+        if radar.get("score") is not None:
+            snaps = radar.get("snaps") or []
+            item["radar"] = {
+                "score": radar.get("score"),
+                "level": radar.get("level"),
+                "factors": radar.get("factors") or [],
+                "pick": radar.get("pick"),
+                "confidence": radar.get("confidence"),
+                "trend": {
+                    "min": [s.get("minute", 0) for s in snaps],
+                    "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],
+                    "a_sog": [(s.get("a") or {}).get("sog", 0) for s in snaps],
+                    "h_cor": [(s.get("h") or {}).get("cor", 0) for s in snaps],
+                    "a_cor": [(s.get("a") or {}).get("cor", 0) for s in snaps],
+                },
+            }
         live.append(item)
     live.sort(key=lambda m: -(m["minute"] or 0))
     return live
@@ -378,6 +397,8 @@ def main() -> None:
         "recent_results": build_recent_results(store),
         "accuracy": stats,
         "news": news.get("items", []),
+        # لوحة صدق الرادار: كم إنذاراً أطلق وكم أصاب (يبنيها predict_v2 صباحاً)
+        "radar_acc": (load_json(RADAR_LOG_FILE, {}).get("meta") or {}).get("stats") or {},
     }
     save_json(DATA_FILE, data)
     print(

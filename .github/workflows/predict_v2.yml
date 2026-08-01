@@ -66,6 +66,7 @@ jobs:
           if [ -f history.json ]; then git add history.json; fi
           if [ -f referees.json ]; then git add referees.json; fi
           if [ -f scenarios_v2.json ]; then git add scenarios_v2.json; fi
+          if [ -f radar_log.json ]; then git add radar_log.json; fi
           git diff --cached --quiet || git commit -m "engine 2 predictions [skip ci]"
           # دفع مع إعادة المحاولة: عند تعارض مع commit موازٍ نحتفظ بملفاتنا المولّدة (الأحدث)
           ok=0
