@@ -209,6 +209,12 @@ def build_upcoming(store: dict) -> list:
             item["prob_home"] = p.get("prob_home")
             item["prob_draw"] = p.get("prob_draw")
             item["prob_away"] = p.get("prob_away")
+        # احتمالات السوق الضمنية (المحرك 2، المباريات الغنية) → شريحة
+        # "المحرك ضد السوق" على اللوحة
+        if p.get("mkt_home") is not None:
+            item["mkt_home"] = p.get("mkt_home")
+            item["mkt_draw"] = p.get("mkt_draw")
+            item["mkt_away"] = p.get("mkt_away")
         upcoming.append(item)
     upcoming.sort(key=lambda m: (not m["top"], m["kickoff"]))
     return upcoming

@@ -173,5 +173,44 @@ class TestScenarioGradeOrder(unittest.TestCase):
         self.assertIn("_scenario_grade_order(", src)
 
 
+class TestMarketProbsStored(unittest.TestCase):
+    """شريحة "المحرك ضد السوق" (طلب المالك 2026-08-01): احتمالات السوق الضمنية
+    تُخزَّن مع التوقع وتُحمل حتى سجل resolved — قياس مستقبلي مجاني."""
+
+    def test_odds_context_stashes_market_probs_on_match(self):
+        fake_payload = [{
+            "bookmakers": [{
+                "name": "TestBook",
+                "bets": [{
+                    "name": "Match Winner",
+                    "values": [
+                        {"value": "Home", "odd": "2.00"},
+                        {"value": "Draw", "odd": "3.50"},
+                        {"value": "Away", "odd": "4.00"},
+                    ],
+                }],
+            }],
+        }]
+        orig = P._enrich_call
+        P._enrich_call = lambda path, budget: fake_payload
+        try:
+            m = {"fid": "123"}
+            txt = P.odds_context(m, {"used": 0})
+        finally:
+            P._enrich_call = orig
+        self.assertIn("implied probabilities", txt)
+        # 1/2 + 1/3.5 + 1/4 → بعد إزالة الهامش: 48% / 28% / 24% (تقريب)
+        self.assertEqual(m["mkt_home"], 48)
+        self.assertEqual(m["mkt_draw"], 28)
+        self.assertEqual(m["mkt_away"], 24)
+
+    def test_resolve_carries_market_probs(self):
+        """سجل resolved يجب أن يحمل حقول السوق — وإلا ضاع القياس عند التقييم."""
+        import inspect
+        src = inspect.getsource(P.resolve_pending)
+        for field in ("mkt_home", "mkt_draw", "mkt_away"):
+            self.assertIn(field, src)
+
+
 if __name__ == "__main__":
     unittest.main()
