@@ -37,6 +37,20 @@ class TestBuildLive(unittest.TestCase):
         live = D.build_live({"4": live_entry(status="FT")}, {}, {})
         self.assertEqual(live, [])
 
+    def test_english_names_carried_everywhere(self):
+        """طلب المالك 2026-08-02: الاسم الإنجليزي يرافق العربي في كل حمولة —
+        الحية، النتائج، مختبر الظل — ليختار العرض بلغة الواجهة."""
+        live = D.build_live({"9": live_entry(ar={"home": "الهلال", "away": "النصر"},
+                                             home="Al Hilal", away="Al Nassr")}, {}, {})
+        self.assertEqual(live[0]["home"], "الهلال")
+        self.assertEqual(live[0]["home_en"], "Al Hilal")
+        res = D.build_recent_results({"resolved": [
+            {"home": "Kerry", "away": "Shelbourne", "ar_home": "كيري",
+             "date": "2026-07-17", "pick": "away", "confidence": 72,
+             "score": "2-2", "actual": "draw", "correct": False}]})
+        self.assertEqual(res[0]["home"], "كيري")
+        self.assertEqual(res[0]["home_en"], "Kerry")
+
     def test_seen_timestamp_carried(self):
         """بلاغ المالك 2026-08-02 (65 على اللوحة و84 في الواقع): لحظة رصد
         الدقيقة يجب أن تصل اللوحة حتى تُقدّم العدّاد بما مضى منذها."""
