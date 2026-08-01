@@ -289,6 +289,21 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("15*60*1000", body.group(1))           # طزاجة 15 دقيقة أو تجاهل
         self.assertIn('id="radar-live-at"', HTML)
 
+    def test_update_line(self):
+        """خط التحديث (طلب المالك 2026-08-02): شريط زمني تحت توقعات الـ 24
+        ساعة — آخر تحديث، القادم مع عدّ تنازلي، مؤشر "الآن"، إنذار تأخر،
+        ويختفي بلا بيانات. النوافذ مصفوفة لتستوعب تشغيلاً ثانياً مستقبلاً."""
+        self.assertIn('id="upd-line"', HTML)
+        self.assertIn("function renderUpdLine", SCRIPT)
+        self.assertIn("PRED_SCHED_UTC", SCRIPT)
+        body = re.search(r"function renderUpdLine\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn('display = "none"', body.group(1))     # بلا بيانات → مخفي
+        self.assertIn("updLate", body.group(1))              # إنذار التأخر
+        self.assertIn("upd-track", body.group(1))            # الشريط الزمني
+        ra = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("renderUpdLine()", ra.group(1))
+
     def test_live_minute_extrapolated(self):
         """بلاغ المالك 2026-08-02 (اللوحة 65 والواقع 84): الدقيقة المعروضة =
         المخزنة + ما مضى منذ رصدها، بسقوف واقعية لكل شوط، في كل مواضع العرض."""

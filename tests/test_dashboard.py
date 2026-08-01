@@ -95,6 +95,16 @@ class TestUpcoming(unittest.TestCase):
         self.assertEqual(D.build_upcoming(store), [])
 
 
+class TestUpdateLine(unittest.TestCase):
+    """خط التحديث (طلب المالك 2026-08-02): لحظة آخر تشغيل توقعات لكل محرك
+    تصل اللوحة — منها يُرسم الشريط الزمني (آخر تحديث ← الآن ← القادم)."""
+
+    def test_pred_updated_in_both_payload_builders(self):
+        import inspect
+        self.assertIn('"pred_updated"', inspect.getsource(D.main))
+        self.assertIn('"pred_updated"', inspect.getsource(D.build_data_v2))
+
+
 class TestShadowLab(unittest.TestCase):
     """🔬 مختبر الظل (طلب المالك 2026-08-01): بطاقات تقييم التقارير تصل اللوحة
     من scenarios_v2.json — الأحدث أولاً، مع عدّادَي الإجمالي والانتظار."""

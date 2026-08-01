@@ -376,6 +376,8 @@ def build_data_v2() -> None:
         # الأرشيف الدائم (كل الأيام، كل الأطراف) — للوحة ولأي تحليل مستقبلي
         "history": load_json(HISTORY_FILE, {}).get("days") or {},
         "shadow_lab": build_shadow_lab(),
+        # خط التحديث (طلب المالك 2026-08-02): متى صدرت توقعات هذا المحرك
+        "pred_updated": (store.get("meta") or {}).get("last_run", ""),
     }
     existing = load_json(DATA_V2_FILE, {})
     existing.pop("updated", None)
@@ -406,6 +408,8 @@ def main() -> None:
         "news": news.get("items", []),
         # لوحة صدق الرادار: كم إنذاراً أطلق وكم أصاب (يبنيها predict_v2 صباحاً)
         "radar_acc": (load_json(RADAR_LOG_FILE, {}).get("meta") or {}).get("stats") or {},
+        # خط التحديث (طلب المالك 2026-08-02): متى صدرت توقعات المحرك 1
+        "pred_updated": (store.get("meta") or {}).get("last_run", ""),
     }
     save_json(DATA_FILE, data)
     print(
