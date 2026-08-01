@@ -411,6 +411,14 @@ class TestRadarFastLane(unittest.TestCase):
         self.assertIn("radar_fast_watch(", src)
         self.assertIn("publish_radar_live(", src)
 
+    def test_seen_timestamp_stamped_everywhere(self):
+        """بلاغ المالك 2026-08-02: كل كتابة لحالة مباراة حية تحمل لحظة رصدها —
+        الدورة الرئيسية، الرصد السريع، والمسار السريع للرادار."""
+        import inspect
+        for fn in (M.main, M.focus_fast_watch, M.radar_fast_watch):
+            self.assertIn('"seen"', inspect.getsource(fn), fn.__name__)
+        self.assertIn('"seen"', inspect.getsource(M.radar_live_payload))
+
     def test_monitor_yml_passes_token(self):
         yml = (Path(__file__).resolve().parent.parent
                / ".github" / "workflows" / "monitor.yml").read_text(encoding="utf-8")

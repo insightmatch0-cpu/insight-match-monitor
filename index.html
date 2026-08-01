@@ -819,6 +819,20 @@ function pctOf(o){
   if (!o || !o.total) return null;
   return Math.round(100 * o.correct / o.total);
 }
+/* الدقيقة الحية المقدَّرة: المخزنة + ما مضى منذ رصدها فعلياً — فلا تتجمد
+   الشاشة بين دورات المراقبة (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84).
+   تقدير عرض فقط بسقوف واقعية لكل شوط؛ البيانات المخزنة لا تُمس. */
+function liveMin(m, fallbackIso){
+  var mn = parseInt(m.minute, 10) || 0;
+  var st = m.status || "";
+  if (st !== "1H" && st !== "2H" && st !== "ET") return mn;
+  var base = Date.parse(m.seen || fallbackIso || "");
+  if (isNaN(base)) return mn;
+  var extra = Math.floor((Date.now() - base) / 60000);
+  if (extra <= 0) return mn;
+  return Math.min(mn + extra, st === "1H" ? 50 : (st === "2H" ? 97 : 125));
+}
+
 function badge(name, logo, small){
   var initial = esc(String(name||"?").trim().charAt(0) || "?");
   var img = logo ? '<img src="'+esc(logo)+'" alt="" loading="lazy" onerror="this.remove()">' : "";
@@ -924,7 +938,7 @@ function renderLive(list){
       + '<div class="side">'+badge(m.home, m.home_logo)+'<span class="tname">'+esc(m.home)+'</span></div>'
       + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
       + '<div style="text-align:center"><span class="minute">'
-      + (m.status==="HT" ? "HT" : esc(m.minute)+"'") + '</span></div></div>'
+      + (m.status==="HT" ? "HT" : esc(liveMin(m, lastV1 && lastV1.updated))+"'") + '</span></div></div>'
       + '<div class="side">'+badge(m.away, m.away_logo)+'<span class="tname">'+esc(m.away)+'</span></div>'
       + '</div>'
       + livePredsRow(m)
@@ -1382,7 +1396,7 @@ function renderOpsRoom(){
       if (m.pred_v2.pick === out) t2.ok++;
       else { danger = true; badges.push(["danger", t("e2name")+" — "+t("opsLosing")]); }
     }
-    var mm = parseInt(m.minute, 10) || 0;
+    var mm = liveMin(m, lastV1 && lastV1.updated);
     var pp = String(m.score || "").split("-");
     var margin = Math.abs((parseInt(pp[0],10)||0) - (parseInt(pp[1],10)||0));
     if (mm >= 75 && margin <= 1 && (m.pred_v1 || m.pred_v2))
@@ -1430,7 +1444,7 @@ function renderOpsRoom(){
     var f = focus[i], fm = f.m;
     fh += '<div class="ops-row"><span class="m">'+esc(fm.home)+' × '+esc(fm.away)+'</span>'
       + '<span class="sc">'+esc(fm.score)+'</span>'
-      + '<span class="min">'+(fm.status==="HT" ? "HT" : esc(fm.minute)+"'")+'</span>';
+      + '<span class="min">'+(fm.status==="HT" ? "HT" : esc(liveMin(fm, lastV1 && lastV1.updated))+"'")+'</span>';
     for (var j=0;j<f.badges.length;j++)
       fh += '<span class="ops-badge '+f.badges[j][0]+'">'+f.badges[j][1]+'</span>';
     fh += '</div>';
@@ -1473,7 +1487,7 @@ function radarCard(m){
   var tr = r.trend || {};
   return '<div class="rcard lvl-'+esc(lvl)+'">'
     + '<div class="rtop"><span>'+esc(m.league)+'</span>'
-    + '<span>د'+esc(m.minute)+'</span>'
+    + '<span>د'+esc(liveMin(m, lastV1 && lastV1.updated))+'</span>'
     + '<span class="rscore">'+esc(r.score)+'</span></div>'
     + '<div class="rteams">'+badge(m.home, m.home_logo, true)
     + '<span>'+esc(m.home)+' × '+esc(m.away)+'</span>'
@@ -1514,7 +1528,8 @@ function renderRadar(live, acc){
     for (var g=0;g<radarLive.matches.length;g++){
       var lm = radarLive.matches[g];
       var tgt = byFid[lm.fid];
-      if (tgt){ tgt.score = lm.score; tgt.minute = lm.minute; tgt.radar = lm.radar; }
+      if (tgt){ tgt.score = lm.score; tgt.minute = lm.minute; tgt.radar = lm.radar;
+                tgt.seen = lm.seen || radarLive.updated; }
       else rows.push(lm);
     }
     liveAt.textContent = "⚡ " + t("radarLiveAt") + " " + timeLocal(radarLive.updated);
@@ -1540,7 +1555,7 @@ function renderRadar(live, acc){
     + '<div class="fstage f4"><div class="num">'+funnel.sent+'</div><div class="lbl">'+esc(t("fSent"))+'</div></div>';
   var nx = document.getElementById("radar-next");
   if (next){
-    var wait = Math.max(0, 75 - (next.m.minute || 0));
+    var wait = Math.max(0, 75 - liveMin(next.m, lastV1 && lastV1.updated));
     nx.innerHTML = esc(t("radarNextUp"))+" <b>"+esc(next.m.home)+" × "+esc(next.m.away)+"</b> — "
       + esc(t("radarSignal"))+" "+esc(next.sig)+"% · "
       + (wait > 0 ? esc(t("radarEligIn")).replace("{n}", wait) : esc(t("radarAnyMoment")));

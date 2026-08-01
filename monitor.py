@@ -861,6 +861,7 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
         except Exception as e:
             print("الرصد السريع: فشل السحب:", e)
             continue
+        seen_now = datetime.now(timezone.utc).isoformat()
         keep = False
         for fx in fixtures:
             fixture = fx.get("fixture", {}) or {}
@@ -915,7 +916,7 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                          "home": home, "away": away, "league": league_line,
                          "home_logo": (teams.get("home") or {}).get("logo", ""),
                          "away_logo": (teams.get("away") or {}).get("logo", ""),
-                         "league_logo": league.get("logo", "")}
+                         "league_logo": league.get("logo", ""), "seen": seen_now}
                 if ar_names:
                     entry["ar"] = ar_names
                 if enriched and analysis:
@@ -954,7 +955,8 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                 sig = live_signature(fid)
                 if sig:
                     prev["sig"] = sig
-                prev.update({"score": score, "status": status, "minute": minute})
+                prev.update({"score": score, "status": status, "minute": minute,
+                         "seen": seen_now})
                 continue
 
             # نهاية المباراة
@@ -964,7 +966,8 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                 if wl_entry is not None and not wl_entry.get("result"):
                     wl_entry["result"] = f"{gh}-{ga}"
                     wl_dirty = True
-                prev.update({"score": score, "status": status, "minute": minute})
+                prev.update({"score": score, "status": status, "minute": minute,
+                         "seen": seen_now})
                 continue
 
             # لا حدث — نبضة مشروطة بتحرك الأرقام فقط (توفير نداءات Claude)
@@ -981,7 +984,8 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                                       f"(د{minute})\n\n{alert}")
                         prev["pulse"] = alert
                     prev["sig"] = sig_now
-            prev.update({"score": score, "status": status, "minute": minute})
+            prev.update({"score": score, "status": status, "minute": minute,
+                         "seen": seen_now})
 
         if not keep:
             break
@@ -1125,7 +1129,7 @@ def radar_live_payload(state: dict) -> dict:
             "league": ar.get("league") or e.get("league", ""),
             "home_logo": e.get("home_logo", ""), "away_logo": e.get("away_logo", ""),
             "score": e.get("score", "0-0"), "minute": e.get("minute", 0),
-            "status": e.get("status", ""),
+            "status": e.get("status", ""), "seen": e.get("seen", ""),
             "radar": {"score": r.get("score"), "level": r.get("level"),
                       "factors": r.get("factors") or [], "pick": r.get("pick"),
                       "confidence": r.get("confidence"),
@@ -1208,7 +1212,8 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
             goals = fx.get("goals") or {}
             gh = goals.get("home") or 0
             ga = goals.get("away") or 0
-            e.update({"status": st, "minute": minute, "score": f"{gh}-{ga}"})
+            e.update({"status": st, "minute": minute, "score": f"{gh}-{ga}",
+                      "seen": datetime.now(timezone.utc).isoformat()})
             if st not in LIVE_STATUSES:
                 continue
             try:
@@ -1500,6 +1505,9 @@ def main() -> None:
     except Exception as e:
         print("فشل سحب المباريات:", e)
         sys.exit(0)  # لا نفشّل التشغيلة، نحاول في الجولة القادمة
+    # طابع لحظة الرصد: اللوحة تُقدّم الدقيقة بما مضى منذها — لا شاشة متجمدة
+    # (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84)
+    seen_now = datetime.now(timezone.utc).isoformat()
 
     live_ids = set()
 
@@ -1566,6 +1574,7 @@ def main() -> None:
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
                 "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
+                "seen": seen_now,
             }
             if ar_names:
                 entry["ar"] = ar_names
@@ -1578,6 +1587,7 @@ def main() -> None:
                 "score": score, "status": status, "minute": minute,
                 "home": home, "away": away, "league": league_line,
                 "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
+                "seen": seen_now,
             }
             continue
 
@@ -1655,6 +1665,7 @@ def main() -> None:
             "score": score, "status": status, "minute": minute,
             "home": home, "away": away, "league": league_line,
                 "home_logo": home_logo, "away_logo": away_logo, "league_logo": league_logo,
+            "seen": seen_now,
         }
         if ar_names:
             entry["ar"] = ar_names

@@ -37,6 +37,13 @@ class TestBuildLive(unittest.TestCase):
         live = D.build_live({"4": live_entry(status="FT")}, {}, {})
         self.assertEqual(live, [])
 
+    def test_seen_timestamp_carried(self):
+        """بلاغ المالك 2026-08-02 (65 على اللوحة و84 في الواقع): لحظة رصد
+        الدقيقة يجب أن تصل اللوحة حتى تُقدّم العدّاد بما مضى منذها."""
+        state = {"7": live_entry(seen="2026-08-02T20:00:00+00:00")}
+        live = D.build_live(state, {}, {})
+        self.assertEqual(live[0]["seen"], "2026-08-02T20:00:00+00:00")
+
 
 class TestRecentResults(unittest.TestCase):
     """إصلاح 2026-07-17: الأحدث أولاً والدوريات الكبرى في المقدمة، نافذة 50."""
@@ -122,6 +129,17 @@ class TestShadowLab(unittest.TestCase):
         self.assertFalse(lab["reports"][0]["shadow"])
         self.assertTrue(lab["reports"][1]["shadow"])
         self.assertEqual(lab["reports"][1]["correct"], 3)
+
+    def test_match_date_not_grading_date(self):
+        """بلاغ المالك 2026-08-02: تقرير مباراة كأس قديمة ظهر بتاريخ صباح
+        تقييمه — البطاقة يجب أن تعرض تاريخ المباراة نفسها."""
+        lab = self._with_tmp_scenarios({
+            "pending": {},
+            "resolved": [{"date": "2026-07-14", "graded_on": "2026-08-01",
+                          "home": "Spain", "away": "Argentina",
+                          "shadow": False, "correct": 1, "total": 9}],
+        })
+        self.assertEqual(lab["reports"][0]["date"], "2026-07-14")
 
     def test_empty_store_safe(self):
         lab = self._with_tmp_scenarios({})

@@ -168,6 +168,8 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
             "score": e.get("score", "0-0"),
             "minute": e.get("minute", 0),
             "status": e.get("status", ""),
+            # لحظة رصد الدقيقة — اللوحة تُقدّمها بما مضى منذها (لا تجمّد)
+            "seen": e.get("seen", ""),
         }
         # توقع كل محرك يظهر على البطاقة الحية مباشرة (طلب المالك 2026-07-18)
         p1 = _live_pred(store_v1, fid)
@@ -306,7 +308,9 @@ def build_shadow_lab() -> dict:
         if not isinstance(e, dict):
             continue
         rows.append({
-            "date": e.get("graded_on") or e.get("date", ""),
+            # تاريخ المباراة نفسها لا تاريخ التقييم (بلاغ المالك 2026-08-02:
+            # مباراة كأس قديمة ظهرت بتاريخ صباح تقييمها فبدا التاريخ خاطئاً)
+            "date": e.get("date") or e.get("graded_on", ""),
             "home": e.get("ar_home") or e.get("home", "?"),
             "away": e.get("ar_away") or e.get("away", "?"),
             "league": e.get("league", ""),
