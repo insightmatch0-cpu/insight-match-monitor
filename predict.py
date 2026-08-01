@@ -70,6 +70,10 @@ EXCLUDED_LEAGUE_KEYWORDS = [
     # بيانات لا نبني عليها التعلم (توجيه المالك 2026-07-18): دوريات السيدات
     # والفئات السنية والرديف — ضجيج يبطئ بناء دماغ موثوق للموسم
     "women", "femen", "femin", "frauen", "ladies", "wsl", "girls",
+    # دوريات سيدات لا تحمل أي كلمة دالة في اسمها — تسربت فعلياً حتى 2026-08-01
+    # (WK-League الكورية أفسدت خانة 70%+) — أسماؤها الصريحة تُستبعد بالاسم
+    "wk-league", "wk league", "kvinde", "damallsvenskan", "elitettan",
+    "toppserien", "naisten", "vrouwen", "femmin", "northern super league",
     "u16", "u17", "u18", "u19", "u20", "u21", "u23",
     "youth", "primavera", "juvenil", "junioren", "reserve", "reserva",
     "academy",

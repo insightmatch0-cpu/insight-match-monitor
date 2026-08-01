@@ -56,6 +56,11 @@ class TestQualityFilter(unittest.TestCase):
         "U19 Bundesliga", "U18 Premier League - North", "Campionato Primavera - 1",
         "UEFA Youth League", "Professional U21 Development League",
         "Reserve League", "Ural Youth Championship",
+        # التسريب الحقيقي المكتشف 2026-08-01: دوريات سيدات بلا كلمة دالة في
+        # الاسم — إحداها (WK-League) أفسدت خانة الثقة 70%+ قبل التنظيف
+        "WK-League", "Kvindeliga", "Damallsvenskan", "Elitettan",
+        "Toppserien", "Northern Super League", "Serie A Femminile",
+        "Eredivisie Vrouwen", "Naisten Liiga", "NWSL Women",
     ]
     KEPT = [
         "Premier League", "Championship", "Serie A", "Serie B", "Bundesliga",
