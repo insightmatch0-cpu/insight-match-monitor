@@ -90,6 +90,17 @@ ANALYZE_ALL = True
 # البيانات واللوحة تغطي كل المباريات دائماً — الفلترة على تيليجرام فقط.
 WATCHLIST_FILE = Path("watchlist.json")
 
+# ================== الرادار — إنذار مبكر رياضي بحت (طلب المالك 2026-08-01) ==================
+# يقرأ أرقام كل مباراة حية عليها توقع للمحرك 2 كل دورة، يحسب درجة خطر شفافة
+# (0-100) بلا أي نداء Claude، ويسجل الإنذارات لتقييمها صباحاً — لوحة "الرادار".
+RADAR_FILE = Path("radar_log.json")   # سجل الإنذارات للتقييم الصباحي (predict_v2)
+RADAR_PREDICTIONS_FILE = Path("predictions_v2.json")
+RADAR_STATS_CAP = 20     # سقف نداءات الإحصائيات للرادار في التشغيلة (رصيد API وفير)
+RADAR_SNAPS_KEEP = 12    # ~ ساعتا لقطات (كل 10 دقائق) — تكفي لاتجاهات المباراة كلها
+RADAR_RED = 65           # عتبة الخطر الأحمر
+RADAR_AMBER = 40         # عتبة الإنذار الكهرماني
+RADAR_MAX_WARNINGS = 400 # سقف سجل الإنذارات غير المُقيَّمة
+
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
 TOP_LEAGUE_IDS = {
     1,    # كأس العالم
@@ -956,6 +967,183 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
     return wl_dirty
 
 
+# ================== الرادار: جمع الأرقام وحساب الخطر ==================
+_RADAR_STAT_KEYS = {
+    "Shots on Goal": "sog", "Total Shots": "shots", "Corner Kicks": "cor",
+    "Yellow Cards": "yc", "Red Cards": "rc", "Goalkeeper Saves": "sv",
+    "Ball Possession": "poss",
+}
+
+
+def radar_snapshot(fid: str, minute: int, gh: int, ga: int) -> dict:
+    """نداء واحد: إحصائيات المباراة الحية → لقطة رقمية مضغوطة للرادار."""
+    snap = {"minute": minute, "gh": gh, "ga": ga,
+            "h": {}, "a": {}}
+    sides = api_football(f"fixtures/statistics?fixture={fid}")
+    for idx, side in enumerate(sides[:2]):
+        box = snap["h"] if idx == 0 else snap["a"]
+        for s in (side.get("statistics") or []):
+            key = _RADAR_STAT_KEYS.get(s.get("type"))
+            if not key:
+                continue
+            v = s.get("value")
+            if isinstance(v, str):
+                v = v.replace("%", "").strip()
+            try:
+                box[key] = int(float(v))
+            except (TypeError, ValueError):
+                box[key] = 0
+    return snap
+
+
+def _radar_outcome(gh: int, ga: int) -> str:
+    return "home" if gh > ga else ("away" if ga > gh else "draw")
+
+
+def _radar_delta(snaps: list, side: str, key: str) -> int:
+    """فرق آخر لقطتين لمقياس معين — صفر إن لم تتوفر لقطتان."""
+    if len(snaps) < 2:
+        return 0
+    last = (snaps[-1].get(side) or {}).get(key) or 0
+    prev = (snaps[-2].get(side) or {}).get(key) or 0
+    return max(0, last - prev)
+
+
+def danger_score(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
+    """درجة الخطر (0-100) على توقع المحرك 2 — رياضيات شفافة، صفر Claude.
+
+    ثلاثة مكونات: لوحة النتيجة مقابل التوقع (موزونة بالدقيقة)، زخم الفريق
+    الذي يهدد التوقع (فرق آخر لقطتين)، وإشارات الضغط (حارس محاصر، نقص عددي).
+    الأرقام أوزان بداية صادقة — لوحة تقييم الرادار الصباحية ستعايرها بالوقائع."""
+    score = 0
+    factors = []
+    out_now = _radar_outcome(gh, ga)
+
+    # 1) لوحة النتيجة (حتى 70): توقع خاسر الآن يشتد خطره كلما اقترب الختام —
+    #    خاسر متأخراً (د84+) أحمر من اللوحة وحدها حتى لو هدأت الأرقام
+    if pick and out_now != pick:
+        score += min(70, 40 + int(minute * 0.30))
+        factors.append(f"النتيجة الحالية {gh}-{ga} تُسقط التوقع (د{minute})")
+    elif pick and pick != "draw" and abs(gh - ga) == 1:
+        score += 15
+        factors.append("تقدم هش بفارق هدف واحد")
+    elif pick == "draw" and minute >= 60:
+        score += 10
+        factors.append("التعادل صامد لكن أي هدف يقلبه")
+
+    # 2) زخم الفريق المهدِّد (حتى ~26): من يضره هدفه القادم؟
+    threat_sides = {"home": ["a"], "away": ["h"], "draw": ["h", "a"]}.get(pick, [])
+    threat_names = {"h": "المضيف", "a": "الضيف"}
+    best = 0
+    best_factors = []
+    for side in threat_sides:
+        pts, fs = 0, []
+        if _radar_delta(snaps, side, "sog") >= 2:
+            pts += 12
+            fs.append(f"موجة تسديد على المرمى من {threat_names[side]}")
+        if _radar_delta(snaps, side, "cor") >= 2:
+            pts += 8
+            fs.append(f"موجة ركنيات لصالح {threat_names[side]}")
+        if _radar_delta(snaps, side, "shots") >= 3:
+            pts += 6
+            fs.append(f"ضغط هجومي متصاعد من {threat_names[side]}")
+        if pts > best:
+            best, best_factors = pts, fs
+    score += best
+    factors += best_factors
+
+    # 3) إشارات الضغط (حتى 18): حارس الطرف المُختار تحت الحصار + النقص العددي
+    picked_side = {"home": "h", "away": "a"}.get(pick)
+    if picked_side:
+        if _radar_delta(snaps, picked_side, "sv") >= 2:
+            score += 8
+            factors.append("حارس الطرف المُختار تحت الحصار (تصديات متتالية)")
+        if snaps and ((snaps[-1].get(picked_side) or {}).get("rc") or 0) > 0:
+            score += 10
+            factors.append("نقص عددي ضد الطرف المُختار (بطاقة حمراء)")
+
+    score = max(0, min(100, score))
+    level = "red" if score >= RADAR_RED else ("amber" if score >= RADAR_AMBER else "green")
+    return {"score": score, "level": level, "factors": factors[:4]}
+
+
+def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
+    """اختيار مباريات الرادار تحت السقف: قائمة التركيز أولاً، ثم الدوريات
+    الكبرى، ثم الأعلى ثقة — الأهم للمالك لا يُزاحم أبداً."""
+    cands = []
+    for fid, e in state.items():
+        if e.get("status") not in LIVE_STATUSES:
+            continue
+        p = v2_pending.get(fid)
+        if not p:
+            continue
+        rank = (0 if fid in watch else (1 if p.get("top") else 2),
+                -(p.get("confidence") or 0))
+        cands.append((rank, fid))
+    return [fid for _, fid in sorted(cands)][:RADAR_STATS_CAP]
+
+
+def radar_sweep(state: dict, watch: set) -> int:
+    """دورة الرادار: لقطة أرقام + درجة خطر لكل مباراة حية عليها توقع، وتسجيل
+    الإنذارات (كهرماني/أحمر) في radar_log.json ليقيَّم صدقها صباحاً.
+    أي فشل لمباراة واحدة لا يوقف البقية — والفشل الكامل لا يوقف التشغيلة."""
+    v2_pending = (load_json_file(RADAR_PREDICTIONS_FILE, {}) or {}).get("pending") or {}
+    targets = select_radar_fixtures(state, v2_pending, watch)
+    if not targets:
+        return 0
+    log = load_json_file(RADAR_FILE, {}) or {}
+    log.setdefault("warnings", [])
+    log.setdefault("resolved", [])
+    log_dirty = False
+    swept = 0
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    for fid in targets:
+        e = state[fid]
+        try:
+            gh, ga = (int(x) for x in (e.get("score") or "0-0").split("-")[:2])
+        except ValueError:
+            gh = ga = 0
+        minute = e.get("minute") or 0
+        try:
+            snap = radar_snapshot(fid, minute, gh, ga)
+        except Exception as ex:
+            print("الرادار: فشل لقطة", fid, ex)
+            continue
+        radar = e.get("radar") or {}
+        snaps = ((radar.get("snaps") or []) + [snap])[-RADAR_SNAPS_KEEP:]
+        p = v2_pending.get(fid) or {}
+        verdict = danger_score(p.get("pick"), snaps, minute, gh, ga)
+        e["radar"] = {
+            "snaps": snaps,
+            "score": verdict["score"], "level": verdict["level"],
+            "factors": verdict["factors"],
+            "pick": p.get("pick"), "confidence": p.get("confidence"),
+        }
+        swept += 1
+        if verdict["level"] in ("amber", "red"):
+            w = next((w for w in log["warnings"] if str(w.get("fid")) == fid), None)
+            if w is None:
+                log["warnings"].append({
+                    "fid": fid, "date": p.get("date") or today,
+                    "home": e.get("home"), "away": e.get("away"),
+                    "league": e.get("league"),
+                    "pick": p.get("pick"), "confidence": p.get("confidence"),
+                    "level": verdict["level"], "score": verdict["score"],
+                    "minute": minute, "factors": verdict["factors"],
+                })
+                log["warnings"] = log["warnings"][-RADAR_MAX_WARNINGS:]
+                log_dirty = True
+            elif verdict["score"] > (w.get("score") or 0):
+                # يُرقّى الإنذار لأعلى درجة بلغها — نقيس أقصى ما رآه الرادار
+                w.update({"level": verdict["level"], "score": verdict["score"],
+                          "minute": minute, "factors": verdict["factors"]})
+                log_dirty = True
+    if log_dirty:
+        RADAR_FILE.write_text(
+            json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    return swept
+
+
 def parse_claude_reply(text: str):
     """يفصل سطر الأسماء العربية عن نص التحليل. يرجع (dict أو None, التحليل)."""
     names = None
@@ -1184,12 +1372,21 @@ def main() -> None:
             entry["pulse"] = pulse_text
         if sig_val:
             entry["sig"] = sig_val
+        if prev.get("radar"):
+            entry["radar"] = prev["radar"]   # ذاكرة الرادار تنجو من إعادة البناء
         state[fid] = entry
 
     # تنظيف الذاكرة: نحذف المباريات التي لم تعد حية
     for fid in list(state.keys()):
         if fid not in live_ids:
             del state[fid]
+
+    # الرادار: إنذار مبكر رياضي لكل توقعات المحرك 2 الحية (صفر Claude)
+    radar_count = 0
+    try:
+        radar_count = radar_sweep(state, watch)
+    except Exception as e:
+        print("الرادار — خطأ غير متوقع:", e)
 
     # الرصد السريع: تبقى التشغيلة مستيقظة وتفحص مباريات قائمة التركيز
     # كل ~90 ثانية حتى تسليم الجولة التالية (تنبيه خلال دقيقة إلى دقيقتين)
@@ -1213,7 +1410,7 @@ def main() -> None:
     print(
         f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}، "
         f"منها بالمحرك 2 المباشر: {live_budget['used']}، نبضات: {pulses['used']}، "
-        f"قائمة التركيز: {len(watch)}"
+        f"قائمة التركيز: {len(watch)}، لقطات الرادار: {radar_count}"
     )
 
 

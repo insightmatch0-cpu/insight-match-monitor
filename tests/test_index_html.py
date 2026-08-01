@@ -218,5 +218,49 @@ class TestShadowLabPanel(unittest.TestCase):
         self.assertIn("labExplain", SCRIPT)                 # سطر الشرح الذاتي
 
 
+class TestRadarTab(unittest.TestCase):
+    """🛰 تبويب الرادار (طلب المالك 2026-08-01): شاشة إنذار مبكر مستقلة
+    لعرض PC/TV — تبويب ثالث، شبكة خطر مرتبة، ولا ادعاء دقة بلا قياس."""
+
+    def test_third_tab_and_section_exist(self):
+        self.assertIn('id="tab-radar"', HTML)
+        self.assertIn('id="radar-sec"', HTML)
+        self.assertIn('id="radar-grid"', HTML)
+        self.assertIn('id="radar-tiles"', HTML)
+
+    def test_render_functions_exist(self):
+        for fn in ("function renderRadar", "function radarCard",
+                   "function setRadarMode", "function sparkRow"):
+            self.assertIn(fn, SCRIPT)
+
+    def test_radar_mode_in_render_all(self):
+        body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn('engine === "radar"', body.group(1))
+        self.assertIn("renderRadar(", body.group(1))
+
+    def test_radar_mode_hides_other_sections(self):
+        """شاشة نظيفة واحدة: وضع الرادار يخفي المباشر والأخبار وجسم المحرك."""
+        body = re.search(r"function setRadarMode\(on\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        for sec in ("live-sec", "news-sec", "engine-body", "radar-mode"):
+            self.assertIn(sec, body.group(1))
+
+    def test_sorted_by_danger(self):
+        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("b.radar.score", body.group(1))
+
+    def test_accuracy_line_hidden_without_measurement(self):
+        """لا نعرض "صدق الرادار" قبل وجود إنذارات مُقيَّمة فعلاً — لا تبجح فارغ."""
+        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn('display = "none"', body.group(1))
+
+    def test_tv_wide_layout(self):
+        """التبويب مصمم لشاشة PC/TV: عرض ممتد + شبكة 3 أعمدة على الشاشات الكبيرة."""
+        self.assertIn("main.radar-mode{max-width", HTML)
+        self.assertIn("@media(min-width:1380px){.radar-grid{grid-template-columns:1fr 1fr 1fr}}", HTML)
+
+
 if __name__ == "__main__":
     unittest.main()

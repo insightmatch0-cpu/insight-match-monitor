@@ -39,6 +39,9 @@ USER_PREDICTIONS_FILE = Path("predictions_user.json") # توقعات المال�
 LESSONS_FILE          = Path("lessons_v2.json")       # دروس من الأخطاء (تُملأ في المرحلة 3)
 HISTORY_FILE          = Path("history.json")          # الأرشيف الدائم: تقدم الجميع يوماً بيوم (لا يُقص أبداً)
 NEWS_FILE             = Path("news.json")             # آخر عناوين الأخبار (سياق مشترك)
+RADAR_LOG_FILE        = Path("radar_log.json")        # إنذارات الرادار (يكتبها monitor)
+RADAR_RESOLVED_CAP    = 300   # سقف سجل الإنذارات المُقيَّمة
+RADAR_DROP_DAYS       = 4     # إنذار بلا نتيجة بعد 4 أيام يُسقط (مباراة ملغاة/مؤجلة)
 
 CLAUDE_MODEL = "claude-fable-5"
 
@@ -1425,6 +1428,44 @@ def post_grading_alerts(newly_resolved: list, store: dict) -> None:
         print("تنبيهات ما بعد التقييم:", len(lines))
 
 
+def resolve_radar_log(store: dict) -> int:
+    """لوحة تقييم الرادار (طلب المالك 2026-08-01): كل إنذار كهرماني/أحمر
+    سجّله الرادار ليلاً يُقارن صباحاً بالنتيجة الحقيقية — هل سقط التوقع الذي
+    حذّر منه فعلاً؟ صفر نداءات API (النتائج تُقرأ من سجل resolved نفسه).
+    يبني إحصاءات صدق الإنذار لكل مستوى — قاعدة معايرة أوزان الرادار لاحقاً."""
+    log = load_json(RADAR_LOG_FILE, {})
+    warnings = log.get("warnings") or []
+    if not warnings:
+        return 0
+    by_fid = {str(r.get("fid")): r for r in (store.get("resolved") or []) if r.get("fid")}
+    today = now_utc().strftime("%Y-%m-%d")
+    drop_before = (now_utc() - timedelta(days=RADAR_DROP_DAYS)).strftime("%Y-%m-%d")
+    still, graded = [], 0
+    resolved = log.get("resolved") or []
+    for w in warnings:
+        r = by_fid.get(str(w.get("fid")))
+        if r is None:
+            if (w.get("date") or today) >= drop_before:
+                still.append(w)   # نتيجتها لم تصل بعد — تنتظر صباحاً آخر
+            continue
+        w["failed"] = not r.get("correct")   # الإنذار صادق إذا سقط التوقع فعلاً
+        w["final_score"] = r.get("score")
+        w["graded_on"] = today
+        resolved.append(w)
+        graded += 1
+    log["warnings"] = still
+    log["resolved"] = resolved[-RADAR_RESOLVED_CAP:]
+    stats = {}
+    for lvl in ("red", "amber"):
+        rows = [x for x in log["resolved"] if x.get("level") == lvl]
+        stats[lvl] = {"fired": len(rows),
+                      "hit": sum(1 for x in rows if x.get("failed"))}
+    log["meta"] = {"stats": stats, "updated": now_utc().isoformat()}
+    if graded or len(still) != len(warnings):
+        save_json(RADAR_LOG_FILE, log)
+    return graded
+
+
 def v1_pending() -> dict:
     """توقعات المحرك 1 المنتظرة — للمقارنة جنباً إلى جنب في الملخص."""
     store = load_json(V1_PREDICTIONS_FILE, {})
@@ -1545,6 +1586,11 @@ def main() -> None:
     consolidated = consolidate_lessons()
     if consolidated:
         print(f"تم دمج الدروس في {consolidated} مبدأً عاماً.")
+
+    # 1.52) تقييم إنذارات الرادار: هل صدق الإنذار المبكر؟ (صفر نداءات)
+    radar_graded = resolve_radar_log(store)
+    if radar_graded:
+        print(f"قُيّم {radar_graded} من إنذارات الرادار مقابل النتائج الحقيقية.")
 
     # 1.55) التقييم الذاتي لتقارير ما قبل المباراة (سيناريوهات المحرك 2)
     scenario_graded = resolve_scenarios()
