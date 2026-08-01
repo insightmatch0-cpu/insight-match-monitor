@@ -647,7 +647,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 64;
+var IM_BUILD = 65;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -891,6 +891,13 @@ function liveMin(m, fallbackIso){
   return Math.min(mn + extra, st === "1H" ? 50 : (st === "2H" ? 97 : 125));
 }
 
+/* اسم النادي بلغة الواجهة (طلب المالك 2026-08-02): عربي افتراضاً، وعند
+   اختيار EN يظهر الاسم الإنجليزي أينما توفر — في كل الأقسام */
+function tn(o, side){
+  if (lang === "en" && o[side+"_en"]) return o[side+"_en"];
+  return o[side] || "?";
+}
+
 function badge(name, logo, small){
   var initial = esc(String(name||"?").trim().charAt(0) || "?");
   var img = logo ? '<img src="'+esc(logo)+'" alt="" loading="lazy" onerror="this.remove()">' : "";
@@ -970,7 +977,7 @@ function renderLive(list){
   var q = (qEl && qEl.value || "").trim().toLowerCase();
   if (q){
     list = list.filter(function(m){
-      return ((m.home||"")+" "+(m.away||"")+" "+(m.league||"")).toLowerCase().indexOf(q) >= 0;
+      return ((m.home||"")+" "+(m.away||"")+" "+(m.home_en||"")+" "+(m.away_en||"")+" "+(m.league||"")).toLowerCase().indexOf(q) >= 0;
     });
   }
   if (!list.length){
@@ -994,11 +1001,11 @@ function renderLive(list){
       + (m.league_logo ? badge(m.league, m.league_logo, true) : "")
       + '<span>'+esc(m.league)+'</span></div>'
       + '<div class="scoreboard">'
-      + '<div class="side">'+badge(m.home, m.home_logo)+'<span class="tname">'+esc(m.home)+'</span></div>'
+      + '<div class="side">'+badge(tn(m,"home"), m.home_logo)+'<span class="tname">'+esc(tn(m,"home"))+'</span></div>'
       + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
       + '<div style="text-align:center"><span class="minute">'
       + (mf.status==="HT" ? "HT" : esc(liveMin(m, lastV1 && lastV1.updated))+"'") + '</span></div></div>'
-      + '<div class="side">'+badge(m.away, m.away_logo)+'<span class="tname">'+esc(m.away)+'</span></div>'
+      + '<div class="side">'+badge(tn(m,"away"), m.away_logo)+'<span class="tname">'+esc(tn(m,"away"))+'</span></div>'
       + '</div>'
       + livePredsRow(m)
       + '</div>';
@@ -1010,7 +1017,7 @@ function renderLive(list){
 /* شريحتا توقع المحركين على البطاقة الحية: من كان كل محرك "يحمي"؟ */
 function lpChip(cls, label, pr, m){
   if (!pr || !pr.pick) return "";
-  var who = pr.pick === "draw" ? t("pickDraw") : (pr.pick === "home" ? m.home : m.away);
+  var who = pr.pick === "draw" ? t("pickDraw") : (pr.pick === "home" ? tn(m,"home") : tn(m,"away"));
   return '<span class="lp '+cls+'"><b>'+esc(label)+'</b>'+esc(who)
     + (pr.confidence ? ' · '+esc(pr.confidence)+'%' : '') + '</span>';
 }
@@ -1087,8 +1094,8 @@ function renderUpcoming(list){
 
 /* بطاقة توقع واحدة — تُستخدم في قائمة الـ 24 ساعة وقسم الاختيارات الذهبية */
 function predCard(p, withLeagueEyebrow, nowMs){
-  var home = (lang==="en" && p.home_en) ? p.home_en : p.home;
-  var away = (lang==="en" && p.away_en) ? p.away_en : p.away;
+  var home = tn(p, "home");
+  var away = tn(p, "away");
   var pk = pickText(p.pick, home, away);
   return '<details class="pred"><summary>'
     + '<div class="duel">'
@@ -1219,7 +1226,7 @@ function labCard(r, statusHtml, verdictHtml){
   var body = labBreakdown(r);
   return '<details class="lab-card"><summary>'
     + '<div class="lab-top">'
-    + '<span class="lab-match">'+esc(r.home)+' × '+esc(r.away)+'</span>'
+    + '<span class="lab-match">'+esc(tn(r,"home"))+' × '+esc(tn(r,"away"))+'</span>'
     + '<span class="lab-type'+(r.shadow?" is-shadow":"")+'">'
     + (r.shadow ? "🕶 "+t("labShadow") : "⭐ "+t("labWatch"))+'</span>'
     + '<span class="lab-date">'+esc(r.date||"")+'</span>'
@@ -1346,7 +1353,7 @@ function paintResults(){
   var list = resAll;
   if (q){
     list = resAll.filter(function(r){
-      return ((r.home||"")+" "+(r.away||"")).toLowerCase().indexOf(q) !== -1;
+      return ((r.home||"")+" "+(r.away||"")+" "+(r.home_en||"")+" "+(r.away_en||"")).toLowerCase().indexOf(q) !== -1;
     });
   }
   document.getElementById("res-count").textContent = q ? (list.length+"/"+resAll.length) : resAll.length;
@@ -1365,8 +1372,8 @@ function paintResults(){
     h += '<div class="res'+(why?' has-why" onclick="toggleWhy(this)':'')+'">'
       + '<span class="mark '+(r.correct?"ok":"no")+'">'+(r.correct?"✓":"✗")+'</span>'
       + '<div class="pair">'
-      + badge(r.home, r.home_logo, true)
-      + '<span class="names">'+esc(r.home)+' × '+esc(r.away)+'</span>'
+      + badge(tn(r,"home"), r.home_logo, true)
+      + '<span class="names">'+esc(tn(r,"home"))+' × '+esc(tn(r,"away"))+'</span>'
       + '</div>'
       + (r.prob_home != null
           ? '<span class="probs-sm">'+esc(r.prob_home)+'·'+esc(r.prob_draw)+'·'+esc(r.prob_away)+'</span>'
@@ -1507,7 +1514,7 @@ function renderOpsRoom(){
   var fh = "";
   for (var i=0;i<focus.length && i<12;i++){
     var f = focus[i], fm = f.m;
-    fh += '<div class="ops-row"><span class="m">'+esc(fm.home)+' × '+esc(fm.away)+'</span>'
+    fh += '<div class="ops-row"><span class="m">'+esc(tn(fm,"home"))+' × '+esc(tn(fm,"away"))+'</span>'
       + '<span class="sc">'+esc(fastOf(fm).score)+'</span>'
       + '<span class="min">'+(fastOf(fm).status==="HT" ? "HT" : esc(liveMin(fm, lastV1 && lastV1.updated))+"'")+'</span>';
     for (var j=0;j<f.badges.length;j++)
@@ -1520,7 +1527,7 @@ function renderOpsRoom(){
   var sh = "";
   for (var i=0;i<soon.length;i++){
     var u = soon[i];
-    sh += '<div class="ops-row"><span class="m">'+esc(u.home)+' × '+esc(u.away)+'</span>'
+    sh += '<div class="ops-row"><span class="m">'+esc(tn(u,"home"))+' × '+esc(tn(u,"away"))+'</span>'
       + '<span class="min">'+timeLocal(u.kickoff)+'</span>'
       + ((u.confidence||0) >= 70 ? '<span class="ops-badge gold">'+t("opsGold")+'</span>' : "")
       + '</div>';
@@ -1546,7 +1553,7 @@ function sparkRow(cls, label, vals){
 function radarCard(m){
   var r = m.radar;
   var lvl = r.level || "green";
-  var pickTxt = r.pick === "home" ? m.home : (r.pick === "away" ? m.away : t("pickDraw"));
+  var pickTxt = r.pick === "home" ? tn(m,"home") : (r.pick === "away" ? tn(m,"away") : t("pickDraw"));
   var facts = "";
   for (var i=0;i<(r.factors||[]).length;i++) facts += "<li>"+esc(r.factors[i])+"</li>";
   var tr = r.trend || {};
@@ -1555,7 +1562,7 @@ function radarCard(m){
     + '<span>د'+esc(liveMin(m, lastV1 && lastV1.updated))+'</span>'
     + '<span class="rscore">'+esc(r.score)+'</span></div>'
     + '<div class="rteams">'+badge(m.home, m.home_logo, true)
-    + '<span>'+esc(m.home)+' × '+esc(m.away)+'</span>'
+    + '<span>'+esc(tn(m,"home"))+' × '+esc(tn(m,"away"))+'</span>'
     + '<span class="rsc">'+esc(fastOf(m).score)+'</span></div>'
     + '<div class="rgauge"><i style="width:'+Math.max(3, r.score||0)+'%"></i></div>'
     + '<div class="rtop" style="margin-bottom:6px"><span>'+esc(t("radarPick"))+" "
@@ -1622,7 +1629,7 @@ function renderRadar(live, acc){
   var nx = document.getElementById("radar-next");
   if (next){
     var wait = Math.max(0, 75 - liveMin(next.m, lastV1 && lastV1.updated));
-    nx.innerHTML = esc(t("radarNextUp"))+" <b>"+esc(next.m.home)+" × "+esc(next.m.away)+"</b> — "
+    nx.innerHTML = esc(t("radarNextUp"))+" <b>"+esc(tn(next.m,"home"))+" × "+esc(tn(next.m,"away"))+"</b> — "
       + esc(t("radarSignal"))+" "+esc(next.sig)+"% · "
       + (wait > 0 ? esc(t("radarEligIn")).replace("{n}", wait) : esc(t("radarAnyMoment")));
     nx.style.display = "";

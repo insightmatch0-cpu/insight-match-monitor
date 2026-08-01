@@ -192,6 +192,21 @@ class TestShadowLabPanel(unittest.TestCase):
         body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIn("renderOpsRoom()", body.group(1))
 
+    def test_team_names_follow_language(self):
+        """طلب المالك 2026-08-02: عند اختيار EN تظهر أسماء الأندية بالإنجليزية
+        في كل الأقسام — القائمة الحية، النتائج، مختبر الظل، غرفة العمليات،
+        الرادار — عبر مبدّل واحد (tn) لا نسخاً متفرقة."""
+        self.assertIn("function tn(o, side)", SCRIPT)
+        body = re.search(r"function tn\(o, side\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn('lang === "en"', body.group(1))
+        self.assertIn('side+"_en"', body.group(1))
+        # مطبق في كل مواضع العرض (بطاقات، صفوف، رادار، عمليات، مختبر...)
+        self.assertGreaterEqual(SCRIPT.count("tn("), 18)
+        # البحث يشمل الاسمين معاً
+        self.assertIn('(m.home_en||"")', SCRIPT)
+        self.assertIn('(r.home_en||"")', SCRIPT)
+
     def test_results_show_match_dates(self):
         """طلب المالك 2026-08-02: فاصل تاريخ لكل يوم في النتائج المُقيَّمة —
         يوضح متى لُعبت المباراة وأن القائمة تتحدث كل صباح."""

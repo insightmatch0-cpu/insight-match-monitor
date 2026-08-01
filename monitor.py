@@ -1137,6 +1137,7 @@ def radar_live_payload(state: dict) -> dict:
             "fid": fid,
             "home": ar.get("home") or e.get("home", "?"),
             "away": ar.get("away") or e.get("away", "?"),
+            "home_en": e.get("home", "?"), "away_en": e.get("away", "?"),
             "league": ar.get("league") or e.get("league", ""),
             "home_logo": e.get("home_logo", ""), "away_logo": e.get("away_logo", ""),
             "score": e.get("score", "0-0"), "minute": e.get("minute", 0),
