@@ -283,11 +283,30 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("setInterval(pollRadarLive, 60000)", SCRIPT)
         poll = re.search(r"function pollRadarLive\(\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIsNotNone(poll)
-        self.assertIn('engine !== "radar"', poll.group(1))   # لا جلب خارج التبويب
+        # 2026-08-02: الجلب صار دائماً — التغذية السريعة تخدم كل الشاشات
+        self.assertIn("RADAR_LIVE_URL", poll.group(1))
         body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIn("radarLive.matches", body.group(1))
         self.assertIn("15*60*1000", body.group(1))           # طزاجة 15 دقيقة أو تجاهل
         self.assertIn('id="radar-live-at"', HTML)
+
+    def test_fast_scores_overlay_everywhere(self):
+        """بلاغ المالك 2026-08-02 (0-3 والواقع 0-2 معروضة): النتيجة السريعة
+        (~90 ثانية) تُطبق في كل مواضع العرض عبر fastOf، والجلب دائم لا في
+        وضع الرادار فقط، وتُهمل النسخة الأقدم من 15 دقيقة."""
+        self.assertIn("function fastOf", SCRIPT)
+        body = re.search(r"function fastOf\(m\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("radarLive.scores", body.group(1))
+        self.assertIn("15*60*1000", body.group(1))
+        # الجلب لم يعد مقيداً بتبويب الرادار
+        poll = re.search(r"function pollRadarLive\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertNotIn('engine !== "radar"', poll.group(1))
+        # مواضع التطبيق: البطاقة الحية، غرفة العمليات (نتيجتان)، صف العمليات، الرادار
+        self.assertGreaterEqual(SCRIPT.count("fastOf("), 7)
+        # liveMin نفسها تقرأ التغذية السريعة
+        lm = re.search(r"function liveMin\(m, fallbackIso\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("fastOf(m)", lm.group(1))
 
     def test_self_update_and_stale_badge(self):
         """درس 2026-08-02 (الإصلاح وصل المستودع لا الشاشة): التبويب المفتوح

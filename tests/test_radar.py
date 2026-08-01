@@ -375,6 +375,25 @@ class TestRadarFastLane(unittest.TestCase):
         out = M.merge_fast_snap(snaps, {"minute": 130, "h": {}, "a": {}})
         self.assertLessEqual(len(out), M.RADAR_SNAPS_KEEP)
 
+    def test_scores_map_covers_all_live_matches(self):
+        """بلاغ المالك 2026-08-02 (0-3 في الواقع و0-2 على اللوحة): التغذية
+        السريعة تحمل نتيجة كل مباراة حية — لا مباريات الرادار فقط."""
+        state = {"1": {"status": "1H", "score": "0-3", "minute": 90,
+                       "seen": "2026-08-02T00:00:00+00:00"},   # بلا رادار
+                 "2": {"status": "FT", "score": "1-0"}}         # منتهية — تُستبعد
+        p = M.radar_live_payload(state)
+        self.assertIn("scores", p)
+        self.assertEqual(p["scores"]["1"]["score"], "0-3")
+        self.assertNotIn("2", p["scores"])
+
+    def test_fast_watch_sweeps_all_live_not_only_radar(self):
+        """المسار السريع يواصل ما دامت أي مباراة حية (النتائج للجميع)،
+        ويستخدم نداء live=all واحداً بدل نداء ids للرادار فقط."""
+        import inspect
+        src = inspect.getsource(M.radar_fast_watch)
+        self.assertIn('fixtures?live=all', src)
+        self.assertIn("LIVE_STATUSES for e in state.values()", src)
+
     def test_live_payload_shape(self):
         state = {"1": {"status": "1H", "home": "H", "away": "A", "league": "L",
                        "score": "1-0", "minute": 30,

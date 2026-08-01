@@ -1147,7 +1147,17 @@ def radar_live_payload(state: dict) -> dict:
                       "drama": r.get("drama"), "alerted": r.get("alerted"),
                       "trend": _radar_trend(r.get("snaps") or [])},
         })
-    return {"updated": datetime.now(timezone.utc).isoformat(), "matches": matches}
+    # النتائج السريعة لكل المباريات الحية (لا الرادار فقط) — القائمة الحية
+    # وغرفة العمليات تقرآنها أيضاً فيصل الهدف خلال ~90 ثانية لكل الشاشات
+    scores = {}
+    for fid, e in state.items():
+        if isinstance(e, dict) and e.get("status") in LIVE_STATUSES:
+            scores[fid] = {"score": e.get("score", "0-0"),
+                           "minute": e.get("minute", 0),
+                           "status": e.get("status", ""),
+                           "seen": e.get("seen", "")}
+    return {"updated": datetime.now(timezone.utc).isoformat(),
+            "matches": matches, "scores": scores}
 
 
 def publish_radar_live(state: dict) -> bool:
@@ -1199,20 +1209,26 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
         alert_budget = {"used": 0}
     published = 0
     while time.monotonic() < deadline:
+        # ما دامت هناك أي مباراة حية نواصل — النتائج السريعة لكل المباريات
+        # (بلاغ المالك 2026-08-02: هدف تأخر ~10 دقائق على القائمة الحية)
+        if not any(e.get("status") in LIVE_STATUSES for e in state.values()
+                   if isinstance(e, dict)):
+            break
         cands = []
         for fid, e in state.items():
             if e.get("status") in LIVE_STATUSES and (e.get("radar") or {}).get("score") is not None:
                 cands.append(((0 if fid in watch else 1,
                                -((e["radar"].get("score")) or 0)), fid))
         targets = [f for _, f in sorted(cands)][:RADAR_FAST_CAP]
-        if not targets:
-            break
         time.sleep(FOCUS_SWEEP_SECONDS)
+        # نداء واحد يجلب كل المباريات الحية عالمياً: يحدّث نتيجة/دقيقة/حالة
+        # كل مباراة معروفة في الذاكرة (المستبعدات ليست في الذاكرة أصلاً)
         try:
-            fixtures = api_football(f"fixtures?ids={'-'.join(targets)}")
+            fixtures = api_football("fixtures?live=all")
         except Exception as e:
             print("الرادار السريع: فشل السحب:", e)
             continue
+        seen_now = datetime.now(timezone.utc).isoformat()
         for fx in fixtures:
             fid = str((fx.get("fixture") or {}).get("id"))
             e = state.get(fid)
@@ -1224,9 +1240,17 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
             gh = goals.get("home") or 0
             ga = goals.get("away") or 0
             e.update({"status": st, "minute": minute, "score": f"{gh}-{ga}",
-                      "seen": datetime.now(timezone.utc).isoformat()})
-            if st not in LIVE_STATUSES:
+                      "seen": seen_now})
+        # اللقطات الإحصائية العميقة لأخطر مباريات الرادار فقط (ترشيد نداءات)
+        for fid in targets:
+            e = state.get(fid)
+            if not e or e.get("status") not in LIVE_STATUSES:
                 continue
+            try:
+                gh, ga = (int(x) for x in (e.get("score") or "0-0").split("-")[:2])
+            except ValueError:
+                continue
+            minute = e.get("minute") or 0
             try:
                 snap = radar_snapshot(fid, minute, gh, ga)
             except Exception as ex:
