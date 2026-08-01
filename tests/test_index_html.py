@@ -150,6 +150,34 @@ class TestShadowLabPanel(unittest.TestCase):
         self.assertIsNotNone(body)
         self.assertIn("renderShadowLab()", body.group(1))
 
+    def test_claim_breakdown_and_honest_states(self):
+        """طلبات المالك 2026-08-01 (الصورة الثالثة): تفصيل البنود ✅/❌ داخل
+        البطاقة، ولا "مباشر" زائف لمباراة انتهت منذ أيام."""
+        self.assertIn("function labBreakdown", SCRIPT)
+        self.assertIn("labNoBreakdown", SCRIPT)          # صدق مع التقارير القديمة
+        self.assertIn("4*3600*1000", SCRIPT)             # النبضة الحمراء ≤ 4 ساعات فقط
+        self.assertIn("labWaitData", SCRIPT)             # حالة "بانتظار البيانات" الصادقة
+
+    def test_live_fold_and_collapsible_sections(self):
+        """قتل التمرير الطويل: أول 12 بطاقة حية ثم زر عرض البقية، وكل قسم
+        يُطوى بنقرة عنوانه مع حفظ الحالة."""
+        self.assertIn("LIVE_VISIBLE", SCRIPT)
+        self.assertIn("toggleLiveMore", SCRIPT)
+        self.assertIn('id="live-more"', SCRIPT)
+        self.assertIn("initSecToggles", SCRIPT)
+        self.assertIn("im-sec-", SCRIPT)
+
+    def test_live_search_bypasses_fold(self):
+        """بحث القائمة الحية (طلب المالك 2026-08-01): يبحث في الفريقين والدوري
+        عبر القائمة الكاملة، وأثناء البحث لا طي — كل المطابقات تظهر."""
+        self.assertIn('id="live-search"', HTML)
+        self.assertIn("onLiveSearch", SCRIPT)
+        self.assertIn("liveCache", SCRIPT)
+        body = re.search(r"function renderLive\(list\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("var fold = !q", body.group(1))
+        self.assertIn("m.league", body.group(1))
+
     def test_v2_visual_upgrade(self):
         """v2 (طلب المالك 2026-08-01): شريط النسبة، عدّاد ✓/✗، النبضة الحمراء
         للمباريات الجارية، والتقرير الأصلي القابل للفتح."""

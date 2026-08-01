@@ -655,6 +655,12 @@ def resolve_scenarios() -> int:
         entry["graded_on"] = today
         entry["correct"] = correct
         entry["total"] = len(grades)
+        # التصحيح بنداً‑ببند يُحفظ مع التقرير — يظهر في مختبر الظل على اللوحة
+        # (طلب المالك 2026-08-01: "أريد تفصيل ما نجح وما فشل، لا رقماً معلقاً")
+        entry["grades"] = [{"claim": str(g.get("claim") or ""),
+                            "result": str(g.get("result") or "")} for g in grades]
+        if result.get("summary"):
+            entry["grade_summary"] = str(result["summary"])
         scen["resolved"].append(entry)
         del scen["pending"][fid]
     if dirty:
