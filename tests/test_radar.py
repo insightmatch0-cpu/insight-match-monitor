@@ -181,5 +181,71 @@ class TestRadarDashboard(unittest.TestCase):
         self.assertIn('prev.get("radar")', src)
 
 
+class TestRadarFastLane(unittest.TestCase):
+    """⚡ المسار السريع (طلب المالك 2026-08-01 — "الأسرع"): تحديث ~90 ثانية
+    ونشر مباشر إلى فرع radar-live — بلا مفاتيح مكشوفة وبلا إعادة بناء Pages."""
+
+    def test_fast_snap_replaces_within_window(self):
+        """لقطات الـ 90 ثانية تستبدل الأخيرة — الزخم يبقى مقاساً على ~10 دقائق."""
+        snaps = [{"minute": 40, "h": {"sog": 1}, "a": {}},
+                 {"minute": 50, "h": {"sog": 2}, "a": {}}]
+        out = M.merge_fast_snap(snaps, {"minute": 52, "h": {"sog": 3}, "a": {}})
+        self.assertEqual(len(out), 2)
+        self.assertEqual(out[-1]["minute"], 52)
+        self.assertEqual(out[0]["minute"], 40)
+
+    def test_snap_appends_after_gap(self):
+        snaps = [{"minute": 40, "h": {}, "a": {}}]
+        out = M.merge_fast_snap(snaps, {"minute": 50, "h": {}, "a": {}})
+        self.assertEqual(len(out), 2)
+
+    def test_snaps_capped(self):
+        snaps = [{"minute": m, "h": {}, "a": {}} for m in range(0, 120, 10)]
+        out = M.merge_fast_snap(snaps, {"minute": 130, "h": {}, "a": {}})
+        self.assertLessEqual(len(out), M.RADAR_SNAPS_KEEP)
+
+    def test_live_payload_shape(self):
+        state = {"1": {"status": "1H", "home": "H", "away": "A", "league": "L",
+                       "score": "1-0", "minute": 30,
+                       "radar": {"snaps": [{"minute": 30, "h": {"sog": 2}, "a": {"sog": 1}}],
+                                 "score": 20, "level": "green", "factors": [],
+                                 "pick": "home", "confidence": 60}},
+                 "2": {"status": "FT", "radar": {"score": 50}},   # منتهية — تُستبعد
+                 "3": {"status": "1H"}}                            # بلا رادار — تُستبعد
+        p = M.radar_live_payload(state)
+        self.assertIn("updated", p)
+        self.assertEqual(len(p["matches"]), 1)
+        self.assertEqual(p["matches"][0]["radar"]["trend"]["h_sog"], [2])
+
+    def test_publish_silent_without_token(self):
+        """بلا GH_TOKEN (محلياً/بيئة ناقصة) — لا استثناء ولا نشر، صمت آمن."""
+        orig = M.GH_TOKEN
+        M.GH_TOKEN = ""
+        try:
+            self.assertFalse(M.publish_radar_live({}))
+        finally:
+            M.GH_TOKEN = orig
+
+    def test_fast_watch_respects_deadline(self):
+        """ميزانية منتهية = خروج فوري بلا أي نداء أو نوم — تسليم نظيف للدورة التالية."""
+        import time as _t
+        state = {"1": {"status": "1H", "radar": {"score": 50}}}
+        t0 = _t.monotonic()
+        self.assertEqual(M.radar_fast_watch(state, set(), _t.monotonic() - 1), 0)
+        self.assertLess(_t.monotonic() - t0, 2)
+
+    def test_wired_into_main(self):
+        import inspect
+        src = inspect.getsource(M.main)
+        self.assertIn("radar_fast_watch(", src)
+        self.assertIn("publish_radar_live(", src)
+
+    def test_monitor_yml_passes_token(self):
+        yml = (Path(__file__).resolve().parent.parent
+               / ".github" / "workflows" / "monitor.yml").read_text(encoding="utf-8")
+        run_monitor = yml.split("Run monitor")[1].split("run:")[0]
+        self.assertIn("GH_TOKEN", run_monitor)
+
+
 if __name__ == "__main__":
     unittest.main()

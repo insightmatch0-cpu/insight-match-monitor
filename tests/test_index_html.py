@@ -261,6 +261,21 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("main.radar-mode{max-width", HTML)
         self.assertIn("@media(min-width:1380px){.radar-grid{grid-template-columns:1fr 1fr 1fr}}", HTML)
 
+    def test_fast_lane_polling(self):
+        """⚡ المسار السريع: اللوحة تقرأ فرع radar-live مباشرة كل 60 ثانية في
+        وضع الرادار فقط، وتتقدم النسخة الحية على data.json حين تكون طازجة."""
+        self.assertIn("RADAR_LIVE_URL", SCRIPT)
+        self.assertIn("radar-live/radar-live.json", SCRIPT)
+        self.assertIn("function pollRadarLive", SCRIPT)
+        self.assertIn("setInterval(pollRadarLive, 60000)", SCRIPT)
+        poll = re.search(r"function pollRadarLive\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(poll)
+        self.assertIn('engine !== "radar"', poll.group(1))   # لا جلب خارج التبويب
+        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("radarLive.matches", body.group(1))
+        self.assertIn("15*60*1000", body.group(1))           # طزاجة 15 دقيقة أو تجاهل
+        self.assertIn('id="radar-live-at"', HTML)
+
 
 if __name__ == "__main__":
     unittest.main()
