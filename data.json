@@ -1,30 +1,6 @@
 {
- "updated": "2026-08-01T20:02:01.379302+00:00",
+ "updated": "2026-08-01T20:10:25.442265+00:00",
  "live": [
-  {
-   "fid": "1498686",
-   "home": "Almagro",
-   "away": "Midland",
-   "league": "Primera Nacional (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/482.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1963.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
-   "score": "1-1",
-   "minute": 90,
-   "status": "2H"
-  },
-  {
-   "fid": "1551061",
-   "home": "Botev Plovdiv",
-   "away": "Cherno More Varna",
-   "league": "First League (Bulgaria)",
-   "home_logo": "https://media.api-sports.io/football/teams/634.png",
-   "away_logo": "https://media.api-sports.io/football/teams/851.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/172.png",
-   "score": "1-0",
-   "minute": 89,
-   "status": "2H"
-  },
   {
    "fid": "1557979",
    "home": "Celje",
@@ -33,7 +9,19 @@
    "home_logo": "https://media.api-sports.io/football/teams/4360.png",
    "away_logo": "https://media.api-sports.io/football/teams/552.png",
    "league_logo": "https://media.api-sports.io/football/leagues/373.png",
-   "score": "2-1",
+   "score": "1-1",
+   "minute": 90,
+   "status": "2H"
+  },
+  {
+   "fid": "1555355",
+   "home": "FC Thun",
+   "away": "BSC Young Boys",
+   "league": "Super League (Switzerland)",
+   "home_logo": "https://media.api-sports.io/football/teams/1012.png",
+   "away_logo": "https://media.api-sports.io/football/teams/565.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/207.png",
+   "score": "0-5",
    "minute": 84,
    "status": "2H"
   },
@@ -46,19 +34,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/14145.png",
    "league_logo": "https://media.api-sports.io/football/leagues/782.png",
    "score": "3-0",
-   "minute": 76,
-   "status": "2H"
-  },
-  {
-   "fid": "1555355",
-   "home": "FC Thun",
-   "away": "BSC Young Boys",
-   "league": "Super League (Switzerland)",
-   "home_logo": "https://media.api-sports.io/football/teams/1012.png",
-   "away_logo": "https://media.api-sports.io/football/teams/565.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/207.png",
-   "score": "0-5",
-   "minute": 75,
+   "minute": 84,
    "status": "2H"
   },
   {
@@ -70,7 +46,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/449.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "0-0",
-   "minute": 73,
+   "minute": 81,
    "status": "2H",
    "pred_v1": {
     "pick": "away",
@@ -79,6 +55,32 @@
    "pred_v2": {
     "pick": "away",
     "confidence": 39
+   },
+   "radar": {
+    "score": 64,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د81)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "trend": {
+     "min": [
+      81
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      2
+     ],
+     "h_cor": [
+      7
+     ],
+     "a_cor": [
+      3
+     ]
+    }
    }
   },
   {
@@ -90,28 +92,8 @@
    "away_logo": "https://media.api-sports.io/football/teams/655.png",
    "league_logo": "https://media.api-sports.io/football/leagues/332.png",
    "score": "2-2",
-   "minute": 73,
+   "minute": 81,
    "status": "2H"
-  },
-  {
-   "fid": "1493038",
-   "home": "Gimnasia M.",
-   "away": "Union Santa Fe",
-   "league": "Liga Profesional Argentina (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/1066.png",
-   "away_logo": "https://media.api-sports.io/football/teams/441.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "2-0",
-   "minute": 71,
-   "status": "2H",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 39
-   }
   },
   {
    "fid": "1553822",
@@ -122,7 +104,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/2644.png",
    "league_logo": "https://media.api-sports.io/football/leagues/286.png",
    "score": "3-0",
-   "minute": 71,
+   "minute": 80,
    "status": "2H"
   },
   {
@@ -134,8 +116,54 @@
    "away_logo": "https://media.api-sports.io/football/teams/2598.png",
    "league_logo": "https://media.api-sports.io/football/leagues/283.png",
    "score": "4-0",
-   "minute": 71,
+   "minute": 80,
    "status": "2H"
+  },
+  {
+   "fid": "1493038",
+   "home": "Gimnasia M.",
+   "away": "Union Santa Fe",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/1066.png",
+   "away_logo": "https://media.api-sports.io/football/teams/441.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "2-0",
+   "minute": 79,
+   "status": "2H",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 63,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 2-0 تُسقط التوقع (د79)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "trend": {
+     "min": [
+      79
+     ],
+     "h_sog": [
+      6
+     ],
+     "a_sog": [
+      3
+     ],
+     "h_cor": [
+      8
+     ],
+     "a_cor": [
+      5
+     ]
+    }
+   }
   },
   {
    "fid": "1606427",
@@ -146,7 +174,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/467.png",
    "league_logo": "https://media.api-sports.io/football/leagues/134.png",
    "score": "0-3",
-   "minute": 69,
+   "minute": 78,
    "status": "2H"
   },
   {
@@ -158,7 +186,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/465.png",
    "league_logo": "https://media.api-sports.io/football/leagues/129.png",
    "score": "0-0",
-   "minute": 68,
+   "minute": 77,
    "status": "2H"
   },
   {
@@ -170,7 +198,91 @@
    "away_logo": "https://media.api-sports.io/football/teams/480.png",
    "league_logo": "https://media.api-sports.io/football/leagues/129.png",
    "score": "3-2",
-   "minute": 65,
+   "minute": 74,
+   "status": "2H"
+  },
+  {
+   "fid": "1549697",
+   "home": "Deportivo Pasto",
+   "away": "Águilas Doradas",
+   "league": "Primera A (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1126.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1144.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
+   "score": "1-2",
+   "minute": 53,
+   "status": "2H"
+  },
+  {
+   "fid": "1584344",
+   "home": "Sportivo Ameliano",
+   "away": "2 de Mayo",
+   "league": "Division Profesional - Clausura (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/10487.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2140.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/252.png",
+   "score": "0-1",
+   "minute": 53,
+   "status": "2H"
+  },
+  {
+   "fid": "1511625",
+   "home": "Antofagasta",
+   "away": "Union San Felipe",
+   "league": "Primera B (Chile)",
+   "home_logo": "https://media.api-sports.io/football/teams/2327.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2340.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
+   "score": "2-0",
+   "minute": 52,
+   "status": "2H"
+  },
+  {
+   "fid": "1519438",
+   "home": "Manta FC",
+   "away": "Mushuc Runa SC",
+   "league": "Liga Pro (Ecuador)",
+   "home_logo": "https://media.api-sports.io/football/teams/1980.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1162.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
+   "score": "1-2",
+   "minute": 52,
+   "status": "2H"
+  },
+  {
+   "fid": "1545391",
+   "home": "Real Oruro",
+   "away": "Independiente Petrolero",
+   "league": "Primera División (Bolivia)",
+   "home_logo": "https://media.api-sports.io/football/teams/20252.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15702.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
+   "score": "0-0",
+   "minute": 51,
+   "status": "2H"
+  },
+  {
+   "fid": "1548498",
+   "home": "HNK Gorica",
+   "away": "NK Osijek",
+   "league": "HNL (Croatia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1068.png",
+   "away_logo": "https://media.api-sports.io/football/teams/616.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/210.png",
+   "score": "0-2",
+   "minute": 51,
+   "status": "2H"
+  },
+  {
+   "fid": "1606260",
+   "home": "Goiânia",
+   "away": "Crixás EC",
+   "league": "Goiano - 2 (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/10674.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26500.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
+   "score": "0-0",
+   "minute": 51,
    "status": "2H"
   },
   {
@@ -182,78 +294,6 @@
    "away_logo": "https://media.api-sports.io/football/teams/2315.png",
    "league_logo": "https://media.api-sports.io/football/leagues/265.png",
    "score": "2-2",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
-   "fid": "1511625",
-   "home": "Antofagasta",
-   "away": "Union San Felipe",
-   "league": "Primera B (Chile)",
-   "home_logo": "https://media.api-sports.io/football/teams/2327.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2340.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-   "score": "2-0",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
-   "fid": "1519438",
-   "home": "Manta FC",
-   "away": "Mushuc Runa SC",
-   "league": "Liga Pro (Ecuador)",
-   "home_logo": "https://media.api-sports.io/football/teams/1980.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1162.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "score": "1-2",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
-   "fid": "1545391",
-   "home": "Real Oruro",
-   "away": "Independiente Petrolero",
-   "league": "Primera División (Bolivia)",
-   "home_logo": "https://media.api-sports.io/football/teams/20252.png",
-   "away_logo": "https://media.api-sports.io/football/teams/15702.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
-   "fid": "1548498",
-   "home": "HNK Gorica",
-   "away": "NK Osijek",
-   "league": "HNL (Croatia)",
-   "home_logo": "https://media.api-sports.io/football/teams/1068.png",
-   "away_logo": "https://media.api-sports.io/football/teams/616.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/210.png",
-   "score": "0-2",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
-   "fid": "1549697",
-   "home": "Deportivo Pasto",
-   "away": "Águilas Doradas",
-   "league": "Primera A (Colombia)",
-   "home_logo": "https://media.api-sports.io/football/teams/1126.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1144.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "score": "1-1",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
-   "fid": "1584344",
-   "home": "Sportivo Ameliano",
-   "away": "2 de Mayo",
-   "league": "Division Profesional - Clausura (Paraguay)",
-   "home_logo": "https://media.api-sports.io/football/teams/10487.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2140.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/252.png",
-   "score": "0-1",
    "minute": 45,
    "status": "HT"
   },
@@ -270,18 +310,6 @@
    "status": "HT"
   },
   {
-   "fid": "1606260",
-   "home": "Goiânia",
-   "away": "Crixás EC",
-   "league": "Goiano - 2 (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/10674.png",
-   "away_logo": "https://media.api-sports.io/football/teams/26500.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "HT"
-  },
-  {
    "fid": "1582364",
    "home": "FC Porto",
    "away": "Torreense",
@@ -290,8 +318,8 @@
    "away_logo": "https://media.api-sports.io/football/teams/4799.png",
    "league_logo": "https://media.api-sports.io/football/leagues/550.png",
    "score": "1-0",
-   "minute": 43,
-   "status": "1H"
+   "minute": 45,
+   "status": "HT"
   },
   {
    "fid": "1606357",
@@ -302,7 +330,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/1966.png",
    "league_logo": "https://media.api-sports.io/football/leagues/134.png",
    "score": "0-0",
-   "minute": 31,
+   "minute": 40,
    "status": "1H"
   },
   {
@@ -314,7 +342,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/23541.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1016.png",
    "score": "0-0",
-   "minute": 2,
+   "minute": 10,
    "status": "1H"
   },
   {
@@ -325,8 +353,8 @@
    "home_logo": "https://media.api-sports.io/football/teams/28051.png",
    "away_logo": "https://media.api-sports.io/football/teams/28050.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1016.png",
-   "score": "0-0",
-   "minute": 2,
+   "score": "1-0",
+   "minute": 10,
    "status": "1H"
   },
   {
@@ -338,7 +366,19 @@
    "away_logo": "https://media.api-sports.io/football/teams/21231.png",
    "league_logo": "https://media.api-sports.io/football/leagues/300.png",
    "score": "0-0",
-   "minute": 1,
+   "minute": 9,
+   "status": "1H"
+  },
+  {
+   "fid": "1606261",
+   "home": "Trindade",
+   "away": "Bom Jesus EC",
+   "league": "Goiano - 2 (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/23307.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26499.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
+   "score": "0-0",
+   "minute": 7,
    "status": "1H"
   },
   {
@@ -1497,5 +1537,6 @@
    "source": "BBC عربي",
    "time": "2026-08-01T17:05:12+00:00"
   }
- ]
+ ],
+ "radar_acc": {}
 }
