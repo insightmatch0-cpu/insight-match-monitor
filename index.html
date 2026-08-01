@@ -393,6 +393,8 @@
       <span class="rule"></span>
       <span class="count" id="live-count">0</span>
     </div>
+    <input id="live-search" class="res-search" type="search" autocomplete="off"
+           oninput="onLiveSearch()" />
     <div id="live-list"></div>
   </section>
 
@@ -622,6 +624,8 @@ function applyLang(){
   for (var i=0;i<nodes.length;i++) nodes[i].textContent = t(nodes[i].getAttribute("data-i"));
   var sb = document.getElementById("res-search");
   if (sb) sb.placeholder = t("searchPh");
+  var lb = document.getElementById("live-search");
+  if (lb) lb.placeholder = t("searchPh");
 }
 document.getElementById("langBtn").addEventListener("click", function(){
   lang = (lang === "ar") ? "en" : "ar";
@@ -666,14 +670,31 @@ function toggleLiveMore(){
     : t("liveLess");
 }
 
+/* بحث فوري داخل القائمة الحية (فريق أو دوري) — يتجاوز الطي ويعرض كل النتائج
+   المطابقة من القائمة الكاملة (طلب المالك 2026-08-01) */
+var liveCache = [];
+function onLiveSearch(){ renderLive(liveCache); }
+
 function renderLive(list){
+  liveCache = list;
   var el = document.getElementById("live-list");
   document.getElementById("live-count").textContent = list.length;
-  if (!list.length){ el.innerHTML = '<div class="empty">'+t("noLive")+"</div>"; return; }
+  var qEl = document.getElementById("live-search");
+  var q = (qEl && qEl.value || "").trim().toLowerCase();
+  if (q){
+    list = list.filter(function(m){
+      return ((m.home||"")+" "+(m.away||"")+" "+(m.league||"")).toLowerCase().indexOf(q) >= 0;
+    });
+  }
+  if (!list.length){
+    el.innerHTML = '<div class="empty">'+(q ? t("noResMatch") : t("noLive"))+"</div>";
+    return;
+  }
+  var fold = !q;   /* أثناء البحث لا طي — كل المطابقات تظهر */
   var h = "";
   for (var i=0;i<list.length;i++){
     var m = list[i];
-    if (i === LIVE_VISIBLE){
+    if (fold && i === LIVE_VISIBLE){
       var hidden = list.length - LIVE_VISIBLE;
       h += '<button type="button" id="live-more-btn" class="live-more" data-n="'+hidden+'" '
         + 'onclick="toggleLiveMore()">'+t("liveMore").replace("{n}", String(hidden))+'</button>'
@@ -694,7 +715,7 @@ function renderLive(list){
       + livePredsRow(m)
       + '</div>';
   }
-  if (list.length > LIVE_VISIBLE) h += '</div>';   /* إغلاق حاوية "بقية المباريات" */
+  if (fold && list.length > LIVE_VISIBLE) h += '</div>';   /* إغلاق حاوية "بقية المباريات" */
   el.innerHTML = h;
 }
 

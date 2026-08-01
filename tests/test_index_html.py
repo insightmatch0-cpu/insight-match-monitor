@@ -167,6 +167,17 @@ class TestShadowLabPanel(unittest.TestCase):
         self.assertIn("initSecToggles", SCRIPT)
         self.assertIn("im-sec-", SCRIPT)
 
+    def test_live_search_bypasses_fold(self):
+        """بحث القائمة الحية (طلب المالك 2026-08-01): يبحث في الفريقين والدوري
+        عبر القائمة الكاملة، وأثناء البحث لا طي — كل المطابقات تظهر."""
+        self.assertIn('id="live-search"', HTML)
+        self.assertIn("onLiveSearch", SCRIPT)
+        self.assertIn("liveCache", SCRIPT)
+        body = re.search(r"function renderLive\(list\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("var fold = !q", body.group(1))
+        self.assertIn("m.league", body.group(1))
+
     def test_v2_visual_upgrade(self):
         """v2 (طلب المالك 2026-08-01): شريط النسبة، عدّاد ✓/✗، النبضة الحمراء
         للمباريات الجارية، والتقرير الأصلي القابل للفتح."""
