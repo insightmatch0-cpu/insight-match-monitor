@@ -318,6 +318,16 @@
   .res .mark{font-family:Changa;font-weight:800;font-size:15px;flex:0 0 auto}
   .res .mark.ok{color:var(--green)}
   .res .mark.no{color:var(--red)}
+  /* سطر "لماذا": صف يحمل قراءة المحرك يُفتح بنقرة (طلب المالك 2026-08-01) */
+  .res.has-why{cursor:pointer}
+  .res .why-ind{flex:0 0 auto;font-size:12px;opacity:.65}
+  .res-why{
+    display:none;margin:-4px 2px 8px;padding:9px 12px;font-size:12.5px;
+    color:var(--muted);line-height:1.6;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  }
+  .res-why.open{display:block}
+  .res-why b{color:var(--ink);font-weight:700}
 
   /* ======== احتمالات المحرك 2 (1X2) ======== */
   .probbar{display:flex;height:6px;border-radius:999px;overflow:hidden;background:var(--chip);margin-top:9px}
@@ -536,6 +546,7 @@ var I18N = {
     noRes:"لا توجد نتائج مُقيَّمة بعد.",
     noResMatch:"لا نتائج تطابق بحثك.",
     searchPh:"🔍 ابحث عن فريق...",
+    whyLabel:"قراءة المحرك قبل المباراة:",
     noNews:"لا توجد أخبار حالياً.",
     pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل",
     accOverall:"الإجمالي", acc30:"آخر 30 يوماً",
@@ -593,6 +604,7 @@ var I18N = {
     noRes:"No graded results yet.",
     noResMatch:"No results match your search.",
     searchPh:"🔍 Search for a team...",
+    whyLabel:"Engine's pre-match read:",
     noNews:"No news right now.",
     pickHome:"Win", pickAway:"Win", pickDraw:"Draw",
     accOverall:"Overall", acc30:"Last 30 days",
@@ -1132,7 +1144,8 @@ function paintResults(){
   var h = "";
   for (var i=0;i<list.length;i++){
     var r = list[i];
-    h += '<div class="res">'
+    var why = (r.reason || "").trim();
+    h += '<div class="res'+(why?' has-why" onclick="toggleWhy(this)':'')+'">'
       + '<span class="mark '+(r.correct?"ok":"no")+'">'+(r.correct?"✓":"✗")+'</span>'
       + '<div class="pair">'
       + badge(r.home, r.home_logo, true)
@@ -1143,9 +1156,17 @@ function paintResults(){
           : "")
       + '<span class="fscore">'+esc(r.score)+'</span>'
       + '<span class="conf-num">'+esc(r.confidence)+'%</span>'
-      + '</div>';
+      + (why ? '<span class="why-ind">💭</span>' : "")
+      + '</div>'
+      + (why ? '<div class="res-why"><b>'+esc(t("whyLabel"))+'</b> '+esc(why)+'</div>' : "");
   }
   el.innerHTML = h;
+}
+
+/* فتح/إغلاق سطر "لماذا" — القراءة التي بنى عليها المحرك توقعه قبل المباراة */
+function toggleWhy(row){
+  var w = row.nextElementSibling;
+  if (w && w.className.indexOf("res-why") !== -1) w.classList.toggle("open");
 }
 
 function renderNews(list){
