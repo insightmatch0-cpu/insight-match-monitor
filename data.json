@@ -1,18 +1,6 @@
 {
- "updated": "2026-08-01T21:21:42.876717+00:00",
+ "updated": "2026-08-01T21:31:17.967744+00:00",
  "live": [
-  {
-   "fid": "1582364",
-   "home": "FC Porto",
-   "away": "Torreense",
-   "league": "Super Cup (Portugal)",
-   "home_logo": "https://media.api-sports.io/football/teams/212.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4799.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/550.png",
-   "score": "1-0",
-   "minute": 90,
-   "status": "2H"
-  },
   {
    "fid": "1606357",
    "home": "Gimnasia Chivilcoy",
@@ -22,7 +10,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/1966.png",
    "league_logo": "https://media.api-sports.io/football/leagues/134.png",
    "score": "0-0",
-   "minute": 84,
+   "minute": 90,
    "status": "2H"
   },
   {
@@ -34,7 +22,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/23541.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1016.png",
    "score": "0-2",
-   "minute": 55,
+   "minute": 65,
    "status": "2H"
   },
   {
@@ -45,8 +33,8 @@
    "home_logo": "https://media.api-sports.io/football/teams/2817.png",
    "away_logo": "https://media.api-sports.io/football/teams/21231.png",
    "league_logo": "https://media.api-sports.io/football/leagues/300.png",
-   "score": "0-0",
-   "minute": 54,
+   "score": "1-0",
+   "minute": 64,
    "status": "2H"
   },
   {
@@ -58,7 +46,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/28050.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1016.png",
    "score": "2-1",
-   "minute": 53,
+   "minute": 63,
    "status": "2H"
   },
   {
@@ -70,7 +58,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/26499.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
    "score": "0-1",
-   "minute": 48,
+   "minute": 58,
    "status": "2H"
   },
   {
@@ -94,8 +82,8 @@
    "away_logo": "https://media.api-sports.io/football/teams/2238.png",
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "1-1",
-   "minute": 42,
-   "status": "1H"
+   "minute": 45,
+   "status": "HT"
   },
   {
    "fid": "1546850",
@@ -106,8 +94,8 @@
    "away_logo": "https://media.api-sports.io/football/teams/124.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-0",
-   "minute": 42,
-   "status": "1H"
+   "minute": 45,
+   "status": "HT"
   },
   {
    "fid": "1549433",
@@ -118,7 +106,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/2544.png",
    "league_logo": "https://media.api-sports.io/football/leagues/281.png",
    "score": "0-1",
-   "minute": 40,
+   "minute": 45,
    "status": "1H"
   },
   {
@@ -130,54 +118,8 @@
    "away_logo": "https://media.api-sports.io/football/teams/5639.png",
    "league_logo": "https://media.api-sports.io/football/leagues/711.png",
    "score": "1-0",
-   "minute": 39,
+   "minute": 45,
    "status": "1H"
-  },
-  {
-   "fid": "1493033",
-   "home": "Belgrano Cordoba",
-   "away": "Argentinos JRS",
-   "league": "Liga Profesional Argentina (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/440.png",
-   "away_logo": "https://media.api-sports.io/football/teams/458.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "0-0",
-   "minute": 21,
-   "status": "1H",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 34
-   },
-   "radar": {
-    "score": 46,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
-    ],
-    "pick": "home",
-    "confidence": 34,
-    "trend": {
-     "min": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
   },
   {
    "fid": "1493036",
@@ -188,7 +130,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/442.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "2-0",
-   "minute": 21,
+   "minute": 31,
    "status": "1H",
    "pred_v1": {
     "pick": "home",
@@ -199,25 +141,83 @@
     "confidence": 56
    },
    "radar": {
-    "score": 0,
+    "score": 6,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "ضغط هجومي متصاعد من الضيف"
+    ],
     "pick": "home",
     "confidence": 56,
     "trend": {
      "min": [
-      21
+      11,
+      31
      ],
      "h_sog": [
-      3
+      2,
+      4
      ],
      "a_sog": [
+      0,
       1
      ],
      "h_cor": [
-      1
+      1,
+      2
      ],
      "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493033",
+   "home": "Belgrano Cordoba",
+   "away": "Argentinos JRS",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/440.png",
+   "away_logo": "https://media.api-sports.io/football/teams/458.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "0-0",
+   "minute": 30,
+   "status": "1H",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 34
+   },
+   "radar": {
+    "score": 49,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د30)"
+    ],
+    "pick": "home",
+    "confidence": 34,
+    "trend": {
+     "min": [
+      11,
+      30
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0
      ]
     }
@@ -232,19 +232,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/10037.png",
    "league_logo": "https://media.api-sports.io/football/leagues/742.png",
    "score": "0-0",
-   "minute": 12,
-   "status": "1H"
-  },
-  {
-   "fid": "1549572",
-   "home": "Popayan",
-   "away": "Tigres FC",
-   "league": "Primera B (Colombia)",
-   "home_logo": "https://media.api-sports.io/football/teams/1460.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1145.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-   "score": "0-0",
-   "minute": 12,
+   "minute": 22,
    "status": "1H"
   },
   {
@@ -256,19 +244,19 @@
    "away_logo": "https://media.api-sports.io/football/teams/4644.png",
    "league_logo": "https://media.api-sports.io/football/leagues/396.png",
    "score": "0-0",
-   "minute": 12,
+   "minute": 22,
    "status": "1H"
   },
   {
-   "fid": "1559597",
-   "home": "Mixco",
-   "away": "Suchitepéquez",
-   "league": "Liga Nacional (Guatemala)",
-   "home_logo": "https://media.api-sports.io/football/teams/3645.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3653.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/339.png",
+   "fid": "1549572",
+   "home": "Popayan",
+   "away": "Tigres FC",
+   "league": "Primera B (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1460.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1145.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-0",
-   "minute": 11,
+   "minute": 21,
    "status": "1H"
   },
   {
@@ -280,7 +268,19 @@
    "away_logo": "https://media.api-sports.io/football/teams/2813.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "0-0",
-   "minute": 11,
+   "minute": 21,
+   "status": "1H"
+  },
+  {
+   "fid": "1559597",
+   "home": "Mixco",
+   "away": "Suchitepéquez",
+   "league": "Liga Nacional (Guatemala)",
+   "home_logo": "https://media.api-sports.io/football/teams/3645.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3653.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/339.png",
+   "score": "0-0",
+   "minute": 20,
    "status": "1H"
   },
   {
@@ -292,7 +292,7 @@
    "away_logo": "https://media.api-sports.io/football/teams/2840.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "0-0",
-   "minute": 10,
+   "minute": 20,
    "status": "1H"
   },
   {
@@ -303,8 +303,8 @@
    "home_logo": "https://media.api-sports.io/football/teams/22157.png",
    "away_logo": "https://media.api-sports.io/football/teams/26154.png",
    "league_logo": "https://media.api-sports.io/football/leagues/370.png",
-   "score": "0-1",
-   "minute": 9,
+   "score": "1-1",
+   "minute": 19,
    "status": "1H"
   },
   {
@@ -315,8 +315,20 @@
    "home_logo": "https://media.api-sports.io/football/teams/1141.png",
    "away_logo": "https://media.api-sports.io/football/teams/1142.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
+   "score": "1-0",
+   "minute": 17,
+   "status": "1H"
+  },
+  {
+   "fid": "1545387",
+   "home": "San Antonio Bulo Bulo",
+   "away": "Blooming",
+   "league": "Primera División (Bolivia)",
+   "home_logo": "https://media.api-sports.io/football/teams/17760.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3701.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "0-0",
-   "minute": 7,
+   "minute": 4,
    "status": "1H"
   }
  ],
