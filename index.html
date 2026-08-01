@@ -643,7 +643,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 62;
+var IM_BUILD = 63;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -863,11 +863,24 @@ function pctOf(o){
 /* الدقيقة الحية المقدَّرة: المخزنة + ما مضى منذ رصدها فعلياً — فلا تتجمد
    الشاشة بين دورات المراقبة (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84).
    تقدير عرض فقط بسقوف واقعية لكل شوط؛ البيانات المخزنة لا تُمس. */
+/* التغذية السريعة: أحدث نتيجة/دقيقة/حالة لأي مباراة حية من فرع radar-live
+   (يُنشر كل ~90 ثانية) — الهدف يصل القائمة الحية وغرفة العمليات والرادار
+   خلال ~دقيقة ونصف بدل انتظار دورة الـ 10 دقائق (بلاغ المالك 2026-08-02) */
+function fastOf(m){
+  if (radarLive && radarLive.scores && radarLive.updated &&
+      (Date.now() - Date.parse(radarLive.updated)) < 15*60*1000){
+    var f = radarLive.scores[m.fid];
+    if (f && f.score != null) return f;
+  }
+  return m;
+}
+
 function liveMin(m, fallbackIso){
-  var mn = parseInt(m.minute, 10) || 0;
-  var st = m.status || "";
+  var f = fastOf(m);
+  var mn = parseInt(f.minute, 10) || 0;
+  var st = f.status || "";
   if (st !== "1H" && st !== "2H" && st !== "ET") return mn;
-  var base = Date.parse(m.seen || fallbackIso || "");
+  var base = Date.parse(f.seen || m.seen || fallbackIso || "");
   if (isNaN(base)) return mn;
   var extra = Math.floor((Date.now() - base) / 60000);
   if (extra <= 0) return mn;
@@ -970,7 +983,8 @@ function renderLive(list){
         + 'onclick="toggleLiveMore()">'+t("liveMore").replace("{n}", String(hidden))+'</button>'
         + '<div id="live-more" style="display:none">';
     }
-    var sc = esc(m.score).split("-");
+    var mf = fastOf(m);   /* أحدث نتيجة/حالة من التغذية السريعة (~90 ثانية) */
+    var sc = esc(mf.score).split("-");
     h += '<div class="card">'
       + '<div class="league-eyebrow">'
       + (m.league_logo ? badge(m.league, m.league_logo, true) : "")
@@ -979,7 +993,7 @@ function renderLive(list){
       + '<div class="side">'+badge(m.home, m.home_logo)+'<span class="tname">'+esc(m.home)+'</span></div>'
       + '<div><div class="score">'+esc(sc[0])+' – '+esc(sc[1])+'</div>'
       + '<div style="text-align:center"><span class="minute">'
-      + (m.status==="HT" ? "HT" : esc(liveMin(m, lastV1 && lastV1.updated))+"'") + '</span></div></div>'
+      + (mf.status==="HT" ? "HT" : esc(liveMin(m, lastV1 && lastV1.updated))+"'") + '</span></div></div>'
       + '<div class="side">'+badge(m.away, m.away_logo)+'<span class="tname">'+esc(m.away)+'</span></div>'
       + '</div>'
       + livePredsRow(m)
@@ -1425,7 +1439,7 @@ function renderOpsRoom(){
   var focus = [];
   for (var i=0;i<live.length;i++){
     var m = live[i];
-    var out = currentOutcome(m.score);
+    var out = currentOutcome(fastOf(m).score);
     var badges = [], danger = false;
     if (m.pred_v1 && m.pred_v1.pick){
       t1.tot++;
@@ -1438,7 +1452,7 @@ function renderOpsRoom(){
       else { danger = true; badges.push(["danger", t("e2name")+" — "+t("opsLosing")]); }
     }
     var mm = liveMin(m, lastV1 && lastV1.updated);
-    var pp = String(m.score || "").split("-");
+    var pp = String(fastOf(m).score || "").split("-");
     var margin = Math.abs((parseInt(pp[0],10)||0) - (parseInt(pp[1],10)||0));
     if (mm >= 75 && margin <= 1 && (m.pred_v1 || m.pred_v2))
       badges.push(["volatile", t("opsVolatile")]);
@@ -1484,8 +1498,8 @@ function renderOpsRoom(){
   for (var i=0;i<focus.length && i<12;i++){
     var f = focus[i], fm = f.m;
     fh += '<div class="ops-row"><span class="m">'+esc(fm.home)+' × '+esc(fm.away)+'</span>'
-      + '<span class="sc">'+esc(fm.score)+'</span>'
-      + '<span class="min">'+(fm.status==="HT" ? "HT" : esc(liveMin(fm, lastV1 && lastV1.updated))+"'")+'</span>';
+      + '<span class="sc">'+esc(fastOf(fm).score)+'</span>'
+      + '<span class="min">'+(fastOf(fm).status==="HT" ? "HT" : esc(liveMin(fm, lastV1 && lastV1.updated))+"'")+'</span>';
     for (var j=0;j<f.badges.length;j++)
       fh += '<span class="ops-badge '+f.badges[j][0]+'">'+f.badges[j][1]+'</span>';
     fh += '</div>';
@@ -1532,7 +1546,7 @@ function radarCard(m){
     + '<span class="rscore">'+esc(r.score)+'</span></div>'
     + '<div class="rteams">'+badge(m.home, m.home_logo, true)
     + '<span>'+esc(m.home)+' × '+esc(m.away)+'</span>'
-    + '<span class="rsc">'+esc(m.score)+'</span></div>'
+    + '<span class="rsc">'+esc(fastOf(m).score)+'</span></div>'
     + '<div class="rgauge"><i style="width:'+Math.max(3, r.score||0)+'%"></i></div>'
     + '<div class="rtop" style="margin-bottom:6px"><span>'+esc(t("radarPick"))+" "
     + esc(pickTxt)+(r.confidence ? " ("+esc(r.confidence)+"%)" : "")+'</span></div>'
@@ -1548,7 +1562,8 @@ function radarCard(m){
 var RADAR_LIVE_URL = "https://raw.githubusercontent.com/insightmatch0-cpu/insight-match-monitor/radar-live/radar-live.json";
 var radarLive = null;
 function pollRadarLive(){
-  if (engine !== "radar") return;
+  /* التغذية السريعة تخدم كل الشاشات الآن (النتائج لكل مباراة حية) —
+     الجلب دائم لا في وضع الرادار فقط (بلاغ المالك 2026-08-02) */
   fetch(RADAR_LIVE_URL + "?t=" + Date.now(), {cache:"no-store"})
     .then(function(r){ if (!r.ok) throw new Error("no-live"); return r.json(); })
     .then(function(d){ if (d && d.matches){ radarLive = d; renderAll(); } })
