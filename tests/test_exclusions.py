@@ -83,5 +83,62 @@ class TestQualityFilter(unittest.TestCase):
                                  f"{mod.__name__} استبعد دورياً حقيقياً: {name}")
 
 
+class TestWomensPatternBackstop(unittest.TestCase):
+    """طبقة الأمان النمطية (درس تسريب WK-League — 2026-08-01): القوائم تفشل
+    بصمت، فالفريقان بلاحقة W يُستبعدان مهما كان اسم الدوري."""
+
+    def test_helper_exists_in_all_four(self):
+        for mod in (monitor, scan, predict, predict_v2):
+            self.assertTrue(hasattr(mod, "is_womens_match"), mod.__name__)
+
+    def test_the_exact_leak_caught_by_pattern(self):
+        for mod in (monitor, scan, predict, predict_v2):
+            self.assertTrue(mod.is_womens_match("Incheon Red Angels W", "Hwacheon KSPO W"),
+                            f"{mod.__name__} لم يلتقط مباراة WK-League")
+
+    def test_single_w_team_not_excluded(self):
+        # فريق واحد فقط بلاحقة W (اسم رجالي ينتهي بحرف W مصادفة) لا يُستبعد
+        for mod in (monitor, scan, predict, predict_v2):
+            self.assertFalse(mod.is_womens_match("Wolves W", "Arsenal"))
+            self.assertFalse(mod.is_womens_match("Crewe", "Slask Wroclaw"))
+
+    def test_parenthesized_w(self):
+        for mod in (monitor, scan, predict, predict_v2):
+            self.assertTrue(mod.is_womens_match("Chelsea (W)", "Lyon (W)"))
+
+
+class TestPostGradingSentinel(unittest.TestCase):
+    """حارس ما بعد التقييم (درس 2026-08-01): التسريب وأخطاء 70%+ تصرخ
+    تلقائياً — اكتشافها لا يُترك لحظ المالك."""
+
+    def test_leak_finder_flags_womens_in_pending_and_resolved(self):
+        from datetime import timedelta
+        today = predict_v2.now_utc().strftime("%Y-%m-%d")
+        store = {
+            "pending": {"1": {"home": "Seoul W", "away": "Changnyeong W",
+                              "league": "WK-League (South-Korea)"}},
+            "resolved": [{"date": today, "home": "Malmö FF W", "away": "Piteå W",
+                          "league": "Damallsvenskan (Sweden)"}],
+        }
+        leaks = predict_v2.find_data_leaks(store)
+        self.assertEqual(len(leaks), 2)
+
+    def test_leak_finder_clean_store_silent(self):
+        today = predict_v2.now_utc().strftime("%Y-%m-%d")
+        store = {
+            "pending": {"1": {"home": "Al Hilal", "away": "Al Nassr",
+                              "league": "Saudi Pro League (Saudi-Arabia)"}},
+            "resolved": [{"date": today, "home": "Liverpool", "away": "Wrexham",
+                          "league": "Premier League (England)"}],
+        }
+        self.assertEqual(predict_v2.find_data_leaks(store), [])
+
+    def test_sentinel_wired_into_main(self):
+        import inspect
+        src = inspect.getsource(predict_v2.main)
+        self.assertIn("post_grading_alerts(", src,
+                      "الحارس يجب أن يركض في كل تشغيل صباحي")
+
+
 if __name__ == "__main__":
     unittest.main()

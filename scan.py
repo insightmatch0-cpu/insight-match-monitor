@@ -70,6 +70,18 @@ def is_excluded(league: dict) -> bool:
     return any(kw in name for kw in EXCLUDED_LEAGUE_KEYWORDS)
 
 
+_W_TEAM_RE = re.compile(r"\s\(?W\)?$")
+
+
+def is_womens_match(home_name: str, away_name: str) -> bool:
+    """طبقة أمان نمطية (درس تسريب WK-League — 2026-08-01): فرق السيدات في
+    API-Football تحمل لاحقة W في نهاية الاسم؛ إن حملها الفريقان معاً فهي
+    مباراة سيدات حتى لو خلا اسم الدوري من أي كلمة دالة. القوائم تفشل
+    بصمت — الأنماط تلتقط ما لم نتوقعه بعد."""
+    return bool(_W_TEAM_RE.search((home_name or "").strip())) and \
+           bool(_W_TEAM_RE.search((away_name or "").strip()))
+
+
 def get_live_fixtures() -> list:
     resp = requests.get(
         "https://v3.football.api-sports.io/fixtures?live=all",
@@ -191,6 +203,9 @@ def main() -> None:
     for fx in fixtures:
         league = fx.get("league", {}) or {}
         if is_excluded(league):
+            continue
+        _t = fx.get("teams") or {}
+        if is_womens_match((_t.get("home") or {}).get("name"), (_t.get("away") or {}).get("name")):
             continue
         fixture = fx.get("fixture", {}) or {}
         teams = fx.get("teams", {}) or {}
