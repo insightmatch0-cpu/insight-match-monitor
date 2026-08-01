@@ -226,7 +226,20 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn('id="tab-radar"', HTML)
         self.assertIn('id="radar-sec"', HTML)
         self.assertIn('id="radar-grid"', HTML)
-        self.assertIn('id="radar-tiles"', HTML)
+
+    def test_proactive_funnel_replaces_count_tiles(self):
+        """قمع الاستباق (طلب المالك 2026-08-02): بدل عدادات آمن/إنذار/خطر
+        الوصفية — مراحل متضيقة نحو التنبيه + سطر "الأقرب للتنبيه" مع عدّ
+        تنازلي لأهلية د75. العدادات القديمة "متأخرة" — القمع يستبق."""
+        self.assertIn('id="radar-funnel"', HTML)
+        self.assertIn('id="radar-next"', HTML)
+        self.assertNotIn('id="radar-tiles"', HTML)   # العدادات القديمة أُزيلت
+        for key in ("fTracked", "fBrewing", "fReady", "fSent",
+                    "radarNextUp", "radarEligIn"):
+            self.assertIn(key, SCRIPT)
+        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("funnel.sent", body.group(1))
+        self.assertIn("75 - (next.m.minute", body.group(1))   # العدّ التنازلي لد75
 
     def test_render_functions_exist(self):
         for fn in ("function renderRadar", "function radarCard",

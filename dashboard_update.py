@@ -186,6 +186,9 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
                 "factors": radar.get("factors") or [],
                 "pick": radar.get("pick"),
                 "confidence": radar.get("confidence"),
+                # قمع الاستباق (طلب المالك 2026-08-02): الإشارة الخام + الجاهزية
+                "drama": radar.get("drama"),
+                "alerted": radar.get("alerted"),
                 "trend": {
                     "min": [s.get("minute", 0) for s in snaps],
                     "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],

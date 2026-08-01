@@ -90,16 +90,26 @@
 
   /* ======== 🛰 الرادار — شاشة إنذار مبكر لعرض PC/TV (طلب المالك 2026-08-01) ======== */
   main.radar-mode{max-width:1560px}   /* التبويب مصمم ليملأ شاشة كبيرة */
-  .radar-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
-  .radar-tile{
-    background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:12px 14px;text-align:center;
+  /* قمع الاستباق (طلب المالك 2026-08-02): مراحل متضيقة نحو التنبيه — لا عدادات وصفية */
+  .radar-funnel{display:flex;align-items:stretch;gap:8px;margin-bottom:10px}
+  .fstage{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:10px 12px;text-align:center;position:relative;
   }
-  .radar-tile .num{font-family:Changa;font-weight:800;font-size:26px}
-  .radar-tile .lbl{font-size:11.5px;color:var(--muted);margin-top:2px}
-  .radar-tile.t-red .num{color:var(--red)}
-  .radar-tile.t-amber .num{color:var(--amber)}
-  .radar-tile.t-green .num{color:var(--green)}
+  .fstage.f1{flex:2.1}
+  .fstage.f2{flex:1.7}
+  .fstage.f3{flex:1.4}
+  .fstage.f4{flex:1.1}
+  .fstage .num{font-family:Changa;font-weight:800;font-size:22px}
+  .fstage .lbl{font-size:11px;color:var(--muted);margin-top:2px}
+  .fstage.f2 .num{color:var(--amber)}
+  .fstage.f3 .num{color:var(--red)}
+  .fstage.f4 .num{color:var(--radar)}
+  .radar-next{
+    font-size:13px;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:10px 12px;margin-bottom:10px;
+  }
+  .radar-next b{color:var(--radar)}
   .radar-note{font-size:12px;color:var(--muted);margin:2px 0 14px}
   .radar-grid{display:grid;grid-template-columns:1fr;gap:12px}
   @media(min-width:900px){.radar-grid{grid-template-columns:1fr 1fr}}
@@ -490,7 +500,8 @@
       <span class="rule"></span>
       <span class="count" id="radar-count">0</span>
     </div>
-    <div class="radar-tiles" id="radar-tiles"></div>
+    <div class="radar-funnel" id="radar-funnel"></div>
+    <div class="radar-next" id="radar-next" style="display:none"></div>
     <div class="radar-acc" id="radar-acc" style="display:none"></div>
     <div class="radar-note"><span data-i="radarNote">رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.</span> <span id="radar-live-at"></span></div>
     <div class="radar-grid" id="radar-grid"></div>
@@ -629,10 +640,17 @@ var I18N = {
     radarNote:"رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.",
     radarLiveAt:"تحديث حي:",
     radarDrama:"تنبيهات الدراما",
-    radarWatched:"قيد الرصد",
     radarRed:"خطر",
     radarAmber:"إنذار",
-    radarSafe:"آمن",
+    fTracked:"قيد الرصد",
+    fBrewing:"تختمر",
+    fReady:"جاهزة للتنبيه",
+    fSent:"تنبيه أُرسل",
+    radarNextUp:"الأقرب للتنبيه:",
+    radarSignal:"الإشارة",
+    radarNoBrew:"لا دراما تختمر الآن — الأرقام هادئة.",
+    radarEligIn:"باقي {n} د على أهلية التنبيه (د75)",
+    radarAnyMoment:"مؤهلة الآن — قد يصل التنبيه في أي لحظة",
     radarAccLine:"صدق إنذارات الرادار (توقعات سقطت فعلاً بعد التحذير) —",
     radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
     radarPick:"توقع المحرك 2:",
@@ -703,10 +721,17 @@ var I18N = {
     radarNote:"Transparent mathematics, no AI — the fast lane refreshes the most dangerous matches every ~90 seconds.",
     radarLiveAt:"Live update:",
     radarDrama:"Drama alerts",
-    radarWatched:"Tracked",
     radarRed:"Danger",
     radarAmber:"Warning",
-    radarSafe:"Safe",
+    fTracked:"Tracked",
+    fBrewing:"Brewing",
+    fReady:"Ready to alert",
+    fSent:"Alert sent",
+    radarNextUp:"Closest to alert:",
+    radarSignal:"signal",
+    radarNoBrew:"No drama brewing right now — the numbers are calm.",
+    radarEligIn:"{n} min until alert eligibility (75')",
+    radarAnyMoment:"Eligible now — an alert may land any moment",
     radarAccLine:"Radar warning accuracy (picks that truly fell after the alert) —",
     radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
     radarPick:"Engine 2 pick:",
@@ -1496,13 +1521,34 @@ function renderRadar(live, acc){
   }
   rows.sort(function(a,b){ return (b.radar.score||0) - (a.radar.score||0); });
   document.getElementById("radar-count").textContent = rows.length;
-  var counts = {red:0, amber:0, green:0};
-  for (var j=0;j<rows.length;j++) counts[rows[j].radar.level || "green"]++;
-  document.getElementById("radar-tiles").innerHTML =
-      '<div class="radar-tile"><div class="num">'+rows.length+'</div><div class="lbl">'+esc(t("radarWatched"))+'</div></div>'
-    + '<div class="radar-tile t-red"><div class="num">'+counts.red+'</div><div class="lbl">'+esc(t("radarRed"))+'</div></div>'
-    + '<div class="radar-tile t-amber"><div class="num">'+counts.amber+'</div><div class="lbl">'+esc(t("radarAmber"))+'</div></div>'
-    + '<div class="radar-tile t-green"><div class="num">'+counts.green+'</div><div class="lbl">'+esc(t("radarSafe"))+'</div></div>';
+  /* قمع الاستباق: كل مرحلة جزء من سابقتها — مرصود ← تختمر ← جاهزة ← تنبيه أُرسل */
+  var funnel = {tracked: rows.length, brew: 0, ready: 0, sent: 0};
+  var next = null;
+  for (var j=0;j<rows.length;j++){
+    var rr = rows[j].radar, dr = rr.drama || {};
+    var sig = dr.signal || 0;
+    if (rr.alerted){ funnel.sent++; funnel.ready++; funnel.brew++; continue; }
+    if (dr.ready){ funnel.ready++; funnel.brew++; }
+    else if (sig >= 25 || (rr.level && rr.level !== "green")){ funnel.brew++; }
+    /* الأقرب للتنبيه: أعلى إشارة لم تُنبَّه بعد — استباق لا وصف */
+    if (sig >= 25 && (!next || sig > next.sig)) next = {m: rows[j], sig: sig};
+  }
+  document.getElementById("radar-funnel").innerHTML =
+      '<div class="fstage f1"><div class="num">'+funnel.tracked+'</div><div class="lbl">'+esc(t("fTracked"))+'</div></div>'
+    + '<div class="fstage f2"><div class="num">'+funnel.brew+'</div><div class="lbl">'+esc(t("fBrewing"))+'</div></div>'
+    + '<div class="fstage f3"><div class="num">'+funnel.ready+'</div><div class="lbl">'+esc(t("fReady"))+'</div></div>'
+    + '<div class="fstage f4"><div class="num">'+funnel.sent+'</div><div class="lbl">'+esc(t("fSent"))+'</div></div>';
+  var nx = document.getElementById("radar-next");
+  if (next){
+    var wait = Math.max(0, 75 - (next.m.minute || 0));
+    nx.innerHTML = esc(t("radarNextUp"))+" <b>"+esc(next.m.home)+" × "+esc(next.m.away)+"</b> — "
+      + esc(t("radarSignal"))+" "+esc(next.sig)+"% · "
+      + (wait > 0 ? esc(t("radarEligIn")).replace("{n}", wait) : esc(t("radarAnyMoment")));
+    nx.style.display = "";
+  } else {
+    nx.textContent = t("radarNoBrew");
+    nx.style.display = rows.length ? "" : "none";
+  }
   /* لوحة صدق الرادار — تظهر فقط حين توجد إنذارات مُقيَّمة (لا ادعاء بلا قياس) */
   var accEl = document.getElementById("radar-acc");
   var red = acc && acc.red, amb = acc && acc.amber, al = acc && acc.alerts;
