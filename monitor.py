@@ -101,6 +101,17 @@ RADAR_RED = 65           # عتبة الخطر الأحمر
 RADAR_AMBER = 40         # عتبة الإنذار الكهرماني
 RADAR_MAX_WARNINGS = 400 # سقف سجل الإنذارات غير المُقيَّمة
 
+# المسار السريع للرادار (طلب المالك 2026-08-01 — "الأسرع"): بعد الجولة العادية
+# تبقى التشغيلة حية وتحدّث أخطر المباريات كل ~90 ثانية وتنشر النتيجة إلى فرع
+# radar-live عبر GitHub API مباشرة (بلا commit محلي وبلا إعادة بناء Pages) —
+# اللوحة تقرأ الملف الخام مباشرة فتصل السرعة ~90 ثانية أثناء حياة التشغيلة.
+RADAR_FAST_CAP = 8            # أخطر 8 مباريات فقط في المسار السريع (ترشيد نداءات)
+RADAR_LIVE_BRANCH = "radar-live"
+RADAR_LIVE_PATH = "radar-live.json"
+RADAR_SNAP_MIN_GAP_MIN = 8    # لقطة أحدث من نفس نافذة الـ 10 دقائق تستبدل الأخيرة
+GH_TOKEN = os.environ.get("GH_TOKEN", "").strip()
+GH_REPO = os.environ.get("GITHUB_REPOSITORY", "").strip() or "insightmatch0-cpu/insight-match-monitor"
+
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
 TOP_LEAGUE_IDS = {
     1,    # كأس العالم
@@ -1067,6 +1078,142 @@ def danger_score(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
     return {"score": score, "level": level, "factors": factors[:4]}
 
 
+def merge_fast_snap(snaps: list, snap: dict) -> list:
+    """يحافظ على تباعد ~10 دقائق بين اللقطات: لقطة أحدث داخل نفس النافذة
+    تستبدل الأخيرة (فيبقى الزخم مقاساً على ~10 دقائق حقيقية لا على 90 ثانية)،
+    ولقطة بعد فجوة كافية تُلحق كالمعتاد."""
+    if snaps and (snap.get("minute", 0) - (snaps[-1].get("minute") or 0)) < RADAR_SNAP_MIN_GAP_MIN:
+        return snaps[:-1] + [snap]
+    return (snaps + [snap])[-RADAR_SNAPS_KEEP:]
+
+
+def _radar_trend(snaps: list) -> dict:
+    return {
+        "min": [s.get("minute", 0) for s in snaps],
+        "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],
+        "a_sog": [(s.get("a") or {}).get("sog", 0) for s in snaps],
+        "h_cor": [(s.get("h") or {}).get("cor", 0) for s in snaps],
+        "a_cor": [(s.get("a") or {}).get("cor", 0) for s in snaps],
+    }
+
+
+def radar_live_payload(state: dict) -> dict:
+    """لقطة الرادار الحية كاملة — نفس شكل بطاقات data.json ليعاد استخدام الرسم."""
+    matches = []
+    for fid, e in state.items():
+        if not isinstance(e, dict) or e.get("status") not in LIVE_STATUSES:
+            continue
+        r = e.get("radar") or {}
+        if r.get("score") is None:
+            continue
+        ar = e.get("ar") or {}
+        matches.append({
+            "fid": fid,
+            "home": ar.get("home") or e.get("home", "?"),
+            "away": ar.get("away") or e.get("away", "?"),
+            "league": ar.get("league") or e.get("league", ""),
+            "home_logo": e.get("home_logo", ""), "away_logo": e.get("away_logo", ""),
+            "score": e.get("score", "0-0"), "minute": e.get("minute", 0),
+            "status": e.get("status", ""),
+            "radar": {"score": r.get("score"), "level": r.get("level"),
+                      "factors": r.get("factors") or [], "pick": r.get("pick"),
+                      "confidence": r.get("confidence"),
+                      "trend": _radar_trend(r.get("snaps") or [])},
+        })
+    return {"updated": datetime.now(timezone.utc).isoformat(), "matches": matches}
+
+
+def publish_radar_live(state: dict) -> bool:
+    """ينشر لقطة الرادار إلى فرع radar-live عبر GitHub API — بلا commit محلي
+    وبلا إعادة بناء Pages (اللوحة تقرأ raw مباشرة). فشله صامت تماماً:
+    النشر السريع رفاهية، لا يجوز أن يوقف المراقبة أو يفشّل التشغيلة."""
+    if not GH_TOKEN:
+        return False
+    try:
+        import base64
+        api = f"https://api.github.com/repos/{GH_REPO}"
+        hdrs = {"Authorization": f"Bearer {GH_TOKEN}",
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28"}
+        sha = None
+        r = requests.get(f"{api}/contents/{RADAR_LIVE_PATH}?ref={RADAR_LIVE_BRANCH}",
+                         headers=hdrs, timeout=15)
+        if r.status_code == 200:
+            sha = (r.json() or {}).get("sha")
+        elif r.status_code == 404:
+            # الفرع قد لا يكون موجوداً بعد — يُنشأ مرة واحدة من رأس main
+            mr = requests.get(f"{api}/git/ref/heads/main", headers=hdrs, timeout=15)
+            if mr.status_code == 200:
+                requests.post(f"{api}/git/refs", headers=hdrs, timeout=15,
+                              json={"ref": f"refs/heads/{RADAR_LIVE_BRANCH}",
+                                    "sha": ((mr.json() or {}).get("object") or {}).get("sha")})
+        payload = json.dumps(radar_live_payload(state), ensure_ascii=False)
+        body = {"message": "radar live [skip ci]",
+                "content": base64.b64encode(payload.encode("utf-8")).decode("ascii"),
+                "branch": RADAR_LIVE_BRANCH}
+        if sha:
+            body["sha"] = sha
+        put = requests.put(f"{api}/contents/{RADAR_LIVE_PATH}",
+                           headers=hdrs, json=body, timeout=20)
+        return put.status_code in (200, 201)
+    except Exception as e:
+        print("نشر الرادار الحي: فشل صامت:", e)
+        return False
+
+
+def radar_fast_watch(state: dict, watch: set, deadline: float) -> int:
+    """المسار السريع (طلب المالك 2026-08-01): يحدّث أخطر مباريات الرادار كل
+    ~90 ثانية فيما تبقى من ميزانية التشغيلة وينشر كل جولة إلى radar-live.
+    ليالي قائمة التركيز يستهلك رصدها السريع الميزانية أولاً — لا ازدواج،
+    فمباريات القائمة هي نفسها أولوية الرادار وتتحدث عبر الدورة العادية."""
+    v2_pending = (load_json_file(RADAR_PREDICTIONS_FILE, {}) or {}).get("pending") or {}
+    published = 0
+    while time.monotonic() < deadline:
+        cands = []
+        for fid, e in state.items():
+            if e.get("status") in LIVE_STATUSES and (e.get("radar") or {}).get("score") is not None:
+                cands.append(((0 if fid in watch else 1,
+                               -((e["radar"].get("score")) or 0)), fid))
+        targets = [f for _, f in sorted(cands)][:RADAR_FAST_CAP]
+        if not targets:
+            break
+        time.sleep(FOCUS_SWEEP_SECONDS)
+        try:
+            fixtures = api_football(f"fixtures?ids={'-'.join(targets)}")
+        except Exception as e:
+            print("الرادار السريع: فشل السحب:", e)
+            continue
+        for fx in fixtures:
+            fid = str((fx.get("fixture") or {}).get("id"))
+            e = state.get(fid)
+            if not e:
+                continue
+            st = (((fx.get("fixture") or {}).get("status")) or {}).get("short") or ""
+            minute = (((fx.get("fixture") or {}).get("status")) or {}).get("elapsed") or 0
+            goals = fx.get("goals") or {}
+            gh = goals.get("home") or 0
+            ga = goals.get("away") or 0
+            e.update({"status": st, "minute": minute, "score": f"{gh}-{ga}"})
+            if st not in LIVE_STATUSES:
+                continue
+            try:
+                snap = radar_snapshot(fid, minute, gh, ga)
+            except Exception as ex:
+                print("الرادار السريع: فشل لقطة", fid, ex)
+                continue
+            radar = e.get("radar") or {}
+            snaps = merge_fast_snap(radar.get("snaps") or [], snap)
+            p = v2_pending.get(fid) or {}
+            verdict = danger_score(p.get("pick") or radar.get("pick"),
+                                   snaps, minute, gh, ga)
+            radar.update({"snaps": snaps, "score": verdict["score"],
+                          "level": verdict["level"], "factors": verdict["factors"]})
+            e["radar"] = radar
+        if publish_radar_live(state):
+            published += 1
+    return published
+
+
 def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
     """اختيار مباريات الرادار تحت السقف: قائمة التركيز أولاً، ثم الدوريات
     الكبرى، ثم الأعلى ثقة — الأهم للمالك لا يُزاحم أبداً."""
@@ -1110,7 +1257,7 @@ def radar_sweep(state: dict, watch: set) -> int:
             print("الرادار: فشل لقطة", fid, ex)
             continue
         radar = e.get("radar") or {}
-        snaps = ((radar.get("snaps") or []) + [snap])[-RADAR_SNAPS_KEEP:]
+        snaps = merge_fast_snap(radar.get("snaps") or [], snap)
         p = v2_pending.get(fid) or {}
         verdict = danger_score(p.get("pick"), snaps, minute, gh, ga)
         e["radar"] = {
@@ -1385,13 +1532,23 @@ def main() -> None:
     radar_count = 0
     try:
         radar_count = radar_sweep(state, watch)
+        publish_radar_live(state)   # أول نسخة حية لهذه الدورة (فشلها صامت)
     except Exception as e:
         print("الرادار — خطأ غير متوقع:", e)
 
     # الرصد السريع: تبقى التشغيلة مستيقظة وتفحص مباريات قائمة التركيز
     # كل ~90 ثانية حتى تسليم الجولة التالية (تنبيه خلال دقيقة إلى دقيقتين)
+    fast_deadline = time.monotonic() + FOCUS_LOOP_BUDGET_SECONDS
     if focus_fast_watch(state, wl_data, watch, live_budget, pulses):
         wl_dirty = True
+
+    # المسار السريع للرادار: ما تبقى من ميزانية التشغيلة يُنفق على تحديث
+    # أخطر المباريات كل ~90 ثانية ونشرها الحي (طلب المالك 2026-08-01)
+    radar_published = 0
+    try:
+        radar_published = radar_fast_watch(state, watch, fast_deadline)
+    except Exception as e:
+        print("الرادار السريع — خطأ غير متوقع:", e)
 
     # ملخص نهاية اليوم: يُرسل فور انتهاء آخر مباراة في قائمة التركيز (مرة واحدة)
     if watch and not wl_data.get("results_sent") and all_focus_finished(wl_data, watch):
@@ -1410,7 +1567,8 @@ def main() -> None:
     print(
         f"تم: {len(live_ids)} مباراة حية (بعد الفلترة)، تحليلات مستخدمة: {analyses_used}، "
         f"منها بالمحرك 2 المباشر: {live_budget['used']}، نبضات: {pulses['used']}، "
-        f"قائمة التركيز: {len(watch)}، لقطات الرادار: {radar_count}"
+        f"قائمة التركيز: {len(watch)}، لقطات الرادار: {radar_count}، "
+        f"نشرات الرادار السريعة: {radar_published}"
     )
 
 

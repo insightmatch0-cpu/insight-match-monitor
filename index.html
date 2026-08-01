@@ -492,7 +492,7 @@
     </div>
     <div class="radar-tiles" id="radar-tiles"></div>
     <div class="radar-acc" id="radar-acc" style="display:none"></div>
-    <div class="radar-note" data-i="radarNote">رياضيات شفافة بلا ذكاء اصطناعي — تتحدث الأرقام تلقائياً كل ~10 دقائق مع دورة المراقبة.</div>
+    <div class="radar-note"><span data-i="radarNote">رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.</span> <span id="radar-live-at"></span></div>
     <div class="radar-grid" id="radar-grid"></div>
   </section>
 
@@ -626,7 +626,8 @@ var I18N = {
     radarName:"🛰 الرادار",
     radarDesc:"إنذار مبكر قبل سقوط التوقع",
     radarTitle:"🛰 الرادار — من يهدد التوقعات الآن",
-    radarNote:"رياضيات شفافة بلا ذكاء اصطناعي — تتحدث الأرقام تلقائياً كل ~10 دقائق مع دورة المراقبة.",
+    radarNote:"رياضيات شفافة بلا ذكاء اصطناعي — المسار السريع يحدّث أخطر المباريات كل ~90 ثانية.",
+    radarLiveAt:"تحديث حي:",
     radarWatched:"قيد الرصد",
     radarRed:"خطر",
     radarAmber:"إنذار",
@@ -698,7 +699,8 @@ var I18N = {
     radarName:"🛰 The Radar",
     radarDesc:"Early warning before a pick falls",
     radarTitle:"🛰 The Radar — what threatens the picks right now",
-    radarNote:"Transparent mathematics, no AI — numbers refresh automatically every ~10 minutes with the monitoring cycle.",
+    radarNote:"Transparent mathematics, no AI — the fast lane refreshes the most dangerous matches every ~90 seconds.",
+    radarLiveAt:"Live update:",
     radarWatched:"Tracked",
     radarRed:"Danger",
     radarAmber:"Warning",
@@ -834,6 +836,7 @@ function setEngine(e){
   try { localStorage.setItem("im-engine", e); } catch(ex){}
   applyEngine();
   renderAll();
+  if (e === "radar") pollRadarLive();   /* جلب فوري للنسخة الحية عند فتح التبويب */
 }
 document.getElementById("tab-v1").addEventListener("click", function(){ setEngine("v1"); });
 document.getElementById("tab-v2").addEventListener("click", function(){ setEngine("v2"); });
@@ -1458,9 +1461,37 @@ function radarCard(m){
     + '</div>';
 }
 
+/* المسار السريع: فرع radar-live يُنشر كل ~90 ثانية أثناء المباريات —
+   نقرؤه مباشرة (raw) متجاوزين إعادة بناء Pages كلياً */
+var RADAR_LIVE_URL = "https://raw.githubusercontent.com/insightmatch0-cpu/insight-match-monitor/radar-live/radar-live.json";
+var radarLive = null;
+function pollRadarLive(){
+  if (engine !== "radar") return;
+  fetch(RADAR_LIVE_URL + "?t=" + Date.now(), {cache:"no-store"})
+    .then(function(r){ if (!r.ok) throw new Error("no-live"); return r.json(); })
+    .then(function(d){ if (d && d.matches){ radarLive = d; renderAll(); } })
+    .catch(function(){ /* لا نسخة حية — البيانات العادية (10 دقائق) تبقى تعمل */ });
+}
+setInterval(pollRadarLive, 60000);
+
 function renderRadar(live, acc){
   var rows = [];
   for (var i=0;i<live.length;i++) if (live[i].radar && live[i].radar.score != null) rows.push(live[i]);
+  /* النسخة الحية (إن كانت طازجة خلال 15 دقيقة) تتقدم على data.json */
+  var liveAt = document.getElementById("radar-live-at");
+  liveAt.textContent = "";
+  if (radarLive && radarLive.matches && radarLive.updated &&
+      (Date.now() - new Date(radarLive.updated).getTime()) < 15*60*1000){
+    var byFid = {};
+    for (var f=0;f<rows.length;f++) byFid[rows[f].fid] = rows[f];
+    for (var g=0;g<radarLive.matches.length;g++){
+      var lm = radarLive.matches[g];
+      var tgt = byFid[lm.fid];
+      if (tgt){ tgt.score = lm.score; tgt.minute = lm.minute; tgt.radar = lm.radar; }
+      else rows.push(lm);
+    }
+    liveAt.textContent = "⚡ " + t("radarLiveAt") + " " + timeLocal(radarLive.updated);
+  }
   rows.sort(function(a,b){ return (b.radar.score||0) - (a.radar.score||0); });
   document.getElementById("radar-count").textContent = rows.length;
   var counts = {red:0, amber:0, green:0};
@@ -1591,6 +1622,7 @@ initSecToggles();
 
 renderAll();
 load();
+pollRadarLive();   /* إن فُتحت الصفحة على تبويب الرادار — نسخة حية فوراً */
 setInterval(load, 90000);
 </script>
 </body>
