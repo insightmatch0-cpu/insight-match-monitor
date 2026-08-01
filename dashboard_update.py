@@ -28,6 +28,8 @@ HISTORY_FILE        = Path("history.json")
 NEWS_FILE           = Path("news.json")
 DATA_FILE           = Path("data.json")
 DATA_V2_FILE        = Path("data_v2.json")
+SCENARIOS_V2_FILE   = Path("scenarios_v2.json")
+SHADOW_LAB_ROWS     = 10   # أحدث بطاقات التقييم المعروضة في مختبر الظل
 
 LESSONS_ON_DASHBOARD = 30   # أحدث الدروس المعروضة في لوحة المحرك 2
 RECENT_RESULTS_SHOWN = 50   # عدد النتائج المُقيَّمة المعروضة (تكفي أياماً لا ساعات)
@@ -267,6 +269,32 @@ def recent_lessons() -> list:
     return out
 
 
+def build_shadow_lab() -> dict:
+    """🔬 مختبر الظل — آخر بطاقات تقييم تقارير ما قبل المباراة (قائمة التركيز
+    + تقارير الظل الصامتة) حتى يرى المالك تدريب القنّاص وهو يحدث، بدل انتظار
+    التقارير المجدولة (طلب المالك 2026-08-01)."""
+    sc = load_json(SCENARIOS_V2_FILE, {"pending": {}, "resolved": []})
+    resolved = sc.get("resolved") or []
+    rows = []
+    for e in resolved[-SHADOW_LAB_ROWS:][::-1]:
+        if not isinstance(e, dict):
+            continue
+        rows.append({
+            "date": e.get("graded_on") or e.get("date", ""),
+            "home": e.get("ar_home") or e.get("home", "?"),
+            "away": e.get("ar_away") or e.get("away", "?"),
+            "league": e.get("league", ""),
+            "shadow": bool(e.get("shadow")),
+            "correct": e.get("correct"),
+            "total": e.get("total"),
+        })
+    return {
+        "reports": rows,
+        "graded_total": len(resolved),
+        "pending": len(sc.get("pending") or {}),
+    }
+
+
 def build_data_v2() -> None:
     """يبني data_v2.json للمحرك 2 بنفس مخطط data.json.
 
@@ -287,6 +315,7 @@ def build_data_v2() -> None:
         "lessons": recent_lessons(),
         # الأرشيف الدائم (كل الأيام، كل الأطراف) — للوحة ولأي تحليل مستقبلي
         "history": load_json(HISTORY_FILE, {}).get("days") or {},
+        "shadow_lab": build_shadow_lab(),
     }
     existing = load_json(DATA_V2_FILE, {})
     existing.pop("updated", None)

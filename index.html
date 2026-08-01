@@ -201,6 +201,19 @@
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
   .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
+  /* 🔬 مختبر الظل — صفوف بطاقات التقييم */
+  .lab-summary{font-size:11.5px;color:var(--muted);margin-bottom:9px}
+  .lab-row{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:9px 12px;margin-bottom:7px;font-size:12.5px;
+  }
+  .lab-date{color:var(--muted);font-size:11px;white-space:nowrap}
+  .lab-match{flex:1;min-width:140px;font-weight:600}
+  .lab-type{font-size:10.5px;border:1px solid var(--line);border-radius:99px;padding:2px 9px;color:var(--muted)}
+  .lab-type.is-shadow{border-color:var(--v2);color:var(--v2)}
+  .lab-score{font-family:Changa;font-weight:700;white-space:nowrap}
+
   /* ⚖️ المحرك ضد السوق — شريحة صغيرة أسفل الاحتمالات؛ تتوهج عند الاختلاف */
   .mkt{margin-top:7px;font-size:11.5px;color:var(--muted)}
   .mkt.diff{color:#e8b923}
@@ -380,6 +393,17 @@
       <div id="res-list"></div>
     </section>
 
+    <!-- 🔬 مختبر الظل — تقييمات تقارير ما قبل المباراة (المحرك 2 فقط) -->
+    <section class="sec" id="shadow-sec" style="display:none">
+      <div class="sec-head">
+        <h2 data-i="shadowLab">🔬 مختبر الظل — تقييم التقارير</h2>
+        <span class="rule"></span>
+        <span class="count" id="shadow-count">0</span>
+      </div>
+      <div class="lab-summary" id="shadow-summary"></div>
+      <div id="shadow-list"></div>
+    </section>
+
     <!-- دروس التعلم المستمر — يظهر في تبويب المحرك 2 فقط -->
     <section class="sec" id="lessons-sec" style="display:none">
       <div class="sec-head">
@@ -431,6 +455,9 @@ var I18N = {
     lessonsNew:"جديد اليوم",
     gold:"⭐ الاختيارات الذهبية — ثقة 70%+",
     mkt:"السوق", engineLbl:"المحرك", mktDiff:"⚡ يخالف السوق",
+    shadowLab:"🔬 مختبر الظل — تقييم التقارير",
+    labShadow:"تقرير ظل", labWatch:"قائمة التركيز",
+    labGraded:"إجمالي التقييمات", labPending:"بانتظار التقييم",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -464,6 +491,9 @@ var I18N = {
     lessonsNew:"new today",
     gold:"⭐ Gold picks — 70%+ confidence",
     mkt:"Market", engineLbl:"Engine", mktDiff:"⚡ disagrees with market",
+    shadowLab:"🔬 Shadow lab — report scorecards",
+    labShadow:"shadow report", labWatch:"focus list",
+    labGraded:"Total graded", labPending:"Awaiting grading",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -762,6 +792,38 @@ function renderAccuracy(acc){
   el.innerHTML = h + (any ? bh : "") + th;
 }
 
+/* 🔬 مختبر الظل — بطاقات تقييم تقارير ما قبل المباراة (قائمة + ظل صامت).
+   تبويب المحرك 2 فقط؛ يختفي كلياً حين لا توجد تقييمات بعد */
+function renderShadowLab(){
+  var sec = document.getElementById("shadow-sec");
+  var lab = (engine === "v2" && v2exists && lastV2 && lastV2.shadow_lab) ? lastV2.shadow_lab : null;
+  var rows = (lab && lab.reports) || [];
+  sec.style.display = rows.length ? "" : "none";
+  if (!rows.length){
+    document.getElementById("shadow-list").innerHTML = "";
+    document.getElementById("shadow-summary").innerHTML = "";
+    document.getElementById("shadow-count").textContent = 0;
+    return;
+  }
+  document.getElementById("shadow-count").textContent = lab.graded_total || rows.length;
+  document.getElementById("shadow-summary").innerHTML =
+    t("labGraded")+": "+esc(lab.graded_total||0)
+    + (lab.pending ? " · "+t("labPending")+": "+esc(lab.pending) : "");
+  var h = "";
+  for (var i=0;i<rows.length;i++){
+    var r = rows[i];
+    var pc = (r.total ? Math.round(100*(r.correct||0)/r.total) : null);
+    h += '<div class="lab-row">'
+      + '<span class="lab-date">'+esc(r.date||"—")+'</span>'
+      + '<span class="lab-match">'+esc(r.home)+' × '+esc(r.away)+'</span>'
+      + '<span class="lab-type'+(r.shadow?" is-shadow":"")+'">'
+      + (r.shadow ? t("labShadow") : t("labWatch"))+'</span>'
+      + '<span class="lab-score">'+(r.total ? "✅ "+esc(r.correct)+"/"+esc(r.total)+" ("+pc+"%)" : "—")+'</span>'
+      + '</div>';
+  }
+  document.getElementById("shadow-list").innerHTML = h;
+}
+
 function renderLessons(){
   var sec = document.getElementById("lessons-sec");
   var list = (engine === "v2" && v2exists && lastV2 && lastV2.lessons) ? lastV2.lessons : [];
@@ -904,6 +966,7 @@ function renderAll(){
     renderResults(base.recent_results || []);
   }
   renderLessons();
+  renderShadowLab();
 }
 
 /* ================= جلب البيانات ================= */

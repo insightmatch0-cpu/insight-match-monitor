@@ -76,5 +76,54 @@ class TestUpcoming(unittest.TestCase):
         self.assertEqual(D.build_upcoming(store), [])
 
 
+class TestShadowLab(unittest.TestCase):
+    """🔬 مختبر الظل (طلب المالك 2026-08-01): بطاقات تقييم التقارير تصل اللوحة
+    من scenarios_v2.json — الأحدث أولاً، مع عدّادَي الإجمالي والانتظار."""
+
+    def _with_tmp_scenarios(self, payload):
+        import json
+        import tempfile
+        from pathlib import Path
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.write_text(json.dumps(payload), encoding="utf-8")
+        orig = D.SCENARIOS_V2_FILE
+        D.SCENARIOS_V2_FILE = tmp
+        try:
+            return D.build_shadow_lab()
+        finally:
+            D.SCENARIOS_V2_FILE = orig
+            tmp.unlink(missing_ok=True)
+
+    def test_rows_newest_first_with_counts(self):
+        lab = self._with_tmp_scenarios({
+            "pending": {"p1": {}},
+            "resolved": [
+                {"graded_on": "2026-07-30", "ar_home": "أ", "ar_away": "ب",
+                 "league": "دوري", "shadow": True, "correct": 3, "total": 8},
+                {"graded_on": "2026-07-31", "ar_home": "ج", "ar_away": "د",
+                 "league": "دوري", "shadow": False, "correct": 5, "total": 7},
+            ],
+        })
+        self.assertEqual(lab["graded_total"], 2)
+        self.assertEqual(lab["pending"], 1)
+        self.assertEqual(lab["reports"][0]["home"], "ج")   # الأحدث أولاً
+        self.assertFalse(lab["reports"][0]["shadow"])
+        self.assertTrue(lab["reports"][1]["shadow"])
+        self.assertEqual(lab["reports"][1]["correct"], 3)
+
+    def test_empty_store_safe(self):
+        lab = self._with_tmp_scenarios({})
+        self.assertEqual(lab["reports"], [])
+        self.assertEqual(lab["graded_total"], 0)
+        self.assertEqual(lab["pending"], 0)
+
+    def test_row_cap(self):
+        many = [{"graded_on": f"2026-07-{i:02d}", "home": "H", "away": "A",
+                 "shadow": True, "correct": 1, "total": 2} for i in range(1, 21)]
+        lab = self._with_tmp_scenarios({"pending": {}, "resolved": many})
+        self.assertEqual(len(lab["reports"]), D.SHADOW_LAB_ROWS)
+        self.assertEqual(lab["graded_total"], 20)
+
+
 if __name__ == "__main__":
     unittest.main()
