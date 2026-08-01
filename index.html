@@ -201,6 +201,13 @@
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
   .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
+  /* شريحة الـ 70%+ — الطبقة الذهبية التي يراقبها المالك عن قرب */
+  .bucket.gold{border-color:#d4a017;background:linear-gradient(180deg,rgba(212,160,23,.14),rgba(212,160,23,.04))}
+  .bucket.gold .b-label,.bucket.gold .b-val{color:#e8b923}
+
+  /* ======== الاختيارات الذهبية (ثقة 70%+ — تبويب المحرك 2) ======== */
+  #gold-sec details.pred{border-color:rgba(212,160,23,.55)}
+  #gold-sec .sec-head h2{color:#e8b923}
 
   /* ======== بحث النتائج ======== */
   .res-search{
@@ -330,6 +337,16 @@
   <!-- محتوى المحرك النشط -->
   <div id="engine-body">
 
+    <!-- الاختيارات الذهبية — أعلى قناعة (70%+) للمحرك 2 فقط؛ يختفي إن لم توجد -->
+    <section class="sec" id="gold-sec" style="display:none">
+      <div class="sec-head">
+        <h2 data-i="gold">⭐ الاختيارات الذهبية — ثقة 70%+</h2>
+        <span class="rule"></span>
+        <span class="count" id="gold-count">0</span>
+      </div>
+      <div id="gold-list"></div>
+    </section>
+
     <section class="sec">
       <div class="sec-head">
         <h2 data-i="upcoming">توقعات الـ 24 ساعة</h2>
@@ -407,6 +424,7 @@ var I18N = {
     updated:"آخر تحديث",
     lessons:"📚 دروس يتعلمها المحرك",
     lessonsNew:"جديد اليوم",
+    gold:"⭐ الاختيارات الذهبية — ثقة 70%+",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -438,6 +456,7 @@ var I18N = {
     updated:"Updated",
     lessons:"📚 Lessons the engine learned",
     lessonsNew:"new today",
+    gold:"⭐ Gold picks — 70%+ confidence",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -608,32 +627,52 @@ function renderUpcoming(list){
         + esc(p.league)+'</div>';
       curLeague = p.league;
     }
-    var home = (lang==="en" && p.home_en) ? p.home_en : p.home;
-    var away = (lang==="en" && p.away_en) ? p.away_en : p.away;
-    var pk = pickText(p.pick, home, away);
-    h += '<details class="pred"><summary>'
-      + '<div class="duel">'
-      + badge(home, p.home_logo)
-      + '<span class="tname h">'+esc(home)+'</span>'
-      /* انطلقت لكنها لم تصل للقسم الحي بعد (فارق دورة المراقبة) → شارة حمراء نابضة */
-      + (Date.parse(p.kickoff) < nowMs
-          ? '<span class="ko ko-live">● '+t("liveBadge")+'</span>'
-          : '<span class="ko">'+timeLocal(p.kickoff)+'</span>')
-      + '<span class="tname a">'+esc(away)+'</span>'
-      + badge(away, p.away_logo)
-      + '</div>'
-      + '<div class="verdict">'
-      + '<span class="pick '+(p.pick==="draw"?"draw":"")+'">'+esc(pk)+'</span>'
-      + '<span class="confbar"><i style="width:'+(p.confidence||0)+'%"></i></span>'
-      + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
-      + '</div>'
-      + probRow(p)
-      + (!p.top ? '<div class="league-eyebrow" style="margin:8px 0 0">'+esc(p.league)+'</div>' : "")
-      + '</summary>'
-      + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")
-      + '</details>';
+    h += predCard(p, !p.top, nowMs);
   }
   el.innerHTML = h;
+  renderGold(list);
+}
+
+/* بطاقة توقع واحدة — تُستخدم في قائمة الـ 24 ساعة وقسم الاختيارات الذهبية */
+function predCard(p, withLeagueEyebrow, nowMs){
+  var home = (lang==="en" && p.home_en) ? p.home_en : p.home;
+  var away = (lang==="en" && p.away_en) ? p.away_en : p.away;
+  var pk = pickText(p.pick, home, away);
+  return '<details class="pred"><summary>'
+    + '<div class="duel">'
+    + badge(home, p.home_logo)
+    + '<span class="tname h">'+esc(home)+'</span>'
+    /* انطلقت لكنها لم تصل للقسم الحي بعد (فارق دورة المراقبة) → شارة حمراء نابضة */
+    + (Date.parse(p.kickoff) < nowMs
+        ? '<span class="ko ko-live">● '+t("liveBadge")+'</span>'
+        : '<span class="ko">'+timeLocal(p.kickoff)+'</span>')
+    + '<span class="tname a">'+esc(away)+'</span>'
+    + badge(away, p.away_logo)
+    + '</div>'
+    + '<div class="verdict">'
+    + '<span class="pick '+(p.pick==="draw"?"draw":"")+'">'+esc(pk)+'</span>'
+    + '<span class="confbar"><i style="width:'+(p.confidence||0)+'%"></i></span>'
+    + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
+    + '</div>'
+    + probRow(p)
+    + (withLeagueEyebrow ? '<div class="league-eyebrow" style="margin:8px 0 0">'+esc(p.league)+'</div>' : "")
+    + '</summary>'
+    + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")
+    + '</details>';
+}
+
+/* ⭐ الاختيارات الذهبية — طبقة الـ 70%+ التي يراقبها المالك عن قرب.
+   تبويب المحرك 2 فقط، وتختفي كلياً حين لا توجد قناعة عالية اليوم */
+function renderGold(list){
+  var sec = document.getElementById("gold-sec");
+  var gl = (engine === "v2")
+    ? list.filter(function(p){ return (p.confidence||0) >= 70; })
+    : [];
+  sec.style.display = gl.length ? "" : "none";
+  document.getElementById("gold-count").textContent = gl.length;
+  var nowMs = Date.now(), h = "";
+  for (var i=0;i<gl.length;i++) h += predCard(gl[i], true, nowMs);
+  document.getElementById("gold-list").innerHTML = h;
 }
 
 function accBox(label, obj){
@@ -663,7 +702,8 @@ function renderAccuracy(acc){
     var p = pctOf(o);
     if (p !== null) any = true;
     var cnt = (o && o.total) ? o.correct+"/"+o.total : "";
-    bh += '<div class="bucket"><div class="b-label">'+esc(keys[i])+'%</div>'
+    /* شريحة الـ 70%+ تُميَّز ذهبياً — أهم رقم يراقبه المالك */
+    bh += '<div class="bucket'+(keys[i]==="70+"?" gold":"")+'"><div class="b-label">'+esc(keys[i])+'%</div>'
       + '<div class="b-val">'+(p===null?"—":p+"%")+'</div>'
       + '<div class="b-count">'+cnt+'</div></div>';
   }
@@ -797,6 +837,7 @@ function renderConstruction(){
     + '</ul></div>';
   document.getElementById("upcoming-list").innerHTML = h;
   document.getElementById("up-count").textContent = "0";
+  document.getElementById("gold-sec").style.display = "none";
   document.getElementById("acc-body").innerHTML = '<div class="empty">'+t("noAcc")+'</div>';
   document.getElementById("res-list").innerHTML = '<div class="empty">'+t("noRes")+'</div>';
   document.getElementById("res-count").textContent = "0";
@@ -806,6 +847,7 @@ function renderLoadingState(){
   /* حالة انتظار هادئة — لا نعرض "قيد الإنشاء" قبل أن نتأكد أن الملف غير موجود */
   document.getElementById("upcoming-list").innerHTML = '<div class="empty">'+t("loading")+'</div>';
   document.getElementById("up-count").textContent = "…";
+  document.getElementById("gold-sec").style.display = "none";
   document.getElementById("acc-body").innerHTML = '<div class="empty">'+t("loading")+'</div>';
   document.getElementById("res-list").innerHTML = '<div class="empty">'+t("loading")+'</div>';
   document.getElementById("res-count").textContent = "…";

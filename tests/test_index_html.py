@@ -77,5 +77,35 @@ class TestI18n(unittest.TestCase):
         self.assertEqual(ar, en, f"مفاتيح غير متطابقة: {ar ^ en}")
 
 
+class TestGoldPicks(unittest.TestCase):
+    """قسم الاختيارات الذهبية (ثقة 70%+) + تمييز شريحة الـ 70%+ في سجل الدقة
+    (طلب المالك 2026-08-01 — رؤية أفضل لطبقة القناعة العالية للمحرك 2)."""
+
+    def test_gold_section_exists(self):
+        self.assertIn('id="gold-sec"', HTML)
+        self.assertIn('id="gold-list"', HTML)
+        self.assertIn('id="gold-count"', HTML)
+
+    def test_gold_v2_only_and_70_threshold(self):
+        gate = re.search(r'function renderGold[\s\S]{0,200}engine === "v2"', SCRIPT)
+        self.assertIsNotNone(gate, "القسم الذهبي يجب أن يقتصر على تبويب المحرك 2")
+        self.assertIn(">= 70", SCRIPT)
+
+    def test_gold_hidden_in_construction_and_loading(self):
+        # حالتا "قيد الإنشاء" و"التحميل" لا تمران عبر renderUpcoming — يجب إخفاء القسم فيهما
+        for fn in ("renderConstruction", "renderLoadingState"):
+            body = re.search(fn + r"\(\)\{([\s\S]*?)\n\}", SCRIPT)
+            self.assertIsNotNone(body, fn)
+            self.assertIn("gold-sec", body.group(1), f"{fn} يجب أن يخفي القسم الذهبي")
+
+    def test_70_bucket_gold_highlight(self):
+        self.assertIn('"70+"?" gold"', SCRIPT.replace("'", '"'))
+
+    def test_shared_card_builder(self):
+        # بطاقة واحدة مشتركة بين القائمتين — لا نسختين تتباعدان مع الزمن
+        self.assertIn("function predCard", SCRIPT)
+        self.assertTrue(SCRIPT.count("predCard(") >= 3)
+
+
 if __name__ == "__main__":
     unittest.main()
