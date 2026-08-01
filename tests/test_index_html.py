@@ -127,5 +127,29 @@ class TestMarketChip(unittest.TestCase):
         self.assertIn("mktDiff", SCRIPT)
 
 
+class TestShadowLabPanel(unittest.TestCase):
+    """🔬 مختبر الظل على اللوحة (طلب المالك 2026-08-01): تبويب المحرك 2 فقط،
+    يختفي بلا بيانات، ويُرسم ضمن دورة renderAll."""
+
+    def test_section_exists(self):
+        self.assertIn('id="shadow-sec"', HTML)
+        self.assertIn('id="shadow-list"', HTML)
+        self.assertIn('id="shadow-summary"', HTML)
+
+    def test_v2_only_gate(self):
+        gate = re.search(r'function renderShadowLab[\s\S]{0,250}engine === "v2"', SCRIPT)
+        self.assertIsNotNone(gate, "مختبر الظل يجب أن يقتصر على تبويب المحرك 2")
+
+    def test_hidden_when_empty(self):
+        body = re.search(r"function renderShadowLab\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn('rows.length ? "" : "none"', body.group(1))
+
+    def test_rendered_in_render_all(self):
+        body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("renderShadowLab()", body.group(1))
+
+
 if __name__ == "__main__":
     unittest.main()
