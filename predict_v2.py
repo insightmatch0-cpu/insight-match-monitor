@@ -112,6 +112,10 @@ EXCLUDED_LEAGUE_KEYWORDS = [
     # بيانات لا نبني عليها التعلم (توجيه المالك 2026-07-18): دوريات السيدات
     # والفئات السنية والرديف — ضجيج يبطئ بناء دماغ موثوق للموسم
     "women", "femen", "femin", "frauen", "ladies", "wsl", "girls",
+    # دوريات سيدات لا تحمل أي كلمة دالة في اسمها — تسربت فعلياً حتى 2026-08-01
+    # (WK-League الكورية أفسدت خانة 70%+) — أسماؤها الصريحة تُستبعد بالاسم
+    "wk-league", "wk league", "kvinde", "damallsvenskan", "elitettan",
+    "toppserien", "naisten", "vrouwen", "femmin", "northern super league",
     "u16", "u17", "u18", "u19", "u20", "u21", "u23",
     "youth", "primavera", "juvenil", "junioren", "reserve", "reserva",
     "academy",
@@ -145,6 +149,18 @@ def is_excluded(league: dict) -> bool:
     if country in EXCLUDED_COUNTRIES:
         return True
     return any(kw in name for kw in EXCLUDED_LEAGUE_KEYWORDS)
+
+
+_W_TEAM_RE = re.compile(r"\s\(?W\)?$")
+
+
+def is_womens_match(home_name: str, away_name: str) -> bool:
+    """طبقة أمان نمطية (درس تسريب WK-League — 2026-08-01): فرق السيدات في
+    API-Football تحمل لاحقة W في نهاية الاسم؛ إن حملها الفريقان معاً فهي
+    مباراة سيدات حتى لو خلا اسم الدوري من أي كلمة دالة. القوائم تفشل
+    بصمت — الأنماط تلتقط ما لم نتوقعه بعد."""
+    return bool(_W_TEAM_RE.search((home_name or "").strip())) and \
+           bool(_W_TEAM_RE.search((away_name or "").strip()))
 
 
 def api_football(path: str) -> list:
@@ -721,6 +737,9 @@ def get_upcoming_24h() -> list:
         if status != "NS":
             continue
         if is_excluded(league):
+            continue
+        _t = fx.get("teams") or {}
+        if is_womens_match((_t.get("home") or {}).get("name"), (_t.get("away") or {}).get("name")):
             continue
         try:
             kickoff = datetime.fromisoformat(fixture.get("date"))
@@ -1348,6 +1367,52 @@ def pick_label(p: dict) -> str:
     return PICK_AR[p["pick"]].format(h=h, a=a)
 
 
+def find_data_leaks(store: dict) -> list:
+    """🚨 حارس البيانات النظيفة (درس 2026-08-01 — اكتشاف المالك بالصدفة ممنوع
+    أن يتكرر): يفتش ما دخل الذاكرة فعلاً — الانتظار كله + المُقيَّم في آخر
+    يومين — عن أنماط بيانات محظورة (سيدات بلاحقة W أو كلمة دالة في اسم
+    الدوري المخزَّن). أي التقاط = رسالة تيليجرام صاخبة للمالك، لا صمت."""
+    def bad(e):
+        if is_womens_match(e.get("home"), e.get("away")):
+            return True
+        return is_excluded({"name": e.get("league") or "", "country": ""})
+    leaks = []
+    for p in (store.get("pending") or {}).values():
+        if bad(p):
+            leaks.append(f"{p.get('home', '?')} × {p.get('away', '?')} — {p.get('league', '?')} (انتظار)")
+    recent = (now_utc() - timedelta(days=2)).strftime("%Y-%m-%d")
+    for e in (store.get("resolved") or []):
+        if (e.get("date") or "") >= recent and bad(e):
+            leaks.append(f"{e.get('home', '?')} × {e.get('away', '?')} — {e.get('league', '?')} (مُقيَّمة)")
+    return leaks
+
+
+def post_grading_alerts(newly_resolved: list, store: dict) -> None:
+    """حارسا ما بعد التقييم — يركضان كل صباح بعد التسوية مباشرة:
+    (1) أي خطأ بثقة 70%+ يُبلَّغ للمالك فوراً بالاسم والتفاصيل (الشريحة
+        الذهبية تحت مراقبته الشخصية — لا يكتشف تغيّرها من اللوحة صدفة)؛
+    (2) فحص تسريب بيانات محظورة في ذاكرتي المحركين معاً."""
+    lines = []
+    hi_misses = [e for e in (newly_resolved or [])
+                 if (e.get("confidence") or 0) >= 70 and not e.get("correct")]
+    if hi_misses:
+        lines.append("🚨 تنبيه القناعة العالية — أخطاء بثقة 70%+ هذا الصباح:")
+        for e in hi_misses:
+            lines.append(
+                f"• {e.get('ar_home') or e.get('home')} × {e.get('ar_away') or e.get('away')}"
+                f" — ثقة {e.get('confidence')}% — النتيجة {e.get('score')} ({e.get('league')})"
+            )
+    leaks = find_data_leaks(store) + find_data_leaks(load_json(V1_PREDICTIONS_FILE, {}))
+    leaks = list(dict.fromkeys(leaks))
+    if leaks:
+        lines.append("🚨 حارس البيانات النظيفة — بيانات محظورة داخل الذاكرة، تحتاج تدخلاً:")
+        lines += [f"• {x}" for x in leaks[:15]]
+    if lines and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID:
+        send_telegram_long("\n".join(lines))
+    if lines:
+        print("تنبيهات ما بعد التقييم:", len(lines))
+
+
 def v1_pending() -> dict:
     """توقعات المحرك 1 المنتظرة — للمقارنة جنباً إلى جنب في الملخص."""
     store = load_json(V1_PREDICTIONS_FILE, {})
@@ -1459,6 +1524,7 @@ def main() -> None:
     resolved_now, newly_resolved = resolve_pending(store)
     stats = compute_stats(store["resolved"])
     print(f"المحرك 2: تمت تسوية {resolved_now} توقعاً. السجل: {pct(stats['overall'])}")
+    post_grading_alerts(newly_resolved, store)   # 🚨 حارسا القناعة العالية والتسريب
 
     # 1.5) المرحلة 3: استخلاص دروس من أخطاء الأمس (كلها)، ثم دمجها عند التضخم
     new_lessons = generate_lessons(newly_resolved)

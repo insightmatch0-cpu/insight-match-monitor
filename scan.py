@@ -52,6 +52,10 @@ EXCLUDED_LEAGUE_KEYWORDS = [
     # بيانات لا نبني عليها التعلم (توجيه المالك 2026-07-18): دوريات السيدات
     # والفئات السنية والرديف — ضجيج يبطئ بناء دماغ موثوق للموسم
     "women", "femen", "femin", "frauen", "ladies", "wsl", "girls",
+    # دوريات سيدات لا تحمل أي كلمة دالة في اسمها — تسربت فعلياً حتى 2026-08-01
+    # (WK-League الكورية أفسدت خانة 70%+) — أسماؤها الصريحة تُستبعد بالاسم
+    "wk-league", "wk league", "kvinde", "damallsvenskan", "elitettan",
+    "toppserien", "naisten", "vrouwen", "femmin", "northern super league",
     "u16", "u17", "u18", "u19", "u20", "u21", "u23",
     "youth", "primavera", "juvenil", "junioren", "reserve", "reserva",
     "academy",
@@ -64,6 +68,18 @@ def is_excluded(league: dict) -> bool:
     if country in EXCLUDED_COUNTRIES:
         return True
     return any(kw in name for kw in EXCLUDED_LEAGUE_KEYWORDS)
+
+
+_W_TEAM_RE = re.compile(r"\s\(?W\)?$")
+
+
+def is_womens_match(home_name: str, away_name: str) -> bool:
+    """طبقة أمان نمطية (درس تسريب WK-League — 2026-08-01): فرق السيدات في
+    API-Football تحمل لاحقة W في نهاية الاسم؛ إن حملها الفريقان معاً فهي
+    مباراة سيدات حتى لو خلا اسم الدوري من أي كلمة دالة. القوائم تفشل
+    بصمت — الأنماط تلتقط ما لم نتوقعه بعد."""
+    return bool(_W_TEAM_RE.search((home_name or "").strip())) and \
+           bool(_W_TEAM_RE.search((away_name or "").strip()))
 
 
 def get_live_fixtures() -> list:
@@ -187,6 +203,9 @@ def main() -> None:
     for fx in fixtures:
         league = fx.get("league", {}) or {}
         if is_excluded(league):
+            continue
+        _t = fx.get("teams") or {}
+        if is_womens_match((_t.get("home") or {}).get("name"), (_t.get("away") or {}).get("name")):
             continue
         fixture = fx.get("fixture", {}) or {}
         teams = fx.get("teams", {}) or {}
