@@ -165,6 +165,17 @@ def is_womens_match(home_name: str, away_name: str) -> bool:
     return bool(_W_TEAM_RE.search((home_name or "").strip())) and \
            bool(_W_TEAM_RE.search((away_name or "").strip()))
 
+_YOUTH_TEAM_RE = re.compile(r"\bU-?(1[6-9]|2[0-3])\b", re.I)
+
+
+def is_youth_match(home_name: str, away_name: str) -> bool:
+    """طبقة أمان نمطية ثانية (درس Costa Rica U21 — 2026-08-02، نفس عقيدة
+    WK-League): فرق الشباب تحمل U16–U23 في اسم الفريق حتى لو خلا اسم
+    الدوري من أي كلمة دالة. إن حملها الفريقان معاً فهي مباراة فئات سنية."""
+    return bool(_YOUTH_TEAM_RE.search(home_name or "")) and \
+           bool(_YOUTH_TEAM_RE.search(away_name or ""))
+
+
 
 def api_football(path: str) -> list:
     resp = requests.get(
@@ -751,7 +762,8 @@ def get_upcoming_24h() -> list:
         if is_excluded(league):
             continue
         _t = fx.get("teams") or {}
-        if is_womens_match((_t.get("home") or {}).get("name"), (_t.get("away") or {}).get("name")):
+        if is_womens_match((_t.get("home") or {}).get("name"), (_t.get("away") or {}).get("name")) \
+                or is_youth_match((_t.get("home") or {}).get("name"), (_t.get("away") or {}).get("name")):
             continue
         try:
             kickoff = datetime.fromisoformat(fixture.get("date"))
@@ -1386,6 +1398,8 @@ def find_data_leaks(store: dict) -> list:
     الدوري المخزَّن). أي التقاط = رسالة تيليجرام صاخبة للمالك، لا صمت."""
     def bad(e):
         if is_womens_match(e.get("home"), e.get("away")):
+            return True
+        if is_youth_match(e.get("home"), e.get("away")):
             return True
         return is_excluded({"name": e.get("league") or "", "country": ""})
     leaks = []

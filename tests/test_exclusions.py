@@ -107,6 +107,40 @@ class TestWomensPatternBackstop(unittest.TestCase):
             self.assertTrue(mod.is_womens_match("Chelsea (W)", "Lyon (W)"))
 
 
+class TestYouthPatternBackstop(unittest.TestCase):
+    """طبقة الأمان النمطية الثانية (تسريب Costa Rica U21 — 2026-08-02):
+    فرق الفئات السنية تُلتقط من أسماء الفريقين حتى لو خلا اسم الدوري من أي
+    كلمة دالة — نفس عقيدة WK-League: كل قائمة حظر تحتاج نمطاً يسندها."""
+
+    def test_helper_exists_in_all_four(self):
+        for mod in (monitor, scan, predict, predict_v2):
+            self.assertTrue(hasattr(mod, "is_youth_match"), mod.__name__)
+
+    def test_the_exact_leak_caught_by_pattern(self):
+        """الحالة الحقيقية: Costa Rica U21 ظهرت في قائمة اللوحة الحية."""
+        self.assertTrue(monitor.is_youth_match("Costa Rica U21", "Guatemala U21"))
+        self.assertTrue(monitor.is_youth_match("Spain U19", "France U-19"))
+        self.assertTrue(monitor.is_youth_match("Ajax U23", "PSV U23"))
+
+    def test_senior_teams_not_excluded(self):
+        self.assertFalse(monitor.is_youth_match("Al Hilal", "Al Nassr"))
+        # فريق شباب ضد فريق أول (نادر) — لا استبعاد إلا حين يكون الطرفان فئات
+        self.assertFalse(monitor.is_youth_match("Costa Rica U21", "Costa Rica"))
+        # أرقام داخل أسماء طبيعية لا تُلتقط (Schalke 04, 1860 Munich)
+        self.assertFalse(monitor.is_youth_match("Schalke 04", "1860 Munich"))
+
+    def test_wired_at_the_same_gate_as_womens(self):
+        """النمطان يُفحصان معاً عند نفس البوابة في الملفات الأربعة."""
+        import inspect
+        for mod in (monitor, scan, predict, predict_v2):
+            src = inspect.getsource(mod)
+            self.assertIn("or is_youth_match(", src, mod.__name__)
+
+    def test_leak_finder_covers_youth(self):
+        import inspect
+        self.assertIn("is_youth_match", inspect.getsource(predict_v2.find_data_leaks))
+
+
 class TestPostGradingSentinel(unittest.TestCase):
     """حارس ما بعد التقييم (درس 2026-08-01): التسريب وأخطاء 70%+ تصرخ
     تلقائياً — اكتشافها لا يُترك لحظ المالك."""

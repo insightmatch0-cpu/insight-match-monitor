@@ -289,6 +289,21 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("15*60*1000", body.group(1))           # طزاجة 15 دقيقة أو تجاهل
         self.assertIn('id="radar-live-at"', HTML)
 
+    def test_self_update_and_stale_badge(self):
+        """درس 2026-08-02 (الإصلاح وصل المستودع لا الشاشة): التبويب المفتوح
+        يعيد تحميل نفسه عند نشر بناء أحدث، والشاشة تعترف بتقادم بياناتها."""
+        self.assertIn("var IM_BUILD = ", SCRIPT)
+        self.assertIn("function checkSelfUpdate", SCRIPT)
+        self.assertIn("setInterval(checkSelfUpdate, 10*60*1000)", SCRIPT)
+        body = re.search(r"function checkSelfUpdate\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("location.reload()", body.group(1))
+        self.assertIn("> IM_BUILD", body.group(1))   # الأحدث فقط — لا حلقة تحميل
+        # شارة التقادم: بيانات >20 دقيقة مع مباريات حية = تحذير كهرماني مرئي
+        self.assertIn("staleWarn", SCRIPT)
+        self.assertIn('classList.toggle("stale"', SCRIPT)
+        self.assertIn("ageMin > 20", SCRIPT)
+
     def test_update_line(self):
         """خط التحديث (طلب المالك 2026-08-02): شريط زمني تحت توقعات الـ 24
         ساعة — آخر تحديث، القادم مع عدّ تنازلي، مؤشر "الآن"، إنذار تأخر،

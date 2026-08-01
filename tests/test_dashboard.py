@@ -105,6 +105,30 @@ class TestUpdateLine(unittest.TestCase):
         self.assertIn('"pred_updated"', inspect.getsource(D.build_data_v2))
 
 
+class TestFreshnessSentinel(unittest.TestCase):
+    """حارس الطزاجة (بلاغ المالك 2026-08-02 — اللوحة 9 والواقع 18): بناء
+    اللوحة يصرخ في السجل حين تكون لقطات المباريات الحية قديمة أو بلا طابع."""
+
+    def test_missing_seen_flagged(self):
+        warns = D.freshness_warnings({"1": live_entry()})
+        self.assertEqual(len(warns), 1)
+        self.assertIn("بلا طابع رصد", warns[0])
+
+    def test_fresh_seen_silent(self):
+        fresh = D.now_utc().isoformat()
+        self.assertEqual(D.freshness_warnings({"1": live_entry(seen=fresh)}), [])
+
+    def test_old_seen_flagged(self):
+        old = (D.now_utc() - timedelta(minutes=45)).isoformat()
+        warns = D.freshness_warnings({"1": live_entry(seen=old)})
+        self.assertEqual(len(warns), 1)
+        self.assertIn("دقيقة", warns[0])
+
+    def test_wired_into_main(self):
+        import inspect
+        self.assertIn("freshness_warnings(", inspect.getsource(D.main))
+
+
 class TestShadowLab(unittest.TestCase):
     """🔬 مختبر الظل (طلب المالك 2026-08-01): بطاقات تقييم التقارير تصل اللوحة
     من scenarios_v2.json — الأحدث أولاً، مع عدّادَي الإجمالي والانتظار."""
