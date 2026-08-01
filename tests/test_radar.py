@@ -126,6 +126,40 @@ class TestRadarGrading(unittest.TestCase):
         self.assertFalse(log["resolved"][0]["failed"])
         self.assertEqual(log["meta"]["stats"]["amber"], {"fired": 1, "hit": 0})
 
+    def test_drama_alerts_graded_by_their_own_rules(self):
+        """كل ادعاء يُحاكم بقاعدته: قلب النتيجة = فوز، التعادل = إدراكه فعلاً،
+        والإخفاق يُسجل بلا تجميل — لوحة عقل S3."""
+        graded, log = self._with_tmp_log(
+            {"alerts": [
+                {"fid": "1", "date": "2026-08-01", "key": "flip",
+                 "side": "away", "score_at": "1-0"},
+                {"fid": "2", "date": "2026-08-01", "key": "equalizer",
+                 "side": "home", "score_at": "0-1"},
+                {"fid": "3", "date": "2026-08-01", "key": "goal",
+                 "side": "home", "score_at": "0-1"},
+            ]},
+            {"resolved": [
+                {"fid": "1", "correct": False, "score": "1-2"},   # الضيف قلبها → صح
+                {"fid": "2", "correct": True, "score": "1-1"},    # أدرك التعادل → صح
+                {"fid": "3", "correct": True, "score": "0-2"},    # لم يسجل → خطأ
+            ]})
+        self.assertEqual(graded, 3)
+        by_fid = {a["fid"]: a for a in log["alerts_resolved"]}
+        self.assertTrue(by_fid["1"]["hit"])
+        self.assertTrue(by_fid["2"]["hit"])
+        self.assertFalse(by_fid["3"]["hit"])
+        stats = log["meta"]["stats"]["alerts"]
+        self.assertEqual(stats["flip"], {"fired": 1, "hit": 1})
+        self.assertEqual(stats["goal"], {"fired": 1, "hit": 0})
+
+    def test_unresolved_drama_alert_waits(self):
+        graded, log = self._with_tmp_log(
+            {"alerts": [{"fid": "7", "date": P.now_utc().strftime("%Y-%m-%d"),
+                         "key": "flip", "side": "home", "score_at": "0-1"}]},
+            {"resolved": []})
+        self.assertEqual(graded, 0)
+        self.assertEqual(len(log["alerts"]), 1)
+
     def test_unresolved_warning_waits(self):
         """مباراة بلا نتيجة بعد — الإنذار ينتظر صباحاً آخر ولا يُفقد."""
         graded, log = self._with_tmp_log(
@@ -179,6 +213,119 @@ class TestRadarDashboard(unittest.TestCase):
         import inspect
         src = inspect.getsource(M.main)
         self.assertIn('prev.get("radar")', src)
+
+
+class TestDramaAlerts(unittest.TestCase):
+    """🚨 عقل S3 (سيناريوهات المالك الحرفية 2026-08-01): تنبيه هدف/تعادل/قلب
+    نتيجة من الدقيقة 75 فقط، مرة لكل مباراة، ويُقيَّم صباحاً بلوحته الخاصة."""
+
+    def test_owner_scenario_1_trailing_team_surging(self):
+        """سيناريو المالك 1: الهلال متأخر 0-1 ويضغط بقوة → تنبيه هدف التعادل."""
+        s = [snap(70, {"sog": 2, "cor": 3}, {}),
+             snap(78, {"sog": 4, "cor": 5}, {})]
+        v = M.evaluate_comeback(s, 78, 0, 1)
+        self.assertIsNotNone(v)
+        self.assertEqual(v["key"], "equalizer")
+        self.assertEqual(v["side"], "home")
+        self.assertGreaterEqual(v["signal"], M.RADAR_ALERT_SIGNAL_MIN)
+
+    def test_owner_scenario_2_red_card_flips_expectation(self):
+        """سيناريو المالك 2: الهلال 0-1 وطُرد لاعب من النصر → توقع قلب النتيجة."""
+        s = [snap(72, {"sog": 2}, {"rc": 0}),
+             snap(80, {"sog": 4}, {"rc": 1})]
+        v = M.evaluate_comeback(s, 80, 0, 1)
+        self.assertIsNotNone(v)
+        self.assertEqual(v["key"], "flip")
+        self.assertTrue(any("نقص عددي" in r for r in v["reasons"]))
+
+    def test_owner_condition_no_alert_before_75(self):
+        """شرط المالك الصريح: لا تنبيه قبل الدقيقة 75 مهما اشتد الضغط."""
+        s = [snap(60, {"sog": 2, "cor": 3}, {}),
+             snap(70, {"sog": 5, "cor": 6}, {})]
+        self.assertIsNone(M.evaluate_comeback(s, 70, 0, 1))
+
+    def test_hopeless_margin_silent(self):
+        s = [snap(70, {"sog": 2}, {}), snap(80, {"sog": 5}, {})]
+        self.assertIsNone(M.evaluate_comeback(s, 80, 0, 3))
+
+    def test_quiet_match_silent(self):
+        s = [snap(70, {"sog": 2}, {}), snap(80, {"sog": 2}, {})]
+        self.assertIsNone(M.evaluate_comeback(s, 80, 0, 1))
+
+    def test_draw_needs_clear_dominance(self):
+        """في التعادل: تنبيه "الهدف القادم" فقط لطرف مهيمن بوضوح."""
+        s = [snap(70, {"sog": 1, "cor": 1}, {"sog": 1}),
+             snap(80, {"sog": 3, "cor": 3}, {"sog": 1})]
+        v = M.evaluate_comeback(s, 80, 1, 1)
+        self.assertIsNotNone(v)
+        self.assertEqual(v["key"], "next_goal")
+        self.assertEqual(v["side"], "home")
+        # شد وجذب متكافئ → صمت
+        s2 = [snap(70, {"sog": 1}, {"sog": 1}), snap(80, {"sog": 3}, {"sog": 3})]
+        self.assertIsNone(M.evaluate_comeback(s2, 80, 1, 1))
+
+    def test_two_goal_deficit_needs_stronger_signal(self):
+        s = [snap(70, {"sog": 2, "cor": 3}, {}), snap(80, {"sog": 4, "cor": 5}, {})]
+        self.assertIsNone(M.evaluate_comeback(s, 80, 0, 2))   # 50-15=35 لا يكفي
+        s_red = [snap(70, {"sog": 2}, {"rc": 1}), snap(80, {"sog": 4}, {"rc": 1})]
+        v = M.evaluate_comeback(s_red, 80, 0, 2)              # 30+35-15=50 يكفي
+        self.assertIsNotNone(v)
+        self.assertEqual(v["key"], "goal")
+
+    def _capture_telegram(self):
+        sent = []
+        orig = M.send_telegram
+        M.send_telegram = lambda text: sent.append(text)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+        return sent
+
+    def _tmp_radar_file(self):
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.write_text("{}", encoding="utf-8")
+        orig = M.RADAR_FILE
+        M.RADAR_FILE = tmp
+        self.addCleanup(lambda: (setattr(M, "RADAR_FILE", orig),
+                                 tmp.unlink(missing_ok=True)))
+        return tmp
+
+    def test_alert_sent_once_then_upgraded_only(self):
+        """التنبيه مرة واحدة — ولا يتكرر إلا ترقيةً لادعاء أقوى (تعادل → قلب)."""
+        sent = self._capture_telegram()
+        tmp = self._tmp_radar_file()
+        e = {"score": "0-1", "minute": 78, "home": "Al Hilal", "away": "Al Nassr",
+             "league": "Saudi Pro League",
+             "radar": {"snaps": [snap(70, {"sog": 2, "cor": 3}, {}),
+                                 snap(78, {"sog": 4, "cor": 5}, {})]}}
+        budget = {"used": 0}
+        self.assertTrue(M.maybe_radar_alert("9", e, budget))
+        self.assertIn("تنبيه الرادار", sent[0])
+        self.assertIn("د78", sent[0])
+        # نفس الحالة مرة أخرى → صمت (لا إزعاج)
+        self.assertFalse(M.maybe_radar_alert("9", e, budget))
+        # طرد يرفع الادعاء إلى قلب النتيجة → ترقية مسموحة
+        e["minute"] = 82
+        e["radar"]["snaps"] = [snap(74, {"sog": 4}, {"rc": 0}),
+                               snap(82, {"sog": 6}, {"rc": 1})]
+        self.assertTrue(M.maybe_radar_alert("9", e, budget))
+        self.assertEqual(len(sent), 2)
+        log = json.loads(tmp.read_text(encoding="utf-8"))
+        self.assertEqual(len(log["alerts"]), 2)
+        self.assertEqual(log["alerts"][1]["key"], "flip")
+
+    def test_alert_cap_respected(self):
+        sent = self._capture_telegram()
+        self._tmp_radar_file()
+        e = {"score": "0-1", "minute": 78, "home": "H", "away": "A",
+             "radar": {"snaps": [snap(70, {"sog": 2, "cor": 3}, {}),
+                                 snap(78, {"sog": 4, "cor": 5}, {})]}}
+        budget = {"used": M.RADAR_ALERT_CAP_PER_RUN}
+        self.assertFalse(M.maybe_radar_alert("9", dict(e), budget))
+        self.assertEqual(sent, [])
+
+    def test_wired_into_both_radar_loops(self):
+        import inspect
+        self.assertIn("maybe_radar_alert(", inspect.getsource(M.radar_sweep))
+        self.assertIn("maybe_radar_alert(", inspect.getsource(M.radar_fast_watch))
 
 
 class TestRadarFastLane(unittest.TestCase):

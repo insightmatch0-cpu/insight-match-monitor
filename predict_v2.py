@@ -1435,7 +1435,8 @@ def resolve_radar_log(store: dict) -> int:
     يبني إحصاءات صدق الإنذار لكل مستوى — قاعدة معايرة أوزان الرادار لاحقاً."""
     log = load_json(RADAR_LOG_FILE, {})
     warnings = log.get("warnings") or []
-    if not warnings:
+    alerts = log.get("alerts") or []
+    if not warnings and not alerts:
         return 0
     by_fid = {str(r.get("fid")): r for r in (store.get("resolved") or []) if r.get("fid")}
     today = now_utc().strftime("%Y-%m-%d")
@@ -1455,13 +1456,53 @@ def resolve_radar_log(store: dict) -> int:
         graded += 1
     log["warnings"] = still
     log["resolved"] = resolved[-RADAR_RESOLVED_CAP:]
+
+    # 🚨 تقييم تنبيهات الدراما (عقل S3): كل ادعاء يُحاكم بقاعدته الخاصة
+    # على النتيجة النهائية فقط — هدف/تعادل/قلب نتيجة، صفر نداءات API
+    a_still, a_resolved = [], log.get("alerts_resolved") or []
+    for a in alerts:
+        r = by_fid.get(str(a.get("fid")))
+        if r is None:
+            if (a.get("date") or today) >= drop_before:
+                a_still.append(a)
+            continue
+        try:
+            fg = [int(x) for x in (r.get("score") or "0-0").split("-")[:2]]
+            ag = [int(x) for x in (a.get("score_at") or "0-0").split("-")[:2]]
+        except ValueError:
+            continue
+        side = 0 if a.get("side") == "home" else 1
+        opp = 1 - side
+        scored = fg[side] > ag[side]                 # سجّل بعد التنبيه
+        level_or_better = fg[side] >= fg[opp]        # أدرك التعادل على الأقل
+        won = fg[side] > fg[opp]                     # قلبها فوزاً
+        hit = {"goal": scored,
+               "equalizer": scored and level_or_better,
+               "flip": won,
+               "next_goal": scored}.get(a.get("key"), scored)
+        a["hit"] = bool(hit)
+        a["final_score"] = r.get("score")
+        a["graded_on"] = today
+        a_resolved.append(a)
+        graded += 1
+    log["alerts"] = a_still
+    log["alerts_resolved"] = a_resolved[-RADAR_RESOLVED_CAP:]
+
     stats = {}
     for lvl in ("red", "amber"):
         rows = [x for x in log["resolved"] if x.get("level") == lvl]
         stats[lvl] = {"fired": len(rows),
                       "hit": sum(1 for x in rows if x.get("failed"))}
+    astats = {}
+    for key in ("flip", "equalizer", "goal", "next_goal"):
+        rows = [x for x in log["alerts_resolved"] if x.get("key") == key]
+        if rows:
+            astats[key] = {"fired": len(rows),
+                           "hit": sum(1 for x in rows if x.get("hit"))}
+    if astats:
+        stats["alerts"] = astats
     log["meta"] = {"stats": stats, "updated": now_utc().isoformat()}
-    if graded or len(still) != len(warnings):
+    if graded or len(still) != len(warnings) or len(a_still) != len(alerts):
         save_json(RADAR_LOG_FILE, log)
     return graded
 

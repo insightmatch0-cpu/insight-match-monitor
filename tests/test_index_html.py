@@ -276,6 +276,12 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("15*60*1000", body.group(1))           # طزاجة 15 دقيقة أو تجاهل
         self.assertIn('id="radar-live-at"', HTML)
 
+    def test_drama_alerts_scoreboard(self):
+        """🚨 لوحة عقل S3: مجموع تنبيهات الدراما المُقيَّمة يظهر في سطر الصدق."""
+        self.assertIn("radarDrama", SCRIPT)
+        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("acc.alerts", body.group(1))
+
 
 if __name__ == "__main__":
     unittest.main()
