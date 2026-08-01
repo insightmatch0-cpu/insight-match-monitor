@@ -49,6 +49,11 @@
   .meta-row{display:flex;align-items:center;gap:8px}
   #updated{font-size:11.5px;color:var(--muted);white-space:nowrap}
   #updated.stale{color:var(--amber);font-weight:700}
+  .err-banner{
+    background:rgba(226,97,94,.12);border:1px solid var(--red);color:var(--red);
+    border-radius:12px;padding:10px 14px;margin:10px auto 0;max-width:680px;
+    font-size:13px;font-weight:700;text-align:center;
+  }
   #langBtn{
     background:var(--chip);border:1px solid var(--line);
     border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:600;
@@ -315,7 +320,11 @@
   /* طي الأقسام بنقرة العنوان + زر "عرض بقية المباريات" (طلب المالك 2026-08-01) */
   .sec-head{cursor:pointer;user-select:none}
   .sec .sec-head h2::before{content:"▾ ";font-size:11px;color:var(--muted)}
-  .sec.collapsed .sec-head h2::before{content:"◂ "}
+  .sec.collapsed .sec-head h2::before{content:"▸ ";color:var(--amber)}
+  .sec.collapsed .sec-head h2::after{
+    content:attr(data-hint);font-size:11px;color:var(--amber);
+    font-weight:400;margin-inline-start:8px;
+  }
   .sec.collapsed > :not(.sec-head){display:none !important}
   .live-more{
     display:block;width:100%;margin:4px 0 10px;padding:10px;
@@ -492,6 +501,7 @@
   </div>
 </header>
 
+<div id="err-banner" class="err-banner" style="display:none"></div>
 <main>
 
   <!-- مبدّل المحركات -->
@@ -647,7 +657,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 65;
+var IM_BUILD = 66;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -677,6 +687,8 @@ var I18N = {
     updWindow:"نافذة تحديث واحدة يومياً — كل صباح",
     updLate:"⚠️ تحديث اليوم متأخر — حارس الجدولة سيطلقه",
     staleWarn:"البيانات متأخرة عن الواقع",
+    collapsedHint:"— القسم مطوي، انقر للعرض",
+    jsError:"خطأ في عرض الصفحة — أعد التحميل، وإن تكرر أخبر المساعد",
     radarRed:"خطر",
     radarAmber:"إنذار",
     fTracked:"قيد الرصد",
@@ -766,6 +778,8 @@ var I18N = {
     updWindow:"One update window per day — every morning",
     updLate:"⚠️ Today's update is late — the scheduler watchdog will fire it",
     staleWarn:"data is behind reality",
+    collapsedHint:"— section collapsed, tap to show",
+    jsError:"Page rendering error — reload; if it repeats, tell the assistant",
     radarRed:"Danger",
     radarAmber:"Warning",
     fTracked:"Tracked",
@@ -1803,6 +1817,9 @@ function initSecToggles(){
     if (!head) return;
     var h2 = head.querySelector("h2");
     var key = "im-sec-" + ((h2 && h2.getAttribute("data-i")) || idx);
+    /* درس 2026-08-02: قسم مطوي بدا للمالك كقسم معطل — التلميح الكهرماني
+       الواضح يمنع الالتباس نهائياً */
+    if (h2) h2.setAttribute("data-hint", t("collapsedHint"));
     try { if (localStorage.getItem(key) === "1") sec.classList.add("collapsed"); } catch(e){}
     head.addEventListener("click", function(){
       sec.classList.toggle("collapsed");
@@ -1811,6 +1828,16 @@ function initSecToggles(){
   })(secs[i], i);
 }
 initSecToggles();
+
+/* فحص صحة العرض: أي خطأ برمجي وقت التشغيل يظهر بلافتة حمراء واضحة —
+   فشل صامت يترك قسماً فارغاً بلا تفسير ممنوع (درس 2026-08-02) */
+window.onerror = function(){
+  try {
+    var b = document.getElementById("err-banner");
+    if (b){ b.textContent = "⚠️ " + t("jsError"); b.style.display = ""; }
+  } catch(e){}
+  return false;
+};
 
 renderAll();
 load();
