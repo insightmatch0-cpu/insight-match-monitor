@@ -302,6 +302,11 @@ def resolve_pending(store: dict):
                 "prob_home": p.get("prob_home"),
                 "prob_draw": p.get("prob_draw"),
                 "prob_away": p.get("prob_away"),
+                # احتمالات السوق الضمنية (إن وُجدت) — تُحفظ مع النتيجة لقياس
+                # "هل يتفوق المحرك على السوق حين يخالفه؟" لاحقاً
+                "mkt_home": p.get("mkt_home"),
+                "mkt_draw": p.get("mkt_draw"),
+                "mkt_away": p.get("mkt_away"),
                 "actual": actual,
                 "score": f"{gh}-{ga}",
                 "correct": p.get("pick") == actual,
@@ -879,6 +884,9 @@ def odds_context(m: dict, budget: dict) -> str:
                 inv = [1 / oh, 1 / od, 1 / oa]
                 s = sum(inv)
                 ph, pd, pa = (round(100 * x / s) for x in inv)
+                # نخزّن احتمالات السوق على المباراة نفسها → تنتقل تلقائياً إلى
+                # سجل pending (شريحة "المحرك ضد السوق" على اللوحة + قياس مستقبلي)
+                m["mkt_home"], m["mkt_draw"], m["mkt_away"] = ph, pd, pa
                 return (
                     f"Market odds ({bm.get('name', '?')}): home {oh} / draw {od} / away {oa}"
                     f" => implied probabilities {ph}% / {pd}% / {pa}%"

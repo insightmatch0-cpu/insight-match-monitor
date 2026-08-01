@@ -201,6 +201,11 @@
   .bucket .b-label{font-size:10.5px;color:var(--muted)}
   .bucket .b-val{font-family:Changa;font-weight:700;font-size:16px}
   .bucket .b-count{font-size:10px;color:var(--muted);margin-top:2px}
+  /* ⚖️ المحرك ضد السوق — شريحة صغيرة أسفل الاحتمالات؛ تتوهج عند الاختلاف */
+  .mkt{margin-top:7px;font-size:11.5px;color:var(--muted)}
+  .mkt.diff{color:#e8b923}
+  .mkt .zap{font-weight:700}
+
   /* شريحة الـ 70%+ — الطبقة الذهبية التي يراقبها المالك عن قرب */
   .bucket.gold{border-color:#d4a017;background:linear-gradient(180deg,rgba(212,160,23,.14),rgba(212,160,23,.04))}
   .bucket.gold .b-label,.bucket.gold .b-val{color:#e8b923}
@@ -425,6 +430,7 @@ var I18N = {
     lessons:"📚 دروس يتعلمها المحرك",
     lessonsNew:"جديد اليوم",
     gold:"⭐ الاختيارات الذهبية — ثقة 70%+",
+    mkt:"السوق", engineLbl:"المحرك", mktDiff:"⚡ يخالف السوق",
     trend:"الدقة يوماً بيوم (آخر 30 يوماً)",
     probHome:"الأرض", probDraw:"تعادل", probAway:"الضيف",
     v2title:"المحرك 2 قيد الإنشاء",
@@ -457,6 +463,7 @@ var I18N = {
     lessons:"📚 Lessons the engine learned",
     lessonsNew:"new today",
     gold:"⭐ Gold picks — 70%+ confidence",
+    mkt:"Market", engineLbl:"Engine", mktDiff:"⚡ disagrees with market",
     trend:"Day-by-day accuracy (last 30 days)",
     probHome:"Home", probDraw:"Draw", probAway:"Away",
     v2title:"Engine 2 is under construction",
@@ -606,6 +613,24 @@ function probRow(p){
     + '</div>';
 }
 
+/* ⚖️ المحرك ضد السوق — تظهر حين تتوفر احتمالات الأودز الضمنية (المباريات الغنية).
+   حين يخالف المحرك مرشح السوق تُميَّز الشريحة — هذه أكثر المباريات إثارة للانتباه */
+function mktRow(p){
+  if (p.mkt_home == null) return "";
+  var mkts = {home:p.mkt_home, draw:p.mkt_draw, away:p.mkt_away};
+  var fav = "home";
+  if ((mkts.draw||0) > (mkts[fav]||0)) fav = "draw";
+  if ((mkts.away||0) > (mkts[fav]||0)) fav = "away";
+  var lbl = {home:t("probHome"), draw:t("probDraw"), away:t("probAway")};
+  var eng = (p.pick && p["prob_"+p.pick] != null) ? p["prob_"+p.pick] : p.confidence;
+  var disagree = !!p.pick && fav !== p.pick;
+  return '<div class="mkt'+(disagree?" diff":"")+'">'
+    + '⚖️ '+t("mkt")+': '+lbl[fav]+' '+esc(mkts[fav])+'%'
+    + ' · '+t("engineLbl")+': '+lbl[p.pick]+' '+esc(eng)+'%'
+    + (disagree ? ' <span class="zap">'+t("mktDiff")+'</span>' : "")
+    + '</div>';
+}
+
 function renderUpcoming(list){
   var el = document.getElementById("upcoming-list");
   /* مباراة انطلقت وظهرت في القسم الحي تُرفع من هذه القائمة (توقعها معروض هناك) */
@@ -655,6 +680,7 @@ function predCard(p, withLeagueEyebrow, nowMs){
     + '<span class="conf-num">'+esc(p.confidence)+'%</span>'
     + '</div>'
     + probRow(p)
+    + mktRow(p)
     + (withLeagueEyebrow ? '<div class="league-eyebrow" style="margin:8px 0 0">'+esc(p.league)+'</div>' : "")
     + '</summary>'
     + (p.reason ? '<div class="reason">'+esc(p.reason)+'</div>' : "")

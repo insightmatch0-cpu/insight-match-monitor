@@ -107,5 +107,25 @@ class TestGoldPicks(unittest.TestCase):
         self.assertTrue(SCRIPT.count("predCard(") >= 3)
 
 
+class TestMarketChip(unittest.TestCase):
+    """⚖️ شريحة "المحرك ضد السوق" (طلب المالك 2026-08-01): تظهر فقط عند توفر
+    احتمالات السوق، وتتوهج حين يخالف المحرك مرشح السوق."""
+
+    def test_mkt_row_exists_and_used_in_card(self):
+        self.assertIn("function mktRow", SCRIPT)
+        gate = re.search(r"probRow\(p\)\s*\+\s*mktRow\(p\)", SCRIPT)
+        self.assertIsNotNone(gate, "البطاقة يجب أن تعرض شريحة السوق بعد الاحتمالات")
+
+    def test_hidden_without_market_data(self):
+        body = re.search(r"function mktRow\(p\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn('p.mkt_home == null) return ""', body.group(1))
+
+    def test_disagreement_highlight(self):
+        self.assertIn('fav !== p.pick', SCRIPT)
+        self.assertIn('"mkt', SCRIPT.replace("'", '"'))
+        self.assertIn("mktDiff", SCRIPT)
+
+
 if __name__ == "__main__":
     unittest.main()
