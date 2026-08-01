@@ -404,6 +404,10 @@
   .res .mark{font-family:Changa;font-weight:800;font-size:15px;flex:0 0 auto}
   .res .mark.ok{color:var(--green)}
   .res .mark.no{color:var(--red)}
+  .res-day{
+    font-family:Changa;font-weight:600;font-size:11.5px;color:var(--muted);
+    margin:12px 2px 6px;letter-spacing:.5px;
+  }
   /* سطر "لماذا": صف يحمل قراءة المحرك يُفتح بنقرة (طلب المالك 2026-08-01) */
   .res.has-why{cursor:pointer}
   .res .why-ind{flex:0 0 auto;font-size:12px;opacity:.65}
@@ -643,7 +647,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 63;
+var IM_BUILD = 64;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -1349,8 +1353,14 @@ function paintResults(){
   if (!resAll.length){ el.innerHTML = '<div class="empty">'+t("noRes")+"</div>"; return; }
   if (!list.length){ el.innerHTML = '<div class="empty">'+t("noResMatch")+"</div>"; return; }
   var h = "";
+  var curDay = null;   /* فاصل تاريخ المباراة (طلب المالك 2026-08-02) — يوضح
+                          أيضاً أن القائمة تتحدث كل صباح بعد التقييم */
   for (var i=0;i<list.length;i++){
     var r = list[i];
+    if ((r.date || "") !== curDay){
+      curDay = r.date || "";
+      h += '<div class="res-day">📅 '+esc(curDay || "—")+'</div>';
+    }
     var why = (r.reason || "").trim();
     h += '<div class="res'+(why?' has-why" onclick="toggleWhy(this)':'')+'">'
       + '<span class="mark '+(r.correct?"ok":"no")+'">'+(r.correct?"✓":"✗")+'</span>'

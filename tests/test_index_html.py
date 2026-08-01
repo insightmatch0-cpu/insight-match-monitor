@@ -192,6 +192,15 @@ class TestShadowLabPanel(unittest.TestCase):
         body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIn("renderOpsRoom()", body.group(1))
 
+    def test_results_show_match_dates(self):
+        """طلب المالك 2026-08-02: فاصل تاريخ لكل يوم في النتائج المُقيَّمة —
+        يوضح متى لُعبت المباراة وأن القائمة تتحدث كل صباح."""
+        body = re.search(r"function paintResults\(\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIsNotNone(body)
+        self.assertIn("res-day", body.group(1))
+        self.assertIn("r.date", body.group(1))
+        self.assertIn(".res-day", HTML)   # التنسيق موجود
+
     def test_why_line_on_results(self):
         """سطر "لماذا" (طلب المالك 2026-08-01): صف النتيجة المُقيَّمة يحمل
         قراءة المحرك قبل المباراة — 💭 مؤشر، نقرة تفتح النص، ولا شيء يظهر
