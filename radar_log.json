@@ -1,23 +1,5 @@
 {
- "warnings": [
-  {
-   "fid": "1490375",
-   "date": "2026-08-02",
-   "home": "Portland Timbers",
-   "away": "Seattle Sounders",
-   "league": "Major League Soccer (USA)",
-   "pick": "home",
-   "confidence": 50,
-   "level": "red",
-   "score": 75,
-   "minute": 77,
-   "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د77)",
-    "موجة ركنيات لصالح الضيف",
-    "ضغط هجومي متصاعد من الضيف"
-   ]
-  }
- ],
+ "warnings": [],
  "resolved": [
   {
    "fid": "1493037",
@@ -391,6 +373,26 @@
    "failed": true,
    "final_score": "0-0",
    "graded_on": "2026-08-02"
+  },
+  {
+   "fid": "1490375",
+   "date": "2026-08-02",
+   "home": "Portland Timbers",
+   "away": "Seattle Sounders",
+   "league": "Major League Soccer (USA)",
+   "pick": "home",
+   "confidence": 50,
+   "level": "red",
+   "score": 75,
+   "minute": 77,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د77)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "failed": false,
+   "final_score": "2-1",
+   "graded_on": "2026-08-02"
   }
  ],
  "alerts": [],
@@ -489,7 +491,7 @@
  "meta": {
   "stats": {
    "red": {
-    "fired": 11,
+    "fired": 12,
     "hit": 9
    },
    "amber": {
@@ -511,6 +513,6 @@
     }
    }
   },
-  "updated": "2026-08-02T04:54:07.558137+00:00"
+  "updated": "2026-08-02T05:23:37.733872+00:00"
  }
 }
