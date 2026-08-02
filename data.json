@@ -1,6 +1,92 @@
 {
- "updated": "2026-08-02T04:46:50.276825+00:00",
+ "updated": "2026-08-02T05:05:08.029469+00:00",
  "live": [
+  {
+   "fid": "1490374",
+   "home": "Los Angeles Galaxy",
+   "away": "FC Dallas",
+   "home_en": "Los Angeles Galaxy",
+   "away_en": "FC Dallas",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1605.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1597.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "0-0",
+   "minute": 89,
+   "status": "2H",
+   "seen": "2026-08-02T04:26:23.662953+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 57
+   },
+   "radar": {
+    "score": 68,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د89)"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 35,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      22,
+      46,
+      55,
+      66,
+      89
+     ],
+     "h_sog": [
+      0,
+      3,
+      4,
+      5,
+      6
+     ],
+     "a_sog": [
+      2,
+      2,
+      3,
+      3,
+      4
+     ],
+     "h_cor": [
+      1,
+      1,
+      1,
+      1,
+      4
+     ],
+     "a_cor": [
+      1,
+      5,
+      5,
+      5,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493603",
+   "home": "Las Vegas Lights",
+   "away": "Phoenix Rising",
+   "home_en": "Las Vegas Lights",
+   "away_en": "Phoenix Rising",
+   "league": "USL Championship (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/3998.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4009.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
+   "score": "1-1",
+   "minute": 86,
+   "status": "2H",
+   "seen": "2026-08-02T04:26:23.662953+00:00"
+  },
   {
    "fid": "1523781",
    "home": "Edgeworth Eagles",
@@ -3531,6 +3617,29 @@
    "time": "2026-08-01T21:23:22+00:00"
   }
  ],
- "radar_acc": {},
+ "radar_acc": {
+  "red": {
+   "fired": 11,
+   "hit": 9
+  },
+  "amber": {
+   "fired": 9,
+   "hit": 3
+  },
+  "alerts": {
+   "equalizer": {
+    "fired": 2,
+    "hit": 0
+   },
+   "goal": {
+    "fired": 1,
+    "hit": 0
+   },
+   "next_goal": {
+    "fired": 3,
+    "hit": 1
+   }
+  }
+ },
  "pred_updated": "2026-08-02T04:07:00.347655+00:00"
 }
