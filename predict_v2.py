@@ -1521,6 +1521,23 @@ def resolve_radar_log(store: dict) -> int:
     return graded
 
 
+def drama_scoreboard_line() -> str:
+    """سطر لوحة تنبيهات الدراما للملخص الصباحي (رؤية يومية إلزامية —
+    درس 2026-08-02: السجل الأول 1/6 وُجد ولم يصل المالك إلا بسؤاله).
+    يظهر فقط حين توجد تنبيهات مُقيَّمة؛ يفصّل أمس والإجمالي لكل شيء بشفافية."""
+    log = load_json(RADAR_LOG_FILE, {})
+    resolved = log.get("alerts_resolved") or []
+    if not resolved:
+        return ""
+    today = now_utc().strftime("%Y-%m-%d")
+    fresh = [a for a in resolved if a.get("graded_on") == today]
+    total_hit = sum(1 for a in resolved if a.get("hit"))
+    line = f"🧪 تنبيهات الدراما (تجريبية): الإجمالي {total_hit}/{len(resolved)} صحيحة"
+    if fresh:
+        line += f" — اليوم {sum(1 for a in fresh if a.get('hit'))}/{len(fresh)}"
+    return line
+
+
 def v1_pending() -> dict:
     """توقعات المحرك 1 المنتظرة — للمقارنة جنباً إلى جنب في الملخص."""
     store = load_json(V1_PREDICTIONS_FILE, {})
@@ -1722,9 +1739,11 @@ def main() -> None:
 
     # 5) ملخص تيليجرام (مقارنة المحرك 1 + سباق الدقة الثلاثي مع المالك)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
-        send_telegram_long(
-            build_digest(new_preds, stats, v1_pending(), new_lessons, user_stats)
-        )
+        digest = build_digest(new_preds, stats, v1_pending(), new_lessons, user_stats)
+        drama = drama_scoreboard_line()
+        if drama:
+            digest += "\n" + drama
+        send_telegram_long(digest)
 
 
 if __name__ == "__main__":
