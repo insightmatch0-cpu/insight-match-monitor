@@ -1,6 +1,96 @@
 {
- "updated": "2026-08-02T03:21:02.875528+00:00",
+ "updated": "2026-08-02T03:32:15.013440+00:00",
  "live": [
+  {
+   "fid": "1549429",
+   "home": "Alianza Lima",
+   "away": "Alianza Atletico",
+   "home_en": "Alianza Lima",
+   "away_en": "Alianza Atletico",
+   "league": "Primera División (Peru)",
+   "home_logo": "https://media.api-sports.io/football/teams/2553.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2560.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
+   "score": "3-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-02T03:26:06.169787+00:00"
+  },
+  {
+   "fid": "1490373",
+   "home": "Colorado Rapids",
+   "away": "Austin",
+   "home_en": "Colorado Rapids",
+   "away_en": "Austin",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1610.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "1-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-02T03:32:13.256956+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 55,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      24,
+      46,
+      55,
+      74,
+      90
+     ],
+     "h_sog": [
+      1,
+      3,
+      4,
+      5,
+      7
+     ],
+     "a_sog": [
+      0,
+      1,
+      1,
+      2,
+      2
+     ],
+     "h_cor": [
+      6,
+      8,
+      8,
+      9,
+      11
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
   {
    "fid": "1583725",
    "home": "Tauro FC",
@@ -14,97 +104,7 @@
    "score": "1-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
-  },
-  {
-   "fid": "1549429",
-   "home": "Alianza Lima",
-   "away": "Alianza Atletico",
-   "home_en": "Alianza Lima",
-   "away_en": "Alianza Atletico",
-   "league": "Primera División (Peru)",
-   "home_logo": "https://media.api-sports.io/football/teams/2553.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2560.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
-   "score": "3-1",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
-  },
-  {
-   "fid": "1490373",
-   "home": "Colorado Rapids",
-   "away": "Austin",
-   "home_en": "Colorado Rapids",
-   "away_en": "Austin",
-   "league": "Major League Soccer (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/1610.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "0-0",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "radar": {
-    "score": 65,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د84)"
-    ],
-    "pick": "home",
-    "confidence": 55,
-    "drama": {
-     "signal": 65,
-     "side": "home",
-     "ready": true
-    },
-    "alerted": "next_goal",
-    "trend": {
-     "min": [
-      24,
-      46,
-      55,
-      65,
-      84
-     ],
-     "h_sog": [
-      1,
-      3,
-      4,
-      4,
-      6
-     ],
-     "a_sog": [
-      0,
-      1,
-      1,
-      1,
-      2
-     ],
-     "h_cor": [
-      6,
-      8,
-      8,
-      9,
-      10
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
+   "seen": "2026-08-02T03:23:02.640555+00:00"
   },
   {
    "fid": "1493607",
@@ -117,9 +117,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3992.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "1-0",
-   "minute": 84,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1493921",
@@ -132,9 +132,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4043.png",
    "league_logo": "https://media.api-sports.io/football/leagues/489.png",
    "score": "0-0",
-   "minute": 83,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1490366",
@@ -146,10 +146,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2242.png",
    "away_logo": "https://media.api-sports.io/football/teams/1596.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "1-2",
-   "minute": 77,
+   "score": "3-2",
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00",
+   "seen": "2026-08-02T03:32:13.256956+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 65
@@ -159,25 +159,25 @@
     "confidence": 50
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د77)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 50,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
-    "alerted": "goal",
+    "alerted": null,
     "trend": {
      "min": [
-      17,
-      37,
-      57,
-      77
+      27,
+      48,
+      67,
+      88
      ],
      "h_sog": [
       0,
@@ -217,9 +217,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/17377.png",
    "league_logo": "https://media.api-sports.io/football/leagues/162.png",
    "score": "0-0",
-   "minute": 60,
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1559598",
@@ -232,9 +232,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3664.png",
    "league_logo": "https://media.api-sports.io/football/leagues/339.png",
    "score": "2-0",
-   "minute": 59,
+   "minute": 70,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1513261",
@@ -247,9 +247,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4028.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "3-1",
-   "minute": 57,
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1493609",
@@ -261,10 +261,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4007.png",
    "away_logo": "https://media.api-sports.io/football/teams/3993.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "1-0",
-   "minute": 54,
+   "score": "2-0",
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1493608",
@@ -277,24 +277,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4010.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "0-1",
-   "minute": 50,
+   "minute": 61,
    "status": "2H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
-  },
-  {
-   "fid": "1493603",
-   "home": "Las Vegas Lights",
-   "away": "Phoenix Rising",
-   "home_en": "Las Vegas Lights",
-   "away_en": "Phoenix Rising",
-   "league": "USL Championship (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/3998.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4009.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "1-1",
-   "minute": 44,
-   "status": "1H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1490374",
@@ -307,9 +292,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1597.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "0-0",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-08-02T03:21:00.797440+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-02T03:32:13.256956+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -319,11 +304,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 53,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د41)",
-     "موجة ركنيات لصالح الضيف",
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
@@ -337,26 +321,46 @@
     "trend": {
      "min": [
       22,
-      41
+      31,
+      45
      ],
      "h_sog": [
+      0,
       0,
       3
      ],
      "a_sog": [
       2,
+      2,
       2
      ],
      "h_cor": [
+      1,
       1,
       1
      ],
      "a_cor": [
       1,
-      4
+      4,
+      5
      ]
     }
    }
+  },
+  {
+   "fid": "1493603",
+   "home": "Las Vegas Lights",
+   "away": "Phoenix Rising",
+   "home_en": "Las Vegas Lights",
+   "away_en": "Phoenix Rising",
+   "league": "USL Championship (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/3998.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4009.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
+   "score": "1-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1490375",
@@ -368,10 +372,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1617.png",
    "away_logo": "https://media.api-sports.io/football/teams/1595.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "0-0",
-   "minute": 26,
+   "score": "0-1",
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-02T03:21:00.797440+00:00",
+   "seen": "2026-08-02T03:32:13.256956+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -381,10 +385,12 @@
     "confidence": 50
    },
    "radar": {
-    "score": 30,
-    "level": "green",
+    "score": 51,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د37)",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 50,
@@ -396,19 +402,24 @@
     "alerted": null,
     "trend": {
      "min": [
-      26
+      16,
+      37
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
-      0
+      0,
+      1
      ],
      "h_cor": [
+      1,
       2
      ],
      "a_cor": [
-      0
+      0,
+      2
      ]
     }
    }
@@ -424,9 +435,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/23500.png",
    "league_logo": "https://media.api-sports.io/football/leagues/481.png",
    "score": "0-0",
-   "minute": 18,
+   "minute": 29,
    "status": "1H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1550918",
@@ -439,9 +450,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2312.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
    "score": "0-0",
-   "minute": 15,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   },
   {
    "fid": "1493610",
@@ -454,28 +465,12 @@
    "away_logo": "https://media.api-sports.io/football/teams/25959.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "1-0",
-   "minute": 11,
+   "minute": 22,
    "status": "1H",
-   "seen": "2026-08-02T03:21:00.797440+00:00"
+   "seen": "2026-08-02T03:32:13.256956+00:00"
   }
  ],
  "upcoming": [
-  {
-   "fid": "1490373",
-   "kickoff": "2026-08-02T01:30:00+00:00",
-   "home": "كولورادو رابيدز",
-   "away": "أوستن",
-   "home_en": "Colorado Rapids",
-   "home_logo": "https://media.api-sports.io/football/teams/1610.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "away_en": "Austin",
-   "league": "دوري كرة القدم الأمريكي",
-   "top": true,
-   "pick": "away",
-   "confidence": 52,
-   "reason": "أوستن تشهد نهوضاً مؤخراً وتملك قوة هجومية، كولورادو في تقلبات"
-  },
   {
    "fid": "1490374",
    "kickoff": "2026-08-02T02:30:00+00:00",
