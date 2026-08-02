@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-02T23:39:36.109479+00:00",
+ "updated": "2026-08-02T23:48:55.113077+00:00",
  "live": [
   {
    "fid": "1549571",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1468.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "1-2",
-   "minute": 82,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1549574",
@@ -27,9 +27,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1458.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-0",
-   "minute": 81,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1551655",
@@ -41,10 +41,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/816.png",
    "away_logo": "https://media.api-sports.io/football/teams/823.png",
    "league_logo": "https://media.api-sports.io/football/leagues/162.png",
-   "score": "2-0",
-   "minute": 79,
+   "score": "2-1",
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1517320",
@@ -57,9 +57,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3830.png",
    "league_logo": "https://media.api-sports.io/football/leagues/479.png",
    "score": "0-0",
-   "minute": 70,
+   "minute": 80,
    "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1493044",
@@ -72,9 +72,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/437.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "0-1",
-   "minute": 58,
+   "minute": 67,
    "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00",
+   "seen": "2026-08-02T23:48:53.923227+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 65
@@ -84,16 +84,18 @@
     "confidence": 44
    },
    "radar": {
-    "score": 55,
-    "level": "amber",
+    "score": 81,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د58)",
-     "ضغط هجومي متصاعد من الضيف"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د67)",
+     "موجة تسديد على المرمى من الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
-     "signal": 85,
+     "signal": 35,
      "side": "home",
      "ready": true
     },
@@ -101,41 +103,31 @@
     "trend": {
      "min": [
       22,
-      58
+      48,
+      67
      ],
      "h_sog": [
       1,
+      3,
       4
      ],
      "a_sog": [
       0,
-      0
+      0,
+      2
      ],
      "h_cor": [
       2,
-      5
+      3,
+      6
      ],
      "a_cor": [
+      1,
       1,
       1
      ]
     }
    }
-  },
-  {
-   "fid": "1607533",
-   "home": "Metropolitanos FC",
-   "away": "Puerto Cabello",
-   "home_en": "Metropolitanos FC",
-   "away_en": "Puerto Cabello",
-   "league": "Primera División (Venezuela)",
-   "home_logo": "https://media.api-sports.io/football/teams/2825.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2827.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "2-0",
-   "minute": 49,
-   "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
   },
   {
    "fid": "1546846",
@@ -148,9 +140,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/131.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-0",
-   "minute": 48,
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
+  },
+  {
+   "fid": "1607533",
+   "home": "Metropolitanos FC",
+   "away": "Puerto Cabello",
+   "home_en": "Metropolitanos FC",
+   "away_en": "Puerto Cabello",
+   "league": "Primera División (Venezuela)",
+   "home_logo": "https://media.api-sports.io/football/teams/2825.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2827.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/299.png",
+   "score": "2-1",
+   "minute": 58,
+   "status": "2H",
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1549694",
@@ -165,7 +172,7 @@
    "score": "3-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1513265",
@@ -178,9 +185,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4012.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "0-0",
-   "minute": 36,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1550919",
@@ -193,9 +200,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2285.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
    "score": "1-0",
-   "minute": 35,
+   "minute": 44,
    "status": "1H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1493601",
@@ -208,9 +215,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/22855.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "0-0",
-   "minute": 33,
+   "minute": 42,
    "status": "1H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1519435",
@@ -223,9 +230,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/1152.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "1-0",
-   "minute": 29,
+   "minute": 38,
    "status": "1H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
+  },
+  {
+   "fid": "1592936",
+   "home": "Estrella Roja",
+   "away": "Olancho",
+   "home_en": "Estrella Roja",
+   "away_en": "Olancho",
+   "league": "Liga Nacional (Honduras)",
+   "home_logo": "https://media.api-sports.io/football/teams/11370.png",
+   "away_logo": "https://media.api-sports.io/football/teams/19456.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/234.png",
+   "score": "0-1",
+   "minute": 34,
+   "status": "1H",
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
    "fid": "1583727",
@@ -238,24 +260,54 @@
    "away_logo": "https://media.api-sports.io/football/teams/2888.png",
    "league_logo": "https://media.api-sports.io/football/leagues/304.png",
    "score": "0-0",
-   "minute": 24,
+   "minute": 33,
    "status": "1H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   },
   {
-   "fid": "1592936",
-   "home": "Estrella Roja",
-   "away": "Olancho",
-   "home_en": "Estrella Roja",
-   "away_en": "Olancho",
-   "league": "Liga Nacional (Honduras)",
-   "home_logo": "https://media.api-sports.io/football/teams/11370.png",
-   "away_logo": "https://media.api-sports.io/football/teams/19456.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/234.png",
+   "fid": "1549430",
+   "home": "Cienciano",
+   "away": "Universitario",
+   "home_en": "Cienciano",
+   "away_en": "Universitario",
+   "league": "Primera División (Peru)",
+   "home_logo": "https://media.api-sports.io/football/teams/2562.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2540.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
    "score": "0-0",
-   "minute": 24,
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-02T23:39:34.445653+00:00"
+   "seen": "2026-08-02T23:48:53.923227+00:00"
+  },
+  {
+   "fid": "1545392",
+   "home": "Oriente Petrolero",
+   "away": "Nacional Potosí",
+   "home_en": "Oriente Petrolero",
+   "away_en": "Nacional Potosí",
+   "league": "Primera División (Bolivia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3707.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3706.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
+   "score": "0-0",
+   "minute": 18,
+   "status": "1H",
+   "seen": "2026-08-02T23:48:53.923227+00:00"
+  },
+  {
+   "fid": "1600556",
+   "home": "Inca Aruba",
+   "away": "FAS",
+   "home_en": "Inca Aruba",
+   "away_en": "FAS",
+   "league": "Primera Division (El-Salvador)",
+   "home_logo": "https://media.api-sports.io/football/teams/28019.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4302.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/370.png",
+   "score": "0-1",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-08-02T23:48:53.923227+00:00"
   }
  ],
  "upcoming": [
