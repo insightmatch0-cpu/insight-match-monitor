@@ -118,7 +118,14 @@ GH_REPO = os.environ.get("GITHUB_REPOSITORY", "").strip() or "insightmatch0-cpu/
 # التنبيهات لكل مباريات الرادار بمعزل عن بوابة قائمة التركيز (نادرة بالبناء:
 # د75+، عتبة إشارة، مرة لكل مباراة، سقف 5/تشغيلة). تُقيَّم صباحاً بلوحتها الخاصة.
 RADAR_ALERT_MIN = 75          # شرط المالك: لا تنبيهات دراما قبل الدقيقة 75
-RADAR_ALERT_SIGNAL_MIN = 50   # عتبة الإشارة (0-100) لإرسال التنبيه
+# معايرة اليوم الأول (2026-08-02، السجل 1/6 صحيحة — قرار المالك: وضع تجريبي
+# موسوم + تشديد): العتبات القديمة كانت تطلق على ضغط أواخر المباريات العادي
+RADAR_ALERT_MAX = 85          # لا تنبيه بعد د85 — "هدف قادم" في د90 بلا قيمة
+RADAR_ALERT_SIGNAL_MIN = 75   # كان 50 — الآن يلزم فوق موجة الضغط حصارُ حارس أو طرد
+RADAR_ALERT_FLIP_MIN = 90     # قلب النتيجة: طرد أو إشارة كاسحة فقط
+RADAR_ALERT_DRAW_MIN = 80     # حالة التعادل (الأكثر ضجيجاً 2026-08-02) أشد عتبةً
+RADAR_ALERT_DRAW_GAP = 30     # هيمنة أوضح مطلوبة بين الطرفين (كان 20)
+RADAR_ALERT_TRIAL = True      # وسم "🧪 تجريبي" على الرسائل حتى يثبت السجل الصباحي
 RADAR_ALERT_CAP_PER_RUN = 5   # سقف تنبيهات الدراما في التشغيلة — ضد الضجيج
 _ALERT_RANK = {"goal": 1, "equalizer": 2, "next_goal": 2, "flip": 3}
 
@@ -1310,7 +1317,8 @@ def drama_signal(snaps: list, gh: int, ga: int):
         side, pts, reasons, other = ("home", ph, rh, pa) if ph >= pa else ("away", pa, ra, ph)
         # في التعادل نطلب هيمنة واضحة لطرف واحد — لا دراما على شد وجذب متكافئ
         return {"side": side, "signal": max(0, min(95, pts)), "reasons": reasons,
-                "margin": 0, "red": False, "dominant": (pts - other) >= 20}
+                "margin": 0, "red": False,
+                "dominant": (pts - other) >= RADAR_ALERT_DRAW_GAP}
     side = "home" if gh < ga else "away"
     s, o = ("h", "a") if side == "home" else ("a", "h")
     pts, reasons = _side_momentum(snaps, s, o)
@@ -1325,14 +1333,17 @@ def evaluate_comeback(snaps: list, minute: int, gh: int, ga: int):
     """عقل S3 للحظات الحاسمة (سيناريوهات المالك 2026-08-01): من الدقيقة 75،
     هل تقول الأرقام إن المتأخر سيسجل / يتعادل / يقلب النتيجة؟ وفي التعادل:
     من يضغط لخطف الفوز؟ يرجع الادعاء والإشارة والأسباب — أو None (صمت)."""
-    if minute < RADAR_ALERT_MIN:
-        return None
+    if minute < RADAR_ALERT_MIN or minute > RADAR_ALERT_MAX:
+        return None   # قبل 75 مبكر (شرط المالك)، بعد 85 متأخر بلا قيمة (معايرة 2026-08-02)
     d = drama_signal(snaps, gh, ga)
     if not d or not d["dominant"] or d["signal"] < RADAR_ALERT_SIGNAL_MIN:
         return None
     if d["margin"] == 0:
+        # التعادل أثبت أنه الأكثر ضجيجاً — عتبة أشد وهيمنة أوضح
+        if d["signal"] < RADAR_ALERT_DRAW_MIN:
+            return None
         key, claim = "next_goal", "الهدف القادم — وربما خطف الفوز"
-    elif d["margin"] == 1 and (d["red"] or d["signal"] >= 70):
+    elif d["margin"] == 1 and (d["red"] or d["signal"] >= RADAR_ALERT_FLIP_MIN):
         key, claim = "flip", "تعادل قريب — وقلب النتيجة وارد"
     elif d["margin"] == 1:
         key, claim = "equalizer", "هدف التعادل قادم"
@@ -1364,8 +1375,11 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
     h = ar.get("home") or e.get("home", "?")
     a = ar.get("away") or e.get("away", "?")
     target = h if verdict["side"] == "home" else a
+    # وسم المرحلة التجريبية (قرار المالك 2026-08-02): يستلم التنبيه ويعلم أنه
+    # قيد المعايرة — الوسم يُرفع فقط حين يثبت السجل الصباحي جدارة الادعاء
+    trial = " (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""
     send_telegram(
-        f"🛰🚨 تنبيه الرادار — د{e.get('minute')}\n"
+        f"🛰🚨 تنبيه الرادار{trial} — د{e.get('minute')}\n"
         f"{h} {gh} - {ga} {a}\n"
         f"التوقع: {verdict['claim']} لصالح {target} (إشارة {verdict['signal']}%)\n"
         f"الأسباب: " + "، ".join(verdict["reasons"])
@@ -1379,6 +1393,9 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
         "side": verdict["side"], "key": verdict["key"],
         "signal": verdict["signal"], "home": e.get("home"), "away": e.get("away"),
         "league": e.get("league"),
+        # حزمة الأدلة (طلب المالك 2026-08-02 — تحقق الجذر): آخر لقطات الأرقام
+        # التي بُني عليها التنبيه تُحفظ معه، فأي خطأ مستقبلي يُشرَّح لأرقامه
+        "evidence": (radar.get("snaps") or [])[-3:],
     })
     log["alerts"] = log["alerts"][-RADAR_MAX_WARNINGS:]
     RADAR_FILE.write_text(
