@@ -1,81 +1,6 @@
 {
- "updated": "2026-08-02T04:07:01.091267+00:00",
+ "updated": "2026-08-02T04:26:25.562631+00:00",
  "live": [
-  {
-   "fid": "1513261",
-   "home": "Tacoma Defiance",
-   "away": "Vancouver Whitecaps II",
-   "home_en": "Tacoma Defiance",
-   "away_en": "Vancouver Whitecaps II",
-   "league": "MLS Next Pro (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/4020.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4028.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "4-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-02T03:58:08.339683+00:00"
-  },
-  {
-   "fid": "1559598",
-   "home": "Guastatoya",
-   "away": "Malacateco",
-   "home_en": "Guastatoya",
-   "away_en": "Malacateco",
-   "league": "Liga Nacional (Guatemala)",
-   "home_logo": "https://media.api-sports.io/football/teams/3662.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3664.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/339.png",
-   "score": "4-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-02T03:55:05.699919+00:00"
-  },
-  {
-   "fid": "1598807",
-   "home": "LD Alajuelense",
-   "away": "Escorpiones Belén",
-   "home_en": "LD Alajuelense",
-   "away_en": "Escorpiones Belén",
-   "league": "Primera División (Costa-Rica)",
-   "home_logo": "https://media.api-sports.io/football/teams/822.png",
-   "away_logo": "https://media.api-sports.io/football/teams/17377.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/162.png",
-   "score": "2-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-02T03:58:08.339683+00:00"
-  },
-  {
-   "fid": "1493608",
-   "home": "Oakland Roots",
-   "away": "Pittsburgh Riverhounds",
-   "home_en": "Oakland Roots",
-   "away_en": "Pittsburgh Riverhounds",
-   "league": "USL Championship (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/10874.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4010.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "0-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-02T04:02:42.746067+00:00"
-  },
-  {
-   "fid": "1493609",
-   "home": "Orange County SC",
-   "away": "El Paso Locomotive",
-   "home_en": "Orange County SC",
-   "away_en": "El Paso Locomotive",
-   "league": "USL Championship (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/4007.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3993.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "2-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-02T04:01:11.066320+00:00"
-  },
   {
    "fid": "1490374",
    "home": "Los Angeles Galaxy",
@@ -87,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1597.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "0-0",
-   "minute": 66,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-08-02T04:02:42.746067+00:00",
+   "seen": "2026-08-02T04:26:23.662953+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -99,17 +24,16 @@
     "confidence": 38
    },
    "radar": {
-    "score": 60,
-    "level": "amber",
+    "score": 68,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د66)",
-     "ضغط هجومي متصاعد من الضيف"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د89)"
     ],
     "pick": "home",
     "confidence": 38,
     "drama": {
-     "signal": 15,
-     "side": "away",
+     "signal": 35,
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -117,28 +41,35 @@
      "min": [
       22,
       46,
-      55
+      55,
+      66,
+      89
      ],
      "h_sog": [
       0,
       3,
-      3,
-      5
+      4,
+      5,
+      6
      ],
      "a_sog": [
       2,
       2,
-      2,
-      3
+      3,
+      3,
+      4
      ],
      "h_cor": [
       1,
       1,
       1,
-      1
+      1,
+      4
      ],
      "a_cor": [
       1,
+      5,
+      5,
       5,
       5
      ]
@@ -156,9 +87,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/4009.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "1-1",
-   "minute": 62,
+   "minute": 86,
    "status": "2H",
-   "seen": "2026-08-02T04:02:42.746067+00:00"
+   "seen": "2026-08-02T04:26:23.662953+00:00"
+  },
+  {
+   "fid": "1523781",
+   "home": "Edgeworth Eagles",
+   "away": "Belmont Swansea",
+   "home_en": "Edgeworth Eagles",
+   "away_en": "Belmont Swansea",
+   "league": "Northern NSW NPL (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/10204.png",
+   "away_logo": "https://media.api-sports.io/football/teams/23500.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/481.png",
+   "score": "1-0",
+   "minute": 67,
+   "status": "2H",
+   "seen": "2026-08-02T04:26:23.662953+00:00"
   },
   {
    "fid": "1490375",
@@ -171,9 +117,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1595.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-02T04:02:42.746067+00:00",
+   "minute": 66,
+   "status": "2H",
+   "seen": "2026-08-02T04:26:23.662953+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -183,17 +129,17 @@
     "confidence": 50
    },
    "radar": {
-    "score": 60,
-    "level": "amber",
+    "score": 68,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
-     "موجة تسديد على المرمى من الضيف",
+     "النتيجة الحالية 1-1 تُسقط التوقع (د66)",
+     "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 50,
     "drama": {
-     "signal": 45,
+     "signal": 35,
      "side": "away",
      "ready": false
     },
@@ -202,19 +148,23 @@
      "min": [
       26,
       45,
-      45
+      45,
+      66
      ],
      "h_sog": [
       0,
       1,
-      1
+      1,
+      2
      ],
      "a_sog": [
       0,
       3,
-      3
+      3,
+      4
      ],
      "h_cor": [
+      2,
       2,
       2,
       2
@@ -222,10 +172,26 @@
      "a_cor": [
       0,
       2,
-      2
+      2,
+      5
      ]
     }
    }
+  },
+  {
+   "fid": "1550918",
+   "home": "Cruz Azul",
+   "away": "Atlante FC",
+   "home_en": "Cruz Azul",
+   "away_en": "Atlante FC",
+   "league": "Liga MX (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/2295.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2312.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+   "score": "1-2",
+   "minute": 65,
+   "status": "2H",
+   "seen": "2026-08-02T04:26:23.662953+00:00"
   },
   {
    "fid": "1493610",
@@ -238,39 +204,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25959.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "4-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-02T04:02:42.746067+00:00"
-  },
-  {
-   "fid": "1523781",
-   "home": "Edgeworth Eagles",
-   "away": "Belmont Swansea",
-   "home_en": "Edgeworth Eagles",
-   "away_en": "Belmont Swansea",
-   "league": "Northern NSW NPL (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/10204.png",
-   "away_logo": "https://media.api-sports.io/football/teams/23500.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/481.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-02T04:02:42.746067+00:00"
-  },
-  {
-   "fid": "1550918",
-   "home": "Cruz Azul",
-   "away": "Atlante FC",
-   "home_en": "Cruz Azul",
-   "away_en": "Atlante FC",
-   "league": "Liga MX (Mexico)",
-   "home_logo": "https://media.api-sports.io/football/teams/2295.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2312.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-02T04:02:42.746067+00:00"
+   "minute": 57,
+   "status": "2H",
+   "seen": "2026-08-02T04:26:23.662953+00:00"
   }
  ],
  "upcoming": [
