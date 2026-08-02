@@ -491,10 +491,10 @@
    "pick": "away",
    "confidence": 60,
    "level": "red",
-   "score": 68,
-   "minute": 89,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 3-1 تُسقط التوقع (د89)"
+    "النتيجة الحالية 3-1 تُسقط التوقع (د90)"
    ]
   },
   {
@@ -505,13 +505,11 @@
    "league": "Super League (Switzerland)",
    "pick": "away",
    "confidence": 52,
-   "level": "red",
-   "score": 73,
-   "minute": 67,
+   "level": "amber",
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د67)",
-    "موجة تسديد على المرمى من المضيف",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د77)"
    ]
   },
   {
@@ -553,11 +551,10 @@
    "pick": "away",
    "confidence": 59,
    "level": "amber",
-   "score": 50,
-   "minute": 49,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د77)"
    ]
   },
   {
@@ -584,10 +581,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "amber",
-   "score": 55,
-   "minute": 68,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د68)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د77)"
    ]
   },
   {
@@ -599,12 +596,10 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 56,
-   "minute": 45,
+   "score": 59,
+   "minute": 74,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
-    "موجة ركنيات لصالح المضيف",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د74)"
    ]
   },
   {
@@ -631,10 +626,10 @@
    "pick": "away",
    "confidence": 49,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 3-2 تُسقط التوقع (د70)"
+    "النتيجة الحالية 3-2 تُسقط التوقع (د79)"
    ]
   },
   {
@@ -713,6 +708,38 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1553113",
+   "date": "2026-08-02",
+   "home": "Legia Warszawa",
+   "away": "Zaglebie Lubin",
+   "league": "Ekstraklasa (Poland)",
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1559974",
+   "date": "2026-08-02",
+   "home": "Sigma Olomouc",
+   "away": "Mlada Boleslav",
+   "league": "Czech Liga (Czech-Republic)",
+   "pick": "home",
+   "confidence": 50,
+   "level": "amber",
+   "score": 50,
+   "minute": 35,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د35)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ]
   }
  ],
@@ -1113,15 +1140,27 @@
  ],
  "alerts": [
   {
-   "fid": "1494230",
+   "fid": "1555356",
    "date": "2026-08-02",
-   "minute": 76,
-   "score_at": "1-0",
+   "minute": 78,
+   "score_at": "2-2",
    "side": "away",
-   "key": "flip",
-   "signal": 85,
-   "home": "IFK Goteborg",
-   "away": "Degerfors IF",
+   "key": "next_goal",
+   "signal": 65,
+   "home": "FC Vaduz",
+   "away": "FC ST. Gallen",
+   "league": "Super League (Switzerland)"
+  },
+  {
+   "fid": "1494226",
+   "date": "2026-08-02",
+   "minute": 85,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 65,
+   "home": "IF Brommapojkarna",
+   "away": "Malmo FF",
    "league": "Allsvenskan (Sweden)"
   }
  ],
