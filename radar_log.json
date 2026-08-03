@@ -682,10 +682,10 @@
    "pick": "home",
    "confidence": 49,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د55)"
    ]
   },
   {
@@ -698,10 +698,9 @@
    "confidence": 39,
    "level": "amber",
    "score": 55,
-   "minute": 58,
+   "minute": 68,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د58)",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د68)"
    ]
   },
   {
@@ -713,25 +712,10 @@
    "pick": "home",
    "confidence": 34,
    "level": "amber",
-   "score": 48,
-   "minute": 55,
+   "score": 54,
+   "minute": 65,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د55)"
-   ]
-  },
-  {
-   "fid": "1609866",
-   "date": "2026-08-03",
-   "home": "Zamora FC B",
-   "away": "Urena SC",
-   "league": "Segunda División (Venezuela)",
-   "pick": "away",
-   "confidence": 36,
-   "level": "amber",
-   "score": 42,
-   "minute": 45,
-   "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د65)"
    ]
   },
   {
@@ -747,6 +731,36 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1493045",
+   "date": "2026-08-03",
+   "home": "Sarmiento Junin",
+   "away": "Independ. Rivadavia",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "pick": "away",
+   "confidence": 42,
+   "level": "amber",
+   "score": 40,
+   "minute": 42,
+   "factors": [
+    "النتيجة الحالية 2-1 تُسقط التوقع (د42)"
+   ]
+  },
+  {
+   "fid": "1609866",
+   "date": "2026-08-03",
+   "home": "Zamora FC B",
+   "away": "Urena SC",
+   "league": "Segunda División (Venezuela)",
+   "pick": "away",
+   "confidence": 36,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 2-1 تُسقط التوقع (د45)"
    ]
   }
  ],
@@ -2579,7 +2593,91 @@
    "graded_on": "2026-08-03"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1553827",
+   "date": "2026-08-03",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Železničar Pančevo",
+   "away": "Mladost Lucani",
+   "league": "Super Liga (Serbia)",
+   "evidence": [
+    {
+     "minute": 48,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 8,
+      "cor": 1,
+      "poss": 76,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 0,
+      "poss": 24,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 58,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 8,
+      "cor": 2,
+      "poss": 74,
+      "yc": 2,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 0,
+      "poss": 26,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 4,
+      "shots": 14,
+      "cor": 6,
+      "poss": 75,
+      "yc": 2,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 0,
+      "poss": 25,
+      "yc": 1,
+      "rc": 0,
+      "sv": 4
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
