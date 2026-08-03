@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-03T13:36:43.039447+00:00",
+ "updated": "2026-08-03T13:49:38.381325+00:00",
  "live": [
   {
    "fid": "1604136",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/9426.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
    "score": "0-3",
-   "minute": 78,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-03T13:36:26.718634+00:00",
+   "seen": "2026-08-03T13:49:36.725521+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -38,7 +38,7 @@
     "trend": {
      "min": [
       59,
-      68
+      90
      ],
      "h_sog": [
       0,
@@ -70,9 +70,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/17161.png",
    "league_logo": "https://media.api-sports.io/football/leagues/333.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-03T13:36:26.718634+00:00",
+   "minute": 55,
+   "status": "2H",
+   "seen": "2026-08-03T13:49:36.725521+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -82,10 +82,10 @@
     "confidence": 37
    },
    "radar": {
-    "score": 42,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
     ],
     "pick": "away",
     "confidence": 37,
@@ -98,8 +98,8 @@
     "trend": {
      "min": [
       23,
-      42,
-      45
+      45,
+      55
      ],
      "h_sog": [
       0,
@@ -119,6 +119,61 @@
      "a_cor": [
       0,
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1548097",
+   "home": "Indonesia",
+   "away": "Vietnam",
+   "home_en": "Indonesia",
+   "away_en": "Vietnam",
+   "league": "ASEAN Championship (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/1571.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1542.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/24.png",
+   "score": "0-2",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-03T13:49:36.725521+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 36
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-2 تُسقط التوقع (د20)"
+    ],
+    "pick": "home",
+    "confidence": 36,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      20
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
