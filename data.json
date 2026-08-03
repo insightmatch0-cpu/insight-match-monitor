@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-03T22:15:33.979714+00:00",
+ "updated": "2026-08-03T22:25:05.393288+00:00",
  "live": [
   {
    "fid": "1549573",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1129.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "1-1",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-03T22:15:31.471606+00:00",
+   "seen": "2026-08-03T22:21:57.632284+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 53
@@ -24,10 +24,10 @@
     "confidence": 41
    },
    "radar": {
-    "score": 67,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 41,
@@ -42,8 +42,8 @@
       26,
       50,
       60,
-      69,
-      88
+      78,
+      90
      ],
      "h_sog": [
       0,
@@ -89,7 +89,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "1H",
-   "seen": "2026-08-03T22:15:31.471606+00:00",
+   "seen": "2026-08-03T22:25:02.652031+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -99,39 +99,265 @@
     "confidence": 41
    },
    "radar": {
-    "score": 42,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
+     "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 41,
     "drama": {
      "signal": 15,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
       27,
+      36,
       45
      ],
      "h_sog": [
+      2,
       2,
       2
      ],
      "a_sog": [
       1,
+      1,
       1
      ],
      "h_cor": [
+      0,
       0,
       0
      ],
      "a_cor": [
       1,
+      1,
       1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493042",
+   "home": "Platense",
+   "away": "Talleres Cordoba",
+   "home_en": "Platense",
+   "away_en": "Talleres Cordoba",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/1064.png",
+   "away_logo": "https://media.api-sports.io/football/teams/456.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-03T22:25:02.652031+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 36
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
+    ],
+    "pick": "home",
+    "confidence": 36,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      26
+     ],
+     "h_sog": [
+      2
+     ],
+     "a_sog": [
+      1
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      2
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1581843",
+   "home": "Defensor Sporting",
+   "away": "Cerro",
+   "home_en": "Defensor Sporting",
+   "away_en": "Cerro",
+   "league": "Primera División - Apertura (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2350.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2362.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
+   "score": "0-0",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-03T22:25:02.652031+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      25
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493046",
+   "home": "Velez Sarsfield",
+   "away": "Independiente",
+   "home_en": "Velez Sarsfield",
+   "away_en": "Independiente",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/438.png",
+   "away_logo": "https://media.api-sports.io/football/teams/453.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "0-0",
+   "minute": 24,
+   "status": "1H",
+   "seen": "2026-08-03T22:25:02.652031+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 34
+   },
+   "radar": {
+    "score": 29,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د24)"
+    ],
+    "pick": "home",
+    "confidence": 34,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      2
+     ],
+     "a_cor": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1593677",
+   "home": "Paysandu",
+   "away": "Oriental",
+   "home_en": "Paysandu",
+   "away_en": "Oriental",
+   "league": "Segunda División (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/19410.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2376.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/269.png",
+   "score": "1-0",
+   "minute": 22,
+   "status": "1H",
+   "seen": "2026-08-03T22:25:02.652031+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      22
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
      ]
     }
    }
