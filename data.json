@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-03T23:03:31.238451+00:00",
+ "updated": "2026-08-03T23:13:05.693797+00:00",
  "live": [
   {
    "fid": "1584349",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1175.png",
    "league_logo": "https://media.api-sports.io/football/leagues/252.png",
    "score": "3-2",
-   "minute": 76,
+   "minute": 86,
    "status": "2H",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -24,17 +24,19 @@
     "confidence": 41
    },
    "radar": {
-    "score": 60,
-    "level": "amber",
+    "score": 84,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 3-2 تُسقط التوقع (د76)"
+     "النتيجة الحالية 3-2 تُسقط التوقع (د86)",
+     "موجة تسديد على المرمى من المضيف",
+     "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 41,
     "drama": {
-     "signal": 65,
+     "signal": 85,
      "side": "away",
-     "ready": false
+     "ready": true
     },
     "alerted": null,
     "trend": {
@@ -42,19 +44,19 @@
       27,
       45,
       45,
-      76
+      86
      ],
      "h_sog": [
       2,
       2,
       2,
-      3
+      4
      ],
      "a_sog": [
       1,
       1,
-      1,
-      3
+      2,
+      4
      ],
      "h_cor": [
       0,
@@ -65,8 +67,8 @@
      "a_cor": [
       1,
       1,
-      1,
-      2
+      2,
+      4
      ]
     }
    }
@@ -82,9 +84,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/456.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "0-1",
-   "minute": 46,
+   "minute": 56,
    "status": "2H",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -94,18 +96,17 @@
     "confidence": 36
    },
    "radar": {
-    "score": 68,
+    "score": 66,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د46)",
+     "النتيجة الحالية 0-1 تُسقط التوقع (د56)",
      "موجة تسديد على المرمى من الضيف",
-     "ضغط هجومي متصاعد من الضيف",
-     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 36,
     "drama": {
-     "signal": 35,
+     "signal": 0,
      "side": "home",
      "ready": false
     },
@@ -113,10 +114,12 @@
     "trend": {
      "min": [
       16,
-      46
+      45,
+      56
      ],
      "h_sog": [
       1,
+      3,
       4
      ],
      "a_sog": [
@@ -136,6 +139,71 @@
    }
   },
   {
+   "fid": "1581843",
+   "home": "Defensor Sporting",
+   "away": "Cerro",
+   "home_en": "Defensor Sporting",
+   "away_en": "Cerro",
+   "league": "Primera División - Apertura (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2350.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2362.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
+   "score": "1-1",
+   "minute": 55,
+   "status": "2H",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 48,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د55)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      15,
+      44,
+      55
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1493046",
    "home": "Velez Sarsfield",
    "away": "Independiente",
@@ -146,9 +214,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/453.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "minute": 50,
+   "status": "2H",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -158,15 +226,15 @@
     "confidence": 34
    },
    "radar": {
-    "score": 42,
+    "score": 45,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
     ],
     "pick": "home",
     "confidence": 34,
     "drama": {
-     "signal": 15,
+     "signal": 0,
      "side": "home",
      "ready": false
     },
@@ -174,7 +242,8 @@
     "trend": {
      "min": [
       14,
-      45
+      43,
+      50
      ],
      "h_sog": [
       0,
@@ -200,66 +269,6 @@
    }
   },
   {
-   "fid": "1581843",
-   "home": "Defensor Sporting",
-   "away": "Cerro",
-   "home_en": "Defensor Sporting",
-   "away_en": "Cerro",
-   "league": "Primera División - Apertura (Uruguay)",
-   "home_logo": "https://media.api-sports.io/football/teams/2350.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2362.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
-   "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 44
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
-    ],
-    "pick": "home",
-    "confidence": 44,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      15,
-      45
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1593677",
    "home": "Paysandu",
    "away": "Oriental",
@@ -270,26 +279,28 @@
    "away_logo": "https://media.api-sports.io/football/teams/2376.png",
    "league_logo": "https://media.api-sports.io/football/leagues/269.png",
    "score": "2-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 57
+    "pick": "draw",
+    "confidence": 49
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 38
+    "confidence": 36
    },
    "radar": {
-    "score": 0,
+    "score": 34,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د33)"
+    ],
     "pick": "home",
-    "confidence": 38,
+    "confidence": 36,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -333,9 +344,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1461.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-0",
-   "minute": 33,
+   "minute": 43,
    "status": "1H",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -345,10 +356,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 34,
-    "level": "green",
+    "score": 40,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د33)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
     ],
     "pick": "home",
     "confidence": 36,
@@ -360,8 +371,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      14,
-      33
+      24,
+      43
      ],
      "h_sog": [
       0,
@@ -392,10 +403,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/27627.png",
    "away_logo": "https://media.api-sports.io/football/teams/1180.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-   "score": "0-0",
-   "minute": 33,
+   "score": "0-1",
+   "minute": 43,
    "status": "1H",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -405,10 +416,10 @@
     "confidence": 37
    },
    "radar": {
-    "score": 34,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د33)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "away",
     "confidence": 37,
@@ -420,8 +431,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      14,
-      33
+      24,
+      43
      ],
      "h_sog": [
       0,
@@ -452,10 +463,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2808.png",
    "away_logo": "https://media.api-sports.io/football/teams/2818.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "0-0",
-   "minute": 31,
+   "score": "0-1",
+   "minute": 40,
    "status": "1H",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -465,10 +476,10 @@
     "confidence": 47
    },
    "radar": {
-    "score": 33,
+    "score": 39,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د31)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د40)"
     ],
     "pick": "home",
     "confidence": 47,
@@ -480,192 +491,23 @@
     "alerted": null,
     "trend": {
      "min": [
-      11,
-      31
+      21,
+      40
      ],
      "h_sog": [
-      0,
       0,
       0
      ],
      "a_sog": [
       0,
-      0,
       0
      ],
      "h_cor": [
-      0,
       0,
       0
      ],
      "a_cor": [
       0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1549575",
-   "home": "Leones FC",
-   "away": "Quindio",
-   "home_en": "Leones FC",
-   "away_en": "Quindio",
-   "league": "Primera B (Colombia)",
-   "home_logo": "https://media.api-sports.io/football/teams/1143.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1461.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-   "score": "0-0",
-   "minute": 24,
-   "status": "1H",
-   "seen": "2026-08-03T22:53:35.137018+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 49
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 36
-   },
-   "radar": {
-    "score": 29,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د24)"
-    ],
-    "pick": "home",
-    "confidence": 36,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      24
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1599166",
-   "home": "Paraguari AC",
-   "away": "Deportivo Capiata",
-   "home_en": "Paraguari AC",
-   "away_en": "Deportivo Capiata",
-   "league": "Division Intermedia (Paraguay)",
-   "home_logo": "https://media.api-sports.io/football/teams/27627.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1180.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-   "score": "0-0",
-   "minute": 24,
-   "status": "1H",
-   "seen": "2026-08-03T22:53:35.137018+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 37
-   },
-   "radar": {
-    "score": 29,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د24)"
-    ],
-    "pick": "away",
-    "confidence": 37,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      24
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607534",
-   "home": "Caracas FC",
-   "away": "Estudiantes de Merida FC",
-   "home_en": "Caracas FC",
-   "away_en": "Estudiantes de Merida FC",
-   "league": "Primera División (Venezuela)",
-   "home_logo": "https://media.api-sports.io/football/teams/2808.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2818.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "0-0",
-   "minute": 21,
-   "status": "1H",
-   "seen": "2026-08-03T22:53:35.137018+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 47
-   },
-   "radar": {
-    "score": 27,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
-    ],
-    "pick": "home",
-    "confidence": 47,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
       0
      ]
     }
@@ -682,9 +524,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7846.png",
    "league_logo": "https://media.api-sports.io/football/leagues/742.png",
    "score": "0-0",
-   "minute": 20,
+   "minute": 39,
    "status": "1H",
-   "seen": "2026-08-03T22:53:35.137018+00:00",
+   "seen": "2026-08-03T23:13:02.838270+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -694,10 +536,10 @@
     "confidence": 39
    },
    "radar": {
-    "score": 27,
+    "score": 38,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د39)"
     ],
     "pick": "home",
     "confidence": 39,
@@ -709,63 +551,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      20
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1546089",
-   "home": "Grêmio Prudente",
-   "away": "Linense",
-   "home_en": "Grêmio Prudente",
-   "away_en": "Linense",
-   "league": "Copa Paulista (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/20713.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7846.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/742.png",
-   "score": "0-0",
-   "minute": 30,
-   "status": "1H",
-   "seen": "2026-08-03T23:03:27.411380+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 33,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د30)"
-    ],
-    "pick": "home",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      10,
-      30
+      20,
+      39
      ],
      "h_sog": [
       0,
