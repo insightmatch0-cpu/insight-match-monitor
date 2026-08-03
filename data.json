@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-03T10:09:53.878949+00:00",
+ "updated": "2026-08-03T10:19:39.162723+00:00",
  "live": [
   {
    "fid": "1536860",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/25866.png",
    "away_logo": "https://media.api-sports.io/football/teams/6794.png",
    "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-   "score": "2-1",
-   "minute": 52,
+   "score": "2-2",
+   "minute": 62,
    "status": "2H",
-   "seen": "2026-08-03T10:09:51.787409+00:00",
+   "seen": "2026-08-03T10:19:37.464632+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -24,24 +24,24 @@
     "confidence": 47
    },
    "radar": {
-    "score": 46,
+    "score": 52,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 2-1 تُسقط التوقع (د52)"
+     "النتيجة الحالية 2-2 تُسقط التوقع (د62)"
     ],
     "pick": "away",
     "confidence": 47,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
       21,
-      42,
-      52
+      45,
+      62
      ],
      "h_sog": [
       0,
@@ -79,7 +79,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-03T10:09:51.787409+00:00",
+   "seen": "2026-08-03T10:19:37.464632+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -105,6 +105,61 @@
     "trend": {
      "min": [
       45
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1581859",
+   "home": "Inhulets",
+   "away": "Polissya II",
+   "home_en": "Inhulets",
+   "away_en": "Polissya II",
+   "league": "Persha Liga (Ukraine)",
+   "home_logo": "https://media.api-sports.io/football/teams/3625.png",
+   "away_logo": "https://media.api-sports.io/football/teams/24589.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/334.png",
+   "score": "1-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-08-03T10:19:37.464632+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 48,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      15
      ],
      "h_sog": [
       0
