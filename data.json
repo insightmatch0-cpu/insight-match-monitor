@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-04T16:20:31.472382+00:00",
+ "updated": "2026-08-04T16:30:00.405632+00:00",
  "live": [
   {
    "fid": "1602417",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2586.png",
    "league_logo": "https://media.api-sports.io/football/leagues/284.png",
    "score": "1-0",
-   "minute": 54,
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,10 +24,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 47,
+    "score": 53,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د54)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د64)"
     ],
     "pick": "away",
     "confidence": 40,
@@ -41,9 +41,11 @@
      "min": [
       27,
       45,
-      54
+      45,
+      64
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -51,14 +53,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -76,10 +81,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/25887.png",
    "away_logo": "https://media.api-sports.io/football/teams/27586.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1075.png",
-   "score": "0-0",
-   "minute": 53,
+   "score": "1-0",
+   "minute": 63,
    "status": "2H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -89,37 +94,42 @@
     "confidence": 45
    },
    "radar": {
-    "score": 46,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 45,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
       21,
-      53
+      45,
+      60
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -138,8 +148,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
+   "status": "HT",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -149,7 +159,7 @@
     "confidence": 40
    },
    "radar": {
-    "score": 42,
+    "score": 46,
     "level": "amber",
     "factors": [
      "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
@@ -165,7 +175,66 @@
     "trend": {
      "min": [
       20,
-      29,
+      45
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1563640",
+   "home": "Rodina Moskva",
+   "away": "Rubin",
+   "home_en": "Rodina Moskva",
+   "away_en": "Rubin",
+   "league": "Cup (Russia)",
+   "home_logo": "https://media.api-sports.io/football/teams/6822.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1083.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/237.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "away",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      21,
       45
      ],
      "h_sog": [
@@ -268,8 +337,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/173.png",
    "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
+   "status": "HT",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -295,7 +364,6 @@
     "trend": {
      "min": [
       20,
-      29,
       45
      ],
      "h_sog": [
@@ -332,9 +400,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2245.png",
    "league_logo": "https://media.api-sports.io/football/leagues/248.png",
    "score": "0-0",
-   "minute": 21,
+   "minute": 31,
    "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -344,10 +412,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 27,
+    "score": 33,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د31)"
     ],
     "pick": "home",
     "confidence": 38,
@@ -359,282 +427,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1583691",
-   "home": "Maribo",
-   "away": "Skjold Sæby",
-   "home_en": "Maribo",
-   "away_en": "Skjold Sæby",
-   "league": "DBU Pokalen (Denmark)",
-   "home_logo": "https://media.api-sports.io/football/teams/11546.png",
-   "away_logo": "https://media.api-sports.io/football/teams/6055.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 21,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 27,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1583699",
-   "home": "SfB-Oure",
-   "away": "FC Fredericia",
-   "home_en": "SfB-Oure",
-   "away_en": "FC Fredericia",
-   "league": "DBU Pokalen (Denmark)",
-   "home_logo": "https://media.api-sports.io/football/teams/6052.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2061.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 20,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "away",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      11
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1583709",
-   "home": "Viby",
-   "away": "ASA Aarhus",
-   "home_en": "Viby",
-   "away_en": "ASA Aarhus",
-   "league": "DBU Pokalen (Denmark)",
-   "home_logo": "https://media.api-sports.io/football/teams/6069.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14443.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 20,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
-    ],
-    "pick": "away",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      10
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1583710",
-   "home": "Vigerslev",
-   "away": "Skovshoved",
-   "home_en": "Vigerslev",
-   "away_en": "Skovshoved",
-   "league": "DBU Pokalen (Denmark)",
-   "home_logo": "https://media.api-sports.io/football/teams/24219.png",
-   "away_logo": "https://media.api-sports.io/football/teams/6056.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 20,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 51
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "away",
-    "confidence": 51,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      11
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1605370",
-   "home": "Ararat-Armenia",
-   "away": "Celje",
-   "home_en": "Ararat-Armenia",
-   "away_en": "Celje",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/3683.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4360.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "0-0",
-   "minute": 20,
-   "status": "1H",
-   "seen": "2026-08-04T16:20:29.077076+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "home",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      11
+      11,
+      31
      ],
      "h_sog": [
       0
@@ -936,10 +730,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/11546.png",
    "away_logo": "https://media.api-sports.io/football/teams/6055.png",
    "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 11,
+   "score": "0-2",
+   "minute": 31,
    "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -949,10 +743,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 21,
+    "score": 33,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د31)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -964,73 +758,23 @@
     "alerted": null,
     "trend": {
      "min": [
-      11
+      11,
+      31
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607168",
-   "home": "Mjallby AIF",
-   "away": "Slovan Bratislava",
-   "home_en": "Mjallby AIF",
-   "away_en": "Slovan Bratislava",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/2240.png",
-   "away_logo": "https://media.api-sports.io/football/teams/656.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "0-0",
-   "minute": 11,
-   "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 60
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 43
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د1)"
-    ],
-    "pick": "home",
-    "confidence": 43,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      1
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
+      0,
       0
      ]
     }
@@ -1046,10 +790,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6052.png",
    "away_logo": "https://media.api-sports.io/football/teams/2061.png",
    "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 10,
+   "score": "0-1",
+   "minute": 30,
    "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 57
@@ -1059,10 +803,10 @@
     "confidence": 65
    },
    "radar": {
-    "score": 21,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "away",
     "confidence": 65,
@@ -1074,73 +818,23 @@
     "alerted": null,
     "trend": {
      "min": [
-      10
+      10,
+      28
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1583709",
-   "home": "Viby",
-   "away": "ASA Aarhus",
-   "home_en": "Viby",
-   "away_en": "ASA Aarhus",
-   "league": "DBU Pokalen (Denmark)",
-   "home_logo": "https://media.api-sports.io/football/teams/6069.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14443.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-   "score": "0-0",
-   "minute": 10,
-   "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د1)"
-    ],
-    "pick": "away",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      1
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
+      0,
       0
      ]
     }
@@ -1157,9 +851,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6056.png",
    "league_logo": "https://media.api-sports.io/football/leagues/121.png",
    "score": "0-0",
-   "minute": 10,
+   "minute": 30,
    "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -1169,10 +863,10 @@
     "confidence": 51
    },
    "radar": {
-    "score": 15,
+    "score": 33,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د1)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د30)"
     ],
     "pick": "away",
     "confidence": 51,
@@ -1184,18 +878,28 @@
     "alerted": null,
     "trend": {
      "min": [
-      1
+      1,
+      20,
+      30
      ],
      "h_sog": [
+      0,
+      0,
       0
      ],
      "a_sog": [
+      0,
+      0,
       0
      ],
      "h_cor": [
+      0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
       0
      ]
     }
@@ -1211,10 +915,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/3683.png",
    "away_logo": "https://media.api-sports.io/football/teams/4360.png",
    "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "0-0",
-   "minute": 10,
+   "score": "0-1",
+   "minute": 30,
    "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -1224,10 +928,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 15,
+    "score": 27,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د1)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
     ],
     "pick": "home",
     "confidence": 38,
@@ -1239,18 +943,83 @@
     "alerted": null,
     "trend": {
      "min": [
-      1
+      1,
+      20
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607168",
+   "home": "Mjallby AIF",
+   "away": "Slovan Bratislava",
+   "home_en": "Mjallby AIF",
+   "away_en": "Slovan Bratislava",
+   "league": "UEFA Champions League (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/2240.png",
+   "away_logo": "https://media.api-sports.io/football/teams/656.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
+   "score": "0-0",
+   "minute": 30,
+   "status": "1H",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 60
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 43
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
+    ],
+    "pick": "home",
+    "confidence": 43,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      1,
+      21
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0
      ]
     }
@@ -1267,9 +1036,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3326.png",
    "league_logo": "https://media.api-sports.io/football/leagues/848.png",
    "score": "0-0",
-   "minute": 10,
+   "minute": 30,
    "status": "1H",
-   "seen": "2026-08-04T16:10:49.857807+00:00",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -1279,10 +1048,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 15,
+    "score": 27,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د1)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
     ],
     "pick": "away",
     "confidence": 42,
@@ -1294,7 +1063,242 @@
     "alerted": null,
     "trend": {
      "min": [
-      1
+      1,
+      21
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1583709",
+   "home": "Viby",
+   "away": "ASA Aarhus",
+   "home_en": "Viby",
+   "away_en": "ASA Aarhus",
+   "league": "DBU Pokalen (Denmark)",
+   "home_logo": "https://media.api-sports.io/football/teams/6069.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14443.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
+   "score": "0-0",
+   "minute": 29,
+   "status": "1H",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 32,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د29)"
+    ],
+    "pick": "away",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      1,
+      20,
+      29
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1583673",
+   "home": "Bredballe",
+   "away": "Middelfart",
+   "home_en": "Bredballe",
+   "away_en": "Middelfart",
+   "league": "DBU Pokalen (Denmark)",
+   "home_logo": "https://media.api-sports.io/football/teams/17245.png",
+   "away_logo": "https://media.api-sports.io/football/teams/6042.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
+   "score": "0-0",
+   "minute": 29,
+   "status": "1H",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 61
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "away",
+    "confidence": 61,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1583679",
+   "home": "GVI",
+   "away": "Avarta",
+   "home_en": "GVI",
+   "away_en": "Avarta",
+   "league": "DBU Pokalen (Denmark)",
+   "home_logo": "https://media.api-sports.io/football/teams/8643.png",
+   "away_logo": "https://media.api-sports.io/football/teams/6006.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
+   "score": "0-0",
+   "minute": 28,
+   "status": "1H",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 49
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "away",
+    "confidence": 49,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1583701",
+   "home": "Sydkysten",
+   "away": "Ishøj",
+   "home_en": "Sydkysten",
+   "away_en": "Ishøj",
+   "league": "DBU Pokalen (Denmark)",
+   "home_logo": "https://media.api-sports.io/football/teams/26314.png",
+   "away_logo": "https://media.api-sports.io/football/teams/8645.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
+   "score": "1-0",
+   "minute": 27,
+   "status": "1H",
+   "seen": "2026-08-04T16:29:58.087836+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 25,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د18)"
+    ],
+    "pick": "away",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      18
      ],
      "h_sog": [
       0
