@@ -1014,10 +1014,10 @@
    "pick": "away",
    "confidence": 38,
    "level": "red",
-   "score": 80,
-   "minute": 66,
+   "score": 87,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د66)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د77)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
@@ -1032,10 +1032,10 @@
    "pick": "home",
    "confidence": 38,
    "level": "red",
-   "score": 68,
-   "minute": 66,
+   "score": 74,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د66)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د76)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ]
@@ -1048,11 +1048,11 @@
    "league": "Liga Pro (Ecuador)",
    "pick": "home",
    "confidence": 62,
-   "level": "amber",
-   "score": 59,
-   "minute": 74,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د74)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د85)"
    ]
   },
   {
@@ -1063,11 +1063,11 @@
    "league": "Primera B (Chile)",
    "pick": "home",
    "confidence": 36,
-   "level": "amber",
-   "score": 62,
-   "minute": 79,
+   "level": "red",
+   "score": 68,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-3 تُسقط التوقع (د79)"
+    "النتيجة الحالية 1-4 تُسقط التوقع (د89)"
    ]
   },
   {
@@ -1114,6 +1114,36 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1583728",
+   "date": "2026-08-04",
+   "home": "Independiente de La Chorrera",
+   "away": "Herrera",
+   "league": "Liga Panameña de Fútbol (Panama)",
+   "pick": "home",
+   "confidence": 50,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1549704",
+   "date": "2026-08-04",
+   "home": "Bucaramanga",
+   "away": "Cucuta",
+   "league": "Primera A (Colombia)",
+   "pick": "home",
+   "confidence": 46,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ]
   }
  ],
@@ -3109,6 +3139,89 @@
       "yc": 0,
       "rc": 0,
       "sv": 6
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1493039",
+   "date": "2026-08-04",
+   "minute": 79,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Huracan",
+   "away": "Atletico Tucuman",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "evidence": [
+    {
+     "minute": 27,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 0,
+      "poss": 74,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 1,
+      "poss": 26,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 8,
+      "cor": 2,
+      "poss": 71,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 7,
+      "cor": 2,
+      "poss": 29,
+      "yc": 2,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 79,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 13,
+      "cor": 3,
+      "poss": 67,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 14,
+      "cor": 4,
+      "poss": 33,
+      "yc": 3,
+      "rc": 0,
+      "sv": 1
      }
     }
    ]
