@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-04T23:20:15.776418+00:00",
+ "updated": "2026-08-04T23:29:55.918787+00:00",
  "live": [
   {
    "fid": "1545399",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3637.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "1-0",
-   "minute": 62,
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-08-04T23:20:14.182277+00:00",
+   "seen": "2026-08-04T23:29:52.975013+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -41,8 +41,8 @@
      "min": [
       14,
       32,
-      45,
-      62
+      53,
+      72
      ],
      "h_sog": [
       0,
@@ -81,10 +81,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2840.png",
    "away_logo": "https://media.api-sports.io/football/teams/2811.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "1-1",
-   "minute": 62,
+   "score": "2-1",
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-04T23:20:14.182277+00:00"
+   "seen": "2026-08-04T23:29:52.975013+00:00"
   },
   {
    "fid": "1546856",
@@ -99,7 +99,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-04T23:20:14.182277+00:00",
+   "seen": "2026-08-04T23:29:52.975013+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -118,35 +118,30 @@
     "pick": "away",
     "confidence": 46,
     "drama": {
-     "signal": 15,
-     "side": "home",
+     "signal": 35,
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
       20,
-      29,
       45
      ],
      "h_sog": [
-      0,
       0,
       1
      ],
      "a_sog": [
       0,
-      0,
       1
      ],
      "h_cor": [
-      0,
       0,
       1
      ],
      "a_cor": [
       0,
-      1,
       2
      ]
     }
@@ -165,7 +160,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-04T23:20:14.182277+00:00",
+   "seen": "2026-08-04T23:29:52.975013+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -191,28 +186,78 @@
     "trend": {
      "min": [
       21,
-      30,
       45
      ],
      "h_sog": [
-      0,
       0,
       0
      ],
      "a_sog": [
       0,
-      0,
       0
      ],
      "h_cor": [
-      0,
       0,
       0
      ],
      "a_cor": [
       0,
-      0,
       0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1549707",
+   "home": "Deportes Tolima",
+   "away": "Independiente Medellin",
+   "home_en": "Deportes Tolima",
+   "away_en": "Independiente Medellin",
+   "league": "Primera A (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1142.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1128.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
+   "score": "0-1",
+   "minute": 14,
+   "status": "1H",
+   "seen": "2026-08-04T23:29:52.975013+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 23,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د14)"
+    ],
+    "pick": "home",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      14
+     ],
+     "h_sog": [
+      1
+     ],
+     "a_sog": [
+      1
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      1
      ]
     }
    }
