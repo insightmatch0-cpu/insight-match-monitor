@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-04T23:29:55.918787+00:00",
+ "updated": "2026-08-04T23:39:41.216946+00:00",
  "live": [
   {
    "fid": "1545399",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/15702.png",
    "away_logo": "https://media.api-sports.io/football/teams/3637.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "1-0",
-   "minute": 72,
+   "score": "1-1",
+   "minute": 82,
    "status": "2H",
-   "seen": "2026-08-04T23:29:52.975013+00:00",
+   "seen": "2026-08-04T23:39:37.411324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -24,16 +24,16 @@
     "confidence": 48
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 64,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د82)"
     ],
     "pick": "home",
     "confidence": 48,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -42,7 +42,7 @@
       14,
       32,
       53,
-      72
+      82
      ],
      "h_sog": [
       0,
@@ -82,9 +82,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2811.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "2-1",
-   "minute": 71,
+   "minute": 81,
    "status": "2H",
-   "seen": "2026-08-04T23:29:52.975013+00:00"
+   "seen": "2026-08-04T23:39:37.411324+00:00"
   },
   {
    "fid": "1546856",
@@ -97,9 +97,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1062.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-04T23:29:52.975013+00:00",
+   "minute": 50,
+   "status": "2H",
+   "seen": "2026-08-04T23:39:37.411324+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -109,39 +109,43 @@
     "confidence": 46
    },
    "radar": {
-    "score": 48,
+    "score": 45,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
-     "ضغط هجومي متصاعد من المضيف"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
     ],
     "pick": "away",
     "confidence": 46,
     "drama": {
-     "signal": 35,
-     "side": "away",
+     "signal": 0,
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
       20,
-      45
+      45,
+      50
      ],
      "h_sog": [
       0,
+      1,
       1
      ],
      "a_sog": [
       0,
+      1,
       1
      ],
      "h_cor": [
       0,
+      1,
       1
      ],
      "a_cor": [
       0,
+      2,
       2
      ]
     }
@@ -158,9 +162,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2814.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-04T23:29:52.975013+00:00",
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-08-04T23:39:37.411324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -186,21 +190,26 @@
     "trend": {
      "min": [
       21,
-      45
+      45,
+      49
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -217,10 +226,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1142.png",
    "away_logo": "https://media.api-sports.io/football/teams/1128.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "score": "0-1",
-   "minute": 14,
+   "score": "0-2",
+   "minute": 24,
    "status": "1H",
-   "seen": "2026-08-04T23:29:52.975013+00:00",
+   "seen": "2026-08-04T23:39:37.411324+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -230,10 +239,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 23,
+    "score": 29,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د14)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د24)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -245,19 +254,74 @@
     "alerted": null,
     "trend": {
      "min": [
-      14
+      24
      ],
      "h_sog": [
-      1
+      2
      ],
      "a_sog": [
+      2
+     ],
+     "h_cor": [
       1
+     ],
+     "a_cor": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567345",
+   "home": "Universidad de Concepcion",
+   "away": "Curico Unido",
+   "home_en": "Universidad de Concepcion",
+   "away_en": "Curico Unido",
+   "league": "Copa Chile (Chile)",
+   "home_logo": "https://media.api-sports.io/football/teams/2324.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2316.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/267.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-04T23:39:37.411324+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 49
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      10
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
      ],
      "h_cor": [
       0
      ],
      "a_cor": [
-      1
+      0
      ]
     }
    }
@@ -1345,6 +1409,72 @@
  },
  "news": [
   {
+   "title": "Draper in tears amid injury concern during defeat in Montreal",
+   "link": "https://www.skysports.com/tennis/news/12040/13569819/jack-draper-in-tears-amid-injury-concern-during-defeat-to-terence-atmane-on-return-to-action-in-montreal",
+   "source": "Sky Sports",
+   "time": "2026-08-04T22:30:00+00:00"
+  },
+  {
+   "title": "Papers: Chelsea eyeing move for Porto goalkeeper Costa",
+   "link": "https://www.skysports.com/football/news/12040/13569788/diogo-costa-transfer-news-chelsea-eyeing-move-for-porto-goalkeeper-paper-talk",
+   "source": "Sky Sports",
+   "time": "2026-08-04T22:30:00+00:00"
+  },
+  {
+   "title": "Papers: Chelsea eyeing move for Porto goalkeeper Costa",
+   "link": "https://www.skysports.com/football/news/12691/13569788/diogo-costa-transfer-news-chelsea-eyeing-move-for-porto-goalkeeper-paper-talk",
+   "source": "Sky News",
+   "time": "2026-08-04T22:30:00+00:00"
+  },
+  {
+   "title": "كيف يتحدى مبرمجو غزة تعطل الكهرباء والإنترنت؟",
+   "link": "https://www.bbc.com/arabic/articles/cvg8djk9v88o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-04T21:55:43+00:00"
+  },
+  {
+   "title": "Liverpool latest: Trabzonspor 'begin negotiations' for Salah",
+   "link": "https://www.skysports.com/football/live-blog/12691/13025501/liverpool-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+   "source": "Sky News",
+   "time": "2026-08-04T21:53:00+00:00"
+  },
+  {
+   "title": "Trabzonspor aim to sign Mohamed Salah this week after opening transfer talks",
+   "link": "https://www.theguardian.com/football/2026/aug/04/trabzonspor-transfer-mohamed-salah-turkish-super-lig",
+   "source": "The Guardian",
+   "time": "2026-08-04T21:52:37+00:00"
+  },
+  {
+   "title": "Brook stars as SunRisers thrash Spirit after setting record Hundred total",
+   "link": "https://www.skysports.com/cricket/news/12040/13569782/the-hundred-sunrisers-leeds-thrash-london-spirit-after-scoring-241-to-set-highest-total-in-tournament-history",
+   "source": "Sky Sports",
+   "time": "2026-08-04T21:50:00+00:00"
+  },
+  {
+   "title": "Turkish club Trabzonspor begin talks to sign Salah",
+   "link": "https://www.bbc.co.uk/sport/football/articles/ckgdkd5ggg7o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-04T21:39:08+00:00"
+  },
+  {
+   "title": "RECORD-BREAKERS! Best of Sunrisers' 241-run innings!",
+   "link": "https://www.skysports.com/watch/video/13569863/the-hundred-sunrisers-leeds-smash-hundred-runs-record-by-seventeen",
+   "source": "Sky Sports",
+   "time": "2026-08-04T21:12:00+00:00"
+  },
+  {
+   "title": "Forest target Reijnders - Wednesday's gossip",
+   "link": "https://www.bbc.co.uk/sport/football/articles/cy8mvgp179po?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-04T20:52:35+00:00"
+  },
+  {
+   "title": "The Fifa family: which confederations could support Infantino or turn against him?",
+   "link": "https://www.theguardian.com/football/2026/aug/04/fifa-which-confederations-could-support-gianni-infantino-or-turn-against-him",
+   "source": "The Guardian",
+   "time": "2026-08-04T20:45:02+00:00"
+  },
+  {
    "title": "Several athletes 'unaccounted for' after Commonwealth Games in Glasgow",
    "link": "https://www.skysports.com/athletics/news/12040/13569853/commonwealth-games-several-athletes-unaccounted-for-after-glasgow-event-according-to-police-scotland",
    "source": "Sky Sports",
@@ -1357,12 +1487,6 @@
    "time": "2026-08-04T20:13:03+00:00"
   },
   {
-   "title": "Palace latest: Talks advancing over MLS winger",
-   "link": "https://www.skysports.com/football/live-blog/12691/13279298/crystal-palace-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-   "source": "Sky News",
-   "time": "2026-08-04T20:07:00+00:00"
-  },
-  {
    "title": "Infantino to hold crisis meeting with senior FIFA staff",
    "link": "https://www.skysports.com/football/news/12040/13569849/gianni-infantino-fifa-president-asks-senior-staff-to-attend-crisis-meeting-in-morocco-on-wednesday",
    "source": "Sky Sports",
@@ -1373,66 +1497,6 @@
    "link": "https://www.theguardian.com/football/2026/aug/04/mls-larry-berg-promotion-relegation-comissioner",
    "source": "The Guardian",
    "time": "2026-08-04T19:35:50+00:00"
-  },
-  {
-   "title": "Liverpool latest: 'We are cool' - Szoboszlai plays down captaincy row",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025501/liverpool-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-04T19:23:00+00:00"
-  },
-  {
-   "title": "Sutherland leads SunRisers to tight win over Spirit",
-   "link": "https://www.skysports.com/cricket/news/12040/13569781/the-hundred-sunrisers-leeds-claim-tight-win-over-london-spirit-as-annabel-sutherland-stars-with-bat-at-headingley",
-   "source": "Sky Sports",
-   "time": "2026-08-04T19:20:00+00:00"
-  },
-  {
-   "title": "‘It’s inevitable’ | All the latest on Arsenal's Guimaraes deal",
-   "link": "https://www.skysports.com/watch/video/13569837/all-the-latest-on-bruno-guimaraes-to-arsenal-explained-its-inevitable",
-   "source": "Sky Sports",
-   "time": "2026-08-04T19:10:00+00:00"
-  },
-  {
-   "title": "Man City latest: Trafford replacement lined up as Neto 'talks' begin",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025499/man-city-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-04T19:00:00+00:00"
-  },
-  {
-   "title": "Tottenham latest: Spurs have no interest in Chelsea's Jackson",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025489/tottenham-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-04T18:58:00+00:00"
-  },
-  {
-   "title": "Barcelona sign Brazil forward Kerolin from Manchester City for club-record £1.25m",
-   "link": "https://www.theguardian.com/football/2026/aug/04/barcelona-sign-brazil-forward-kerolin-manchester-city-womens-super-league",
-   "source": "The Guardian",
-   "time": "2026-08-04T18:57:15+00:00"
-  },
-  {
-   "title": "Man Utd set to appoint ex-Hearts boss Olid as women's manager",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c86n72316g1o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-04T18:51:49+00:00"
-  },
-  {
-   "title": "Man Utd to name ex-Hearts boss Olid women's manager",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c86n72316g1o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-04T18:51:49+00:00"
-  },
-  {
-   "title": "Man Utd set to appoint ex-Hearts boss Olid as women's manager",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c86n72316g1o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-04T18:51:49+00:00"
-  },
-  {
-   "title": "Tough Champions League challenge awaits Hearts and Rangers",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c8rn01gd4jdo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-04T18:47:49+00:00"
   }
  ],
  "radar_acc": {
