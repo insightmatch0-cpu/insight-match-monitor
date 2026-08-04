@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-04T22:32:30.427978+00:00",
+ "updated": "2026-08-04T22:42:02.693966+00:00",
  "live": [
   {
    "fid": "1610921",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2815.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "1-0",
-   "minute": 73,
+   "minute": 82,
    "status": "2H",
-   "seen": "2026-08-04T22:32:28.800877+00:00",
+   "seen": "2026-08-04T22:42:00.196038+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -41,9 +41,11 @@
      "min": [
       26,
       54,
-      73
+      63,
+      82
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -51,14 +53,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -77,9 +82,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1147.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "2-1",
-   "minute": 65,
+   "minute": 74,
    "status": "2H",
-   "seen": "2026-08-04T22:32:28.800877+00:00",
+   "seen": "2026-08-04T22:42:00.196038+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -89,11 +94,13 @@
     "confidence": 37
    },
    "radar": {
-    "score": 60,
-    "level": "amber",
+    "score": 85,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 2-1 تُسقط التوقع (د65)",
-     "ضغط هجومي متصاعد من المضيف"
+     "النتيجة الحالية 2-1 تُسقط التوقع (د74)",
+     "موجة تسديد على المرمى من المضيف",
+     "ضغط هجومي متصاعد من المضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
     ],
     "pick": "away",
     "confidence": 37,
@@ -106,13 +113,13 @@
     "trend": {
      "min": [
       25,
-      46,
-      65
+      55,
+      74
      ],
      "h_sog": [
       2,
       4,
-      5
+      7
      ],
      "a_sog": [
       1,
@@ -126,7 +133,7 @@
      ],
      "a_cor": [
       0,
-      0,
+      1,
       2
      ]
     }
@@ -143,9 +150,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3637.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "1-0",
-   "minute": 32,
+   "minute": 42,
    "status": "1H",
-   "seen": "2026-08-04T22:32:28.800877+00:00",
+   "seen": "2026-08-04T22:42:00.196038+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -170,8 +177,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      14,
-      32
+      23,
+      42
      ],
      "h_sog": [
       0,
@@ -202,10 +209,124 @@
    "home_logo": "https://media.api-sports.io/football/teams/2840.png",
    "away_logo": "https://media.api-sports.io/football/teams/2811.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "0-1",
-   "minute": 32,
+   "score": "1-1",
+   "minute": 42,
    "status": "1H",
-   "seen": "2026-08-04T22:32:28.800877+00:00"
+   "seen": "2026-08-04T22:42:00.196038+00:00"
+  },
+  {
+   "fid": "1610922",
+   "home": "Deportivo Tachira FC",
+   "away": "Portuguesa FC",
+   "home_en": "Deportivo Tachira FC",
+   "away_en": "Portuguesa FC",
+   "league": "Primera División (Venezuela)",
+   "home_logo": "https://media.api-sports.io/football/teams/2807.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2814.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/299.png",
+   "score": "0-0",
+   "minute": 11,
+   "status": "1H",
+   "seen": "2026-08-04T22:42:00.196038+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
+    ],
+    "pick": "home",
+    "confidence": 55,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      11
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1546856",
+   "home": "Juventude",
+   "away": "Atletico-MG",
+   "home_en": "Juventude",
+   "away_en": "Atletico-MG",
+   "league": "Copa Do Brasil (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/152.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1062.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-04T22:42:00.196038+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 46
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "away",
+    "confidence": 46,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      10
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
   }
  ],
  "upcoming": [
