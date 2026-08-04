@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-04T21:25:43.959306+00:00",
+ "updated": "2026-08-04T21:35:18.656951+00:00",
  "live": [
   {
    "fid": "1610921",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2815.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "1-0",
-   "minute": 26,
+   "minute": 36,
    "status": "1H",
-   "seen": "2026-08-04T21:25:42.564394+00:00",
+   "seen": "2026-08-04T21:35:16.732413+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -39,16 +39,76 @@
     "alerted": null,
     "trend": {
      "min": [
-      26
+      13,
+      36
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1549709",
+   "home": "Llaneros",
+   "away": "Fortaleza FC",
+   "home_en": "Llaneros",
+   "away_en": "Fortaleza FC",
+   "league": "Primera A (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1464.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1147.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
+   "score": "1-1",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-04T21:35:16.732413+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 37
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د25)"
+    ],
+    "pick": "away",
+    "confidence": 37,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      25
+     ],
+     "h_sog": [
+      2
+     ],
+     "a_sog": [
+      1
+     ],
+     "h_cor": [
+      1
      ],
      "a_cor": [
       0
