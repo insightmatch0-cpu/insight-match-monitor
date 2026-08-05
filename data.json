@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-05T11:39:57.608807+00:00",
+ "updated": "2026-08-05T11:49:45.650008+00:00",
  "live": [
   {
    "fid": "1610811",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/19007.png",
    "away_logo": "https://media.api-sports.io/football/teams/25952.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
-   "score": "0-0",
-   "minute": 83,
+   "score": "1-0",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-05T11:39:38.877460+00:00",
+   "seen": "2026-08-05T11:49:43.134880+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,13 +24,68 @@
     "confidence": 50
    },
    "radar": {
-    "score": 64,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      90
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1532766",
+   "home": "Rizhao Yuqi",
+   "away": "BIT",
+   "home_en": "Rizhao Yuqi",
+   "away_en": "BIT",
+   "league": "League Two (China)",
+   "home_logo": "https://media.api-sports.io/football/teams/21328.png",
+   "away_logo": "https://media.api-sports.io/football/teams/5647.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/929.png",
+   "score": "0-0",
+   "minute": 19,
+   "status": "1H",
+   "seen": "2026-08-05T11:49:43.134880+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "home",
+    "confidence": 48,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -39,7 +94,62 @@
     "alerted": null,
     "trend": {
      "min": [
-      83
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1532811",
+   "home": "Hubei Chufeng Heli",
+   "away": "Jiangxi Liansheng",
+   "home_en": "Hubei Chufeng Heli",
+   "away_en": "Jiangxi Liansheng",
+   "league": "League Two (China)",
+   "home_logo": "https://media.api-sports.io/football/teams/5660.png",
+   "away_logo": "https://media.api-sports.io/football/teams/5665.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/929.png",
+   "score": "0-0",
+   "minute": 19,
+   "status": "1H",
+   "seen": "2026-08-05T11:49:43.134880+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "away",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      19
      ],
      "h_sog": [
       0
