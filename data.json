@@ -1,6 +1,74 @@
 {
- "updated": "2026-08-05T23:07:41.481161+00:00",
+ "updated": "2026-08-05T23:17:18.182630+00:00",
  "live": [
+  {
+   "fid": "1567349",
+   "home": "Santiago Wanderers",
+   "away": "Union La Calera",
+   "home_en": "Santiago Wanderers",
+   "away_en": "Union La Calera",
+   "league": "Copa Chile (Chile)",
+   "home_logo": "https://media.api-sports.io/football/teams/2333.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2326.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/267.png",
+   "score": "0-3",
+   "minute": 62,
+   "status": "2H",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 43
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "away",
+    "confidence": 43,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      21,
+      45,
+      41,
+      52
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
   {
    "fid": "1567346",
    "home": "Union San Felipe",
@@ -12,9 +80,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2323.png",
    "league_logo": "https://media.api-sports.io/football/leagues/267.png",
    "score": "0-1",
-   "minute": 52,
+   "minute": 61,
    "status": "2H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -40,81 +108,26 @@
     "trend": {
      "min": [
       21,
-      40,
-      52
+      45,
+      61
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1567349",
-   "home": "Santiago Wanderers",
-   "away": "Union La Calera",
-   "home_en": "Santiago Wanderers",
-   "away_en": "Union La Calera",
-   "league": "Copa Chile (Chile)",
-   "home_logo": "https://media.api-sports.io/football/teams/2333.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2326.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/267.png",
-   "score": "0-3",
-   "minute": 52,
-   "status": "2H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 43
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 43,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      21,
-      41,
-      45
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
       0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -132,9 +145,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/450.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "1-0",
-   "minute": 49,
+   "minute": 59,
    "status": "2H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -161,7 +174,7 @@
     "trend": {
      "min": [
       28,
-      49
+      59
      ],
      "h_sog": [
       0,
@@ -192,10 +205,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/3706.png",
    "away_logo": "https://media.api-sports.io/football/teams/3711.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "2-1",
-   "minute": 49,
+   "score": "2-2",
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -205,23 +218,23 @@
     "confidence": 45
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 49,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 2-2 تُسقط التوقع (د58)"
     ],
     "pick": "home",
     "confidence": 45,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
       29,
-      49
+      58
      ],
      "h_sog": [
       0,
@@ -318,9 +331,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/132.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
+   "minute": 52,
+   "status": "2H",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 62
@@ -347,7 +360,7 @@
     "trend": {
      "min": [
       29,
-      45
+      52
      ],
      "h_sog": [
       2,
@@ -363,6 +376,122 @@
      ],
      "a_cor": [
       0,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1498664",
+   "home": "Quilmes",
+   "away": "Gimnasia Jujuy",
+   "home_en": "Quilmes",
+   "away_en": "Gimnasia Jujuy",
+   "league": "Primera Nacional (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/480.png",
+   "away_logo": "https://media.api-sports.io/football/teams/479.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
+   "score": "0-0",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 45,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      51
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1546855",
+   "home": "Gremio",
+   "away": "Mirassol",
+   "home_en": "Gremio",
+   "away_en": "Mirassol",
+   "league": "Copa Do Brasil (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/130.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7848.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 64
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد",
+     "ضغط هجومي متصاعد من الضيف"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 15,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      27,
+      45
+     ],
+     "h_sog": [
+      0,
+      3
+     ],
+     "a_sog": [
+      0,
+      1
+     ],
+     "h_cor": [
+      0,
+      1
+     ],
+     "a_cor": [
+      2,
       2
      ]
     }
@@ -380,15 +509,15 @@
    "league_logo": "https://media.api-sports.io/football/leagues/1035.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
+   "status": "HT",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 55
+    "pick": "draw",
+    "confidence": 51
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 40
+    "confidence": 39
    },
    "radar": {
     "score": 42,
@@ -397,7 +526,7 @@
      "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
     ],
     "pick": "home",
-    "confidence": 40,
+    "confidence": 39,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -407,83 +536,28 @@
     "trend": {
      "min": [
       27,
+      36,
       45
      ],
      "h_sog": [
+      1,
       1,
       1
      ],
      "a_sog": [
       3,
+      3,
       3
      ],
      "h_cor": [
       1,
-      2
-     ],
-     "a_cor": [
-      0,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1546855",
-   "home": "Gremio",
-   "away": "Mirassol",
-   "home_en": "Gremio",
-   "away_en": "Mirassol",
-   "league": "Copa Do Brasil (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/130.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7848.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
-   "score": "0-0",
-   "minute": 37,
-   "status": "1H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 64
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 44
-   },
-   "radar": {
-    "score": 37,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
-    ],
-    "pick": "home",
-    "confidence": 44,
-    "drama": {
-     "signal": 45,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      17,
-      37
-     ],
-     "h_sog": [
-      0,
-      2
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      1
-     ],
-     "a_cor": [
       1,
       2
+     ],
+     "a_cor": [
+      0,
+      1,
+      1
      ]
     }
    }
@@ -499,9 +573,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2825.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "1-1",
-   "minute": 37,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-05T23:07:38.281617+00:00",
+   "seen": "2026-08-05T23:17:15.049945+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -511,10 +585,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د37)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -526,8 +600,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      18,
-      37
+      28,
+      45
      ],
      "h_sog": [
       0,
@@ -547,6 +621,21 @@
      ]
     }
    }
+  },
+  {
+   "fid": "1611270",
+   "home": "Penarol",
+   "away": "Wanderers",
+   "home_en": "Penarol",
+   "away_en": "Wanderers",
+   "league": "Primera División (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2348.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2360.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
+   "score": "1-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-08-05T23:17:15.049945+00:00"
   }
  ],
  "upcoming": [
