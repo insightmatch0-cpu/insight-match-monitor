@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-05T22:09:40.185336+00:00",
+ "updated": "2026-08-05T22:19:40.600415+00:00",
  "live": [
   {
    "fid": "1567346",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2323.png",
    "league_logo": "https://media.api-sports.io/football/leagues/267.png",
    "score": "0-1",
-   "minute": 11,
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-05T22:09:38.650736+00:00",
+   "seen": "2026-08-05T22:19:38.297730+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -39,7 +39,7 @@
     "alerted": null,
     "trend": {
      "min": [
-      11
+      21
      ],
      "h_sog": [
       0
@@ -67,9 +67,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2326.png",
    "league_logo": "https://media.api-sports.io/football/leagues/267.png",
    "score": "0-2",
-   "minute": 11,
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-05T22:09:38.650736+00:00",
+   "seen": "2026-08-05T22:19:38.297730+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -92,7 +92,172 @@
     "alerted": null,
     "trend": {
      "min": [
-      11
+      21
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1546852",
+   "home": "Cruzeiro",
+   "away": "Chapecoense-sc",
+   "home_en": "Cruzeiro",
+   "away_en": "Chapecoense-sc",
+   "league": "Copa Do Brasil (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/135.png",
+   "away_logo": "https://media.api-sports.io/football/teams/132.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
+   "score": "0-0",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-05T22:19:38.297730+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 59
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+    ],
+    "pick": "home",
+    "confidence": 59,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      20
+     ],
+     "h_sog": [
+      1
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      2
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493020",
+   "home": "Boca Juniors",
+   "away": "Estudiantes L.P.",
+   "home_en": "Boca Juniors",
+   "away_en": "Estudiantes L.P.",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/451.png",
+   "away_logo": "https://media.api-sports.io/football/teams/450.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "0-0",
+   "minute": 19,
+   "status": "1H",
+   "seen": "2026-08-05T22:19:38.297730+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "home",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1545394",
+   "home": "Nacional Potosí",
+   "away": "The Strongest",
+   "home_en": "Nacional Potosí",
+   "away_en": "The Strongest",
+   "league": "Primera División (Bolivia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3706.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3711.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
+   "score": "1-0",
+   "minute": 19,
+   "status": "1H",
+   "seen": "2026-08-05T22:19:38.297730+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      19
      ],
      "h_sog": [
       0
