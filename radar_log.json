@@ -159,11 +159,11 @@
    "league": "J1 League (Japan)",
    "pick": "away",
    "confidence": 45,
-   "level": "amber",
-   "score": 59,
-   "minute": 74,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 3-1 تُسقط التوقع (د74)"
+    "النتيجة الحالية 3-2 تُسقط التوقع (د84)"
    ]
   },
   {
@@ -192,10 +192,10 @@
    "pick": "away",
    "confidence": 37,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 4-1 تُسقط التوقع (د70)"
+    "النتيجة الحالية 5-1 تُسقط التوقع (د80)"
    ]
   },
   {
@@ -207,10 +207,10 @@
    "pick": "home",
    "confidence": 51,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
    ]
   },
   {
@@ -222,10 +222,10 @@
    "pick": "away",
    "confidence": 46,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 50,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
    ]
   },
   {
@@ -237,10 +237,10 @@
    "pick": "away",
    "confidence": 43,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
    ]
   },
   {
@@ -252,10 +252,10 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 50,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
    ]
   }
  ],
@@ -5732,7 +5732,174 @@
    "graded_on": "2026-08-07"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1554003",
+   "date": "2026-08-07",
+   "minute": 80,
+   "score_at": "2-2",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Gamba Osaka",
+   "away": "Urawa",
+   "league": "J1 League (Japan)",
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "shots": 7,
+      "cor": 2,
+      "poss": 69,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 4,
+      "poss": 31,
+      "yc": 3,
+      "rc": 1,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 53,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "shots": 7,
+      "cor": 2,
+      "poss": 67,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 4,
+      "poss": 33,
+      "yc": 4,
+      "rc": 1,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 80,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 7,
+      "shots": 10,
+      "cor": 5,
+      "poss": 64,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 4,
+      "shots": 16,
+      "cor": 6,
+      "poss": 36,
+      "yc": 4,
+      "rc": 1,
+      "sv": 5
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1554003",
+   "date": "2026-08-07",
+   "minute": 81,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "flip",
+   "signal": 95,
+   "home": "Gamba Osaka",
+   "away": "Urawa",
+   "league": "J1 League (Japan)",
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "shots": 7,
+      "cor": 2,
+      "poss": 69,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 4,
+      "poss": 31,
+      "yc": 3,
+      "rc": 1,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 53,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "shots": 7,
+      "cor": 2,
+      "poss": 67,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 4,
+      "poss": 33,
+      "yc": 4,
+      "rc": 1,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 81,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 7,
+      "shots": 10,
+      "cor": 5,
+      "poss": 63,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 6,
+      "shots": 18,
+      "cor": 6,
+      "poss": 37,
+      "yc": 4,
+      "rc": 1,
+      "sv": 5
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
