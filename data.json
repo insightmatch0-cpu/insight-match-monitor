@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-07T00:19:44.416308+00:00",
+ "updated": "2026-08-07T00:29:47.288618+00:00",
  "live": [
   {
    "fid": "1610928",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2827.png",
    "away_logo": "https://media.api-sports.io/football/teams/2808.png",
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "2-1",
+   "score": "3-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-07T00:19:42.256908+00:00",
+   "seen": "2026-08-07T00:23:34.474680+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -27,7 +27,7 @@
     "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 2-1 تُسقط التوقع (د90)"
+     "النتيجة الحالية 3-1 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 36,
@@ -76,10 +76,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/136.png",
    "away_logo": "https://media.api-sports.io/football/teams/134.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
-   "score": "2-0",
-   "minute": 56,
+   "score": "3-0",
+   "minute": 67,
    "status": "2H",
-   "seen": "2026-08-07T00:19:42.256908+00:00",
+   "seen": "2026-08-07T00:29:44.697520+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -89,19 +89,19 @@
     "confidence": 36
    },
    "radar": {
-    "score": 74,
+    "score": 89,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 2-0 تُسقط التوقع (د56)",
+     "النتيجة الحالية 3-0 تُسقط التوقع (د67)",
      "موجة تسديد على المرمى من المضيف",
-     "ضغط هجومي متصاعد من المضيف",
-     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+     "موجة ركنيات لصالح المضيف",
+     "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 36,
     "drama": {
-     "signal": 70,
-     "side": "away",
+     "signal": 0,
+     "side": null,
      "ready": false
     },
     "alerted": null,
@@ -109,12 +109,12 @@
      "min": [
       12,
       45,
-      56
+      67
      ],
      "h_sog": [
       0,
       3,
-      6
+      7
      ],
      "a_sog": [
       0,
@@ -124,7 +124,7 @@
      "h_cor": [
       0,
       0,
-      1
+      3
      ],
      "a_cor": [
       0,
@@ -144,10 +144,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/131.png",
    "away_logo": "https://media.api-sports.io/football/teams/119.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
-   "score": "1-0",
-   "minute": 54,
+   "score": "1-1",
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-07T00:19:42.256908+00:00",
+   "seen": "2026-08-07T00:29:44.697520+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -157,16 +157,16 @@
     "confidence": 42
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 54,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د65)"
     ],
     "pick": "home",
     "confidence": 42,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -174,7 +174,7 @@
      "min": [
       21,
       45,
-      54
+      65
      ],
      "h_sog": [
       0,
@@ -184,17 +184,72 @@
      "a_sog": [
       0,
       0,
-      0
+      1
      ],
      "h_cor": [
       3,
       5,
-      5
+      6
      ],
      "a_cor": [
       0,
       1,
       1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1530122",
+   "home": "New York City FC",
+   "away": "Santos Laguna",
+   "home_en": "New York City FC",
+   "away_en": "Santos Laguna",
+   "league": "Leagues Cup (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/1604.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2285.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/772.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-07T00:29:44.697520+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 61
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 52,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      45
+     ],
+     "h_sog": [
+      1
+     ],
+     "a_sog": [
+      1
+     ],
+     "h_cor": [
+      2
+     ],
+     "a_cor": [
+      0
      ]
     }
    }
@@ -211,8 +266,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-07T00:19:42.256908+00:00",
+   "status": "HT",
+   "seen": "2026-08-07T00:29:44.697520+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -255,44 +310,44 @@
    }
   },
   {
-   "fid": "1530122",
-   "home": "New York City FC",
-   "away": "Santos Laguna",
-   "home_en": "New York City FC",
-   "away_en": "Santos Laguna",
+   "fid": "1530121",
+   "home": "Cruz Azul",
+   "away": "Philadelphia Union",
+   "home_en": "Cruz Azul",
+   "away_en": "Philadelphia Union",
    "league": "Leagues Cup (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/1604.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2285.png",
+   "home_logo": "https://media.api-sports.io/football/teams/2295.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1599.png",
    "league_logo": "https://media.api-sports.io/football/leagues/772.png",
-   "score": "0-0",
-   "minute": 40,
+   "score": "1-0",
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-07T00:19:42.256908+00:00",
+   "seen": "2026-08-07T00:29:44.697520+00:00",
    "pred_v1": {
-    "pick": "away",
-    "confidence": 61
+    "pick": "home",
+    "confidence": 59
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 52
+    "confidence": 45
    },
    "radar": {
-    "score": 39,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
-    "confidence": 52,
+    "confidence": 45,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
-      40
+      19
      ],
      "h_sog": [
       1
@@ -301,7 +356,7 @@
       0
      ],
      "h_cor": [
-      2
+      1
      ],
      "a_cor": [
       0
