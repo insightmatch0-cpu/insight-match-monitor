@@ -1,86 +1,6 @@
 {
- "updated": "2026-08-07T12:38:23.260307+00:00",
+ "updated": "2026-08-07T12:47:49.933774+00:00",
  "live": [
-  {
-   "fid": "1554003",
-   "home": "Gamba Osaka",
-   "away": "Urawa",
-   "home_en": "Gamba Osaka",
-   "away_en": "Urawa",
-   "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/293.png",
-   "away_logo": "https://media.api-sports.io/football/teams/287.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "4-3",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-07T12:33:44.564103+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 59
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 37
-   },
-   "radar": {
-    "score": 41,
-    "level": "amber",
-    "factors": [
-     "تقدم هش بفارق هدف واحد",
-     "موجة تسديد على المرمى من الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 37,
-    "drama": {
-     "signal": 65,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": "flip",
-    "trend": {
-     "min": [
-      7,
-      17,
-      45,
-      53,
-      90
-     ],
-     "h_sog": [
-      0,
-      0,
-      4,
-      4,
-      9
-     ],
-     "a_sog": [
-      1,
-      1,
-      2,
-      2,
-      4,
-      6
-     ],
-     "h_cor": [
-      2,
-      2,
-      2,
-      2,
-      5,
-      5
-     ],
-     "a_cor": [
-      0,
-      0,
-      4,
-      4,
-      6,
-      6
-     ]
-    }
-   }
-  },
   {
    "fid": "1510403",
    "home": "Asan Mugunghwa",
@@ -92,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2758.png",
    "league_logo": "https://media.api-sports.io/football/leagues/293.png",
    "score": "1-1",
-   "minute": 80,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 53
@@ -104,10 +24,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 68,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د80)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د89)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -123,9 +43,11 @@
       20,
       30,
       61,
-      80
+      71,
+      89
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -137,6 +59,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -144,9 +67,91 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1510405",
+   "home": "Gyeongnam FC",
+   "away": "Daegu FC",
+   "home_en": "Gyeongnam FC",
+   "away_en": "Daegu FC",
+   "league": "K League 2 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2751.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2747.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/293.png",
+   "score": "0-0",
+   "minute": 88,
+   "status": "2H",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 67,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د88)"
+    ],
+    "pick": "away",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      1,
+      10,
+      21,
+      59,
+      69,
+      88
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0,
       0,
       0,
@@ -167,9 +172,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2749.png",
    "league_logo": "https://media.api-sports.io/football/leagues/293.png",
    "score": "0-0",
-   "minute": 79,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -179,10 +184,10 @@
     "confidence": 43
    },
    "radar": {
-    "score": 62,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د79)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د88)"
     ],
     "pick": "away",
     "confidence": 43,
@@ -197,9 +202,11 @@
       10,
       20,
       60,
-      79
+      70,
+      88
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -209,15 +216,18 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -237,9 +247,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7076.png",
    "league_logo": "https://media.api-sports.io/football/leagues/293.png",
    "score": "1-0",
-   "minute": 79,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 60
@@ -267,78 +277,8 @@
       10,
       20,
       60,
-      79
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1510405",
-   "home": "Gyeongnam FC",
-   "away": "Daegu FC",
-   "home_en": "Gyeongnam FC",
-   "away_en": "Daegu FC",
-   "league": "K League 2 (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2751.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2747.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/293.png",
-   "score": "0-0",
-   "minute": 78,
-   "status": "2H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 61,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د78)"
-    ],
-    "pick": "away",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      1,
-      10,
-      21,
-      59,
-      78
+      69,
+      88
      ],
      "h_sog": [
       0,
@@ -382,9 +322,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2752.png",
    "league_logo": "https://media.api-sports.io/football/leagues/293.png",
    "score": "1-0",
-   "minute": 78,
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -394,10 +334,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د78)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د87)"
     ],
     "pick": "away",
     "confidence": 46,
@@ -414,9 +354,11 @@
       21,
       31,
       59,
-      78
+      69,
+      87
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -430,6 +372,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -438,9 +381,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -462,9 +407,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7061.png",
    "league_logo": "https://media.api-sports.io/football/leagues/293.png",
    "score": "3-0",
-   "minute": 76,
+   "minute": 86,
    "status": "2H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -491,9 +436,11 @@
       19,
       29,
       48,
-      76
+      57,
+      86
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -505,6 +452,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -512,9 +460,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -594,10 +544,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/830.png",
    "away_logo": "https://media.api-sports.io/football/teams/5686.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-   "score": "2-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "score": "3-0",
+   "minute": 53,
+   "status": "2H",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -607,14 +557,16 @@
     "confidence": 63
    },
    "radar": {
-    "score": 0,
+    "score": 6,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "ضغط هجومي متصاعد من الضيف"
+    ],
     "pick": "home",
     "confidence": 63,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": null,
      "ready": false
     },
     "alerted": null,
@@ -623,13 +575,13 @@
       5,
       15,
       35,
-      45
+      53
      ],
      "h_sog": [
       0,
       0,
       4,
-      4
+      5
      ],
      "a_sog": [
       0,
@@ -663,9 +615,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27634.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "2-0",
-   "minute": 38,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-07T12:38:21.113591+00:00",
+   "seen": "2026-08-07T12:47:47.346236+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -688,8 +640,8 @@
     "alerted": null,
     "trend": {
      "min": [
-      11,
-      29
+      19,
+      45
      ],
      "h_sog": [
       0,
