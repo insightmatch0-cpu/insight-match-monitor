@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-08T00:13:55.324844+00:00",
+ "updated": "2026-08-08T00:23:55.181972+00:00",
  "live": [
   {
    "fid": "1499570",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3943.png",
    "league_logo": "https://media.api-sports.io/football/leagues/131.png",
    "score": "0-1",
-   "minute": 82,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1520808",
@@ -26,10 +26,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1223.png",
    "away_logo": "https://media.api-sports.io/football/teams/7865.png",
    "league_logo": "https://media.api-sports.io/football/leagues/72.png",
-   "score": "1-1",
-   "minute": 80,
+   "score": "1-2",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1493057",
@@ -41,10 +41,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/437.png",
    "away_logo": "https://media.api-sports.io/football/teams/463.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "1-1",
-   "minute": 77,
+   "score": "2-1",
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-08-08T00:13:53.817361+00:00",
+   "seen": "2026-08-08T00:23:52.860979+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -54,19 +54,19 @@
     "confidence": 59
    },
    "radar": {
-    "score": 81,
-    "level": "red",
+    "score": 35,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د77)",
+     "تقدم هش بفارق هدف واحد",
      "موجة تسديد على المرمى من الضيف",
      "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
     ],
     "pick": "home",
     "confidence": 59,
     "drama": {
-     "signal": 85,
-     "side": "home",
-     "ready": true
+     "signal": 50,
+     "side": "away",
+     "ready": false
     },
     "alerted": "next_goal",
     "trend": {
@@ -74,49 +74,39 @@
       21,
       45,
       57,
-      77
+      67,
+      87
      ],
      "h_sog": [
       0,
       0,
       0,
-      3
+      1,
+      4
      ],
      "a_sog": [
       0,
       1,
       2,
-      4
+      3,
+      5
      ],
      "h_cor": [
       0,
       2,
       6,
-      8
+      7,
+      9
      ],
      "a_cor": [
       0,
+      2,
       2,
       2,
       2
      ]
     }
    }
-  },
-  {
-   "fid": "1498717",
-   "home": "Midland",
-   "away": "Deportivo Maipu",
-   "home_en": "Midland",
-   "away_en": "Deportivo Maipu",
-   "league": "Primera Nacional (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/1963.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1954.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-08T00:03:46.843841+00:00"
   },
   {
    "fid": "1513273",
@@ -128,25 +118,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/10280.png",
    "away_logo": "https://media.api-sports.io/football/teams/21139.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "0-1",
-   "minute": 51,
+   "score": "0-2",
+   "minute": 61,
    "status": "2H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
-  },
-  {
-   "fid": "1498717",
-   "home": "Midland",
-   "away": "Deportivo Maipu",
-   "home_en": "Midland",
-   "away_en": "Deportivo Maipu",
-   "league": "Primera Nacional (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/1963.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1954.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1517321",
@@ -159,9 +134,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/20881.png",
    "league_logo": "https://media.api-sports.io/football/leagues/479.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "minute": 53,
+   "status": "2H",
+   "seen": "2026-08-08T00:23:52.860979+00:00"
+  },
+  {
+   "fid": "1498717",
+   "home": "Midland",
+   "away": "Deportivo Maipu",
+   "home_en": "Midland",
+   "away_en": "Deportivo Maipu",
+   "league": "Primera Nacional (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/1963.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1954.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
+   "score": "1-0",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1520803",
@@ -174,9 +164,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/139.png",
    "league_logo": "https://media.api-sports.io/football/leagues/72.png",
    "score": "1-0",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1563076",
@@ -188,10 +178,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/15708.png",
    "away_logo": "https://media.api-sports.io/football/teams/20252.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "0-1",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "score": "1-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1530124",
@@ -204,9 +194,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2283.png",
    "league_logo": "https://media.api-sports.io/football/leagues/772.png",
    "score": "0-0",
-   "minute": 34,
+   "minute": 44,
    "status": "1H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1530125",
@@ -218,10 +208,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1613.png",
    "away_logo": "https://media.api-sports.io/football/teams/2292.png",
    "league_logo": "https://media.api-sports.io/football/leagues/772.png",
-   "score": "1-0",
-   "minute": 33,
+   "score": "1-1",
+   "minute": 43,
    "status": "1H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1606369",
@@ -234,9 +224,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21040.png",
    "league_logo": "https://media.api-sports.io/football/leagues/134.png",
    "score": "0-0",
-   "minute": 25,
+   "minute": 35,
    "status": "1H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   },
   {
    "fid": "1519445",
@@ -249,9 +239,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1153.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "0-1",
-   "minute": 13,
+   "minute": 23,
    "status": "1H",
-   "seen": "2026-08-08T00:13:53.817361+00:00"
+   "seen": "2026-08-08T00:23:52.860979+00:00"
   }
  ],
  "upcoming": [
@@ -1120,10 +1110,76 @@
  },
  "news": [
   {
+   "title": "إسبانيا تفرض إجراءات تفتيش على القادمين من إيطاليا وسط تصاعد الخلاف بشأن الهجرة",
+   "link": "https://www.bbc.com/arabic/articles/cy0j559468po?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-08T00:16:45+00:00"
+  },
+  {
+   "title": "Papers: Arsenal could hijack Liverpool's move for Barcola",
+   "link": "https://www.skysports.com/football/news/12040/13570879/bradley-barcola-transfer-news-arsenal-could-hijack-liverpools-move-for-psg-winger-paper-talk",
+   "source": "Sky Sports",
+   "time": "2026-08-07T23:30:00+00:00"
+  },
+  {
+   "title": "Papers: Arsenal could hijack Liverpool's move for Barcola",
+   "link": "https://www.skysports.com/football/news/12691/13570879/bradley-barcola-transfer-news-arsenal-could-hijack-liverpools-move-for-psg-winger-paper-talk",
+   "source": "Sky News",
+   "time": "2026-08-07T23:30:00+00:00"
+  },
+  {
+   "title": "قاليباف ينضم إلى فريق التفاوض الإيراني، وواشنطن تتوقع \"اتفاقاً قريباً\" مع طهران بشأن مضيق هرمز",
+   "link": "https://www.bbc.com/arabic/articles/cy8eyy7eyqwo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-07T23:10:40+00:00"
+  },
+  {
+   "title": "Leeds pull off comeback to beat Wakefield, KR and Leigh pick up crucial wins",
+   "link": "https://www.skysports.com/rugby-league/news/12040/13570737/super-league-leeds-rhinos-secure-play-off-spot-with-comeback-win-over-wakefield-trinity-hull-kr-and-leigh-leopards-pick-up-crucial-victories",
+   "source": "Sky Sports",
+   "time": "2026-08-07T23:00:00+00:00"
+  },
+  {
+   "title": "Liverpool close to signing Barcelona's Araujo on loan",
+   "link": "https://www.bbc.co.uk/sport/football/articles/c4gxvvxldewo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-07T22:54:13+00:00"
+  },
+  {
+   "title": "Araujo set for surprise Liverpool loan move",
+   "link": "https://www.skysports.com/football/news/12040/13570871/ronald-araujo-transfer-news-liverpool-agree-loan-deal-for-barcelona-defender-to-add-depth-at-centre-back",
+   "source": "Sky Sports",
+   "time": "2026-08-07T22:51:00+00:00"
+  },
+  {
+   "title": "Infantino denies claims Uefa paid off alleged 'lover'",
+   "link": "https://www.bbc.co.uk/sport/football/articles/cx2vw5z0q7no?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-07T22:50:58+00:00"
+  },
+  {
+   "title": "UEFA aware of allegation it paid off Infantino's 'mistress' while he worked for them",
+   "link": "https://www.skysports.com/football/news/12040/13570861/gianni-infantino-uefa-aware-of-allegation-it-paid-off-an-alleged-mistress-of-fifa-president-while-he-worked-at-european-governing-body",
+   "source": "Sky Sports",
+   "time": "2026-08-07T22:16:00+00:00"
+  },
+  {
+   "title": "Debut Lankshear goal sees Boro past Wrexham as Wolves & Stevenage progress",
+   "link": "https://www.skysports.com/football/news/12040/13570859/carabao-cup-will-lankshear-strike-sees-middlesbrough-past-wrexham-as-wolves-beat-port-vale-and-stevenage-edge-wycombe",
+   "source": "Sky Sports",
+   "time": "2026-08-07T22:05:00+00:00"
+  },
+  {
    "title": "'Would you believe it?!' | Leeds score late winning try to break Wakefield hearts",
    "link": "https://www.skysports.com/watch/video/13570857/super-league-leeds-rhinos-score-late-winning-try-to-break-wakefield-trinity-hearts",
    "source": "Sky Sports",
    "time": "2026-08-07T22:04:00+00:00"
+  },
+  {
+   "title": "Late winner sees Leeds edge Wakefield",
+   "link": "https://www.skysports.com/watch/video/13570851/wakefield-trinity-22-24-leeds-rhinos-super-league-highlights",
+   "source": "Sky Sports",
+   "time": "2026-08-07T22:00:00+00:00"
   },
   {
    "title": "Brighton latest: Buonanotte joins LaLiga side Elche on loan",
@@ -1132,82 +1188,16 @@
    "time": "2026-08-07T21:52:00+00:00"
   },
   {
-   "title": "'His dad is so proud!' | Sinfield scores in front of famous father",
-   "link": "https://www.skysports.com/watch/video/13570827/super-league-jack-sinfield-scores-in-front-of-famous-father-kevin",
-   "source": "Sky Sports",
-   "time": "2026-08-07T21:12:00+00:00"
-  },
-  {
-   "title": "Man City explore Fernandez move - Saturday's gossip",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c0l5x67wl67o?at_medium=RSS&at_campaign=rss",
+   "title": "All done deals in August 2026",
+   "link": "https://www.bbc.co.uk/sport/football/articles/c9v4d2z2p7yo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-08-07T21:07:46+00:00"
+   "time": "2026-08-07T21:37:30+00:00"
   },
   {
-   "title": "Middlesbrough 1-0 Wrexham: Carabao Cup first round – live",
-   "link": "https://www.theguardian.com/football/live/2026/aug/07/middlesbrough-v-wrexham-carabao-cup-first-round-live",
-   "source": "The Guardian",
-   "time": "2026-08-07T21:04:50+00:00"
-  },
-  {
-   "title": "Fulham latest: Garcia and Palacios make losing debuts in loss to Palace",
-   "link": "https://www.skysports.com/football/live-blog/12040/13279313/fulham-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-   "source": "Sky Sports",
-   "time": "2026-08-07T20:54:00+00:00"
-  },
-  {
-   "title": "Fulham latest: Garcia and Palacios make losing debuts in loss to Palace",
-   "link": "https://www.skysports.com/football/live-blog/12691/13279313/fulham-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-   "source": "Sky News",
-   "time": "2026-08-07T20:54:00+00:00"
-  },
-  {
-   "title": "'What a run, what an impact!' | Faatili's moment of magic sets up Uele try",
-   "link": "https://www.skysports.com/watch/video/13570819/super-league-caius-faatilis-moment-of-magic-sets-up-caleb-hamlin-uele-try",
-   "source": "Sky Sports",
-   "time": "2026-08-07T20:53:00+00:00"
-  },
-  {
-   "title": "Newcastle latest: Move being explored for ex-Spurs midfielder Hojbjerg",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025496/newcastle-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-07T19:33:00+00:00"
-  },
-  {
-   "title": "Hull surges up leaderboard with course-record 62 at PIF London Championship",
-   "link": "https://www.skysports.com/golf/news/12040/13570796/pif-london-championship-charley-hull-surges-into-second-with-course-record-as-anna-huang-leads-after-day-two",
-   "source": "Sky Sports",
-   "time": "2026-08-07T19:29:00+00:00"
-  },
-  {
-   "title": "Arsenal latest: Jesus' agent spotted at Napoli training amid interest",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025486/arsenal-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-07T19:10:00+00:00"
-  },
-  {
-   "title": "Infantino’s World Cup sell-off debacle has rocked football but Fifa’s crisis has deep and rotten roots",
-   "link": "https://www.theguardian.com/football/2026/aug/07/gianni-infantino-world-cup-sell-off-debacle-fifa-crisis",
-   "source": "The Guardian",
-   "time": "2026-08-07T19:00:25+00:00"
-  },
-  {
-   "title": "Jay-Z’s Roc Nation Sports making waves in European football transfer market",
-   "link": "https://www.theguardian.com/football/2026/aug/07/jay-z-roc-nation-sports-european-football-transfer-market-vinicius-junior-yan-diomande",
-   "source": "The Guardian",
-   "time": "2026-08-07T19:00:24+00:00"
-  },
-  {
-   "title": "المملكة المتحدة: نساء يروين لبي بي سي قصص اغتصاب وإساءة في كلية عسكرية للمراهقين",
-   "link": "https://www.bbc.com/arabic/articles/c98096rp9xko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-07T19:00:10+00:00"
-  },
-  {
-   "title": "Coventry latest: Ghana midfielder Yirenkyi joins in £26m deal",
-   "link": "https://www.skysports.com/football/live-blog/12040/13541482/coventry-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-   "source": "Sky Sports",
-   "time": "2026-08-07T18:41:00+00:00"
+   "title": "Partick Thistle beat Livingston in Scottish Championship",
+   "link": "https://www.bbc.co.uk/sport/videos/c98vppyny3go?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-07T21:25:41+00:00"
   }
  ],
  "radar_acc": {
