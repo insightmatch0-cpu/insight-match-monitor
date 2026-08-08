@@ -469,13 +469,29 @@ def generate_lessons(newly_resolved: list) -> int:
     return added
 
 
-def record_referee(name: str, yellows: int, reds: int) -> None:
+# REC-001: حارس عدم التكرار — نحتفظ بمعرفات المباريات المسجَّلة في قاعدة
+# الحكام (مفتاح _meta.fids) فلا تُحتسب المباراة مرتين مهما أعيدت المحاولة.
+# السقف يمنع نمو القائمة بلا حدود؛ إعادة المحاولة تحدث خلال أيام لا أشهر.
+REFEREE_FIDS_CAP = 2000
+
+
+def record_referee(name: str, yellows: int, reds: int, fid: str = "") -> None:
     """يراكم سجل الحكم في referees.json — قاعدة بيانات ذاتية تنمو مع كل
-    مباراة مُقيَّمة (لا يوجد مصدر مجاني لإحصائيات الحكام — نبنيها بأنفسنا)."""
+    مباراة مُقيَّمة (لا يوجد مصدر مجاني لإحصائيات الحكام — نبنيها بأنفسنا).
+    REC-001: المعرف fid يمنع احتساب نفس المباراة مرتين — كانت تُسجَّل مع كل
+    إعادة محاولة تقييم فتضخمت الأرقام بعامل ~2.3 (فينتشيتش: 1.00 طرد/مباراة)."""
     name = (name or "").strip()
     if not name:
         return
     db = load_json(REFEREES_FILE, {})
+    meta = db.setdefault("_meta", {})
+    fids = meta.setdefault("fids", [])
+    fid = str(fid or "").strip()
+    if fid:
+        if fid in fids:
+            return                     # سُجّلت من قبل — لا ازدواج
+        fids.append(fid)
+        meta["fids"] = fids[-REFEREE_FIDS_CAP:]
     rec = db.get(name) or {"matches": 0, "yellows": 0, "reds": 0}
     rec["matches"] += 1
     rec["yellows"] += max(0, yellows)
@@ -484,20 +500,23 @@ def record_referee(name: str, yellows: int, reds: int) -> None:
     save_json(REFEREES_FILE, db)
 
 
-def actual_match_data(fid: str) -> str:
+def actual_match_data(fid: str):
     """البيانات النهائية الحقيقية لمباراة منتهية: النتيجة + الإحصائيات
     (ركنيات، تسديدات، بطاقات، تصديات) + الأحداث (المسجلون والبطاقات بالأسماء).
-    ترجع '' إذا لم تنته المباراة بعد. 3 نداءات API — الرصيد مدفوع مسبقاً.
-    أثر جانبي مقصود: تحديث قاعدة الحكام من نفس البيانات (بلا نداء إضافي)."""
+    ترجع (النص، بيانات الحكم) — والنص '' إذا لم تنته المباراة بعد.
+    3 نداءات API — الرصيد مدفوع مسبقاً.
+    REC-001: لم يعد يسجّل الحكم بنفسه (كان يسجّله قبل نجاح التقييم فيتكرر مع
+    كل إعادة محاولة) — يرجع بياناته للمستدعي ليسجّلها بعد نجاح التقييم فقط."""
     parts = []
     referee = ""
+    ref_info = {"referee": "", "yellows": 0, "reds": 0}
     try:
         fx = api_football(f"fixtures?ids={fid}")
         if not fx:
-            return ""
+            return "", ref_info
         status = (((fx[0].get("fixture") or {}).get("status")) or {}).get("short")
         if status not in ("FT", "AET", "PEN"):
-            return ""
+            return "", ref_info
         referee = ((fx[0].get("fixture") or {}).get("referee")) or ""
         goals = fx[0].get("goals") or {}
         ft = (fx[0].get("score") or {}).get("fulltime") or {}
@@ -508,7 +527,7 @@ def actual_match_data(fid: str) -> str:
             parts.append(f"الحكم: {referee}")
     except Exception as e:
         print("تقييم التقرير — فشل جلب النتيجة:", e)
-        return ""
+        return "", ref_info
     yellows = reds = 0
     try:
         for side in api_football(f"fixtures/statistics?fixture={fid}"):
@@ -529,8 +548,8 @@ def actual_match_data(fid: str) -> str:
                 parts.append(f"إحصائيات {name} — " + ", ".join(vals))
     except Exception as e:
         print("تقييم التقرير — فشل الإحصائيات:", e)
-    if referee:
-        record_referee(referee, yellows, reds)
+    ref_info = {"referee": (referee or "").strip(),
+                "yellows": yellows, "reds": reds}
     try:
         ev_lines = []
         for ev in api_football(f"fixtures/events?fixture={fid}"):
@@ -543,7 +562,7 @@ def actual_match_data(fid: str) -> str:
             parts.append("الأحداث:\n" + "\n".join(ev_lines))
     except Exception as e:
         print("تقييم التقرير — فشل الأحداث:", e)
-    return "\n".join(parts)
+    return "\n".join(parts), ref_info
 
 
 def grade_scenario_report(entry: dict, actual: str) -> dict:
@@ -625,7 +644,7 @@ def resolve_scenarios() -> int:
             kickoff = None
         if kickoff and kickoff > now_utc() - timedelta(hours=3):
             continue                              # لم تنته بعد — دورها لاحقاً
-        actual = actual_match_data(fid)
+        actual, ref_info = actual_match_data(fid)
         if not actual:
             # لا بيانات نهائية: مؤجلة/ملغاة أو خلل — نسقطها بعد مهلة
             age_ok = (entry.get("date") or "9999") >= \
@@ -639,6 +658,11 @@ def resolve_scenarios() -> int:
             continue                              # فشل التقييم — إعادة غداً
         graded += 1
         dirty = True
+        # REC-001: تسجيل الحكم بعد نجاح التقييم فقط — إعادة المحاولة الفاشلة
+        # لم تعد تحتسب المباراة، وحارس fid يمنع أي ازدواج مهما تكرر الاستدعاء
+        if ref_info.get("referee"):
+            record_referee(ref_info["referee"], ref_info.get("yellows", 0),
+                           ref_info.get("reds", 0), fid)
         grades = [g for g in result.get("grades", []) if isinstance(g, dict)]
         correct = sum(1 for g in grades if g.get("result") == "صح")
         partial = sum(1 for g in grades if g.get("result") == "جزئي")
