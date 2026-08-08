@@ -67,6 +67,14 @@ SIG_THRESHOLDS = {
 # PREMATCH_WINDOW (زر التشغيل اليدوي في monitor.yml).
 PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 45)
 
+# REC-006 (قرار المالك 2026-08-08): تقرير ما قبل المباراة كان يكتب نسبه بلا أي
+# تغذية راجعة عن أدائه (مبالغة ~17 نقطة في كل مستوى نسب، وعمى عن معدلات الأساس
+# — BTTS المعلن 86% مقابل واقع 35%). صار السياق يُحقن فيه كشف حساب التقارير
+# السابقة (من scenarios_v2.json) ومعدلات الأساس الحقيقية (من predictions_v2.json)
+# — كسياق لا كأمر، وبصفر نداءات إضافية. False = تراجع فوري لسياق ما قبل التوصية.
+PREMATCH_CALIBRATION_CTX = True
+BASE_RATE_MIN_LEAGUE = 15   # عينة الدوري الواحد الدنيا قبل عرض معدلاته الخاصة
+
 # ---- تقارير الظل (توجيه المالك 2026-07-18): تعلم عميق يومي بلا إزعاج ----
 # المحرك 2 يكتب تقرير ما قبل المباراة لمباريات الدوريات الكبرى تلقائياً حتى
 # لو لم تكن في قائمة التركيز، ويحفظه في scenarios_v2.json للتقييم الصباحي
@@ -602,6 +610,130 @@ def team_news_headlines(team: str) -> list:
         return []
 
 
+# REC-006: تصنيف بنود التقرير المُقيَّمة بنوع الادعاء — الترتيب مقصود:
+# الكلمة الأدق أولاً حتى لا يبتلع نوعٌ عام ("النتيجة") بنداً أخص ("كرة ثابتة").
+CLAIM_TYPE_KEYWORDS = [
+    ("كلا الفريقين يسجلان", ("يسجلان", "كلا الفريقين")),
+    ("الركنيات", ("ركني",)),
+    ("البطاقات", ("بطاق", "إنذار", "صفراء", "حمراء", "طرد")),
+    ("الكرات الثابتة", ("ثابتة", "ركلة حرة", "ركلات حرة", "رمية")),
+    ("الأشواط", ("شوط",)),
+    ("إجمالي الأهداف", ("2.5", "إجمالي الأهداف")),
+    ("المسجل", ("مسجل", "هداف", "صانع")),
+    ("النتيجة", ("فوز", "تعادل", "هامش", "نتيج", "انتصار")),
+]
+
+
+def claim_type(claim: str) -> str:
+    """يرجع نوع الادعاء لبند تقرير مُقيَّم (أو 'أخرى' إن لم يُعرف نوعه)."""
+    text = str(claim or "")
+    for label, keys in CLAIM_TYPE_KEYWORDS:
+        if any(k in text for k in keys):
+            return label
+    return "أخرى"
+
+
+def scenario_scorecard_text() -> str:
+    """REC-006 (أ): كشف حساب التقارير السابقة من scenarios_v2.json — صح/جزئي/خطأ
+    لكل نوع ادعاء، وفجوة النسب المعلنة في البنود مقابل ما تحقق منها فعلاً.
+    صفر نداءات API. يرجع '' عند غياب البيانات أو أي خلل — فشل صامت لا يقتل التقرير."""
+    try:
+        resolved = (load_json_file(SCENARIOS_FILE, {}) or {}).get("resolved") or []
+        by_type = {}
+        stated_pcts, stated_hits = [], []
+        reports = graded_total = 0
+        for entry in resolved:
+            grades = entry.get("grades") if isinstance(entry, dict) else None
+            if not isinstance(grades, list) or not grades:
+                continue
+            reports += 1
+            for g in grades:
+                if not isinstance(g, dict):
+                    continue
+                result = str(g.get("result") or "")
+                if result not in ("صح", "خطأ", "جزئي"):
+                    continue
+                graded_total += 1
+                t = by_type.setdefault(claim_type(g.get("claim")),
+                                       {"صح": 0, "جزئي": 0, "خطأ": 0})
+                t[result] += 1
+                # فجوة النسب: البنود التي أعلنت نسبة صريحة مثل "(60%)"
+                m = re.search(r"(\d{1,3})\s*%", str(g.get("claim") or ""))
+                if m and 0 < int(m.group(1)) <= 100:
+                    stated_pcts.append(int(m.group(1)))
+                    stated_hits.append(1 if result == "صح" else 0)
+        if not graded_total:
+            return ""
+        lines = [f"سجل أدائك الفعلي في التقارير السابقة "
+                 f"({reports} تقريراً / {graded_total} بنداً مُقيَّماً):"]
+        order = [label for label, _ in CLAIM_TYPE_KEYWORDS] + ["أخرى"]
+        for label in order:
+            t = by_type.get(label)
+            if not t:
+                continue
+            total = t["صح"] + t["جزئي"] + t["خطأ"]
+            lines.append(f"- {label}: صح {t['صح']} / جزئي {t['جزئي']} / "
+                         f"خطأ {t['خطأ']} (من {total})")
+        if stated_pcts:
+            avg_stated = round(sum(stated_pcts) / len(stated_pcts))
+            realized = round(100 * sum(stated_hits) / len(stated_hits))
+            lines.append(
+                f"- النسب التي أعلنتها داخل البنود: متوسطها {avg_stated}% "
+                f"بينما تحقق منها فعلياً {realized}% "
+                f"(على {len(stated_pcts)} بنداً) — عايِر نسبك على هذه الفجوة."
+            )
+        return "\n".join(lines)
+    except Exception as e:
+        print("كشف حساب التقارير — فشل الحساب (نكمل بدونه):", e)
+        return ""
+
+
+def base_rates_text(league_name: str) -> str:
+    """REC-006 (ب): معدلات الأساس الحقيقية من المباريات المُقيَّمة في
+    predictions_v2.json — نسبة "كلا الفريقين سجّلا" ونسبة "فوق 2.5 هدف" إجمالاً،
+    وللدوري نفسه إذا كانت عينته ≥ BASE_RATE_MIN_LEAGUE مباراة.
+    صفر نداءات API. يرجع '' عند أي خلل — فشل صامت لا يقتل التقرير."""
+    try:
+        resolved = (load_json_file(RADAR_PREDICTIONS_FILE, {}) or {}).get("resolved") or []
+        overall = {"btts": 0, "over": 0, "total": 0}
+        league = {"btts": 0, "over": 0, "total": 0}
+        for r in resolved:
+            m = re.match(r"^(\d+)-(\d+)$", str(r.get("score") or "").strip())
+            if not m:
+                continue
+            gh, ga = int(m.group(1)), int(m.group(2))
+            btts = 1 if (gh > 0 and ga > 0) else 0
+            over = 1 if (gh + ga) >= 3 else 0
+            overall["total"] += 1
+            overall["btts"] += btts
+            overall["over"] += over
+            if league_name and r.get("league") == league_name:
+                league["total"] += 1
+                league["btts"] += btts
+                league["over"] += over
+        if not overall["total"]:
+            return ""
+        def rate(d, k):
+            return round(100 * d[k] / d["total"])
+        lines = [
+            "معدلات الأساس الفعلية من مبارياتنا المُقيَّمة "
+            f"({overall['total']} مباراة): كلا الفريقين سجّلا في "
+            f"{rate(overall, 'btts')}% منها، وتجاوزت 2.5 هدف {rate(overall, 'over')}% منها."
+        ]
+        if league["total"] >= BASE_RATE_MIN_LEAGUE:
+            lines.append(
+                f"وفي هذا الدوري تحديداً ({league['total']} مباراة): "
+                f"كلا الفريقين سجّلا في {rate(league, 'btts')}% "
+                f"وفوق 2.5 في {rate(league, 'over')}%."
+            )
+        lines.append("هذه المعدلات الفعلية سياق لا أمر — إن خالفتها في بنود "
+                     "الأهداف فاذكر سبباً محدداً في هذه المباراة يبرر الخروج عنها.")
+        return "\n".join(lines)
+    except Exception as e:
+        print("معدلات الأساس — فشل الحساب (نكمل بدونه):", e)
+        return ""
+
+
 def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
     """يجمع سياق التقرير: توقعات المحركين والمالك + بيانات API قبل المباراة
     (تشكيلات إن أُعلنت، إصابات، أرقام السوق، التوقع الإحصائي) — 4 نداءات API."""
@@ -687,6 +819,15 @@ def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
     if news_lines:
         lines.append("أخبار حديثة مستهدفة للفريقين (استخدم المؤثر منها فقط):\n"
                      + "\n".join(news_lines[:10]))
+    # REC-006: كشف الحساب ومعدلات الأساس — يُحقنان كسياق لا كأمر
+    # (مفتاح التراجع PREMATCH_CALIBRATION_CTX أعلاه؛ الدالتان تفشلان بصمت)
+    if PREMATCH_CALIBRATION_CTX:
+        scorecard = scenario_scorecard_text()
+        if scorecard:
+            lines.append(scorecard)
+        base_rates = base_rates_text(p.get("league") or "")
+        if base_rates:
+            lines.append(base_rates)
     # دروس المحرك 2 من تقييم تقاريره السابقة — حلقة التعلم الذاتي للسيناريوهات
     lessons = (load_json_file(LESSONS_FILE, {}).get("lessons") or [])[-15:]
     lesson_lines = [f"- {(it.get('text') or '').strip()}" for it in lessons
