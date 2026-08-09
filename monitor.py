@@ -1744,6 +1744,15 @@ def main() -> None:
     except Exception as e:
         print("تقارير الظل — خطأ غير متوقع:", e)
 
+    # ⚡ التقييم اللحظي للتقارير (أمر المالك 2026-08-09): مباراة انتهت
+    # واكتملت بياناتها → تقييمها يظهر على اللوحة خلال دورة، وتيليجرام يبقى
+    # صباحياً كما هو. أي فشل هنا لا يوقف المراقب أبداً.
+    try:
+        import predict_v2 as p2
+        p2.live_grade_scenarios()
+    except Exception as e:
+        print("التقييم اللحظي — خطأ غير متوقع (نكمل):", e)
+
     try:
         fixtures = get_live_fixtures()
     except Exception as e:
