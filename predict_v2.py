@@ -746,7 +746,18 @@ def resolve_scenarios() -> int:
             continue
         result = grade_scenario_report(entry, actual)
         if not result:
-            continue                              # فشل التقييم — إعادة غداً
+            # فشل التقييم — إعادة غداً، لكن ليس إلى الأبد (علة "التقرير
+            # العالق" 2026-08-09: تقرير 29 يوليو ظل يُعاد 11 يوماً لأن مهلة
+            # الإسقاط كانت تُطبق على مسار غياب البيانات فقط لا مسار فشل
+            # التقييم — فبقي معلقاً يستهلك محاولة يومية بلا نهاية)
+            age_ok = (entry.get("date") or "9999") >= \
+                (now_utc() - timedelta(days=SCENARIO_MAX_AGE_DAYS)).strftime("%Y-%m-%d")
+            if not age_ok:
+                print(f"إسقاط تقرير عالق تجاوز مهلة الإسقاط: "
+                      f"{entry.get('home')} × {entry.get('away')}")
+                del scen["pending"][fid]
+                dirty = True
+            continue
         graded += 1
         dirty = True
         # REC-001: تسجيل الحكم بعد نجاح التقييم فقط — إعادة المحاولة الفاشلة
