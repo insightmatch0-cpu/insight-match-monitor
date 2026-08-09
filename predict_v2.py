@@ -76,6 +76,16 @@ MAX_MISTAKES_PER_RUN  = 30    # كل أخطاء اليوم عملياً تُرا
 CONSOLIDATE_THRESHOLD = 60    # عند تجاوز هذا العدد تُدمج الدروس المتشابهة
 CONSOLIDATE_TARGET    = 30    # عدد المبادئ المركزة بعد الدمج
 
+# معيار السوق — REC-003 (قرار المالك 2026-08-08): قياس تراكمي محايد يجيب على
+# أهم سؤال في المشروع — هل يتفوق الإثراء المكلف على اتباع الأودز مجاناً؟
+# كل صباح تُحسب دقة المحرك مقابل دقة "مرشّح السوق" (أعلى احتمال ضمني في
+# الأودز) على نفس المباريات المُقيَّمة التي تحمل mkt_*، وتُخزَّن في
+# meta.stats.market_bench. أداة حكم لا تحسين: صفر نداءات، صفر أثر على أي توقع.
+# قاعدة القرار المسجّلة مسبقاً في سجل المعهد: إن كان المحرك أدنى من مرشّح
+# السوق بأكثر من 3 نقاط على ≥150 مباراة كبرى، يُفتح ملف مراجعة الإثراء كاملاً.
+# للتعطيل الفوري: False (يختفي الحساب وسطر النشرة معاً).
+MARKET_BENCH          = True
+
 # قاعدة الحكام الذاتية (خطوة استكشاف 6): تتراكم من المباريات المُقيَّمة —
 # معدل بطاقات الحكم يغذي تقارير ما قبل المباراة (بعض الحكام يشهرون بغزارة)
 REFEREES_FILE = Path("referees.json")
@@ -274,6 +284,35 @@ def pct(d: dict) -> str:
     if not d.get("total"):
         return "لا يوجد سجل بعد"
     return f"{round(100 * d['correct'] / d['total'])}% ({d['correct']}/{d['total']})"
+
+
+def market_favorite(r: dict) -> str:
+    """مرشّح السوق لصف مُقيَّم: الطرف صاحب أعلى احتمال ضمني في الأودز.
+    عند التساوي يُحسم بترتيب ثابت (home ثم draw ثم away) حتى يبقى القياس حتمياً.
+    يرجع '' إن كانت حقول السوق ناقصة."""
+    try:
+        probs = {k: int(r[f"mkt_{k}"]) for k in ("home", "draw", "away")}
+    except (KeyError, TypeError, ValueError):
+        return ""
+    return max(("home", "draw", "away"), key=lambda k: probs[k])
+
+
+def market_bench_stats(resolved: list) -> dict:
+    """معيار السوق (REC-003): تراكمياً على كل الصفوف المُقيَّمة التي تحمل
+    احتمالات السوق — كم أصاب المحرك وكم أصاب مرشّح السوق على نفس المباريات،
+    وكم مباراة اختلفا فيها. صفر نداءات — قراءة محلية بحتة."""
+    bench = {"n": 0, "engine_correct": 0, "market_correct": 0, "disagree": 0}
+    for r in resolved:
+        fav = market_favorite(r)
+        actual = r.get("actual")
+        if not fav or actual not in ("home", "draw", "away"):
+            continue
+        bench["n"] += 1
+        bench["engine_correct"] += 1 if r.get("correct") else 0
+        bench["market_correct"] += 1 if fav == actual else 0
+        if fav != r.get("pick"):
+            bench["disagree"] += 1
+    return bench
 
 
 def resolve_pending(store: dict):
@@ -1659,6 +1698,14 @@ def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
         lines.append(DASHBOARD_URL)
     if stats["last30"]["total"]:
         lines.append(f"\n📊 دقة المحرك 2 آخر 30 يوماً: {pct(stats['last30'])}")
+    # معيار السوق (REC-003): يظهر فقط حين توجد مباريات مُقيَّمة تحمل أودز
+    mb = stats.get("market_bench") or {}
+    if MARKET_BENCH and mb.get("n"):
+        lines.append(
+            f"⚖️ معيار السوق: المحرك {mb['engine_correct']}/{mb['n']} "
+            f"مقابل مرشّح السوق {mb['market_correct']}/{mb['n']} "
+            f"— اختلفا في {mb['disagree']} مباراة"
+        )
     if new_lessons:
         lines.append(f"📚 دروس جديدة من أخطاء الأمس: {new_lessons} — تدخل في توقعات اليوم.")
     race = race_line(user_stats, stats)
@@ -1691,6 +1738,12 @@ def main() -> None:
     resolved_now, newly_resolved = resolve_pending(store)
     stats = compute_stats(store["resolved"])
     print(f"المحرك 2: تمت تسوية {resolved_now} توقعاً. السجل: {pct(stats['overall'])}")
+    # معيار السوق (REC-003): المحرك ضد مرشّح السوق على نفس المباريات — تراكمياً
+    if MARKET_BENCH:
+        stats["market_bench"] = market_bench_stats(store["resolved"])
+        mb = stats["market_bench"]
+        print(f"معيار السوق: n={mb['n']} — المحرك {mb['engine_correct']} / "
+              f"السوق {mb['market_correct']} / اختلاف {mb['disagree']}")
     post_grading_alerts(newly_resolved, store)   # 🚨 حارسا القناعة العالية والتسريب
 
     # 1.5) المرحلة 3: استخلاص دروس من أخطاء الأمس (كلها)، ثم دمجها عند التضخم
