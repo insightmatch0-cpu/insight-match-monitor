@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-09T08:17:56.838618+00:00",
+ "updated": "2026-08-09T08:27:26.669598+00:00",
  "live": [
   {
    "fid": "1607631",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/943.png",
    "league_logo": "https://media.api-sports.io/football/leagues/874.png",
    "score": "1-3",
-   "minute": 59,
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-08-09T08:17:54.799859+00:00",
+   "seen": "2026-08-09T08:27:24.191108+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -37,23 +37,248 @@
     "alerted": null,
     "trend": {
      "min": [
+      50,
       45,
-      59
+      68
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0
      ],
      "a_cor": [
       0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1562709",
+   "home": "Hradec Králové II",
+   "away": "Pardubice II",
+   "home_en": "Hradec Králové II",
+   "away_en": "Pardubice II",
+   "league": "3. liga - CFL B (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/14495.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14747.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/685.png",
+   "score": "1-0",
+   "minute": 13,
+   "status": "1H",
+   "seen": "2026-08-09T08:27:24.191108+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      13
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1562353",
+   "home": "Meteor Praha",
+   "away": "Slavoj Vyšehrad",
+   "home_en": "Meteor Praha",
+   "away_en": "Slavoj Vyšehrad",
+   "league": "4. liga - Divizie B (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/7318.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4258.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/351.png",
+   "score": "0-0",
+   "minute": 11,
+   "status": "1H",
+   "seen": "2026-08-09T08:27:24.191108+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
+    ],
+    "pick": "away",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      11
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1577880",
+   "home": "Zbrojovka Brno II",
+   "away": "Frýdek-Místek",
+   "home_en": "Zbrojovka Brno II",
+   "away_en": "Frýdek-Místek",
+   "league": "3. liga - MSFL (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/8633.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7288.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/349.png",
+   "score": "0-0",
+   "minute": 11,
+   "status": "1H",
+   "seen": "2026-08-09T08:27:24.191108+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      11
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1577881",
+   "home": "Sigma Olomouc II",
+   "away": "Slovácko II",
+   "home_en": "Sigma Olomouc II",
+   "away_en": "Slovácko II",
+   "league": "3. liga - MSFL (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/8622.png",
+   "away_logo": "https://media.api-sports.io/football/teams/8623.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/349.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-09T08:27:24.191108+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      10
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
