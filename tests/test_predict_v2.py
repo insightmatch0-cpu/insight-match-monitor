@@ -206,11 +206,15 @@ class TestMarketProbsStored(unittest.TestCase):
 
     def test_scenario_grading_stores_claim_breakdown(self):
         """طلب المالك 2026-08-01: التصحيح بنداً‑ببند يُحفظ مع التقرير المُقيَّم
-        (grades + grade_summary) ليظهر تفصيله في مختبر الظل."""
+        (grades + grade_summary) ليظهر تفصيله في مختبر الظل.
+        (الجوهر انتقل إلى _grade_scenario_entry المشتركة بين الصباح والتقييم
+        اللحظي 2026-08-09 — نفس الضمانة، من المسارين معاً.)"""
         import inspect
-        src = inspect.getsource(P.resolve_scenarios)
+        src = inspect.getsource(P._grade_scenario_entry)
         self.assertIn('entry["grades"]', src)
         self.assertIn("grade_summary", src)
+        self.assertIn("_grade_scenario_entry",
+                      inspect.getsource(P.resolve_scenarios))
 
     def test_resolve_carries_market_probs(self):
         """سجل resolved يجب أن يحمل حقول السوق — وإلا ضاع القياس عند التقييم."""

@@ -146,6 +146,17 @@ SCENARIO_MAX_AGE_DAYS = 4          # تقرير بلا بيانات نهائية
 # 2026-08-09؛ كان سيشبع خلال أيام عند 84/100 ويجمّد عدّاد مختبر الظل بصمت)
 SCENARIOS_RESOLVED_CAP = 0
 
+# التقييم اللحظي للتقارير — أمر المالك 2026-08-09 ("لماذا تنتظر اللوحة الغد؟"):
+# فصل القياس عن التبليغ — القياس حدثي فور اكتمال البيانات النهائية (تظهر
+# النتيجة على اللوحة خلال ~دورة مراقب من اكتمالها)، والتبليغ البشري يبقى
+# مجمعاً في بطاقات الصباح على تيليجرام كما كان حرفياً (تفضيل المالك الصريح).
+# بوابة تحقق صارمة قبل أي تقييم لحظي: مرور وقت كافٍ بعد الانطلاق + وجود
+# الإحصائيات النهائية فعلاً — الناقص يُترك للدورة القادمة وللصباح كشبكة أمان.
+# التعطيل الفوري: False (يعود كل التقييم صباحياً كما كان).
+LIVE_SCENARIO_GRADING  = True
+LIVE_GRADE_MIN_MINUTES = 150   # لا محاولة قبل ~ساعتين ونصف من الانطلاق
+LIVE_GRADES_PER_CYCLE  = 2     # سقف تقييمات لكل دورة مراقب — توزيع التكلفة
+
 SEND_TELEGRAM_DIGEST = True
 DIGEST_TOP_ONLY      = True
 DASHBOARD_URL = "https://insightmatch0-cpu.github.io/insight-match-monitor/"
@@ -728,19 +739,124 @@ def _scenario_grade_order(pending: dict) -> list:
     return sorted(pending.keys(), key=key)
 
 
-def resolve_scenarios() -> int:
-    """حلقة التعلم الذاتي للسيناريوهات: يقيّم كل تقرير ما قبل مباراة محفوظ
-    مقابل البيانات النهائية، يرسل بطاقة التقييم للمالك، ويضيف الدروس إلى
-    lessons_v2.json (فتُحقن تلقائياً في كل تقرير وتوقع قادم)."""
+def _grade_scenario_entry(scen: dict, fid: str, actual: str, ref_info: dict) -> bool:
+    """جوهر تقييم تقرير واحد — مشترك بين تشغيلة الصباح والتقييم اللحظي.
+    يقيّم بنداً-بنداً، يسجّل الحكم (REC-001: بعد نجاح التقييم فقط وبحارس fid)،
+    يضيف الدروس لدفتر lessons_v2.json، يبني بطاقة التقييم ويخزنها مع السجل
+    بوسم reported=False، وينقل التقرير إلى resolved. لا يرسل تيليجرام أبداً —
+    التبليغ مسؤولية الصباح (فصل القياس عن التبليغ، أمر المالك 2026-08-09).
+    يرجع False عند فشل التقييم (يُعاد لاحقاً)."""
+    entry = scen["pending"][fid]
+    result = grade_scenario_report(entry, actual)
+    if not result:
+        return False
+    icon = {"صح": "✅", "خطأ": "❌", "جزئي": "🟡"}
+    today = now_utc().strftime("%Y-%m-%d")
+    # REC-001: تسجيل الحكم بعد نجاح التقييم فقط — إعادة المحاولة الفاشلة
+    # لم تعد تحتسب المباراة، وحارس fid يمنع أي ازدواج مهما تكرر الاستدعاء
+    if ref_info.get("referee"):
+        record_referee(ref_info["referee"], ref_info.get("yellows", 0),
+                       ref_info.get("reds", 0), fid)
+    grades = [g for g in result.get("grades", []) if isinstance(g, dict)]
+    correct = sum(1 for g in grades if g.get("result") == "صح")
+    partial = sum(1 for g in grades if g.get("result") == "جزئي")
+    h = entry.get("ar_home") or entry.get("home", "?")
+    a = entry.get("ar_away") or entry.get("away", "?")
+    shadow_tag = " (تقرير ظل — تدريب ذاتي)" if entry.get("shadow") else ""
+    lines = [f"📋 تقييم تقرير المحرك 2{shadow_tag} — {h} 🆚 {a}",
+             f"📊 أصاب {correct}/{len(grades)}"
+             + (f" (+{partial} جزئياً)" if partial else "")]
+    if result.get("summary"):
+        lines.append(str(result["summary"]))
+    for g in grades:
+        lines.append(f"{icon.get(g.get('result'), '•')} {g.get('claim', '')}")
+    # الدروس → نفس دفتر دروس المحرك 2 (يُحقن في التوقعات والتقارير القادمة)
+    lessons = [str((it or {}).get("lesson") or "").strip()
+               for it in result.get("lessons", []) if isinstance(it, dict)]
+    lessons = [x for x in lessons if x]
+    if lessons:
+        ldata = load_json(LESSONS_FILE, {"lessons": []})
+        ldata.setdefault("lessons", [])
+        for text in lessons:
+            ldata["lessons"].append({
+                "date": today,
+                "match": f"{entry.get('home')} vs {entry.get('away')} (تقرير)",
+                "text": text,
+            })
+        ldata["lessons"] = ldata["lessons"][-MAX_LESSONS_STORED:]
+        save_json(LESSONS_FILE, ldata)
+        lines.append(f"📚 دروس جديدة من هذا التقرير: {len(lessons)}")
+    entry["graded_on"] = today
+    entry["correct"] = correct
+    entry["total"] = len(grades)
+    # التصحيح بنداً‑ببند يُحفظ مع التقرير — يظهر في مختبر الظل على اللوحة
+    # (طلب المالك 2026-08-01: "أريد تفصيل ما نجح وما فشل، لا رقماً معلقاً")
+    entry["grades"] = [{"claim": str(g.get("claim") or ""),
+                        "result": str(g.get("result") or "")} for g in grades]
+    if result.get("summary"):
+        entry["grade_summary"] = str(result["summary"])
+    # بطاقة التقييم تُخزن ولا تُرسل الآن — تبليغ الصباح يجمعها كما كان دائماً
+    entry["scorecard"] = "\n".join(lines)
+    entry["reported"] = False
+    scen["resolved"].append(entry)
+    del scen["pending"][fid]
+    return True
+
+
+def live_grade_scenarios(cap: int = None) -> int:
+    """⚡ التقييم اللحظي (أمر المالك 2026-08-09): يقيّم تقارير المباريات
+    المنتهية فور اكتمال بياناتها النهائية بدل انتظار الصباح — فتظهر النتيجة
+    على اللوحة خلال ~دورة مراقب. بوابة تحقق صارمة: لا محاولة قبل
+    LIVE_GRADE_MIN_MINUTES من الانطلاق، ولا تقييم بلا إحصائيات نهائية
+    موجودة فعلاً — الناقص يُترك للدورة القادمة وللصباح كشبكة أمان.
+    التبليغ البشري لا يتغير: البطاقات تصل تيليجرام مجمعة صباحاً كما كانت."""
+    if not LIVE_SCENARIO_GRADING:
+        return 0
+    cap = LIVE_GRADES_PER_CYCLE if cap is None else cap
     scen = load_json(SCENARIOS_FILE, {"pending": {}, "resolved": []})
     scen.setdefault("pending", {})
     scen.setdefault("resolved", [])
     if not scen["pending"]:
         return 0
-    icon = {"صح": "✅", "خطأ": "❌", "جزئي": "🟡"}
+    graded = 0
+    ready_after = now_utc() - timedelta(minutes=LIVE_GRADE_MIN_MINUTES)
+    for fid in _scenario_grade_order(scen["pending"]):
+        if graded >= cap:
+            break
+        entry = scen["pending"][fid]
+        try:
+            kickoff = datetime.fromisoformat(entry.get("kickoff", ""))
+        except Exception:
+            continue                  # بلا وقت انطلاق موثوق — يحسمه الصباح
+        if kickoff > ready_after:
+            continue                  # المباراة لم تنته/تكتمل بياناتها بعد
+        actual, ref_info = actual_match_data(fid)
+        # بوابة التحقق: نتيجة نهائية + إحصائيات موجودة فعلاً — وإلا ننتظر
+        if not actual or "إحصائيات" not in actual:
+            continue
+        if _grade_scenario_entry(scen, fid, actual, ref_info):
+            graded += 1
+    if graded:
+        save_json(SCENARIOS_FILE, scen)
+        print(f"⚡ التقييم اللحظي: قُيّم {graded} تقريراً فور اكتمال بياناته.")
+    return graded
+
+
+def resolve_scenarios() -> int:
+    """حلقة التعلم الذاتي للسيناريوهات: يقيّم كل تقرير ما قبل مباراة محفوظ
+    مقابل البيانات النهائية، يرسل بطاقة التقييم للمالك، ويضيف الدروس إلى
+    lessons_v2.json (فتُحقن تلقائياً في كل تقرير وتوقع قادم).
+    مع التقييم اللحظي: ما قُيّم ليلاً لا يُعاد تقييمه — تُرسل بطاقته فقط."""
+    scen = load_json(SCENARIOS_FILE, {"pending": {}, "resolved": []})
+    scen.setdefault("pending", {})
+    scen.setdefault("resolved", [])
+    # بطاقات قُيّمت لحظياً ليلاً وتنتظر تبليغ الصباح — تُرسل حتى لو خلا pending
+    unreported = [e for e in scen["resolved"]
+                  if e.get("scorecard") and not e.get("reported")]
+    if not scen["pending"] and not unreported:
+        return 0
     graded = 0
     dirty = False
-    today = now_utc().strftime("%Y-%m-%d")
     for fid in _scenario_grade_order(scen["pending"]):
         if graded >= MAX_SCENARIO_GRADES_PER_RUN:
             break
@@ -760,8 +876,7 @@ def resolve_scenarios() -> int:
                 del scen["pending"][fid]
                 dirty = True
             continue
-        result = grade_scenario_report(entry, actual)
-        if not result:
+        if not _grade_scenario_entry(scen, fid, actual, ref_info):
             # فشل التقييم — إعادة غداً، لكن ليس إلى الأبد (علة "التقرير
             # العالق" 2026-08-09: تقرير 29 يوليو ظل يُعاد 11 يوماً لأن مهلة
             # الإسقاط كانت تُطبق على مسار غياب البيانات فقط لا مسار فشل
@@ -776,52 +891,13 @@ def resolve_scenarios() -> int:
             continue
         graded += 1
         dirty = True
-        # REC-001: تسجيل الحكم بعد نجاح التقييم فقط — إعادة المحاولة الفاشلة
-        # لم تعد تحتسب المباراة، وحارس fid يمنع أي ازدواج مهما تكرر الاستدعاء
-        if ref_info.get("referee"):
-            record_referee(ref_info["referee"], ref_info.get("yellows", 0),
-                           ref_info.get("reds", 0), fid)
-        grades = [g for g in result.get("grades", []) if isinstance(g, dict)]
-        correct = sum(1 for g in grades if g.get("result") == "صح")
-        partial = sum(1 for g in grades if g.get("result") == "جزئي")
-        h = entry.get("ar_home") or entry.get("home", "?")
-        a = entry.get("ar_away") or entry.get("away", "?")
-        shadow_tag = " (تقرير ظل — تدريب ذاتي)" if entry.get("shadow") else ""
-        lines = [f"📋 تقييم تقرير المحرك 2{shadow_tag} — {h} 🆚 {a}",
-                 f"📊 أصاب {correct}/{len(grades)}"
-                 + (f" (+{partial} جزئياً)" if partial else "")]
-        if result.get("summary"):
-            lines.append(str(result["summary"]))
-        for g in grades:
-            lines.append(f"{icon.get(g.get('result'), '•')} {g.get('claim', '')}")
-        # الدروس → نفس دفتر دروس المحرك 2 (يُحقن في التوقعات والتقارير القادمة)
-        lessons = [str((it or {}).get("lesson") or "").strip()
-                   for it in result.get("lessons", []) if isinstance(it, dict)]
-        lessons = [x for x in lessons if x]
-        if lessons:
-            ldata = load_json(LESSONS_FILE, {"lessons": []})
-            ldata.setdefault("lessons", [])
-            for text in lessons:
-                ldata["lessons"].append({
-                    "date": today,
-                    "match": f"{entry.get('home')} vs {entry.get('away')} (تقرير)",
-                    "text": text,
-                })
-            ldata["lessons"] = ldata["lessons"][-MAX_LESSONS_STORED:]
-            save_json(LESSONS_FILE, ldata)
-            lines.append(f"📚 دروس جديدة من هذا التقرير: {len(lessons)}")
-        send_telegram_long("\n".join(lines))
-        entry["graded_on"] = today
-        entry["correct"] = correct
-        entry["total"] = len(grades)
-        # التصحيح بنداً‑ببند يُحفظ مع التقرير — يظهر في مختبر الظل على اللوحة
-        # (طلب المالك 2026-08-01: "أريد تفصيل ما نجح وما فشل، لا رقماً معلقاً")
-        entry["grades"] = [{"claim": str(g.get("claim") or ""),
-                            "result": str(g.get("result") or "")} for g in grades]
-        if result.get("summary"):
-            entry["grade_summary"] = str(result["summary"])
-        scen["resolved"].append(entry)
-        del scen["pending"][fid]
+    # تبليغ الصباح (تفضيل المالك 2026-08-09): بطاقات كل التقارير المُقيَّمة —
+    # لحظياً ليلاً أو في هذه التشغيلة — تُرسل الآن مجمعة كما كانت دائماً
+    for e in scen["resolved"]:
+        if e.get("scorecard") and not e.get("reported"):
+            send_telegram_long(e["scorecard"])
+            e["reported"] = True
+            dirty = True
     if dirty:
         if SCENARIOS_RESOLVED_CAP:   # 0 = بلا حذف (أمر المالك 2026-08-09)
             scen["resolved"] = scen["resolved"][-SCENARIOS_RESOLVED_CAP:]
