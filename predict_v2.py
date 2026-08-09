@@ -50,6 +50,17 @@ RADAR_DROP_DAYS       = 4     # إنذار بلا نتيجة بعد 4 أيام �
 # للموسم (لكل دوري/شهر/أسبوع/يوم) يتطلب كل الصفوف. RESOLVED_CAP=0 يعني بلا
 # سقف؛ للتراجع الفوري عند أي طارئ حجم: أعد الرقم القديم 1000.
 RESOLVED_CAP          = 0
+# 🧮 حارس النزاهة اليومي — أمر المالك 2026-08-09 ("كيف نوقف تكرار الأرقام
+# الخاطئة من الجذر؟"): ثلاث حوادث في أسبوع اكتشفها المالك بعينه لا النظام
+# (تسريب WK-League، تضخم الحكام 2.6×، نافذة 70%+ المتحركة) — وكلها انتهاكات
+# لقوانين حسابية بسيطة كان يمكن فحصها آلياً. المبدأ: القيد المزدوج المحاسبي —
+# كل رقم مهم يُشتق من طريقين مستقلين كل صباح، وأي اختلاف إنذار تيليجرام فوري
+# في نفس اليوم (لا بعد شهر). صفر نداءات، رياضيات محلية بحتة.
+# قاعدة دائمة: كل حادثة أرقام جديدة = قانون جديد في السجل في نفس PR إصلاحها.
+# التعطيل الفوري: False (يختفي الفحص وسطر النشرة معاً).
+INTEGRITY_SENTINEL    = True
+INTEGRITY_AGE_GRACE   = 2     # أيام سماح فوق كل مهلة قبل اعتبارها انتهاكاً
+INTEGRITY_MAX_DETAILS = 5     # أقصى أمثلة تُعرض لكل قانون مكسور (ضد الإغراق)
 # بداية موسم 2026-27 (انطلاق الدوري السعودي): عدّادات الموسم على اللوحة تبدأ
 # من صفر عند هذا التاريخ — ما قبله يبقى محفوظاً كسجل تأسيس، لا يُعرض كموسم.
 SEASON_START          = "2026-08-13"
@@ -1706,6 +1717,182 @@ DRAMA_CLAIM_AR = {"next_goal": "الهدف القادم", "goal": "هدف الم
                   "equalizer": "إدراك التعادل", "flip": "قلب النتيجة"}
 
 
+# ================== 🧮 حارس النزاهة اليومي ==================
+def integrity_check() -> list:
+    """يعيد فحص قوانين النزاهة على ملفات البيانات الحية كما هي على القرص —
+    القيد المزدوج المحاسبي (أمر المالك 2026-08-09). يرجع قائمة
+    (اسم القانون، قائمة الانتهاكات) — قائمة انتهاكات فارغة = القانون سليم.
+    صفر نداءات API وصفر نداءات Claude — رياضيات محلية بحتة."""
+    today = now_utc().strftime("%Y-%m-%d")
+    v2 = load_json(PREDICTIONS_FILE, {})
+    v1 = load_json(V1_PREDICTIONS_FILE, {})
+    user = load_json(USER_PREDICTIONS_FILE, {})
+    hist = load_json(HISTORY_FILE, {})
+    scen = load_json(SCENARIOS_FILE, {})
+    radar = load_json(RADAR_LOG_FILE, {})
+    refs = load_json(REFEREES_FILE, {})
+    checks = []
+
+    # 1) عدم النقصان: عدد السجلات المُقيَّمة لا ينقص أبداً (كشف أي حذف صامت)
+    v = []
+    prev = (hist.get("integrity") or {}).get("resolved_counts") or {}
+    counts = {"v2": len(v2.get("resolved") or []),
+              "v1": len(v1.get("resolved") or []),
+              "user": len(user.get("resolved") or []),
+              "history_days": len(hist.get("days") or {})}
+    for key, n in counts.items():
+        old = prev.get(key)
+        if isinstance(old, int) and n < old:
+            v.append(f"{key}: كان {old} وصار {n} — سجلات حُذفت")
+    checks.append(("عدم النقصان في السجلات", v))
+    hist.setdefault("integrity", {})["resolved_counts"] = counts
+    hist["integrity"]["checked_on"] = today
+    save_json(HISTORY_FILE, hist)
+
+    # 2+3) تطابق الذاكرة والأرشيف الدائم: المجاميع اليومية وشرائح الثقة —
+    # الطريق الثاني المستقل لنفس الرقم (درس نافذة 70%+ المتحركة)
+    v_tot, v_bkt = [], []
+    mem_days = {}
+    for r in (v2.get("resolved") or []):
+        d = r.get("date")
+        if not d or d >= today:   # يوم غير مكتمل التقييم يُقارن غداً
+            continue
+        slot = mem_days.setdefault(d, {"total": 0, "buckets": {}})
+        slot["total"] += 1
+        b = _conf_bucket(int(r.get("confidence", 0)))
+        bb = slot["buckets"].setdefault(b, {"correct": 0, "total": 0})
+        bb["total"] += 1
+        bb["correct"] += 1 if r.get("correct") else 0
+    for d, slot in mem_days.items():
+        arch = ((hist.get("days") or {}).get(d) or {}).get("v2") or {}
+        if arch.get("total") is not None and arch["total"] != slot["total"]:
+            v_tot.append(f"{d}: الذاكرة {slot['total']} ضد الأرشيف {arch['total']}")
+        ab = arch.get("buckets")
+        if isinstance(ab, dict):
+            for b, bb in slot["buckets"].items():
+                if ab.get(b) is not None and ab[b] != bb:
+                    v_bkt.append(f"{d}/{b}: الذاكرة {bb} ضد الأرشيف {ab[b]}")
+    checks.append(("تطابق الذاكرة والأرشيف (المجاميع اليومية)", v_tot))
+    checks.append(("تطابق شرائح الثقة مع الأرشيف", v_bkt))
+
+    # 4) الحكام 1:1 (درس التضخم 2.6×): مجموع المباريات = عدد المعرفات المسجلة
+    v = []
+    ref_matches = sum((r or {}).get("matches", 0) for k, r in refs.items()
+                      if not str(k).startswith("_") and isinstance(r, dict))
+    fids = ((refs.get("_meta") or {}).get("fids")) or []
+    if refs and len(fids) < REFEREE_FIDS_CAP and ref_matches != len(fids):
+        v.append(f"مجموع مباريات الحكام {ref_matches} ضد معرفات مسجلة {len(fids)}")
+    checks.append(("تطابق الحكام 1:1", v))
+
+    # 5-7) لا معلّق متجاوزاً مهلته (درس التقرير العالق 11 يوماً)
+    def _stale(pending, limit_days, label):
+        out = []
+        cutoff = (now_utc() - timedelta(days=limit_days + INTEGRITY_AGE_GRACE)
+                  ).strftime("%Y-%m-%d")
+        for fid, e in (pending or {}).items():
+            d = (e or {}).get("date") or ""
+            if d and d < cutoff:
+                out.append(f"{label} {fid} بتاريخ {d} تجاوز مهلة {limit_days} أيام")
+        return out
+    checks.append(("لا تقرير معلقاً فوق مهلته",
+                   _stale(scen.get("pending"), SCENARIO_MAX_AGE_DAYS, "تقرير")))
+    v = []
+    cutoff = (now_utc() - timedelta(days=RADAR_DROP_DAYS + INTEGRITY_AGE_GRACE)
+              ).strftime("%Y-%m-%d")
+    for kind in ("warnings", "alerts"):
+        for e in (radar.get(kind) or []):
+            d = (e or {}).get("date") or ""
+            if d and d < cutoff:
+                v.append(f"{kind}:{e.get('fid')} بتاريخ {d}")
+    checks.append(("لا إنذار رادار معلقاً فوق مهلته", v))
+    v = []
+    for label, store in (("v2", v2), ("v1", v1), ("user", user)):
+        v += _stale(store.get("pending"), 3, f"توقع {label}")
+    checks.append(("لا توقع معلقاً فوق مهلته", v))
+
+    # 8) صحة عمود correct: يُعاد اشتقاقه من pick وactual لكل صف ويُقارن
+    v = []
+    for label, store in (("v2", v2), ("v1", v1), ("user", user)):
+        for r in (store.get("resolved") or []):
+            if r.get("pick") and r.get("actual"):
+                if bool(r.get("correct")) != (r["pick"] == r["actual"]):
+                    v.append(f"{label}:{r.get('fid')} correct مخالف لاشتقاقه")
+    checks.append(("صحة عمود correct (إعادة اشتقاق)", v))
+
+    # 9) الاحتمالات تجمع 100 (صفوف المحرك 2 الحاملة احتمالات)
+    v = []
+    for group in (list((v2.get("pending") or {}).values()),
+                  v2.get("resolved") or []):
+        for r in group:
+            try:
+                s = int(r["prob_home"]) + int(r["prob_draw"]) + int(r["prob_away"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            if s != 100:
+                v.append(f"{r.get('fid')}: مجموع الاحتمالات {s}")
+    checks.append(("الاحتمالات تجمع 100", v))
+
+    # 10) الثقة داخل حدودها المعلنة [30, 85]
+    v = []
+    for label, store in (("v2", v2), ("v1", v1), ("user", user)):
+        for group in (list((store.get("pending") or {}).values()),
+                      store.get("resolved") or []):
+            for r in group:
+                try:
+                    c = int(r.get("confidence"))
+                except (TypeError, ValueError):
+                    continue
+                if not 30 <= c <= 85:
+                    v.append(f"{label}:{r.get('fid')} ثقة {c}")
+    checks.append(("الثقة ضمن الحدود", v))
+
+    # 11) لا ازدواج معرفات: صف واحد لكل مباراة (درس ازدواج الحكام معمّماً)
+    v = []
+    for label, store in (("v2", v2), ("v1", v1), ("user", user)):
+        seen = set()
+        for r in (store.get("resolved") or []):
+            fid = str(r.get("fid"))
+            if fid in seen:
+                v.append(f"{label}: المعرف {fid} مكرر في resolved")
+            seen.add(fid)
+        overlap = seen & set(map(str, (store.get("pending") or {}).keys()))
+        for fid in overlap:
+            v.append(f"{label}: المعرف {fid} في pending وresolved معاً")
+    checks.append(("لا ازدواج معرفات", v))
+
+    # 12) لا تسريب بيانات محظورة (نفس فاحص WK-League — يُضم للسجل الموحد)
+    checks.append(("لا تسريب بيانات محظورة",
+                   find_data_leaks(v2) + find_data_leaks(v1)))
+    return checks
+
+
+def run_integrity_sentinel() -> str:
+    """يشغّل الفحص، يرسل إنذاراً فورياً عند أي قانون مكسور، ويرجع سطر النشرة.
+    أي فشل داخلي في الحارس نفسه يُبلَّغ ولا يقتل التشغيلة أبداً."""
+    if not INTEGRITY_SENTINEL:
+        return ""
+    try:
+        checks = integrity_check()
+    except Exception as e:
+        print("حارس النزاهة — فشل الفحص نفسه:", e)
+        return "🧮 فحص النزاهة: تعذر التشغيل — راجع سجل التشغيلة"
+    broken = [(name, v) for name, v in checks if v]
+    ok = len(checks) - len(broken)
+    if broken:
+        lines = ["🧮🚨 حارس النزاهة — قوانين حسابية مكسورة اكتُشفت هذا الصباح:"]
+        for name, v in broken:
+            lines.append(f"❌ {name} ({len(v)} انتهاكاً):")
+            lines += [f"   • {x}" for x in v[:INTEGRITY_MAX_DETAILS]]
+            if len(v) > INTEGRITY_MAX_DETAILS:
+                lines.append(f"   • … و{len(v) - INTEGRITY_MAX_DETAILS} غيرها")
+        if TELEGRAM_TOKEN and TELEGRAM_CHAT_ID:
+            send_telegram_long("\n".join(lines))
+        print("\n".join(lines))
+        return (f"🧮 فحص النزاهة: {ok}/{len(checks)} — "
+                f"⚠️ {len(broken)} قانون مكسور (التفاصيل في رسالة منفصلة)")
+    return f"🧮 فحص النزاهة: {ok}/{len(checks)} ✓"
+
+
 def drama_scoreboard_line() -> str:
     """سطر لوحة تنبيهات الدراما للملخص الصباحي (رؤية يومية إلزامية —
     درس 2026-08-02: السجل الأول 1/6 وُجد ولم يصل المالك إلا بسؤاله).
@@ -1972,12 +2159,21 @@ def main() -> None:
     days_total = update_history(stats, user_stats, store["resolved"])
     print(f"الأرشيف الدائم: {days_total} يوماً مسجلاً.")
 
+    # 4.5) 🧮 حارس النزاهة اليومي: يفحص ملفات القرص بعد اكتمال كتابتها كلها —
+    # أي قانون مكسور يصل المالك تيليجرام فوراً، لا في مراجعة بعد شهر
+    integrity_line = run_integrity_sentinel()
+    if integrity_line:
+        print(integrity_line)
+
     # 5) ملخص تيليجرام (مقارنة المحرك 1 + سباق الدقة الثلاثي مع المالك)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
         digest = build_digest(new_preds, stats, v1_pending(), new_lessons, user_stats)
         drama = drama_scoreboard_line()
         if drama:
             digest += "\n" + drama
+        # سطر النزاهة اليومي: المالك يرى كل صباح أن الحسبة سليمة، لا يفترض ذلك
+        if integrity_line:
+            digest += "\n" + integrity_line
         send_telegram_long(digest)
 
 
