@@ -51,7 +51,31 @@ PULSE_STATUSES = {"1H", "2H", "ET"}   # لا نبض في الاستراحة/ال
 # 90 ثانية (طلب المالك: تنبيه خلال دقيقة إلى دقيقتين). نداء Claude يحدث فقط
 # عند تحرك حقيقي في الأرقام (ركنية، تسديدة على المرمى، بطاقة...) — البصمة أدناه.
 FOCUS_SWEEP_SECONDS = 90
-FOCUS_LOOP_BUDGET_SECONDS = 8 * 60   # ثم نسلّم للتشغيلة التالية (كل 10 دقائق)
+# 6 دقائق (كانت 8 قبل إصلاح 2026-08-06): ميزانية 8 دقائق لا تتسع أصلاً داخل سقف
+# التشغيلة أدناه، فكانت وعداً لا يتحقق. زمن الاستجابة لا يتأثر — تحدده فترة
+# الفحص (90 ثانية) لا طول الحلقة؛ الفارق أربع كنسات بدل خمس.
+FOCUS_LOOP_BUDGET_SECONDS = 6 * 60   # ثم نسلّم للتشغيلة التالية (كل 10 دقائق)
+
+# ---- سقف زمن التشغيلة كاملة (إصلاح ازدحام 2026-08-06) ----
+# العطل: في أمسية مزدحمة تستغرق الجولة العادية 6-7 دقائق، ثم يبدأ الرصد السريع
+# ميزانيته الكاملة (8 دقائق) من تلك اللحظة — فتتجاوز التشغيلة الـ10 دقائق، ويتكوّن
+# طابور، وكل تشغيلة جديدة تقتل السابقة قبل خطوة الحفظ. النتيجة: 7 ساعات و23 دقيقة
+# بلا أي كتابة بيانات (2026-08-06 من 15:40 إلى 23:10 UTC).
+# الإصلاح: تثبيت مهلة الرصد السريع على *بداية التشغيلة* لا على نهاية الجولة العادية،
+# فلا يمكن للتشغيلة أن تتجاوز خانتها الزمنية مهما طالت الجولة العادية.
+RUN_START = time.monotonic()          # لحظة بدء monitor.py
+RUN_WALL_CLOCK_BUDGET_SECONDS = 7 * 60   # يترك ~3 دقائق للوحة والحارس والحفظ
+
+
+def fast_watch_deadline() -> float:
+    """المهلة المطلقة للمسارين السريعين — الأصغر بين:
+    (أ) ميزانية الرصد السريع المعتادة من الآن، و(ب) سقف زمن التشغيلة من بدايتها.
+    في ليلة هادئة تفوز (أ) فلا يتغير شيء؛ في أمسية مزدحمة تفوز (ب) فتنتهي
+    التشغيلة داخل خانتها وتصل إلى خطوة الحفظ."""
+    return min(
+        time.monotonic() + FOCUS_LOOP_BUDGET_SECONDS,
+        RUN_START + RUN_WALL_CLOCK_BUDGET_SECONDS,
+    )
 SIG_STATS = {
     "Corner Kicks", "Shots on Goal", "Total Shots",
     "Yellow Cards", "Red Cards", "Goalkeeper Saves",
@@ -1049,7 +1073,7 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
     if not watch:
         return False
     wl_dirty = False
-    deadline = time.monotonic() + FOCUS_LOOP_BUDGET_SECONDS
+    deadline = fast_watch_deadline()
     ids = "-".join(sorted(watch))
     while time.monotonic() < deadline:
         time.sleep(FOCUS_SWEEP_SECONDS)
@@ -1954,7 +1978,10 @@ def main() -> None:
 
     # الرصد السريع: تبقى التشغيلة مستيقظة وتفحص مباريات قائمة التركيز
     # كل ~90 ثانية حتى تسليم الجولة التالية (تنبيه خلال دقيقة إلى دقيقتين)
-    fast_deadline = time.monotonic() + FOCUS_LOOP_BUDGET_SECONDS
+    fast_deadline = fast_watch_deadline()
+    if fast_deadline <= time.monotonic():
+        print("المسار السريع: تخطٍّ — الجولة العادية استهلكت خانة التشغيلة "
+              f"({int(time.monotonic() - RUN_START)}s)، نُسلّم للتشغيلة التالية")
     if focus_fast_watch(state, wl_data, watch, live_budget, pulses):
         wl_dirty = True
 

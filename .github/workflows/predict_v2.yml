@@ -60,13 +60,9 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
-          git add predictions_v2.json lessons_v2.json news.json data.json
-          if [ -f data_v2.json ]; then git add data_v2.json; fi
-          if [ -f predictions_user.json ]; then git add predictions_user.json; fi
-          if [ -f history.json ]; then git add history.json; fi
-          if [ -f referees.json ]; then git add referees.json; fi
-          if [ -f scenarios_v2.json ]; then git add scenarios_v2.json; fi
-          if [ -f radar_log.json ]; then git add radar_log.json; fi
+          # نُدرج كل ما أنتجته التشغيلة (إصلاح 2026-08-09) — انظر monitor.yml:
+          # القائمة اليدوية تترك أي ملف غير مُدرَج معدَّلاً فيرفض git الـ rebase وتضيع البيانات.
+          git add -A
           git diff --cached --quiet || git commit -m "engine 2 predictions [skip ci]"
           # دفع مع إعادة المحاولة: عند تعارض مع commit موازٍ نحتفظ بملفاتنا المولّدة (الأحدث)
           ok=0
