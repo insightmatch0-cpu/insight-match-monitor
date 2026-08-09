@@ -187,6 +187,12 @@
   }
   .radar-acc .r-chip.ok{color:#7ee0a3;border-color:#2e5c41}
   .radar-acc .r-chip.mute{color:#e0a37e;border-color:#5c452e}
+  /* بطاقة 360° في مختبر الظل: عدّادات الطبقات والنتيجة النهائية */
+  .lab-chip{
+    font-size:10.5px;border:1px solid var(--line);border-radius:999px;
+    padding:1px 8px;margin-inline-start:6px;color:var(--muted);white-space:nowrap;
+  }
+  .lab-chip.score{color:var(--ink);border-color:var(--engine);font-family:Changa}
 
   /* ======== عناوين الأقسام ======== */
   .sec{margin-top:26px}
@@ -671,7 +677,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 68;
+var IM_BUILD = 69;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -750,6 +756,13 @@ var I18N = {
     labWaitData:"انتهت المباراة — بانتظار بياناتها النهائية (تُتابع كل صباح وتُنظَّف آلياً إن تعذّرت)",
     labBreakdown:"تصحيح البنود — ما نجح وما فشل",
     labOrig:"التقرير الأصلي كما كُتب قبل المباراة",
+    labScore:"النتيجة",
+    labS1:"S1 — توقعات الصباح", labS3:"S3 — الرادار الحي",
+    labEngine1:"المحرك 1", labEngine2:"المحرك 2", labYou:"توقعك",
+    labConf:"ثقة", labHit:"أصاب", labMiss:"أخطأ",
+    labWarnRed:"إنذار خطر", labWarnAmber:"إنذار تحذير",
+    labWarnHit:"التوقع سقط فعلاً", labWarnMiss:"التوقع صمد",
+    labDramaAlert:"تنبيه دراما", labSilencedTag:"(صامت — لم يُرسل)",
     labNoBreakdown:"التفصيل بنداً‑ببند متاح للتقارير المقيَّمة من الآن فصاعداً — هذا التقرير قُيِّم قبل تفعيل الميزة",
     liveMore:"⌄ عرض بقية المباريات الحية ({n})",
     liveLess:"⌃ إخفاء المباريات الإضافية",
@@ -850,6 +863,13 @@ var I18N = {
     labWaitData:"match finished — awaiting final data (checked every morning, auto-cleaned if unavailable)",
     labBreakdown:"Claim-by-claim grading — what hit and what missed",
     labOrig:"Original report as written before the match",
+    labScore:"Final score",
+    labS1:"S1 — morning predictions", labS3:"S3 — live radar",
+    labEngine1:"Engine 1", labEngine2:"Engine 2", labYou:"Your pick",
+    labConf:"conf", labHit:"hit", labMiss:"missed",
+    labWarnRed:"Danger warning", labWarnAmber:"Amber warning",
+    labWarnHit:"the pick truly fell", labWarnMiss:"the pick held",
+    labDramaAlert:"Drama alert", labSilencedTag:"(silenced — not sent)",
     labNoBreakdown:"Claim-by-claim detail is available for reports graded from now on — this one was graded before the feature",
     liveMore:"⌄ show the rest of the live matches ({n})",
     liveLess:"⌃ hide extra matches",
@@ -1256,8 +1276,75 @@ function renderAccuracy(acc){
    شريط نسبة أخضر/أحمر، عدّاد ✓/✗، نقطة حمراء نابضة للتقارير التي مباراتها
    جارية، والتقرير الأصلي كاملاً بنقرة واحدة. تبويب المحرك 2 فقط */
 /* تفصيل التصحيح بنداً‑ببند — ماذا نجح وماذا فشل بالضبط (طلب المالك 2026-08-01) */
+/* بطاقة 360° (طلب المالك 2026-08-09): اسم اختيار 1X2 بلغة القارئ */
+function labPickLabel(r, pick){
+  if (pick === "draw") return t("pickDraw");
+  var side = pick === "home" ? tn(r, "home") : tn(r, "away");
+  return t("pickHome") + " " + side;
+}
+
+/* عدّادات الطبقات في رأس البطاقة: S1 وS3 (وS2 موجود أصلاً) + النتيجة */
+function labLayerChips(r){
+  var h = "";
+  if (r.score) h += '<span class="lab-chip score">'+esc(t("labScore"))+" "+esc(r.score)+'</span>';
+  var s1 = r.s1 || {};
+  var t1 = 0, k1 = 0;
+  for (var k in s1){ t1++; if (s1[k].correct) k1++; }
+  if (t1) h += '<span class="lab-chip">S1 '+k1+'/'+t1+'</span>';
+  var s3 = r.s3 || {}, w3 = s3.warnings || [], a3 = s3.alerts || [];
+  if (w3.length + a3.length){
+    var k3 = 0;
+    for (var i = 0; i < w3.length; i++) if (w3[i].failed) k3++;
+    for (var j = 0; j < a3.length; j++) if (a3[j].hit) k3++;
+    h += '<span class="lab-chip">S3 '+k3+'/'+(w3.length + a3.length)+'</span>';
+  }
+  return h;
+}
+
 function labBreakdown(r){
   var h = "";
+  /* S1 — توقعات الصباح: المحركان وتوقع المالك، كلٌّ بحكمه (بطاقة 360°) */
+  var s1 = r.s1 || {};
+  var s1keys = [["v1", "labEngine1"], ["v2", "labEngine2"], ["user", "labYou"]];
+  var s1rows = "";
+  for (var i = 0; i < s1keys.length; i++){
+    var p = s1[s1keys[i][0]];
+    if (!p) continue;
+    s1rows += '<div class="lab-bd-row '+(p.correct ? "ok" : "no")+'">'
+      + '<span class="ic">'+(p.correct ? "✅" : "❌")+'</span>'
+      + '<span class="cl">'+esc(t(s1keys[i][1]))+": "+esc(labPickLabel(r, p.pick))
+      + (p.confidence ? " — "+esc(t("labConf"))+" "+esc(p.confidence)+"%" : "")
+      + '</span></div>';
+  }
+  if (s1rows){
+    h += '<div class="lab-bd"><div class="lab-bd-title">'+esc(t("labS1"))
+      + (r.score ? " · "+esc(t("labScore"))+" "+esc(r.score) : "")
+      + '</div>'+s1rows+'</div>';
+  }
+  /* S3 — الرادار الحي: إنذارات المستويات وتنبيهات الدراما لنفس المباراة */
+  var s3 = r.s3 || {}, w3 = s3.warnings || [], a3 = s3.alerts || [];
+  if (w3.length + a3.length){
+    h += '<div class="lab-bd"><div class="lab-bd-title">'+esc(t("labS3"))+'</div>';
+    for (var wi = 0; wi < w3.length; wi++){
+      var w = w3[wi];
+      h += '<div class="lab-bd-row '+(w.failed ? "ok" : "no")+'">'
+        + '<span class="ic">'+(w.failed ? "✅" : "❌")+'</span>'
+        + '<span class="cl">'+esc(t(w.level === "red" ? "labWarnRed" : "labWarnAmber"))
+        + (w.minute ? " (د"+esc(w.minute)+")" : "")
+        + " — "+esc(t(w.failed ? "labWarnHit" : "labWarnMiss"))+'</span></div>';
+    }
+    for (var ai = 0; ai < a3.length; ai++){
+      var a = a3[ai];
+      h += '<div class="lab-bd-row '+(a.hit ? "ok" : "no")+'">'
+        + '<span class="ic">'+(a.hit ? "✅" : "❌")+'</span>'
+        + '<span class="cl">'+esc(t("labDramaAlert"))+": "
+        + esc(t("radarClaim_"+a.key) || a.key)
+        + (a.minute ? " (د"+esc(a.minute)+")" : "")
+        + " — "+esc(t(a.hit ? "labHit" : "labMiss"))
+        + (a.silenced ? " "+esc(t("labSilencedTag")) : "")+'</span></div>';
+    }
+    h += '</div>';
+  }
   var gs = r.grades || [];
   if (gs.length){
     h += '<div class="lab-bd"><div class="lab-bd-title">'+t("labBreakdown")+'</div>';
@@ -1288,7 +1375,7 @@ function labCard(r, statusHtml, verdictHtml){
     + '<span class="lab-date">'+esc(r.date||"")+'</span>'
     + '</div>'
     + (r.league ? '<div class="lab-league">'+esc(r.league)+'</div>' : "")
-    + '<div class="lab-verdict">'+statusHtml+verdictHtml+'</div>'
+    + '<div class="lab-verdict">'+statusHtml+verdictHtml+labLayerChips(r)+'</div>'
     + (body ? '<div class="lab-hint">👆 '+t("labReadReport")+'</div>' : "")
     + '</summary>'
     + body

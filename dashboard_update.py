@@ -30,6 +30,7 @@ DATA_FILE           = Path("data.json")
 DATA_V2_FILE        = Path("data_v2.json")
 SCENARIOS_V2_FILE   = Path("scenarios_v2.json")
 RADAR_LOG_FILE      = Path("radar_log.json")   # إنذارات الرادار + إحصاءات صدقها
+PREDICTIONS_USER_FILE = Path("predictions_user.json")  # توقعات المالك (سباق الدقة)
 SHADOW_LAB_ROWS     = 10   # أحدث بطاقات التقييم المعروضة في مختبر الظل
 
 LESSONS_ON_DASHBOARD = 30   # أحدث الدروس المعروضة في لوحة المحرك 2
@@ -299,17 +300,54 @@ def recent_lessons() -> list:
     return out
 
 
+def _by_fid(rows) -> dict:
+    return {str(r.get("fid")): r for r in (rows or [])
+            if isinstance(r, dict) and r.get("fid")}
+
+
 def build_shadow_lab() -> dict:
     """🔬 مختبر الظل — آخر بطاقات تقييم تقارير ما قبل المباراة (قائمة التركيز
     + تقارير الظل الصامتة) حتى يرى المالك تدريب القنّاص وهو يحدث، بدل انتظار
-    التقارير المجدولة (طلب المالك 2026-08-01)."""
+    التقارير المجدولة (طلب المالك 2026-08-01).
+    بطاقة 360° (طلب المالك 2026-08-09): كل بطاقة تحمل أيضاً النتيجة النهائية
+    وأحكام S1 (المحركان + توقع المالك) وS3 (إنذارات الرادار وتنبيهات الدراما
+    لنفس المباراة) — الطبقات الثلاث لكل مباراة في مكان واحد."""
     sc = load_json(SCENARIOS_V2_FILE, {"pending": {}, "resolved": []})
     resolved = sc.get("resolved") or []
+    v1_res = _by_fid(load_json(PREDICTIONS_FILE, {}).get("resolved"))
+    v2_res = _by_fid(load_json(PREDICTIONS_V2_FILE, {}).get("resolved"))
+    user_res = _by_fid(load_json(PREDICTIONS_USER_FILE, {}).get("resolved"))
+    radar = load_json(RADAR_LOG_FILE, {})
     rows = []
     for e in resolved[-SHADOW_LAB_ROWS:][::-1]:
         if not isinstance(e, dict):
             continue
+        fid = str(e.get("fid") or "")
+        # S1: حكم توقعات الصباح لنفس المباراة — المحركان وتوقع المالك إن وجد
+        s1 = {}
+        score = ""
+        for key, idx in (("v1", v1_res), ("v2", v2_res), ("user", user_res)):
+            p = idx.get(fid)
+            if p and p.get("pick"):
+                s1[key] = {"pick": p["pick"],
+                           "confidence": p.get("confidence"),
+                           "correct": bool(p.get("correct"))}
+                score = score or p.get("score", "")
+        # S3: ما قاله الرادار عن نفس المباراة — إنذارات المستويات وتنبيهات الدراما
+        warns = [{"level": w.get("level"), "minute": w.get("minute"),
+                  "failed": bool(w.get("failed"))}
+                 for w in (radar.get("resolved") or [])
+                 if str(w.get("fid")) == fid]
+        alerts = [{"key": a.get("key"), "minute": a.get("minute"),
+                   "hit": bool(a.get("hit")),
+                   "silenced": bool(a.get("silenced"))}
+                  for a in (radar.get("alerts_resolved") or [])
+                  if str(a.get("fid")) == fid]
         rows.append({
+            "fid": fid,
+            "score": score,
+            "s1": s1,
+            "s3": {"warnings": warns, "alerts": alerts},
             # تاريخ المباراة نفسها لا تاريخ التقييم (بلاغ المالك 2026-08-02:
             # مباراة كأس قديمة ظهرت بتاريخ صباح تقييمها فبدا التاريخ خاطئاً)
             "date": e.get("date") or e.get("graded_on", ""),
