@@ -73,6 +73,9 @@ jobs:
           if [ -f predictions_user.json ]; then git add predictions_user.json; fi
           if [ -f data_v2.json ]; then git add data_v2.json; fi
           if [ -f scenarios_v2.json ]; then git add scenarios_v2.json; fi
+          # التقييم اللحظي (PR #81) يكتب دروساً أثناء المراقبة — بدون هذا السطر
+          # يبقى الملف غير محفوظ فيفشل pull --rebase وتفشل التشغيلة كلها
+          if [ -f lessons_v2.json ]; then git add lessons_v2.json; fi
           if [ -f referees.json ]; then git add referees.json; fi
           if [ -f radar_log.json ]; then git add radar_log.json; fi
           git diff --cached --quiet || git commit -m "update state [skip ci]"
