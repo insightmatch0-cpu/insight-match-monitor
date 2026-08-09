@@ -1176,17 +1176,35 @@ def build_context(m: dict, budget: dict, standings_cache: dict) -> str:
 
 
 # ================== توقعات Claude (احتمالات، على دفعات) ==================
+# REC-002 (قرار المالك 2026-08-08): شريحة ثقة عددها أقل من هذا الحد تُعرض
+# بوسم "عينة غير كافية" بدل عرضها كحقيقة — سطر "70%+: 100% (5/5)" كان يقدَّم
+# للنموذج كدليل معصومية وهو مبني على 5 مباريات فقط.
+CALIBRATION_MIN_BUCKET = 20
+
+
+def _confidence_line(label: str, d: dict) -> str:
+    """سطر شريحة ثقة واحد في سجل المعايرة، مع وسم العينات الصغيرة."""
+    line = f"- عندما كانت ثقتك {label}: {pct(d)}"
+    if 0 < d.get("total", 0) < CALIBRATION_MIN_BUCKET:
+        line += " (عينة غير كافية — لا تعتمد عليها)"
+    return line
+
+
 def calibration_text(stats: dict) -> str:
+    # REC-002: الشريحة تحت 50 كانت غائبة عن السجل رغم أنها تضم أغلبية التوقعات
+    # (70.5% وقت القرار) — أكبر كتلة تغذية راجعة للمعايرة لم تكن تصل للنموذج.
     if not stats["overall"]["total"]:
         return "لا يوجد سجل تاريخي بعد — كن متحفظاً في توزيع الاحتمالات."
+    by_conf = stats["by_confidence"]
     return (
         f"سجل دقتك التاريخي الفعلي (استخدمه لمعايرة احتمالاتك):\n"
         f"- الإجمالي: {pct(stats['overall'])}\n"
         f"- آخر 30 يوماً: {pct(stats['last30'])}\n"
         f"- الدوريات الكبرى: {pct(stats['top_leagues'])} | البقية: {pct(stats['other_leagues'])}\n"
-        f"- عندما كانت ثقتك 70%+: {pct(stats['by_confidence']['70+'])}\n"
-        f"- عندما كانت ثقتك 60-69%: {pct(stats['by_confidence']['60-69'])}\n"
-        f"- عندما كانت ثقتك 50-59%: {pct(stats['by_confidence']['50-59'])}\n"
+        + _confidence_line("70%+", by_conf["70+"]) + "\n"
+        + _confidence_line("60-69%", by_conf["60-69"]) + "\n"
+        + _confidence_line("50-59%", by_conf["50-59"]) + "\n"
+        + _confidence_line("تحت 50%", by_conf["<50"]) + "\n"
         f"إذا كانت دقتك الفعلية أقل من ثقتك المعلنة فاخفض الاحتمال الأعلى، والعكس صحيح."
     )
 
