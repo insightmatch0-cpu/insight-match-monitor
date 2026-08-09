@@ -80,6 +80,14 @@ BASE_RATE_MIN_LEAGUE = 15   # عينة الدوري الواحد الدنيا ق
 # لو لم تكن في قائمة التركيز، ويحفظه في scenarios_v2.json للتقييم الصباحي
 # واستخلاص الدروس — دون إرسال أي رسالة تيليجرام (تيليجرام لقائمة التركيز فقط).
 SHADOW_REPORTS_PER_DAY = 6   # سقف يومي — تكلفة Fable تبقى تحت السيطرة
+# أولوية الذهب في الظل (أمر المالك 2026-08-09): يوم 8 أغسطس استهلكت المباريات
+# الأبكر انطلاقاً حصص الظل الست كلها، فبقيت مباراتا 70%+ (أهم ما يراقبه
+# المالك) بلا تقرير أصلاً. العلاج: (1) مباريات الثقة ≥70 تتقدم أي مباراة أخرى
+# في الاختيار، و(2) إن نفدت الحصة اليومية تحصل على حصة إضافية خاصة بها —
+# نادرة بالبناء وسقفها الخاص يحمي التكلفة. التعطيل الفوري: False.
+SHADOW_GOLD_PRIORITY = True
+GOLD_SHADOW_MIN_CONF = 70    # عتبة "الذهب" — نفس خانة المالك المقدسة
+GOLD_SHADOW_EXTRA_PER_DAY = 4  # الحصة الإضافية للذهب بعد نفاد الحصة العادية
 
 # ذاكرة تقارير السيناريوهات: كل تقرير ما قبل مباراة يُحفظ هنا، ويقيّمه
 # predict_v2.py صباحاً مقابل البيانات النهائية الحقيقية ويستخلص دروساً
@@ -915,7 +923,8 @@ def select_shadow_fixtures(v2_pending: dict, scen_pending: dict, watch: set,
                            now: datetime, cap: int) -> list:
     """يختار مباريات الدوريات الكبرى التي تنطلق خلال نافذة ما قبل المباراة،
     لم يُلتقط لها تقرير بعد، وليست في قائمة التركيز (تلك لها التقرير العادي).
-    ترجع fids مرتبة بالأقرب انطلاقاً، بحد أقصى cap."""
+    ترجع fids بحد أقصى cap — الذهب (ثقة ≥70) أولاً ثم الأقرب انطلاقاً
+    (أولوية الذهب: أمر المالك 2026-08-09 بعد ترك مباراتي 8 أغسطس الذهبيتين)."""
     out = []
     for fid, p in (v2_pending or {}).items():
         if fid in watch or fid in (scen_pending or {}):
@@ -930,7 +939,9 @@ def select_shadow_fixtures(v2_pending: dict, scen_pending: dict, watch: set,
             continue
         if (kickoff - now).total_seconds() / 60 > PREMATCH_REPORT_MINUTES:
             continue
-        out.append((kickoff, fid))
+        gold = (SHADOW_GOLD_PRIORITY
+                and (p.get("confidence") or 0) >= GOLD_SHADOW_MIN_CONF)
+        out.append(((0 if gold else 1, kickoff), fid))
     out.sort()
     return [fid for _, fid in out[:max(0, cap)]]
 
@@ -942,18 +953,33 @@ def shadow_reports(watch: set) -> None:
     scen = load_json_file(SCENARIOS_FILE, {"pending": {}, "resolved": []})
     scen.setdefault("pending", {})
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    used = sum(1 for e in scen["pending"].values()
-               if e.get("shadow") and e.get("date") == today)
-    used += sum(1 for e in (scen.get("resolved") or [])
-                if isinstance(e, dict) and e.get("shadow") and e.get("date") == today)
+    todays = [e for e in list(scen["pending"].values())
+              + list(scen.get("resolved") or [])
+              if isinstance(e, dict) and e.get("shadow") and e.get("date") == today]
+    used = len(todays)
     budget = SHADOW_REPORTS_PER_DAY - used
-    if budget <= 0:
+    # أولوية الذهب (أمر المالك 2026-08-09): بعد نفاد الحصة العادية تبقى
+    # لمباريات الثقة ≥70 حصة إضافية خاصة — الذهب لا يُترك بلا تقرير أبداً
+    gold_used = sum(1 for e in todays if e.get("gold"))
+    gold_budget = (GOLD_SHADOW_EXTRA_PER_DAY - gold_used
+                   if SHADOW_GOLD_PRIORITY else 0)
+    if budget <= 0 and gold_budget <= 0:
         return
     v2_pending = load_json_file(Path("predictions_v2.json"), {}).get("pending") or {}
     v1_pending = load_json_file(Path("predictions.json"), {}).get("pending") or {}
     now = datetime.now(timezone.utc)
-    for fid in select_shadow_fixtures(v2_pending, scen["pending"], watch, now, budget):
+    for fid in select_shadow_fixtures(v2_pending, scen["pending"], watch, now,
+                                      max(0, budget) + max(0, gold_budget)):
         p = v2_pending.get(fid) or {}
+        gold = (SHADOW_GOLD_PRIORITY
+                and (p.get("confidence") or 0) >= GOLD_SHADOW_MIN_CONF)
+        # الذهب يستهلك الحصة العادية أولاً؛ غير الذهب لا يمس الحصة الإضافية
+        if budget > 0:
+            budget -= 1
+        elif gold and gold_budget > 0:
+            gold_budget -= 1
+        else:
+            continue
         ctx = build_prematch_context(fid, v2_pending.get(fid),
                                      v1_pending.get(fid), None)
         report = analyze_with_claude(
@@ -971,6 +997,7 @@ def shadow_reports(watch: set) -> None:
             "league": p.get("ar_league") or p.get("league", ""),
             "report": report,
             "shadow": True,                # صامت — التقط للتعلم فقط
+            "gold": gold,                  # ذهب (ثقة ≥70) — لعدّاد الحصة الإضافية
             "sent_at": datetime.now(timezone.utc).isoformat(),
         }
         SCENARIOS_FILE.write_text(
