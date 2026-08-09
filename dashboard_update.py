@@ -418,6 +418,27 @@ def freshness_warnings(state: dict) -> list:
     return warns
 
 
+def build_radar_accuracy() -> dict:
+    """لوحة دقة الرادار S3 (طلب المالك 2026-08-09 — تفصيل مرئي كامل):
+    إحصاءات المستويات والادعاءات كما بناها التقييم الصباحي + قائمتا قاعدة
+    الإيقاف (مُثبَت/صامت) + اتجاه دقة الإنذارات يوماً-بيوم من السجل التراكمي.
+    صفر نداءات — قراءة radar_log.json فقط."""
+    log = load_json(RADAR_LOG_FILE, {})
+    out = dict((log.get("meta") or {}).get("stats") or {})
+    out["silenced"] = log.get("silenced") or []
+    out["proven"] = log.get("proven") or []
+    daily = {}
+    for w in (log.get("resolved") or []):
+        d = (w or {}).get("graded_on")
+        if not d:
+            continue
+        s = daily.setdefault(d, {"hit": 0, "total": 0})
+        s["total"] += 1
+        s["hit"] += 1 if w.get("failed") else 0
+    out["daily_warnings"] = dict(sorted(daily.items())[-30:])
+    return out
+
+
 def main() -> None:
     state = load_json(STATE_FILE, {})
     store = load_json(PREDICTIONS_FILE, {"pending": {}, "resolved": [], "meta": {}})
@@ -433,8 +454,8 @@ def main() -> None:
         "recent_results": build_recent_results(store),
         "accuracy": stats,
         "news": news.get("items", []),
-        # لوحة صدق الرادار: كم إنذاراً أطلق وكم أصاب (يبنيها predict_v2 صباحاً)
-        "radar_acc": (load_json(RADAR_LOG_FILE, {}).get("meta") or {}).get("stats") or {},
+        # لوحة دقة الرادار S3: مستويات وادعاءات وحالة قاعدة الإيقاف واتجاه يومي
+        "radar_acc": build_radar_accuracy(),
         # خط التحديث (طلب المالك 2026-08-02): متى صدرت توقعات المحرك 1
         "pred_updated": (store.get("meta") or {}).get("last_run", ""),
     }

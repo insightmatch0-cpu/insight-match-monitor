@@ -173,6 +173,20 @@
     font-size:12.5px;color:var(--muted);background:var(--panel);
     border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:12px;
   }
+  /* لوحة دقة الرادار S3 (طلب المالك 2026-08-09): تفصيل مرئي كامل صغير */
+  .radar-acc .r-row{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:5px 0;border-top:1px solid var(--line);
+  }
+  .radar-acc .r-row:first-of-type{border-top:none}
+  .radar-acc .r-name{color:var(--ink)}
+  .radar-acc .r-num{font-family:Changa;font-weight:700;color:var(--ink)}
+  .radar-acc .r-chip{
+    font-size:10.5px;border:1px solid var(--line);border-radius:999px;
+    padding:1px 8px;white-space:nowrap;
+  }
+  .radar-acc .r-chip.ok{color:#7ee0a3;border-color:#2e5c41}
+  .radar-acc .r-chip.mute{color:#e0a37e;border-color:#5c452e}
 
   /* ======== عناوين الأقسام ======== */
   .sec{margin-top:26px}
@@ -657,7 +671,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 67;
+var IM_BUILD = 68;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -701,6 +715,12 @@ var I18N = {
     radarEligIn:"باقي {n} د على أهلية التنبيه (د75)",
     radarAnyMoment:"مؤهلة الآن — قد يصل التنبيه في أي لحظة",
     radarAccLine:"صدق إنذارات الرادار (توقعات سقطت فعلاً بعد التحذير) —",
+    radarAccTitle:"🎯 سجل دقة الرادار (S3) — تراكمي، لا يُحذف",
+    radarClaim_next_goal:"الهدف القادم", radarClaim_goal:"هدف المتأخر",
+    radarClaim_equalizer:"إدراك التعادل", radarClaim_flip:"قلب النتيجة",
+    radarStProven:"مُثبَت ✅ بلا وسم تجريبي", radarStSilenced:"صامت 🔇 بلا تيليجرام",
+    radarStTrial:"تجريبي 🧪 {n}/30 نحو الحكم",
+    radarTrendW:"دقة الإنذارات يوماً بيوم",
     radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
     radarPick:"توقع المحرك 2:",
     radarCalm:"لا إشارات خطر — الأرقام هادئة حتى الآن.",
@@ -795,6 +815,12 @@ var I18N = {
     radarEligIn:"{n} min until alert eligibility (75')",
     radarAnyMoment:"Eligible now — an alert may land any moment",
     radarAccLine:"Radar warning accuracy (picks that truly fell after the alert) —",
+    radarAccTitle:"🎯 Radar (S3) accuracy record — cumulative, nothing deleted",
+    radarClaim_next_goal:"Next goal", radarClaim_goal:"Trailing-side goal",
+    radarClaim_equalizer:"Equalizer", radarClaim_flip:"Full comeback",
+    radarStProven:"Proven ✅ no trial tag", radarStSilenced:"Silenced 🔇 no Telegram",
+    radarStTrial:"Trial 🧪 {n}/30 to verdict",
+    radarTrendW:"Warning accuracy day by day",
     radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
     radarPick:"Engine 2 pick:",
     radarCalm:"No danger signals — the numbers are calm so far.",
@@ -1667,22 +1693,16 @@ function renderRadar(live, acc){
     nx.textContent = t("radarNoBrew");
     nx.style.display = rows.length ? "" : "none";
   }
-  /* لوحة صدق الرادار — تظهر فقط حين توجد إنذارات مُقيَّمة (لا ادعاء بلا قياس) */
+  /* لوحة دقة الرادار S3 (طلب المالك 2026-08-09): تفصيل مرئي كامل — مستويات
+     الإنذار، كل نوع ادعاء بحالته وتقدمه نحو حكم الـ 30، واتجاه يومي.
+     تظهر فقط حين توجد قياسات حقيقية (لا ادعاء بلا قياس). */
   var accEl = document.getElementById("radar-acc");
-  var red = acc && acc.red, amb = acc && acc.amber, al = acc && acc.alerts;
-  var parts = [];
-  if (red && red.fired) parts.push(t("radarRed")+": "+red.hit+"/"+red.fired);
-  if (amb && amb.fired) parts.push(t("radarAmber")+": "+amb.hit+"/"+amb.fired);
-  if (al){
-    /* لوحة عقل S3: مجموع تنبيهات الدراما المُقيَّمة (هدف/تعادل/قلب نتيجة) */
-    var tf = 0, th = 0;
-    for (var ak in al){ tf += al[ak].fired || 0; th += al[ak].hit || 0; }
-    if (tf) parts.push(t("radarDrama")+": "+th+"/"+tf);
-  }
-  if (parts.length){
-    accEl.textContent = t("radarAccLine")+" "+parts.join(" · ");
+  var panel = radarAccPanel(acc || {});
+  if (panel){
+    accEl.innerHTML = panel;
     accEl.style.display = "";
   } else {
+    accEl.innerHTML = "";
     accEl.style.display = "none";
   }
   var grid = document.getElementById("radar-grid");
@@ -1693,6 +1713,55 @@ function renderRadar(live, acc){
   var h = "";
   for (var k=0;k<rows.length;k++) h += radarCard(rows[k]);
   grid.innerHTML = h;
+}
+
+/* لوحة دقة الرادار S3 — نسبة كل مستوى/نوع، حالة قاعدة الإيقاف، واتجاه يومي */
+function radarAccPanel(acc){
+  var red = acc.red, amb = acc.amber, al = acc.alerts || {};
+  var silenced = acc.silenced || [], proven = acc.proven || [];
+  var hasLevels = (red && red.fired) || (amb && amb.fired);
+  var claimKeys = ["next_goal", "goal", "equalizer", "flip"].filter(
+    function(k){ return al[k] && al[k].fired; });
+  if (!hasLevels && !claimKeys.length) return "";
+  function pc(o){ return o && o.fired ? Math.round(100 * (o.hit || 0) / o.fired) : null; }
+  function tile(label, o, gold){
+    var p = pc(o);
+    return '<div class="bucket'+(gold ? " gold" : "")+'"><div class="b-label">'+esc(label)+'</div>'
+      + '<div class="b-val">'+(p === null ? "—" : p + "%")+'</div>'
+      + '<div class="b-count">'+(o && o.fired ? (o.hit || 0)+"/"+o.fired : "")+'</div></div>';
+  }
+  var h = '<div class="t-label" style="margin-bottom:8px">'+esc(t("radarAccTitle"))+'</div>';
+  if (hasLevels){
+    h += '<div class="buckets" style="grid-template-columns:repeat(2,1fr)">'
+      + tile(t("radarRed"), red, true) + tile(t("radarAmber"), amb, false) + '</div>';
+  }
+  if (claimKeys.length){
+    h += '<div class="t-label" style="margin-top:10px;margin-bottom:2px">'+esc(t("radarDrama"))+'</div>';
+    for (var i = 0; i < claimKeys.length; i++){
+      var k = claimKeys[i], o = al[k], p = pc(o);
+      /* حالة قاعدة الإيقاف (REC-005): مُثبَت / صامت / تجريبي مع عدّاد الـ 30 */
+      var chip;
+      if (proven.indexOf(k) >= 0) chip = '<span class="r-chip ok">'+esc(t("radarStProven"))+'</span>';
+      else if (silenced.indexOf(k) >= 0) chip = '<span class="r-chip mute">'+esc(t("radarStSilenced"))+'</span>';
+      else chip = '<span class="r-chip">'+esc(t("radarStTrial")).replace("{n}", Math.min(o.fired, 30))+'</span>';
+      h += '<div class="r-row"><span class="r-name">'+esc(t("radarClaim_"+k) || k)+'</span>'
+        + '<span class="r-num">'+(o.hit || 0)+"/"+o.fired+(p === null ? "" : " · "+p+"%")+'</span>'
+        + chip + '</div>';
+    }
+  }
+  /* اتجاه دقة الإنذارات يوماً بيوم — نفس أعمدة سجل المحركين */
+  var days = Object.keys(acc.daily_warnings || {}).sort().slice(-30);
+  if (days.length >= 3){
+    h += '<div class="trend" style="margin-top:10px"><div class="t-label">'+esc(t("radarTrendW"))+'</div><div class="t-bars">';
+    for (var d = 0; d < days.length; d++){
+      var row = acc.daily_warnings[days[d]] || {};
+      var pd = row.total ? Math.round(100 * (row.hit || 0) / row.total) : 0;
+      h += '<div class="t-bar" style="height:'+Math.max(4, pd * 0.46)+'px" title="'
+        + esc(days[d])+" — "+(row.hit || 0)+"/"+(row.total || 0)+'"></div>';
+    }
+    h += '</div></div>';
+  }
+  return h;
 }
 
 /* إظهار/إخفاء وضع الرادار: شاشة واحدة نظيفة تملأ PC/TV بلا أقسام أخرى */

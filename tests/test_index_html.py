@@ -386,10 +386,14 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("tgt.seen = lm.seen || radarLive.updated", SCRIPT)
 
     def test_drama_alerts_scoreboard(self):
-        """🚨 لوحة عقل S3: مجموع تنبيهات الدراما المُقيَّمة يظهر في سطر الصدق."""
+        """🚨 لوحة عقل S3: تنبيهات الدراما المُقيَّمة تظهر في لوحة الدقة.
+        (انتقل المنطق إلى radarAccPanel — لوحة S3 الكاملة 2026-08-09 —
+        نفس الضمانة، وrenderRadar يستدعيها.)"""
         self.assertIn("radarDrama", SCRIPT)
-        body = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        body = re.search(r"function radarAccPanel\(acc\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIn("acc.alerts", body.group(1))
+        render = re.search(r"function renderRadar\(live, acc\)\{([\s\S]*?)\n\}", SCRIPT)
+        self.assertIn("radarAccPanel(", render.group(1))
 
 
 if __name__ == "__main__":
