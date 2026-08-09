@@ -43,6 +43,19 @@ RADAR_LOG_FILE        = Path("radar_log.json")        # إنذارات الرا�
 RADAR_RESOLVED_CAP    = 300   # سقف سجل الإنذارات المُقيَّمة
 RADAR_DROP_DAYS       = 4     # إنذار بلا نتيجة بعد 4 أيام يُسقط (مباراة ملغاة/مؤجلة)
 
+# قاعدة إيقاف تنبيهات الدراما — REC-005 (قرار المالك 2026-08-08): نهاية مكتوبة
+# مسبقاً لتجربة قد تدور بلا نهاية، بقياس كل نوع ادعاء على حدة (قاعدة المالك ج —
+# لا يُعاقب next_goal بذنب flip). عند بلوغ النوع 30 تنبيهاً مُقيَّماً تراكمياً:
+# دقة < 40% → قائمة silenced (يُسجَّل ويظهر في تبويب الرادار فقط، بلا تيليجرام)؛
+# دقة ≥ 50% → قائمة proven (يُرسل بلا وسم "🧪 تجريبي"). تحت 30: صفر تأثير.
+# القائمتان تُعادان كتابتهما كل صباح من السجل التراكمي نفسه — لا حالة خفية،
+# ونوع مُسكَت يستمر قياسه فيستطيع الخروج من الصمت إن تحسّن سجله.
+# التعطيل الفوري: False هنا وفي monitor.py (تفرغ القوائم ويعود كل شيء كما كان).
+RADAR_ALERT_STOP_RULE = True
+RADAR_STOP_MIN_GRADED = 30    # الحد الأدنى من التنبيهات المُقيَّمة قبل أي حكم
+RADAR_STOP_SILENCE_LT = 40    # دقة أقل من هذه (٪) → النوع صامت
+RADAR_STOP_PROVEN_GTE = 50    # دقة من هذه (٪) فأعلى → النوع مُثبَت
+
 CLAUDE_MODEL = "claude-fable-5"
 
 MAX_PREDICTIONS_24H   = 150   # نفس حد المحرك 1 — نفس المباريات. رُفع من 60 (المالك
@@ -1554,7 +1567,11 @@ def resolve_radar_log(store: dict) -> int:
     warnings = log.get("warnings") or []
     alerts = log.get("alerts") or []
     if not warnings and not alerts:
-        return 0
+        # قاعدة الإيقاف (REC-005): أول صباح بعد تفعيلها قد لا يكون فيه إنذار
+        # منتظر — نكمل مرة واحدة لكتابة القائمتين من السجل المتراكم ثم نعود للصمت
+        if not (RADAR_ALERT_STOP_RULE and log.get("alerts_resolved")
+                and "silenced" not in log):
+            return 0
     by_fid = {str(r.get("fid")): r for r in (store.get("resolved") or []) if r.get("fid")}
     today = now_utc().strftime("%Y-%m-%d")
     drop_before = (now_utc() - timedelta(days=RADAR_DROP_DAYS)).strftime("%Y-%m-%d")
@@ -1618,16 +1635,43 @@ def resolve_radar_log(store: dict) -> int:
                            "hit": sum(1 for x in rows if x.get("hit"))}
     if astats:
         stats["alerts"] = astats
+
+    # قاعدة الإيقاف (REC-005): تُعاد كتابة القائمتين كل صباح من السجل التراكمي
+    # نفسه — كل نوع ادعاء يُحكم على حدة، ولا حكم قبل 30 تنبيهاً مُقيَّماً
+    lists_changed = False
+    if RADAR_ALERT_STOP_RULE:
+        silenced, proven = [], []
+        for key in sorted(astats):
+            s = astats[key]
+            if s["fired"] < RADAR_STOP_MIN_GRADED:
+                continue   # تحت 30: صفر تأثير
+            acc = 100.0 * s["hit"] / s["fired"]
+            if acc < RADAR_STOP_SILENCE_LT:
+                silenced.append(key)
+            elif acc >= RADAR_STOP_PROVEN_GTE:
+                proven.append(key)
+        lists_changed = (log.get("silenced") != silenced
+                         or log.get("proven") != proven)
+        log["silenced"], log["proven"] = silenced, proven
+
     log["meta"] = {"stats": stats, "updated": now_utc().isoformat()}
-    if graded or len(still) != len(warnings) or len(a_still) != len(alerts):
+    if (graded or lists_changed
+            or len(still) != len(warnings) or len(a_still) != len(alerts)):
         save_json(RADAR_LOG_FILE, log)
     return graded
+
+
+# أسماء أنواع ادعاءات الدراما كما تُعرض للمالك (REC-005: كل نوع بسطره الخاص)
+DRAMA_CLAIM_AR = {"next_goal": "الهدف القادم", "goal": "هدف المتأخر",
+                  "equalizer": "إدراك التعادل", "flip": "قلب النتيجة"}
 
 
 def drama_scoreboard_line() -> str:
     """سطر لوحة تنبيهات الدراما للملخص الصباحي (رؤية يومية إلزامية —
     درس 2026-08-02: السجل الأول 1/6 وُجد ولم يصل المالك إلا بسؤاله).
-    يظهر فقط حين توجد تنبيهات مُقيَّمة؛ يفصّل أمس والإجمالي لكل شيء بشفافية."""
+    يظهر فقط حين توجد تنبيهات مُقيَّمة؛ يفصّل أمس والإجمالي لكل شيء بشفافية.
+    مع قاعدة الإيقاف (REC-005): تفصيل لكل نوع ادعاء على حدة — سجله، وحالته
+    (مُثبَت/صامت)، أو عدّاد تقدمه نحو حكم الـ 30."""
     log = load_json(RADAR_LOG_FILE, {})
     resolved = log.get("alerts_resolved") or []
     if not resolved:
@@ -1638,7 +1682,25 @@ def drama_scoreboard_line() -> str:
     line = f"🧪 تنبيهات الدراما (تجريبية): الإجمالي {total_hit}/{len(resolved)} صحيحة"
     if fresh:
         line += f" — اليوم {sum(1 for a in fresh if a.get('hit'))}/{len(fresh)}"
-    return line
+    if not RADAR_ALERT_STOP_RULE:
+        return line
+    lines = [line]
+    silenced = set(log.get("silenced") or [])
+    proven = set(log.get("proven") or [])
+    for key, name in DRAMA_CLAIM_AR.items():
+        rows = [a for a in resolved if a.get("key") == key]
+        if not rows:
+            continue
+        hit, n = sum(1 for a in rows if a.get("hit")), len(rows)
+        if key in proven:
+            status = "مُثبَت ✅ — يُرسل بلا وسم تجريبي"
+        elif key in silenced:
+            status = "صامت 🔇 — يُسجَّل بلا تيليجرام"
+        else:
+            status = (f"تجريبي — {min(n, RADAR_STOP_MIN_GRADED)}"
+                      f"/{RADAR_STOP_MIN_GRADED} نحو الحكم")
+        lines.append(f"  • {name}: {hit}/{n} — {status}")
+    return "\n".join(lines)
 
 
 def v1_pending() -> dict:

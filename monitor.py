@@ -135,6 +135,12 @@ RADAR_ALERT_DRAW_MIN = 80     # حالة التعادل (الأكثر ضجيجا
 RADAR_ALERT_DRAW_GAP = 30     # هيمنة أوضح مطلوبة بين الطرفين (كان 20)
 RADAR_ALERT_TRIAL = True      # وسم "🧪 تجريبي" على الرسائل حتى يثبت السجل الصباحي
 RADAR_ALERT_CAP_PER_RUN = 5   # سقف تنبيهات الدراما في التشغيلة — ضد الضجيج
+# قاعدة الإيقاف المسجّلة مسبقاً — REC-005 (قرار المالك 2026-08-08): التقييم
+# الصباحي في predict_v2.py يكتب في radar_log.json قائمتين لكل نوع ادعاء بلغ
+# 30 تنبيهاً مُقيَّماً: silenced (دقة <40% → يُسجَّل للتقييم بلا تيليجرام)
+# وproven (دقة ≥50% → يُرسل بلا وسم "🧪 تجريبي"). تحت 30: القائمتان فارغتان
+# وكل شيء كما كان. التعطيل الفوري: False (تُتجاهل القائمتان تماماً).
+RADAR_ALERT_STOP_RULE = True
 _ALERT_RANK = {"goal": 1, "equalizer": 2, "next_goal": 2, "flip": 3}
 
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
@@ -1494,6 +1500,13 @@ def evaluate_comeback(snaps: list, minute: int, gh: int, ga: int):
             "reasons": d["reasons"], "claim": claim}
 
 
+def radar_claim_lists() -> tuple:
+    """قائمتا قاعدة الإيقاف (REC-005) كما كتبهما التقييم الصباحي في
+    radar_log.json — (silenced, proven). غيابهما = مجموعتان فارغتان (صفر تأثير)."""
+    log = load_json_file(RADAR_FILE, {}) or {}
+    return set(log.get("silenced") or []), set(log.get("proven") or [])
+
+
 def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
     """يرسل تنبيه الدراما مرة واحدة لكل مباراة (يُرقّى فقط لادعاء أقوى —
     مثال: تنبيه تعادل ثم طرد يرفعه لقلب نتيجة)، ويسجله في radar_log.json
@@ -1509,22 +1522,29 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
     prev = radar.get("alerted")
     if prev and _ALERT_RANK.get(verdict["key"], 0) <= _ALERT_RANK.get(prev, 0):
         return False
-    if budget["used"] >= RADAR_ALERT_CAP_PER_RUN:
-        return False
-    budget["used"] += 1
-    ar = e.get("ar") or {}
-    h = ar.get("home") or e.get("home", "?")
-    a = ar.get("away") or e.get("away", "?")
-    target = h if verdict["side"] == "home" else a
-    # وسم المرحلة التجريبية (قرار المالك 2026-08-02): يستلم التنبيه ويعلم أنه
-    # قيد المعايرة — الوسم يُرفع فقط حين يثبت السجل الصباحي جدارة الادعاء
-    trial = " (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""
-    send_telegram(
-        f"🛰🚨 تنبيه الرادار{trial} — د{e.get('minute')}\n"
-        f"{h} {gh} - {ga} {a}\n"
-        f"التوقع: {verdict['claim']} لصالح {target} (إشارة {verdict['signal']}%)\n"
-        f"الأسباب: " + "، ".join(verdict["reasons"])
-    )
+    # قاعدة الإيقاف (REC-005): نوع مُسكَت يُسجَّل للتقييم الصباحي بلا تيليجرام
+    # (فيستمر قياسه ويستطيع الخروج من الصمت)، ونوع مُثبَت يفقد وسم 🧪.
+    silenced_keys, proven_keys = (radar_claim_lists() if RADAR_ALERT_STOP_RULE
+                                  else (set(), set()))
+    silent = verdict["key"] in silenced_keys
+    if not silent:
+        if budget["used"] >= RADAR_ALERT_CAP_PER_RUN:
+            return False
+        budget["used"] += 1
+        ar = e.get("ar") or {}
+        h = ar.get("home") or e.get("home", "?")
+        a = ar.get("away") or e.get("away", "?")
+        target = h if verdict["side"] == "home" else a
+        # وسم المرحلة التجريبية (قرار المالك 2026-08-02): يستلم التنبيه ويعلم أنه
+        # قيد المعايرة — الوسم يُرفع فقط حين يثبت السجل الصباحي جدارة الادعاء
+        trial = ("" if verdict["key"] in proven_keys
+                 else (" (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""))
+        send_telegram(
+            f"🛰🚨 تنبيه الرادار{trial} — د{e.get('minute')}\n"
+            f"{h} {gh} - {ga} {a}\n"
+            f"التوقع: {verdict['claim']} لصالح {target} (إشارة {verdict['signal']}%)\n"
+            f"الأسباب: " + "، ".join(verdict["reasons"])
+        )
     radar["alerted"] = verdict["key"]
     e["radar"] = radar
     log = load_json_file(RADAR_FILE, {}) or {}
@@ -1534,6 +1554,9 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
         "side": verdict["side"], "key": verdict["key"],
         "signal": verdict["signal"], "home": e.get("home"), "away": e.get("away"),
         "league": e.get("league"),
+        # قاعدة الإيقاف (REC-005): وسم الإسكات يُحفظ مع التنبيه — تبويب الرادار
+        # يعرف أنه لم يُرسل، والتقييم الصباحي يقيسه كالمعتاد
+        "silenced": silent,
         # حزمة الأدلة (طلب المالك 2026-08-02 — تحقق الجذر): آخر لقطات الأرقام
         # التي بُني عليها التنبيه تُحفظ معه، فأي خطأ مستقبلي يُشرَّح لأرقامه
         "evidence": (radar.get("snaps") or [])[-3:],
