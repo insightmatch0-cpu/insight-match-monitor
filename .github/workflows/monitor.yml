@@ -68,13 +68,11 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
-          git add state.json data.json news.json
-          if [ -f watchlist.json ]; then git add watchlist.json; fi
-          if [ -f predictions_user.json ]; then git add predictions_user.json; fi
-          if [ -f data_v2.json ]; then git add data_v2.json; fi
-          if [ -f scenarios_v2.json ]; then git add scenarios_v2.json; fi
-          if [ -f referees.json ]; then git add referees.json; fi
-          if [ -f radar_log.json ]; then git add radar_log.json; fi
+          # نُدرج كل ما أنتجته التشغيلة (إصلاح 2026-08-09): القائمة اليدوية كانت
+          # تترك أي ملف جديد غير مُدرَج معدَّلاً في شجرة العمل، فيرفض git الـ rebase
+          # بـ "cannot pull with rebase: You have unstaged changes" وتضيع بيانات
+          # التشغيلة كاملة. __pycache__ مستبعَد أصلاً في .gitignore.
+          git add -A
           git diff --cached --quiet || git commit -m "update state [skip ci]"
           # دفع مع إعادة المحاولة: عند تعارض مع commit موازٍ نحتفظ بملفاتنا المولّدة (الأحدث)
           ok=0
