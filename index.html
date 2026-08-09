@@ -657,7 +657,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 66;
+var IM_BUILD = 67;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -709,6 +709,9 @@ var I18N = {
     noNews:"لا توجد أخبار حالياً.",
     pickHome:"فوز", pickAway:"فوز", pickDraw:"تعادل",
     accOverall:"الإجمالي", acc30:"آخر 30 يوماً",
+    accSeason:"الموسم (منذ 13-08)",
+    accScopeSeason:"أرقام الموسم منذ 2026-08-13 — لا يُحذف أي سجل",
+    accScopeAll:"كامل السجل المحفوظ — عدّاد الموسم يبدأ من صفر في 2026-08-13",
     accTop:"الدوريات الكبرى", accOther:"بقية الدوريات",
     otherLeagues:"دوريات أخرى",
     updated:"آخر تحديث",
@@ -800,6 +803,9 @@ var I18N = {
     noNews:"No news right now.",
     pickHome:"Win", pickAway:"Win", pickDraw:"Draw",
     accOverall:"Overall", acc30:"Last 30 days",
+    accSeason:"Season (since Aug 13)",
+    accScopeSeason:"Season numbers since 2026-08-13 — nothing is ever deleted",
+    accScopeAll:"Full stored record — season counter starts at zero on 2026-08-13",
     accTop:"Top leagues", accOther:"Other leagues",
     otherLeagues:"Other leagues",
     updated:"Updated",
@@ -1161,13 +1167,20 @@ function renderAccuracy(acc){
   if (!acc || !acc.overall || !acc.overall.total){
     el.innerHTML = '<div class="empty">'+t("noAcc")+"</div>"; return;
   }
+  /* عدّاد الموسم (أمر المالك 2026-08-09): من 2026-08-13 الأرقام الرئيسية هي
+     أرقام الموسم وحده (تبدأ من صفر)، والسجل الكامل يبقى محفوظاً بلا حذف.
+     قبل انطلاق الموسم تُعرض أرقام كامل السجل مع عنونة صريحة للنطاق. */
+  var season = acc.season || {};
+  var seasonOn = season.overall && season.overall.total > 0;
   var h = '<div class="acc-grid">'
-    + accBox(t("accOverall"), acc.overall)
+    + accBox(seasonOn ? t("accSeason") : t("accOverall"),
+             seasonOn ? season.overall : acc.overall)
     + accBox(t("acc30"), acc.last30)
-    + accBox(t("accTop"), acc.top_leagues)
-    + accBox(t("accOther"), acc.other_leagues)
+    + accBox(t("accTop"), seasonOn ? season.top_leagues : acc.top_leagues)
+    + accBox(t("accOther"), seasonOn ? season.other_leagues : acc.other_leagues)
     + '</div>';
-  var bc = acc.by_confidence || {};
+  var bc = (seasonOn && season.by_confidence) ? season.by_confidence
+                                              : (acc.by_confidence || {});
   var keys = ["70+","60-69","50-59","<50"];
   var any = false;
   var bh = '<div class="buckets">';
@@ -1182,6 +1195,9 @@ function renderAccuracy(acc){
       + '<div class="b-count">'+cnt+'</div></div>';
   }
   bh += '</div>';
+  /* عنونة النطاق: القارئ يعرف دائماً أي نافذة يقيسها الرقم (درس 2026-08-09) */
+  bh += '<div class="t-label" style="margin-top:6px">'
+    + esc(seasonOn ? t("accScopeSeason") : t("accScopeAll")) + '</div>';
 
   /* الدقة يوماً بيوم — أعمدة صغيرة لآخر 30 يوماً (من الأرشيف الدائم إن وجد) */
   var th = "";

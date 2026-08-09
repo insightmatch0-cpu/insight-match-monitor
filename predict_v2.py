@@ -43,6 +43,17 @@ RADAR_LOG_FILE        = Path("radar_log.json")        # إنذارات الرا�
 RADAR_RESOLVED_CAP    = 300   # سقف سجل الإنذارات المُقيَّمة
 RADAR_DROP_DAYS       = 4     # إنذار بلا نتيجة بعد 4 أيام يُسقط (مباراة ملغاة/مؤجلة)
 
+# أرشيف الموسم الكامل — أمر المالك 2026-08-09 بعد حادثة "أرقام 70%+ تتغير
+# يومياً": سقف الـ 1000 القديم حوّل لوحة الدقة إلى نافذة متحركة ~7 أيام في
+# حجم الموسم (~150 تقييماً/يوم)، فتسربت توقعات يوليو الذهبية من العرض بصمت.
+# القرار: لا يُحذف أي سجل مُقيَّم أبداً إلا بأمر مالك صريح — القياس الكامل
+# للموسم (لكل دوري/شهر/أسبوع/يوم) يتطلب كل الصفوف. RESOLVED_CAP=0 يعني بلا
+# سقف؛ للتراجع الفوري عند أي طارئ حجم: أعد الرقم القديم 1000.
+RESOLVED_CAP          = 0
+# بداية موسم 2026-27 (انطلاق الدوري السعودي): عدّادات الموسم على اللوحة تبدأ
+# من صفر عند هذا التاريخ — ما قبله يبقى محفوظاً كسجل تأسيس، لا يُعرض كموسم.
+SEASON_START          = "2026-08-13"
+
 # قاعدة إيقاف تنبيهات الدراما — REC-005 (قرار المالك 2026-08-08): نهاية مكتوبة
 # مسبقاً لتجربة قد تدور بلا نهاية، بقياس كل نوع ادعاء على حدة (قاعدة المالك ج —
 # لا يُعاقب next_goal بذنب flip). عند بلوغ النوع 30 تنبيهاً مُقيَّماً تراكمياً:
@@ -258,20 +269,20 @@ def outcome_from_score(gh: int, ga: int) -> str:
     return "draw"
 
 
-def compute_stats(resolved: list) -> dict:
-    """يحسب دقة المحرك 2: إجمالي، آخر 30 يوماً، حسب مستوى الثقة، وحسب نوع الدوري."""
-    def bucket(conf):
-        if conf >= 70:
-            return "70+"
-        if conf >= 60:
-            return "60-69"
-        if conf >= 50:
-            return "50-59"
-        return "<50"
+def _conf_bucket(conf) -> str:
+    if conf >= 70:
+        return "70+"
+    if conf >= 60:
+        return "60-69"
+    if conf >= 50:
+        return "50-59"
+    return "<50"
 
-    stats = {
+
+def _accumulate(rows: list) -> dict:
+    """يجمع (صح/مجموع) إجمالاً وحسب نوع الدوري وحسب شريحة الثقة لمجموعة صفوف."""
+    acc = {
         "overall": {"correct": 0, "total": 0},
-        "last30":  {"correct": 0, "total": 0},
         "top_leagues": {"correct": 0, "total": 0},
         "other_leagues": {"correct": 0, "total": 0},
         "by_confidence": {
@@ -280,26 +291,41 @@ def compute_stats(resolved: list) -> dict:
             "50-59": {"correct": 0, "total": 0},
             "<50": {"correct": 0, "total": 0},
         },
-        "daily": {},
     }
+    for r in rows:
+        ok = 1 if r.get("correct") else 0
+        acc["overall"]["total"] += 1
+        acc["overall"]["correct"] += ok
+        key = "top_leagues" if r.get("top") else "other_leagues"
+        acc[key]["total"] += 1
+        acc[key]["correct"] += ok
+        b = _conf_bucket(int(r.get("confidence", 0)))
+        acc["by_confidence"][b]["total"] += 1
+        acc["by_confidence"][b]["correct"] += ok
+    return acc
+
+
+def compute_stats(resolved: list) -> dict:
+    """يحسب دقة المحرك 2: إجمالي، آخر 30 يوماً، حسب مستوى الثقة، وحسب نوع
+    الدوري — وكتلة "الموسم" (من SEASON_START) بعدّاداتها المستقلة التي تبدأ
+    من صفر في 2026-08-13 (أمر المالك 2026-08-09)."""
+    stats = _accumulate(resolved)
+    stats["last30"] = {"correct": 0, "total": 0}
+    stats["daily"] = {}
     cutoff = (now_utc() - timedelta(days=30)).strftime("%Y-%m-%d")
     for r in resolved:
         ok = 1 if r.get("correct") else 0
-        stats["overall"]["total"] += 1
-        stats["overall"]["correct"] += ok
         if r.get("date", "") >= cutoff:
             stats["last30"]["total"] += 1
             stats["last30"]["correct"] += ok
-        key = "top_leagues" if r.get("top") else "other_leagues"
-        stats[key]["total"] += 1
-        stats[key]["correct"] += ok
-        b = bucket(int(r.get("confidence", 0)))
-        stats["by_confidence"][b]["total"] += 1
-        stats["by_confidence"][b]["correct"] += ok
         d = stats["daily"].setdefault(r.get("date", "?"), {"correct": 0, "total": 0})
         d["total"] += 1
         d["correct"] += ok
     stats["daily"] = dict(sorted(stats["daily"].items())[-30:])
+    # عدّادات الموسم: أصفار قبل 2026-08-13، ثم تتراكم بلا حذف حتى نهاية الموسم
+    stats["season"] = _accumulate(
+        [r for r in resolved if r.get("date", "") >= SEASON_START])
+    stats["season"]["start"] = SEASON_START
     return stats
 
 
@@ -413,7 +439,10 @@ def resolve_pending(store: dict):
         elif status in DEAD_STATUSES or (p.get("date", "") < drop_before):
             del pending[fid]
 
-    store["resolved"] = store.get("resolved", [])[-1000:]
+    # أرشيف الموسم الكامل (أمر المالك 2026-08-09): بلا سقف — لا يُحذف سجل
+    # مُقيَّم أبداً إلا بأمر مالك صريح. RESOLVED_CAP>0 يعيد القص القديم للطوارئ.
+    if RESOLVED_CAP:
+        store["resolved"] = store.get("resolved", [])[-RESOLVED_CAP:]
     return resolved_now, newly_resolved
 
 
@@ -1709,10 +1738,12 @@ def v1_pending() -> dict:
     return store.get("pending") or {}
 
 
-def update_history(v2_stats: dict, user_stats: dict) -> int:
+def update_history(v2_stats: dict, user_stats: dict, v2_resolved: list = None) -> int:
     """الأرشيف الدائم للتقدم: يدمج أرقام اليوم (صح/مجموع لكل طرف) في history.json.
-    ذاكرة المحرّكات التفصيلية تُقص بعد 1000 نتيجة — هذا الملف لا يُقص أبداً،
-    فهو سجل مسيرة المشروع الكامل يوماً بيوم. الدمج آمن التكرار (idempotent)."""
+    هذا الملف لا يُقص أبداً — سجل مسيرة المشروع الكامل يوماً بيوم.
+    الدمج آمن التكرار (idempotent).
+    منذ 2026-08-09 (حادثة أرقام 70%+): يحفظ أيضاً تفصيل شرائح الثقة يوماً-بيوم
+    للمحرك 2، فسجل الخانة الذهبية الكامل محفوظ هنا للأبد مهما حدث للذاكرة."""
     hist = load_json(HISTORY_FILE, {"days": {}})
     days = hist.setdefault("days", {})
     v1_stats = (load_json(V1_PREDICTIONS_FILE, {}).get("meta") or {}).get("stats") or {}
@@ -1722,6 +1753,20 @@ def update_history(v2_stats: dict, user_stats: dict) -> int:
                 "correct": int(row.get("correct", 0)),
                 "total": int(row.get("total", 0)),
             }
+    # تفصيل شرائح الثقة يوماً-بيوم (المحرك 2): يُعاد حسابه من الصفوف نفسها
+    # لكل يوم حاضر فيها ويُكتب فوق القديم — آمن التكرار مثل بقية الدمج
+    day_buckets = {}
+    for r in (v2_resolved or []):
+        d = r.get("date")
+        if not d:
+            continue
+        b = _conf_bucket(int(r.get("confidence", 0)))
+        slot = day_buckets.setdefault(d, {}).setdefault(b, {"correct": 0, "total": 0})
+        slot["total"] += 1
+        slot["correct"] += 1 if r.get("correct") else 0
+    for d, buckets in day_buckets.items():
+        days.setdefault(d, {}).setdefault("v2", {"correct": 0, "total": 0})
+        days[d]["v2"]["buckets"] = buckets
     lessons = load_json(LESSONS_FILE, {"lessons": []}).get("lessons") or []
     hist["meta"] = {
         "updated": now_utc().isoformat(),
@@ -1913,7 +1958,7 @@ def main() -> None:
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
 
     # الأرشيف الدائم للتقدم (كل الأطراف، لا يُقص أبداً)
-    days_total = update_history(stats, user_stats)
+    days_total = update_history(stats, user_stats, store["resolved"])
     print(f"الأرشيف الدائم: {days_total} يوماً مسجلاً.")
 
     # 5) ملخص تيليجرام (مقارنة المحرك 1 + سباق الدقة الثلاثي مع المالك)
