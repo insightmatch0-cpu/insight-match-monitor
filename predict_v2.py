@@ -86,6 +86,16 @@ CONSOLIDATE_TARGET    = 30    # عدد المبادئ المركزة بعد ال
 # للتعطيل الفوري: False (يختفي الحساب وسطر النشرة معاً).
 MARKET_BENCH          = True
 
+# إفصاح الثقة — REC-004 (قرار المالك 2026-08-08): السقف العملي كان 65 بسلوك
+# النموذج نفسه (تكدّس عند 65 رغم أن سجله عند ثقة ≥65 يبلغ ~96%) — شريحة 65-69
+# مقوّمة بأقل من حقها بأكثر من 20 نقطة. العلاج: تعليمة موجّه تخبره بسجله
+# الحقيقي وتأذن له بالإفصاح فوق 65 عند القناعة الحقيقية، مع سقف إفصاح 80
+# يحتوي أي مبالغة. لا يغيّر أي اختيار (الاختيار = أعلى احتمال دائماً)، ولا
+# يمسّ حارس الكؤوس (CUP_CONF_CAP=65 يعمل بعده ويبقى سيّد مباريات الكأس).
+# للتعطيل الفوري: False (تسقط التعليمة ويعود سقف المحلل القديم 85).
+CONF_DISCLOSURE       = True
+CONF_DISCLOSURE_CAP   = 80    # أقصى ثقة معلنة بعد REC-004 — احتواء المبالغة
+
 # قاعدة الحكام الذاتية (خطوة استكشاف 6): تتراكم من المباريات المُقيَّمة —
 # معدل بطاقات الحكم يغذي تقارير ما قبل المباراة (بعض الحكام يشهرون بغزارة)
 REFEREES_FILE = Path("referees.json")
@@ -1305,6 +1315,14 @@ def claude_predict_batch(batch: list, stats: dict, enriched: bool) -> dict:
         extra,
         calibration_text(stats),
     ]
+    # إفصاح الثقة (REC-004): النموذج كان يكبح نفسه عند 65 رغم سجل ~96% فوقها
+    if CONF_DISCLOSURE:
+        prompt_parts.append(
+            "\nملاحظة معايرة مهمة: سجلك الفعلي عندما أعلنت ثقة 65% أو أكثر هو "
+            "~96% — أنت أدق مما تعلن في هذه المنطقة. لا تتردد في إعلان احتمال "
+            "أعلى من 65 عندما تكون قناعتك حقيقية ومبنية على البيانات — "
+            f"ولا تتجاوز {CONF_DISCLOSURE_CAP} لأي نتيجة مهما بلغت قناعتك."
+        )
     lessons = lessons_text()
     if lessons:
         prompt_parts.append("\n" + lessons)
@@ -1398,7 +1416,11 @@ def parse_predictions_json(text: str) -> dict:
             scaled[kmax] += 100 - sum(scaled.values())
             probs = scaled
         pick = max(("home", "draw", "away"), key=lambda k: probs[k])
-        conf = max(30, min(85, probs[pick]))
+        # سقف الإفصاح (REC-004): 80 يحتوي مبالغة النموذج بعد فتح ما فوق 65 —
+        # عند تعطيل المفتاح يعود السقف القديم 85. القص يمسّ الثقة المعلنة فقط،
+        # لا الاحتمالات ولا الاختيار.
+        conf_cap = CONF_DISCLOSURE_CAP if CONF_DISCLOSURE else 85
+        conf = max(30, min(conf_cap, probs[pick]))
         out[fid] = {
             "pick": pick,
             "confidence": conf,
