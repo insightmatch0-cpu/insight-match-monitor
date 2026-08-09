@@ -1876,6 +1876,30 @@ def integrity_check() -> list:
     # 12) لا تسريب بيانات محظورة (نفس فاحص WK-League — يُضم للسجل الموحد)
     checks.append(("لا تسريب بيانات محظورة",
                    find_data_leaks(v2) + find_data_leaks(v1)))
+
+    # 13) أسقف القياس معطلة — قانون انجراف الإعدادات (المسح الشامل 2026-08-09،
+    # درس المالك: "لا أريد أن أكتشف بعد شهر"): أي سقف على سجل قياس أو قائمة
+    # انتظار تقييم يُعاد تفعيله — بأي PR مستقبلي — يرن هنا أول صباح، لا بعد
+    # أن يشبع السجل ويكتشفه المالك بعينه.
+    v = []
+    caps = {"predict_v2.RESOLVED_CAP": RESOLVED_CAP,
+            "predict_v2.RADAR_RESOLVED_CAP": RADAR_RESOLVED_CAP,
+            "predict_v2.SCENARIOS_RESOLVED_CAP": SCENARIOS_RESOLVED_CAP}
+    try:
+        import predict as _v1mod
+        caps["predict.RESOLVED_CAP"] = getattr(_v1mod, "RESOLVED_CAP", 0)
+    except Exception:
+        pass
+    try:
+        import monitor as _monmod
+        caps["monitor.RADAR_MAX_WARNINGS"] = getattr(_monmod,
+                                                     "RADAR_MAX_WARNINGS", 0)
+    except Exception:
+        pass
+    for name, val in caps.items():
+        if val:
+            v.append(f"{name}={val} — سقف قياس مفعّل يقص بيانات بصمت")
+    checks.append(("أسقف القياس معطلة (انجراف الإعدادات)", v))
     return checks
 
 
