@@ -41,6 +41,14 @@ MAX_PREDICTIONS_24H = 150   # رُفع من 60 (المالك 2026-07-18) ليط�
 BATCH_SIZE          = 12    # عدد المباريات في نداء Claude الواحد
 MAX_RESOLVE_CALLS   = 3     # أقصى نداءات API لتسوية نتائج الأيام السابقة
 
+# أرشيف الموسم الكامل — أمر المالك الصريح 2026-08-09 بشمول المحرك 1 (استثناء
+# موثق لقاعدة تجميده): لا يُحذف أي سجل مُقيَّم أبداً إلا بأمر مالك صريح،
+# وعدّادات الموسم تبدأ من صفر في 2026-08-13 — مرآة لنفس الكتلة في المحرك 2
+# حتى تبقى مقارنة المحركين عادلة على نفس النافذة. RESOLVED_CAP=0 بلا سقف؛
+# للطوارئ: أعد الرقم القديم 1000.
+RESOLVED_CAP        = 0
+SEASON_START        = "2026-08-13"   # بداية موسم 2026-27 (انطلاق الدوري السعودي)
+
 SEND_TELEGRAM_DIGEST = True   # إرسال ملخص التوقعات على تيليجرام
 DIGEST_TOP_ONLY      = True   # الملخص يعرض الدوريات الكبرى فقط (الباقي على اللوحة)
 DASHBOARD_URL = "https://insightmatch0-cpu.github.io/insight-match-monitor/"
@@ -224,6 +232,34 @@ def compute_stats(resolved: list) -> dict:
         d["correct"] += ok
     # نحتفظ بآخر 30 يوماً فقط في المخطط اليومي
     stats["daily"] = dict(sorted(stats["daily"].items())[-30:])
+    # عدّادات الموسم (أمر المالك 2026-08-09): تبدأ من صفر في 2026-08-13
+    # وتتراكم بلا حذف حتى نهاية الموسم — نفس بنية كتلة المحرك 2 حرفياً،
+    # واللوحة تعرضها تلقائياً (renderAccuracy مشترك بين التبويبين)
+    season = {
+        "overall": {"correct": 0, "total": 0},
+        "top_leagues": {"correct": 0, "total": 0},
+        "other_leagues": {"correct": 0, "total": 0},
+        "by_confidence": {
+            "70+": {"correct": 0, "total": 0},
+            "60-69": {"correct": 0, "total": 0},
+            "50-59": {"correct": 0, "total": 0},
+            "<50": {"correct": 0, "total": 0},
+        },
+        "start": SEASON_START,
+    }
+    for r in resolved:
+        if r.get("date", "") < SEASON_START:
+            continue
+        ok = 1 if r.get("correct") else 0
+        season["overall"]["total"] += 1
+        season["overall"]["correct"] += ok
+        key = "top_leagues" if r.get("top") else "other_leagues"
+        season[key]["total"] += 1
+        season[key]["correct"] += ok
+        b = bucket(int(r.get("confidence", 0)))
+        season["by_confidence"][b]["total"] += 1
+        season["by_confidence"][b]["correct"] += ok
+    stats["season"] = season
     return stats
 
 
@@ -295,8 +331,10 @@ def resolve_pending(store: dict) -> int:
             # مؤجلة/ملغاة أو قديمة جداً — تُحذف بدون احتساب
             del pending[fid]
 
-    # نحتفظ بآخر 1000 نتيجة فقط
-    store["resolved"] = store.get("resolved", [])[-1000:]
+    # أرشيف الموسم الكامل (أمر المالك 2026-08-09): بلا سقف — لا يُحذف سجل
+    # مُقيَّم أبداً إلا بأمر مالك صريح. RESOLVED_CAP>0 يعيد القص القديم للطوارئ.
+    if RESOLVED_CAP:
+        store["resolved"] = store.get("resolved", [])[-RESOLVED_CAP:]
     return resolved_now
 
 
