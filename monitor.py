@@ -115,7 +115,12 @@ RADAR_STATS_CAP = 20     # سقف نداءات الإحصائيات للرادا
 RADAR_SNAPS_KEEP = 12    # ~ ساعتا لقطات (كل 10 دقائق) — تكفي لاتجاهات المباراة كلها
 RADAR_RED = 65           # عتبة الخطر الأحمر
 RADAR_AMBER = 40         # عتبة الإنذار الكهرماني
-RADAR_MAX_WARNINGS = 400 # سقف سجل الإنذارات غير المُقيَّمة
+# كان 400 — المسح الشامل للأسقف (أمر المالك 2026-08-09، والمالك نفسه توقع أن
+# الدراما ستواجه نفس المشكلة): هذا القص يطال قائمتي الانتظار **قبل التقييم** —
+# تنبيه أو إنذار يُقص هنا يضيع قياسه للأبد (ثقب بيانات لا نافذة عرض).
+# القائمتان تنظفان نفسيهما طبيعياً (تقييم كل صباح + إسقاط بعد 4 أيام)
+# فلا حاجة لأي قص. 0 = بلا سقف؛ للطوارئ أعد رقماً.
+RADAR_MAX_WARNINGS = 0
 
 # المسار السريع للرادار (طلب المالك 2026-08-01 — "الأسرع"): بعد الجولة العادية
 # تبقى التشغيلة حية وتحدّث أخطر المباريات كل ~90 ثانية وتنشر النتيجة إلى فرع
@@ -1588,7 +1593,8 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
         # التي بُني عليها التنبيه تُحفظ معه، فأي خطأ مستقبلي يُشرَّح لأرقامه
         "evidence": (radar.get("snaps") or [])[-3:],
     })
-    log["alerts"] = log["alerts"][-RADAR_MAX_WARNINGS:]
+    if RADAR_MAX_WARNINGS:   # 0 = بلا قص لقائمة الانتظار (المسح الشامل 2026-08-09)
+        log["alerts"] = log["alerts"][-RADAR_MAX_WARNINGS:]
     RADAR_FILE.write_text(
         json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
     return True
@@ -1670,7 +1676,8 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     "level": verdict["level"], "score": verdict["score"],
                     "minute": minute, "factors": verdict["factors"],
                 })
-                log["warnings"] = log["warnings"][-RADAR_MAX_WARNINGS:]
+                if RADAR_MAX_WARNINGS:   # 0 = بلا قص (المسح الشامل 2026-08-09)
+                    log["warnings"] = log["warnings"][-RADAR_MAX_WARNINGS:]
                 log_dirty = True
             elif verdict["score"] > (w.get("score") or 0):
                 # يُرقّى الإنذار لأعلى درجة بلغها — نقيس أقصى ما رآه الرادار
