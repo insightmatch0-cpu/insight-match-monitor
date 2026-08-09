@@ -40,7 +40,10 @@ LESSONS_FILE          = Path("lessons_v2.json")       # دروس من الأخط
 HISTORY_FILE          = Path("history.json")          # الأرشيف الدائم: تقدم الجميع يوماً بيوم (لا يُقص أبداً)
 NEWS_FILE             = Path("news.json")             # آخر عناوين الأخبار (سياق مشترك)
 RADAR_LOG_FILE        = Path("radar_log.json")        # إنذارات الرادار (يكتبها monitor)
-RADAR_RESOLVED_CAP    = 300   # سقف سجل الإنذارات المُقيَّمة
+# سجلات القياس بلا أسقف — امتداد أمر المالك 2026-08-09 (اكتشف بنفسه في نفس
+# اليوم أن سجل إنذارات الرادار مشبع عند 300/300 فأرقام اللوحة "شبه ثابتة" —
+# نفس فئة نافذة الـ 1000 المنزلقة الصامتة). 0 = بلا سقف؛ للطوارئ أعد رقماً.
+RADAR_RESOLVED_CAP    = 0     # كان 300 — سقف سجل الإنذارات المُقيَّمة
 RADAR_DROP_DAYS       = 4     # إنذار بلا نتيجة بعد 4 أيام يُسقط (مباراة ملغاة/مؤجلة)
 
 # أرشيف الموسم الكامل — أمر المالك 2026-08-09 بعد حادثة "أرقام 70%+ تتغير
@@ -139,7 +142,9 @@ REFEREES_FILE = Path("referees.json")
 SCENARIOS_FILE = Path("scenarios_v2.json")
 MAX_SCENARIO_GRADES_PER_RUN = 6    # نداء Claude لكل تقرير — قائمة التركيز صغيرة أصلاً
 SCENARIO_MAX_AGE_DAYS = 4          # تقرير بلا بيانات نهائية بعد 4 أيام يُسقط (مؤجلة/ملغاة)
-SCENARIOS_RESOLVED_CAP = 100
+# كان 100 — سجل قياس دائم مثل بقية السجلات: بلا حذف أبداً (أمر المالك
+# 2026-08-09؛ كان سيشبع خلال أيام عند 84/100 ويجمّد عدّاد مختبر الظل بصمت)
+SCENARIOS_RESOLVED_CAP = 0
 
 SEND_TELEGRAM_DIGEST = True
 DIGEST_TOP_ONLY      = True
@@ -818,7 +823,8 @@ def resolve_scenarios() -> int:
         scen["resolved"].append(entry)
         del scen["pending"][fid]
     if dirty:
-        scen["resolved"] = scen["resolved"][-SCENARIOS_RESOLVED_CAP:]
+        if SCENARIOS_RESOLVED_CAP:   # 0 = بلا حذف (أمر المالك 2026-08-09)
+            scen["resolved"] = scen["resolved"][-SCENARIOS_RESOLVED_CAP:]
         save_json(SCENARIOS_FILE, scen)
     return graded
 
@@ -1640,7 +1646,8 @@ def resolve_radar_log(store: dict) -> int:
         resolved.append(w)
         graded += 1
     log["warnings"] = still
-    log["resolved"] = resolved[-RADAR_RESOLVED_CAP:]
+    log["resolved"] = (resolved[-RADAR_RESOLVED_CAP:]
+                       if RADAR_RESOLVED_CAP else resolved)
 
     # 🚨 تقييم تنبيهات الدراما (عقل S3): كل ادعاء يُحاكم بقاعدته الخاصة
     # على النتيجة النهائية فقط — هدف/تعادل/قلب نتيجة، صفر نداءات API
@@ -1671,7 +1678,8 @@ def resolve_radar_log(store: dict) -> int:
         a_resolved.append(a)
         graded += 1
     log["alerts"] = a_still
-    log["alerts_resolved"] = a_resolved[-RADAR_RESOLVED_CAP:]
+    log["alerts_resolved"] = (a_resolved[-RADAR_RESOLVED_CAP:]
+                              if RADAR_RESOLVED_CAP else a_resolved)
 
     stats = {}
     for lvl in ("red", "amber"):
@@ -1739,7 +1747,12 @@ def integrity_check() -> list:
     counts = {"v2": len(v2.get("resolved") or []),
               "v1": len(v1.get("resolved") or []),
               "user": len(user.get("resolved") or []),
-              "history_days": len(hist.get("days") or {})}
+              "history_days": len(hist.get("days") or {}),
+              # امتداد 2026-08-09: سجلات القياس التي كانت أسقفها تقص بصمت
+              # (اكتشاف المالك: الرادار مشبع عند 300/300 والأرقام "شبه ثابتة")
+              "radar_resolved": len(radar.get("resolved") or []),
+              "radar_alerts_resolved": len(radar.get("alerts_resolved") or []),
+              "scen_resolved": len(scen.get("resolved") or [])}
     for key, n in counts.items():
         old = prev.get(key)
         if isinstance(old, int) and n < old:
