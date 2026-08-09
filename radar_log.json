@@ -553,10 +553,10 @@
    "pick": "home",
    "confidence": 66,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د53)"
    ]
   },
   {
@@ -586,10 +586,10 @@
    "pick": "home",
    "confidence": 56,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د55)"
    ]
   },
   {
@@ -616,10 +616,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 52,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د52)"
    ]
   },
   {
@@ -631,10 +631,10 @@
    "pick": "away",
    "confidence": 50,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د55)"
    ]
   },
   {
@@ -646,10 +646,10 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د51)"
    ]
   },
   {
@@ -6130,7 +6130,92 @@
    "graded_on": "2026-08-09"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1576141",
+   "date": "2026-08-09",
+   "minute": 85,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "FC St. Pauli",
+   "away": "SpVgg Greuther Fürth",
+   "league": "2. Bundesliga (Germany)",
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 7,
+      "cor": 4,
+      "poss": 54,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 3,
+      "shots": 8,
+      "cor": 2,
+      "poss": 46,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 61,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "shots": 11,
+      "cor": 6,
+      "poss": 55,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
+     },
+     "a": {
+      "sog": 5,
+      "shots": 11,
+      "cor": 2,
+      "poss": 45,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     }
+    },
+    {
+     "minute": 85,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 6,
+      "shots": 16,
+      "cor": 8,
+      "poss": 58,
+      "yc": 1,
+      "rc": 0,
+      "sv": 4
+     },
+     "a": {
+      "sog": 5,
+      "shots": 13,
+      "cor": 2,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 5
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
