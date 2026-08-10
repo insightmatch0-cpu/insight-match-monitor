@@ -178,6 +178,14 @@ RADAR_ALERT_CAP_PER_RUN = 5   # سقف تنبيهات الدراما في الت
 # وproven (دقة ≥50% → يُرسل بلا وسم "🧪 تجريبي"). تحت 30: القائمتان فارغتان
 # وكل شيء كما كان. التعطيل الفوري: False (تُتجاهل القائمتان تماماً).
 RADAR_ALERT_STOP_RULE = True
+# 🟥 المسار السريع للطرد — REC-009 (قرار المالك 2026-08-10: "نفّذ من أي دقيقة"):
+# طرد من فريق متعادل أو متقدم بهدف واحد = أفضلية عددية للخصم — تنبيه فوري
+# **من أي دقيقة، بلا شرط د75 وبلا موجات الزخم** (استثناء المالك الصريح لهذا
+# الادعاء وحده؛ بقية ادعاءات الدراما تبقى تحت شروطها كما هي). مرة واحدة لكل
+# مباراة بعلم مستقل (red_alerted — لا يحجب سلم الدراما ولا يُحجب به)، يُسجَّل
+# بمفتاح red_advantage ويُقيَّم صباحاً بعدّاده المستقل ويخضع لقاعدة الإيقاف
+# REC-005 كأي ادعاء. المتوقع المسجّل مسبقاً: دقة 45-65% مقابل خط أساس 29%.
+RADAR_RED_FAST_PATH = True    # مفتاح التراجع الفوري
 _ALERT_RANK = {"goal": 1, "equalizer": 2, "next_goal": 2, "flip": 3}
 
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
@@ -1482,6 +1490,8 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
             e["radar"] = radar
             # 🚨 عقل S3 في المسار السريع: التنبيه يصل خلال ~90 ثانية من الإشارة
             maybe_radar_alert(fid, e, alert_budget)
+            # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
+            maybe_red_alert(fid, e, alert_budget)
         if publish_radar_live(state):
             published += 1
     return published
@@ -1518,9 +1528,13 @@ def drama_signal(snaps: list, gh: int, ga: int):
         ph, rh = _side_momentum(snaps, "h", "a")
         pa, ra = _side_momentum(snaps, "a", "h")
         side, pts, reasons, other = ("home", ph, rh, pa) if ph >= pa else ("away", pa, ra, ph)
+        # إصلاح REC-009: red كانت مثبّتة False نصاً في التعادل — تُحسب الآن
+        # من لقطة خصم الطرف المهيمن كما في فرع التأخر
+        o = "a" if side == "home" else "h"
+        red = bool(((snaps[-1].get(o) or {}).get("rc") or 0) > 0)
         # في التعادل نطلب هيمنة واضحة لطرف واحد — لا دراما على شد وجذب متكافئ
         return {"side": side, "signal": max(0, min(95, pts)), "reasons": reasons,
-                "margin": 0, "red": False,
+                "margin": 0, "red": red,
                 "dominant": (pts - other) >= RADAR_ALERT_DRAW_GAP}
     side = "home" if gh < ga else "away"
     s, o = ("h", "a") if side == "home" else ("a", "h")
@@ -1624,6 +1638,82 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
     return True
 
 
+def evaluate_red_advantage(snaps: list, gh: int, ga: int):
+    """🟥 REC-009: هل لدى أحد الطرفين بطاقة حمراء (rc في أحدث لقطة) بينما
+    فريقه متعادل أو متقدم بهدف واحد؟ يرجع المستفيد (الخصم) أو None — من أي
+    دقيقة بقرار المالك الصريح (2026-08-10): الطرد حدث خشن عالي المعلومة لا
+    ضجيج زخم، فلا شرط د75 ولا موجات. المتأخر المطرود منه تغطيه ادعاءات
+    الدراما القائمة، والمتقدم بهدفين+ طرده لا يصنع دراما."""
+    if not snaps:
+        return None
+    last = snaps[-1]
+    red_h = ((last.get("h") or {}).get("rc") or 0) > 0
+    red_a = ((last.get("a") or {}).get("rc") or 0) > 0
+    if red_h == red_a:
+        return None   # لا طرد — أو طرد متبادل يلغي الأفضلية العددية
+    margin = (gh - ga) if red_h else (ga - gh)   # فارق الفريق المطرود منه
+    if margin not in (0, 1):
+        return None
+    return {"side": "away" if red_h else "home"}
+
+
+def maybe_red_alert(fid: str, e: dict, budget: dict) -> bool:
+    """🟥 تنبيه الأفضلية العددية (REC-009) — مسار مستقل تماماً عن سلم ادعاءات
+    الدراما: علمه الخاص red_alerted (لا يستخدم alerted حتى لا يحجب أحدهما
+    الآخر)، مرة واحدة لكل مباراة، يُسجَّل بمفتاح red_advantage بنفس بنية
+    التنبيهات القائمة ويُقيَّم صباحاً بعدّاده المستقل — وقاعدة الإيقاف
+    REC-005 تحكمه تلقائياً كأي ادعاء."""
+    if not RADAR_RED_FAST_PATH:
+        return False
+    radar = e.get("radar") or {}
+    if radar.get("red_alerted"):
+        return False
+    try:
+        gh, ga = (int(x) for x in (e.get("score") or "0-0").split("-")[:2])
+    except ValueError:
+        return False
+    v = evaluate_red_advantage(radar.get("snaps") or [], gh, ga)
+    if not v:
+        return False
+    silenced_keys, proven_keys = (radar_claim_lists() if RADAR_ALERT_STOP_RULE
+                                  else (set(), set()))
+    silent = "red_advantage" in silenced_keys
+    if not silent:
+        if budget["used"] >= RADAR_ALERT_CAP_PER_RUN:
+            return False
+        budget["used"] += 1
+        ar = e.get("ar") or {}
+        h = ar.get("home") or e.get("home", "?")
+        a = ar.get("away") or e.get("away", "?")
+        target = h if v["side"] == "home" else a
+        carded = a if v["side"] == "home" else h
+        trial = ("" if "red_advantage" in proven_keys
+                 else (" (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""))
+        send_telegram(
+            f"🟥 أفضلية عددية{trial} — د{e.get('minute')}\n"
+            f"{h} {gh} - {ga} {a}\n"
+            f"طرد في صفوف {carded} — الأفضلية لصالح {target}"
+        )
+    radar["red_alerted"] = True
+    e["radar"] = radar
+    log = load_json_file(RADAR_FILE, {}) or {}
+    log.setdefault("alerts", []).append({
+        "fid": fid, "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "minute": e.get("minute"), "score_at": f"{gh}-{ga}",
+        "side": v["side"], "key": "red_advantage",
+        "home": e.get("home"), "away": e.get("away"),
+        "league": e.get("league"),
+        "silenced": silent,
+        # حزمة الأدلة (نهج 2026-08-02): آخر لقطات الأرقام تُحفظ مع التنبيه
+        "evidence": (radar.get("snaps") or [])[-3:],
+    })
+    if RADAR_MAX_WARNINGS:   # 0 = بلا قص لقائمة الانتظار (المسح الشامل 2026-08-09)
+        log["alerts"] = log["alerts"][-RADAR_MAX_WARNINGS:]
+    RADAR_FILE.write_text(
+        json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    return True
+
+
 def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
     """اختيار مباريات الرادار تحت السقف: قائمة التركيز أولاً، ثم الدوريات
     الكبرى، ثم الأعلى ثقة — الأهم للمالك لا يُزاحم أبداً."""
@@ -1685,10 +1775,14 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                                     and d["signal"] >= RADAR_ALERT_SIGNAL_MIN)},
             # علم "أُرسل التنبيه" يجب أن ينجو من إعادة البناء — وإلا تكرر التنبيه
             "alerted": radar.get("alerted"),
+            # 🟥 REC-009: علم الطرد مستقل عن سلم الدراما — ينجو هو الآخر
+            "red_alerted": radar.get("red_alerted"),
         }
         swept += 1
         # 🚨 عقل S3: هل تتشكل دراما اللحظات الأخيرة؟ (د75+، مرة لكل مباراة)
         maybe_radar_alert(fid, e, alert_budget)
+        # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
+        maybe_red_alert(fid, e, alert_budget)
         if verdict["level"] in ("amber", "red"):
             w = next((w for w in log["warnings"] if str(w.get("fid")) == fid), None)
             if w is None:
