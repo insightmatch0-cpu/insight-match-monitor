@@ -758,11 +758,11 @@
    "league": "Liga Pro (Ecuador)",
    "pick": "away",
    "confidence": 39,
-   "level": "amber",
-   "score": 64,
-   "minute": 82,
+   "level": "red",
+   "score": 67,
+   "minute": 88,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د82)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د88)"
    ]
   },
   {
@@ -789,10 +789,10 @@
    "pick": "home",
    "confidence": 36,
    "level": "amber",
-   "score": 48,
-   "minute": 56,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د56)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د62)"
    ]
   },
   {
@@ -7731,6 +7731,43 @@
       "cor": 2,
       "poss": 37,
       "yc": 1,
+      "rc": 0,
+      "sv": 4
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1519446",
+   "date": "2026-08-10",
+   "minute": 90,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Libertad",
+   "away": "Universidad Catolica",
+   "league": "Liga Pro (Ecuador)",
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 90,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 6,
+      "shots": 19,
+      "cor": 5,
+      "poss": 35,
+      "yc": 2,
+      "rc": 1,
+      "sv": 4
+     },
+     "a": {
+      "sog": 5,
+      "shots": 14,
+      "cor": 5,
+      "poss": 65,
+      "yc": 3,
       "rc": 0,
       "sv": 4
      }
