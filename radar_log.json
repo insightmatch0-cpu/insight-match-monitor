@@ -159,10 +159,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "red",
-   "score": 86,
-   "minute": 62,
+   "score": 92,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د62)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د72)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -6972,7 +6972,69 @@
    "graded_on": "2026-08-10"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1565210",
+   "date": "2026-08-10",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "FC Botosani",
+   "away": "Corvinul Hunedoara",
+   "league": "Liga I (Romania)",
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 23,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 0,
+      "poss": 58,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 10,
+      "cor": 9,
+      "poss": 53,
+      "yc": 2,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 3,
+      "shots": 13,
+      "cor": 2,
+      "poss": 47,
+      "yc": 3,
+      "rc": 0,
+      "sv": 1
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
