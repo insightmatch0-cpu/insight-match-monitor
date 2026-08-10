@@ -1747,7 +1747,9 @@ def resolve_radar_log(store: dict) -> int:
         hit = {"goal": scored,
                "equalizer": scored and level_or_better,
                "flip": won,
-               "next_goal": scored}.get(a.get("key"), scored)
+               "next_goal": scored,
+               # 🟥 REC-009: المستفيد من الطرد سجّل بعد لحظة التنبيه
+               "red_advantage": scored}.get(a.get("key"), scored)
         a["hit"] = bool(hit)
         a["final_score"] = r.get("score")
         a["graded_on"] = today
@@ -1763,7 +1765,7 @@ def resolve_radar_log(store: dict) -> int:
         stats[lvl] = {"fired": len(rows),
                       "hit": sum(1 for x in rows if x.get("failed"))}
     astats = {}
-    for key in ("flip", "equalizer", "goal", "next_goal"):
+    for key in ("flip", "equalizer", "goal", "next_goal", "red_advantage"):
         rows = [x for x in log["alerts_resolved"] if x.get("key") == key]
         if rows:
             astats[key] = {"fired": len(rows),
@@ -1798,7 +1800,8 @@ def resolve_radar_log(store: dict) -> int:
 
 # أسماء أنواع ادعاءات الدراما كما تُعرض للمالك (REC-005: كل نوع بسطره الخاص)
 DRAMA_CLAIM_AR = {"next_goal": "الهدف القادم", "goal": "هدف المتأخر",
-                  "equalizer": "إدراك التعادل", "flip": "قلب النتيجة"}
+                  "equalizer": "إدراك التعادل", "flip": "قلب النتيجة",
+                  "red_advantage": "أفضلية عددية (طرد) 🟥"}   # REC-009
 
 
 # ================== 🧮 حارس النزاهة اليومي ==================
