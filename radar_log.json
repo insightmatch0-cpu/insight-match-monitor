@@ -527,11 +527,14 @@
    "league": "UEFA Champions League (World)",
    "pick": "away",
    "confidence": 36,
-   "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "level": "red",
+   "score": 92,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د72)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ]
   },
   {
@@ -575,6 +578,36 @@
    "league": "UEFA Champions League (World)",
    "pick": "home",
    "confidence": 65,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1605371",
+   "date": "2026-08-11",
+   "home": "Celje",
+   "away": "Ararat-Armenia",
+   "league": "UEFA Champions League (World)",
+   "pick": "home",
+   "confidence": 60,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ]
+  },
+  {
+   "fid": "1607173",
+   "date": "2026-08-11",
+   "home": "Slovan Bratislava",
+   "away": "Mjallby AIF",
+   "league": "UEFA Champions League (World)",
+   "pick": "home",
+   "confidence": 56,
    "level": "amber",
    "score": 42,
    "minute": 45,
@@ -8473,6 +8506,90 @@
       "yc": 1,
       "rc": 1,
       "sv": 0
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1598829",
+   "date": "2026-08-11",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "NEC Nijmegen",
+   "away": "Olympiakos Piraeus",
+   "league": "UEFA Champions League (World)",
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 52,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 0,
+      "poss": 47,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 3,
+      "cor": 3,
+      "poss": 53,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 62,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 3,
+      "cor": 1,
+      "poss": 48,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 3,
+      "poss": 52,
+      "yc": 3,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 7,
+      "cor": 3,
+      "poss": 51,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 3,
+      "poss": 49,
+      "yc": 3,
+      "rc": 0,
+      "sv": 4
      }
     }
    ]
