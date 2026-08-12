@@ -55,6 +55,9 @@ ALLOWED_TRUNCATIONS = {
     },
     "scan.py": {},
     "watchlist.py": {},
+    "sportmonks_shadow.py": {
+        "[-FORM_WINDOW:]": "working — نافذة حساب فورمة xG؛ تاريخ الفرق الكامل محفوظ",
+    },
 }
 
 _SLICE_RE = re.compile(r"\[-(?:\d+|[A-Z_]+)\s*:\s*\]")
