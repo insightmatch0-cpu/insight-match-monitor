@@ -2046,6 +2046,30 @@ def drama_scoreboard_line() -> str:
     return "\n".join(lines)
 
 
+def sportmonks_shadow_line() -> str:
+    """🔬 رؤية ظل xG اليومية (قاعدة المالك هـ: تجربة نشطة = سطر يومي بلا سؤال).
+    يقرأ sportmonks_shadow.json قراءةً فقط — يكتبه المجمّع المستقل
+    sportmonks_shadow.py بعد هذه التشغيلة، فالسطر يعرض حصيلة الأمس
+    (تأخير يوم واحد مقصود ومقبول — صفر تأثير على المحرك)."""
+    shadow = load_json(Path("sportmonks_shadow.json"), {}) or {}
+    meta = shadow.get("meta") or {}
+    if not meta.get("total"):
+        return ""
+    try:
+        started = datetime.strptime(meta.get("started", ""), "%Y-%m-%d")
+        day_no = (now_utc().replace(tzinfo=None) - started).days + 1
+    except ValueError:
+        day_no = "?"
+    line = (f"🔬 ظل xG — يوم {day_no} من ~21: أمس مطابقة "
+            f"{meta.get('last_day_matched', 0)} ومُفلت "
+            f"{meta.get('last_day_unmatched', 0)}؛ "
+            f"الإجمالي {meta.get('total', 0)} مباراة موثقة")
+    xf = meta.get("xgform") or {}
+    if xf.get("n"):
+        line += f" | فورمة xG: {xf.get('correct', 0)}/{xf['n']}"
+    return line
+
+
 def v1_pending() -> dict:
     """توقعات المحرك 1 المنتظرة — للمقارنة جنباً إلى جنب في الملخص."""
     store = load_json(V1_PREDICTIONS_FILE, {})
@@ -2287,6 +2311,10 @@ def main() -> None:
         drama = drama_scoreboard_line()
         if drama:
             digest += "\n" + drama
+        # 🔬 سطر ظل xG (تجربة نشطة 13 أغسطس → ~3 سبتمبر — رؤية يومية إلزامية)
+        xg_line = sportmonks_shadow_line()
+        if xg_line:
+            digest += "\n" + xg_line
         # سطر النزاهة اليومي: المالك يرى كل صباح أن الحسبة سليمة، لا يفترض ذلك
         if integrity_line:
             digest += "\n" + integrity_line

@@ -53,6 +53,14 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python predict_v2.py
 
+      # 🔬 مجمّع ظل xG (المرحلة أ، 2026-08-12): قياس صامت بصفر تأثير على المحرك —
+      # يعمل بعد التقييم الصباحي، وفشله لا يفشّل التشغيلة أبداً (عقيدة الظل أولاً)
+      - name: Sportmonks xG shadow collector
+        if: steps.guard.outputs.skip != 'true'
+        env:
+          SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
+        run: python sportmonks_shadow.py || echo "🔬 المجمّع فشل صامتاً — التشغيلة سليمة"
+
       - name: Update dashboard data
         run: python dashboard_update.py
 
