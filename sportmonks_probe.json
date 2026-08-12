@@ -1,5 +1,901 @@
 {
- "probed_at": "2026-08-12T07:39:58.778597+00:00",
- "key_present": false,
- "error": "SPORTMONKS_KEY غير موجود في البيئة — أضفه في Secrets"
+ "probed_at": "2026-08-12T09:43:40.154927+00:00",
+ "key_present": true,
+ "leagues": {
+  "status": 200,
+  "count_in_page": 50,
+  "sample": [
+   {
+    "id": 2,
+    "sport_id": 1,
+    "country_id": 41,
+    "name": "Champions League",
+    "active": true,
+    "short_code": "UEFA CL",
+    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/2.png",
+    "type": "league",
+    "sub_type": "cup_international",
+    "last_played_at": "2026-08-11 17:00:00",
+    "category": 1,
+    "has_jerseys": false
+   },
+   {
+    "id": 5,
+    "sport_id": 1,
+    "country_id": 41,
+    "name": "Europa League",
+    "active": true,
+    "short_code": "UEFA EL",
+    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/5/5.png",
+    "type": "league",
+    "sub_type": "cup_international",
+    "last_played_at": "2026-08-11 16:00:00",
+    "category": 1,
+    "has_jerseys": false
+   },
+   {
+    "id": 8,
+    "sport_id": 1,
+    "country_id": 462,
+    "name": "Premier League",
+    "active": true,
+    "short_code": "UK PL",
+    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/8/8.png",
+    "type": "league",
+    "sub_type": "domestic",
+    "last_played_at": "2026-05-24 15:00:00",
+    "category": 1,
+    "has_jerseys": false
+   }
+  ],
+  "pagination": {
+   "count": 50,
+   "per_page": 50,
+   "has_more": true,
+   "current_page": 1,
+   "next_page": "https://api.sportmonks.com/v3/football/leagues?per_page=50&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/leagues?cursor=WzEsNTAsWzMzMjBdLFtbInNwb3J0cy5sZWFndWVzLmlkIiwwXV1d"
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527820,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "search_saudi": {
+  "status": 200,
+  "count_in_page": 1,
+  "sample": [
+   {
+    "id": 3225,
+    "sport_id": 1,
+    "country_id": 35376,
+    "name": "Saudi Reserve League",
+    "active": true,
+    "short_code": null,
+    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/25/3225.png",
+    "type": "league",
+    "sub_type": "domestic",
+    "last_played_at": "2024-05-28 13:00:00",
+    "category": 4,
+    "has_jerseys": false
+   }
+  ],
+  "pagination": {
+   "count": 1,
+   "per_page": 25,
+   "has_more": false,
+   "current_page": 1,
+   "next_page": null,
+   "next_cursor": null
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527821,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "search_premier": {
+  "status": 200,
+  "count_in_page": 1,
+  "sample": [
+   {
+    "id": 8,
+    "sport_id": 1,
+    "country_id": 462,
+    "name": "Premier League",
+    "active": true,
+    "short_code": "UK PL",
+    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/8/8.png",
+    "type": "league",
+    "sub_type": "domestic",
+    "last_played_at": "2026-05-24 15:00:00",
+    "category": 1,
+    "has_jerseys": false
+   }
+  ],
+  "pagination": {
+   "count": 1,
+   "per_page": 25,
+   "has_more": false,
+   "current_page": 1,
+   "next_page": null,
+   "next_cursor": null
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527821,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "fixtures_yesterday": {
+  "status": 200,
+  "count_in_page": 5,
+  "sample": [
+   {
+    "id": 19766303,
+    "sport_id": 1,
+    "league_id": 2,
+    "season_id": 28155,
+    "stage_id": 77483020,
+    "group_id": null,
+    "aggregate_id": 60568,
+    "round_id": null,
+    "state_id": 5,
+    "venue_id": 3860,
+    "name": "Kairat vs Levski Sofia",
+    "starting_at": "2026-08-11 15:00:00",
+    "result_info": "Levski Sofia won after full-time.",
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786460400
+   },
+   {
+    "id": 19766298,
+    "sport_id": 1,
+    "league_id": 2,
+    "season_id": 28155,
+    "stage_id": 77483020,
+    "group_id": null,
+    "aggregate_id": 60400,
+    "round_id": null,
+    "state_id": 7,
+    "venue_id": 814,
+    "name": "Bodø / Glimt vs Union Saint-Gilloise",
+    "starting_at": "2026-08-11 16:00:00",
+    "result_info": "Bodø / Glimt won after extra-time.",
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786464000
+   },
+   {
+    "id": 19766302,
+    "sport_id": 1,
+    "league_id": 2,
+    "season_id": 28155,
+    "stage_id": 77483020,
+    "group_id": null,
+    "aggregate_id": 60570,
+    "round_id": null,
+    "state_id": 5,
+    "venue_id": 338825,
+    "name": "Sabah vs AGF",
+    "starting_at": "2026-08-11 16:00:00",
+    "result_info": "Sabah won after full-time.",
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786464000
+   }
+  ],
+  "pagination": {
+   "count": 5,
+   "per_page": 5,
+   "has_more": true,
+   "current_page": 1,
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?per_page=5&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?cursor=WzEsNSxbIjIwMjYtMDgtMTEgMTc6MDA6MDAiLDE5NzY2MjQxXSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527822,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "fixtures_today_inc_xGFixture": {
+  "status": 200,
+  "count_in_page": 3,
+  "sample": [
+   {
+    "id": 19766243,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60557,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5294,
+    "name": "Katowice vs Hapoel Tel Aviv",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "xgfixture": []
+   },
+   {
+    "id": 19766263,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60545,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5655,
+    "name": "FC København vs Debrecen",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "xgfixture": []
+   },
+   {
+    "id": 19766266,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60543,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 2153,
+    "name": "SK Rapid vs Paide",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "xgfixture": []
+   }
+  ],
+  "pagination": {
+   "count": 3,
+   "per_page": 3,
+   "has_more": true,
+   "current_page": 1,
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=xGFixture&per_page=3&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=xGFixture&cursor=WzEsMyxbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjY2XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527823,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "fixtures_today_inc_statistics": {
+  "status": 200,
+  "count_in_page": 3,
+  "sample": [
+   {
+    "id": 19766243,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60557,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5294,
+    "name": "Katowice vs Hapoel Tel Aviv",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "statistics": []
+   },
+   {
+    "id": 19766263,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60545,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5655,
+    "name": "FC København vs Debrecen",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "statistics": []
+   },
+   {
+    "id": 19766266,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60543,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 2153,
+    "name": "SK Rapid vs Paide",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "statistics": []
+   }
+  ],
+  "pagination": {
+   "count": 3,
+   "per_page": 3,
+   "has_more": true,
+   "current_page": 1,
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics&per_page=3&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics&cursor=WzEsMyxbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjY2XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527824,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "fixtures_today_inc_statistics.type": {
+  "status": 200,
+  "count_in_page": 3,
+  "sample": [
+   {
+    "id": 19766243,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60557,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5294,
+    "name": "Katowice vs Hapoel Tel Aviv",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "statistics": []
+   },
+   {
+    "id": 19766263,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60545,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5655,
+    "name": "FC København vs Debrecen",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "statistics": []
+   },
+   {
+    "id": 19766266,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60543,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 2153,
+    "name": "SK Rapid vs Paide",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "statistics": []
+   }
+  ],
+  "pagination": {
+   "count": 3,
+   "per_page": 3,
+   "has_more": true,
+   "current_page": 1,
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics.type&per_page=3&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics.type&cursor=WzEsMyxbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjY2XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527824,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ },
+ "expected_lineups_probe": {
+  "status": 200,
+  "count_in_page": 2,
+  "sample": [
+   {
+    "id": 19766243,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60557,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5294,
+    "name": "Katowice vs Hapoel Tel Aviv",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "metadata": [
+     {
+      "id": 10246467,
+      "metadatable_id": 19766243,
+      "type_id": 35,
+      "value_type": "object",
+      "values": {
+       "neutral": false
+      }
+     },
+     {
+      "id": 10265052,
+      "metadatable_id": 19766243,
+      "type_id": 36,
+      "value_type": "object",
+      "values": {
+       "kickOff": "home"
+      }
+     },
+     {
+      "id": 10321155,
+      "metadatable_id": 19766243,
+      "type_id": 159,
+      "value_type": "object",
+      "values": {
+       "home": "3-4-2-1",
+       "away": "4-2-3-1"
+      }
+     },
+     {
+      "id": 10320395,
+      "metadatable_id": 19766243,
+      "type_id": 572,
+      "value_type": "object",
+      "values": {
+       "confirmed": false
+      }
+     },
+     {
+      "id": 10265966,
+      "metadatable_id": 19766243,
+      "type_id": 613,
+      "value_type": "string",
+      "values": "#KATHTA"
+     },
+     {
+      "id": 10186838,
+      "metadatable_id": 19766243,
+      "type_id": 2838,
+      "value_type": "object",
+      "values": {
+       "extra_time": false
+      }
+     },
+     {
+      "id": 10237223,
+      "metadatable_id": 19766243,
+      "type_id": 37072,
+      "value_type": "object",
+      "values": {
+       "predictable": true
+      }
+     }
+    ]
+   },
+   {
+    "id": 19766263,
+    "sport_id": 1,
+    "league_id": 2286,
+    "season_id": 27911,
+    "stage_id": 77483019,
+    "group_id": null,
+    "aggregate_id": 60545,
+    "round_id": null,
+    "state_id": 1,
+    "venue_id": 5655,
+    "name": "FC København vs Debrecen",
+    "starting_at": "2026-08-12 16:00:00",
+    "result_info": null,
+    "leg": "2/2",
+    "details": null,
+    "length": 90,
+    "placeholder": false,
+    "has_odds": true,
+    "has_premium_odds": true,
+    "starting_at_timestamp": 1786550400,
+    "metadata": [
+     {
+      "id": 10246347,
+      "metadatable_id": 19766263,
+      "type_id": 35,
+      "value_type": "object",
+      "values": {
+       "neutral": false
+      }
+     },
+     {
+      "id": 10259814,
+      "metadatable_id": 19766263,
+      "type_id": 36,
+      "value_type": "object",
+      "values": {
+       "kickOff": "home"
+      }
+     },
+     {
+      "id": 10246348,
+      "metadatable_id": 19766263,
+      "type_id": 572,
+      "value_type": "object",
+      "values": {
+       "confirmed": false
+      }
+     },
+     {
+      "id": 10265969,
+      "metadatable_id": 19766263,
+      "type_id": 613,
+      "value_type": "string",
+      "values": "#COPDEB"
+     },
+     {
+      "id": 10186881,
+      "metadatable_id": 19766263,
+      "type_id": 2838,
+      "value_type": "object",
+      "values": {
+       "extra_time": false
+      }
+     },
+     {
+      "id": 10237219,
+      "metadatable_id": 19766263,
+      "type_id": 37072,
+      "value_type": "object",
+      "values": {
+       "predictable": true
+      }
+     }
+    ]
+   }
+  ],
+  "pagination": {
+   "count": 2,
+   "per_page": 2,
+   "has_more": true,
+   "current_page": 1,
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=metadata&per_page=2&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=metadata&cursor=WzEsMixbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjYzXSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+  },
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786527825,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": null
+ }
 }
