@@ -1,65 +1,277 @@
 {
- "probed_at": "2026-08-12T09:43:40.154927+00:00",
+ "probed_at": "2026-08-12T09:51:33.644031+00:00",
  "key_present": true,
- "leagues": {
-  "status": 200,
-  "count_in_page": 50,
-  "sample": [
-   {
-    "id": 2,
-    "sport_id": 1,
-    "country_id": 41,
-    "name": "Champions League",
-    "active": true,
-    "short_code": "UEFA CL",
-    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/2.png",
-    "type": "league",
-    "sub_type": "cup_international",
-    "last_played_at": "2026-08-11 17:00:00",
-    "category": 1,
-    "has_jerseys": false
-   },
-   {
-    "id": 5,
-    "sport_id": 1,
-    "country_id": 41,
-    "name": "Europa League",
-    "active": true,
-    "short_code": "UEFA EL",
-    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/5/5.png",
-    "type": "league",
-    "sub_type": "cup_international",
-    "last_played_at": "2026-08-11 16:00:00",
-    "category": 1,
-    "has_jerseys": false
-   },
-   {
-    "id": 8,
-    "sport_id": 1,
-    "country_id": 462,
-    "name": "Premier League",
-    "active": true,
-    "short_code": "UK PL",
-    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/8/8.png",
-    "type": "league",
-    "sub_type": "domestic",
-    "last_played_at": "2026-05-24 15:00:00",
-    "category": 1,
-    "has_jerseys": false
-   }
-  ],
-  "pagination": {
-   "count": 50,
-   "per_page": 50,
-   "has_more": true,
-   "current_page": 1,
-   "next_page": "https://api.sportmonks.com/v3/football/leagues?per_page=50&page=2",
-   "next_cursor": "https://api.sportmonks.com/v3/football/leagues?cursor=WzEsNTAsWzMzMjBdLFtbInNwb3J0cy5sZWFndWVzLmlkIiwwXV1d"
+ "all_league_names": [
+  {
+   "id": 2,
+   "name": "Champions League",
+   "country_id": 41
   },
+  {
+   "id": 5,
+   "name": "Europa League",
+   "country_id": 41
+  },
+  {
+   "id": 8,
+   "name": "Premier League",
+   "country_id": 462
+  },
+  {
+   "id": 9,
+   "name": "Championship",
+   "country_id": 462
+  },
+  {
+   "id": 82,
+   "name": "Bundesliga",
+   "country_id": 11
+  },
+  {
+   "id": 301,
+   "name": "Ligue 1",
+   "country_id": 17
+  },
+  {
+   "id": 384,
+   "name": "Serie A",
+   "country_id": 251
+  },
+  {
+   "id": 501,
+   "name": "Premiership",
+   "country_id": 1161
+  },
+  {
+   "id": 564,
+   "name": "La Liga",
+   "country_id": 32
+  },
+  {
+   "id": 711,
+   "name": "CAF World Cup Qualifiers",
+   "country_id": 147
+  },
+  {
+   "id": 714,
+   "name": "WC Qualification Asia",
+   "country_id": 11240938
+  },
+  {
+   "id": 717,
+   "name": "WC Qualification Concacaf",
+   "country_id": 24143344
+  },
+  {
+   "id": 720,
+   "name": "WC Qualification Europe",
+   "country_id": 41
+  },
+  {
+   "id": 723,
+   "name": "WC Qualification Oceania",
+   "country_id": 37200395
+  },
+  {
+   "id": 726,
+   "name": "WC Qualification South America",
+   "country_id": 11555657
+  },
+  {
+   "id": 729,
+   "name": "WC Qualification Intercontinental Playoffs",
+   "country_id": 99474
+  },
+  {
+   "id": 732,
+   "name": "World Cup",
+   "country_id": 99474
+  },
+  {
+   "id": 911,
+   "name": "Iraqi League",
+   "country_id": 107
+  },
+  {
+   "id": 1103,
+   "name": "African Nations Championship",
+   "country_id": 147
+  },
+  {
+   "id": 1104,
+   "name": "ASEAN Championship",
+   "country_id": 11240938
+  },
+  {
+   "id": 1105,
+   "name": "AFC Asian Cup",
+   "country_id": 11240938
+  },
+  {
+   "id": 1106,
+   "name": "Asian Cup Qualification",
+   "country_id": 11240938
+  },
+  {
+   "id": 1112,
+   "name": "CONCACAF Gold Cup",
+   "country_id": 24143344
+  },
+  {
+   "id": 1114,
+   "name": "Copa America",
+   "country_id": 11555657
+  },
+  {
+   "id": 1117,
+   "name": "Africa Cup of Nations",
+   "country_id": 147
+  },
+  {
+   "id": 1118,
+   "name": "Africa Cup of Nations Qualifications",
+   "country_id": 147
+  },
+  {
+   "id": 1119,
+   "name": "EAFF E-1 Football Championship",
+   "country_id": 11240938
+  },
+  {
+   "id": 1124,
+   "name": "OFC Nations Cup",
+   "country_id": 37200395
+  },
+  {
+   "id": 1125,
+   "name": "Olympic Games",
+   "country_id": 99474
+  },
+  {
+   "id": 1127,
+   "name": "SAFF Championship",
+   "country_id": 11240938
+  },
+  {
+   "id": 1325,
+   "name": "Euro Qualification",
+   "country_id": 41
+  },
+  {
+   "id": 1326,
+   "name": "European Championship",
+   "country_id": 41
+  },
+  {
+   "id": 1328,
+   "name": "UEFA Super Cup",
+   "country_id": 41
+  },
+  {
+   "id": 1379,
+   "name": "Cosafa Cup",
+   "country_id": 147
+  },
+  {
+   "id": 1538,
+   "name": "UEFA Nations League",
+   "country_id": 41
+  },
+  {
+   "id": 1546,
+   "name": "Central American & Caribbean Games",
+   "country_id": 24143344
+  },
+  {
+   "id": 1555,
+   "name": "Asian Games",
+   "country_id": 11240938
+  },
+  {
+   "id": 1690,
+   "name": "King's Cup",
+   "country_id": 11240938
+  },
+  {
+   "id": 1714,
+   "name": "Pacific Games",
+   "country_id": 37200395
+  },
+  {
+   "id": 1729,
+   "name": "Southeast Asian Games",
+   "country_id": 11240938
+  },
+  {
+   "id": 1741,
+   "name": "CONCACAF Nations League",
+   "country_id": 24143344
+  },
+  {
+   "id": 1742,
+   "name": "CONCACAF Nations League Qualification",
+   "country_id": 24143344
+  },
+  {
+   "id": 1784,
+   "name": "CONMEBOL Pre-Olympic Tournament",
+   "country_id": 11555657
+  },
+  {
+   "id": 2040,
+   "name": "Olympic Qualifying Concacaf",
+   "country_id": 24143344
+  },
+  {
+   "id": 2286,
+   "name": "Europa Conference League",
+   "country_id": 41
+  },
+  {
+   "id": 2321,
+   "name": "CONCACAF Gold Cup Qualification",
+   "country_id": 24143344
+  },
+  {
+   "id": 2679,
+   "name": "African Nations Championship Qualification",
+   "country_id": 147
+  },
+  {
+   "id": 3225,
+   "name": "Saudi Reserve League",
+   "country_id": 35376
+  },
+  {
+   "id": 3232,
+   "name": "Olympic Qualifying: Oceania",
+   "country_id": 37200395
+  },
+  {
+   "id": 3320,
+   "name": "All Africa Games",
+   "country_id": 147
+  },
+  {
+   "id": 3360,
+   "name": "Olympics Intercontinental Play-offs",
+   "country_id": 99474
+  },
+  {
+   "id": 3431,
+   "name": "EAFF Football Championship Qualification",
+   "country_id": 11240938
+  }
+ ],
+ "search_pro_league": {
+  "status": 200,
+  "count_in_page": 0,
+  "sample": [],
+  "pagination": null,
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786527820,
+     "current_timestamp": 1786528295,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -90,39 +302,17 @@
     ]
    }
   ],
-  "message": null
+  "message": "No result(s) found matching your request. Either the query did not return any results or you don't have access to it via your current subscription."
  },
- "search_saudi": {
+ "search_roshn": {
   "status": 200,
-  "count_in_page": 1,
-  "sample": [
-   {
-    "id": 3225,
-    "sport_id": 1,
-    "country_id": 35376,
-    "name": "Saudi Reserve League",
-    "active": true,
-    "short_code": null,
-    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/25/3225.png",
-    "type": "league",
-    "sub_type": "domestic",
-    "last_played_at": "2024-05-28 13:00:00",
-    "category": 4,
-    "has_jerseys": false
-   }
-  ],
-  "pagination": {
-   "count": 1,
-   "per_page": 25,
-   "has_more": false,
-   "current_page": 1,
-   "next_page": null,
-   "next_cursor": null
-  },
+  "count_in_page": 0,
+  "sample": [],
+  "pagination": null,
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786527821,
+     "current_timestamp": 1786528296,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -153,72 +343,9 @@
     ]
    }
   ],
-  "message": null
+  "message": "No result(s) found matching your request. Either the query did not return any results or you don't have access to it via your current subscription."
  },
- "search_premier": {
-  "status": 200,
-  "count_in_page": 1,
-  "sample": [
-   {
-    "id": 8,
-    "sport_id": 1,
-    "country_id": 462,
-    "name": "Premier League",
-    "active": true,
-    "short_code": "UK PL",
-    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/8/8.png",
-    "type": "league",
-    "sub_type": "domestic",
-    "last_played_at": "2026-05-24 15:00:00",
-    "category": 1,
-    "has_jerseys": false
-   }
-  ],
-  "pagination": {
-   "count": 1,
-   "per_page": 25,
-   "has_more": false,
-   "current_page": 1,
-   "next_page": null,
-   "next_cursor": null
-  },
-  "subscription": [
-   {
-    "meta": {
-     "current_timestamp": 1786527821,
-     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
-    },
-    "plans": [
-     {
-      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
-      "sport": "Football",
-      "category": "Advanced"
-     },
-     {
-      "plan": "Euro Club Tournaments",
-      "sport": "Football",
-      "category": "Advanced"
-     },
-     {
-      "plan": "International Tournaments",
-      "sport": "Football",
-      "category": "Advanced"
-     }
-    ],
-    "add_ons": [],
-    "widgets": [],
-    "bundles": [
-     {
-      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
-      "sport": "Football",
-      "category": "Pressure - Expected"
-     }
-    ]
-   }
-  ],
-  "message": null
- },
- "fixtures_yesterday": {
+ "fixtures_2026-08-11_xg": {
   "status": 200,
   "count_in_page": 5,
   "sample": [
@@ -242,7 +369,8 @@
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786460400
+    "starting_at_timestamp": 1786460400,
+    "xgfixture": []
    },
    {
     "id": 19766298,
@@ -264,7 +392,8 @@
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786464000
+    "starting_at_timestamp": 1786464000,
+    "xgfixture": []
    },
    {
     "id": 19766302,
@@ -286,7 +415,8 @@
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786464000
+    "starting_at_timestamp": 1786464000,
+    "xgfixture": []
    }
   ],
   "pagination": {
@@ -294,13 +424,13 @@
    "per_page": 5,
    "has_more": true,
    "current_page": 1,
-   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?per_page=5&page=2",
-   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?cursor=WzEsNSxbIjIwMjYtMDgtMTEgMTc6MDA6MDAiLDE5NzY2MjQxXSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?include=xgfixture&per_page=5&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?include=xgfixture&cursor=WzEsNSxbIjIwMjYtMDgtMTEgMTc6MDA6MDAiLDE5NzY2MjQxXSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
   },
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786527822,
+     "current_timestamp": 1786528296,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -333,92 +463,756 @@
   ],
   "message": null
  },
- "fixtures_today_inc_xGFixture": {
+ "fixtures_2026-08-10_xg": {
   "status": 200,
-  "count_in_page": 3,
+  "count_in_page": 0,
+  "sample": [],
+  "pagination": null,
+  "subscription": [
+   {
+    "meta": {
+     "current_timestamp": 1786528297,
+     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
+    },
+    "plans": [
+     {
+      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "Euro Club Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     },
+     {
+      "plan": "International Tournaments",
+      "sport": "Football",
+      "category": "Advanced"
+     }
+    ],
+    "add_ons": [],
+    "widgets": [],
+    "bundles": [
+     {
+      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
+      "sport": "Football",
+      "category": "Pressure - Expected"
+     }
+    ]
+   }
+  ],
+  "message": "No result(s) found matching your request. Either the query did not return any results or you don't have access to it via your current subscription."
+ },
+ "epl_last_round_xg": {
+  "status": 200,
+  "count_in_page": 10,
   "sample": [
    {
-    "id": 19766243,
+    "id": 19427236,
     "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
+    "league_id": 8,
+    "season_id": 25583,
+    "stage_id": 77476879,
     "group_id": null,
-    "aggregate_id": 60557,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 5294,
-    "name": "Katowice vs Hapoel Tel Aviv",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
+    "aggregate_id": null,
+    "round_id": 372154,
+    "state_id": 5,
+    "venue_id": 480,
+    "name": "Brighton & Hove Albion vs Manchester United",
+    "starting_at": "2026-05-24 15:00:00",
+    "result_info": "Manchester United won after full-time.",
+    "leg": "1/1",
     "details": null,
     "length": 90,
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "xgfixture": []
+    "starting_at_timestamp": 1779634800,
+    "xgfixture": [
+     {
+      "id": 925210255,
+      "fixture_id": 19427236,
+      "type_id": 5304,
+      "participant_id": 14,
+      "data": {
+       "value": 1.494
+      },
+      "location": "away"
+     },
+     {
+      "id": 925210254,
+      "fixture_id": 19427236,
+      "type_id": 5304,
+      "participant_id": 78,
+      "data": {
+       "value": 1.2492999999999999
+      },
+      "location": "home"
+     },
+     {
+      "id": 925273099,
+      "fixture_id": 19427236,
+      "type_id": 5305,
+      "participant_id": 14,
+      "data": {
+       "value": 1.9437
+      },
+      "location": "away"
+     },
+     {
+      "id": 925273098,
+      "fixture_id": 19427236,
+      "type_id": 5305,
+      "participant_id": 78,
+      "data": {
+       "value": 0.0965
+      },
+      "location": "home"
+     },
+     {
+      "id": 925210259,
+      "fixture_id": 19427236,
+      "type_id": 7939,
+      "participant_id": 14,
+      "data": {
+       "value": 1.54
+      },
+      "location": "away"
+     },
+     {
+      "id": 925210258,
+      "fixture_id": 19427236,
+      "type_id": 7939,
+      "participant_id": 78,
+      "data": {
+       "value": 1.2
+      },
+      "location": "home"
+     },
+     {
+      "id": 925397227,
+      "fixture_id": 19427236,
+      "type_id": 7941,
+      "participant_id": 14,
+      "data": {
+       "value": 0
+      },
+      "location": "away"
+     },
+     {
+      "id": 925397226,
+      "fixture_id": 19427236,
+      "type_id": 7941,
+      "participant_id": 78,
+      "data": {
+       "value": 0.073
+      },
+      "location": "home"
+     },
+     {
+      "id": 925271827,
+      "fixture_id": 19427236,
+      "type_id": 7942,
+      "participant_id": 14,
+      "data": {
+       "value": 0.295
+      },
+      "location": "away"
+     },
+     {
+      "id": 925271826,
+      "fixture_id": 19427236,
+      "type_id": 7942,
+      "participant_id": 78,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 925210271,
+      "fixture_id": 19427236,
+      "type_id": 7943,
+      "participant_id": 14,
+      "data": {
+       "value": 1.494
+      },
+      "location": "away"
+     },
+     {
+      "id": 925210270,
+      "fixture_id": 19427236,
+      "type_id": 7943,
+      "participant_id": 78,
+      "data": {
+       "value": 1.2492999999999999
+      },
+      "location": "home"
+     },
+     {
+      "id": 925271829,
+      "fixture_id": 19427236,
+      "type_id": 7944,
+      "participant_id": 14,
+      "data": {
+       "value": 0.295
+      },
+      "location": "away"
+     },
+     {
+      "id": 925271828,
+      "fixture_id": 19427236,
+      "type_id": 7944,
+      "participant_id": 78,
+      "data": {
+       "value": 0.073
+      },
+      "location": "home"
+     },
+     {
+      "id": 925210269,
+      "fixture_id": 19427236,
+      "type_id": 7945,
+      "participant_id": 14,
+      "data": {
+       "value": 1.198
+      },
+      "location": "away"
+     },
+     {
+      "id": 925210268,
+      "fixture_id": 19427236,
+      "type_id": 7945,
+      "participant_id": 78,
+      "data": {
+       "value": 1.175
+      },
+      "location": "home"
+     },
+     {
+      "id": 925273119,
+      "fixture_id": 19427236,
+      "type_id": 9685,
+      "participant_id": 14,
+      "data": {
+       "value": 0.4497
+      },
+      "location": "away"
+     },
+     {
+      "id": 925273118,
+      "fixture_id": 19427236,
+      "type_id": 9685,
+      "participant_id": 78,
+      "data": {
+       "value": -1.1527999999999998
+      },
+      "location": "home"
+     },
+     {
+      "id": 925210257,
+      "fixture_id": 19427236,
+      "type_id": 9687,
+      "participant_id": 14,
+      "data": {
+       "value": 1.2492999999999999
+      },
+      "location": "away"
+     },
+     {
+      "id": 925210256,
+      "fixture_id": 19427236,
+      "type_id": 9687,
+      "participant_id": 78,
+      "data": {
+       "value": 1.494
+      },
+      "location": "home"
+     }
+    ]
    },
    {
-    "id": 19766263,
+    "id": 19427237,
     "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
+    "league_id": 8,
+    "season_id": 25583,
+    "stage_id": 77476879,
     "group_id": null,
-    "aggregate_id": 60545,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 5655,
-    "name": "FC København vs Debrecen",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
+    "aggregate_id": null,
+    "round_id": 372154,
+    "state_id": 5,
+    "venue_id": 200,
+    "name": "Burnley vs Wolverhampton Wanderers",
+    "starting_at": "2026-05-24 15:00:00",
+    "result_info": "Game ended in draw.",
+    "leg": "1/1",
     "details": null,
     "length": 90,
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "xgfixture": []
+    "starting_at_timestamp": 1779634800,
+    "xgfixture": [
+     {
+      "id": 925197527,
+      "fixture_id": 19427237,
+      "type_id": 5304,
+      "participant_id": 29,
+      "data": {
+       "value": 2.3103000000000002
+      },
+      "location": "away"
+     },
+     {
+      "id": 925197526,
+      "fixture_id": 19427237,
+      "type_id": 5304,
+      "participant_id": 27,
+      "data": {
+       "value": 1.2834
+      },
+      "location": "home"
+     },
+     {
+      "id": 925201365,
+      "fixture_id": 19427237,
+      "type_id": 5305,
+      "participant_id": 29,
+      "data": {
+       "value": 2.2063
+      },
+      "location": "away"
+     },
+     {
+      "id": 925201364,
+      "fixture_id": 19427237,
+      "type_id": 5305,
+      "participant_id": 27,
+      "data": {
+       "value": 1.8709
+      },
+      "location": "home"
+     },
+     {
+      "id": 925197531,
+      "fixture_id": 19427237,
+      "type_id": 7939,
+      "participant_id": 29,
+      "data": {
+       "value": 2.01
+      },
+      "location": "away"
+     },
+     {
+      "id": 925197530,
+      "fixture_id": 19427237,
+      "type_id": 7939,
+      "participant_id": 27,
+      "data": {
+       "value": 0.8
+      },
+      "location": "home"
+     },
+     {
+      "id": 925202377,
+      "fixture_id": 19427237,
+      "type_id": 7940,
+      "participant_id": 29,
+      "data": {
+       "value": 0.79
+      },
+      "location": "away"
+     },
+     {
+      "id": 925202376,
+      "fixture_id": 19427237,
+      "type_id": 7940,
+      "participant_id": 27,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 925197537,
+      "fixture_id": 19427237,
+      "type_id": 7942,
+      "participant_id": 29,
+      "data": {
+       "value": 0.613
+      },
+      "location": "away"
+     },
+     {
+      "id": 925197536,
+      "fixture_id": 19427237,
+      "type_id": 7942,
+      "participant_id": 27,
+      "data": {
+       "value": 0.171
+      },
+      "location": "home"
+     },
+     {
+      "id": 925197543,
+      "fixture_id": 19427237,
+      "type_id": 7943,
+      "participant_id": 29,
+      "data": {
+       "value": 1.5203000000000002
+      },
+      "location": "away"
+     },
+     {
+      "id": 925197542,
+      "fixture_id": 19427237,
+      "type_id": 7943,
+      "participant_id": 27,
+      "data": {
+       "value": 1.2834
+      },
+      "location": "home"
+     },
+     {
+      "id": 925197539,
+      "fixture_id": 19427237,
+      "type_id": 7944,
+      "participant_id": 29,
+      "data": {
+       "value": 1.419
+      },
+      "location": "away"
+     },
+     {
+      "id": 925197538,
+      "fixture_id": 19427237,
+      "type_id": 7944,
+      "participant_id": 27,
+      "data": {
+       "value": 0.171
+      },
+      "location": "home"
+     },
+     {
+      "id": 925213851,
+      "fixture_id": 19427237,
+      "type_id": 7945,
+      "participant_id": 29,
+      "data": {
+       "value": 0.889
+      },
+      "location": "away"
+     },
+     {
+      "id": 925213850,
+      "fixture_id": 19427237,
+      "type_id": 7945,
+      "participant_id": 27,
+      "data": {
+       "value": 1.111
+      },
+      "location": "home"
+     },
+     {
+      "id": 925201373,
+      "fixture_id": 19427237,
+      "type_id": 9685,
+      "participant_id": 29,
+      "data": {
+       "value": -0.10400000000000009
+      },
+      "location": "away"
+     },
+     {
+      "id": 925201372,
+      "fixture_id": 19427237,
+      "type_id": 9685,
+      "participant_id": 27,
+      "data": {
+       "value": 0.5874999999999999
+      },
+      "location": "home"
+     },
+     {
+      "id": 925410475,
+      "fixture_id": 19427237,
+      "type_id": 9686,
+      "participant_id": 29,
+      "data": {
+       "value": 0.8709
+      },
+      "location": "away"
+     },
+     {
+      "id": 925410474,
+      "fixture_id": 19427237,
+      "type_id": 9686,
+      "participant_id": 27,
+      "data": {
+       "value": 1.2063000000000001
+      },
+      "location": "home"
+     },
+     {
+      "id": 925197529,
+      "fixture_id": 19427237,
+      "type_id": 9687,
+      "participant_id": 29,
+      "data": {
+       "value": 1.2834
+      },
+      "location": "away"
+     },
+     {
+      "id": 925197528,
+      "fixture_id": 19427237,
+      "type_id": 9687,
+      "participant_id": 27,
+      "data": {
+       "value": 2.3103000000000002
+      },
+      "location": "home"
+     }
+    ]
    },
    {
-    "id": 19766266,
+    "id": 19427238,
     "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
+    "league_id": 8,
+    "season_id": 25583,
+    "stage_id": 77476879,
     "group_id": null,
-    "aggregate_id": 60543,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 2153,
-    "name": "SK Rapid vs Paide",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
+    "aggregate_id": null,
+    "round_id": 372154,
+    "state_id": 5,
+    "venue_id": 201,
+    "name": "Crystal Palace vs Arsenal",
+    "starting_at": "2026-05-24 15:00:00",
+    "result_info": "Arsenal won after full-time.",
+    "leg": "1/1",
     "details": null,
     "length": 90,
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "xgfixture": []
+    "starting_at_timestamp": 1779634800,
+    "xgfixture": [
+     {
+      "id": 925200561,
+      "fixture_id": 19427238,
+      "type_id": 5304,
+      "participant_id": 19,
+      "data": {
+       "value": 2.4173
+      },
+      "location": "away"
+     },
+     {
+      "id": 925200560,
+      "fixture_id": 19427238,
+      "type_id": 5304,
+      "participant_id": 51,
+      "data": {
+       "value": 0.9299000000000001
+      },
+      "location": "home"
+     },
+     {
+      "id": 925203481,
+      "fixture_id": 19427238,
+      "type_id": 5305,
+      "participant_id": 19,
+      "data": {
+       "value": 2.0963
+      },
+      "location": "away"
+     },
+     {
+      "id": 925203480,
+      "fixture_id": 19427238,
+      "type_id": 5305,
+      "participant_id": 51,
+      "data": {
+       "value": 1.1835
+      },
+      "location": "home"
+     },
+     {
+      "id": 925200569,
+      "fixture_id": 19427238,
+      "type_id": 7939,
+      "participant_id": 19,
+      "data": {
+       "value": 2.28
+      },
+      "location": "away"
+     },
+     {
+      "id": 925200568,
+      "fixture_id": 19427238,
+      "type_id": 7939,
+      "participant_id": 51,
+      "data": {
+       "value": 0.55
+      },
+      "location": "home"
+     },
+     {
+      "id": 925359451,
+      "fixture_id": 19427238,
+      "type_id": 7942,
+      "participant_id": 19,
+      "data": {
+       "value": 0.078
+      },
+      "location": "away"
+     },
+     {
+      "id": 925359450,
+      "fixture_id": 19427238,
+      "type_id": 7942,
+      "participant_id": 51,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 925200565,
+      "fixture_id": 19427238,
+      "type_id": 7943,
+      "participant_id": 19,
+      "data": {
+       "value": 2.4173
+      },
+      "location": "away"
+     },
+     {
+      "id": 925200564,
+      "fixture_id": 19427238,
+      "type_id": 7943,
+      "participant_id": 51,
+      "data": {
+       "value": 0.9299000000000001
+      },
+      "location": "home"
+     },
+     {
+      "id": 925359453,
+      "fixture_id": 19427238,
+      "type_id": 7944,
+      "participant_id": 19,
+      "data": {
+       "value": 0.078
+      },
+      "location": "away"
+     },
+     {
+      "id": 925359452,
+      "fixture_id": 19427238,
+      "type_id": 7944,
+      "participant_id": 51,
+      "data": {
+       "value": 0.122
+      },
+      "location": "home"
+     },
+     {
+      "id": 925200563,
+      "fixture_id": 19427238,
+      "type_id": 7945,
+      "participant_id": 19,
+      "data": {
+       "value": 2.337
+      },
+      "location": "away"
+     },
+     {
+      "id": 925200562,
+      "fixture_id": 19427238,
+      "type_id": 7945,
+      "participant_id": 51,
+      "data": {
+       "value": 0.807
+      },
+      "location": "home"
+     },
+     {
+      "id": 925203501,
+      "fixture_id": 19427238,
+      "type_id": 9685,
+      "participant_id": 19,
+      "data": {
+       "value": -0.3210000000000002
+      },
+      "location": "away"
+     },
+     {
+      "id": 925203500,
+      "fixture_id": 19427238,
+      "type_id": 9685,
+      "participant_id": 51,
+      "data": {
+       "value": 0.25359999999999994
+      },
+      "location": "home"
+     },
+     {
+      "id": 925530839,
+      "fixture_id": 19427238,
+      "type_id": 9686,
+      "participant_id": 19,
+      "data": {
+       "value": 0.1835
+      },
+      "location": "away"
+     },
+     {
+      "id": 925530838,
+      "fixture_id": 19427238,
+      "type_id": 9686,
+      "participant_id": 51,
+      "data": {
+       "value": 0.09629999999999983
+      },
+      "location": "home"
+     },
+     {
+      "id": 925200567,
+      "fixture_id": 19427238,
+      "type_id": 9687,
+      "participant_id": 19,
+      "data": {
+       "value": 0.9299000000000001
+      },
+      "location": "away"
+     },
+     {
+      "id": 925200566,
+      "fixture_id": 19427238,
+      "type_id": 9687,
+      "participant_id": 51,
+      "data": {
+       "value": 2.4173
+      },
+      "location": "home"
+     }
+    ]
    }
   ],
   "pagination": {
-   "count": 3,
-   "per_page": 3,
-   "has_more": true,
+   "count": 10,
+   "per_page": 10,
+   "has_more": false,
    "current_page": 1,
-   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=xGFixture&per_page=3&page=2",
-   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=xGFixture&cursor=WzEsMyxbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjY2XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+   "next_page": null,
+   "next_cursor": null
   },
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786527823,
+     "current_timestamp": 1786528297,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -451,405 +1245,1595 @@
   ],
   "message": null
  },
- "fixtures_today_inc_statistics": {
-  "status": 200,
-  "count_in_page": 3,
-  "sample": [
-   {
-    "id": 19766243,
-    "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
-    "group_id": null,
-    "aggregate_id": 60557,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 5294,
-    "name": "Katowice vs Hapoel Tel Aviv",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
-    "details": null,
-    "length": 90,
-    "placeholder": false,
-    "has_odds": true,
-    "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "statistics": []
-   },
-   {
-    "id": 19766263,
-    "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
-    "group_id": null,
-    "aggregate_id": 60545,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 5655,
-    "name": "FC København vs Debrecen",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
-    "details": null,
-    "length": 90,
-    "placeholder": false,
-    "has_odds": true,
-    "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "statistics": []
-   },
-   {
-    "id": 19766266,
-    "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
-    "group_id": null,
-    "aggregate_id": 60543,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 2153,
-    "name": "SK Rapid vs Paide",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
-    "details": null,
-    "length": 90,
-    "placeholder": false,
-    "has_odds": true,
-    "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "statistics": []
-   }
-  ],
-  "pagination": {
-   "count": 3,
-   "per_page": 3,
-   "has_more": true,
-   "current_page": 1,
-   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics&per_page=3&page=2",
-   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics&cursor=WzEsMyxbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjY2XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
-  },
-  "subscription": [
-   {
-    "meta": {
-     "current_timestamp": 1786527824,
-     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
-    },
-    "plans": [
-     {
-      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
-      "sport": "Football",
-      "category": "Advanced"
-     },
-     {
-      "plan": "Euro Club Tournaments",
-      "sport": "Football",
-      "category": "Advanced"
-     },
-     {
-      "plan": "International Tournaments",
-      "sport": "Football",
-      "category": "Advanced"
-     }
-    ],
-    "add_ons": [],
-    "widgets": [],
-    "bundles": [
-     {
-      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
-      "sport": "Football",
-      "category": "Pressure - Expected"
-     }
-    ]
-   }
-  ],
-  "message": null
- },
- "fixtures_today_inc_statistics.type": {
-  "status": 200,
-  "count_in_page": 3,
-  "sample": [
-   {
-    "id": 19766243,
-    "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
-    "group_id": null,
-    "aggregate_id": 60557,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 5294,
-    "name": "Katowice vs Hapoel Tel Aviv",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
-    "details": null,
-    "length": 90,
-    "placeholder": false,
-    "has_odds": true,
-    "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "statistics": []
-   },
-   {
-    "id": 19766263,
-    "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
-    "group_id": null,
-    "aggregate_id": 60545,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 5655,
-    "name": "FC København vs Debrecen",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
-    "details": null,
-    "length": 90,
-    "placeholder": false,
-    "has_odds": true,
-    "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "statistics": []
-   },
-   {
-    "id": 19766266,
-    "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
-    "group_id": null,
-    "aggregate_id": 60543,
-    "round_id": null,
-    "state_id": 1,
-    "venue_id": 2153,
-    "name": "SK Rapid vs Paide",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
-    "leg": "2/2",
-    "details": null,
-    "length": 90,
-    "placeholder": false,
-    "has_odds": true,
-    "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "statistics": []
-   }
-  ],
-  "pagination": {
-   "count": 3,
-   "per_page": 3,
-   "has_more": true,
-   "current_page": 1,
-   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics.type&per_page=3&page=2",
-   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=statistics.type&cursor=WzEsMyxbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjY2XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
-  },
-  "subscription": [
-   {
-    "meta": {
-     "current_timestamp": 1786527824,
-     "next_billing_cycle": "2026-08-26T08:35:11 UTC"
-    },
-    "plans": [
-     {
-      "plan": "Growth - Trialing until 2026-08-26 08:35:11",
-      "sport": "Football",
-      "category": "Advanced"
-     },
-     {
-      "plan": "Euro Club Tournaments",
-      "sport": "Football",
-      "category": "Advanced"
-     },
-     {
-      "plan": "International Tournaments",
-      "sport": "Football",
-      "category": "Advanced"
-     }
-    ],
-    "add_ons": [],
-    "widgets": [],
-    "bundles": [
-     {
-      "bundle": "Pressure Index & xG - Trialing until 2026-08-26 08:35:11",
-      "sport": "Football",
-      "category": "Pressure - Expected"
-     }
-    ]
-   }
-  ],
-  "message": null
- },
- "expected_lineups_probe": {
+ "finished_statistics": {
   "status": 200,
   "count_in_page": 2,
   "sample": [
    {
-    "id": 19766243,
+    "id": 19766303,
     "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
+    "league_id": 2,
+    "season_id": 28155,
+    "stage_id": 77483020,
     "group_id": null,
-    "aggregate_id": 60557,
+    "aggregate_id": 60568,
     "round_id": null,
-    "state_id": 1,
-    "venue_id": 5294,
-    "name": "Katowice vs Hapoel Tel Aviv",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
+    "state_id": 5,
+    "venue_id": 3860,
+    "name": "Kairat vs Levski Sofia",
+    "starting_at": "2026-08-11 15:00:00",
+    "result_info": "Levski Sofia won after full-time.",
     "leg": "2/2",
     "details": null,
     "length": 90,
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "metadata": [
+    "starting_at_timestamp": 1786460400,
+    "statistics": [
      {
-      "id": 10246467,
-      "metadatable_id": 19766243,
-      "type_id": 35,
-      "value_type": "object",
-      "values": {
-       "neutral": false
-      }
+      "id": 958543656,
+      "fixture_id": 19766303,
+      "type_id": 34,
+      "participant_id": 3223,
+      "data": {
+       "value": 4
+      },
+      "location": "away"
      },
      {
-      "id": 10265052,
-      "metadatable_id": 19766243,
-      "type_id": 36,
-      "value_type": "object",
-      "values": {
-       "kickOff": "home"
-      }
+      "id": 958543655,
+      "fixture_id": 19766303,
+      "type_id": 34,
+      "participant_id": 3108,
+      "data": {
+       "value": 9
+      },
+      "location": "home"
      },
      {
-      "id": 10321155,
-      "metadatable_id": 19766243,
-      "type_id": 159,
-      "value_type": "object",
-      "values": {
-       "home": "3-4-2-1",
-       "away": "4-2-3-1"
-      }
+      "id": 958544768,
+      "fixture_id": 19766303,
+      "type_id": 41,
+      "participant_id": 3223,
+      "data": {
+       "value": 5
+      },
+      "location": "away"
      },
      {
-      "id": 10320395,
-      "metadatable_id": 19766243,
-      "type_id": 572,
-      "value_type": "object",
-      "values": {
-       "confirmed": false
-      }
+      "id": 958544767,
+      "fixture_id": 19766303,
+      "type_id": 41,
+      "participant_id": 3108,
+      "data": {
+       "value": 7
+      },
+      "location": "home"
      },
      {
-      "id": 10265966,
-      "metadatable_id": 19766243,
-      "type_id": 613,
-      "value_type": "string",
-      "values": "#KATHTA"
+      "id": 958543470,
+      "fixture_id": 19766303,
+      "type_id": 42,
+      "participant_id": 3223,
+      "data": {
+       "value": 9
+      },
+      "location": "away"
      },
      {
-      "id": 10186838,
-      "metadatable_id": 19766243,
-      "type_id": 2838,
-      "value_type": "object",
-      "values": {
-       "extra_time": false
-      }
+      "id": 958543469,
+      "fixture_id": 19766303,
+      "type_id": 42,
+      "participant_id": 3108,
+      "data": {
+       "value": 21
+      },
+      "location": "home"
      },
      {
-      "id": 10237223,
-      "metadatable_id": 19766243,
-      "type_id": 37072,
-      "value_type": "object",
-      "values": {
-       "predictable": true
-      }
+      "id": 958543404,
+      "fixture_id": 19766303,
+      "type_id": 43,
+      "participant_id": 3223,
+      "data": {
+       "value": 66
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543403,
+      "fixture_id": 19766303,
+      "type_id": 43,
+      "participant_id": 3108,
+      "data": {
+       "value": 138
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543406,
+      "fixture_id": 19766303,
+      "type_id": 44,
+      "participant_id": 3223,
+      "data": {
+       "value": 24
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543405,
+      "fixture_id": 19766303,
+      "type_id": 44,
+      "participant_id": 3108,
+      "data": {
+       "value": 61
+      },
+      "location": "home"
+     },
+     {
+      "id": 958533316,
+      "fixture_id": 19766303,
+      "type_id": 45,
+      "participant_id": 3223,
+      "data": {
+       "value": 44
+      },
+      "location": "away"
+     },
+     {
+      "id": 958533315,
+      "fixture_id": 19766303,
+      "type_id": 45,
+      "participant_id": 3108,
+      "data": {
+       "value": 56
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543472,
+      "fixture_id": 19766303,
+      "type_id": 49,
+      "participant_id": 3223,
+      "data": {
+       "value": 7
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543471,
+      "fixture_id": 19766303,
+      "type_id": 49,
+      "participant_id": 3108,
+      "data": {
+       "value": 14
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544798,
+      "fixture_id": 19766303,
+      "type_id": 50,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544797,
+      "fixture_id": 19766303,
+      "type_id": 50,
+      "participant_id": 3108,
+      "data": {
+       "value": 7
+      },
+      "location": "home"
+     },
+     {
+      "id": 958561806,
+      "fixture_id": 19766303,
+      "type_id": 51,
+      "participant_id": 3223,
+      "data": {
+       "value": 1
+      },
+      "location": "away"
+     },
+     {
+      "id": 958561805,
+      "fixture_id": 19766303,
+      "type_id": 51,
+      "participant_id": 3108,
+      "data": {
+       "value": 3
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544826,
+      "fixture_id": 19766303,
+      "type_id": 52,
+      "participant_id": 3223,
+      "data": {
+       "value": 1
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544825,
+      "fixture_id": 19766303,
+      "type_id": 52,
+      "participant_id": 3108,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544146,
+      "fixture_id": 19766303,
+      "type_id": 53,
+      "participant_id": 3223,
+      "data": {
+       "value": 12
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544145,
+      "fixture_id": 19766303,
+      "type_id": 53,
+      "participant_id": 3108,
+      "data": {
+       "value": 6
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543426,
+      "fixture_id": 19766303,
+      "type_id": 55,
+      "participant_id": 3223,
+      "data": {
+       "value": 10
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543425,
+      "fixture_id": 19766303,
+      "type_id": 55,
+      "participant_id": 3108,
+      "data": {
+       "value": 14
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543408,
+      "fixture_id": 19766303,
+      "type_id": 56,
+      "participant_id": 3223,
+      "data": {
+       "value": 14
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543407,
+      "fixture_id": 19766303,
+      "type_id": 56,
+      "participant_id": 3108,
+      "data": {
+       "value": 10
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544368,
+      "fixture_id": 19766303,
+      "type_id": 57,
+      "participant_id": 3223,
+      "data": {
+       "value": 6
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544367,
+      "fixture_id": 19766303,
+      "type_id": 57,
+      "participant_id": 3108,
+      "data": {
+       "value": 1
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543468,
+      "fixture_id": 19766303,
+      "type_id": 58,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543467,
+      "fixture_id": 19766303,
+      "type_id": 58,
+      "participant_id": 3108,
+      "data": {
+       "value": 7
+      },
+      "location": "home"
+     },
+     {
+      "id": 958578274,
+      "fixture_id": 19766303,
+      "type_id": 59,
+      "participant_id": 3223,
+      "data": {
+       "value": 5
+      },
+      "location": "away"
+     },
+     {
+      "id": 958578273,
+      "fixture_id": 19766303,
+      "type_id": 59,
+      "participant_id": 3108,
+      "data": {
+       "value": 3
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543394,
+      "fixture_id": 19766303,
+      "type_id": 60,
+      "participant_id": 3223,
+      "data": {
+       "value": 12
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543393,
+      "fixture_id": 19766303,
+      "type_id": 60,
+      "participant_id": 3108,
+      "data": {
+       "value": 19
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543428,
+      "fixture_id": 19766303,
+      "type_id": 62,
+      "participant_id": 3223,
+      "data": {
+       "value": 66
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543427,
+      "fixture_id": 19766303,
+      "type_id": 62,
+      "participant_id": 3108,
+      "data": {
+       "value": 54
+      },
+      "location": "home"
+     },
+     {
+      "id": 958581410,
+      "fixture_id": 19766303,
+      "type_id": 64,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958581409,
+      "fixture_id": 19766303,
+      "type_id": 64,
+      "participant_id": 3108,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543658,
+      "fixture_id": 19766303,
+      "type_id": 78,
+      "participant_id": 3223,
+      "data": {
+       "value": 14
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543657,
+      "fixture_id": 19766303,
+      "type_id": 78,
+      "participant_id": 3108,
+      "data": {
+       "value": 19
+      },
+      "location": "home"
+     },
+     {
+      "id": 958545046,
+      "fixture_id": 19766303,
+      "type_id": 79,
+      "participant_id": 3223,
+      "data": {
+       "value": 1
+      },
+      "location": "away"
+     },
+     {
+      "id": 958545045,
+      "fixture_id": 19766303,
+      "type_id": 79,
+      "participant_id": 3108,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543380,
+      "fixture_id": 19766303,
+      "type_id": 80,
+      "participant_id": 3223,
+      "data": {
+       "value": 415
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543379,
+      "fixture_id": 19766303,
+      "type_id": 80,
+      "participant_id": 3108,
+      "data": {
+       "value": 498
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543388,
+      "fixture_id": 19766303,
+      "type_id": 81,
+      "participant_id": 3223,
+      "data": {
+       "value": 341
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543387,
+      "fixture_id": 19766303,
+      "type_id": 81,
+      "participant_id": 3108,
+      "data": {
+       "value": 425
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543384,
+      "fixture_id": 19766303,
+      "type_id": 82,
+      "participant_id": 3223,
+      "data": {
+       "value": 82
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543383,
+      "fixture_id": 19766303,
+      "type_id": 82,
+      "participant_id": 3108,
+      "data": {
+       "value": 85
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543878,
+      "fixture_id": 19766303,
+      "type_id": 84,
+      "participant_id": 3223,
+      "data": {
+       "value": 4
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543877,
+      "fixture_id": 19766303,
+      "type_id": 84,
+      "participant_id": 3108,
+      "data": {
+       "value": 3
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544538,
+      "fixture_id": 19766303,
+      "type_id": 86,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544537,
+      "fixture_id": 19766303,
+      "type_id": 86,
+      "participant_id": 3108,
+      "data": {
+       "value": 7
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543490,
+      "fixture_id": 19766303,
+      "type_id": 98,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543489,
+      "fixture_id": 19766303,
+      "type_id": 98,
+      "participant_id": 3108,
+      "data": {
+       "value": 30
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544140,
+      "fixture_id": 19766303,
+      "type_id": 99,
+      "participant_id": 3223,
+      "data": {
+       "value": 0
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544139,
+      "fixture_id": 19766303,
+      "type_id": 99,
+      "participant_id": 3108,
+      "data": {
+       "value": 7
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543442,
+      "fixture_id": 19766303,
+      "type_id": 100,
+      "participant_id": 3223,
+      "data": {
+       "value": 5
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543441,
+      "fixture_id": 19766303,
+      "type_id": 100,
+      "participant_id": 3108,
+      "data": {
+       "value": 8
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543410,
+      "fixture_id": 19766303,
+      "type_id": 106,
+      "participant_id": 3223,
+      "data": {
+       "value": 48
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543409,
+      "fixture_id": 19766303,
+      "type_id": 106,
+      "participant_id": 3108,
+      "data": {
+       "value": 46
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543430,
+      "fixture_id": 19766303,
+      "type_id": 108,
+      "participant_id": 3223,
+      "data": {
+       "value": 20
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543429,
+      "fixture_id": 19766303,
+      "type_id": 108,
+      "participant_id": 3108,
+      "data": {
+       "value": 10
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543412,
+      "fixture_id": 19766303,
+      "type_id": 109,
+      "participant_id": 3223,
+      "data": {
+       "value": 9
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543411,
+      "fixture_id": 19766303,
+      "type_id": 109,
+      "participant_id": 3108,
+      "data": {
+       "value": 5
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543686,
+      "fixture_id": 19766303,
+      "type_id": 117,
+      "participant_id": 3223,
+      "data": {
+       "value": 8
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543685,
+      "fixture_id": 19766303,
+      "type_id": 117,
+      "participant_id": 3108,
+      "data": {
+       "value": 17
+      },
+      "location": "home"
+     },
+     {
+      "id": 958561172,
+      "fixture_id": 19766303,
+      "type_id": 580,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958561171,
+      "fixture_id": 19766303,
+      "type_id": 580,
+      "participant_id": 3108,
+      "data": {
+       "value": 2
+      },
+      "location": "home"
+     },
+     {
+      "id": 958561230,
+      "fixture_id": 19766303,
+      "type_id": 581,
+      "participant_id": 3223,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958561229,
+      "fixture_id": 19766303,
+      "type_id": 581,
+      "participant_id": 3108,
+      "data": {
+       "value": 2
+      },
+      "location": "home"
+     },
+     {
+      "id": 958543414,
+      "fixture_id": 19766303,
+      "type_id": 1605,
+      "participant_id": 3223,
+      "data": {
+       "value": 45
+      },
+      "location": "away"
+     },
+     {
+      "id": 958543413,
+      "fixture_id": 19766303,
+      "type_id": 1605,
+      "participant_id": 3108,
+      "data": {
+       "value": 50
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544142,
+      "fixture_id": 19766303,
+      "type_id": 27264,
+      "participant_id": 3223,
+      "data": {
+       "value": 32
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544141,
+      "fixture_id": 19766303,
+      "type_id": 27264,
+      "participant_id": 3108,
+      "data": {
+       "value": 35
+      },
+      "location": "home"
+     },
+     {
+      "id": 958544144,
+      "fixture_id": 19766303,
+      "type_id": 27265,
+      "participant_id": 3223,
+      "data": {
+       "value": 48
+      },
+      "location": "away"
+     },
+     {
+      "id": 958544143,
+      "fixture_id": 19766303,
+      "type_id": 27265,
+      "participant_id": 3108,
+      "data": {
+       "value": 65
+      },
+      "location": "home"
      }
     ]
    },
    {
-    "id": 19766263,
+    "id": 19766298,
     "sport_id": 1,
-    "league_id": 2286,
-    "season_id": 27911,
-    "stage_id": 77483019,
+    "league_id": 2,
+    "season_id": 28155,
+    "stage_id": 77483020,
     "group_id": null,
-    "aggregate_id": 60545,
+    "aggregate_id": 60400,
     "round_id": null,
-    "state_id": 1,
-    "venue_id": 5655,
-    "name": "FC København vs Debrecen",
-    "starting_at": "2026-08-12 16:00:00",
-    "result_info": null,
+    "state_id": 7,
+    "venue_id": 814,
+    "name": "Bodø / Glimt vs Union Saint-Gilloise",
+    "starting_at": "2026-08-11 16:00:00",
+    "result_info": "Bodø / Glimt won after extra-time.",
     "leg": "2/2",
     "details": null,
     "length": 90,
     "placeholder": false,
     "has_odds": true,
     "has_premium_odds": true,
-    "starting_at_timestamp": 1786550400,
-    "metadata": [
+    "starting_at_timestamp": 1786464000,
+    "statistics": [
      {
-      "id": 10246347,
-      "metadatable_id": 19766263,
-      "type_id": 35,
-      "value_type": "object",
-      "values": {
-       "neutral": false
-      }
+      "id": 958579902,
+      "fixture_id": 19766298,
+      "type_id": 34,
+      "participant_id": 3958,
+      "data": {
+       "value": 1
+      },
+      "location": "away"
      },
      {
-      "id": 10259814,
-      "metadatable_id": 19766263,
-      "type_id": 36,
-      "value_type": "object",
-      "values": {
-       "kickOff": "home"
-      }
+      "id": 958579901,
+      "fixture_id": 19766298,
+      "type_id": 34,
+      "participant_id": 1668,
+      "data": {
+       "value": 10
+      },
+      "location": "home"
      },
      {
-      "id": 10246348,
-      "metadatable_id": 19766263,
-      "type_id": 572,
-      "value_type": "object",
-      "values": {
-       "confirmed": false
-      }
+      "id": 958581414,
+      "fixture_id": 19766298,
+      "type_id": 41,
+      "participant_id": 3958,
+      "data": {
+       "value": 10
+      },
+      "location": "away"
      },
      {
-      "id": 10265969,
-      "metadatable_id": 19766263,
-      "type_id": 613,
-      "value_type": "string",
-      "values": "#COPDEB"
+      "id": 958581413,
+      "fixture_id": 19766298,
+      "type_id": 41,
+      "participant_id": 1668,
+      "data": {
+       "value": 8
+      },
+      "location": "home"
      },
      {
-      "id": 10186881,
-      "metadatable_id": 19766263,
-      "type_id": 2838,
-      "value_type": "object",
-      "values": {
-       "extra_time": false
-      }
+      "id": 958579982,
+      "fixture_id": 19766298,
+      "type_id": 42,
+      "participant_id": 3958,
+      "data": {
+       "value": 19
+      },
+      "location": "away"
      },
      {
-      "id": 10237219,
-      "metadatable_id": 19766263,
-      "type_id": 37072,
-      "value_type": "object",
-      "values": {
-       "predictable": true
-      }
+      "id": 958579981,
+      "fixture_id": 19766298,
+      "type_id": 42,
+      "participant_id": 1668,
+      "data": {
+       "value": 23
+      },
+      "location": "home"
+     },
+     {
+      "id": 958576860,
+      "fixture_id": 19766298,
+      "type_id": 43,
+      "participant_id": 3958,
+      "data": {
+       "value": 98
+      },
+      "location": "away"
+     },
+     {
+      "id": 958576859,
+      "fixture_id": 19766298,
+      "type_id": 43,
+      "participant_id": 1668,
+      "data": {
+       "value": 183
+      },
+      "location": "home"
+     },
+     {
+      "id": 958576862,
+      "fixture_id": 19766298,
+      "type_id": 44,
+      "participant_id": 3958,
+      "data": {
+       "value": 46
+      },
+      "location": "away"
+     },
+     {
+      "id": 958576861,
+      "fixture_id": 19766298,
+      "type_id": 44,
+      "participant_id": 1668,
+      "data": {
+       "value": 106
+      },
+      "location": "home"
+     },
+     {
+      "id": 958565000,
+      "fixture_id": 19766298,
+      "type_id": 45,
+      "participant_id": 3958,
+      "data": {
+       "value": 30
+      },
+      "location": "away"
+     },
+     {
+      "id": 958564999,
+      "fixture_id": 19766298,
+      "type_id": 45,
+      "participant_id": 1668,
+      "data": {
+       "value": 70
+      },
+      "location": "home"
+     },
+     {
+      "id": 958579744,
+      "fixture_id": 19766298,
+      "type_id": 49,
+      "participant_id": 3958,
+      "data": {
+       "value": 15
+      },
+      "location": "away"
+     },
+     {
+      "id": 958579743,
+      "fixture_id": 19766298,
+      "type_id": 49,
+      "participant_id": 1668,
+      "data": {
+       "value": 17
+      },
+      "location": "home"
+     },
+     {
+      "id": 958608898,
+      "fixture_id": 19766298,
+      "type_id": 50,
+      "participant_id": 3958,
+      "data": {
+       "value": 4
+      },
+      "location": "away"
+     },
+     {
+      "id": 958608897,
+      "fixture_id": 19766298,
+      "type_id": 50,
+      "participant_id": 1668,
+      "data": {
+       "value": 6
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577612,
+      "fixture_id": 19766298,
+      "type_id": 51,
+      "participant_id": 3958,
+      "data": {
+       "value": 4
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577611,
+      "fixture_id": 19766298,
+      "type_id": 51,
+      "participant_id": 1668,
+      "data": {
+       "value": 1
+      },
+      "location": "home"
+     },
+     {
+      "id": 958633912,
+      "fixture_id": 19766298,
+      "type_id": 52,
+      "participant_id": 3958,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958633911,
+      "fixture_id": 19766298,
+      "type_id": 52,
+      "participant_id": 1668,
+      "data": {
+       "value": 3
+      },
+      "location": "home"
+     },
+     {
+      "id": 958578878,
+      "fixture_id": 19766298,
+      "type_id": 53,
+      "participant_id": 3958,
+      "data": {
+       "value": 14
+      },
+      "location": "away"
+     },
+     {
+      "id": 958578877,
+      "fixture_id": 19766298,
+      "type_id": 53,
+      "participant_id": 1668,
+      "data": {
+       "value": 10
+      },
+      "location": "home"
+     },
+     {
+      "id": 958583740,
+      "fixture_id": 19766298,
+      "type_id": 55,
+      "participant_id": 3958,
+      "data": {
+       "value": 11
+      },
+      "location": "away"
+     },
+     {
+      "id": 958583739,
+      "fixture_id": 19766298,
+      "type_id": 55,
+      "participant_id": 1668,
+      "data": {
+       "value": 10
+      },
+      "location": "home"
+     },
+     {
+      "id": 958583742,
+      "fixture_id": 19766298,
+      "type_id": 56,
+      "participant_id": 3958,
+      "data": {
+       "value": 10
+      },
+      "location": "away"
+     },
+     {
+      "id": 958583741,
+      "fixture_id": 19766298,
+      "type_id": 56,
+      "participant_id": 1668,
+      "data": {
+       "value": 11
+      },
+      "location": "home"
+     },
+     {
+      "id": 958592126,
+      "fixture_id": 19766298,
+      "type_id": 57,
+      "participant_id": 3958,
+      "data": {
+       "value": 5
+      },
+      "location": "away"
+     },
+     {
+      "id": 958592125,
+      "fixture_id": 19766298,
+      "type_id": 57,
+      "participant_id": 1668,
+      "data": {
+       "value": 3
+      },
+      "location": "home"
+     },
+     {
+      "id": 958608896,
+      "fixture_id": 19766298,
+      "type_id": 58,
+      "participant_id": 3958,
+      "data": {
+       "value": 4
+      },
+      "location": "away"
+     },
+     {
+      "id": 958608895,
+      "fixture_id": 19766298,
+      "type_id": 58,
+      "participant_id": 1668,
+      "data": {
+       "value": 6
+      },
+      "location": "home"
+     },
+     {
+      "id": 958608258,
+      "fixture_id": 19766298,
+      "type_id": 59,
+      "participant_id": 3958,
+      "data": {
+       "value": 7
+      },
+      "location": "away"
+     },
+     {
+      "id": 958608257,
+      "fixture_id": 19766298,
+      "type_id": 59,
+      "participant_id": 1668,
+      "data": {
+       "value": 12
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577218,
+      "fixture_id": 19766298,
+      "type_id": 60,
+      "participant_id": 3958,
+      "data": {
+       "value": 23
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577217,
+      "fixture_id": 19766298,
+      "type_id": 60,
+      "participant_id": 1668,
+      "data": {
+       "value": 22
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577788,
+      "fixture_id": 19766298,
+      "type_id": 62,
+      "participant_id": 3958,
+      "data": {
+       "value": 67
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577787,
+      "fixture_id": 19766298,
+      "type_id": 62,
+      "participant_id": 1668,
+      "data": {
+       "value": 62
+      },
+      "location": "home"
+     },
+     {
+      "id": 958581412,
+      "fixture_id": 19766298,
+      "type_id": 64,
+      "participant_id": 3958,
+      "data": {
+       "value": 1
+      },
+      "location": "away"
+     },
+     {
+      "id": 958581411,
+      "fixture_id": 19766298,
+      "type_id": 64,
+      "participant_id": 1668,
+      "data": {
+       "value": 1
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577220,
+      "fixture_id": 19766298,
+      "type_id": 78,
+      "participant_id": 3958,
+      "data": {
+       "value": 26
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577219,
+      "fixture_id": 19766298,
+      "type_id": 78,
+      "participant_id": 1668,
+      "data": {
+       "value": 28
+      },
+      "location": "home"
+     },
+     {
+      "id": 958635122,
+      "fixture_id": 19766298,
+      "type_id": 79,
+      "participant_id": 3958,
+      "data": {
+       "value": 2
+      },
+      "location": "away"
+     },
+     {
+      "id": 958635121,
+      "fixture_id": 19766298,
+      "type_id": 79,
+      "participant_id": 1668,
+      "data": {
+       "value": 2
+      },
+      "location": "home"
+     },
+     {
+      "id": 958576990,
+      "fixture_id": 19766298,
+      "type_id": 80,
+      "participant_id": 3958,
+      "data": {
+       "value": 431
+      },
+      "location": "away"
+     },
+     {
+      "id": 958576989,
+      "fixture_id": 19766298,
+      "type_id": 80,
+      "participant_id": 1668,
+      "data": {
+       "value": 1002
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577950,
+      "fixture_id": 19766298,
+      "type_id": 81,
+      "participant_id": 3958,
+      "data": {
+       "value": 335
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577949,
+      "fixture_id": 19766298,
+      "type_id": 81,
+      "participant_id": 1668,
+      "data": {
+       "value": 888
+      },
+      "location": "home"
+     },
+     {
+      "id": 958576978,
+      "fixture_id": 19766298,
+      "type_id": 82,
+      "participant_id": 3958,
+      "data": {
+       "value": 78
+      },
+      "location": "away"
+     },
+     {
+      "id": 958576977,
+      "fixture_id": 19766298,
+      "type_id": 82,
+      "participant_id": 1668,
+      "data": {
+       "value": 89
+      },
+      "location": "home"
+     },
+     {
+      "id": 958665456,
+      "fixture_id": 19766298,
+      "type_id": 83,
+      "participant_id": 3958,
+      "data": {
+       "value": 3
+      },
+      "location": "away"
+     },
+     {
+      "id": 958665455,
+      "fixture_id": 19766298,
+      "type_id": 83,
+      "participant_id": 1668,
+      "data": {
+       "value": 0
+      },
+      "location": "home"
+     },
+     {
+      "id": 958583746,
+      "fixture_id": 19766298,
+      "type_id": 84,
+      "participant_id": 3958,
+      "data": {
+       "value": 4
+      },
+      "location": "away"
+     },
+     {
+      "id": 958583745,
+      "fixture_id": 19766298,
+      "type_id": 84,
+      "participant_id": 1668,
+      "data": {
+       "value": 2
+      },
+      "location": "home"
+     },
+     {
+      "id": 958592228,
+      "fixture_id": 19766298,
+      "type_id": 86,
+      "participant_id": 3958,
+      "data": {
+       "value": 5
+      },
+      "location": "away"
+     },
+     {
+      "id": 958592227,
+      "fixture_id": 19766298,
+      "type_id": 86,
+      "participant_id": 1668,
+      "data": {
+       "value": 9
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577844,
+      "fixture_id": 19766298,
+      "type_id": 98,
+      "participant_id": 3958,
+      "data": {
+       "value": 15
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577843,
+      "fixture_id": 19766298,
+      "type_id": 98,
+      "participant_id": 1668,
+      "data": {
+       "value": 33
+      },
+      "location": "home"
+     },
+     {
+      "id": 958580258,
+      "fixture_id": 19766298,
+      "type_id": 99,
+      "participant_id": 3958,
+      "data": {
+       "value": 5
+      },
+      "location": "away"
+     },
+     {
+      "id": 958580257,
+      "fixture_id": 19766298,
+      "type_id": 99,
+      "participant_id": 1668,
+      "data": {
+       "value": 9
+      },
+      "location": "home"
+     },
+     {
+      "id": 958583744,
+      "fixture_id": 19766298,
+      "type_id": 100,
+      "participant_id": 3958,
+      "data": {
+       "value": 14
+      },
+      "location": "away"
+     },
+     {
+      "id": 958583743,
+      "fixture_id": 19766298,
+      "type_id": 100,
+      "participant_id": 1668,
+      "data": {
+       "value": 7
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577614,
+      "fixture_id": 19766298,
+      "type_id": 106,
+      "participant_id": 3958,
+      "data": {
+       "value": 61
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577613,
+      "fixture_id": 19766298,
+      "type_id": 106,
+      "participant_id": 1668,
+      "data": {
+       "value": 59
+      },
+      "location": "home"
+     },
+     {
+      "id": 958578498,
+      "fixture_id": 19766298,
+      "type_id": 108,
+      "participant_id": 3958,
+      "data": {
+       "value": 14
+      },
+      "location": "away"
+     },
+     {
+      "id": 958578497,
+      "fixture_id": 19766298,
+      "type_id": 108,
+      "participant_id": 1668,
+      "data": {
+       "value": 26
+      },
+      "location": "home"
+     },
+     {
+      "id": 958578392,
+      "fixture_id": 19766298,
+      "type_id": 109,
+      "participant_id": 3958,
+      "data": {
+       "value": 7
+      },
+      "location": "away"
+     },
+     {
+      "id": 958578391,
+      "fixture_id": 19766298,
+      "type_id": 109,
+      "participant_id": 1668,
+      "data": {
+       "value": 12
+      },
+      "location": "home"
+     },
+     {
+      "id": 958580152,
+      "fixture_id": 19766298,
+      "type_id": 117,
+      "participant_id": 3958,
+      "data": {
+       "value": 12
+      },
+      "location": "away"
+     },
+     {
+      "id": 958580151,
+      "fixture_id": 19766298,
+      "type_id": 117,
+      "participant_id": 1668,
+      "data": {
+       "value": 15
+      },
+      "location": "home"
+     },
+     {
+      "id": 958582054,
+      "fixture_id": 19766298,
+      "type_id": 580,
+      "participant_id": 3958,
+      "data": {
+       "value": 6
+      },
+      "location": "away"
+     },
+     {
+      "id": 958582053,
+      "fixture_id": 19766298,
+      "type_id": 580,
+      "participant_id": 1668,
+      "data": {
+       "value": 5
+      },
+      "location": "home"
+     },
+     {
+      "id": 958582056,
+      "fixture_id": 19766298,
+      "type_id": 581,
+      "participant_id": 3958,
+      "data": {
+       "value": 6
+      },
+      "location": "away"
+     },
+     {
+      "id": 958582055,
+      "fixture_id": 19766298,
+      "type_id": 581,
+      "participant_id": 1668,
+      "data": {
+       "value": 3
+      },
+      "location": "home"
+     },
+     {
+      "id": 958577616,
+      "fixture_id": 19766298,
+      "type_id": 1605,
+      "participant_id": 3958,
+      "data": {
+       "value": 50
+      },
+      "location": "away"
+     },
+     {
+      "id": 958577615,
+      "fixture_id": 19766298,
+      "type_id": 1605,
+      "participant_id": 1668,
+      "data": {
+       "value": 46
+      },
+      "location": "home"
+     },
+     {
+      "id": 958578880,
+      "fixture_id": 19766298,
+      "type_id": 27264,
+      "participant_id": 3958,
+      "data": {
+       "value": 34
+      },
+      "location": "away"
+     },
+     {
+      "id": 958578879,
+      "fixture_id": 19766298,
+      "type_id": 27264,
+      "participant_id": 1668,
+      "data": {
+       "value": 27
+      },
+      "location": "home"
+     },
+     {
+      "id": 958578882,
+      "fixture_id": 19766298,
+      "type_id": 27265,
+      "participant_id": 3958,
+      "data": {
+       "value": 51
+      },
+      "location": "away"
+     },
+     {
+      "id": 958578881,
+      "fixture_id": 19766298,
+      "type_id": 27265,
+      "participant_id": 1668,
+      "data": {
+       "value": 44
+      },
+      "location": "home"
      }
     ]
    }
@@ -859,13 +2843,13 @@
    "per_page": 2,
    "has_more": true,
    "current_page": 1,
-   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=metadata&per_page=2&page=2",
-   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-12?include=metadata&cursor=WzEsMixbIjIwMjYtMDgtMTIgMTY6MDA6MDAiLDE5NzY2MjYzXSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
+   "next_page": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?include=statistics&per_page=2&page=2",
+   "next_cursor": "https://api.sportmonks.com/v3/football/fixtures/date/2026-08-11?include=statistics&cursor=WzEsMixbIjIwMjYtMDgtMTEgMTY6MDA6MDAiLDE5NzY2Mjk4XSxbWyJzcG9ydHMuZml4dHVyZXMuc3RhcnRpbmdfYXQiLDBdLFsic3BvcnRzLmZpeHR1cmVzLmlkIiwwXV1d"
   },
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786527825,
+     "current_timestamp": 1786528298,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
