@@ -224,5 +224,60 @@ class TestShadowLab(unittest.TestCase):
         self.assertEqual(lab["reports"][0]["report"], "تقرير قائمة")
 
 
+class TestActiveExperiments(unittest.TestCase):
+    """🧪 صف التجارب النشطة (قاعدة الحوكمة هـ): تجربة ظل نشطة تظهر في مختبر
+    الظل يومياً بلا سؤال — وتختفي كلياً حين لا توجد تجربة."""
+
+    def _with_tmp_shadow(self, payload):
+        import json
+        import tempfile
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        if payload is None:
+            tmp.unlink()   # لا ملف = لا تجربة بعد
+        else:
+            tmp.write_text(json.dumps(payload), encoding="utf-8")
+        orig = D.SPORTMONKS_SHADOW_FILE
+        D.SPORTMONKS_SHADOW_FILE = tmp
+        try:
+            return D.build_active_experiments()
+        finally:
+            D.SPORTMONKS_SHADOW_FILE = orig
+            tmp.unlink(missing_ok=True)
+
+    def test_row_appears_when_collector_active(self):
+        exps = self._with_tmp_shadow({"meta": {
+            "started": "2026-08-13", "total": 24,
+            "last_day_matched": 9, "last_day_unmatched": 2,
+            "xgform": {"n": 10, "correct": 6}}})
+        self.assertEqual(len(exps), 1)
+        x = exps[0]
+        self.assertEqual(x["key"], "xg_shadow")
+        self.assertIn("xG", x["name"])
+        self.assertEqual(x["yday_matched"], 9)
+        self.assertEqual(x["total"], 24)
+        self.assertEqual(x["form_n"], 10)
+        self.assertEqual(x["form_correct"], 6)
+        self.assertEqual(x["days_total"], D.XG_SHADOW_TOTAL_DAYS)
+
+    def test_no_row_before_first_collection(self):
+        self.assertEqual(self._with_tmp_shadow(None), [])
+        self.assertEqual(self._with_tmp_shadow({}), [])
+
+    def test_wired_into_shadow_lab_payload(self):
+        """الصف يصل اللوحة عبر shadow_lab في data_v2.json."""
+        import inspect
+        src = inspect.getsource(D.build_shadow_lab)
+        self.assertIn("build_active_experiments()", src)
+
+    def test_page_renders_experiments_strip(self):
+        """الواجهة ترسم الشريط وتُبقي القسم ظاهراً ولو بلا تقارير مُقيَّمة."""
+        html = (Path(__file__).resolve().parent.parent / "index.html").read_text(
+            encoding="utf-8")
+        self.assertIn("labExperimentsStrip", html)
+        self.assertIn("lab.experiments", html)
+        # مفاتيح الترجمة موجودة (توازن العربية/الإنجليزية يحرسه اختبار الواجهة)
+        self.assertIn("labExpDay", html)
+
+
 if __name__ == "__main__":
     unittest.main()

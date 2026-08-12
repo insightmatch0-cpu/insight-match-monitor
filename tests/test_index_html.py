@@ -141,9 +141,13 @@ class TestShadowLabPanel(unittest.TestCase):
         self.assertIsNotNone(gate, "مختبر الظل يجب أن يقتصر على تبويب المحرك 2")
 
     def test_hidden_when_empty(self):
+        """القسم يختفي حين لا تقارير ولا تجربة نشطة — ويبقى ظاهراً لتجربة
+        نشطة بلا تقارير (قاعدة الحوكمة هـ: رؤية يومية إلزامية للتجارب)."""
         body = re.search(r"function renderShadowLab\(\)\{([\s\S]*?)\n\}", SCRIPT)
         self.assertIsNotNone(body)
-        self.assertIn('rows.length ? "" : "none"', body.group(1))
+        self.assertIn('(rows.length || expStrip) ? "" : "none"', body.group(1))
+        # وبلا تقارير: الشريط وحده يُعرض في الملخص بدل مسحه
+        self.assertIn('innerHTML = expStrip', body.group(1))
 
     def test_rendered_in_render_all(self):
         body = re.search(r"function renderAll\(\)\{([\s\S]*?)\n\}", SCRIPT)

@@ -31,7 +31,9 @@ DATA_V2_FILE        = Path("data_v2.json")
 SCENARIOS_V2_FILE   = Path("scenarios_v2.json")
 RADAR_LOG_FILE      = Path("radar_log.json")   # إنذارات الرادار + إحصاءات صدقها
 PREDICTIONS_USER_FILE = Path("predictions_user.json")  # توقعات المالك (سباق الدقة)
+SPORTMONKS_SHADOW_FILE = Path("sportmonks_shadow.json")  # سجل تجربة ظل xG
 SHADOW_LAB_ROWS     = 10   # أحدث بطاقات التقييم المعروضة في مختبر الظل
+XG_SHADOW_TOTAL_DAYS = 21  # نافذة تجربة ظل xG المعلنة (13 أغسطس → ~3 سبتمبر)
 
 LESSONS_ON_DASHBOARD = 30   # أحدث الدروس المعروضة في لوحة المحرك 2
 RECENT_RESULTS_SHOWN = 50   # عدد النتائج المُقيَّمة المعروضة (تكفي أياماً لا ساعات)
@@ -305,6 +307,32 @@ def _by_fid(rows) -> dict:
             if isinstance(r, dict) and r.get("fid")}
 
 
+def build_active_experiments() -> list:
+    """🧪 صف التجارب النشطة (قاعدة الحوكمة هـ 2026-08-01): أي تجربة ظل نشطة
+    تظهر للمالك يومياً بلا سؤال — في النشرة سطرٌ وفي مختبر الظل صفٌّ معاً.
+    حالياً: تجربة ظل xG (Sportmonks) — تُقرأ حالتها من سجل المجمّع قراءةً فقط."""
+    out = []
+    meta = (load_json(SPORTMONKS_SHADOW_FILE, {}) or {}).get("meta") or {}
+    if meta.get("started"):
+        try:
+            started = datetime.strptime(meta["started"], "%Y-%m-%d").date()
+            day = (now_utc().date() - started).days + 1
+        except ValueError:
+            day = None
+        xf = meta.get("xgform") or {}
+        out.append({
+            "key": "xg_shadow",
+            "name": "🔬 ظل xG (Sportmonks)",
+            "day": day, "days_total": XG_SHADOW_TOTAL_DAYS,
+            "yday_matched": meta.get("last_day_matched", 0),
+            "yday_unmatched": meta.get("last_day_unmatched", 0),
+            "total": meta.get("total", 0),
+            "form_n": xf.get("n", 0),
+            "form_correct": xf.get("correct", 0),
+        })
+    return out
+
+
 def build_shadow_lab() -> dict:
     """🔬 مختبر الظل — آخر بطاقات تقييم تقارير ما قبل المباراة (قائمة التركيز
     + تقارير الظل الصامتة) حتى يرى المالك تدريب القنّاص وهو يحدث، بدل انتظار
@@ -394,6 +422,7 @@ def build_shadow_lab() -> dict:
         "watch_acc": acc(False),
         "graded_total": len(resolved),
         "pending": len(sc.get("pending") or {}),
+        "experiments": build_active_experiments(),
     }
 
 
