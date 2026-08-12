@@ -1,0 +1,42 @@
+# 🔬 مسبار Sportmonks — مؤقت، يعمل على فرع المسبار فقط ولا يقترب من main.
+# يشغّل sportmonks_probe.py حيث يوجد المفتاح (Secrets) ويدفع النتيجة إلى الفرع
+# نفسه بـ [skip ci] حتى لا يعيد تشغيل نفسه. يُحذف الفرع والملفان بعد بناء المجمّع.
+name: Sportmonks probe (temp)
+
+on:
+  push:
+    branches: [sportmonks-probe]
+  workflow_dispatch:
+
+concurrency:
+  group: sportmonks-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run probe
+        env:
+          SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
+        run: |
+          pip -q install requests
+          python sportmonks_probe.py
+      - name: Push result to probe branch
+        run: |
+          git config user.name "sportmonks-probe"
+          git config user.email "actions@github.com"
+          git add sportmonks_probe.json
+          git commit -m "probe result [skip ci]" || echo "nothing new"
+          ok=0
+          for i in 1 2 3; do
+            git pull --rebase origin sportmonks-probe && git push origin sportmonks-probe && ok=1 && break
+            sleep 3
+          done
+          [ "$ok" = "1" ]
