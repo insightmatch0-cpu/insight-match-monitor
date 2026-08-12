@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-12T22:29:15.565182+00:00",
+ "updated": "2026-08-12T22:36:43.130396+00:00",
  "live": [
   {
    "fid": "1511646",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2344.png",
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
    "score": "1-0",
-   "minute": 29,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00"
+   "seen": "2026-08-12T22:36:41.445256+00:00"
   },
   {
    "fid": "1547762",
@@ -27,9 +27,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1176.png",
    "league_logo": "https://media.api-sports.io/football/leagues/13.png",
    "score": "0-0",
-   "minute": 29,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00",
+   "seen": "2026-08-12T22:36:41.445256+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 72
@@ -39,32 +39,35 @@
     "confidence": 62
    },
    "radar": {
-    "score": 32,
+    "score": 37,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د29)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
     ],
     "pick": "home",
     "confidence": 62,
     "drama": {
-     "signal": 85,
+     "signal": 0,
      "side": "home",
-     "ready": true
+     "ready": false
     },
     "alerted": null,
     "trend": {
      "min": [
-      29
+      29,
+      37
      ],
      "h_sog": [
-      5
+      5,
+      6
      ],
      "a_sog": [
       0,
       0
      ],
      "h_cor": [
-      4
+      4,
+      5
      ],
      "a_cor": [
       1,
@@ -84,9 +87,64 @@
    "away_logo": "https://media.api-sports.io/football/teams/24773.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
    "score": "0-0",
-   "minute": 29,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00"
+   "seen": "2026-08-12T22:36:41.445256+00:00"
+  },
+  {
+   "fid": "1547763",
+   "home": "Platense",
+   "away": "Coquimbo Unido",
+   "home_en": "Platense",
+   "away_en": "Coquimbo Unido",
+   "league": "CONMEBOL Libertadores (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/1064.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2330.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
+   "score": "1-0",
+   "minute": 36,
+   "status": "1H",
+   "seen": "2026-08-12T22:36:41.445256+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      36
+     ],
+     "h_sog": [
+      3
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      4
+     ],
+     "a_cor": [
+      2
+     ]
+    }
+   }
   },
   {
    "fid": "1606077",
@@ -99,64 +157,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2365.png",
    "league_logo": "https://media.api-sports.io/football/leagues/11.png",
    "score": "0-0",
-   "minute": 29,
+   "minute": 36,
    "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00"
-  },
-  {
-   "fid": "1547763",
-   "home": "Platense",
-   "away": "Coquimbo Unido",
-   "home_en": "Platense",
-   "away_en": "Coquimbo Unido",
-   "league": "CONMEBOL Libertadores (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/1064.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2330.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
-   "score": "0-0",
-   "minute": 28,
-   "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 31,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د28)"
-    ],
-    "pick": "home",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "trend": {
-     "min": [
-      28
-     ],
-     "h_sog": [
-      3
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      4
-     ],
-     "a_cor": [
-      1
-     ]
-    }
-   }
+   "seen": "2026-08-12T22:36:41.445256+00:00"
   },
   {
    "fid": "1607197",
@@ -169,9 +172,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1062.png",
    "league_logo": "https://media.api-sports.io/football/leagues/11.png",
    "score": "0-0",
-   "minute": 28,
+   "minute": 36,
    "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00"
+   "seen": "2026-08-12T22:36:41.445256+00:00"
   },
   {
    "fid": "1549145",
@@ -184,9 +187,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/453.png",
    "league_logo": "https://media.api-sports.io/football/leagues/130.png",
    "score": "0-0",
-   "minute": 11,
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-12T22:29:13.594810+00:00"
+   "seen": "2026-08-12T22:36:41.445256+00:00"
+  },
+  {
+   "fid": "1606272",
+   "home": "Goiânia",
+   "away": "Trindade",
+   "home_en": "Goiânia",
+   "away_en": "Trindade",
+   "league": "Goiano - 2 (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/10674.png",
+   "away_logo": "https://media.api-sports.io/football/teams/23307.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
+   "score": "0-0",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-12T22:36:41.445256+00:00"
   }
  ],
  "upcoming": [
