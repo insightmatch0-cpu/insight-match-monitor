@@ -716,11 +716,13 @@
    "league": "CONMEBOL Libertadores (World)",
    "pick": "home",
    "confidence": 62,
-   "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "level": "red",
+   "score": 76,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د72)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ]
   }
  ],
@@ -9764,7 +9766,68 @@
    "graded_on": "2026-08-12"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1547762",
+   "date": "2026-08-12",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Palmeiras",
+   "away": "Cerro Porteno",
+   "league": "CONMEBOL Libertadores (World)",
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 29,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 5,
+      "shots": 7,
+      "cor": 4,
+      "poss": 66,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 1,
+      "poss": 34,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 6,
+      "shots": 18,
+      "cor": 7,
+      "poss": 65,
+      "yc": 0,
+      "rc": 1,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 1,
+      "poss": 35,
+      "yc": 3,
+      "rc": 0,
+      "sv": 5
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
