@@ -1,5 +1,5 @@
 {
- "probed_at": "2026-08-12T09:51:33.644031+00:00",
+ "probed_at": "2026-08-12T22:22:51.061923+00:00",
  "key_present": true,
  "all_league_names": [
   {
@@ -91,6 +91,16 @@
    "id": 911,
    "name": "Iraqi League",
    "country_id": 107
+  },
+  {
+   "id": 944,
+   "name": "Pro League",
+   "country_id": 35376
+  },
+  {
+   "id": 971,
+   "name": "Premier League",
+   "country_id": 190321
   },
   {
    "id": 1103,
@@ -238,11 +248,6 @@
    "country_id": 147
   },
   {
-   "id": 3225,
-   "name": "Saudi Reserve League",
-   "country_id": 35376
-  },
-  {
    "id": 3232,
    "name": "Olympic Qualifying: Oceania",
    "country_id": 37200395
@@ -265,13 +270,35 @@
  ],
  "search_pro_league": {
   "status": 200,
-  "count_in_page": 0,
-  "sample": [],
-  "pagination": null,
+  "count_in_page": 1,
+  "sample": [
+   {
+    "id": 944,
+    "sport_id": 1,
+    "country_id": 35376,
+    "name": "Pro League",
+    "active": true,
+    "short_code": "SAU PL",
+    "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/16/944.png",
+    "type": "league",
+    "sub_type": "domestic",
+    "last_played_at": "2026-05-21 18:00:00",
+    "category": 2,
+    "has_jerseys": false
+   }
+  ],
+  "pagination": {
+   "count": 1,
+   "per_page": 25,
+   "has_more": false,
+   "current_page": 1,
+   "next_page": null,
+   "next_cursor": null
+  },
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786528295,
+     "current_timestamp": 1786573372,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -302,7 +329,7 @@
     ]
    }
   ],
-  "message": "No result(s) found matching your request. Either the query did not return any results or you don't have access to it via your current subscription."
+  "message": null
  },
  "search_roshn": {
   "status": 200,
@@ -312,7 +339,7 @@
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786528296,
+     "current_timestamp": 1786573373,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -430,7 +457,7 @@
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786528296,
+     "current_timestamp": 1786573374,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -471,7 +498,7 @@
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786528297,
+     "current_timestamp": 1786573374,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -1212,7 +1239,7 @@
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786528297,
+     "current_timestamp": 1786573375,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
@@ -2849,7 +2876,7 @@
   "subscription": [
    {
     "meta": {
-     "current_timestamp": 1786528298,
+     "current_timestamp": 1786573376,
      "next_billing_cycle": "2026-08-26T08:35:11 UTC"
     },
     "plans": [
