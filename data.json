@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-12T09:36:33.361549+00:00",
+ "updated": "2026-08-12T09:46:32.486835+00:00",
  "live": [
   {
    "fid": "1612543",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/19170.png",
    "league_logo": "https://media.api-sports.io/football/leagues/285.png",
    "score": "5-0",
-   "minute": 79,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-08-12T09:36:31.460540+00:00",
+   "seen": "2026-08-12T09:46:30.500244+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 68
@@ -24,10 +24,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 62,
-    "level": "amber",
+    "score": 68,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 5-0 تُسقط التوقع (د79)"
+     "النتيجة الحالية 5-0 تُسقط التوقع (د89)"
     ],
     "pick": "away",
     "confidence": 44,
@@ -40,7 +40,7 @@
     "trend": {
      "min": [
       45,
-      79
+      89
      ],
      "h_sog": [
       0,
@@ -72,9 +72,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1447.png",
    "league_logo": "https://media.api-sports.io/football/leagues/189.png",
    "score": "0-4",
-   "minute": 47,
+   "minute": 57,
    "status": "2H",
-   "seen": "2026-08-12T09:36:31.460540+00:00",
+   "seen": "2026-08-12T09:46:30.500244+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 55
@@ -97,7 +97,117 @@
     "alerted": null,
     "trend": {
      "min": [
-      47
+      57
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607630",
+   "home": "APIA Leichhardt Tigers",
+   "away": "Sydney United",
+   "home_en": "APIA Leichhardt Tigers",
+   "away_en": "Sydney United",
+   "league": "Australia Cup (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3764.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3776.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/874.png",
+   "score": "0-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-08-12T09:46:30.500244+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 37
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+    ],
+    "pick": "home",
+    "confidence": 37,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      16
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607632",
+   "home": "Brunswick Juventus FC",
+   "away": "Preston Lions",
+   "home_en": "Brunswick Juventus FC",
+   "away_en": "Preston Lions",
+   "league": "Australia Cup (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/27510.png",
+   "away_logo": "https://media.api-sports.io/football/teams/19705.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/874.png",
+   "score": "0-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-08-12T09:46:30.500244+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 46
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+    ],
+    "pick": "away",
+    "confidence": 46,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "trend": {
+     "min": [
+      16
      ],
      "h_sog": [
       0
