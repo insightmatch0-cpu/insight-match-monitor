@@ -187,17 +187,20 @@ class TestDigestLine(unittest.TestCase):
         return P.drama_scoreboard_line()
 
     def test_progress_counter_toward_30(self):
+        # سجلات ما قبل الموسم: عدّاد الموسم صفر، والتراكمي كما هو بين قوسين
         line = self._line_for({"alerts_resolved": _graded("next_goal", 2, 7)})
-        self.assertIn("الهدف القادم: 2/7", line)
-        self.assertIn("7/30 نحو الحكم", line)
+        self.assertIn("الهدف القادم: بدأ العدّ اليوم (منذ البداية: 2/7)", line)
+        self.assertIn("7/30 نحو الحكم", line)   # عدّاد الحكم تراكمي لا موسمي
 
     def test_statuses_rendered_per_type(self):
         line = self._line_for({"silenced": ["flip"], "proven": ["next_goal"],
                                "alerts_resolved":
                                _graded("next_goal", 20, 30)
                                + _graded("flip", 5, 30)})
-        self.assertIn("الهدف القادم: 20/30 — مُثبَت ✅", line)
-        self.assertIn("قلب النتيجة: 5/30 — صامت 🔇", line)
+        self.assertIn("الهدف القادم: بدأ العدّ اليوم (منذ البداية: 20/30) — "
+                      "مُثبَت ✅", line)
+        self.assertIn("قلب النتيجة: بدأ العدّ اليوم (منذ البداية: 5/30) — "
+                      "صامت 🔇", line)
 
     def test_empty_record_stays_silent(self):
         self.assertEqual(self._line_for({}), "")

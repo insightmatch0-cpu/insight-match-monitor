@@ -187,6 +187,10 @@
   }
   .radar-acc .r-chip.ok{color:#7ee0a3;border-color:#2e5c41}
   .radar-acc .r-chip.mute{color:#e0a37e;border-color:#5c452e}
+  /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي،
+     والسجل التراكمي سطر ثانوي أصغر تحته — بلا حذف لأي رقم */
+  .radar-acc .r-sub{font-size:10px;color:var(--muted);display:block}
+  .bucket .b-sub{font-size:9.5px;color:var(--muted);margin-top:1px}
   /* بطاقة 360° في مختبر الظل: عدّادات الطبقات والنتيجة النهائية */
   .lab-chip{
     font-size:10.5px;border:1px solid var(--line);border-radius:999px;
@@ -679,7 +683,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 70;
+var IM_BUILD = 71;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -729,6 +733,9 @@ var I18N = {
     radarStProven:"مُثبَت ✅ بلا وسم تجريبي", radarStSilenced:"صامت 🔇 بلا تيليجرام",
     radarStTrial:"تجريبي 🧪 {n}/30 نحو الحكم",
     radarTrendW:"دقة الإنذارات يوماً بيوم",
+    radarSeasonLbl:"📅 الموسم (منذ {d})",
+    radarFullRec:"السجل الكامل: {v}",
+    radarCountToday:"بدأ العدّ اليوم",
     radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
     radarPick:"توقع المحرك 2:",
     radarCalm:"لا إشارات خطر — الأرقام هادئة حتى الآن.",
@@ -838,6 +845,9 @@ var I18N = {
     radarStProven:"Proven ✅ no trial tag", radarStSilenced:"Silenced 🔇 no Telegram",
     radarStTrial:"Trial 🧪 {n}/30 to verdict",
     radarTrendW:"Warning accuracy day by day",
+    radarSeasonLbl:"📅 Season (since {d})",
+    radarFullRec:"Full record: {v}",
+    radarCountToday:"Counting starts today",
     radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
     radarPick:"Engine 2 pick:",
     radarCalm:"No danger signals — the numbers are calm so far.",
@@ -1836,29 +1846,50 @@ function radarAccPanel(acc){
   var claimKeys = ["next_goal", "goal", "equalizer", "flip"].filter(
     function(k){ return al[k] && al[k].fired; });
   if (!hasLevels && !claimKeys.length) return "";
+  /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي، والسجل
+     التراكمي سطر ثانوي أصغر. الشرطان أعلاه يقرآن التراكمي عمداً حتى تظهر
+     اللوحة من أول يوم موسم (عدّاد الموسم صفر بعدُ ← "بدأ العدّ اليوم"). */
+  var season = acc.season || {}, sal = season.alerts || {};
   function pc(o){ return o && o.fired ? Math.round(100 * (o.hit || 0) / o.fired) : null; }
-  function tile(label, o, gold){
+  function rec(o){
     var p = pc(o);
+    return (o.hit || 0)+"/"+o.fired+(p === null ? "" : " · "+p+"%");
+  }
+  function tile(label, s, o, gold){
+    var p = pc(s);
     return '<div class="bucket'+(gold ? " gold" : "")+'"><div class="b-label">'+esc(label)+'</div>'
       + '<div class="b-val">'+(p === null ? "—" : p + "%")+'</div>'
-      + '<div class="b-count">'+(o && o.fired ? (o.hit || 0)+"/"+o.fired : "")+'</div></div>';
+      + '<div class="b-count">'+(s && s.fired ? (s.hit || 0)+"/"+s.fired
+                                              : esc(t("radarCountToday")))+'</div>'
+      + '<div class="b-sub">'+esc(t("radarFullRec")).replace("{v}",
+          (o && o.fired ? (o.hit || 0)+"/"+o.fired : "0/0"))+'</div></div>';
   }
   var h = '<div class="t-label" style="margin-bottom:8px">'+esc(t("radarAccTitle"))+'</div>';
+  if (season.start){
+    h += '<div class="t-label" style="margin-bottom:6px">'
+      + esc(t("radarSeasonLbl")).replace("{d}", esc(season.start))+'</div>';
+  }
   if (hasLevels){
     h += '<div class="buckets" style="grid-template-columns:repeat(2,1fr)">'
-      + tile(t("radarRed"), red, true) + tile(t("radarAmber"), amb, false) + '</div>';
+      + tile(t("radarRed"), season.red, red, true)
+      + tile(t("radarAmber"), season.amber, amb, false) + '</div>';
   }
   if (claimKeys.length){
     h += '<div class="t-label" style="margin-top:10px;margin-bottom:2px">'+esc(t("radarDrama"))+'</div>';
     for (var i = 0; i < claimKeys.length; i++){
-      var k = claimKeys[i], o = al[k], p = pc(o);
-      /* حالة قاعدة الإيقاف (REC-005): مُثبَت / صامت / تجريبي مع عدّاد الـ 30 */
+      var k = claimKeys[i], o = al[k], s = sal[k];
+      /* حالة قاعدة الإيقاف (REC-005): مُثبَت / صامت / تجريبي مع عدّاد الـ 30.
+         تُقرأ من التراكمي (o.fired) لا من الموسم — القاعدة مربوطة بالسجل
+         الكامل عمداً، وربطها بالموسم يُخرج الأنواع المكتومة من صمتها. */
       var chip;
       if (proven.indexOf(k) >= 0) chip = '<span class="r-chip ok">'+esc(t("radarStProven"))+'</span>';
       else if (silenced.indexOf(k) >= 0) chip = '<span class="r-chip mute">'+esc(t("radarStSilenced"))+'</span>';
       else chip = '<span class="r-chip">'+esc(t("radarStTrial")).replace("{n}", Math.min(o.fired, 30))+'</span>';
       h += '<div class="r-row"><span class="r-name">'+esc(t("radarClaim_"+k) || k)+'</span>'
-        + '<span class="r-num">'+(o.hit || 0)+"/"+o.fired+(p === null ? "" : " · "+p+"%")+'</span>'
+        + '<span class="r-num">'
+        + (s && s.fired ? esc(rec(s)) : esc(t("radarCountToday")))
+        + '<span class="r-sub">'+esc(t("radarFullRec")).replace("{v}", rec(o))+'</span>'
+        + '</span>'
         + chip + '</div>';
     }
   }
