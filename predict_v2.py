@@ -1691,6 +1691,24 @@ def post_grading_alerts(newly_resolved: list, store: dict) -> None:
         print("تنبيهات ما بعد التقييم:", len(lines))
 
 
+def _radar_counts(warn_rows: list, alert_rows: list) -> tuple:
+    """يبني عدّادَي الرادار من قائمتَي سجل: (المستويات، الادعاءات).
+    يُستدعى مرتين بنفس المنطق حرفياً — مرة على السجل التراكمي ومرة على
+    سجل الموسم المرشَّح بالتاريخ — فلا يفترق الحسابان أبداً."""
+    levels = {}
+    for lvl in ("red", "amber"):
+        rows = [x for x in warn_rows if x.get("level") == lvl]
+        levels[lvl] = {"fired": len(rows),
+                       "hit": sum(1 for x in rows if x.get("failed"))}
+    claims = {}
+    for key in ("flip", "equalizer", "goal", "next_goal", "red_advantage"):
+        rows = [x for x in alert_rows if x.get("key") == key]
+        if rows:
+            claims[key] = {"fired": len(rows),
+                           "hit": sum(1 for x in rows if x.get("hit"))}
+    return levels, claims
+
+
 def resolve_radar_log(store: dict) -> int:
     """لوحة تقييم الرادار (طلب المالك 2026-08-01): كل إنذار كهرماني/أحمر
     سجّله الرادار ليلاً يُقارن صباحاً بالنتيجة الحقيقية — هل سقط التوقع الذي
@@ -1759,26 +1777,35 @@ def resolve_radar_log(store: dict) -> int:
     log["alerts_resolved"] = (a_resolved[-RADAR_RESOLVED_CAP:]
                               if RADAR_RESOLVED_CAP else a_resolved)
 
-    stats = {}
-    for lvl in ("red", "amber"):
-        rows = [x for x in log["resolved"] if x.get("level") == lvl]
-        stats[lvl] = {"fired": len(rows),
-                      "hit": sum(1 for x in rows if x.get("failed"))}
-    astats = {}
-    for key in ("flip", "equalizer", "goal", "next_goal", "red_advantage"):
-        rows = [x for x in log["alerts_resolved"] if x.get("key") == key]
-        if rows:
-            astats[key] = {"fired": len(rows),
-                           "hit": sum(1 for x in rows if x.get("hit"))}
+    # العدّاد التراكمي: السجل الكامل منذ أول يوم — لا يُمسّ ولا يُرشَّح
+    stats, astats = _radar_counts(log["resolved"], log["alerts_resolved"])
     if astats:
         stats["alerts"] = astats
 
+    # 📅 عدّاد الموسم (أمر المالك 2026-08-13): نفس أسلوب كتلة "الموسم" في
+    # compute_stats — يُشتق بالترشيح على التاريخ لا بتصفير أي سجل
+    # (قاعدة لا-أسقف-قياس). القائمتان أعلاه تبقيان كاملتين كما هما.
+    season_warns = [x for x in log["resolved"]
+                    if x.get("date", "") >= SEASON_START]
+    season_alerts = [x for x in log["alerts_resolved"]
+                     if x.get("date", "") >= SEASON_START]
+    season, season_claims = _radar_counts(season_warns, season_alerts)
+    season["alerts"] = season_claims
+    season["start"] = SEASON_START
+    stats["season"] = season
+
     # قاعدة الإيقاف (REC-005): تُعاد كتابة القائمتين كل صباح من السجل التراكمي
     # نفسه — كل نوع ادعاء يُحكم على حدة، ولا حكم قبل 30 تنبيهاً مُقيَّماً
+    #
+    # ⛔ لا تربط هذه الحلقة بعدّاد الموسم (stats["season"]) مهما بدا ذلك
+    # منطقياً: عدّاد الموسم يبدأ من صفر في 2026-08-13، فلو قرأت الحلقة منه
+    # لهبطت كل الأنواع تحت عتبة الـ 30 (RADAR_STOP_MIN_GRADED) ولخرجت من
+    # القائمتين، فتعود الأنواع المكتومة ترسل تيليجرام من جديد — انحدار خطير.
+    # الحكم يبقى على astats التراكمي؛ الموسم عرض وقياس فقط لا قرار إرسال.
     lists_changed = False
     if RADAR_ALERT_STOP_RULE:
         silenced, proven = [], []
-        for key in sorted(astats):
+        for key in sorted(astats):   # astats = التراكمي عمداً — اقرأ التحذير أعلاه
             s = astats[key]
             if s["fired"] < RADAR_STOP_MIN_GRADED:
                 continue   # تحت 30: صفر تأثير
@@ -2014,7 +2041,8 @@ def drama_scoreboard_line() -> str:
     درس 2026-08-02: السجل الأول 1/6 وُجد ولم يصل المالك إلا بسؤاله).
     يظهر فقط حين توجد تنبيهات مُقيَّمة؛ يفصّل أمس والإجمالي لكل شيء بشفافية.
     مع قاعدة الإيقاف (REC-005): تفصيل لكل نوع ادعاء على حدة — سجله، وحالته
-    (مُثبَت/صامت)، أو عدّاد تقدمه نحو حكم الـ 30."""
+    (مُثبَت/صامت)، أو عدّاد تقدمه نحو حكم الـ 30.
+    أمر المالك 2026-08-13: أرقام الموسم أولاً، والتراكمي بين قوسين."""
     log = load_json(RADAR_LOG_FILE, {})
     resolved = log.get("alerts_resolved") or []
     if not resolved:
@@ -2022,7 +2050,12 @@ def drama_scoreboard_line() -> str:
     today = now_utc().strftime("%Y-%m-%d")
     fresh = [a for a in resolved if a.get("graded_on") == today]
     total_hit = sum(1 for a in resolved if a.get("hit"))
-    line = f"🧪 تنبيهات الدراما (تجريبية): الإجمالي {total_hit}/{len(resolved)} صحيحة"
+    # عدّاد الموسم: ترشيح بالتاريخ على نفس السجل الكامل — لا حذف ولا تصفير
+    season = [a for a in resolved if a.get("date", "") >= SEASON_START]
+    season_hit = sum(1 for a in season if a.get("hit"))
+    head = f"{season_hit}/{len(season)} صحيحة" if season else "بدأ العدّ اليوم"
+    line = (f"🧪 تنبيهات الدراما (تجريبية): الموسم {head} "
+            f"(منذ البداية: {total_hit}/{len(resolved)})")
     if fresh:
         line += f" — اليوم {sum(1 for a in fresh if a.get('hit'))}/{len(fresh)}"
     if not RADAR_ALERT_STOP_RULE:
@@ -2035,6 +2068,10 @@ def drama_scoreboard_line() -> str:
         if not rows:
             continue
         hit, n = sum(1 for a in rows if a.get("hit")), len(rows)
+        s_rows = [a for a in rows if a.get("date", "") >= SEASON_START]
+        s_hit = sum(1 for a in s_rows if a.get("hit"))
+        # الحالة وعدّاد الـ 30 يقرآن التراكمي (n) لا الموسم — قاعدة الإيقاف
+        # مربوطة بالسجل الكامل عمداً (انظر التحذير في resolve_radar_log)
         if key in proven:
             status = "مُثبَت ✅ — يُرسل بلا وسم تجريبي"
         elif key in silenced:
@@ -2042,7 +2079,8 @@ def drama_scoreboard_line() -> str:
         else:
             status = (f"تجريبي — {min(n, RADAR_STOP_MIN_GRADED)}"
                       f"/{RADAR_STOP_MIN_GRADED} نحو الحكم")
-        lines.append(f"  • {name}: {hit}/{n} — {status}")
+        num = f"{s_hit}/{len(s_rows)}" if s_rows else "بدأ العدّ اليوم"
+        lines.append(f"  • {name}: {num} (منذ البداية: {hit}/{n}) — {status}")
     return "\n".join(lines)
 
 
