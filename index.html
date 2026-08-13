@@ -307,7 +307,20 @@
   }
   .acc-box .label{font-size:11.5px;color:var(--muted)}
   .acc-box .value{font-family:Changa;font-weight:800;font-size:26px;color:var(--engine);margin-top:2px}
+  /* 🎛 حارس العينة (REC-010): نص "عينة غير كافية" مكان النسبة — أصغر وأهدأ
+     لوناً حتى لا يُقرأ كرقم أداء */
+  .acc-box .value.small,.bucket .b-val.small{
+    font-family:inherit;font-weight:600;font-size:11px;color:var(--muted);line-height:1.5}
   .acc-box .sub{font-size:11px;color:var(--muted)}
+  /* 🎛 مفتاح "دورياتي فقط ⇄ الكل" — لوحة الدقة وتبويب الرادار */
+  .scope-sw{display:inline-flex;gap:2px;padding:2px;border-radius:8px;
+    background:var(--card2,rgba(255,255,255,.04));border:1px solid var(--line)}
+  .scope-sw .sc-btn{
+    font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;
+    padding:4px 9px;border-radius:6px;border:0;background:transparent;
+    color:var(--muted)}
+  .scope-sw .sc-btn.on{background:var(--engine);color:#0b0f14}
+  .scope-note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6}
   .buckets{margin-top:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
   .bucket{
     background:var(--panel);border:1px solid var(--line);border-radius:12px;
@@ -558,6 +571,8 @@
       <h2 data-i="radarTitle">🛰 الرادار — من يهدد التوقعات الآن</h2>
       <span class="rule"></span>
       <span class="count" id="radar-count">0</span>
+      <!-- 🎛 مفتاح "دورياتي فقط ⇄ الكل" (REC-010) — يحكم أرقام قياس الرادار -->
+      <div class="scope-sw" id="radar-scope"></div>
     </div>
     <div class="radar-funnel" id="radar-funnel"></div>
     <div class="radar-next" id="radar-next" style="display:none"></div>
@@ -627,6 +642,8 @@
       <div class="sec-head">
         <h2 data-i="accuracy">سجل الدقة</h2>
         <span class="rule"></span>
+        <!-- 🎛 مفتاح "دورياتي فقط ⇄ الكل" (REC-010) -->
+        <div class="scope-sw" id="acc-scope"></div>
       </div>
       <div id="acc-body"></div>
     </section>
@@ -683,7 +700,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 71;
+var IM_BUILD = 72;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -747,6 +764,14 @@ var I18N = {
     accSeason:"الموسم (منذ 13-08)",
     accScopeSeason:"أرقام الموسم منذ 2026-08-13 — لا يُحذف أي سجل",
     accScopeAll:"كامل السجل المحفوظ — عدّاد الموسم يبدأ من صفر في 2026-08-13",
+    /* 🎛 مفتاح "دورياتي فقط ⇄ الكل" — REC-010 (قرار المالك 2026-08-13) */
+    scopeMine:"دورياتي فقط", scopeAll:"الكل",
+    scopeMineNote:"دورياتك التسعة وحدها",
+    smallSample:"عينة غير كافية ({n} من {m})",
+    mineNoData:"لا يوجد سجل مُقيَّم من دورياتك بعد.",
+    mineNoBlock:"شريحة دورياتك غير متوفرة في هذه البيانات — تظهر بعد أول تشغيلة صباحية.",
+    radarMineEmpty:"شريحة دورياتك في الرادار تبدأ من اليوم — السجلات الأقدم بلا علامة دوري فلا تدخلها.",
+    trendSmall:"الاتجاه اليومي مخفي في شريحة دورياتك — لا يوم بلغ 20 مباراة مُقيَّمة.",
     accTop:"الدوريات الكبرى", accOther:"بقية الدوريات",
     otherLeagues:"دوريات أخرى",
     updated:"آخر تحديث",
@@ -859,6 +884,14 @@ var I18N = {
     accSeason:"Season (since Aug 13)",
     accScopeSeason:"Season numbers since 2026-08-13 — nothing is ever deleted",
     accScopeAll:"Full stored record — season counter starts at zero on 2026-08-13",
+    /* 🎛 "My leagues only ⇄ All" switch — REC-010 */
+    scopeMine:"My leagues only", scopeAll:"All",
+    scopeMineNote:"your nine leagues only",
+    smallSample:"Sample too small ({n} of {m})",
+    mineNoData:"No graded record from your leagues yet.",
+    mineNoBlock:"Your-leagues slice is not in this payload — it appears after the next morning run.",
+    radarMineEmpty:"The radar slice for your leagues starts today — older records carry no league tag.",
+    trendSmall:"Day-by-day trend hidden for your leagues — no day reached 20 graded matches.",
     accTop:"Top leagues", accOther:"Other leagues",
     otherLeagues:"Other leagues",
     updated:"Updated",
@@ -945,6 +978,69 @@ function timeLocal(iso){
 function pctOf(o){
   if (!o || !o.total) return null;
   return Math.round(100 * o.correct / o.total);
+}
+
+/* ========== 🎛 مفتاح "دورياتي فقط ⇄ الكل" — REC-010 ==========
+   قرار المالك 2026-08-13: (ب) الدقة + الرادار معاً · (ب) "دورياتي" هي
+   الشاشة الافتراضية · حد العينة 20. الدليل الذي أنتج التوصية: 7% فقط من
+   المباريات المُقيَّمة من دوريات المالك التسعة — أي أن كل رقم يقرأه اليوم
+   تحكمه كرة لا يتابعها. هذا مفتاح عرض بحت: لا يغيّر توقعاً ولا ثقة ولا
+   تنبيهاً، والأرقام كلها محسوبة أصلاً في الخادم (صفر نداءات). */
+var MIN_FILTERED_SAMPLE = 20;
+var scope = "mine";
+try { scope = localStorage.getItem("im-scope") || "mine"; } catch(e){}
+if (scope !== "all" && scope !== "mine") scope = "mine";
+
+function setScope(s){
+  scope = (s === "all") ? "all" : "mine";
+  try { localStorage.setItem("im-scope", scope); } catch(e){}
+  renderAll();
+}
+function renderScopeSwitch(){
+  /* stopPropagation: المفتاح داخل رأس القسم القابل للطي — نقرته تبدّل
+     الأرقام ولا تطوي القسم تحت يد المالك */
+  var h = '<button type="button" class="sc-btn'+(scope === "mine" ? " on" : "")+'"'
+        + ' onclick="event.stopPropagation();setScope(\'mine\')">'+esc(t("scopeMine"))+'</button>'
+        + '<button type="button" class="sc-btn'+(scope === "all" ? " on" : "")+'"'
+        + ' onclick="event.stopPropagation();setScope(\'all\')">'+esc(t("scopeAll"))+'</button>';
+  var ids = ["acc-scope", "radar-scope"];
+  for (var i = 0; i < ids.length; i++){
+    var el = document.getElementById(ids[i]);
+    if (el) el.innerHTML = h;
+  }
+}
+
+/* يوحّد شكلَي العدّاد في المشروع: {correct,total} للدقة و{hit,fired} للرادار */
+function normCount(o){
+  if (!o) return null;
+  var n = (o.total != null) ? o.total : (o.fired != null ? o.fired : null);
+  if (n === null) return null;
+  var k = (o.correct != null) ? o.correct
+                              : ((o.hit != null) ? o.hit : 0);
+  return {k: k || 0, n: n || 0};
+}
+function sampleOf(o){ var v = normCount(o); return v ? v.n : 0; }
+
+/* ⛔ حارس العينة (REC-010، إلزامي): في شريحة "دورياتي" أي عدّاد أقل من 20
+   لا يُظهر نسبة مئوية إطلاقاً — بل نص "عينة غير كافية (n من 20)". السبب
+   مسجّل في REJ-002: "دورياتك، 0%" وهي 3 مباريات ضجيج يبدو كارثة، و100%
+   من مباراتين تبدو عبقرية — آلة استنتاجات خاطئة داخل نظام بُني لمنعها.
+   يرجع {small, text} — small=true يعني: لا رقم أداء هنا. */
+function scopedVal(o){
+  var n = sampleOf(o);
+  if (scope === "mine" && n < MIN_FILTERED_SAMPLE){
+    return {small: true,
+            text: t("smallSample").replace("{n}", String(n))
+                                  .replace("{m}", String(MIN_FILTERED_SAMPLE))};
+  }
+  if (!n) return {small: false, text: "—"};
+  var v = normCount(o);
+  return {small: false, text: Math.round(100 * v.k / v.n) + "%"};
+}
+/* عدّاد صح/مجموع — أرقام مطلقة لا نسبة، فلا يحكمها حارس العينة */
+function countText(o){
+  var v = normCount(o);
+  return (v && v.n) ? v.k + "/" + v.n : "";
 }
 /* الدقيقة الحية المقدَّرة: المخزنة + ما مضى منذ رصدها فعلياً — فلا تتجمد
    الشاشة بين دورات المراقبة (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84).
@@ -1218,29 +1314,58 @@ function renderGold(list){
 }
 
 function accBox(label, obj){
-  var p = pctOf(obj);
+  /* 🎛 REC-010: النسبة تمر دائماً بحارس العينة — العدّاد نفسه يبقى ظاهراً */
+  var v = scopedVal(obj);
   return '<div class="acc-box"><div class="label">'+label+'</div>'
-    + '<div class="value">'+(p===null?"—":p+"%")+'</div>'
-    + '<div class="sub">'+(obj&&obj.total? obj.correct+"/"+obj.total : "")+'</div></div>';
+    + '<div class="value'+(v.small?" small":"")+'">'+esc(v.text)+'</div>'
+    + '<div class="sub">'+countText(obj)+'</div></div>';
 }
 
 function renderAccuracy(acc){
   var el = document.getElementById("acc-body");
+  /* 🎛 REC-010: في شريحة "دورياتي" تُقرأ كل الأرقام من الشجرة الموازية
+     top_only التي يحسبها الخادم بنفس الدوال — لا حساب واجهة موازٍ. */
+  if (scope === "mine"){
+    if (!acc || !acc.top_only){
+      /* لوحة قديمة أُنتجت قبل تنفيذ REC-010 — نقولها صراحة بدل عرض فراغ */
+      el.innerHTML = '<div class="empty">'+esc(t("mineNoBlock"))+"</div>"; return;
+    }
+    acc = acc.top_only;   /* الشريحة المفلترة تصير مصدر كل رقم معروض أدناه */
+  }
   if (!acc || !acc.overall || !acc.overall.total){
-    el.innerHTML = '<div class="empty">'+t("noAcc")+"</div>"; return;
+    el.innerHTML = '<div class="empty">'
+      + esc(scope === "mine" ? t("mineNoData") : t("noAcc")) + "</div>"; return;
   }
   /* عدّاد الموسم (أمر المالك 2026-08-09): من 2026-08-13 الأرقام الرئيسية هي
      أرقام الموسم وحده (تبدأ من صفر)، والسجل الكامل يبقى محفوظاً بلا حذف.
      قبل انطلاق الموسم تُعرض أرقام كامل السجل مع عنونة صريحة للنطاق. */
   var season = acc.season || {};
-  var seasonOn = season.overall && season.overall.total > 0;
+  var seasonOn = !!(season.overall && season.overall.total > 0);
+  /* في الشريحة المفلترة لا تتصدّر كتلة الموسم قبل بلوغ حد العينة: مباراة
+     واحدة من دوريات المالك في يوم الانطلاق كانت ستُصدّر له "عينة غير كافية"
+     بينما سجله الكامل لدورياته جاهز — والتوصية تنص أن فلتر الدقة يعمل
+     بأثر رجعي كامل. النطاق يبقى معنوناً صراحةً تحت الشرائح. */
+  if (scope === "mine"){
+    seasonOn = !!(season.overall
+                  && season.overall.total >= MIN_FILTERED_SAMPLE);
+  }
   var h = '<div class="acc-grid">'
     + accBox(seasonOn ? t("accSeason") : t("accOverall"),
              seasonOn ? season.overall : acc.overall)
-    + accBox(t("acc30"), acc.last30)
-    + accBox(t("accTop"), seasonOn ? season.top_leagues : acc.top_leagues)
-    + accBox(t("accOther"), seasonOn ? season.other_leagues : acc.other_leagues)
-    + '</div>';
+    + accBox(t("acc30"), acc.last30);
+  if (scope === "mine"){
+    /* 🎛 REC-010: داخل شريحة دورياته يصبح تقسيم "الكبرى ⇄ البقية" بلا معنى
+       (كل الصفوف كبرى، والبقية صفر أبداً) — وعرض "عينة غير كافية (0 من 20)"
+       على خانة فارغة بحكم البناء يوهم أن أرقاماً قادمة. تُستبدل بخانة
+       الموسم حين يبدأ العدّ فعلاً، وإلا فخانتان فقط. */
+    if (!seasonOn && season.overall && season.overall.total){
+      h += accBox(t("accSeason"), season.overall);
+    }
+  } else {
+    h += accBox(t("accTop"), seasonOn ? season.top_leagues : acc.top_leagues)
+       + accBox(t("accOther"), seasonOn ? season.other_leagues : acc.other_leagues);
+  }
+  h += '</div>';
   var bc = (seasonOn && season.by_confidence) ? season.by_confidence
                                               : (acc.by_confidence || {});
   var keys = ["70+","60-69","50-59","<50"];
@@ -1250,21 +1375,24 @@ function renderAccuracy(acc){
     var o = bc[keys[i]];
     var p = pctOf(o);
     if (p !== null) any = true;
-    var cnt = (o && o.total) ? o.correct+"/"+o.total : "";
+    var bv = scopedVal(o);
     /* شريحة الـ 70%+ تُميَّز ذهبياً — أهم رقم يراقبه المالك */
     bh += '<div class="bucket'+(keys[i]==="70+"?" gold":"")+'"><div class="b-label">'+esc(keys[i])+'%</div>'
-      + '<div class="b-val">'+(p===null?"—":p+"%")+'</div>'
-      + '<div class="b-count">'+cnt+'</div></div>';
+      + '<div class="b-val'+(bv.small?" small":"")+'">'+esc(bv.text)+'</div>'
+      + '<div class="b-count">'+countText(o)+'</div></div>';
   }
   bh += '</div>';
   /* عنونة النطاق: القارئ يعرف دائماً أي نافذة يقيسها الرقم (درس 2026-08-09) */
   bh += '<div class="t-label" style="margin-top:6px">'
-    + esc(seasonOn ? t("accScopeSeason") : t("accScopeAll")) + '</div>';
+    + esc(seasonOn ? t("accScopeSeason") : t("accScopeAll"))
+    + (scope === "mine" ? " · " + esc(t("scopeMineNote")) : "") + '</div>';
 
   /* الدقة يوماً بيوم — أعمدة صغيرة لآخر 30 يوماً (من الأرشيف الدائم إن وجد) */
   var th = "";
   var daily = acc.daily || {};
-  if (engine === "v2" && lastV2 && lastV2.history){
+  /* الأرشيف الدائم history لا يحمل تقسيم الدوريات، فلا يُستعمل في الشريحة
+     المفلترة — الاتجاه هناك يُقرأ من يوميات الشجرة الموازية وحدها */
+  if (scope === "all" && engine === "v2" && lastV2 && lastV2.history){
     var hd = {};
     var hkeys = Object.keys(lastV2.history);
     for (var k=0;k<hkeys.length;k++){
@@ -1274,6 +1402,16 @@ function renderAccuracy(acc){
     if (Object.keys(hd).length) daily = hd;
   }
   var days = Object.keys(daily).sort().slice(-30);
+  /* ⛔ حارس العينة على الاتجاه اليومي: عمود ارتفاعه نسبة مئوية، ويوم من 3
+     مباريات هو بالضبط الرقم المضلل الذي رُفض في REJ-002 — فتُستبعد الأيام
+     تحت الحد في الشريحة المفلترة (وغالباً يختفي الاتجاه كله، وهذا صادق). */
+  if (scope === "mine"){
+    days = days.filter(function(d){
+      return sampleOf(daily[d]) >= MIN_FILTERED_SAMPLE; });
+    if (days.length < 3){
+      th = '<div class="scope-note">'+esc(t("trendSmall"))+'</div>';
+    }
+  }
   if (days.length >= 3){
     th = '<div class="trend"><div class="t-label">'+t("trend")+'</div><div class="t-bars">';
     for (var j=0;j<days.length;j++){
@@ -1840,25 +1978,44 @@ function renderRadar(live, acc){
 
 /* لوحة دقة الرادار S3 — نسبة كل مستوى/نوع، حالة قاعدة الإيقاف، واتجاه يومي */
 function radarAccPanel(acc){
+  /* 🎛 REC-010: أرقام قياس الرادار تتبع المفتاح — الشريحة المفلترة تُقرأ من
+     الكتلة الموازية top_only التي يبنيها التقييم الصباحي من السجلات
+     الموسومة وحدها. **حساسية توقيت مسجّلة**: السجلات الأقدم من لحظة
+     التنفيذ بلا علامة دوري، فهي "غير مصنّفة" ولا تدخل الشريحة — الفلتر
+     يمتلئ من اليوم فصاعداً (منصوص عليه في التوصية ومقبول من المالك). */
+  var full = acc;   /* التراكمي كما وصل — يبقى مرجع قرارات الإرسال */
+  if (scope === "mine"){
+    if (!acc.top_only){
+      return '<div class="scope-note">'+esc(t("radarMineEmpty"))+'</div>';
+    }
+    acc = acc.top_only;   /* الشريحة المفلترة تصير مصدر كل رقم معروض أدناه */
+  }
   var red = acc.red, amb = acc.amber, al = acc.alerts || {};
-  var silenced = acc.silenced || [], proven = acc.proven || [];
+  /* قائمتا قاعدة الإيقاف (REC-005) تُقرآن من التراكمي دائماً — قرار إرسال
+     لا رقم عرض، وربطهما بأي شريحة أصغر يعيد الأنواع المكتومة للإرسال */
+  var silenced = full.silenced || [], proven = full.proven || [];
   var hasLevels = (red && red.fired) || (amb && amb.fired);
   var claimKeys = ["next_goal", "goal", "equalizer", "flip"].filter(
     function(k){ return al[k] && al[k].fired; });
-  if (!hasLevels && !claimKeys.length) return "";
+  if (!hasLevels && !claimKeys.length){
+    return (scope === "mine")
+      ? '<div class="scope-note">'+esc(t("radarMineEmpty"))+'</div>' : "";
+  }
   /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي، والسجل
      التراكمي سطر ثانوي أصغر. الشرطان أعلاه يقرآن التراكمي عمداً حتى تظهر
      اللوحة من أول يوم موسم (عدّاد الموسم صفر بعدُ ← "بدأ العدّ اليوم"). */
   var season = acc.season || {}, sal = season.alerts || {};
   function pc(o){ return o && o.fired ? Math.round(100 * (o.hit || 0) / o.fired) : null; }
+  /* ⛔ حارس العينة (REC-010): سطر السجل يعرض العدّاد دائماً، والنسبة فقط
+     حين تبلغ العينة الحد — لا رقم أداء على أقل من 20 في الشريحة المفلترة */
   function rec(o){
-    var p = pc(o);
-    return (o.hit || 0)+"/"+o.fired+(p === null ? "" : " · "+p+"%");
+    var v = scopedVal(o);
+    return (o.hit || 0)+"/"+o.fired+(v.small || pc(o) === null ? "" : " · "+v.text);
   }
   function tile(label, s, o, gold){
-    var p = pc(s);
+    var v = scopedVal(s);
     return '<div class="bucket'+(gold ? " gold" : "")+'"><div class="b-label">'+esc(label)+'</div>'
-      + '<div class="b-val">'+(p === null ? "—" : p + "%")+'</div>'
+      + '<div class="b-val'+(v.small ? " small" : "")+'">'+esc(v.text)+'</div>'
       + '<div class="b-count">'+(s && s.fired ? (s.hit || 0)+"/"+s.fired
                                               : esc(t("radarCountToday")))+'</div>'
       + '<div class="b-sub">'+esc(t("radarFullRec")).replace("{v}",
@@ -1893,12 +2050,20 @@ function radarAccPanel(acc){
         + chip + '</div>';
     }
   }
+  if (scope === "mine"){
+    h += '<div class="scope-note">'+esc(t("scopeMineNote"))+'</div>';
+  }
   /* اتجاه دقة الإنذارات يوماً بيوم — نفس أعمدة سجل المحركين */
-  var days = Object.keys(acc.daily_warnings || {}).sort().slice(-30);
+  var dw = acc.daily_warnings || {};
+  var days = Object.keys(dw).sort().slice(-30);
+  /* ⛔ حارس العينة على الاتجاه: يوم من إنذارين لا يُرسم كنسبة (REJ-002) */
+  if (scope === "mine"){
+    days = days.filter(function(d){ return sampleOf(dw[d]) >= MIN_FILTERED_SAMPLE; });
+  }
   if (days.length >= 3){
     h += '<div class="trend" style="margin-top:10px"><div class="t-label">'+esc(t("radarTrendW"))+'</div><div class="t-bars">';
     for (var d = 0; d < days.length; d++){
-      var row = acc.daily_warnings[days[d]] || {};
+      var row = dw[days[d]] || {};
       var pd = row.total ? Math.round(100 * (row.hit || 0) / row.total) : 0;
       h += '<div class="t-bar" style="height:'+Math.max(4, pd * 0.46)+'px" title="'
         + esc(days[d])+" — "+(row.hit || 0)+"/"+(row.total || 0)+'"></div>';
@@ -1978,6 +2143,7 @@ function renderAll(){
       + (stale ? " · ⚠️ "+t("staleWarn") : "");
     updEl.classList.toggle("stale", stale);
   }
+  renderScopeSwitch();   /* 🎛 REC-010: المفتاح يُرسم بلغة القارئ في الموضعين */
   var radarMode = (engine === "radar");
   setRadarMode(radarMode);
   if (radarMode){
@@ -2050,7 +2216,13 @@ function initSecToggles(){
        الواضح يمنع الالتباس نهائياً */
     if (h2) h2.setAttribute("data-hint", t("collapsedHint"));
     try { if (localStorage.getItem(key) === "1") sec.classList.add("collapsed"); } catch(e){}
-    head.addEventListener("click", function(){
+    head.addEventListener("click", function(ev){
+      /* 🎛 REC-010: مفتاح الشريحة يسكن داخل رأس القسم — نقرته تبدّل الأرقام
+         ولا تطوي القسم (وإلا اختفت اللوحة تحت يد المالك عند كل تبديل).
+         الزر يُعاد رسمه قبل صعود الحدث فيصير عنصراً منفصلاً عن الشجرة،
+         لذلك يُفحص بالصنف لا بـ closest (الأخير يعيد null على المنفصل) */
+      if (ev && ev.target && ev.target.classList
+          && ev.target.classList.contains("sc-btn")) return;
       sec.classList.toggle("collapsed");
       try { localStorage.setItem(key, sec.classList.contains("collapsed") ? "1" : "0"); } catch(e){}
     });

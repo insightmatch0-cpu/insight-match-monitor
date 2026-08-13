@@ -195,6 +195,8 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
                 # قمع الاستباق (طلب المالك 2026-08-02): الإشارة الخام + الجاهزية
                 "drama": radar.get("drama"),
                 "alerted": radar.get("alerted"),
+                # 🎛 REC-010: علامة دوريات المالك كما خُتمت في monitor.py
+                "top": bool(radar.get("top")),
                 "trend": {
                     "min": [s.get("minute", 0) for s in snaps],
                     "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],
@@ -441,7 +443,11 @@ def build_data_v2() -> None:
         "live": [],
         "upcoming": build_upcoming(store),
         "recent_results": build_recent_results(store),
-        "accuracy": (store.get("meta") or {}).get("stats") or {},
+        # 🎛 REC-010: المحرك 2 يكتب شريحة دورياته في meta.stats بنفسه؛ هنا
+        # نضمن وجودها حتى قبل أول تشغيلة صباحية بعد النشر (اللوحة تفتح على
+        # "دورياتي" افتراضياً، فلا يصح أن تفتح فارغة يوم النشر)
+        "accuracy": _with_top_only(
+            (store.get("meta") or {}).get("stats") or {}, store),
         "news": [],
         "lessons": recent_lessons(),
         # الأرشيف الدائم (كل الأيام، كل الأطراف) — للوحة ولأي تحليل مستقبلي
@@ -485,6 +491,43 @@ def freshness_warnings(state: dict) -> list:
     return warns
 
 
+def _daily_warnings(rows: list) -> dict:
+    """اتجاه صدق الإنذارات يوماً بيوم من قائمة إنذارات مُقيَّمة."""
+    daily = {}
+    for w in rows:
+        d = (w or {}).get("graded_on")
+        if not d:
+            continue
+        s = daily.setdefault(d, {"hit": 0, "total": 0})
+        s["total"] += 1
+        s["hit"] += 1 if w.get("failed") else 0
+    return dict(sorted(daily.items())[-30:])
+
+
+def top_only_accuracy(resolved: list) -> dict:
+    """🎛 شريحة دوريات المالك لمحرك تُقرأ ذاكرته هنا — REC-010.
+
+    تُستدعى لأرقام **المحرك 1**: المحرك 1 مجمّد بأمر المشروع (قاعدة 7) فلا
+    يُضاف إليه حساب، فتُشتق شريحته هنا قراءةً من predictions.json وحده.
+    الحساب نفسه مستعار حرفياً من predict_v2.top_only_stats — مصدر رياضيات
+    واحد للمحركين، فلا تنحرف نسخة عن أخرى (يحرسه tests/test_my_leagues.py).
+    صفر نداءات API/Claude: كل الأرقام محلية."""
+    from predict_v2 import top_only_stats
+    return top_only_stats(resolved or [])
+
+
+def _with_top_only(stats: dict, store: dict) -> dict:
+    """يعيد نسخة من إحصاءات محرك مضموناً فيها كتلة `top_only` (REC-010).
+
+    المحرك 2 يكتبها بنفسه كل صباح فتُمرَّر كما هي؛ المحرك 1 مجمّد فتُشتق
+    هنا، وكذلك تُشتق لأي لوحة أُنتجت قبل أول تشغيلة صباحية بعد النشر.
+    **لا يُمسّ أي مفتاح آخر** — أرقام "الكل" تخرج كما دخلت حرفياً."""
+    out = dict(stats or {})
+    if not isinstance(out.get("top_only"), dict):
+        out["top_only"] = top_only_accuracy((store or {}).get("resolved") or [])
+    return out
+
+
 def build_radar_accuracy() -> dict:
     """لوحة دقة الرادار S3 (طلب المالك 2026-08-09 — تفصيل مرئي كامل):
     إحصاءات المستويات والادعاءات كما بناها التقييم الصباحي + قائمتا قاعدة
@@ -494,15 +537,15 @@ def build_radar_accuracy() -> dict:
     out = dict((log.get("meta") or {}).get("stats") or {})
     out["silenced"] = log.get("silenced") or []
     out["proven"] = log.get("proven") or []
-    daily = {}
-    for w in (log.get("resolved") or []):
-        d = (w or {}).get("graded_on")
-        if not d:
-            continue
-        s = daily.setdefault(d, {"hit": 0, "total": 0})
-        s["total"] += 1
-        s["hit"] += 1 if w.get("failed") else 0
-    out["daily_warnings"] = dict(sorted(daily.items())[-30:])
+    resolved = log.get("resolved") or []
+    out["daily_warnings"] = _daily_warnings(resolved)
+    # 🎛 REC-010: اتجاه شريحة دوريات المالك — الكتلة الموازية نفسها يبنيها
+    # التقييم الصباحي في predict_v2؛ هنا يُضاف اتجاهها اليومي فقط (عرض).
+    # السجلات القديمة بلا علامة `top` لا تدخل — الشريحة تمتلئ من لحظة التنفيذ.
+    if isinstance(out.get("top_only"), dict):
+        out["top_only"] = dict(out["top_only"])
+        out["top_only"]["daily_warnings"] = _daily_warnings(
+            [w for w in resolved if (w or {}).get("top")])
     return out
 
 
@@ -519,7 +562,9 @@ def main() -> None:
         "live": build_live(state, store, store_v2),
         "upcoming": build_upcoming(store),
         "recent_results": build_recent_results(store),
-        "accuracy": stats,
+        # 🎛 REC-010: شريحة دوريات المالك للمحرك 1 — تُشتق هنا قراءةً من
+        # predictions.json لأن المحرك 1 مجمّد ولا يُضاف إليه حساب (قاعدة 7)
+        "accuracy": _with_top_only(stats, store),
         "news": news.get("items", []),
         # لوحة دقة الرادار S3: مستويات وادعاءات وحالة قاعدة الإيقاف واتجاه يومي
         "radar_acc": build_radar_accuracy(),
