@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-13T13:58:42.629142+00:00",
+ "updated": "2026-08-13T14:06:55.322331+00:00",
  "live": [
   {
    "fid": "1507406",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3506.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
    "score": "0-3",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-13T13:58:40.961430+00:00",
+   "minute": 50,
+   "status": "2H",
+   "seen": "2026-08-13T14:06:52.621123+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,10 +24,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 42,
+    "score": 45,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-3 تُسقط التوقع (د50)"
     ],
     "pick": "home",
     "confidence": 38,
@@ -40,8 +40,8 @@
     "top": false,
     "trend": {
      "min": [
-      37,
-      45
+      45,
+      50
      ],
      "h_sog": [
       0,
@@ -73,9 +73,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4566.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "0-2",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-13T13:58:40.961430+00:00",
+   "minute": 46,
+   "status": "2H",
+   "seen": "2026-08-13T14:06:52.621123+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -99,7 +99,8 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      45,
+      46
      ],
      "h_sog": [
       0,
@@ -131,9 +132,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3500.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
    "score": "1-0",
-   "minute": 29,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-13T13:58:40.961430+00:00",
+   "seen": "2026-08-13T14:06:52.621123+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 60
@@ -143,10 +144,10 @@
     "confidence": 47
    },
    "radar": {
-    "score": 32,
+    "score": 37,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د29)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د37)"
     ],
     "pick": "away",
     "confidence": 47,
@@ -159,7 +160,119 @@
     "top": false,
     "trend": {
      "min": [
-      29
+      37
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1516104",
+   "home": "Surkhon",
+   "away": "Sogdiana",
+   "home_en": "Surkhon",
+   "away_en": "Sogdiana",
+   "league": "Super League (Uzbekistan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4225.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4223.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/369.png",
+   "score": "0-0",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-13T14:06:52.621123+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د7)"
+    ],
+    "pick": "home",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534823",
+   "home": "Astana II",
+   "away": "Tobol 2",
+   "home_en": "Astana II",
+   "away_en": "Tobol 2",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4548.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27634.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-0",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-13T14:06:52.621123+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د7)"
+    ],
+    "pick": "home",
+    "confidence": 48,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7
      ],
      "h_sog": [
       0
@@ -449,22 +562,6 @@
    "pick": "away",
    "confidence": 59,
    "reason": "كورينثيانز يتمتع بسمعة أقوى، وتجربة البطولات القارية تعطيه حافزاً إضافياً"
-  },
-  {
-   "fid": "1534824",
-   "kickoff": "2026-08-13T12:00:00+00:00",
-   "home": "أكاديمية قيرات",
-   "away": "أكاديميا أونتوستيك",
-   "home_en": "Sport Academy Kairat",
-   "home_logo": "https://media.api-sports.io/football/teams/4556.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4545.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "away_en": "Akademiya Ontustik",
-   "league": "الدرجة الأولى الكازاخستانية",
-   "top": false,
-   "pick": "home",
-   "confidence": 55,
-   "reason": "قيرات يملك ميزة الأرض في مواجهة فريق منافس، التوازن النسبي يجعل النتيجة غير مؤكدة"
   },
   {
    "fid": "1605046",
