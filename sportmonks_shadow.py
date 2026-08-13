@@ -18,11 +18,16 @@ xG يصل في include=xgfixture كقائمة {type_id: 5304, location, data.val
 import json
 import os
 import re
+import sys
 import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
+
+# مفتاح التراجع (خطة المرحلة أ): False = تعطيل الجامع فوراً بلا حذف أي كود —
+# مع غياب SPORTMONKS_KEY من البيئة يشكّلان طريقَي التعطيل الطبيعيَّين
+XG_SHADOW = True
 
 KEY = os.environ.get("SPORTMONKS_KEY", "").strip()
 BASE = "https://api.sportmonks.com/v3/football"
@@ -40,6 +45,30 @@ LOOKBACK_DAYS = 2        # نغطي آخر يومين — نفس أفق تقيي
 # كلمات تُسقط من أسماء الفرق قبل المطابقة (لواحق شكلية لا تميّز)
 _STOP_TOKENS = {"fc", "cf", "sc", "afc", "ac", "cd", "club", "de", "ssc",
                 "if", "bk", "sk", "ii", "b", "the"}
+
+# عينة التحقق مقابل Opta (خطة القاعدة 8: «تحقق أولاً من xG سبورتمونكس مقابل
+# أرقام Opta العلنية على مباريات إنجليزية») — مباريات شهيرة من موسم 2022-23
+# وأرقامها من FBref (مزوّده Opta منذ 2022)، منقولة من أرشيف worldfootballR_data
+# العلني وقابلة للتحقق يدوياً على fbref.com. 3 تواريخ فقط = 3 نداءات جلب.
+OPTA_SAMPLE = [
+    {"date": "2022-08-06", "home": "Fulham", "away": "Liverpool",
+     "opta_home": 1.2, "opta_away": 1.2},
+    {"date": "2022-08-06", "home": "Newcastle United", "away": "Nottingham Forest",
+     "opta_home": 1.7, "opta_away": 0.3},
+    {"date": "2022-08-13", "home": "Brentford", "away": "Manchester United",
+     "opta_home": 1.6, "opta_away": 0.9},
+    {"date": "2022-08-13", "home": "Manchester City", "away": "Bournemouth",
+     "opta_home": 1.7, "opta_away": 0.1},
+    {"date": "2022-08-13", "home": "Arsenal", "away": "Leicester City",
+     "opta_home": 2.7, "opta_away": 0.5},
+    {"date": "2022-08-27", "home": "Liverpool", "away": "Bournemouth",
+     "opta_home": 3.3, "opta_away": 0.3},
+    {"date": "2022-08-27", "home": "Manchester City", "away": "Crystal Palace",
+     "opta_home": 2.2, "opta_away": 0.1},
+    {"date": "2022-08-27", "home": "Arsenal", "away": "Fulham",
+     "opta_home": 2.6, "opta_away": 0.8},
+]
+VALIDATE_TOLERANCE = 0.35   # متوسط فرق مطلق مقبول بين مزودَي xG (نماذج مختلفة)
 
 
 def _norm_tokens(name: str) -> frozenset:
@@ -143,7 +172,68 @@ def _team_key(name: str) -> str:
     return " ".join(sorted(_norm_tokens(name))) or (name or "").lower()
 
 
+def _save(shadow: dict) -> None:
+    """الكتابة الوحيدة في المجمّع كله — ملف الظل فقط، لا ذاكرة أي محرك."""
+    SHADOW_FILE.write_text(
+        json.dumps(shadow, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def validate(persist: bool = True) -> dict:
+    """وضع التحقق مقابل Opta (--validate أو أول تشغيلة): يقارن xG سبورتمونكس
+    بأرقام FBref/Opta العلنية لعينة OPTA_SAMPLE ويطبع جدول الفروق. الخلاصة
+    تُحفظ في meta.opta_validation ليقرأها تقرير 24 أغسطس المرحلي. صامت
+    المبدأ: لا يرفع استثناءً أبداً — «لا تغطية» حالة تُسجَّل، لا خطأ."""
+    if not KEY:
+        print("🔬 ظل xG: لا مفتاح في البيئة — تخطي التحقق (التشغيلة سليمة)")
+        return {}
+    print("🔬 تحقق xG مقابل Opta — عينة إنجليزية 2022-23 (المصدر: FBref):")
+    print("التاريخ | المباراة | سبورتمونكس | Opta | الفرق")
+    rows, no_coverage = [], 0
+    for day in sorted({s["date"] for s in OPTA_SAMPLE}):
+        day_rows = fetch_day_xg(day)
+        for s in (x for x in OPTA_SAMPLE if x["date"] == day):
+            label = f"{s['home']} – {s['away']}"
+            sm = next((r for r in day_rows
+                       if names_match(s["home"], r["home"])
+                       and names_match(s["away"], r["away"])), None)
+            if sm is None:
+                no_coverage += 1
+                print(f"{s['date']} | {label} | — | "
+                      f"{s['opta_home']}-{s['opta_away']} | لا تغطية")
+                continue
+            dh = abs(sm["xg_home"] - s["opta_home"])
+            da = abs(sm["xg_away"] - s["opta_away"])
+            rows.append({"match": label, "date": s["date"],
+                         "sm": [sm["xg_home"], sm["xg_away"]],
+                         "opta": [s["opta_home"], s["opta_away"]],
+                         "diff": round((dh + da) / 2, 2)})
+            print(f"{s['date']} | {label} | "
+                  f"{sm['xg_home']}-{sm['xg_away']} | "
+                  f"{s['opta_home']}-{s['opta_away']} | ±{(dh + da) / 2:.2f}")
+    mean_diff = (round(sum(r["diff"] for r in rows) / len(rows), 3)
+                 if rows else None)
+    summary = {
+        "checked_on": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "n": len(rows), "no_coverage": no_coverage,
+        "mean_abs_diff": mean_diff,
+        # الحكم بصدق: لا عينة = لا حكم (باقة التجربة قد لا تشمل مواسم قديمة)
+        "verdict": ("لا تغطية تاريخية في الباقة" if not rows else
+                    "توافق جيد" if mean_diff <= VALIDATE_TOLERANCE else
+                    "فروق ملحوظة — راجع قبل الوثوق"),
+    }
+    print(f"🔬 خلاصة التحقق: عينة {summary['n']}, بلا تغطية {no_coverage}, "
+          f"متوسط الفرق {mean_diff} → {summary['verdict']}")
+    if persist:
+        shadow = load_json(SHADOW_FILE, {}) or {}
+        shadow.setdefault("meta", {})["opta_validation"] = summary
+        _save(shadow)
+    return summary
+
+
 def main() -> None:
+    if not XG_SHADOW:
+        print("🔬 ظل xG: المفتاح مطفأ (XG_SHADOW=False) — تخطٍ صامت")
+        return
     if not KEY:
         print("🔬 ظل xG: لا مفتاح في البيئة — تخطٍ صامت (التشغيلة سليمة)")
         return
@@ -205,12 +295,17 @@ def main() -> None:
         "xgform": {"n": len(judged),
                    "correct": sum(1 for f in judged if f.get("xgform_correct"))},
     })
-    SHADOW_FILE.write_text(
-        json.dumps(shadow, ensure_ascii=False, indent=1), encoding="utf-8")
+    _save(shadow)
     print(f"🔬 ظل xG: مطابقة {matched} ومُفلت {unmatched} — "
           f"الإجمالي {meta['total']} | فورمة xG: "
           f"{meta['xgform']['correct']}/{meta['xgform']['n']}")
+    # التحقق مقابل Opta مرة واحدة في أول تشغيلة (وضع --validate يعيده يدوياً)
+    if "opta_validation" not in meta:
+        validate()
 
 
 if __name__ == "__main__":
-    main()
+    if "--validate" in sys.argv:
+        validate()
+    else:
+        main()

@@ -365,6 +365,8 @@
   .lab-bd-note{font-size:11.5px;color:var(--muted);padding:10px 13px 0;border-top:1px solid var(--line)}
 
   /* 🔬 مختبر الظل v2 — بطاقات بصرية تشرح نفسها (طلب المالك 2026-08-01) */
+  .lab-exp{background:var(--panel);border:1px solid var(--v2);border-radius:12px;
+    padding:8px 12px;margin-bottom:8px;font-size:12.5px;line-height:1.7}
   .lab-explain{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px}
   .lab-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
   .lab-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;text-align:center;padding:8px 6px}
@@ -677,7 +679,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 69;
+var IM_BUILD = 70;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -756,6 +758,8 @@ var I18N = {
     labWaitData:"انتهت المباراة — بانتظار بياناتها النهائية (تُتابع كل صباح وتُنظَّف آلياً إن تعذّرت)",
     labBreakdown:"تصحيح البنود — ما نجح وما فشل",
     labOrig:"التقرير الأصلي كما كُتب قبل المباراة",
+    labExpDay:"اليوم", labExpOf:"من", labExpYday:"جُمع أمس",
+    labExpTotal:"الإجمالي", labExpForm:"فورمة xG",
     labScore:"النتيجة",
     labS1:"S1 — توقعات الصباح", labS3:"S3 — الرادار الحي",
     labEngine1:"المحرك 1", labEngine2:"المحرك 2", labYou:"توقعك",
@@ -863,6 +867,8 @@ var I18N = {
     labWaitData:"match finished — awaiting final data (checked every morning, auto-cleaned if unavailable)",
     labBreakdown:"Claim-by-claim grading — what hit and what missed",
     labOrig:"Original report as written before the match",
+    labExpDay:"Day", labExpOf:"of", labExpYday:"collected yesterday",
+    labExpTotal:"total", labExpForm:"xG-form",
     labScore:"Final score",
     labS1:"S1 — morning predictions", labS3:"S3 — live radar",
     labEngine1:"Engine 1", labEngine2:"Engine 2", labYou:"Your pick",
@@ -1388,22 +1394,42 @@ function labAccStat(label, a){
     + '<div class="k">'+label+(a&&a.reports? " ("+a.reports+")":"")+'</div></div>';
 }
 
+/* 🧪 شريط التجارب النشطة (قاعدة الحوكمة هـ): تجربة ظل نشطة = صف يومي ظاهر
+   للمالك في مختبر الظل بلا سؤال — حالياً تجربة ظل xG (Sportmonks) */
+function labExperimentsStrip(lab){
+  var exps = (lab && lab.experiments) || [];
+  var h = "";
+  for (var i=0;i<exps.length;i++){
+    var x = exps[i];
+    h += '<div class="lab-exp">🧪 <b>'+esc(x.name||"")+'</b> — '
+      + t("labExpDay")+' '+esc(x.day==null?"?":x.day)+' '+t("labExpOf")+' ~'+esc(x.days_total||21)
+      + ' · '+t("labExpYday")+' '+esc(x.yday_matched||0)
+      + ' · '+t("labExpTotal")+' '+esc(x.total||0)
+      + (x.form_n ? ' · '+t("labExpForm")+' '+esc(x.form_correct||0)+'/'+esc(x.form_n) : '')
+      + '</div>';
+  }
+  return h;
+}
+
 function renderShadowLab(){
   var sec = document.getElementById("shadow-sec");
   var lab = (engine === "v2" && v2exists && lastV2 && lastV2.shadow_lab) ? lastV2.shadow_lab : null;
   var graded = (lab && lab.reports) || [];
   var waiting = (lab && lab.waiting) || [];
   var rows = graded.concat(waiting);
-  sec.style.display = rows.length ? "" : "none";
+  var expStrip = labExperimentsStrip(lab);
+  sec.style.display = (rows.length || expStrip) ? "" : "none";
   if (!rows.length){
+    /* لا تقارير بعد — لكن التجربة النشطة تبقى ظاهرة (رؤية يومية إلزامية) */
     document.getElementById("shadow-list").innerHTML = "";
-    document.getElementById("shadow-summary").innerHTML = "";
+    document.getElementById("shadow-summary").innerHTML = expStrip;
     document.getElementById("shadow-count").textContent = 0;
     return;
   }
   document.getElementById("shadow-count").textContent = lab.graded_total || graded.length;
   document.getElementById("shadow-summary").innerHTML =
-    '<div class="lab-explain">'+t("labExplain")+'</div>'
+    expStrip
+    + '<div class="lab-explain">'+t("labExplain")+'</div>'
     + '<div class="lab-summary">'
     + labAccStat(t("labShadowAcc"), lab.shadow_acc)
     + labAccStat(t("labWatchAcc"), lab.watch_acc)

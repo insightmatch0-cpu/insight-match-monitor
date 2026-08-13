@@ -125,6 +125,110 @@ class TestMeasurementIntegrity(unittest.TestCase):
         self.assertLess(src.index("xgform_pick("), src.index("h_hist.append"))
 
 
+class TestKillSwitch(unittest.TestCase):
+    """مفتاح التراجع XG_SHADOW: إطفاؤه = تعطيل فوري بلا حذف أي كود."""
+
+    def test_switch_off_skips_cleanly_without_writing(self):
+        orig_flag, orig_key, orig_file = S.XG_SHADOW, S.KEY, S.SHADOW_FILE
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.unlink()   # يجب ألا يُنشأ
+        S.XG_SHADOW, S.KEY, S.SHADOW_FILE = False, "مفتاح-وهمي", tmp
+        try:
+            S.main()   # لا استثناء ولا كتابة ولا نداء شبكة (يخرج قبل كل شيء)
+            self.assertFalse(tmp.exists())
+        finally:
+            S.XG_SHADOW, S.KEY, S.SHADOW_FILE = orig_flag, orig_key, orig_file
+
+
+def _sm_fixture(home, away, xh, xa):
+    """جسم مباراة بصيغة Sportmonks المؤكدة من المسبار — للمحاكاة فقط."""
+    return {"name": f"{home} vs {away}", "xgfixture": [
+        {"type_id": S.XG_TYPE_ID, "location": "home", "data": {"value": xh}},
+        {"type_id": S.XG_TYPE_ID, "location": "away", "data": {"value": xa}},
+    ]}
+
+
+class TestValidateMode(unittest.TestCase):
+    """وضع التحقق مقابل Opta (--validate): جدول فروق صادق، وفشل HTTP لا يقتل."""
+
+    def _run_validate(self, api_stub, persist=False):
+        import contextlib
+        import io
+        orig_api, orig_key = S._api, S.KEY
+        S._api, S.KEY = api_stub, "مفتاح-وهمي"
+        buf = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(buf):
+                summary = S.validate(persist=persist)
+        finally:
+            S._api, S.KEY = orig_api, orig_key
+        return summary, buf.getvalue()
+
+    def test_prints_diff_table_and_summary(self):
+        """عينة مُطابقة → صف فرق لكل مباراة مغطاة وخلاصة بمتوسط الفرق."""
+        sample = S.OPTA_SAMPLE[0]
+        def api_stub(path, params):
+            if sample["date"] in path:
+                return {"data": [_sm_fixture(sample["home"], sample["away"],
+                                             sample["opta_home"] + 0.1,
+                                             sample["opta_away"])],
+                        "pagination": {"has_more": False}}
+            return {"data": [], "pagination": {"has_more": False}}
+        summary, out = self._run_validate(api_stub)
+        self.assertEqual(summary["n"], 1)
+        self.assertEqual(summary["no_coverage"], len(S.OPTA_SAMPLE) - 1)
+        self.assertAlmostEqual(summary["mean_abs_diff"], 0.05)
+        self.assertIn("توافق جيد", summary["verdict"])
+        self.assertIn("لا تغطية", out)      # غير المُغطى يُسجَّل، لا يُخمَّن
+        self.assertIn("Opta", out)
+
+    def test_http_failure_never_raises(self):
+        """كل النداءات تفشل → خلاصة «لا تغطية» صادقة، صفر استثناءات."""
+        summary, out = self._run_validate(lambda path, params: None)
+        self.assertEqual(summary["n"], 0)
+        self.assertIsNone(summary["mean_abs_diff"])
+        self.assertIn("لا تغطية", summary["verdict"])
+
+    def test_no_key_skips_silently(self):
+        orig_key = S.KEY
+        S.KEY = ""
+        try:
+            self.assertEqual(S.validate(persist=False), {})
+        finally:
+            S.KEY = orig_key
+
+    def test_persist_writes_summary_into_shadow_meta(self):
+        """نتيجة التحقق تُحفظ في السجل ليقرأها تقرير 24 أغسطس المرحلي."""
+        orig_file = S.SHADOW_FILE
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.write_text(json.dumps({"fixtures": [], "meta": {"total": 3}}),
+                       encoding="utf-8")
+        S.SHADOW_FILE = tmp
+        try:
+            self._run_validate(lambda path, params: None, persist=True)
+            saved = json.loads(tmp.read_text(encoding="utf-8"))
+            self.assertIn("opta_validation", saved["meta"])
+            self.assertEqual(saved["meta"]["total"], 3)   # لا يمس بقية السجل
+        finally:
+            S.SHADOW_FILE = orig_file
+            tmp.unlink(missing_ok=True)
+
+    def test_first_run_triggers_validation_once(self):
+        """أول تشغيلة تُشغّل التحقق تلقائياً؛ وجود الخلاصة يمنع تكراره يومياً."""
+        src = inspect.getsource(S.main)
+        self.assertIn('"opta_validation" not in meta', src)
+        self.assertIn("validate()", src)
+
+    def test_opta_sample_is_sane(self):
+        """عينة المرجع: مباريات إنجليزية بموسم سابق وأرقام موجبة معقولة."""
+        self.assertGreaterEqual(len(S.OPTA_SAMPLE), 6)
+        for s in S.OPTA_SAMPLE:
+            self.assertTrue(s["date"].startswith("2022-"))
+            self.assertGreaterEqual(s["opta_home"], 0)
+            self.assertGreaterEqual(s["opta_away"], 0)
+            self.assertLess(s["opta_home"] + s["opta_away"], 8)
+
+
 class TestDigestVisibility(unittest.TestCase):
     """قاعدة المالك (هـ): تجربة نشطة = سطر يومي في النشرة بلا سؤال."""
 
