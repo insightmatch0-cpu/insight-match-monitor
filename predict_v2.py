@@ -68,6 +68,13 @@ INTEGRITY_MAX_DETAILS = 5     # أقصى أمثلة تُعرض لكل قانون
 # من صفر عند هذا التاريخ — ما قبله يبقى محفوظاً كسجل تأسيس، لا يُعرض كموسم.
 SEASON_START          = "2026-08-13"
 
+# 🎛 حارس العينة — REC-010 (قرار المالك 2026-08-13): أي عرض مفلتر على شريحة
+# دوريات المالك عدده أقل من هذا الحد لا يُظهر نسبة مئوية إطلاقاً، بل نص
+# "عينة غير كافية". السبب مسجّل في REJ-002: نسبة على ثلاث مباريات ("دورياتك،
+# 0%") ضجيج يبدو كارثة، أو 100% من مباراتين فيبدو عبقرية — آلة استنتاجات
+# خاطئة داخل نظام بُني كله لمنعها. الرقم يُقرأ من هنا في اللوحة أيضاً.
+MIN_FILTERED_SAMPLE   = 20
+
 # قاعدة إيقاف تنبيهات الدراما — REC-005 (قرار المالك 2026-08-08): نهاية مكتوبة
 # مسبقاً لتجربة قد تدور بلا نهاية، بقياس كل نوع ادعاء على حدة (قاعدة المالك ج —
 # لا يُعاقب next_goal بذنب flip). عند بلوغ النوع 30 تنبيهاً مُقيَّماً تراكمياً:
@@ -332,15 +339,18 @@ def _accumulate(rows: list) -> dict:
     return acc
 
 
-def compute_stats(resolved: list) -> dict:
-    """يحسب دقة المحرك 2: إجمالي، آخر 30 يوماً، حسب مستوى الثقة، وحسب نوع
-    الدوري — وكتلة "الموسم" (من SEASON_START) بعدّاداتها المستقلة التي تبدأ
-    من صفر في 2026-08-13 (أمر المالك 2026-08-09)."""
-    stats = _accumulate(resolved)
+def _stats_tree(rows: list) -> dict:
+    """الشجرة الكاملة لمجموعة صفوف: إجمالي وشرائح ثقة ونوع دوري (من
+    _accumulate) + آخر 30 يوماً + الاتجاه اليومي + كتلة "الموسم"
+    (من SEASON_START) بعدّاداتها المستقلة.
+
+    مستخرجة كدالة واحدة (REC-010) حتى تُحسب شريحة دوريات المالك بنفس
+    الرياضيات حرفياً — لا نسخة ثانية من المنطق تنحرف عن الأولى بمرور الوقت."""
+    stats = _accumulate(rows)
     stats["last30"] = {"correct": 0, "total": 0}
     stats["daily"] = {}
     cutoff = (now_utc() - timedelta(days=30)).strftime("%Y-%m-%d")
-    for r in resolved:
+    for r in rows:
         ok = 1 if r.get("correct") else 0
         if r.get("date", "") >= cutoff:
             stats["last30"]["total"] += 1
@@ -351,8 +361,38 @@ def compute_stats(resolved: list) -> dict:
     stats["daily"] = dict(sorted(stats["daily"].items())[-30:])
     # عدّادات الموسم: أصفار قبل 2026-08-13، ثم تتراكم بلا حذف حتى نهاية الموسم
     stats["season"] = _accumulate(
-        [r for r in resolved if r.get("date", "") >= SEASON_START])
+        [r for r in rows if r.get("date", "") >= SEASON_START])
     stats["season"]["start"] = SEASON_START
+    return stats
+
+
+def top_only_stats(resolved: list) -> dict:
+    """🎛 شريحة دوريات المالك وحدها — REC-010 (قرار المالك 2026-08-13).
+
+    الدليل الذي أنتج التوصية: من 1,525 مباراة مُقيَّمة 106 فقط (7%) من
+    دوريات المالك التسعة — أي أن كل رقم يقرأه اليوم تحكمه كرة لا يتابعها.
+    هذه شجرة موازية بنفس دوال الشجرة الكاملة على الصفوف الحاملة علامة
+    `top` فقط: الإجمالي، شرائح الثقة، الاتجاه اليومي، كتلة الموسم، ومعيار
+    السوق. **لا تمسّ أي توقع ولا أي ثقة ولا أي تنبيه** — عرض وقياس فقط.
+
+    ملاحظة على الشكل: داخل هذه الشجرة يتساوى `top_leagues` مع `overall`
+    ويبقى `other_leagues` أصفاراً — مقصود، فوحدة الشكل تسمح للوحة برسم
+    الشريحتين بنفس الدالة بلا فرع خاص."""
+    rows = [r for r in resolved if r.get("top")]
+    tree = _stats_tree(rows)
+    tree["market_bench"] = market_bench_stats(rows)
+    # حارس العينة يسافر مع الأرقام: اللوحة تقرأ الحد من هنا لا من ثابت مكرر
+    tree["min_sample"] = MIN_FILTERED_SAMPLE
+    return tree
+
+
+def compute_stats(resolved: list) -> dict:
+    """يحسب دقة المحرك 2: إجمالي، آخر 30 يوماً، حسب مستوى الثقة، وحسب نوع
+    الدوري — وكتلة "الموسم" (من SEASON_START) بعدّاداتها المستقلة التي تبدأ
+    من صفر في 2026-08-13 (أمر المالك 2026-08-09) — وشجرة موازية لدوريات
+    المالك وحدها (`top_only` — REC-010) لا تغيّر أي رقم من أرقام "الكل"."""
+    stats = _stats_tree(resolved)
+    stats["top_only"] = top_only_stats(resolved)
     return stats
 
 
@@ -1793,6 +1833,30 @@ def resolve_radar_log(store: dict) -> int:
     season["alerts"] = season_claims
     season["start"] = SEASON_START
     stats["season"] = season
+
+    # 🎛 شريحة دوريات المالك (REC-010، قرار المالك 2026-08-13): كتلة موازية
+    # بنفس أسلوب كتلة الموسم أعلاه — ترشيح على علامة `top` التي تُكتب مع
+    # السجل نفسه في monitor.py (مشتقة من TOP_LEAGUE_IDS بالمعرف، لا بالاسم).
+    # السجلات القديمة بلا علامة تُعامل "غير مصنّفة" ولا تدخل الشريحة — منصوص
+    # عليه في التوصية ومقبول من المالك: الفلتر يمتلئ من لحظة التنفيذ.
+    #
+    # ⛔ ينطبق هنا حرفياً تحذير كتلة الموسم أعلاه: لا تربط قاعدة الإيقاف
+    # (REC-005) بهذه الكتلة مهما بدا ذلك منطقياً — شريحة دورياته أصغر من
+    # التراكمي، فكل الأنواع تهبط تحت عتبة الـ 30 وتخرج من قائمة الإسكات
+    # فتعود ترسل تيليجرام. الحكم يبقى على astats التراكمي؛ هذه عرض وقياس فقط.
+    top_warns = [x for x in log["resolved"] if x.get("top")]
+    top_alerts = [x for x in log["alerts_resolved"] if x.get("top")]
+    top, top_claims = _radar_counts(top_warns, top_alerts)
+    top["alerts"] = top_claims
+    top_season, top_season_claims = _radar_counts(
+        [x for x in top_warns if x.get("date", "") >= SEASON_START],
+        [x for x in top_alerts if x.get("date", "") >= SEASON_START])
+    top_season["alerts"] = top_season_claims
+    top_season["start"] = SEASON_START
+    top["season"] = top_season
+    # حارس العينة (REC-010): الحد يسافر مع الأرقام حتى تقرأه اللوحة من مصدره
+    top["min_sample"] = MIN_FILTERED_SAMPLE
+    stats["top_only"] = top
 
     # قاعدة الإيقاف (REC-005): تُعاد كتابة القائمتين كل صباح من السجل التراكمي
     # نفسه — كل نوع ادعاء يُحكم على حدة، ولا حكم قبل 30 تنبيهاً مُقيَّماً
