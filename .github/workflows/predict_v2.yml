@@ -51,6 +51,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
         run: python predict_v2.py
 
       # 🔬 مجمّع ظل xG (المرحلة أ، 2026-08-12): قياس صامت بصفر تأثير على المحرك —
@@ -62,9 +63,14 @@ jobs:
         run: python sportmonks_shadow.py || echo "🔬 المجمّع فشل صامتاً — التشغيلة سليمة"
 
       - name: Update dashboard data
+        if: always()
         run: python dashboard_update.py
 
+      # if: always() (إصلاح 2026-08-14): عند رفض المزوّد يسقط المحرك عمداً —
+      # ولا بد أن ينجو علم مانع التكرار في state.json، وإلا كررت التشغيلة
+      # الاحتياطية (04:30) نفس الإنذار بعد ساعة واحدة.
       - name: Save data
+        if: always()
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
