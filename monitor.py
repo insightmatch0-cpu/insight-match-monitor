@@ -19,11 +19,17 @@ from pathlib import Path
 
 import requests
 
+import api_guard
+from api_guard import ApiRefused        # noqa: F401 — يُعاد تصديره للاختبارات
+
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
 API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+# بث اختياري لأجهزة/أشخاص إضافيين (معرّفات مفصولة بفواصل). غائب أو فارغ =
+# السلوك القديم حرفياً: المالك وحده. هذا هو مفتاح التراجع نفسه.
+TELEGRAM_BROADCAST_IDS = os.environ.get("TELEGRAM_BROADCAST_IDS", "").strip()
 
 # ================== الإعدادات ==================
 STATE_FILE = Path("state.json")          # ذاكرة البوت بين التشغيلات
@@ -394,16 +400,18 @@ def should_alert(league: dict, fid: str, watch: set) -> bool:
 
 
 def api_football(path: str) -> list:
-    resp = requests.get(
+    """نداء API-Football محروساً (حادثة الصمت 2026-08-14).
+
+    قبل الإصلاح كانت هذه الدالة تطبع errors وتمضي، فيبدو رفض المزوّد
+    كقائمة فارغة — أي "يوم هادئ" بالقاعدة 5. الآن: القائمة الفارغة تبقى
+    مقبولة، أما الرفض فيُرفع ApiRefused ويصرخ على تيليجرام من أول مرة.
+    للتراجع الفوري: API_REFUSAL_STRICT=0 (يعود الابتلاع القديم).
+    """
+    return api_guard.guarded_get(
         f"https://v3.football.api-sports.io/{path}",
         headers={"x-apisports-key": API_FOOTBALL_KEY},
-        timeout=30,
+        component="monitor.py (المراقبة الحية)",
     )
-    resp.raise_for_status()
-    data = resp.json()
-    if data.get("errors"):
-        print("API-Football errors:", data["errors"])
-    return data.get("response", [])
 
 
 def get_live_fixtures() -> list:
@@ -1850,14 +1858,16 @@ def parse_claude_reply(text: str):
 
 
 def send_telegram(text: str) -> None:
-    try:
-        requests.post(
-            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
-            json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
-            timeout=30,
-        )
-    except Exception as e:
-        print("Telegram error:", e)
+    """بث إلى المالك + كل معرّفات TELEGRAM_BROADCAST_IDS.
+
+    فصل البث عن التحكم (طلب المالك 2026-08-14): الخارج يتوسّع ليصل إلى
+    2-3 أجهزة إضافية، أما الداخل (أوامر watchlist.py وأزرار التوقع) فيبقى
+    من محادثة المالك حصراً — سجل توقعاته في predictions_user.json يجب ألا
+    يتلوث. فشل مستقبِل واحد لا يمنع البقية ولا يكسر التشغيلة.
+    """
+    api_guard.send_telegram_multi(
+        TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_BROADCAST_IDS, text
+    )
 
 
 # ================== المنطق الرئيسي ==================
@@ -1877,6 +1887,10 @@ def main() -> None:
         sys.exit(1)
 
     state = load_state()
+    # نربط قاموس الحالة الحي بالحارس: يعدّله ويحفظه فوراً (متانة ضد موت
+    # التشغيلة) ويبقى حفظنا الأخير متسقاً معه — بلا هذا الربط يمحو حفظ
+    # نهاية التشغيلة علمَ مانع التكرار فيعود إغراق الرسائل.
+    api_guard.attach_state(state, save_state)
     analyses_used = 0
     pulses = {"used": 0}            # عداد نبضات المحرك 2 في هذه التشغيلة
     live_budget = {"used": 0}       # عداد مباريات المحرك 2 المباشر في هذه التشغيلة

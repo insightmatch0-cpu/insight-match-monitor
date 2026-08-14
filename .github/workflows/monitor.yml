@@ -34,6 +34,17 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      # 🛟 الحارس الخارجي المستقل (مفتاح الرجل الميت — حادثة الصمت 2026-08-14):
+      # يتحقق أن history.json تقدّم اليوم، أي أن التقييم الصباحي جرى فعلاً.
+      # يعمل **قبل** المحرك وبصفر نداءات API فلا يعتمد على نجاح أي محرك —
+      # حارس يسكن داخل ما يحرسه ليس حارساً. فشله لا يُسقط التشغيلة أبداً.
+      - name: External dead-man switch
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
+        run: python deadman.py || echo "🛟 الحارس الخارجي فشل — التشغيلة تكمل"
+
       # أوامر تيليجرام: قائمة التركيز + تشغيل المسح الحي برسالة
       - name: Telegram commands & watchlist
         env:
@@ -49,15 +60,22 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
           PREMATCH_WINDOW: ${{ github.event.inputs.prematch_window }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # نشر الرادار الحي إلى فرع radar-live
         run: python monitor.py
 
+      # الخطوات التالية بـ if: always() (إصلاح 2026-08-14): المراقب صار يسقط
+      # عمداً عند رفض المزوّد (ApiRefused) — بلا هذا الشرط يُتخطى حفظ الحالة،
+      # فيضيع علم مانع التكرار وتتكرر رسالة الإنذار كل عشر دقائق، ويُتخطى
+      # معه حارس الجدولة وهو أحوج ما نكون إليه ساعة العطل.
       - name: Update dashboard data
+        if: always()
         run: python dashboard_update.py
 
       # حارس الجدولة: إذا أهملت GitHub تشغيلات التوقعات اليومية يشغّلها بنفسه
       - name: Scheduler watchdog
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
@@ -65,6 +83,7 @@ jobs:
         run: python watchdog.py
 
       - name: Save state
+        if: always()
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"

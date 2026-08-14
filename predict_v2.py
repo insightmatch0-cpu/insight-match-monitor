@@ -26,11 +26,16 @@ from pathlib import Path
 
 import requests
 
+import api_guard
+from api_guard import ApiRefused        # noqa: F401 — يُعاد تصديره للاختبارات
+
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
 API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+# بث اختياري لأجهزة/أشخاص إضافيين — انظر شرح الفصل في monitor.py
+TELEGRAM_BROADCAST_IDS = os.environ.get("TELEGRAM_BROADCAST_IDS", "").strip()
 
 # ================== الإعدادات ==================
 PREDICTIONS_FILE      = Path("predictions_v2.json")   # ذاكرة المحرك 2 (مستقلة عن المحرك 1)
@@ -256,28 +261,26 @@ def is_youth_match(home_name: str, away_name: str) -> bool:
 
 
 def api_football(path: str) -> list:
-    resp = requests.get(
+    """نداء API-Football محروساً (حادثة الصمت 2026-08-14).
+
+    كان يرفع RuntimeError عاماً — يُفشل التشغيلة بلا أن يخبر أحداً. الآن
+    يرفع ApiRefused مصنَّفاً **بعد** إرسال إنذار تيليجرام فوري، ويقرأ
+    عدّاد الرصيد من كل رد. القائمة الفارغة تبقى مقبولة (القاعدة 5).
+    للتراجع الفوري: API_REFUSAL_STRICT=0.
+    """
+    return api_guard.guarded_get(
         f"https://v3.football.api-sports.io/{path}",
         headers={"x-apisports-key": API_FOOTBALL_KEY},
-        timeout=30,
+        component="predict_v2.py (توقعات المحرك 2 الصباحية)",
     )
-    resp.raise_for_status()
-    data = resp.json()
-    errs = data.get("errors")
-    if errs and (not isinstance(errs, list) or len(errs) > 0):
-        raise RuntimeError(f"API-Football رفض الطلب: {errs}")
-    return data.get("response", [])
 
 
 def send_telegram(text: str) -> None:
-    try:
-        requests.post(
-            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
-            json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
-            timeout=30,
-        )
-    except Exception as e:
-        print("Telegram error:", e)
+    """بث إلى المالك + كل معرّفات TELEGRAM_BROADCAST_IDS (انظر monitor.py).
+    السرّ غائب/فارغ = السلوك القديم حرفياً. فشل مستقبِل لا يوقف البقية."""
+    api_guard.send_telegram_multi(
+        TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_BROADCAST_IDS, text
+    )
 
 
 def send_telegram_long(text: str) -> None:
@@ -2420,6 +2423,11 @@ def main() -> None:
         # سطر النزاهة اليومي: المالك يرى كل صباح أن الحسبة سليمة، لا يفترض ذلك
         if integrity_line:
             digest += "\n" + integrity_line
+        # 📊 عدّاد رصيد API (حادثة 2026-08-14): الاختناق يُرى قبل أن يقتل —
+        # لو كان هذا السطر موجوداً لظهر السقف 100 بدل 7,500 صباح الحادثة.
+        quota = api_guard.quota_line()
+        if quota:
+            digest += "\n" + quota
         send_telegram_long(digest)
 
 
