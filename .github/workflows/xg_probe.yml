@@ -35,8 +35,12 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      # المفتاح يصل عبر البيئة إلى الترويسة فقط ولا يُطبع أبداً (قاعدة الأسرار 3)
+      # المفتاح يصل عبر البيئة إلى الترويسة فقط ولا يُطبع أبداً (قاعدة الأسرار 3).
+      # PROBE_DAY يمرّ عبر البيئة لا بالحقن المباشر في سطر الأمر: إدخال المستخدم
+      # المحقون في run يفتح باب حقن أوامر الصدفة (script injection) — والاقتباس
+      # حول "$PROBE_DAY" يجعل الفراغ وسيطاً فارغاً يتخطاه المسبار إلى «أمس».
       - name: Run xG probe
         env:
           SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
-        run: python sportmonks_shadow.py --probe ${{ inputs.day }}
+          PROBE_DAY: ${{ inputs.day }}
+        run: python sportmonks_shadow.py --probe $PROBE_DAY
