@@ -9,18 +9,25 @@
 معيار الأولويات (وضعه الوكيل بتفويض المالك «أنت تقرر، أنت تضع المعيار»)،
 ومدى المهلة 3-5 أيام كما اشترط:
 
-  P1 — مال أو فقدان بيانات لا يُعوَّض (اشتراك ينتهي، رصيد ينفد).
-       مهلة 5 أيام افتراضاً، **تكرار يومي** حتى الموعد، ويبقى ⛔ متأخراً
-       أسبوعاً كاملاً بعده. لماذا محدود لا أبدي: تذكير لا ينطفئ يُدرِّب
-       العين على تجاهل كتلة المواعيد كلها، فيُخفي P1 التالي — وهذا هو
-       إرهاق الإنذار، أخو العطل الصامت. أسبوع يكفي ليُرى، ولا يكفي ليُملّ.
-  P2 — قرار أو حكم مجدول (حكم تجربة، تقرير مرحلي).
-       مهلة 4 أيام، تكرار يومي، يصمت بعد يوم من الموعد.
-  P3 — روتيني/معلوماتي. مهلة 3 أيام، تكرار يومي، يصمت يوم الموعد.
+جدول التنبيه (أمر المالك 2026-08-14، معمَّم على **كل** واجهة نستعملها لا
+على Sportmonks وحدها): تنبيهان قبل الموعد — **قبل 3 أيام، ثم قبل يومين** —
+وكل رسالة تحمل **اسم الخدمة وسعرها** لا الموعد وحده. `remind_at` في الموعد
+نفسه يتجاوز الافتراضي حين يلزم.
 
-`lead_days` في الموعد نفسه يتجاوز افتراضي الشريحة — استُخدم لموعد انتهاء
-تجربة Sportmonks لأن المالك طلب 3 أيام تحديداً («ذكّرني قبل الانتهاء بثلاثة
-أيام لأفعلها قبل يوم») والتكرار اليومي يضمن بلوغ «قبل يوم».
+  P1 — مال أو فقدان بيانات لا يُعوَّض (اشتراك يتجدّد، رصيد ينفد).
+       تنبيها 3 و2، ويبقى ⛔ متأخراً أسبوعاً بعد الموعد. لماذا محدود لا
+       أبدي: تذكير لا ينطفئ يُدرِّب العين على تجاهل كتلة المواعيد كلها،
+       فيُخفي P1 التالي — إرهاق الإنذار، أخو العطل الصامت.
+  P2 — قرار أو حكم مجدول (حكم تجربة، تقرير مرحلي). تنبيها 3 و2، ويصمت
+       بعد يوم من الموعد.
+  P3 — روتيني/معلوماتي. تنبيها 3 و2، ويصمت يوم الموعد.
+
+ملاحظة صريحة على الجدول: بهذا الضبط **لا يصلك شيء يومَي T-1 وT-0** — هذا
+حرفياً ما طلبه المالك (يتصرّف قبل يومين)، ومذكور هنا كي لا يُقرأ الصمت
+في اليومين الأخيرين على أنه عطل.
+
+مواعيد بلا تاريخ أو بلا سعر لا تُخمَّن أبداً: تُدرَج في كتلة «بيانات ناقصة»
+تظهر في النشرة حتى يملأها المالك. اختلاق تاريخ تجديد أو سعر أسوأ من الفراغ.
 
 عقيدة هذا الملف (نفس عقيدة api_guard/deadman): **صفر نداءات API**، يقرأ ملف
 JSON على القرص فقط، ولا يكسر أي تشغيلة مهما حدث. لا يمسّ أي محرك ولا أي
@@ -41,8 +48,11 @@ import api_guard
 
 REMINDERS_FILE = Path("reminders.json")
 
-# مهلة التنبيه الافتراضية لكل شريحة (بالأيام) — ضمن مدى المالك 3-5
-LEAD_DAYS = {"P1": 5, "P2": 4, "P3": 3}
+# أيام التنبيه قبل الموعد (أمر المالك: «قبل ثلاثة أيام، وقبل يومين»)
+REMIND_AT = (3, 2)
+
+# يبقى للتوافق: أقصى تنبيه مسبق، يُشتق من REMIND_AT
+LEAD_DAYS = {"P1": max(REMIND_AT), "P2": max(REMIND_AT), "P3": max(REMIND_AT)}
 
 # كم يوماً يبقى التذكير بعد فوات الموعد قبل أن يصمت
 GRACE_DAYS = {"P1": 7, "P2": 1, "P3": 0}
@@ -62,8 +72,8 @@ def load_deadlines(path: Path = None) -> list:
         return []
     out = []
     for d in (raw.get("deadlines") or []):
-        if isinstance(d, dict) and d.get("id") and d.get("due"):
-            out.append(d)
+        if isinstance(d, dict) and d.get("id"):
+            out.append(d)          # بلا تاريخ = بانتظار بيانات، لا مُستبعَد
     return out
 
 
@@ -76,13 +86,23 @@ def _days_left(due: str, today: datetime):
     return (d.date() - today.date()).days
 
 
+def _offsets(item: dict) -> tuple:
+    """أيام التنبيه لهذا الموعد: ما نصّ عليه، وإلا الافتراضي (3 ثم 2)."""
+    raw = item.get("remind_at")
+    if isinstance(raw, (list, tuple)) and raw:
+        try:
+            return tuple(sorted({max(int(x), 0) for x in raw}, reverse=True))
+        except (TypeError, ValueError):
+            pass
+    try:                       # دعم lead_days القديم: يعني «كل يوم حتى الموعد»
+        return tuple(range(int(item["lead_days"]), -1, -1))
+    except (KeyError, TypeError, ValueError):
+        return REMIND_AT
+
+
 def _lead(item: dict) -> int:
-    """مهلة هذا الموعد: ما نصّ عليه، وإلا افتراضي شريحته."""
-    try:
-        lead = int(item.get("lead_days"))
-    except (TypeError, ValueError):
-        lead = LEAD_DAYS.get(item.get("priority"), LEAD_DAYS["P3"])
-    return max(lead, 0)
+    """أقصى تنبيه مسبق لهذا الموعد (أول يوم يُسمع فيه)."""
+    return max(_offsets(item))
 
 
 def is_due(item: dict, today: datetime) -> bool:
@@ -97,7 +117,7 @@ def is_due(item: dict, today: datetime) -> bool:
     if left is None:
         return False
     if left >= 0:
-        return left <= _lead(item)
+        return left in _offsets(item)
     grace = GRACE_DAYS.get(item.get("priority"), 0)
     return True if grace is None else -left <= grace
 
@@ -117,25 +137,79 @@ def due_reminders(today: datetime = None, path: Path = None) -> list:
     return out
 
 
+def _arabic_days(n: int) -> str:
+    """صيغة العدد بالعربية الصحيحة: مثنّى وجمع قلة وتمييز مفرد منصوب.
+    «2 أيام» ليست عربية — والنشرة تُقرأ على الهاتف، فركاكتها تُلاحَظ."""
+    if n == 1:
+        return "يوم واحد"
+    if n == 2:
+        return "يومين"
+    if 3 <= n <= 10:
+        return f"{n} أيام"
+    return f"{n} يوماً"
+
+
 def reminder_line(item: dict) -> str:
     """سطر تذكير واحد للنشرة — يقول الموعد والمتبقي والإجراء المطلوب."""
     left = item.get("days_left")
     if left is None:
         when = ""
     elif left > 1:
-        when = f"بعد {left} أيام"
+        when = f"بعد {_arabic_days(left)}"
     elif left == 1:
         when = "غداً"
     elif left == 0:
         when = "**اليوم**"
     else:
-        when = f"⛔ فات الموعد منذ {-left} يوم"
+        when = f"⛔ فات الموعد منذ {_arabic_days(-left)}"
     mark = PRIORITY_MARK.get(item.get("priority"), "🔵")
-    line = (f"{mark} {item.get('priority', 'P3')} — {item.get('title')}: "
-            f"{when} ({item.get('due')})")
+    # اسم الخدمة وسعرها في كل رسالة (أمر المالك): الموعد وحده لا يكفي
+    # ليقرّر — يحتاج أن يعرف **ما** يتجدّد و**بكم** دون فتح أي ملف.
+    head = item.get("service") or ""
+    if item.get("price"):
+        head += f" ({item['price']})"
+    head = f"{head}: " if head else ""
+    line = (f"{mark} {item.get('priority', 'P3')} — {head}"
+            f"{item.get('title')}: {when} ({item.get('due')})")
     if item.get("action"):
         line += f"\n   ⇦ {item['action']}"
     return line
+
+
+def pending_input(path: Path = None) -> list:
+    """مواعيد لا نعرف تاريخها أو سعرها — تُعرَض ولا تُخمَّن.
+
+    اختلاق تاريخ تجديد أو سعر اشتراك أسوأ من الفراغ بكثير: الفراغ يُسأل عنه،
+    والرقم المختلق يُبنى عليه قرار مالي. تبقى هذه الكتلة في النشرة حتى يملأها
+    المالك، فهي نفسها تذكير دائم بأن السجل ناقص.
+    """
+    out = []
+    for item in load_deadlines(path):
+        if str(item.get("status", "open")).lower() == "done":
+            continue
+        missing = []
+        if _days_left(item.get("due"), now_utc()) is None:
+            missing.append("تاريخ التجديد")
+        if item.get("billable") and not item.get("price"):
+            missing.append("السعر")
+        if missing:
+            row = dict(item)
+            row["missing"] = missing
+            out.append(row)
+    return out
+
+
+def pending_lines(path: Path = None) -> str:
+    """كتلة «بيانات ناقصة» للنشرة — فارغة حين يكتمل السجل."""
+    rows = pending_input(path)
+    if not rows:
+        return ""
+    out = ["⚠️ سجل الاشتراكات ناقص — لا أخمّن تاريخاً ولا سعراً:"]
+    for r in rows:
+        name = r.get("service") or r.get("title") or r["id"]
+        out.append(f"   • {name}: ينقصه {' و'.join(r['missing'])}"
+                   + (f" — {r['action']}" if r.get("action") else ""))
+    return "\n".join(out)
 
 
 def reminder_lines(today: datetime = None, path: Path = None) -> str:
@@ -145,9 +219,14 @@ def reminder_lines(today: datetime = None, path: Path = None) -> str:
     أن يظهر دائماً ما دامت التجربة نشطة — هناك الاختفاء كان يخفي عطلاً.)
     """
     rows = due_reminders(today, path)
-    if not rows:
-        return ""
-    return "📅 مواعيد قادمة:\n" + "\n".join(reminder_line(r) for r in rows)
+    blocks = []
+    if rows:
+        blocks.append("📅 مواعيد قادمة:\n"
+                      + "\n".join(reminder_line(r) for r in rows))
+    gaps = pending_lines(path)
+    if gaps:
+        blocks.append(gaps)
+    return "\n".join(blocks)
 
 
 def fire(today: datetime = None, path: Path = None) -> int:

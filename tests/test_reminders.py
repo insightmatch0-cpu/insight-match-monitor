@@ -78,7 +78,9 @@ class TestGracePeriods(unittest.TestCase):
         p3 = {"id": "b", "due": "2026-08-24", "priority": "P3"}
         self.assertTrue(R.is_due(p2, _day("2026-08-25")))
         self.assertFalse(R.is_due(p2, _day("2026-08-26")))
-        self.assertTrue(R.is_due(p3, _day("2026-08-24")))
+        # P3 افتراضاً على 3 و2 كبقية الشرائح: صامت يوم الموعد وبعده
+        self.assertTrue(R.is_due(p3, _day("2026-08-22")))
+        self.assertFalse(R.is_due(p3, _day("2026-08-24")))
         self.assertFalse(R.is_due(p3, _day("2026-08-25")))
 
     def test_closed_deadline_is_always_silent(self):
@@ -117,7 +119,7 @@ class TestRobustness(unittest.TestCase):
 
     def test_nearest_deadline_comes_first(self):
         f = _file([{"id": "far", "due": "2026-08-26", "priority": "P1"},
-                   {"id": "near", "due": "2026-08-24", "priority": "P2"}])
+                   {"id": "near", "due": "2026-08-25", "priority": "P2"}])
         try:
             rows = R.due_reminders(_day("2026-08-23"), f)
             self.assertEqual([r["id"] for r in rows], ["near", "far"])
@@ -227,8 +229,11 @@ class TestRegisteredDeadlines(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)), "معرّف مكرر")
         for it in self.items:
             self.assertIn(it.get("priority"), R.LEAD_DAYS, it["id"])
-            self.assertIsNotNone(R._days_left(it["due"], R.now_utc()), it["id"])
             self.assertTrue(it.get("action"), it["id"])
+            self.assertTrue(it.get("service"), it["id"])
+            if it.get("due"):        # الصفوف بلا تاريخ مقصودة (بيانات ناقصة)
+                self.assertIsNotNone(
+                    R._days_left(it["due"], R.now_utc()), it["id"])
 
     def test_trial_expiry_reminds_three_days_ahead(self):
         """طلب المالك الحرفي: قبل الانتهاء بثلاثة أيام."""
@@ -247,6 +252,66 @@ class TestRegisteredDeadlines(unittest.TestCase):
 
     def test_shadow_window_constant_matches_the_extension(self):
         self.assertEqual(P.XG_SHADOW_DAYS, 35)
+
+
+class TestGenericSubscriptionRegister(unittest.TestCase):
+    """أمر المالك: النظام لكل واجهة نستعملها، لا لـ Sportmonks وحدها."""
+
+    def setUp(self):
+        self.path = Path(__file__).resolve().parent.parent / "reminders.json"
+        self.items = R.load_deadlines(self.path)
+
+    def test_every_paid_dependency_has_a_row(self):
+        services = " ".join(i.get("service", "") for i in self.items)
+        for dep in ("Sportmonks", "API-Football", "Claude"):
+            self.assertIn(dep, services, f"واجهة بلا صف في السجل: {dep}")
+
+    def test_subscriptions_alert_three_then_two_days_ahead(self):
+        """جدول المالك الحرفي للاشتراكات: قبل 3 أيام، ثم قبل يومين."""
+        for it in self.items:
+            if not it.get("billable") or not it.get("due"):
+                continue
+            self.assertEqual(R._offsets(it), (3, 2), it["id"])
+
+    def test_every_reminder_carries_service_name_and_price(self):
+        """«with the price with the name of the application» — في كل رسالة."""
+        for it in self.items:
+            if not it.get("due"):
+                continue
+            row = dict(it, days_left=3)
+            line = R.reminder_line(row)
+            self.assertIn(it["service"], line, it["id"])
+            if it.get("price"):
+                self.assertIn(it["price"], line, it["id"])
+
+    def test_unknown_date_or_price_is_asked_never_invented(self):
+        """اختلاق تاريخ تجديد أو سعر أسوأ من الفراغ — يُسأل عنه ولا يُخمَّن."""
+        pending = {r["id"]: r["missing"] for r in R.pending_input(self.path)}
+        self.assertIn("api_football_renewal", pending)
+        self.assertIn("claude_subscription_renewal", pending)
+        for miss in pending.values():
+            self.assertTrue(miss)
+        block = R.pending_lines(self.path)
+        self.assertIn("لا أخمّن", block)
+        self.assertIn("API-Football", block)
+
+    def test_pending_block_disappears_once_filled(self):
+        f = _file([{"id": "x", "service": "خدمة", "price": "€1",
+                    "billable": True, "due": "2026-12-01", "priority": "P1"}])
+        try:
+            self.assertEqual(R.pending_input(f), [])
+            self.assertEqual(R.pending_lines(f), "")
+        finally:
+            f.unlink(missing_ok=True)
+
+    def test_arabic_number_agreement(self):
+        """النشرة تُقرأ على الهاتف — «2 أيام» ليست عربية."""
+        self.assertEqual(R._arabic_days(2), "يومين")
+        self.assertEqual(R._arabic_days(3), "3 أيام")
+        self.assertEqual(R._arabic_days(11), "11 يوماً")
+        row = {"service": "س", "title": "ت", "due": "2026-08-26",
+               "priority": "P1", "days_left": 2}
+        self.assertIn("بعد يومين", R.reminder_line(row))
 
 
 if __name__ == "__main__":
