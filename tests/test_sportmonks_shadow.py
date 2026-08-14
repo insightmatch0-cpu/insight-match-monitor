@@ -264,5 +264,329 @@ class TestDigestVisibility(unittest.TestCase):
         self.assertIn("sportmonks_shadow_line()", src)
 
 
+# ============ اختبارات الانحدار: إنقاذ تجربة xG (14 أغسطس 2026) ============
+# العطل: المجمّع عمل من 13 أغسطس وجمع صفر مباراة (295 مُفلتة، 0 مطابقة) بينما
+# سطر النشرة يختفي تماماً — عطل صامت كامل. هذه الاختبارات تحرس الطبقات الثلاث
+# التي منعت رؤيته: التشخيص، والإنذار، والرؤية اليومية.
+
+class TestProbeMode(unittest.TestCase):
+    """وضع --probe: يقول الحقيقة كاملة في سجل Actions، وبلا مفتاح في المخرَج."""
+
+    FAKE_KEY = "sk-سرّ-تجريبي-لا-يجوز-أن-يُطبع-9f3a2b"
+
+    def _run_probe(self, request_stub, day="2026-08-11", ours=None, key=None):
+        """يشغّل المسبار بردّ مُحاكى ويرجع (المخرَج، هل كُتب ملف الظل)."""
+        import contextlib
+        import io as _io
+        orig = (S._request, S.KEY, S.V2_FILE, S.SHADOW_FILE)
+        tmp_v2 = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp_v2.write_text(json.dumps({"resolved": ours or []}), encoding="utf-8")
+        tmp_shadow = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp_shadow.unlink()          # يجب ألا يُنشأ: المسبار قراءة محضة
+        S._request = request_stub
+        S.KEY = self.FAKE_KEY if key is None else key
+        S.V2_FILE, S.SHADOW_FILE = tmp_v2, tmp_shadow
+        buf = _io.StringIO()
+        try:
+            with contextlib.redirect_stdout(buf):
+                S.probe(day)
+        finally:
+            S._request, S.KEY, S.V2_FILE, S.SHADOW_FILE = orig
+            tmp_v2.unlink(missing_ok=True)
+            wrote = tmp_shadow.exists()
+            tmp_shadow.unlink(missing_ok=True)
+        return buf.getvalue(), wrote
+
+    @staticmethod
+    def _body(fixtures, has_more=False, message=None):
+        return {"data": fixtures,
+                "pagination": {"has_more": has_more, "count": len(fixtures)},
+                "message": message,
+                "subscription": [{"plans": [{"plan": "Growth - Trialing",
+                                             "sport": "Football",
+                                             "category": "Advanced"}],
+                                  "bundles": [{"bundle": "Pressure Index & xG",
+                                               "category": "Pressure"}]}]}
+
+    @staticmethod
+    def _fx(home, away, xh=None, xa=None, league_id=8):
+        """مباراة سبورتمونكس؛ بلا xG حين لا تُمرَّر القيم (حالة العطل الحقيقية)."""
+        xg = []
+        if xh is not None:
+            xg = [{"type_id": S.XG_TYPE_ID, "location": "home",
+                   "data": {"value": xh}},
+                  {"type_id": S.XG_TYPE_ID, "location": "away",
+                   "data": {"value": xa}}]
+        return {"name": f"{home} vs {away}", "league_id": league_id,
+                "xgfixture": xg}
+
+    def test_prints_status_counts_and_xg_split_per_page(self):
+        """لكل صفحة: رمز HTTP، عدد المباريات، وكم منها بـxG وكم بلا."""
+        page1 = [self._fx("Arsenal", "Fulham", 2.6, 0.8),
+                 self._fx("Kairat", "Levski Sofia")]
+        def stub(path, params):
+            return (200, self._body(page1)) if params.get("page") == 1 \
+                else (200, self._body([]))
+        out, wrote = self._run_probe(stub)
+        self.assertIn("صفحة 1", out)
+        self.assertIn("HTTP 200", out)
+        self.assertIn("بـxG 1", out)
+        self.assertIn("بلا xG 1", out)
+        self.assertIn("📊 الإجمالي", out)
+        self.assertFalse(wrote)      # قراءة محضة: صفر كتابة
+
+    def test_never_prints_the_key(self):
+        """قاعدة الأسرار 3: لا المفتاح ولا أي جزء منه في أي مخرَج، مهما حدث."""
+        def stub(path, params):
+            return 403, {"message": "Forbidden"}
+        out, _ = self._run_probe(stub)
+        self.assertNotIn(self.FAKE_KEY, out)
+        for chunk in (self.FAKE_KEY[:8], self.FAKE_KEY[8:16], "9f3a2b"):
+            self.assertNotIn(chunk, out)
+        self.assertIn("HTTP 403", out)          # الحالة تُقال، السرّ لا
+
+    def test_network_exception_prints_type_only(self):
+        """استثناء الشبكة: نوعه فقط — نصّه قد يحمل ما لا نريد تسريبه."""
+        def stub(path, params):
+            return None, {"_exception": "ConnectionError"}
+        out, _ = self._run_probe(stub)
+        self.assertIn("ConnectionError", out)
+        self.assertNotIn(self.FAKE_KEY, out)
+
+    def test_prints_sample_names_from_both_sides(self):
+        """10 أسماء من كل جانب لفحص المطابقة بالعين."""
+        ours = [{"date": "2026-08-11", "score": "1-0", "home": "Kairat Almaty",
+                 "away": "Levski Sofia", "league": "UEFA Champions League"}]
+        def stub(path, params):
+            return (200, self._body([self._fx("Kairat", "Levski Sofia")])) \
+                if params.get("page") == 1 else (200, self._body([]))
+        out, _ = self._run_probe(stub, ours=ours)
+        self.assertIn("عيّنة أسماء سبورتمونكس", out)
+        self.assertIn("عيّنة أسماء محركاتنا", out)
+        self.assertIn("Kairat Almaty", out)          # جانبنا
+        self.assertIn("UEFA Champions League", out)
+
+    def test_separates_coverage_failure_from_matching_failure(self):
+        """التشخيص الحاسم: نظير بالاسم موجود لكن بلا xG ⇐ تغطية لا مطابقة."""
+        ours = [{"date": "2026-08-11", "score": "1-0", "home": "Kairat Almaty",
+                 "away": "Levski Sofia", "league": "UEFA Champions League"}]
+        def stub(path, params):
+            return (200, self._body([self._fx("Kairat", "Levski Sofia")])) \
+                if params.get("page") == 1 else (200, self._body([]))
+        out, _ = self._run_probe(stub, ours=ours)
+        self.assertIn("1 لها نظير بالاسم", out)
+        self.assertIn("0 منها يحمل xG", out)
+        self.assertIn("بلا xG", out)
+        self.assertIn("لا المطابقة", out)
+
+    def test_reports_subscription_bundles(self):
+        """ملخص الاشتراك يفصل «الباقة بلا xG» عن «دورياتنا خارج الباقة»."""
+        def stub(path, params):
+            return 200, self._body([self._fx("Arsenal", "Fulham", 2.6, 0.8)])
+        out, _ = self._run_probe(stub)
+        self.assertIn("Growth", out)
+        self.assertIn("Pressure Index & xG", out)
+
+    def test_no_key_skips_cleanly(self):
+        def stub(path, params):
+            raise AssertionError("لا يجوز نداء الشبكة بلا مفتاح")
+        out, wrote = self._run_probe(stub, key="")
+        self.assertIn("لا مفتاح", out)
+        self.assertFalse(wrote)
+
+    def test_probe_wired_into_cli_and_workflow(self):
+        """المسبار قابل للتشغيل من Actions — وإلا بقيت الحقيقة بعيدة عنا."""
+        src = Path(S.__file__).read_text(encoding="utf-8")
+        self.assertIn('"--probe" in sys.argv', src)
+        yml = (Path(__file__).resolve().parent.parent
+               / ".github" / "workflows" / "xg_probe.yml").read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch", yml)
+        self.assertIn("sportmonks_shadow.py --probe", yml)
+        self.assertIn("SPORTMONKS_KEY", yml)
+        self.assertIn("contents: read", yml)     # لا كتابة في المستودع
+
+
+class TestZeroCollectionAlarm(unittest.TestCase):
+    """الدرس المعمّم من عطل 14 أغسطس: صفر مدخلات يومين متتاليين = صراخ."""
+
+    class _Guard:
+        """بديل api_guard يسجّل ما أُرسل بدل إرساله."""
+        def __init__(self, boom=False):
+            self.sent, self.boom = [], boom
+
+        def alert_once(self, kind, text):
+            if self.boom:
+                raise RuntimeError("انفجار متعمد")
+            self.sent.append((kind, text))
+            return True
+
+    def _with_guard(self, guard, fn):
+        orig = S.api_guard
+        S.api_guard = guard
+        try:
+            return fn()
+        finally:
+            S.api_guard = orig
+
+    def test_one_zero_day_stays_quiet(self):
+        """يوم واحد بصفر ليس عطلاً — الإنذار المبكر إنذار كاذب."""
+        guard = self._Guard()
+        meta = {}
+        sent = self._with_guard(
+            guard, lambda: S._maybe_alert_zero(meta, 295, 0, "2026-08-13"))
+        self.assertFalse(sent)
+        self.assertEqual(meta["zero_streak"], 1)
+        self.assertEqual(guard.sent, [])
+
+    def test_two_consecutive_zero_days_alert(self):
+        guard = self._Guard()
+        meta = {"total": 0}
+        self._with_guard(
+            guard, lambda: S._maybe_alert_zero(meta, 295, 0, "2026-08-13"))
+        sent = self._with_guard(
+            guard, lambda: S._maybe_alert_zero(meta, 288, 0, "2026-08-14"))
+        self.assertTrue(sent)
+        self.assertEqual(meta["zero_streak"], S.ZERO_STREAK_ALERT)
+        self.assertEqual(len(guard.sent), 1)
+        kind, text = guard.sent[0]
+        self.assertEqual(kind, "xg_shadow_zero")
+        self.assertIn("صفر", text)
+        self.assertIn("288", text)          # كم عُرض على المطابقة
+        self.assertIn("--probe", text)      # الخطوة التالية صريحة
+
+    def test_a_matched_day_resets_the_streak(self):
+        guard = self._Guard()
+        meta = {}
+        self._with_guard(
+            guard, lambda: S._maybe_alert_zero(meta, 295, 0, "2026-08-13"))
+        self._with_guard(
+            guard, lambda: S._maybe_alert_zero(meta, 120, 9, "2026-08-14"))
+        self.assertEqual(meta["zero_streak"], 0)
+        self.assertEqual(guard.sent, [])
+
+    def test_idle_day_never_counts_as_zero(self):
+        """يوم بلا مباريات مقيَّمة أصلاً يوم هادئ لا عطل (القاعدة 5-أ)."""
+        guard = self._Guard()
+        meta = {}
+        self._with_guard(
+            guard, lambda: S._maybe_alert_zero(meta, 0, 0, "2026-08-13"))
+        self.assertEqual(meta.get("zero_streak", 0), 0)
+        self.assertNotIn("zero_last_day", meta)
+
+    def test_same_day_rerun_does_not_double_count(self):
+        """التشغيلة الاحتياطية لا ترفع العدّاد مرتين في اليوم نفسه."""
+        guard = self._Guard()
+        meta = {}
+        for _ in range(3):
+            self._with_guard(
+                guard, lambda: S._maybe_alert_zero(meta, 295, 0, "2026-08-13"))
+        self.assertEqual(meta["zero_streak"], 1)
+        self.assertEqual(guard.sent, [])
+
+    def test_alert_failure_never_breaks_the_collector(self):
+        """فشل الإنذار لا يجوز أن يصير عطلاً ثانياً."""
+        meta = {}
+        for day in ("2026-08-13", "2026-08-14"):
+            sent = self._with_guard(
+                self._Guard(boom=True),
+                lambda: S._maybe_alert_zero(meta, 295, 0, day))
+        self.assertFalse(sent)              # لا استثناء يخرج
+
+    def test_missing_guard_module_is_tolerated(self):
+        """غياب api_guard لا يسقط المجمّع — الاستيراد محروس."""
+        meta = {}
+        for day in ("2026-08-13", "2026-08-14"):
+            sent = self._with_guard(
+                None, lambda: S._maybe_alert_zero(meta, 295, 0, day))
+        self.assertFalse(sent)
+        self.assertEqual(meta["zero_streak"], 2)
+
+    def test_alert_text_carries_no_secret(self):
+        meta = {"zero_streak": 2, "zero_last_day": "2026-08-14", "total": 0}
+        text = S.zero_alert_text(meta, 295)
+        self.assertNotIn(S.KEY or "«لا مفتاح»", text)
+        self.assertNotIn("Authorization", text)
+
+    def test_alarm_wired_into_main(self):
+        src = inspect.getsource(S.main)
+        self.assertIn("_maybe_alert_zero(", src)
+
+
+class TestZeroVisibility(unittest.TestCase):
+    """**اختفاء السطر هو ما أخفى العطل** — تجربة نشطة بصفر تقول «0» بصوت."""
+
+    def _line(self, meta):
+        orig = P.load_json
+        P.load_json = lambda path, default: {"meta": meta}
+        try:
+            return P.sportmonks_shadow_line()
+        finally:
+            P.load_json = orig
+
+    def test_zero_collection_still_shows_a_line(self):
+        """الانحدار الحقيقي: total=0 كان يُخفي السطر تماماً طوال 13 أغسطس."""
+        line = self._line({"started": "2026-08-13", "total": 0,
+                           "last_day_matched": 0, "last_day_unmatched": 295,
+                           "zero_streak": 2})
+        self.assertNotEqual(line, "")
+        self.assertIn("ظل xG", line)
+        self.assertIn("0 مباراة", line)
+        self.assertIn("295", line)
+        self.assertIn("صفر جمع", line)
+        self.assertIn("probe", line)
+        self.assertIn("2 يوم متتالٍ", line)
+
+    def test_silent_only_before_the_experiment_started(self):
+        """الصمت مسموح في حالة واحدة: تجربة لم تبدأ أصلاً."""
+        self.assertEqual(self._line({}), "")
+
+
+class TestLatinFolding(unittest.TestCase):
+    """طيّ الحروف التي لا تفكّكها NFKD — تصحيح رمز، لا توسيع مطابقة.
+
+    دليل مقاس (مسبار 14 أغسطس على الرد الحقيقي ليوم 11 أغسطس): من 3 مباريات
+    مشمولة بالباقة، سقطت 2 على طبقة المطابقة — إحداهما «Bodø / Glimt» لأن
+    الـ ø كانت تُحذف صامتة. الحاجز الثاني بعد التغطية، ولا بد أن يسقط قبل أن
+    تبدأ الدوريات المشمولة (الدوري السعودي 13 أغسطس، الإنجليزي 21 أغسطس).
+    """
+
+    def test_undecomposable_letters_no_longer_vanish(self):
+        self.assertEqual(sorted(S._norm_tokens("Bodø / Glimt")),
+                         ["bodo", "glimt"])
+        self.assertTrue(S.names_match("Bodo/Glimt", "Bodø / Glimt"))
+
+    def test_common_european_spellings_match(self):
+        for ours, theirs in [("Zaglebie Lubin", "Zagłębie Lubin"),
+                             ("Preussen", "Preußen"),
+                             ("Djurgardens IF", "Djurgårdens IF"),
+                             ("Odense Boldklub", "Ødense Boldklub")]:
+            self.assertTrue(S.names_match(ours, theirs), f"{ours} ↔ {theirs}")
+
+    def test_known_remaining_gap_is_documented_not_papered_over(self):
+        """حدّ معروف باقٍ عمداً: أعراف النقل (Å↔aa، ü↔ue) وألقاب الأندية
+        (AGF↔Aarhus). علاجها يحتاج جدول أسماء مرادفة لا مطابقة أفضل —
+        وتوسيع المطابقة لالتقاطها كان سيولّد أزواجاً خاطئة. يُقاس ولا يُرقّع."""
+        self.assertFalse(S.names_match("Aalborg BK", "Ålborg BK"))
+        self.assertFalse(S.names_match("Aarhus", "AGF"))
+
+    def test_folding_never_creates_false_pairs(self):
+        """الشرط الحاكم: بيانات خاطئة أسوأ من لا بيانات — لا زوج خاطئ جديد."""
+        for a, b in [("Manchester United", "Manchester City"),
+                     ("Al Hilal", "Al Nassr"),
+                     ("Aarhus", "AGF"),          # لقب مختلف: يبقى بلا مطابقة
+                     ("Real Madrid", "Real Sociedad"),
+                     ("Bodø / Glimt", "Bodø / Draugen")]:
+            self.assertFalse(S.names_match(a, b), f"{a} ↔ {b}")
+
+    def test_existing_umlaut_convention_untouched(self):
+        """لم نمسّ ä/ö/ü: NFKD يكفيها، وتغيير عرفها كان سيكسر مطابقة قائمة."""
+        self.assertTrue(S.names_match("Bayern München", "Bayern Munchen"))
+        self.assertTrue(S.names_match("Malmo FF", "Malmö FF"))
+
+    def test_empty_and_suffix_only_still_never_match(self):
+        self.assertFalse(S.names_match("", "Arsenal"))
+        self.assertFalse(S.names_match("FC", "SC"))
+
+
 if __name__ == "__main__":
     unittest.main()

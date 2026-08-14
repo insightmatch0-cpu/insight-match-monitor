@@ -1,0 +1,42 @@
+# 🔬 مسبار تشخيص ظل xG — تشغيل يدوي فقط (عطل صفر الجمع، 13 أغسطس 2026).
+#
+# سبب الوجود: مفتاح Sportmonks في GitHub Secrets ولا يصل إلى أحد، فالطريقة
+# الوحيدة لرؤية ما يرجعه المزوّد فعلاً هي طباعته في سجل Actions.
+#
+# workflow مستقل عمداً لا خطوة داخل predict_v2: التشخيص يدوي وعلى الطلب،
+# ولا يجوز أن يضيف ولو ثانية واحدة أو نداءً واحداً إلى التشغيلة الصباحية.
+# قراءة محضة: لا يكتب أي ملف، ولا يلتزم (commit) بشيء، وصفر تأثير على أي محرك.
+name: 🔬 xG Shadow Probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "اليوم المراد فحصه (YYYY-MM-DD) — اتركه فارغاً ليفحص أمس"
+        required: false
+        type: string
+
+# قراءة فقط: المسبار لا يكتب في المستودع إطلاقاً
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      # المفتاح يصل عبر البيئة إلى الترويسة فقط ولا يُطبع أبداً (قاعدة الأسرار 3)
+      - name: Run xG probe
+        env:
+          SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
+        run: python sportmonks_shadow.py --probe ${{ inputs.day }}
