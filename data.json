@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-14T23:16:29.101686+00:00",
+ "updated": "2026-08-14T23:32:54.659957+00:00",
  "live": [
   {
    "fid": "1610936",
@@ -3661,12 +3661,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 325,
-   "hit": 291
+   "fired": 349,
+   "hit": 313
   },
   "amber": {
-   "fired": 219,
-   "hit": 81
+   "fired": 235,
+   "hit": 87
   },
   "alerts": {
    "flip": {
@@ -3674,8 +3674,8 @@
     "hit": 1
    },
    "equalizer": {
-    "fired": 8,
-    "hit": 1
+    "fired": 11,
+    "hit": 2
    },
    "goal": {
     "fired": 1,
@@ -3688,6 +3688,57 @@
    "red_advantage": {
     "fired": 2,
     "hit": 1
+   }
+  },
+  "season": {
+   "red": {
+    "fired": 25,
+    "hit": 23
+   },
+   "amber": {
+    "fired": 16,
+    "hit": 6
+   },
+   "alerts": {
+    "equalizer": {
+     "fired": 3,
+     "hit": 1
+    },
+    "next_goal": {
+     "fired": 1,
+     "hit": 0
+    }
+   },
+   "start": "2026-08-13"
+  },
+  "top_only": {
+   "red": {
+    "fired": 5,
+    "hit": 5
+   },
+   "amber": {
+    "fired": 4,
+    "hit": 0
+   },
+   "alerts": {},
+   "season": {
+    "red": {
+     "fired": 5,
+     "hit": 5
+    },
+    "amber": {
+     "fired": 4,
+     "hit": 0
+    },
+    "alerts": {},
+    "start": "2026-08-13"
+   },
+   "min_sample": 20,
+   "daily_warnings": {
+    "2026-08-14": {
+     "hit": 5,
+     "total": 9
+    }
    }
   },
   "silenced": [],
@@ -3728,6 +3779,10 @@
    "2026-08-13": {
     "hit": 31,
     "total": 50
+   },
+   "2026-08-14": {
+    "hit": 28,
+    "total": 40
    }
   }
  },

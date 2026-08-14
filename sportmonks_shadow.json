@@ -1,12 +1,46 @@
 {
- "fixtures": [],
- "teams": {},
+ "fixtures": [
+  {
+   "fid": "1602972",
+   "date": "2026-08-13",
+   "home": "Abha",
+   "away": "Al-Hazm",
+   "sm_home": "Abha",
+   "sm_away": "Al Hazm",
+   "xg_home": 0.5164,
+   "xg_away": 1.4747000000000001,
+   "result": "away",
+   "score": "1-2",
+   "v2_pick": "away",
+   "v2_correct": true,
+   "v1_pick": "home",
+   "top": true,
+   "xgform_pick": null,
+   "xgform_correct": null
+  }
+ ],
+ "teams": {
+  "abha": [
+   {
+    "date": "2026-08-13",
+    "xf": 0.5164,
+    "xa": 1.4747000000000001
+   }
+  ],
+  "al hazm": [
+   {
+    "date": "2026-08-13",
+    "xf": 1.4747000000000001,
+    "xa": 0.5164
+   }
+  ]
+ },
  "meta": {
   "started": "2026-08-13",
-  "updated": "2026-08-13T04:35:53.487028+00:00",
-  "last_day_matched": 0,
-  "last_day_unmatched": 295,
-  "total": 0,
+  "updated": "2026-08-14T23:32:53.317313+00:00",
+  "last_day_matched": 1,
+  "last_day_unmatched": 225,
+  "total": 1,
   "xgform": {
    "n": 0,
    "correct": 0
