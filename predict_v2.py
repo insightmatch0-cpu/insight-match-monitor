@@ -2158,7 +2158,11 @@ def sportmonks_shadow_line() -> str:
     (تأخير يوم واحد مقصود ومقبول — صفر تأثير على المحرك)."""
     shadow = load_json(Path("sportmonks_shadow.json"), {}) or {}
     meta = shadow.get("meta") or {}
-    if not meta.get("total"):
+    # المعيار هو **بدء التجربة** لا وجود بيانات (إصلاح 14 أغسطس): كان الشرط
+    # `not meta.get("total")` فاختفى السطر تماماً طوال 13 أغسطس بينما التجربة
+    # تجمع صفراً — فبدت كأنها لم تبدأ بعد. **اختفاء السطر هو ما أخفى العطل**؛
+    # تجربة نشطة بصفر مباراة يجب أن تقول «0» بصوت عالٍ، لا أن تصمت.
+    if not meta.get("started"):
         return ""
     try:
         started = datetime.strptime(meta.get("started", ""), "%Y-%m-%d")
@@ -2169,6 +2173,12 @@ def sportmonks_shadow_line() -> str:
             f"{meta.get('last_day_matched', 0)} ومُفلت "
             f"{meta.get('last_day_unmatched', 0)}؛ "
             f"الإجمالي {meta.get('total', 0)} مباراة موثقة")
+    if not meta.get("total"):
+        # صفر جمع لا يُقرأ كـ«يوم هادئ»: يُوسم صراحةً ومعه الخطوة التالية
+        line += " ⚠️ صفر جمع — شغّل مسبار --probe"
+        streak = meta.get("zero_streak") or 0
+        if streak:
+            line += f" ({streak} يوم متتالٍ)"
     xf = meta.get("xgform") or {}
     if xf.get("n"):
         line += f" | فورمة xG: {xf.get('correct', 0)}/{xf['n']}"
