@@ -33,6 +33,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import api_guard
+import reminders
 
 HISTORY_FILE = Path("history.json")
 
@@ -96,6 +97,16 @@ def main() -> None:
         print("الحارس الخارجي: مُعطَّل بمفتاح التراجع.")
         return
     now = now_utc()
+    # 📅 تذكيرات المواعيد من هنا أيضاً وليس من النشرة وحدها: هذه التشغيلة
+    # مستقلة عن المحركين وتبقى حية حين يسقطان — وموعد اشتراك يفوت لأن المحرك
+    # كان ميتاً هو بالضبط عطل 14 أغسطس مكرَّراً. مانع التكرار يجعل النداء
+    # المزدوج بلا أثر: رسالة واحدة لكل موعد في اليوم.
+    try:
+        fired = reminders.fire(now)
+        if fired:
+            print(f"الحارس الخارجي: أُرسل {fired} تذكير موعد.")
+    except Exception as e:                       # pragma: no cover - دفاعي
+        print("تعذر إرسال التذكيرات:", type(e).__name__)
     today = now.strftime("%Y-%m-%d")
     progress = history_progress()
     state = api_guard.load_state()

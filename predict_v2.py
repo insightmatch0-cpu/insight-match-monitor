@@ -27,6 +27,7 @@ from pathlib import Path
 import requests
 
 import api_guard
+import reminders
 from api_guard import ApiRefused        # noqa: F401 — يُعاد تصديره للاختبارات
 
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
@@ -2151,6 +2152,11 @@ def drama_scoreboard_line() -> str:
     return "\n".join(lines)
 
 
+# طول نافذة تجربة ظل xG بالأيام: 21 أصلاً، ثم +14 بأمر المالك 2026-08-14
+# (الدوريات المشمولة لم تكن تلعب في معظم النافذة الأولى) — الحكم ~17 سبتمبر.
+XG_SHADOW_DAYS = 35
+
+
 def sportmonks_shadow_line() -> str:
     """🔬 رؤية ظل xG اليومية (قاعدة المالك هـ: تجربة نشطة = سطر يومي بلا سؤال).
     يقرأ sportmonks_shadow.json قراءةً فقط — يكتبه المجمّع المستقل
@@ -2169,7 +2175,7 @@ def sportmonks_shadow_line() -> str:
         day_no = (now_utc().replace(tzinfo=None) - started).days + 1
     except ValueError:
         day_no = "?"
-    line = (f"🔬 ظل xG — يوم {day_no} من ~21: أمس مطابقة "
+    line = (f"🔬 ظل xG — يوم {day_no} من ~{XG_SHADOW_DAYS}: أمس مطابقة "
             f"{meta.get('last_day_matched', 0)} ومُفلت "
             f"{meta.get('last_day_unmatched', 0)}؛ "
             f"الإجمالي {meta.get('total', 0)} مباراة موثقة")
@@ -2430,6 +2436,11 @@ def main() -> None:
         xg_line = sportmonks_shadow_line()
         if xg_line:
             digest += "\n" + xg_line
+        # 📅 كتلة المواعيد (قرار المالك 2026-08-14): كل تذكير يمرّ على تيليجرام
+        # أيضاً، لا على Routines وحدها — الروتين يوقظ الوكيل ولا يصل الهاتف
+        due_lines = reminders.reminder_lines()
+        if due_lines:
+            digest += "\n" + due_lines
         # سطر النزاهة اليومي: المالك يرى كل صباح أن الحسبة سليمة، لا يفترض ذلك
         if integrity_line:
             digest += "\n" + integrity_line

@@ -1,0 +1,174 @@
+# -*- coding: utf-8 -*-
+"""
+📅 سجل المواعيد والتذكيرات — قرار المالك 2026-08-14
+====================================================
+سبب الوجود: مواعيد المشروع الحرجة (انتهاء اشتراك، حكم تجربة، نقطة مراجعة)
+كانت تعيش في Routines على جانب Claude وحده. الروتين يوقظ الوكيل، لكنه **لا
+يصل هاتف المالك**. أمر المالك: كل تذكير من اليوم يمرّ على تيليجرام أيضاً.
+
+معيار الأولويات (وضعه الوكيل بتفويض المالك «أنت تقرر، أنت تضع المعيار»)،
+ومدى المهلة 3-5 أيام كما اشترط:
+
+  P1 — مال أو فقدان بيانات لا يُعوَّض (اشتراك ينتهي، رصيد ينفد).
+       مهلة 5 أيام افتراضاً، **تكرار يومي** حتى الموعد، ويبقى ⛔ متأخراً
+       أسبوعاً كاملاً بعده. لماذا محدود لا أبدي: تذكير لا ينطفئ يُدرِّب
+       العين على تجاهل كتلة المواعيد كلها، فيُخفي P1 التالي — وهذا هو
+       إرهاق الإنذار، أخو العطل الصامت. أسبوع يكفي ليُرى، ولا يكفي ليُملّ.
+  P2 — قرار أو حكم مجدول (حكم تجربة، تقرير مرحلي).
+       مهلة 4 أيام، تكرار يومي، يصمت بعد يوم من الموعد.
+  P3 — روتيني/معلوماتي. مهلة 3 أيام، تكرار يومي، يصمت يوم الموعد.
+
+`lead_days` في الموعد نفسه يتجاوز افتراضي الشريحة — استُخدم لموعد انتهاء
+تجربة Sportmonks لأن المالك طلب 3 أيام تحديداً («ذكّرني قبل الانتهاء بثلاثة
+أيام لأفعلها قبل يوم») والتكرار اليومي يضمن بلوغ «قبل يوم».
+
+عقيدة هذا الملف (نفس عقيدة api_guard/deadman): **صفر نداءات API**، يقرأ ملف
+JSON على القرص فقط، ولا يكسر أي تشغيلة مهما حدث. لا يمسّ أي محرك ولا أي
+توقع — قراءة وتذكير فقط. لا يطبع أي سرّ (قاعدة الأسرار 3): كل نص يمرّ على
+redact() داخل api_guard قبل الإرسال.
+
+يُستدعى من موضعين عمداً (درس 14 أغسطس: الحارس الذي يسكن داخل ما يحرسه ليس
+حارساً): النشرة الصباحية في predict_v2.py، و**deadman.py** المستقل الذي
+يعمل كل 10 دقائق في monitor.yml ويبقى حياً حين يسقط المحركان. مانع التكرار
+يجعل النداء المزدوج بلا أثر: رسالة واحدة لكل موعد في اليوم.
+"""
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+import api_guard
+
+REMINDERS_FILE = Path("reminders.json")
+
+# مهلة التنبيه الافتراضية لكل شريحة (بالأيام) — ضمن مدى المالك 3-5
+LEAD_DAYS = {"P1": 5, "P2": 4, "P3": 3}
+
+# كم يوماً يبقى التذكير بعد فوات الموعد قبل أن يصمت
+GRACE_DAYS = {"P1": 7, "P2": 1, "P3": 0}
+
+PRIORITY_MARK = {"P1": "🔴", "P2": "🟠", "P3": "🔵"}
+
+
+def now_utc() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def load_deadlines(path: Path = None) -> list:
+    """يقرأ سجل المواعيد. أي عطل → قائمة فارغة (لا يكسر تشغيلة أبداً)."""
+    try:
+        raw = json.loads((path or REMINDERS_FILE).read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    out = []
+    for d in (raw.get("deadlines") or []):
+        if isinstance(d, dict) and d.get("id") and d.get("due"):
+            out.append(d)
+    return out
+
+
+def _days_left(due: str, today: datetime):
+    """أيام متبقية للموعد. None = تاريخ غير صالح (يُتجاهل بصمت)."""
+    try:
+        d = datetime.strptime(str(due), "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    return (d.date() - today.date()).days
+
+
+def _lead(item: dict) -> int:
+    """مهلة هذا الموعد: ما نصّ عليه، وإلا افتراضي شريحته."""
+    try:
+        lead = int(item.get("lead_days"))
+    except (TypeError, ValueError):
+        lead = LEAD_DAYS.get(item.get("priority"), LEAD_DAYS["P3"])
+    return max(lead, 0)
+
+
+def is_due(item: dict, today: datetime) -> bool:
+    """هل يستحق هذا الموعد تذكيراً اليوم؟
+
+    مغلق يدوياً (status=done) → أبداً. داخل نافذة المهلة → نعم. بعد الموعد →
+    حسب مهلة السماح لشريحته (P1 أسبوع، P2 يوم، P3 صفر).
+    """
+    if str(item.get("status", "open")).lower() == "done":
+        return False
+    left = _days_left(item.get("due"), today)
+    if left is None:
+        return False
+    if left >= 0:
+        return left <= _lead(item)
+    grace = GRACE_DAYS.get(item.get("priority"), 0)
+    return True if grace is None else -left <= grace
+
+
+def due_reminders(today: datetime = None, path: Path = None) -> list:
+    """المواعيد المستحقة اليوم، الأقرب أولاً ثم الأعلى أولوية."""
+    today = today or now_utc()
+    out = []
+    for item in load_deadlines(path):
+        if not is_due(item, today):
+            continue
+        row = dict(item)
+        row["days_left"] = _days_left(item.get("due"), today)
+        out.append(row)
+    out.sort(key=lambda r: (r["days_left"],
+                            str(r.get("priority", "P3"))))
+    return out
+
+
+def reminder_line(item: dict) -> str:
+    """سطر تذكير واحد للنشرة — يقول الموعد والمتبقي والإجراء المطلوب."""
+    left = item.get("days_left")
+    if left is None:
+        when = ""
+    elif left > 1:
+        when = f"بعد {left} أيام"
+    elif left == 1:
+        when = "غداً"
+    elif left == 0:
+        when = "**اليوم**"
+    else:
+        when = f"⛔ فات الموعد منذ {-left} يوم"
+    mark = PRIORITY_MARK.get(item.get("priority"), "🔵")
+    line = (f"{mark} {item.get('priority', 'P3')} — {item.get('title')}: "
+            f"{when} ({item.get('due')})")
+    if item.get("action"):
+        line += f"\n   ⇦ {item['action']}"
+    return line
+
+
+def reminder_lines(today: datetime = None, path: Path = None) -> str:
+    """كتلة التذكيرات للنشرة الصباحية. لا مواعيد مستحقة → نص فارغ.
+
+    الفراغ هنا صادق: لا موعد قريب فعلاً. (يختلف عن سطر تجربة الظل الذي يجب
+    أن يظهر دائماً ما دامت التجربة نشطة — هناك الاختفاء كان يخفي عطلاً.)
+    """
+    rows = due_reminders(today, path)
+    if not rows:
+        return ""
+    return "📅 مواعيد قادمة:\n" + "\n".join(reminder_line(r) for r in rows)
+
+
+def fire(today: datetime = None, path: Path = None) -> int:
+    """يرسل تذكيرات تيليجرام المستحقة — رسالة واحدة لكل موعد في اليوم.
+
+    مانع التكرار: مفتاح التهدئة يحمل التاريخ (`reminder:<id>:<يوم>`) فيفتح
+    نافذة جديدة كل يوم ويُغلقها أول إرسال — فالنداء من النشرة ومن الحارس
+    الخارجي معاً لا يُنتج رسالتين. يرجع عدد ما أُرسل فعلاً، ولا يرفع استثناءً.
+    """
+    today = today or now_utc()
+    stamp = today.strftime("%Y-%m-%d")
+    sent = 0
+    for item in due_reminders(today, path):
+        try:
+            if api_guard.alert_once(f"reminder:{item['id']}:{stamp}",
+                                    "📅 تذكير موعد\n" + reminder_line(item)):
+                sent += 1
+        except Exception as e:                   # pragma: no cover - دفاعي
+            print("تعذر إرسال تذكير:", type(e).__name__)
+    return sent
+
+
+if __name__ == "__main__":
+    print(reminder_lines() or "📅 لا مواعيد مستحقة اليوم.")
