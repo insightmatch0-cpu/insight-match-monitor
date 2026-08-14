@@ -23,6 +23,8 @@ from pathlib import Path
 
 import requests
 
+import api_guard
+
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
 API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
@@ -156,14 +158,14 @@ def api_football(path: str) -> list:
 
 
 def send_telegram(text: str) -> None:
-    try:
-        requests.post(
-            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
-            json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
-            timeout=30,
-        )
-    except Exception as e:
-        print("Telegram error:", e)
+    """بث إلى المالك + كل معرّفات TELEGRAM_BROADCAST_IDS (طلب المالك 2026-08-15).
+
+    تغيير قناة تسليم فقط — لم يُمس سطر واحد من منطق التوقع في المحرك 1،
+    فيبقى خط الأساس المجمّد للمقارنة كما هو تماماً (قاعدة المشروع 7).
+    """
+    api_guard.send_telegram_multi(
+        TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_BROADCAST_IDS, text
+    )
 
 
 def send_telegram_long(text: str) -> None:
