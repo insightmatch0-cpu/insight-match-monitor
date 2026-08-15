@@ -59,6 +59,10 @@ GRACE_DAYS = {"P1": 7, "P2": 1, "P3": 0}
 
 PRIORITY_MARK = {"P1": "🔴", "P2": "🟠", "P3": "🔵"}
 
+# حالتا إغلاق: done = نُفِّذ، deferred = أرجأه المالك صراحةً (قراره 2026-08-15:
+# «keep it for later») — كلاهما يُسكِت التذكير، والفرق توثيقي لا سلوكي
+CLOSED_STATUSES = ("done", "deferred")
+
 # عملة العرض المفضّلة للمالك (أمره 2026-08-15: «كل الأسعار بالدولار لا اليورو»).
 # ما يُفوتر باليورو (Sportmonks) يُعرض بعملته الأصلية **ومعها** تقدير بالدولار
 # محسوب من سعر صرف **مسجَّل ومؤرَّخ** في reminders.json → fx. بلا سعر مسجَّل
@@ -118,7 +122,7 @@ def is_due(item: dict, today: datetime) -> bool:
     مغلق يدوياً (status=done) → أبداً. داخل نافذة المهلة → نعم. بعد الموعد →
     حسب مهلة السماح لشريحته (P1 أسبوع، P2 يوم، P3 صفر).
     """
-    if str(item.get("status", "open")).lower() == "done":
+    if str(item.get("status", "open")).lower() in CLOSED_STATUSES:
         return False
     left = _days_left(item.get("due"), today)
     if left is None:
@@ -216,7 +220,7 @@ def pending_input(path: Path = None) -> list:
     """
     out = []
     for item in load_deadlines(path):
-        if str(item.get("status", "open")).lower() == "done":
+        if str(item.get("status", "open")).lower() in CLOSED_STATUSES:
             continue
         missing = []
         if _days_left(item.get("due"), now_utc()) is None:
@@ -233,7 +237,13 @@ def pending_input(path: Path = None) -> list:
 def pending_lines(path: Path = None) -> str:
     """كتلة «بيانات ناقصة» للنشرة — فارغة حين يكتمل السجل."""
     rows = pending_input(path)
+    try:
+        _fx_meta = (json.loads((path or REMINDERS_FILE)
+                               .read_text(encoding="utf-8")).get("fx") or {})
+    except Exception:
+        _fx_meta = {}
     needs_fx = (fx_rate(path) is None
+                and not _fx_meta.get("deferred")
                 and any(i.get("amount_eur") for i in load_deadlines(path)))
     if not rows and not needs_fx:
         return ""
@@ -254,7 +264,7 @@ def next_deadline(today: datetime = None, path: Path = None):
     today = today or now_utc()
     future = []
     for item in load_deadlines(path):
-        if str(item.get("status", "open")).lower() == "done":
+        if str(item.get("status", "open")).lower() in CLOSED_STATUSES:
             continue
         left = _days_left(item.get("due"), today)
         if left is not None and left >= 0:

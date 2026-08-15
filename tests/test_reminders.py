@@ -320,13 +320,25 @@ class TestGenericSubscriptionRegister(unittest.TestCase):
 
     def test_unknown_date_or_price_is_asked_never_invented(self):
         """اختلاق تاريخ تجديد أو سعر أسوأ من الفراغ — يُسأل عنه ولا يُخمَّن."""
-        pending = {r["id"]: r["missing"] for r in R.pending_input(self.path)}
-        self.assertIn("claude_subscription_renewal", pending)
-        for miss in pending.values():
-            self.assertTrue(miss)
-        block = R.pending_lines(self.path)
-        self.assertIn("لا أخمّن", block)
-        self.assertIn("Claude", block)
+        # آلية الفجوات تبقى محروسة بملف مصطنع — السجل الحقيقي أُغلقت فجواته
+        # بقرار المالك 2026-08-15 (إرجاء اشتراك Claude وسعر الصرف)
+        f = _file([{"id": "x", "service": "خدمة", "billable": True,
+                    "priority": "P1"}])
+        try:
+            pending = {r["id"]: r["missing"] for r in R.pending_input(f)}
+            self.assertIn("x", pending)
+            self.assertTrue(pending["x"])
+            self.assertIn("لا أخمّن", R.pending_lines(f))
+        finally:
+            f.unlink(missing_ok=True)
+
+    def test_owner_deferred_items_stay_recorded_but_silent(self):
+        """قرار المالك 2026-08-15: اشتراك Claude «للاحقاً» — صف موثَّق بلا إلحاح."""
+        row = next(i for i in self.items
+                   if i["id"] == "claude_subscription_renewal")
+        self.assertEqual(row["status"], "deferred")     # موجود، غير محذوف
+        self.assertNotIn("claude_subscription_renewal",
+                         {r["id"] for r in R.pending_input(self.path)})
 
     def test_api_football_date_and_price_are_now_known(self):
         """جُدِّد 2026-08-15 إلى Pro — فخرج من كتلة الناقص إلى المراقبة."""
@@ -384,10 +396,21 @@ class TestCurrencyDisplay(unittest.TestCase):
         finally:
             f.unlink(missing_ok=True)
 
-    def test_missing_rate_is_surfaced_as_a_gap(self):
-        """فجوة سعر الصرف تُرفع مثل أي بيان ناقص، لا تُبتلع."""
-        block = R.pending_lines(self.__class__._register())
-        self.assertIn("سعر صرف", block)
+    def test_missing_rate_is_surfaced_unless_owner_defers(self):
+        """فجوة سعر الصرف تُرفع مثل أي بيان ناقص — إلا حين يرجئها المالك صراحةً."""
+        f = Path(tempfile.mkstemp(suffix=".json")[1])
+        rows = [{"id": "x", "service": "س", "price": "€10", "amount_eur": 10,
+                 "due": "2026-12-01", "priority": "P1"}]
+        f.write_text(json.dumps({"deadlines": rows}), encoding="utf-8")
+        try:
+            self.assertIn("سعر صرف", R.pending_lines(f))       # بلا إرجاء: تُرفع
+            f.write_text(json.dumps({"fx": {"deferred": True},
+                                     "deadlines": rows}), encoding="utf-8")
+            self.assertNotIn("سعر صرف", R.pending_lines(f))    # أرجأها: تصمت
+        finally:
+            f.unlink(missing_ok=True)
+        # السجل الحقيقي: المالك أرجأها 2026-08-15 — فالنشرة بلا سطر فجوة صرف
+        self.assertNotIn("سعر صرف", R.pending_lines(self.__class__._register()))
 
     @staticmethod
     def _register():
