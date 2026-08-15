@@ -59,6 +59,13 @@ GRACE_DAYS = {"P1": 7, "P2": 1, "P3": 0}
 
 PRIORITY_MARK = {"P1": "🔴", "P2": "🟠", "P3": "🔵"}
 
+# عملة العرض المفضّلة للمالك (أمره 2026-08-15: «كل الأسعار بالدولار لا اليورو»).
+# ما يُفوتر باليورو (Sportmonks) يُعرض بعملته الأصلية **ومعها** تقدير بالدولار
+# محسوب من سعر صرف **مسجَّل ومؤرَّخ** في reminders.json → fx. بلا سعر مسجَّل
+# لا يُعرض رقم دولاري مخترَع: تُرفع الفجوة في كتلة «بيانات ناقصة».
+# السعر الحقيقي بالدولار هو ما يخصمه مصرف المالك، وسعرُه هو المرجع النهائي.
+DISPLAY_CURRENCY = "USD"
+
 
 def now_utc() -> datetime:
     return datetime.now(timezone.utc)
@@ -137,6 +144,30 @@ def due_reminders(today: datetime = None, path: Path = None) -> list:
     return out
 
 
+def fx_rate(path: Path = None):
+    """سعر صرف EUR→USD المسجَّل، أو None. لا يُخترع ولا يُقدَّر أبداً."""
+    try:
+        raw = json.loads((path or REMINDERS_FILE).read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    try:
+        rate = float(((raw.get("fx") or {}).get("eur_usd")))
+    except (TypeError, ValueError):
+        return None
+    return rate if rate > 0 else None
+
+
+def _usd_hint(item: dict, rate) -> str:
+    """«≈ $X/شهر» للصفوف المفوترة باليورو حين يكون سعر الصرف مسجَّلاً."""
+    if rate is None:
+        return ""
+    try:
+        amount = float(item.get("amount_eur"))
+    except (TypeError, ValueError):
+        return ""
+    return f" ≈ ${amount * rate:,.0f}/شهر"
+
+
 def _arabic_days(n: int) -> str:
     """صيغة العدد بالعربية الصحيحة: مثنّى وجمع قلة وتمييز مفرد منصوب.
     «2 أيام» ليست عربية — والنشرة تُقرأ على الهاتف، فركاكتها تُلاحَظ."""
@@ -149,7 +180,7 @@ def _arabic_days(n: int) -> str:
     return f"{n} يوماً"
 
 
-def reminder_line(item: dict) -> str:
+def reminder_line(item: dict, rate=None) -> str:
     """سطر تذكير واحد للنشرة — يقول الموعد والمتبقي والإجراء المطلوب."""
     left = item.get("days_left")
     if left is None:
@@ -167,7 +198,7 @@ def reminder_line(item: dict) -> str:
     # ليقرّر — يحتاج أن يعرف **ما** يتجدّد و**بكم** دون فتح أي ملف.
     head = item.get("service") or ""
     if item.get("price"):
-        head += f" ({item['price']})"
+        head += f" ({item['price']}{_usd_hint(item, rate)})"
     head = f"{head}: " if head else ""
     line = (f"{mark} {item.get('priority', 'P3')} — {head}"
             f"{item.get('title')}: {when} ({item.get('due')})")
@@ -202,9 +233,15 @@ def pending_input(path: Path = None) -> list:
 def pending_lines(path: Path = None) -> str:
     """كتلة «بيانات ناقصة» للنشرة — فارغة حين يكتمل السجل."""
     rows = pending_input(path)
-    if not rows:
+    needs_fx = (fx_rate(path) is None
+                and any(i.get("amount_eur") for i in load_deadlines(path)))
+    if not rows and not needs_fx:
         return ""
     out = ["⚠️ سجل الاشتراكات ناقص — لا أخمّن تاريخاً ولا سعراً:"]
+    if needs_fx:
+        out.append("   • عرض الأسعار بالدولار: سعر صرف EUR→USD غير مسجَّل "
+                   "(fx.eur_usd في reminders.json). Sportmonks تفوتر باليورو — "
+                   "زوّدني بالمبلغ الدولاري الذي خصمه مصرفك، أو بسعر الصرف.")
     for r in rows:
         name = r.get("service") or r.get("title") or r["id"]
         out.append(f"   • {name}: ينقصه {' و'.join(r['missing'])}"
@@ -240,8 +277,9 @@ def reminder_lines(today: datetime = None, path: Path = None) -> str:
     rows = due_reminders(today, path)
     blocks = []
     if rows:
+        rate = fx_rate(path)
         blocks.append("📅 مواعيد قادمة:\n"
-                      + "\n".join(reminder_line(r) for r in rows))
+                      + "\n".join(reminder_line(r, rate) for r in rows))
     else:
         # يوم هادئ: يُقال إنه هادئ، لا يُترك فراغاً يُشبه العطل
         nxt = next_deadline(today, path)
@@ -275,8 +313,9 @@ def fire(today: datetime = None, path: Path = None) -> int:
     sent = 0
     for item in due_reminders(today, path):
         try:
-            if api_guard.alert_once(f"reminder:{item['id']}:{stamp}",
-                                    "📅 تذكير موعد\n" + reminder_line(item)):
+            if api_guard.alert_once(
+                    f"reminder:{item['id']}:{stamp}",
+                    "📅 تذكير موعد\n" + reminder_line(item, fx_rate(path))):
                 sent += 1
         except Exception as e:                   # pragma: no cover - دفاعي
             print("تعذر إرسال تذكير:", type(e).__name__)

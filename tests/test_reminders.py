@@ -302,7 +302,10 @@ class TestGenericSubscriptionRegister(unittest.TestCase):
         for it in self.items:
             if not it.get("billable") or not it.get("due"):
                 continue
-            self.assertEqual(R._offsets(it), (3, 2), it["id"])
+            # remind_at صريح = تجاوز موثّق (تسليم لا اشتراك)؛ الباقي على 3 و2
+            expected = (tuple(sorted(set(it["remind_at"]), reverse=True))
+                        if it.get("remind_at") else (3, 2))
+            self.assertEqual(R._offsets(it), expected, it["id"])
 
     def test_every_reminder_carries_service_name_and_price(self):
         """«with the price with the name of the application» — في كل رسالة."""
@@ -318,13 +321,20 @@ class TestGenericSubscriptionRegister(unittest.TestCase):
     def test_unknown_date_or_price_is_asked_never_invented(self):
         """اختلاق تاريخ تجديد أو سعر أسوأ من الفراغ — يُسأل عنه ولا يُخمَّن."""
         pending = {r["id"]: r["missing"] for r in R.pending_input(self.path)}
-        self.assertIn("api_football_renewal", pending)
         self.assertIn("claude_subscription_renewal", pending)
         for miss in pending.values():
             self.assertTrue(miss)
         block = R.pending_lines(self.path)
         self.assertIn("لا أخمّن", block)
-        self.assertIn("API-Football", block)
+        self.assertIn("Claude", block)
+
+    def test_api_football_date_and_price_are_now_known(self):
+        """جُدِّد 2026-08-15 إلى Pro — فخرج من كتلة الناقص إلى المراقبة."""
+        row = next(i for i in self.items if i["id"] == "api_football_renewal")
+        self.assertEqual(row["due"], "2026-09-15")
+        self.assertIn("$", row["price"])        # بالدولار كما أمر المالك
+        self.assertNotIn("api_football_renewal",
+                         {r["id"] for r in R.pending_input(self.path)})
 
     def test_pending_block_disappears_once_filled(self):
         f = _file([{"id": "x", "service": "خدمة", "price": "€1",
@@ -343,6 +353,51 @@ class TestGenericSubscriptionRegister(unittest.TestCase):
         row = {"service": "س", "title": "ت", "due": "2026-08-26",
                "priority": "P1", "days_left": 2}
         self.assertIn("بعد يومين", R.reminder_line(row))
+
+
+class TestCurrencyDisplay(unittest.TestCase):
+    """أمر المالك 2026-08-15: الأسعار بالدولار — وبلا اختراع سعر صرف."""
+
+    def test_no_recorded_rate_means_no_invented_dollar_figure(self):
+        f = _file([{"id": "x", "service": "خدمة", "price": "€571/شهر",
+                    "amount_eur": 571, "due": "2026-12-01", "priority": "P1"}])
+        try:
+            self.assertIsNone(R.fx_rate(f))
+            line = R.reminder_line(R.due_reminders(_day("2026-11-28"), f)[0],
+                                   R.fx_rate(f))
+            self.assertIn("€571", line)
+            self.assertNotIn("$", line)      # لا رقم دولاري مخترَع
+        finally:
+            f.unlink(missing_ok=True)
+
+    def test_recorded_rate_adds_a_dollar_estimate(self):
+        f = Path(tempfile.mkstemp(suffix=".json")[1])
+        f.write_text(json.dumps({
+            "fx": {"eur_usd": 1.10, "as_of": "2026-08-15"},
+            "deadlines": [{"id": "x", "service": "خدمة", "price": "€571/شهر",
+                           "amount_eur": 571, "due": "2026-12-01",
+                           "priority": "P1"}]}), encoding="utf-8")
+        try:
+            self.assertEqual(R.fx_rate(f), 1.10)
+            row = R.due_reminders(_day("2026-11-28"), f)[0]
+            self.assertIn("$628", R.reminder_line(row, R.fx_rate(f)))
+        finally:
+            f.unlink(missing_ok=True)
+
+    def test_missing_rate_is_surfaced_as_a_gap(self):
+        """فجوة سعر الصرف تُرفع مثل أي بيان ناقص، لا تُبتلع."""
+        block = R.pending_lines(self.__class__._register())
+        self.assertIn("سعر صرف", block)
+
+    @staticmethod
+    def _register():
+        return Path(__file__).resolve().parent.parent / "reminders.json"
+
+    def test_natively_usd_prices_need_no_conversion(self):
+        reg = R.load_deadlines(self._register())
+        api = next(i for i in reg if i["id"] == "api_football_renewal")
+        self.assertNotIn("amount_eur", api)   # ليست باليورو أصلاً
+        self.assertIn("$", api["price"])
 
 
 if __name__ == "__main__":
