@@ -22,6 +22,13 @@ import requests
 import api_guard
 from api_guard import ApiRefused        # noqa: F401 — يُعاد تصديره للاختبارات
 
+# 🔬 مجمّع xG — الاستيراد محروس عمداً: الطبقة الحية تجربة ظل، ويجب ألا يمنع
+# غيابُها أو عطبُها تشغيلةَ المراقبة من العمل ولو لثانية (صفر تأثير).
+try:
+    import sportmonks_shadow
+except Exception:                        # pragma: no cover - دفاعي
+    sportmonks_shadow = None
+
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
 API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
@@ -1330,6 +1337,86 @@ def danger_score(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
     return {"score": score, "level": level, "factors": factors[:4]}
 
 
+def danger_score_xg(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
+    """🔬 درجة الخطر البديلة — نفس لوحة النتائج، لكن الزخم بـxG بدل عدّ التسديدات.
+
+    ⛔ **تُحسب وتُسجَّل ولا تُقرأ في أي قرار تنبيه.** التنبيهات تبقى على
+    danger_score() وحدها. السبب: لو أثّرت فوراً لفقدنا القدرة على معرفة هل
+    حسّنت أم أضرّت، وصارت كل أرقامنا بلا معنى (عقيدة الظل أولاً، البند 7).
+
+    لماذا هذه التجربة أصلاً — المبرر المقاس من radar_log.json (591 إنذاراً):
+    الإنذارات المصحوبة بإشارات الزخم أسوأ دقةً من لوحة النتائج وحدها
+    (أحمر 41/54 = 75.9% مقابل 278/301 = 92.4%؛ كهرماني 5/28 = 17.9% مقابل
+    82/208 = 39.4%). السبب الجذري: تسديدة من 30 متراً وتسديدة من داخل
+    المرمى الصغير كلتاهما «تسديدة على المرمى» في عدّادنا. xG يفرّق بينهما.
+
+    المكوّن 1 (لوحة النتائج) و3 (إشارات الضغط) منسوخان كما هما من
+    danger_score لأنهما الجزء المثبت — المتغيّر الوحيد هو المكوّن 2.
+    """
+    score = 0
+    factors = []
+    out_now = _radar_outcome(gh, ga)
+
+    # 1) لوحة النتيجة (حتى 70) — مطابق لـdanger_score حرفياً (الجزء المثبت)
+    if pick and out_now != pick:
+        score += min(70, 15 + int(minute * 0.60))
+        factors.append(f"النتيجة الحالية {gh}-{ga} تُسقط التوقع (د{minute})")
+    elif pick and pick != "draw" and abs(gh - ga) == 1:
+        score += 15
+        factors.append("تقدم هش بفارق هدف واحد")
+    elif pick == "draw" and minute >= 60:
+        score += 10
+        factors.append("التعادل صامد لكن أي هدف يقلبه")
+
+    # 2) طبقة الزخم مستبدلة: فارق xG الحي لصالح الطرف الذي يهدد التوقع.
+    #    الفارق (لا المجموع) هو المقياس: 2.1 مقابل 0.3 خطرٌ على من اختار
+    #    الطرف الثاني، بينما 2.1 مقابل 2.0 مباراة مفتوحة لا تهديد موجّه.
+    xh, xa = _last_xg(snaps)
+    if xh is not None:
+        threat_gap = {"home": xa - xh, "away": xh - xa,
+                      "draw": abs(xh - xa)}.get(pick)
+        if threat_gap is not None and threat_gap > 0:
+            pts = min(26, int(threat_gap * 20))
+            if pts:
+                score += pts
+                side = ("الضيف" if pick == "home" else
+                        "المضيف" if pick == "away" else
+                        ("المضيف" if xh > xa else "الضيف"))
+                factors.append(
+                    f"أفضلية xG لصالح {side} ({xh:.2f}-{xa:.2f})")
+
+    # 3) إشارات الضغط (حتى 18) — مطابق لـdanger_score حرفياً
+    picked_side = {"home": "h", "away": "a"}.get(pick)
+    if picked_side:
+        if _radar_delta(snaps, picked_side, "sv") >= 2:
+            score += 8
+            factors.append("حارس الطرف المُختار تحت الحصار (تصديات متتالية)")
+        if snaps and ((snaps[-1].get(picked_side) or {}).get("rc") or 0) > 0:
+            score += 10
+            factors.append("نقص عددي ضد الطرف المُختار (بطاقة حمراء)")
+
+    score = max(0, min(100, score))
+    level = "red" if score >= RADAR_RED else ("amber" if score >= RADAR_AMBER else "green")
+    # has_xg يفصل «حُسبت بـxG» عن «حُسبت بلا xG»: المقارنة الصباحية تُجرى على
+    # المباريات التي توفر لها xG فقط — وإلا قارنّا الدرجة الحالية بنسخة من
+    # نفسها وسمّينا التطابق نجاحاً.
+    return {"score": score, "level": level, "factors": factors[:4],
+            "has_xg": xh is not None}
+
+
+def _last_xg(snaps: list) -> tuple:
+    """آخر قيمتَي xG موثقتين في اللقطات — (None, None) حين لا xG إطلاقاً.
+
+    غياب xG ليس عطلاً: مباراة خارج تغطية الباقة تمرّ ببساطة بلا الطبقة
+    الثانية، فتصير درجتها لوحةَ نتائج وضغطاً فقط. لا كسر، ولا ادعاء بلا بيانات.
+    """
+    for s in reversed(snaps or []):
+        xh, xa = s.get("xg_h"), s.get("xg_a")
+        if xh is not None and xa is not None:
+            return float(xh), float(xa)
+    return None, None
+
+
 def merge_fast_snap(snaps: list, snap: dict) -> list:
     """يحافظ على تباعد ~10 دقائق بين اللقطات: لقطة أحدث داخل نفس النافذة
     تستبدل الأخيرة (فيبقى الزخم مقاساً على ~10 دقائق حقيقية لا على 90 ثانية)،
@@ -1728,6 +1815,42 @@ def maybe_red_alert(fid: str, e: dict, budget: dict) -> bool:
     return True
 
 
+def radar_live_xg(state: dict) -> tuple:
+    """🔬 يجلب خريطة xG الحي للدورة كلها — نداء واحد، وفشله لا يكلّف شيئاً.
+
+    الرصيد المتبقي يُخزَّن في state (`xg_live.remaining`) ويُعاد تمريره في
+    الدورة التالية، فالكبح الذاتي ينجو بين التشغيلات — عملية monitor.py تموت
+    كل 10 دقائق، ومتغيّر في الذاكرة كان سينسى الكبح فوراً.
+
+    صفر تأثير: أي عطل (لا وحدة، لا مفتاح، رفض، شبكة) يرجع خريطة فارغة،
+    والرادار يكمل دورته بالضبط كما كان قبل هذه الطبقة.
+    """
+    if sportmonks_shadow is None:
+        return {}, "الوحدة غير متاحة"
+    box = state.setdefault("xg_live", {}) if isinstance(state, dict) else {}
+    try:
+        xg_map, remaining, note = sportmonks_shadow.live_xg_map(
+            last_remaining=box.get("remaining"))
+    except Exception as ex:                      # pragma: no cover - دفاعي
+        return {}, f"عطل: {type(ex).__name__}"
+    box["remaining"] = remaining
+    box["note"] = note
+    box["matches"] = len(xg_map)
+    if note:
+        print("🔬 xG الحي:", note)
+    return xg_map, note
+
+
+def xg_lookup(xg_map: dict, e: dict):
+    """xG مباراة بعينها من خريطة الدورة — أسماء state.json لاتينية فتُطابَق مباشرة."""
+    if not xg_map or sportmonks_shadow is None:
+        return None
+    try:
+        return sportmonks_shadow.live_xg_for(xg_map, e.get("home"), e.get("away"))
+    except Exception:                            # pragma: no cover - دفاعي
+        return None
+
+
 def radar_is_top(e: dict) -> bool:
     """🎛 هل هذه المباراة من دوريات المالك؟ — REC-010 (قرار المالك 2026-08-13).
 
@@ -1775,6 +1898,10 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
     log_dirty = False
     swept = 0
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # 🔬 xG الحي (ظل): نداء واحد لكل الدورة قبل الحلقة، بكبح ذاتي على الرصيد.
+    # فشله يترك الخريطة فارغة ولا يمس شيئاً — الرادار يعمل كما كان تماماً.
+    xg_map, xg_note = radar_live_xg(state)
+    xg_hits = 0          # كم من مبارياتنا وجد لها xG فعلاً — رقم التغطية الحقيقي
     for fid in targets:
         e = state[fid]
         try:
@@ -1788,9 +1915,16 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
             print("الرادار: فشل لقطة", fid, ex)
             continue
         radar = e.get("radar") or {}
+        # 🔬 xG الحي يُختم على اللقطة قبل الدمج — حقل مستقل بجانب الإحصائيات
+        xg = xg_lookup(xg_map, e)
+        if xg:
+            snap["xg_h"], snap["xg_a"] = xg
+            xg_hits += 1
         snaps = merge_fast_snap(radar.get("snaps") or [], snap)
         p = v2_pending.get(fid) or {}
         verdict = danger_score(p.get("pick"), snaps, minute, gh, ga)
+        # 🔬 الدرجة الموازية — تُحسب دائماً وتُسجَّل، ولا تدخل أي قرار تنبيه
+        verdict_xg = danger_score_xg(p.get("pick"), snaps, minute, gh, ga)
         d = drama_signal(snaps, gh, ga)
         e["radar"] = {
             "snaps": snaps,
@@ -1815,7 +1949,15 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         maybe_radar_alert(fid, e, alert_budget)
         # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
         maybe_red_alert(fid, e, alert_budget)
-        if verdict["level"] in ("amber", "red"):
+        # يُسجَّل الصف متى أنذرت **إحدى** الدرجتين، لا الحالية وحدها.
+        # لولا ذلك لاستحال قياس الحالة التي تُجرى التجربة من أجلها أصلاً:
+        # xG يرى خطراً لا تراه عدّادات الحجم (0.4 مقابل 2.8 بينما لوحة النتائج
+        # مطمئنة). تسجيل الحالية وحدها كان سيقيس تنازلات xG فقط ويعمى عن مكاسبه.
+        #
+        # ⛔ ولا يلوّث ذلك اللوحة الحالية: صف درجته الحالية "green" لا يُحتسب
+        # في red ولا amber داخل _radar_counts، فعدّادات المالك تبقى كما هي حرفياً.
+        if verdict["level"] in ("amber", "red") or (
+                verdict_xg["has_xg"] and verdict_xg["level"] in ("amber", "red")):
             w = next((w for w in log["warnings"] if str(w.get("fid")) == fid), None)
             if w is None:
                 log["warnings"].append({
@@ -1826,18 +1968,42 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     "pick": p.get("pick"), "confidence": p.get("confidence"),
                     "level": verdict["level"], "score": verdict["score"],
                     "minute": minute, "factors": verdict["factors"],
+                    # 🔬 الحقل الموازي — فارغ حين لا xG (غيابه لا يكسر شيئاً)
+                    "score_xg": (verdict_xg["score"] if verdict_xg["has_xg"]
+                                 else None),
+                    "level_xg": (verdict_xg["level"] if verdict_xg["has_xg"]
+                                 else None),
                 })
                 if RADAR_MAX_WARNINGS:   # 0 = بلا قص (المسح الشامل 2026-08-09)
                     log["warnings"] = log["warnings"][-RADAR_MAX_WARNINGS:]
                 log_dirty = True
-            elif verdict["score"] > (w.get("score") or 0):
-                # يُرقّى الإنذار لأعلى درجة بلغها — نقيس أقصى ما رآه الرادار
-                w.update({"level": verdict["level"], "score": verdict["score"],
-                          "minute": minute, "factors": verdict["factors"]})
-                log_dirty = True
+            else:
+                if verdict["score"] > (w.get("score") or 0):
+                    # يُرقّى الإنذار لأعلى درجة بلغها — نقيس أقصى ما رآه الرادار
+                    w.update({"level": verdict["level"],
+                              "score": verdict["score"],
+                              "minute": minute, "factors": verdict["factors"]})
+                    log_dirty = True
+                # 🔬 ذروة الدرجة الموازية تُتابَع **مستقلة**: الدرجتان تبلغان
+                # ذروتيهما في لحظتين مختلفتين، وربطُ ترقية إحداهما بالأخرى كان
+                # سيقيس الدرجة الموازية عند لحظة ذروة غيرها لا ذروتها هي.
+                if verdict_xg["has_xg"] and \
+                        verdict_xg["score"] > (w.get("score_xg") or 0):
+                    w.update({"score_xg": verdict_xg["score"],
+                              "level_xg": verdict_xg["level"]})
+                    log_dirty = True
     if log_dirty:
         RADAR_FILE.write_text(
             json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    # 🔬 رقم التغطية الحقيقي: كم من مباريات الرادار وجد لها xG. صفر متكرر هنا
+    # يعني أن الباقة لا تغطي ما نراقبه — وهو الدرس المستفاد من عطل الجمع
+    # الصباحي (90 معروضة، 0 مطابقة). يُطبع كل دورة كي لا يُكتشف متأخراً.
+    if targets:
+        box = state.get("xg_live") if isinstance(state, dict) else None
+        if isinstance(box, dict):
+            box["radar_hits"] = xg_hits
+            box["radar_targets"] = len(targets)
+        print(f"🔬 xG الحي: {xg_hits} من {len(targets)} مباراة رادار لها xG")
     return swept
 
 

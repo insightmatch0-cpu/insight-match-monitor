@@ -68,6 +68,8 @@ jobs:
           TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
           PREMATCH_WINDOW: ${{ github.event.inputs.prematch_window }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # نشر الرادار الحي إلى فرع radar-live
+          # 🔬 xG الحي في الظل — غياب المفتاح = تخطٍ صامت تام، لا عطل
+          SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
         run: python monitor.py
 
       # الخطوات التالية بـ if: always() (إصلاح 2026-08-14): المراقب صار يسقط

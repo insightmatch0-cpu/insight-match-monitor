@@ -8,7 +8,7 @@
 sportmonks_shadow.json (سجل قياس — عقيدة لا-أسقف-قياس: لا يُقص أبداً).
 
 فشله صامت بالتصميم: لا يوقف تشغيلة ولا يمس توقعاً — أقصى ما يفعله عند أي عطل
-هو سطر في السجل. الحكم بعد ≥3 أسابيع (تقرير مرحلي 24 أغسطس، الحكم 1-3 سبتمبر).
+هو سطر في السجل. الحكم بعد النافذة المُمدَّدة (تقرير مرحلي 24 أغسطس، الحكم ~17 سبتمبر).
 انضباط الأسرار (القاعدة 3): المفتاح من البيئة، في ترويسة HTTP فقط، لا يُطبع أبداً.
 
 بُني على بنية API المؤكدة بالمسبار (فرع sportmonks-probe، 2026-08-12):
@@ -36,6 +36,17 @@ except Exception:                                # pragma: no cover - دفاعي
 # مع غياب SPORTMONKS_KEY من البيئة يشكّلان طريقَي التعطيل الطبيعيَّين
 XG_SHADOW = True
 
+# 🔴 مفتاح التعطيل الفوري للطبقة الحية وحدها — مستقل عن XG_SHADOW عمداً:
+# المجمّع الصباحي تجربة جارية في منتصف نافذتها (حتى ~17 سبتمبر)، فيجب أن
+# يبقى حياً حتى لو أُطفئت الطبقة الحية بالكامل.
+XG_LIVE_SHADOW = True
+
+# رصيد محجوز للمجمّع الصباحي: الطبقة الحية تتوقف عن الجلب متى هبط المتبقي
+# تحت هذا الحد. **هذا هو ما يجعل البناء ممكناً قبل معرفة السقف**: الكود
+# يقرأ المتبقي من كل رد ويكبح نفسه، فأياً كان السقف لا تجوّع الطبقةُ الحية
+# التجربةَ الصباحية. الرقم متحفظ عمداً (المجمّع الصباحي يكلّف ~8 نداءات/يوم).
+XG_LIVE_RESERVE = 300
+
 KEY = os.environ.get("SPORTMONKS_KEY", "").strip()
 BASE = "https://api.sportmonks.com/v3/football"
 SHADOW_FILE = Path("sportmonks_shadow.json")
@@ -48,6 +59,20 @@ FORM_MIN_MATCHES = 3     # لا ترجيح قبل 3 مباريات موثقة ل
 FORM_EDGE = 0.30         # فارق متوسطين أدنى للترجيح — دونه "تعادل"
 MAX_PAGES_PER_DAY = 4    # سقف صفحات الجلب لليوم الواحد (50 مباراة/صفحة)
 LOOKBACK_DAYS = 2        # نغطي آخر يومين — نفس أفق تقييم المحركات الصباحي
+
+# ترويسات الحد التي قد يرسلها المزوّد أو أي وسيط أمامه. سبورتمونكس v3 يضع
+# الحد في **جسم** الرد (حقل rate_limit) لا في ترويسة، لكننا نقرأ الاثنين عمداً:
+# الافتراض بأن مصدراً واحداً كافٍ هو بالضبط نوع الافتراض الذي كلّفنا يوم إنتاج
+# كامل (عطل 14 أغسطس). أسماء ترويسات عامة لا تحمل أي سرّ.
+_RATE_HEADER_KEYS = (
+    "x-ratelimit-limit", "x-ratelimit-remaining", "x-ratelimit-reset",
+    "ratelimit-limit", "ratelimit-remaining", "ratelimit-reset",
+    "retry-after",
+)
+
+# آخر ترويسات حد رُصدت — يملؤها _request ويقرأها المسبار. عامد أن يكون متغيراً
+# عاماً لا قيمة راجعة: تغيير عدد قيم _request كان سيكسر كل بدائل الاختبارات.
+_LAST_HEADERS = {}
 
 # إنذار صفر الجمع (الدرس المعمّم من عطل 14 أغسطس): تجربة ظل تجمع صفر مدخلات
 # يومين متتاليين تصرخ. **العطل الصامت هو العدو، لا العطل نفسه** — تجربة تجمع
@@ -82,6 +107,18 @@ OPTA_SAMPLE = [
      "opta_home": 2.6, "opta_away": 0.8},
 ]
 VALIDATE_TOLERANCE = 0.35   # متوسط فرق مطلق مقبول بين مزودَي xG (نماذج مختلفة)
+
+# 📏 التغطية المقاسة (مسبار 2026-08-15، يوم 14 أغسطس): الباقة أرجعت 8 مباريات
+# فقط لليوم كله، وهذه معرفات الدوريات التي **ثبت** أنها تحمل xG وتقع ضمن
+# دوريات المالك. الأرقام معرفات سبورتمونكس لا معرفات API-Football.
+# ⛔ قائمة مرجعية للعرض والتشخيص فقط — لا تُستعمل بوابةً تمنع الجمع: مطابقة
+# الاسم هي البوابة الحقيقية، ومباراة خارج القائمة تمرّ بلا xG من تلقاء نفسها.
+# (قائمة الحظر التي تفشل مفتوحة هي درس حادثة الدوريات النسائية — وهنا نتجنب
+# النمط أصلاً بألا نجعلها بوابة.)
+XG_COVERED_LEAGUES = {
+    944: "الدوري السعودي للمحترفين",
+    9: "التشامبيونشيب الإنجليزي",
+}
 
 
 # حروف لاتينية لا تفكّكها NFKD، فكانت تُحذف صامتةً ويتشوّه الرمز كله.
@@ -159,6 +196,15 @@ def _request(path: str, params: dict) -> tuple:
                          headers={"Authorization": KEY}, timeout=25)
     except Exception as e:
         return None, {"_exception": type(e).__name__}
+    # ترويسات الحد تُلتقط من **كل** رد بما فيه المرفوض — الرد الرافض هو أصدق
+    # لحظة يقول فيها المزوّد إن السقف نفد (درس عطل 14 أغسطس: الرفض يحمل المعلومة)
+    try:
+        _LAST_HEADERS.clear()
+        _LAST_HEADERS.update({k: v for k, v in
+                              ((k.lower(), v) for k, v in r.headers.items())
+                              if k in _RATE_HEADER_KEYS})
+    except Exception:                            # pragma: no cover - دفاعي
+        pass
     try:
         return r.status_code, r.json()
     except Exception as e:
@@ -206,6 +252,69 @@ def fetch_day_xg(day: str) -> list:
         if not (body.get("pagination") or {}).get("has_more"):
             break
     return rows
+
+
+def live_xg_map(last_remaining=None, reserve: int = None) -> tuple:
+    """🔴 xG الحي لكل المباريات الجارية — **نداء واحد لكل دورة، لا نداء لكل مباراة**.
+
+    نقطة التصميم الحاسمة: سبورتمونكس يرجع كل المباريات الجارية في نداء واحد
+    (livescores/inplay)، فكلفة الطبقة الحية ~144 نداءً/يوم مهما بلغ عدد
+    المباريات — لا 20 نداءً كل 10 دقائق كما بدا في الطرح الأول. هذا وحده
+    يُخرج الاستطلاع الحي من دائرة الخطر على الرصيد.
+
+    الكبح الذاتي: يقرأ المتبقي من كل رد ويرجعه للمنادي ليخزّنه؛ متى هبط تحت
+    الحجز توقف الطبقة الحية نفسها **قبل** أن تلمس رصيد المجمّع الصباحي.
+    فالسقف المجهول لم يعد حاجزاً — صار مُدخلاً يتعامل معه الكود وقت التشغيل.
+
+    سؤال التغطية يحل نفسه هنا: مباراة بلا xG في الباقة ببساطة لا ترد بـxG،
+    فلا يوجد "نداء مهدور" أصلاً — لا نداء لكل مباراة كي يُهدر.
+
+    يرجع (خريطة {(المضيف, الضيف): (xg_h, xg_a)}, المتبقي, ملاحظة).
+    صامت المبدأ: أي عطل يرجع خريطة فارغة ولا يرفع استثناءً أبداً.
+    """
+    reserve = XG_LIVE_RESERVE if reserve is None else reserve
+    if not XG_LIVE_SHADOW or not KEY:
+        return {}, last_remaining, "مطفأ"
+    # الكبح قبل النداء: المتبقي المرصود في الدورة السابقة هو ما نحتكم إليه
+    if last_remaining is not None and last_remaining <= reserve:
+        return {}, last_remaining, f"كبح ذاتي — المتبقي {last_remaining} تحت الحجز {reserve}"
+    status, body = _request("livescores/inplay", {"include": "xgfixture"})
+    if status != 200 or not isinstance(body, dict) or "_exception" in body:
+        return {}, last_remaining, f"تعذر الجلب (HTTP {status})"
+    remaining = _rate_sample(body).get("remaining")
+    out = {}
+    for fx in (body.get("data") or []):
+        name = fx.get("name") or ""
+        if " vs " not in name:
+            continue
+        home, away = (p.strip() for p in name.split(" vs ", 1))
+        xh = xa = None
+        for x in (fx.get("xgfixture") or []):
+            if x.get("type_id") != XG_TYPE_ID:
+                continue
+            v = (x.get("data") or {}).get("value")
+            if x.get("location") == "home":
+                xh = v
+            elif x.get("location") == "away":
+                xa = v
+        if xh is not None and xa is not None:
+            try:
+                out[(home, away)] = (float(xh), float(xa))
+            except (TypeError, ValueError):
+                continue
+    return out, (remaining if remaining is not None else last_remaining), ""
+
+
+def live_xg_for(xg_map: dict, home: str, away: str):
+    """يبحث عن xG مباراة بعينها في خريطة الدورة — بالمطابقة المحافظة نفسها.
+
+    نفس names_match المستعمل في المجمّع الصباحي عمداً: مطابقة أضعف هنا كانت
+    ستنتج **أزواجاً خاطئة**، وبيانات خاطئة أسوأ من لا بيانات (درس المطابقة).
+    """
+    for (h, a), xg in (xg_map or {}).items():
+        if names_match(home, h) and names_match(away, a):
+            return xg
+    return None
 
 
 def load_json(path: Path, default):
@@ -277,6 +386,65 @@ def validate(persist: bool = True) -> dict:
     return summary
 
 
+def xg_table(day: str) -> list:
+    """📋 جدول xG ليوم واحد — للمقارنة اليدوية مع FBref (مزوّده Opta منذ 2022).
+
+    سبب الوجود: التحقق الأصلي (OPTA_SAMPLE) مبني على مباريات 2022-23، وباقة
+    التجربة **بلا تغطية تاريخية** فرجع بصفر عينة (مسجَّل في meta.opta_validation).
+    التحقق الوحيد الممكن قبل انتهاء التجربة هو على مباريات **حالية** في
+    الدوريات المغطاة: يُطبع أرقام سبورتمونكس، وتُقارن بالعين على fbref.com.
+
+    مقارنة يدوية عمداً لا آلية: كشط FBref يخالف شروطه، وربطُ التحقق بمصدر
+    نكشطه كان سيصنع اعتماداً هشاً على صفحة قد تتغيّر — والرقم المطبوع هنا
+    يكفي لحكم بشري في دقيقة واحدة.
+
+    قراءة محضة: لا يكتب شيئاً ولا يمس أي محرك.
+    """
+    rows = []
+    for page in range(1, MAX_PAGES_PER_DAY + 1):
+        status, body = _request(f"fixtures/date/{day}",
+                                {"per_page": 50, "page": page,
+                                 "include": "xgfixture"})
+        if status != 200 or not isinstance(body, dict) or "_exception" in body:
+            print(f"📋 جدول xG: تعذر الجلب (HTTP {status})")
+            break
+        for fx in (body.get("data") or []):
+            name = fx.get("name") or ""
+            if " vs " not in name:
+                continue
+            home, away = (p.strip() for p in name.split(" vs ", 1))
+            xh = xa = None
+            for x in (fx.get("xgfixture") or []):
+                if x.get("type_id") != XG_TYPE_ID:
+                    continue
+                v = (x.get("data") or {}).get("value")
+                if x.get("location") == "home":
+                    xh = v
+                elif x.get("location") == "away":
+                    xa = v
+            if xh is not None and xa is not None:
+                rows.append({"home": home, "away": away,
+                             "xg_home": float(xh), "xg_away": float(xa),
+                             "league_id": fx.get("league_id")})
+        if not (body.get("pagination") or {}).get("has_more"):
+            break
+    print(f"📋 جدول xG ليوم {day} — {len(rows)} مباراة تحمل xG")
+    print("المباراة | xG سبورتمونكس | الدوري")
+    for r in rows:
+        tag = XG_COVERED_LEAGUES.get(r["league_id"], f"دوري {r['league_id']}")
+        print(f"    {r['home']} – {r['away']} | "
+              f"{r['xg_home']:.2f}-{r['xg_away']:.2f} | {tag}")
+    covered = [r for r in rows if r["league_id"] in XG_COVERED_LEAGUES]
+    print(f"📊 منها {len(covered)} في دوريات المالك المغطاة "
+          f"({', '.join(XG_COVERED_LEAGUES.values())})")
+    if covered:
+        print("⇦ قارن هذه الأرقام يدوياً على fbref.com (نفس المباراة، خانة xG). "
+              "فارق أقل من ±0.35 في المتوسط = توافق مقبول بين نموذجَي xG.")
+    else:
+        print("⇦ لا مباراة في الدوريات المغطاة هذا اليوم — جرّب يوم مباريات سعودي")
+    return rows
+
+
 def _plan_lines(body: dict) -> list:
     """ملخص الاشتراك كما ترجعه سبورتمونكس مع **كل** رد — أسماء خطط وحزم فقط.
 
@@ -293,18 +461,105 @@ def _plan_lines(body: dict) -> list:
     return out or ["    (لا معلومات اشتراك في الرد)"]
 
 
+def _rate_sample(body: dict, headers: dict = None) -> dict:
+    """يلتقط قراءة واحدة لحالة الحد من مصدرَيها: جسم الرد ثم الترويسات.
+
+    سبورتمونكس v3 يضع rate_limit في الجسم: {remaining, resets_in_seconds,
+    requested_entity} — والحد **لكل كيان** لا لكل الحساب، فاسم الكيان جزء من
+    الإجابة لا تفصيل. الترويسات تُقرأ كاحتياط لو غيّر المزوّد أو وسيط أمامه العرف.
+    """
+    rl = (body or {}).get("rate_limit") or {}
+    h = headers if headers is not None else _LAST_HEADERS
+    def _num(v):
+        try:
+            return int(float(v))
+        except (TypeError, ValueError):
+            return None
+    return {
+        "remaining": _num(rl.get("remaining")) if rl else _num(
+            h.get("x-ratelimit-remaining") or h.get("ratelimit-remaining")),
+        "resets_in": _num(rl.get("resets_in_seconds")) if rl else _num(
+            h.get("x-ratelimit-reset") or h.get("ratelimit-reset")),
+        "entity": rl.get("requested_entity") if rl else None,
+        "limit_header": _num(h.get("x-ratelimit-limit")
+                             or h.get("ratelimit-limit")),
+        "source": "جسم الرد" if rl else ("ترويسة" if h else "لا مصدر"),
+    }
+
+
+def _window_label(seconds) -> str:
+    """ثواني التصفير → وصف النافذة، **مع حدود ما يثبته رقم واحد**.
+
+    التحفظ مقصود: resets_in_seconds عدّاد تنازلي **داخل** النافذة، فقراءة 1200
+    قد تكون نافذة ساعية مرّ منها 40 دقيقة أو نافذة يومية بقي لها 20 دقيقة.
+    القيمة **القصوى** المرصودة عبر عدة نداءات هي وحدها التي تحدّ النافذة من أسفل
+    — لذلك يجمع المسبار قراءة لكل صفحة بدل قراءة واحدة.
+    """
+    if seconds is None:
+        return "غير معروفة"
+    s = int(seconds)
+    if s <= 3600:
+        return f"{s} ثانية — تتسق مع نافذة ساعية (3600 ثانية)"
+    if s <= 86400:
+        return f"{s} ثانية — أطول من ساعة، تتسق مع نافذة يومية"
+    return f"{s} ثانية — أطول من يوم"
+
+
+def rate_limit_lines(samples: list) -> list:
+    """أسطر تقرير سقف النداءات — الحاجز القاطع قبل أي بناء على الطبقة الحية.
+
+    يطبع: السقف (أو تعذُّر قراءته)، المتبقي، نافذة التصفير، وكلفة النداء الواحد
+    مقاسةً من فرق المتبقي بين نداءين متتاليين. الكلفة المقاسة هي الرقم الذي
+    يُبنى عليه التصميم: سقف ÷ كلفة الدورة = عدد الدورات التي يحتملها الرصيد.
+    """
+    real = [s for s in samples if s.get("remaining") is not None]
+    if not real:
+        return ["⛔ سقف النداءات: لم يرجع المزوّد أي بيانات حد "
+                "(لا حقل rate_limit في الجسم ولا ترويسة X-RateLimit-*) — "
+                "**لا تفترض السقف**؛ التصميم الحي يبقى محجوباً حتى يُقاس."]
+    first, last = real[0], real[-1]
+    lines = [f"🚦 سقف النداءات (المصدر: {last['source']}"
+             + (f" | الكيان: {last['entity']}" if last.get("entity") else "")
+             + ")"]
+    lines.append(f"    السقف المعلن: "
+                 + (str(last["limit_header"]) if last.get("limit_header")
+                    else "غير معلن في الرد — يُستدل عليه من المتبقي"))
+    lines.append(f"    المتبقي الآن: {last['remaining']}")
+    lines.append(f"    نافذة التصفير: {_window_label(last.get('resets_in'))}")
+    # كلفة النداء الواحد: تُقاس من نداءات المسبار نفسها لا تُفترض
+    if len(real) >= 2 and first["remaining"] is not None:
+        used = first["remaining"] - last["remaining"]
+        calls = len(real) - 1
+        if used >= 0 and calls:
+            lines.append(f"    كلفة مقاسة: {used} من الرصيد مقابل {calls} نداء "
+                         f"({used / calls:.2f} لكل نداء)")
+    else:
+        lines.append("    كلفة النداء: قراءة واحدة فقط — لا تكفي للقياس")
+    mx = max((s["resets_in"] for s in real
+              if s.get("resets_in") is not None), default=None)
+    if mx is not None:
+        lines.append(f"    أقصى عدّاد تصفير مرصود: {mx} ثانية "
+                     f"(الحد الأدنى المثبت لطول النافذة)")
+    return lines
+
+
 def _probe_day_fixtures(day: str) -> tuple:
     """يجلب صفحات اليوم ويطبع لكل صفحة: حالة HTTP، العدد، وكم منها يحمل xG.
 
-    يرجع (كل المباريات, أسطر الاشتراك). كل مباراة قاموس فيه الاسمان وعلم has_xg
-    — **بما فيها التي بلا xG**، لأن الفرق بين «رجعت بلا xG» و«لم ترجع أصلاً» هو
-    بيت القصيد في تشخيص صفر الجمع.
+    يرجع (كل المباريات, أسطر الاشتراك, قراءات الحد). كل مباراة قاموس فيه
+    الاسمان وعلم has_xg — **بما فيها التي بلا xG**، لأن الفرق بين «رجعت بلا xG»
+    و«لم ترجع أصلاً» هو بيت القصيد في تشخيص صفر الجمع. وقراءات الحد تُجمع لكل
+    صفحة لا مرة واحدة، كي تُقاس كلفة النداء الواحد بدل أن تُفترض.
     """
-    fixtures, plan_lines = [], []
+    fixtures, plan_lines, rate_samples = [], [], []
     for page in range(1, MAX_PAGES_PER_DAY + 1):
         status, body = _request(f"fixtures/date/{day}",
                                 {"per_page": 50, "page": page,
                                  "include": "xgfixture"})
+        # قراءة الحد تُلتقط من كل صفحة **قبل** أي فرع خروج: الرد الرافض يحمل
+        # حالة الحد أيضاً، وهو أهم رد نقرأه إن كان النفاد هو سبب الرفض
+        if isinstance(body, dict):
+            rate_samples.append(_rate_sample(body))
         if not isinstance(body, dict) or "_exception" in body:
             print(f"  صفحة {page}: HTTP {status} | تعذر قراءة الرد "
                   f"({(body or {}).get('_exception', 'غير معروف')})")
@@ -345,7 +600,7 @@ def _probe_day_fixtures(day: str) -> tuple:
         fixtures.extend(page_rows)
         if not pag.get("has_more"):
             break
-    return fixtures, plan_lines
+    return fixtures, plan_lines, rate_samples
 
 
 def probe(day: str = None) -> None:
@@ -355,6 +610,11 @@ def probe(day: str = None) -> None:
     فالطريقة الوحيدة لرؤية الحقيقة هي طباعتها في سجل Actions. يطبع: رمز حالة
     HTTP لكل صفحة، كم مباراة رجعت فعلاً، **كم منها يحمل xG وكم لا يحمل**،
     ملخص الاشتراك، وعيّنة أسماء من الجانبين لفحص المطابقة بالعين.
+
+    ويطبع كذلك **حالة سقف النداءات** (السقف، المتبقي، نافذة التصفير، وكلفة
+    النداء الواحد مقاسةً): هذا هو الحاجز القاطع أمام أي استطلاع حي — رصيد
+    ساعي صغير يعني أن تصميم xG الحي يجب أن يُبنى على لقطات متباعدة أو على
+    دوريات المالك وحدها، لا على استطلاع كل دورة. **يُقاس ولا يُفترض.**
 
     ثم يفصل الفرضيات صراحةً: عدد مبارياتنا التي لها نظير بالاسم في سبورتمونكس
     (بصرف النظر عن xG) مقابل عدد ما يحمل xG — الفارق بين الرقمين يقول أي طبقة
@@ -372,10 +632,14 @@ def probe(day: str = None) -> None:
           f"(per_page=50، سقف {MAX_PAGES_PER_DAY} صفحات = "
           f"{50 * MAX_PAGES_PER_DAY} مباراة كحد أقصى)")
 
-    fixtures, plan_lines = _probe_day_fixtures(day)
+    fixtures, plan_lines, rate_samples = _probe_day_fixtures(day)
     with_xg = [f for f in fixtures if f["has_xg"]]
     print(f"📊 الإجمالي من سبورتمونكس: {len(fixtures)} مباراة — "
           f"{len(with_xg)} بـxG و{len(fixtures) - len(with_xg)} بلا xG")
+
+    # الحاجز القاطع أولاً في المخرَج: لا يُبنى استطلاع حي قبل قراءة هذا الرقم
+    for line in rate_limit_lines(rate_samples):
+        print(line)
 
     print("📦 الاشتراك (كما يرجعه المزوّد — أسماء تجارية، لا أسرار):")
     for line in plan_lines:
@@ -560,6 +824,17 @@ if __name__ == "__main__":
         _day = (sys.argv[_i] if len(sys.argv) > _i
                 and not sys.argv[_i].startswith("-") else None)
         probe(_day)
+    elif "--table" in sys.argv:
+        # --table [YYYY-MM-DD] — جدول xG ليوم للمقارنة اليدوية مع FBref
+        _i = sys.argv.index("--table") + 1
+        _day = (sys.argv[_i] if len(sys.argv) > _i
+                and not sys.argv[_i].startswith("-")
+                else (datetime.now(timezone.utc)
+                      - timedelta(days=1)).strftime("%Y-%m-%d"))
+        if KEY:
+            xg_table(_day)
+        else:
+            print("📋 جدول xG: لا مفتاح في البيئة — تخطٍ نظيف")
     elif "--validate" in sys.argv:
         validate()
     else:
