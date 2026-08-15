@@ -2037,6 +2037,21 @@ def send_telegram(text: str) -> None:
 
 
 # ================== المنطق الرئيسي ==================
+def prune_dead_matches(state: dict, live_ids) -> None:
+    """تنظيف الذاكرة: حذف المباريات التي لم تعد حية — بالنمط الرقمي فقط.
+
+    مفاتيح المباريات كلها أرقام (fid = str(fixture.id))، أما المفاتيح
+    المحجوزة (api_alerts، api_quota، deadman، delivery، xg_live...) فليست
+    مباريات ولا تُحذف هنا أبداً. النسخة القديمة كانت تحذف «كل ما ليس حياً»
+    فمحت ذاكرة تهدئة الإنذارات ونبض التسليم وعلم deadman كل 10 دقائق
+    (عطل 2026-08-15) — قائمة سوداء تفشل مفتوحة؛ الحذف بالنمط الرقمي
+    يفشل مغلقاً: أي مفتاح محجوز مستقبلي ينجو تلقائياً بلا تحديث قائمة.
+    """
+    for fid in list(state.keys()):
+        if str(fid).isdigit() and fid not in live_ids:
+            del state[fid]
+
+
 def main() -> None:
     missing = [
         name
@@ -2261,10 +2276,8 @@ def main() -> None:
             entry["radar"] = prev["radar"]   # ذاكرة الرادار تنجو من إعادة البناء
         state[fid] = entry
 
-    # تنظيف الذاكرة: نحذف المباريات التي لم تعد حية
-    for fid in list(state.keys()):
-        if fid not in live_ids:
-            del state[fid]
+    # تنظيف الذاكرة: نحذف المباريات التي لم تعد حية (المفاتيح المحجوزة تنجو)
+    prune_dead_matches(state, live_ids)
 
     # الرادار: إنذار مبكر رياضي لكل توقعات المحرك 2 الحية (صفر Claude)
     radar_count = 0
