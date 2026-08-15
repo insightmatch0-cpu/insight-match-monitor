@@ -11,8 +11,15 @@
 1) يقرأ الرسائل الجديدة عبر getUpdates (من محادثة المالك فقط — أي رسالة من
    محادثة أخرى تُتجاهل تماماً).
 2) "مسح" / "مسح حي" → يشغّل المسح الحي فوراً (بدون نداء Claude).
-3) أي رسالة أخرى → نداء Claude واحد يفسّر القصد: تحديد/إضافة/إزالة/تفريغ
+3) "تحقق" / "/تحقق" → يبث رسالة اختبار قصيرة إلى كل أجهزة البث ثم يرد على
+   المالك بتقرير مفصّل: من استلم ومن فشل ولماذا (بدون نداء Claude).
+4) أي رسالة أخرى → نداء Claude واحد يفسّر القصد: تحديد/إضافة/إزالة/تفريغ
    قائمة التركيز، ويرد بتأكيد يعرض توقعات المحركين للمباريات المختارة.
+
+حدود قناة التحكم لم تتغير ولا يجوز أن تتغير: الأوامر تُقرأ من TELEGRAM_CHAT_ID
+حصراً. أمر /تحقق يبث إلى الخارج فقط ولا يفتح للخارج أي حق أمر — قائمة البث
+تُقرأ داخل api_guard.verify_delivery() فلا يذكر هذا الملف سرّ البث إطلاقاً
+(حارس بنيوي في tests/test_telegram_broadcast.py يسقط لو ظهر اسمه هنا).
 
 التكلفة: نداء تيليجرام واحد لكل تشغيلة + نداء Claude فقط عند وجود رسالة جديدة.
 لا يستهلك أي نداء من API-Football.
@@ -26,6 +33,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
+
+import api_guard
 
 WATCHLIST_FILE        = Path("watchlist.json")
 PREDICTIONS_FILE      = Path("predictions.json")
@@ -41,6 +50,11 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 
 SCAN_KEYWORDS = ("مسح", "مسح حي", "شنو الشغال الحين", "scan")
 CLEAR_KEYWORDS = ("امسح القائمة", "الغ القائمة", "ألغ القائمة", "امسح التركيز", "clear")
+
+# أمر تأكيد التسليم (2026-08-15). المطابقة **تامة** لا بالبداية عمداً: كلمة
+# "تحقق" تَرِد داخل جمل عادية ("تحقق من مباراة الريال")، ولو طابقنا البداية
+# لابتلع الأمرُ رسائلَ التركيز. مطابقة تامة = لا التباس.
+CHECK_KEYWORDS = ("تحقق", "/تحقق", "check", "/check")
 
 
 def now_utc() -> datetime:
@@ -498,6 +512,11 @@ def main() -> None:
 
         text = item["text"]
         low = text.strip().lower()
+        # 📡 /تحقق: أمر مباشر بلا أي نداء Claude (مثل "مسح") — يبث رسالة
+        # اختبار قصيرة لكل المستقبِلين ثم يرد على المالك بالتفصيل الكامل.
+        if low in CHECK_KEYWORDS:
+            send_telegram(api_guard.verify_report(api_guard.verify_delivery()))
+            continue
         if any(low == k or low.startswith(k) for k in SCAN_KEYWORDS):
             if fire_scan():
                 send_telegram("🔍 بدأت المسح الحي العالمي — النتائج خلال دقائق.")
@@ -528,7 +547,8 @@ def main() -> None:
             send_telegram(
                 "لم أتعرف على مباريات في رسالتك. أرسل أسماء الفرق التي تهمك "
                 "(مثال: ركز على ريال مدريد ومباراة فرنسا)، أو توقعك لنتيجة مباراة، "
-                "أو \"امسح القائمة\" للإلغاء."
+                "أو \"امسح القائمة\" للإلغاء، أو \"مسح\" للمسح الحي، "
+                "أو \"تحقق\" لفحص وصول الرسائل إلى كل أجهزتك."
             )
             continue
         send_telegram(apply_action(intent["action"], intent["fids"], candidates, data))
@@ -540,6 +560,14 @@ def main() -> None:
 
     save_json(WATCHLIST_FILE, data)
     print(f"قائمة التركيز: {len(data.get('matches', {}))} مباراة، عناصر جديدة: {len(items)}")
+
+    # فشل معرّف المالك يُطبع صاخباً من api_guard، لكننا **لا نخرج** بحالة فشل
+    # هنا عمداً: خطوة watchlist في monitor.yml بلا حارس، وإسقاطها يتخطى خطوة
+    # "Run monitor" فيتوقف الرصد الحي كله — عطل أسوأ بكثير من العلامة الحمراء.
+    # العلامة الحمراء تأتي من monitor.py نفسه بعد ثوانٍ في نفس التشغيلة.
+    if api_guard.owner_unreachable():
+        print("🚨 تحذير: رسائل تيليجرام لا تصل إلى المالك — "
+              "تشغيلة المراقب ستخرج حمراء بعد قليل.")
 
 
 if __name__ == "__main__":
