@@ -307,6 +307,88 @@ class TestSelfThrottle(unittest.TestCase):
         self.assertIsNone(S.live_xg_for(m, "Arsenal", "Chelsea"))
 
 
+class TestFbrefComparisonTable(unittest.TestCase):
+    """📋 جدول المقارنة مع FBref: التحقق الوحيد الممكن قبل انتهاء التجربة.
+
+    التحقق الأصلي (OPTA_SAMPLE، موسم 2022-23) رجع بصفر عينة لأن الباقة بلا
+    تغطية تاريخية — فالبديل مباريات حالية في الدوريات المغطاة.
+    """
+
+    def _table(self, body, day="2026-08-15"):
+        import contextlib
+        import io as _io
+        orig_key, orig_req = S.KEY, S._request
+        S.KEY, S._request = "مفتاح-وهمي", lambda p, q: (200, body)
+        buf = _io.StringIO()
+        try:
+            with contextlib.redirect_stdout(buf):
+                rows = S.xg_table(day)
+        finally:
+            S.KEY, S._request = orig_key, orig_req
+        return buf.getvalue(), rows
+
+    @staticmethod
+    def _fx(home, away, xh, xa, league_id):
+        return {"name": f"{home} vs {away}", "league_id": league_id,
+                "xgfixture": [
+                    {"type_id": S.XG_TYPE_ID, "location": "home",
+                     "data": {"value": xh}},
+                    {"type_id": S.XG_TYPE_ID, "location": "away",
+                     "data": {"value": xa}}]}
+
+    def test_marks_owner_covered_leagues_by_name(self):
+        """الدوريات المغطاة تُسمّى بالعربية لا برقمها — يقرؤها المالك لا مبرمج."""
+        body = {"data": [self._fx("Al Hilal", "Al Faisaly", 2.4, 0.6, 944),
+                         self._fx("Wolves", "Blackburn", 1.8, 1.1, 9),
+                         self._fx("Naft", "Al Karkh", 0.9, 0.4, 911)],
+                "pagination": {"has_more": False}}
+        out, rows = self._table(body)
+        self.assertEqual(len(rows), 3)
+        self.assertIn("الدوري السعودي", out)
+        self.assertIn("التشامبيونشيب", out)
+        self.assertIn("دوري 911", out)          # غير مغطى: يُعرض برقمه بصدق
+        self.assertIn("منها 2", out)            # اثنتان في دوريات المالك
+
+    def test_points_at_fbref_only_when_there_is_something_to_compare(self):
+        body = {"data": [self._fx("Naft", "Al Karkh", 0.9, 0.4, 911)],
+                "pagination": {"has_more": False}}
+        out, _ = self._table(body)
+        self.assertNotIn("fbref.com", out)
+        self.assertIn("لا مباراة في الدوريات المغطاة", out)
+
+    def test_offers_fbref_when_a_covered_match_exists(self):
+        body = {"data": [self._fx("Al Hilal", "Al Faisaly", 2.4, 0.6, 944)],
+                "pagination": {"has_more": False}}
+        out, _ = self._table(body)
+        self.assertIn("fbref.com", out)
+        self.assertIn("0.35", out)              # حد التوافق المعلن
+
+    def test_never_prints_the_key(self):
+        body = {"data": [self._fx("Al Hilal", "Al Faisaly", 2.4, 0.6, 944)],
+                "pagination": {"has_more": False}}
+        out, _ = self._table(body)
+        self.assertNotIn("مفتاح-وهمي", out)
+
+    def test_covered_list_is_reference_not_a_gate(self):
+        """⛔ القائمة للعرض فقط: مباراة خارجها تُجمع ولا تُحجب.
+
+        لو صارت بوابةً لأصبحت قائمة حظر تفشل مفتوحة — نمط حادثة الدوريات
+        النسائية بعينه. مطابقة الاسم هي البوابة الحقيقية.
+        """
+        body = {"data": [self._fx("Some Team", "Other Team", 1.0, 2.0, 12345)],
+                "pagination": {"has_more": False}}
+        _, rows = self._table(body)
+        self.assertEqual(len(rows), 1)          # جُمعت رغم أنها خارج القائمة
+
+    def test_table_mode_is_wired_into_cli_and_workflow(self):
+        src = Path(S.__file__).read_text(encoding="utf-8")
+        self.assertIn('"--table" in sys.argv', src)
+        yml = (Path(__file__).resolve().parent.parent
+               / ".github" / "workflows" / "xg_probe.yml").read_text(encoding="utf-8")
+        self.assertIn("--table", yml)
+        self.assertIn("contents: read", yml)     # ما زال قراءة محضة
+
+
 class TestXgScoreBehaviour(unittest.TestCase):
     """الدرجة الموازية: تستبدل طبقة الزخم بفارق xG وتبقي المثبت كما هو."""
 

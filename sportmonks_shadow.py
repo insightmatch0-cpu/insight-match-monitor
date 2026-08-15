@@ -108,6 +108,18 @@ OPTA_SAMPLE = [
 ]
 VALIDATE_TOLERANCE = 0.35   # متوسط فرق مطلق مقبول بين مزودَي xG (نماذج مختلفة)
 
+# 📏 التغطية المقاسة (مسبار 2026-08-15، يوم 14 أغسطس): الباقة أرجعت 8 مباريات
+# فقط لليوم كله، وهذه معرفات الدوريات التي **ثبت** أنها تحمل xG وتقع ضمن
+# دوريات المالك. الأرقام معرفات سبورتمونكس لا معرفات API-Football.
+# ⛔ قائمة مرجعية للعرض والتشخيص فقط — لا تُستعمل بوابةً تمنع الجمع: مطابقة
+# الاسم هي البوابة الحقيقية، ومباراة خارج القائمة تمرّ بلا xG من تلقاء نفسها.
+# (قائمة الحظر التي تفشل مفتوحة هي درس حادثة الدوريات النسائية — وهنا نتجنب
+# النمط أصلاً بألا نجعلها بوابة.)
+XG_COVERED_LEAGUES = {
+    944: "الدوري السعودي للمحترفين",
+    9: "التشامبيونشيب الإنجليزي",
+}
+
 
 # حروف لاتينية لا تفكّكها NFKD، فكانت تُحذف صامتةً ويتشوّه الرمز كله.
 # دليل مقاس (مسبار 14 أغسطس على رد سبورتمونكس الحقيقي ليوم 11 أغسطس):
@@ -372,6 +384,65 @@ def validate(persist: bool = True) -> dict:
         shadow.setdefault("meta", {})["opta_validation"] = summary
         _save(shadow)
     return summary
+
+
+def xg_table(day: str) -> list:
+    """📋 جدول xG ليوم واحد — للمقارنة اليدوية مع FBref (مزوّده Opta منذ 2022).
+
+    سبب الوجود: التحقق الأصلي (OPTA_SAMPLE) مبني على مباريات 2022-23، وباقة
+    التجربة **بلا تغطية تاريخية** فرجع بصفر عينة (مسجَّل في meta.opta_validation).
+    التحقق الوحيد الممكن قبل انتهاء التجربة هو على مباريات **حالية** في
+    الدوريات المغطاة: يُطبع أرقام سبورتمونكس، وتُقارن بالعين على fbref.com.
+
+    مقارنة يدوية عمداً لا آلية: كشط FBref يخالف شروطه، وربطُ التحقق بمصدر
+    نكشطه كان سيصنع اعتماداً هشاً على صفحة قد تتغيّر — والرقم المطبوع هنا
+    يكفي لحكم بشري في دقيقة واحدة.
+
+    قراءة محضة: لا يكتب شيئاً ولا يمس أي محرك.
+    """
+    rows = []
+    for page in range(1, MAX_PAGES_PER_DAY + 1):
+        status, body = _request(f"fixtures/date/{day}",
+                                {"per_page": 50, "page": page,
+                                 "include": "xgfixture"})
+        if status != 200 or not isinstance(body, dict) or "_exception" in body:
+            print(f"📋 جدول xG: تعذر الجلب (HTTP {status})")
+            break
+        for fx in (body.get("data") or []):
+            name = fx.get("name") or ""
+            if " vs " not in name:
+                continue
+            home, away = (p.strip() for p in name.split(" vs ", 1))
+            xh = xa = None
+            for x in (fx.get("xgfixture") or []):
+                if x.get("type_id") != XG_TYPE_ID:
+                    continue
+                v = (x.get("data") or {}).get("value")
+                if x.get("location") == "home":
+                    xh = v
+                elif x.get("location") == "away":
+                    xa = v
+            if xh is not None and xa is not None:
+                rows.append({"home": home, "away": away,
+                             "xg_home": float(xh), "xg_away": float(xa),
+                             "league_id": fx.get("league_id")})
+        if not (body.get("pagination") or {}).get("has_more"):
+            break
+    print(f"📋 جدول xG ليوم {day} — {len(rows)} مباراة تحمل xG")
+    print("المباراة | xG سبورتمونكس | الدوري")
+    for r in rows:
+        tag = XG_COVERED_LEAGUES.get(r["league_id"], f"دوري {r['league_id']}")
+        print(f"    {r['home']} – {r['away']} | "
+              f"{r['xg_home']:.2f}-{r['xg_away']:.2f} | {tag}")
+    covered = [r for r in rows if r["league_id"] in XG_COVERED_LEAGUES]
+    print(f"📊 منها {len(covered)} في دوريات المالك المغطاة "
+          f"({', '.join(XG_COVERED_LEAGUES.values())})")
+    if covered:
+        print("⇦ قارن هذه الأرقام يدوياً على fbref.com (نفس المباراة، خانة xG). "
+              "فارق أقل من ±0.35 في المتوسط = توافق مقبول بين نموذجَي xG.")
+    else:
+        print("⇦ لا مباراة في الدوريات المغطاة هذا اليوم — جرّب يوم مباريات سعودي")
+    return rows
 
 
 def _plan_lines(body: dict) -> list:
@@ -753,6 +824,17 @@ if __name__ == "__main__":
         _day = (sys.argv[_i] if len(sys.argv) > _i
                 and not sys.argv[_i].startswith("-") else None)
         probe(_day)
+    elif "--table" in sys.argv:
+        # --table [YYYY-MM-DD] — جدول xG ليوم للمقارنة اليدوية مع FBref
+        _i = sys.argv.index("--table") + 1
+        _day = (sys.argv[_i] if len(sys.argv) > _i
+                and not sys.argv[_i].startswith("-")
+                else (datetime.now(timezone.utc)
+                      - timedelta(days=1)).strftime("%Y-%m-%d"))
+        if KEY:
+            xg_table(_day)
+        else:
+            print("📋 جدول xG: لا مفتاح في البيئة — تخطٍ نظيف")
     elif "--validate" in sys.argv:
         validate()
     else:
