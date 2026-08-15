@@ -1017,10 +1017,11 @@
    "pick": "away",
    "confidence": 36,
    "level": "red",
-   "score": 74,
-   "minute": 82,
+   "score": 84,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د82)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د89)",
+    "ضغط هجومي متصاعد من المضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "score_xg": 95,
@@ -1036,10 +1037,10 @@
    "pick": "away",
    "confidence": 43,
    "level": "red",
-   "score": 74,
-   "minute": 82,
+   "score": 78,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د82)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د89)",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "score_xg": null,
@@ -1073,12 +1074,13 @@
    "pick": "home",
    "confidence": 60,
    "level": "amber",
-   "score": 40,
-   "minute": 42,
+   "score": 56,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د59)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
-   "score_xg": 47,
+   "score_xg": 50,
    "level_xg": "amber"
   },
   {
@@ -1091,10 +1093,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 47,
-   "minute": 54,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -1109,10 +1111,10 @@
    "pick": "home",
    "confidence": 44,
    "level": "amber",
-   "score": 45,
-   "minute": 51,
+   "score": 49,
+   "minute": 58,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د58)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -12299,6 +12301,67 @@
       "yc": 3,
       "rc": 1,
       "sv": 3
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1602979",
+   "date": "2026-08-15",
+   "minute": 64,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Al-Ittihad FC",
+   "away": "Al Kholood",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 4,
+      "poss": 53,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 5,
+      "cor": 3,
+      "poss": 47,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 64,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 8,
+      "cor": 5,
+      "poss": 51,
+      "yc": 0,
+      "rc": 1,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 8,
+      "cor": 3,
+      "poss": 49,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
      }
     }
    ]
