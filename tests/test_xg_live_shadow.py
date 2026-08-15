@@ -209,9 +209,12 @@ class TestNoAlertReadsXg(unittest.TestCase):
         """حتى لو حُسبت الدرجة الموازية، لا تتسرب إلى رسالة أو سجل تنبيه."""
         import inspect
         src = inspect.getsource(M.radar_sweep)
-        # تُحسب قبل maybe_radar_alert، لكن لا تُمرَّر إليه
+        # تُحسب قبل maybe_radar_alert، لكن لا تُمرَّر إليه — النداء يحمل
+        # النسخة الحية من السجل فقط (إصلاح سباق 2026-08-15)، لا أي حقل xG
         self.assertIn("verdict_xg", src)
-        self.assertIn("maybe_radar_alert(fid, e, alert_budget)", src)
+        self.assertIn("maybe_radar_alert(fid, e, alert_budget, log)", src)
+        self.assertNotIn("maybe_radar_alert(fid, e, alert_budget, log, ", src)
+        self.assertNotIn("verdict_xg)", src.split("maybe_radar_alert")[1][:80])
 
 
 class TestKillSwitch(unittest.TestCase):
