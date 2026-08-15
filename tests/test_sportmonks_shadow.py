@@ -405,6 +405,63 @@ class TestProbeMode(unittest.TestCase):
         self.assertIn("SPORTMONKS_KEY", yml)
         self.assertIn("contents: read", yml)     # لا كتابة في المستودع
 
+    def test_probe_prints_rate_limit_from_body(self):
+        """الحاجز القاطع: المسبار يقرأ حالة الحد من جسم الرد ويطبعها."""
+        body = self._body([self._fx("Arsenal", "Fulham", 2.6, 0.8)])
+        body["rate_limit"] = {"remaining": 2487, "resets_in_seconds": 3210,
+                              "requested_entity": "Fixture"}
+        out, _ = self._run_probe(lambda p, q: (200, body))
+        self.assertIn("سقف النداءات", out)
+        self.assertIn("2487", out)               # المتبقي كما رجع
+        self.assertIn("3210", out)               # نافذة التصفير كما رجعت
+        self.assertIn("Fixture", out)            # الحد لكل كيان لا لكل حساب
+
+    def test_probe_measures_cost_per_call_not_assumes_it(self):
+        """كلفة النداء تُقاس من فرق المتبقي بين صفحتين — لا تُفترض."""
+        pages = {1: 2500, 2: 2498}
+        def stub(path, params):
+            page = params.get("page")
+            b = self._body([self._fx("A", "B", 1.0, 1.0)], has_more=(page == 1))
+            b["rate_limit"] = {"remaining": pages.get(page, 2496),
+                               "resets_in_seconds": 3000,
+                               "requested_entity": "Fixture"}
+            return 200, b
+        out, _ = self._run_probe(stub)
+        self.assertIn("كلفة مقاسة", out)
+        self.assertIn("2 من الرصيد", out)        # 2500 → 2498 عبر نداء واحد
+
+    def test_probe_refuses_to_invent_a_cap_when_provider_is_silent(self):
+        """لا بيانات حد = قول ذلك صراحةً. رقم مُختلَق هنا أسوأ من لا رقم."""
+        out, _ = self._run_probe(
+            lambda p, q: (200, self._body([self._fx("A", "B", 1.0, 1.0)])))
+        self.assertIn("لا تفترض السقف", out)
+        for bad in ("2500", "3000", "7500"):     # لا سقف مُلفَّق في المخرَج
+            self.assertNotIn(bad, out)
+
+    def test_rate_limit_falls_back_to_headers(self):
+        """لو نقل المزوّد الحد إلى ترويسة، القراءة لا تعمى."""
+        s = S._rate_sample({}, {"x-ratelimit-limit": "2500",
+                                "x-ratelimit-remaining": "1999",
+                                "x-ratelimit-reset": "600"})
+        self.assertEqual(s["remaining"], 1999)
+        self.assertEqual(s["limit_header"], 2500)
+        self.assertEqual(s["source"], "ترويسة")
+
+    def test_window_label_does_not_overclaim_from_one_reading(self):
+        """عدّاد تنازلي واحد لا يثبت طول النافذة — الوصف يقول «يتسق مع»."""
+        self.assertIn("تتسق مع", S._window_label(1200))
+        self.assertIn("غير معروفة", S._window_label(None))
+        self.assertIn("أطول من يوم", S._window_label(200000))
+
+    def test_rate_limit_output_never_leaks_the_key(self):
+        """قاعدة الأسرار 3 تشمل مسار الحد الجديد كما تشمل ما قبله."""
+        body = self._body([self._fx("A", "B", 1.0, 1.0)])
+        body["rate_limit"] = {"remaining": 10, "resets_in_seconds": 60,
+                              "requested_entity": "Fixture"}
+        out, _ = self._run_probe(lambda p, q: (200, body))
+        self.assertNotIn(self.FAKE_KEY, out)
+        self.assertNotIn(self.FAKE_KEY[:12], out)
+
 
 class TestZeroCollectionAlarm(unittest.TestCase):
     """الدرس المعمّم من عطل 14 أغسطس: صفر مدخلات يومين متتاليين = صراخ."""
