@@ -54,10 +54,17 @@ jobs:
           TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
         run: python predict.py
 
+      # if: always() (2026-08-15 — نفس إصلاح monitor.yml و predict_v2.yml في
+      # 14 أغسطس، والفجوة نفسها كانت لا تزال مفتوحة هنا): predict.py يسقط
+      # عمداً عند رفض المزوّد، والآن أيضاً حين لا تصل رسائله إلى المالك.
+      # بلا هذا الشرط يُتخطى حفظ البيانات فتضيع توقعات المحرك 1 ليوم كامل —
+      # وهو ثمن أغلى بكثير من علامة حمراء في صفحة Actions.
       - name: Update dashboard data
+        if: always()
         run: python dashboard_update.py
 
       - name: Save data
+        if: always()
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"

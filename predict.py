@@ -635,6 +635,10 @@ def main() -> None:
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
         send_telegram_long(build_digest(new_preds, stats))
 
+    # 🚨 قناة تسليم فقط — لم يُمس سطر واحد من منطق التوقع في المحرك 1 (قاعدة 7).
+    # لو فشل تسليم رسالة إلى المالك نفسه نخرج بحالة فشل لتظهر التشغيلة حمراء.
+    api_guard.exit_if_owner_unreachable()
+
 
 if __name__ == "__main__":
     main()

@@ -2438,7 +2438,17 @@ def main() -> None:
         quota = api_guard.quota_line()
         if quota:
             digest += "\n" + quota
+        # 📡 نبض التسليم (2026-08-15): النظام يتحقق أن رسائله وصلت فعلاً.
+        # يُحسب من آخر بث مسجّل في state.json. «وصلت إلى الجهاز» لا «قُرئت» —
+        # تيليجرام لا يمنح البوتات إيصال قراءة، ولن ندّعي ما لا نعرفه.
+        delivery = api_guard.delivery_line()
+        if delivery:
+            digest += "\n" + delivery
         send_telegram_long(digest)
+
+    # 🚨 آخر شيء في التشغيلة: لو فشل تسليم رسالة إلى المالك نفسه فلا قناة
+    # تبليغ بديلة — نخرج بحالة فشل لتظهر التشغيلة حمراء. بعد حفظ كل شيء.
+    api_guard.exit_if_owner_unreachable()
 
 
 if __name__ == "__main__":
