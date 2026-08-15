@@ -1,0 +1,80 @@
+# 🌙 التمرير المسائي — تقييم فقط (طلب المالك 2026-08-15).
+#
+# سبب الوجود: مباراة تنتهي بعد التشغيلة الصباحية كانت تنتظر حتى ~24 ساعة
+# قبل أن تحمل ✓/✗. المالك طلب تقييماً فور انتهاء المباراة، ورُفض التقييم
+# اللحظي من النتيجة الحية لسبب قياسي لا كسل: التقييم يجري على نتيجة الـ90
+# دقيقة (score.fulltime)، ومباراة كأس حُسمت في الوقت الإضافي تُقيَّم تعادلاً
+# بعرف 1X2 العالمي — والنتيجة الحية في state تحمل ما بعد التمديد، فالتقييم
+# منها كان سيُفسد خانة الـ70%+ التي يراقبها المالك شخصياً.
+#
+# هذا الحل الوسط: نفس نداء التسوية المجمَّع ونفس عرف الـ90 دقيقة، مرة إضافية
+# مساءً. أسوأ انتظار ينزل من ~24 ساعة إلى ~12، وصفر مقايضة على دقة القياس.
+#
+# 21:30 UTC = 00:30 بتوقيت السعودية: بعد نهاية مباريات الدوري السعودي
+# (انطلاقها أول المساء محلياً) ومعظم المباريات الأوروبية. ما ينتهي بعد هذا
+# التوقيت يبقى للصباح — وهو المقصود، لا نقص.
+#
+# ⛔ لا يلمس هذا الـworkflow: التوقعات، الدروس، تقييم التقارير، النشرة،
+# ولا history.json (قناة إنذار deadman.py — تحريكها مساءً يُسكت الحارس).
+name: 🌙 Evening Resolve (V2)
+
+on:
+  schedule:
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# نفس مجموعة التزامن: يكتب في نفس الملفات التي تكتبها التشغيلات الأخرى،
+# فلا يجوز أن يتسابق معها على الدفع (عرف المستودع منذ البداية)
+concurrency:
+  group: football-monitor
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      # ANTHROPIC_API_KEY يمرّ لأن الوحدة تتحقق منه عند الاستيراد، لكن هذا
+      # المسار لا يجري أي نداء Claude إطلاقاً — لا دروس ولا تقييم تقارير.
+      - name: Resolve finished matches
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
+        run: python predict_v2.py --resolve-only
+
+      - name: Update dashboard data
+        if: always()
+        run: python dashboard_update.py
+
+      - name: Save data
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          # git add -A وليس قائمة أسماء (إصلاح 2026-08-09): أي ملف جديد غير
+          # مُدرَج يترك الشجرة متسخة فيرفض git الـ rebase وتضيع بيانات التشغيلة
+          git add -A
+          git diff --cached --quiet || git commit -m "evening resolve [skip ci]"
+          ok=0
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -X theirs origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          [ "$ok" = "1" ]

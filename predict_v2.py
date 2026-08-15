@@ -2514,5 +2514,68 @@ def main() -> None:
     api_guard.exit_if_owner_unreachable()
 
 
+def resolve_only() -> int:
+    """🌙 التمرير المسائي — تقييم فقط، بلا توقعات وبلا دروس وبلا نشرة.
+
+    طلب المالك 2026-08-15: «مباراة انتهت، لماذا ننتظر الصباح لنعرف ✓/✗؟».
+    الرفض كان لتقييم لحظي من النتيجة الحية — لأن التقييم يجري على نتيجة الـ90
+    دقيقة (score.fulltime)، ومباراة كأس حُسمت في الوقت الإضافي **تُقيَّم
+    تعادلاً**؛ النتيجة الحية في state تحمل نتيجة ما بعد التمديد، فالتقييم منها
+    كان سيُفسد خانة الـ70%+ بالذات. هذا التمرير يحلّ المشكلة بلا تلك المقايضة:
+    نفس نداء التسوية المجمَّع ونفس عرف الـ90 دقيقة، مرة إضافية في المساء.
+    أسوأ انتظار ينزل من ~24 ساعة إلى ~12.
+
+    ⛔ **لا يستدعي update_history() إطلاقاً.** تقدّم history.json هو قناة
+    الإنذار التي يقرأها deadman.py ليعرف أن التقييم الصباحي جرى؛ لو حرّكه
+    المساء لظنّ الحارس أن الصباح تم وسكت — وهذا بالضبط ثقب الصمت الذي كلّفنا
+    19 ساعة في 14 أغسطس. الأرشيف الدائم يبقى من اختصاص الصباح وحده.
+
+    ⛔ ولا يستدعي resolve_scenarios() ولا generate_lessons(): كلاهما نداء
+    Claude لكل عنصر، وتشغيلهما مرتين يومياً يضاعف الفاتورة التي أسقطت المحرك
+    ثلاث مرات في يوليو (القاعدة 4: أنفق API-Football بسخاء وClaude بحكمة).
+
+    يرجع عدد ما قُيّم (المحرك 2 + توقعات المالك).
+    """
+    store = load_json(PREDICTIONS_FILE, {"pending": {}, "resolved": []})
+    store.setdefault("pending", {})
+    store.setdefault("resolved", [])
+    resolved_now, newly_resolved = resolve_pending(store)
+    if resolved_now:
+        save_json(PREDICTIONS_FILE, store)
+    stats = compute_stats(store["resolved"])
+    print(f"🌙 التمرير المسائي: قُيّم {resolved_now} توقعاً. "
+          f"السجل: {pct(stats['overall'])}")
+
+    # حارسا ما بعد التقييم يركضان هنا **عمداً**: خطأ بثقة 70%+ يصل المالك
+    # مساءً بدل صباح الغد. ولو تُركا للصباح لما أطلقا أصلاً — فهما يقرآن
+    # newly_resolved، وهذه الصفوف ستكون قد سُوّيت هنا.
+    if newly_resolved:
+        post_grading_alerts(newly_resolved, store)
+
+    # توقعات المالك بنفس المنطق (سباق الدقة الثلاثي)
+    user_store = load_json(USER_PREDICTIONS_FILE, {"pending": {}, "resolved": []})
+    user_store.setdefault("pending", {})
+    user_store.setdefault("resolved", [])
+    user_now = 0
+    if user_store["pending"]:
+        user_now, _ = resolve_pending(user_store)
+        if user_now:
+            save_json(USER_PREDICTIONS_FILE, user_store)
+            print(f"🌙 توقعات المالك: قُيّم {user_now}.")
+
+    # تقييم إنذارات الرادار — صفر نداءات API (يقرأ النتائج من resolved نفسه)
+    try:
+        radar_graded = resolve_radar_log(store)
+        if radar_graded:
+            print(f"🌙 قُيّم {radar_graded} من إنذارات الرادار.")
+    except Exception as e:                       # pragma: no cover - دفاعي
+        print("🌙 تعذر تقييم سجل الرادار:", type(e).__name__)
+
+    return resolved_now + user_now
+
+
 if __name__ == "__main__":
-    main()
+    if "--resolve-only" in sys.argv:
+        resolve_only()
+    else:
+        main()
