@@ -769,12 +769,12 @@
    "pick": "home",
    "confidence": 65,
    "level": "amber",
-   "score": 51,
-   "minute": 60,
+   "score": 56,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د60)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د69)"
    ],
-   "score_xg": 55,
+   "score_xg": 56,
    "level_xg": "amber"
   },
   {
@@ -787,10 +787,10 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -805,12 +805,12 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "score": 55,
+   "minute": 67,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د59)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د67)"
    ],
-   "score_xg": 50,
+   "score_xg": 55,
    "level_xg": "amber"
   },
   {
@@ -823,15 +823,15 @@
    "pick": "home",
    "confidence": 37,
    "level": "red",
-   "score": 79,
-   "minute": 61,
+   "score": 85,
+   "minute": 70,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د61)",
+    "النتيجة الحالية 0-2 تُسقط التوقع (د70)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
-   "score_xg": 84,
+   "score_xg": 86,
    "level_xg": "red"
   },
   {
@@ -844,10 +844,11 @@
    "pick": "home",
    "confidence": 36,
    "level": "amber",
-   "score": 48,
-   "minute": 55,
+   "score": 59,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 1-3 تُسقط التوقع (د55)"
+    "النتيجة الحالية 1-3 تُسقط التوقع (د64)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "score_xg": null,
    "level_xg": null
@@ -869,6 +870,26 @@
    ],
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1563086",
+   "date": "2026-08-15",
+   "home": "Charlton",
+   "away": "Derby",
+   "league": "Championship (England)",
+   "top": true,
+   "pick": "away",
+   "confidence": 36,
+   "level": "red",
+   "score": 69,
+   "minute": 68,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د68)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "score_xg": 68,
+   "level_xg": "red"
   }
  ],
  "resolved": [
@@ -11729,7 +11750,132 @@
    "graded_on": "2026-08-15"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1563088",
+   "date": "2026-08-15",
+   "minute": 75,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Norwich",
+   "away": "West Brom",
+   "league": "Championship (England)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 6,
+      "cor": 4,
+      "poss": 55,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "poss": 45,
+      "yc": 1,
+      "rc": 0,
+      "sv": 4
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 16,
+      "cor": 8,
+      "poss": 52,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 1,
+      "poss": 48,
+      "yc": 2,
+      "rc": 0,
+      "sv": 6
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1563087",
+   "date": "2026-08-15",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Middlesbrough",
+   "away": "Lincoln",
+   "league": "Championship (England)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 2,
+      "poss": 73,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 8,
+      "cor": 5,
+      "poss": 27,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 6,
+      "shots": 16,
+      "cor": 4,
+      "poss": 76,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 5,
+      "poss": 24,
+      "yc": 1,
+      "rc": 0,
+      "sv": 5
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
