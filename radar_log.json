@@ -942,10 +942,10 @@
    "pick": "home",
    "confidence": 38,
    "level": "red",
-   "score": 95,
-   "minute": 77,
+   "score": 99,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د77)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د84)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -1006,6 +1006,24 @@
    ],
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1570333",
+   "date": "2026-08-15",
+   "home": "Alaves",
+   "away": "Getafe",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "pick": "away",
+   "confidence": 36,
+   "level": "green",
+   "score": 37,
+   "minute": 38,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د38)"
+   ],
+   "score_xg": 43,
+   "level_xg": "amber"
   }
  ],
  "resolved": [
@@ -12072,6 +12090,44 @@
       "yc": 0,
       "rc": 0,
       "sv": 1
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570333",
+   "date": "2026-08-15",
+   "minute": 44,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Alaves",
+   "away": "Getafe",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 44,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 0,
+      "poss": 47,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 2,
+      "poss": 53,
+      "yc": 2,
+      "rc": 1,
+      "sv": 0
      }
     }
    ]
