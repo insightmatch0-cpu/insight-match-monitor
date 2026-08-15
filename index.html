@@ -703,7 +703,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 74;
+var IM_BUILD = 75;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -760,6 +760,7 @@ var I18N = {
     radarCountToday:"بدأ العدّ اليوم",
     radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
     radarPick:"توقع المحرك 2:",
+    radarThreat:"⚠️ الخطر لصالح:",
     radarCalm:"لا إشارات خطر — الأرقام هادئة حتى الآن.",
     radarSogH:"تسديد المضيف",
     radarSogA:"تسديد الضيف",
@@ -883,6 +884,7 @@ var I18N = {
     radarCountToday:"Counting starts today",
     radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
     radarPick:"Engine 2 pick:",
+    radarThreat:"⚠️ Danger favors:",
     radarCalm:"No danger signals — the numbers are calm so far.",
     radarSogH:"Home shots on goal",
     radarSogA:"Away shots on goal",
@@ -1920,7 +1922,14 @@ function radarCard(m){
     + '<span class="rsc">'+esc(fastOf(m).score)+'</span></div>'
     + '<div class="rgauge"><i style="width:'+Math.max(3, r.score||0)+'%"></i></div>'
     + '<div class="rtop" style="margin-bottom:6px"><span>'+esc(t("radarPick"))+" "
-    + esc(pickTxt)+(r.confidence ? " ("+esc(r.confidence)+"%)" : "")+'</span></div>'
+    + esc(pickTxt)+(r.confidence ? " ("+esc(r.confidence)+"%)" : "")+'</span>'
+    /* اتجاه الخطر بالاسم (التباس المالك 2026-08-15: قرأ خطرَ 99 على توقّع
+       شيفيلد وكأنه لصالح شيفيلد): رقم الخطر يقيس التهديد على التوقع، فالمستفيد
+       هو الخصم — نسمّيه صراحة متى كان الخطر حقيقياً (كهرماني فأعلى) */
+    + ((r.pick === "home" || r.pick === "away") && (r.score||0) >= 40
+       ? '<span style="color:var(--warn,#e8a13c);font-weight:700">'+esc(t("radarThreat"))+" "
+         + esc(r.pick === "home" ? tn(m,"away") : tn(m,"home"))+'</span>' : '')
+    + '</div>'
     + (facts ? '<ul class="rfactors">'+facts+'</ul>'
              : '<div class="rfactors" style="padding:2px 0">'+esc(t("radarCalm"))+'</div>')
     + sparkRow("s-h", t("radarSogH"), tr.h_sog)

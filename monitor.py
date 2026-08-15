@@ -125,6 +125,15 @@ SHADOW_REPORTS_PER_DAY = 6   # سقف يومي — تكلفة Fable تبقى ت�
 SHADOW_GOLD_PRIORITY = True
 GOLD_SHADOW_MIN_CONF = 70    # عتبة "الذهب" — نفس خانة المالك المقدسة
 GOLD_SHADOW_EXTRA_PER_DAY = 4  # الحصة الإضافية للذهب بعد نفاد الحصة العادية
+# الحجز المسائي (قرار المالك 2026-08-15 بعد حالة شيفيلد×برمنغهام): في سبتات
+# التشامبيونشيب المزدحمة تستهلك مباريات الظهيرة الحصص الست كلها قبل أن تفتح
+# نافذة مباريات المساء أصلاً — فتُحرم أمسيات إنجلترا والسعودية من تقرير الظل
+# بانتظام لا مصادفة. الحل بلا كلفة: السقف يبقى 6، لكن ما قبل الحد المسائي
+# لا يستهلك أكثر من (السقف − الحجز) إذا كانت في جدول اليوم مباريات كبرى
+# تنطلق بعد الحد ولم تُلتقط. الحجز ديناميكي: لا مباريات مسائية = لا حجز
+# ولا حصة مهدورة. الذهب فوق هذه القاعدة (لا يُترك بلا تقرير أبداً).
+SHADOW_EVENING_FROM_UTC = 15   # حد "المساء": 15:00 UTC = 18:00 بتوقيت السعودية
+SHADOW_EVENING_RESERVE = 2     # أقصى حصص تُحجز للمساء من السقف اليومي
 
 # ذاكرة تقارير السيناريوهات: كل تقرير ما قبل مباراة يُحفظ هنا، ويقيّمه
 # predict_v2.py صباحاً مقابل البيانات النهائية الحقيقية ويستخلص دروساً
@@ -998,6 +1007,36 @@ def select_shadow_fixtures(v2_pending: dict, scen_pending: dict, watch: set,
     return [fid for _, fid in out[:max(0, cap)]]
 
 
+def _shadow_is_early(kickoff_str: str) -> bool:
+    """هل الانطلاق قبل الحد المسائي؟ (تعذر القراءة = مبكرة، فتخضع للحجز)."""
+    try:
+        return datetime.fromisoformat(kickoff_str or "").hour < SHADOW_EVENING_FROM_UTC
+    except Exception:
+        return True
+
+
+def evening_fixtures_ahead(v2_pending: dict, scen_pending: dict, watch: set,
+                           now: datetime) -> int:
+    """عدد مباريات الدوريات الكبرى التي تنطلق لاحقاً اليوم بعد الحد المسائي
+    ولم يُلتقط لها تقرير بعد — هي من يُحجز الاحتياطي لأجلها."""
+    today = now.strftime("%Y-%m-%d")
+    count = 0
+    for fid, p in (v2_pending or {}).items():
+        if fid in watch or fid in (scen_pending or {}):
+            continue
+        if not p.get("top"):
+            continue
+        try:
+            kickoff = datetime.fromisoformat(p.get("kickoff", ""))
+        except Exception:
+            continue
+        if kickoff <= now or kickoff.strftime("%Y-%m-%d") != today:
+            continue
+        if kickoff.hour >= SHADOW_EVENING_FROM_UTC:
+            count += 1
+    return count
+
+
 def shadow_reports(watch: set) -> None:
     """تقارير الظل: يلتقط تقرير سيناريوهات كاملاً لمباريات الدوريات الكبرى
     القادمة ويحفظه بعلامة shadow — بلا تيليجرام. يُقيَّم صباحاً كأي تقرير
@@ -1020,11 +1059,21 @@ def shadow_reports(watch: set) -> None:
     v2_pending = load_json_file(Path("predictions_v2.json"), {}).get("pending") or {}
     v1_pending = load_json_file(Path("predictions.json"), {}).get("pending") or {}
     now = datetime.now(timezone.utc)
+    # الحجز المسائي: كم حصة يجوز للمباريات المبكرة استهلاكها الآن —
+    # (السقف − حجز ديناميكي بقدر المباريات المسائية الفعلية) − المستهلك مبكراً
+    reserve = min(SHADOW_EVENING_RESERVE,
+                  evening_fixtures_ahead(v2_pending, scen["pending"], watch, now))
+    early_used = sum(1 for e in todays if _shadow_is_early(e.get("kickoff", "")))
+    early_budget = max(0, SHADOW_REPORTS_PER_DAY - reserve - early_used)
     for fid in select_shadow_fixtures(v2_pending, scen["pending"], watch, now,
                                       max(0, budget) + max(0, gold_budget)):
         p = v2_pending.get(fid) or {}
         gold = (SHADOW_GOLD_PRIORITY
                 and (p.get("confidence") or 0) >= GOLD_SHADOW_MIN_CONF)
+        early = _shadow_is_early(p.get("kickoff", ""))
+        # مباراة مبكرة غير ذهبية لا تمس الحصص المحجوزة للمساء
+        if early and not gold and early_budget <= 0:
+            continue
         # الذهب يستهلك الحصة العادية أولاً؛ غير الذهب لا يمس الحصة الإضافية
         if budget > 0:
             budget -= 1
@@ -1032,6 +1081,8 @@ def shadow_reports(watch: set) -> None:
             gold_budget -= 1
         else:
             continue
+        if early:
+            early_budget -= 1
         ctx = build_prematch_context(fid, v2_pending.get(fid),
                                      v1_pending.get(fid), None)
         report = analyze_with_claude(

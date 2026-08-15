@@ -62,3 +62,59 @@ class TestShadowConfig(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestEveningReserve(unittest.TestCase):
+    """الحجز المسائي (قرار المالك 2026-08-15 — حالة شيفيلد×برمنغهام):
+    سبت تشامبيونشيب مزدحم استهلكت فيه مباريات 11:30/14:00 الحصص الست
+    كلها، فوصلت شيفيلد (16:30، ثقة 38) ونافذتها مفتوحة والحصة صفر.
+    القاعدة: المبكرة لا تستهلك الحصص المحجوزة للمساء، والحجز ديناميكي
+    بقدر المباريات المسائية الفعلية، والذهب فوق القاعدة."""
+
+    MORNING = datetime(2026, 8, 15, 10, 45, tzinfo=timezone.utc)
+
+    def _evening_fx(self, hour=16, minute=30):
+        return {"top": True,
+                "kickoff": datetime(2026, 8, 15, hour, minute,
+                                    tzinfo=timezone.utc).isoformat()}
+
+    def test_is_early_boundary(self):
+        self.assertTrue(M._shadow_is_early("2026-08-15T14:00:00+00:00"))
+        self.assertFalse(M._shadow_is_early("2026-08-15T15:00:00+00:00"))
+        self.assertFalse(M._shadow_is_early("2026-08-15T16:30:00+00:00"))
+        self.assertTrue(M._shadow_is_early("not-a-date"), "المجهول يخضع للحجز")
+
+    def test_evening_ahead_counts_only_top_uncaptured_today(self):
+        pend = {
+            "shef": self._evening_fx(16, 30),          # تُحسب
+            "captured": self._evening_fx(17, 0),       # ملتقطة — لا تُحسب
+            "watch": self._evening_fx(18, 0),          # قائمة التركيز — لا
+            "small": {**self._evening_fx(19, 0), "top": False},  # ليست كبرى
+            "early": {"top": True,
+                      "kickoff": "2026-08-15T14:00:00+00:00"},   # مبكرة
+            "tomorrow": {"top": True,
+                         "kickoff": "2026-08-16T16:00:00+00:00"},  # غداً
+        }
+        n = M.evening_fixtures_ahead(pend, {"captured": {}}, {"watch"},
+                                     self.MORNING)
+        self.assertEqual(n, 1)
+
+    def test_no_evening_fixtures_means_no_reserve(self):
+        """لا مباريات مسائية في الجدول = صفر حجز، لا حصة مهدورة."""
+        pend = {"a": {"top": True, "kickoff": "2026-08-15T14:00:00+00:00"}}
+        self.assertEqual(
+            M.evening_fixtures_ahead(pend, {}, set(), self.MORNING), 0)
+
+    def test_reserve_constants_sane(self):
+        self.assertTrue(0 < M.SHADOW_EVENING_RESERVE < M.SHADOW_REPORTS_PER_DAY,
+                        "الحجز جزء من السقف لا كله — وإلا جاع الصباح أو المساء")
+        self.assertTrue(0 <= M.SHADOW_EVENING_FROM_UTC <= 23)
+
+    def test_sheffield_scenario_reserve_blocks_fifth_early_capture(self):
+        """إعادة تمثيل يوم 15 أغسطس: مع الحجز، المبكرة الخامسة لا تُلتقط
+        وتبقى حصتان لشيفيلد ورفاقها المسائيين."""
+        reserve = min(M.SHADOW_EVENING_RESERVE, 2)   # مباراتان مسائيتان في الجدول
+        early_used = 4
+        early_budget = max(0, M.SHADOW_REPORTS_PER_DAY - reserve - early_used)
+        self.assertEqual(early_budget, 0,
+                         "بعد 4 مبكرات والحجز 2: لا حصة مبكرة خامسة")
