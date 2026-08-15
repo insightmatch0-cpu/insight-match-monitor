@@ -1147,13 +1147,13 @@
    "top": true,
    "pick": "home",
    "confidence": 44,
-   "level": "amber",
-   "score": 61,
-   "minute": 77,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د77)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د85)"
    ],
-   "score_xg": 68,
+   "score_xg": 88,
    "level_xg": "red"
   },
   {
@@ -12639,6 +12639,67 @@
       "yc": 2,
       "rc": 0,
       "sv": 3
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570341",
+   "date": "2026-08-15",
+   "minute": 90,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Sevilla",
+   "away": "Rayo Vallecano",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 12,
+      "cor": 1,
+      "poss": 53,
+      "yc": 2,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 1,
+      "poss": 47,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 90,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 12,
+      "cor": 1,
+      "poss": 52,
+      "yc": 3,
+      "rc": 1,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 6,
+      "cor": 2,
+      "poss": 48,
+      "yc": 3,
+      "rc": 0,
+      "sv": 2
      }
     }
    ]
