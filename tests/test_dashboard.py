@@ -3,7 +3,7 @@
 
 import sys
 import unittest
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -89,6 +89,63 @@ class TestRecentResults(unittest.TestCase):
         """إدخالات المحرك 1 (بلا reason) تمر بلا حقل — لا فراغات على اللوحة."""
         out = D.build_recent_results({"resolved": [self._mk(1, True, "2026-08-01")]})
         self.assertNotIn("reason", out[0])
+
+
+class TestAwaitingGrading(unittest.TestCase):
+    """⏳ فجوة ديفونبورت (ملاحظة المالك 2026-08-15): مباراة انتهت بعد التشغيلة
+    الصباحية كانت تختفي من اللوحة كلياً حتى تقييم الغد — لا حية ولا قادمة ولا
+    مُقيَّمة — فقرأ المالك غيابها فقداناً للبيانات. القائمة عرض فقط: صفر نداءات
+    API، ولا تمسّ التقييم الرسمي الصباحي بشيء."""
+
+    NOW = datetime(2026, 8, 15, 12, 0, tzinfo=timezone.utc)
+
+    def _pend(self, fid, kickoff, **kw):
+        row = {"fid": fid, "home": "Devonport City", "away": "Kingborough Lions",
+               "league": "Tasmania NPL (Australia)", "date": "2026-08-15",
+               "pick": "home", "confidence": 70, "kickoff": kickoff}
+        row.update(kw)
+        return row
+
+    def _run(self, pending, state=None):
+        import json as _json
+        import tempfile as _tmp
+        orig = D.STATE_FILE
+        f = Path(_tmp.mkstemp(suffix=".json")[1])
+        f.write_text(_json.dumps(state or {}), encoding="utf-8")
+        D.STATE_FILE = f
+        try:
+            return D.build_awaiting({"pending": pending}, now=self.NOW)
+        finally:
+            D.STATE_FILE = orig
+            f.unlink(missing_ok=True)
+
+    def test_finished_pending_match_appears_with_awaiting_flag(self):
+        # انطلقت 04:30 — انتهت منذ ساعات ولم تُقيَّم: هذه حالة ديفونبورت حرفياً
+        out = self._run({"1620982": self._pend("1620982", "2026-08-15T04:30:00+00:00")})
+        self.assertEqual(len(out), 1)
+        self.assertTrue(out[0]["awaiting"])
+        self.assertEqual(out[0]["home_en"], "Devonport City")   # البحث اللاتيني يجدها
+        self.assertNotIn("score", out[0])                       # لا حكم قبل التقييم
+
+    def test_future_and_inplay_kickoffs_are_excluded(self):
+        pend = {"1": self._pend("1", "2026-08-15T18:00:00+00:00"),   # لم تبدأ
+                "2": self._pend("2", "2026-08-15T10:30:00+00:00")}   # د90 تقريباً — قد تكون جارية
+        self.assertEqual(self._run(pend), [])
+
+    def test_still_live_in_state_is_excluded(self):
+        """وقت إضافي طويل: القسم الحي يعرضها — لا ازدواج في اللوحة."""
+        pend = {"9": self._pend("9", "2026-08-15T09:00:00+00:00")}
+        out = self._run(pend, state={"9": {"status": "ET", "score": "1-1"}})
+        self.assertEqual(out, [])
+
+    def test_bad_kickoff_never_breaks(self):
+        pend = {"1": self._pend("1", "ليس-تاريخاً"), "2": self._pend("2", None)}
+        self.assertEqual(self._run(pend), [])
+
+    def test_wired_into_both_payload_builders(self):
+        """القائمة في data.json وdata_v2.json معاً — الفجوة كانت في التبويبين."""
+        src = Path(D.__file__).read_text(encoding="utf-8")
+        self.assertEqual(src.count('"awaiting": build_awaiting(store)'), 2)
 
 
 class TestUpcoming(unittest.TestCase):

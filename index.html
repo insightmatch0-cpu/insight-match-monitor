@@ -452,6 +452,9 @@
   .res .mark{font-family:Changa;font-weight:800;font-size:15px;flex:0 0 auto}
   .res .mark.ok{color:var(--green)}
   .res .mark.no{color:var(--red)}
+  /* ⏳ منتهية بانتظار تقييم الصباح (فجوة ديفونبورت 2026-08-15) */
+  .res .mark.wait{color:var(--amber,#e8b93c)}
+  .res .wait-lbl{font-size:11px;opacity:.75}
   .res-day{
     font-family:Changa;font-weight:600;font-size:11.5px;color:var(--muted);
     margin:12px 2px 6px;letter-spacing:.5px;
@@ -700,7 +703,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 72;
+var IM_BUILD = 73;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -714,6 +717,8 @@ var I18N = {
     noAcc:"لا يوجد سجل بعد — يبدأ الحساب بعد أول نتائج مُقيَّمة.",
     noRes:"لا توجد نتائج مُقيَّمة بعد.",
     noResMatch:"لا نتائج تطابق بحثك.",
+    awaitGrade:"تُقيَّم صباح الغد",
+    awaitMore:"أخرى منتهية بانتظار تقييم الصباح — البحث يشملها كلها",
     searchPh:"🔍 ابحث عن فريق...",
     whyLabel:"قراءة المحرك قبل المباراة:",
     radarName:"🛰 الرادار",
@@ -834,6 +839,8 @@ var I18N = {
     noAcc:"No record yet — starts after the first graded results.",
     noRes:"No graded results yet.",
     noResMatch:"No results match your search.",
+    awaitGrade:"Graded tomorrow morning",
+    awaitMore:"more finished, awaiting tomorrow's grading — search covers them all",
     searchPh:"🔍 Search for a team...",
     whyLabel:"Engine's pre-match read:",
     radarName:"🛰 The Radar",
@@ -1663,17 +1670,31 @@ function renderResults(list){
 
 function onResSearch(){ paintResults(); }
 
+/* ⏳ كم صف «بانتظار التقييم» يظهر افتراضياً — البحث يغطيها كلها دائماً،
+   لكن يوماً حافلاً (100+ منتهية مساءً) يجب ألا يدفن النتائج المُقيَّمة */
+var AWAIT_SHOWN = 3;
+
 function paintResults(){
   var el = document.getElementById("res-list");
   var box = document.getElementById("res-search");
   var q = (box && box.value ? box.value : "").trim().toLowerCase();
-  var list = resAll;
+  var aw = resAll.filter(function(r){ return r.awaiting; });
+  var gr = resAll.filter(function(r){ return !r.awaiting; });
+  var hiddenAw = 0, list;
   if (q){
+    /* البحث يفتش في **كل** الصفوف — المُقيَّمة والمنتظرة معاً؛ بحث على
+       قائمة مقصوصة هو بالضبط ما جعل مباراة الصباح تبدو «ضائعة» */
     list = resAll.filter(function(r){
       return ((r.home||"")+" "+(r.away||"")+" "+(r.home_en||"")+" "+(r.away_en||"")).toLowerCase().indexOf(q) !== -1;
     });
+  } else {
+    var shownAw = aw.slice(0, AWAIT_SHOWN);
+    hiddenAw = aw.length - shownAw.length;
+    list = shownAw.concat(gr);
   }
-  document.getElementById("res-count").textContent = q ? (list.length+"/"+resAll.length) : resAll.length;
+  document.getElementById("res-count").textContent =
+    q ? (list.length+"/"+resAll.length)
+      : (gr.length + (aw.length ? " +"+aw.length+"⏳" : ""));
   if (!resAll.length){ el.innerHTML = '<div class="empty">'+t("noRes")+"</div>"; return; }
   if (!list.length){ el.innerHTML = '<div class="empty">'+t("noResMatch")+"</div>"; return; }
   var h = "";
@@ -1687,7 +1708,9 @@ function paintResults(){
     }
     var why = (r.reason || "").trim();
     h += '<div class="res'+(why?' has-why" onclick="toggleWhy(this)':'')+'">'
-      + '<span class="mark '+(r.correct?"ok":"no")+'">'+(r.correct?"✓":"✗")+'</span>'
+      + (r.awaiting
+          ? '<span class="mark wait">⏳</span>'
+          : '<span class="mark '+(r.correct?"ok":"no")+'">'+(r.correct?"✓":"✗")+'</span>')
       + '<div class="pair">'
       + badge(tn(r,"home"), r.home_logo, true)
       + '<span class="names">'+esc(tn(r,"home"))+' × '+esc(tn(r,"away"))+'</span>'
@@ -1695,11 +1718,17 @@ function paintResults(){
       + (r.prob_home != null
           ? '<span class="probs-sm">'+esc(r.prob_home)+'·'+esc(r.prob_draw)+'·'+esc(r.prob_away)+'</span>'
           : "")
-      + '<span class="fscore">'+esc(r.score)+'</span>'
+      + (r.awaiting
+          ? '<span class="fscore wait-lbl">'+esc(t("awaitGrade"))+'</span>'
+          : '<span class="fscore">'+esc(r.score)+'</span>')
       + '<span class="conf-num">'+esc(r.confidence)+'%</span>'
       + (why ? '<span class="why-ind">💭</span>' : "")
       + '</div>'
       + (why ? '<div class="res-why"><b>'+esc(t("whyLabel"))+'</b> '+esc(why)+'</div>' : "");
+    /* بعد آخر صف ⏳ ظاهر: كم أخرى تنتظر — والبحث طريق الوصول إليها */
+    if (hiddenAw > 0 && r.awaiting && (i === list.length-1 || !list[i+1].awaiting)){
+      h += '<div class="res-day">⏳ +'+hiddenAw+' '+esc(t("awaitMore"))+'</div>';
+    }
   }
   el.innerHTML = h;
 }
@@ -2156,7 +2185,8 @@ function renderAll(){
     if (lastV2){
       renderUpcoming(lastV2.upcoming || []);
       renderAccuracy(lastV2.accuracy);
-      renderResults(lastV2.recent_results || []);
+      /* ⏳ المنتهية بانتظار التقييم تتصدر القائمة — يشملها البحث فلا «تختفي» */
+      renderResults((lastV2.awaiting || []).concat(lastV2.recent_results || []));
     } else if (v2state === "missing"){
       renderConstruction();          /* الملف غير موجود فعلاً — V2 لم يعمل بعد */
     } else {
@@ -2165,7 +2195,7 @@ function renderAll(){
   } else {
     renderUpcoming(base.upcoming || []);
     renderAccuracy(base.accuracy);
-    renderResults(base.recent_results || []);
+    renderResults((base.awaiting || []).concat(base.recent_results || []));
   }
   renderUpdLine();
   renderLessons();

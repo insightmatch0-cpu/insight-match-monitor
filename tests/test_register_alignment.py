@@ -89,6 +89,14 @@ class TestRegisterAlignment(unittest.TestCase):
         self.assertIn("`reminders.py`", self.md)
         self.assertIn("reminders.json", self.md)
 
+    def test_xg_window_length_agrees_between_digest_and_dashboard(self):
+        """نافذة الظل رقم واحد في كل واجهة عرض — لا «يوم 3 من 21» هنا
+        و«من 35» هناك (انحراف حقيقي أمسكه فحص 15 أغسطس: اللوحة بقيت
+        على 21 بعد تمديد المالك)."""
+        import dashboard_update as D
+        import predict_v2 as P
+        self.assertEqual(D.XG_SHADOW_TOTAL_DAYS, P.XG_SHADOW_DAYS)
+
     def test_xg_verdict_date_is_consistent_across_code_and_doctrine(self):
         """نافذة الظل مُدِّدت إلى 35 يوماً — لا يبقى تاريخ حكم قديم فاعلاً."""
         import predict_v2 as P

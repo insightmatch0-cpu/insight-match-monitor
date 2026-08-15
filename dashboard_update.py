@@ -33,7 +33,16 @@ RADAR_LOG_FILE      = Path("radar_log.json")   # إنذارات الرادار +
 PREDICTIONS_USER_FILE = Path("predictions_user.json")  # توقعات المالك (سباق الدقة)
 SPORTMONKS_SHADOW_FILE = Path("sportmonks_shadow.json")  # سجل تجربة ظل xG
 SHADOW_LAB_ROWS     = 10   # أحدث بطاقات التقييم المعروضة في مختبر الظل
-XG_SHADOW_TOTAL_DAYS = 21  # نافذة تجربة ظل xG المعلنة (13 أغسطس → ~3 سبتمبر)
+# نافذة تجربة ظل xG: مُدِّدت أسبوعين بأمر المالك 2026-08-14 (الحكم ~17 سبتمبر).
+# ⚠️ يجب أن تساوي XG_SHADOW_DAYS في predict_v2.py — حارس التطابق يفحص ذلك
+# (كانت 21 هنا و35 هناك: نفس عيّنة انحراف السجلات الذي أمسكه تدقيق 15 أغسطس)
+XG_SHADOW_TOTAL_DAYS = 35
+
+# مباراة انتهت بعد التشغيلة الصباحية تُقيَّم صباح الغد — وطوال تلك الساعات كانت
+# تختفي من اللوحة كلياً: لا حية ولا قادمة ولا مُقيَّمة (فجوة ديفونبورت،
+# ملاحظة المالك 2026-08-15: بحث عن مباراة الصباح فوجد «لا نتائج» وظنها ضاعت).
+# بعد هذه المدة من الانطلاق نعتبر المباراة منتهية منطقياً ومعلَّقة للتقييم.
+AWAITING_AFTER_KICKOFF_MIN = 150   # دقيقتان ونصف ≈ مباراة كاملة بوقتها الضائع
 
 LESSONS_ON_DASHBOARD = 30   # أحدث الدروس المعروضة في لوحة المحرك 2
 RECENT_RESULTS_SHOWN = 50   # عدد النتائج المُقيَّمة المعروضة (تكفي أياماً لا ساعات)
@@ -287,6 +296,52 @@ def build_recent_results(store: dict) -> list:
     return out
 
 
+def build_awaiting(store: dict, now=None) -> list:
+    """⏳ مباريات انتهت (منطقياً) ولم تُقيَّم بعد — سدّ فجوة ديفونبورت.
+
+    التقييم الرسمي يبقى صباحياً كما هو (سلامة القياس لا تُمَس)؛ هذه القائمة
+    عرضٌ فقط: تُبنى من pending بصفر نداءات API، وتفرغ تلقائياً كل صباح بعد
+    التقييم. بدونها كل مباراة تنتهي بعد التشغيلة الصباحية «تختفي» من اللوحة
+    حتى الغد، والغياب يُقرأ خطأً على أنه فقدان بيانات أو دوري غير مغطى.
+
+    مباراة ما زالت حية في state (وقت إضافي طويل) تُستثنى — قسم «الحية»
+    يعرضها أصلاً، وظهورها في القائمتين معاً تكرار يشوّش.
+    """
+    now = now or now_utc()
+    live_now = {str(k) for k, v in (load_json(STATE_FILE, {}) or {}).items()
+                if isinstance(v, dict) and v.get("status") in LIVE_STATUSES}
+    out = []
+    pend = store.get("pending") or {}
+    rows = pend.values() if isinstance(pend, dict) else pend
+    for r in rows:
+        ko = r.get("kickoff")
+        if not ko or str(r.get("fid")) in live_now:
+            continue
+        try:
+            kicked = datetime.fromisoformat(str(ko))
+        except ValueError:
+            continue
+        if kicked.tzinfo is None:
+            kicked = kicked.replace(tzinfo=timezone.utc)
+        mins = (now - kicked).total_seconds() / 60
+        if mins < AWAITING_AFTER_KICKOFF_MIN:
+            continue
+        out.append({
+            "date": r.get("date"),
+            "home": r.get("ar_home") or r.get("home", "?"),
+            "away": r.get("ar_away") or r.get("away", "?"),
+            "home_en": r.get("home", "?"), "away_en": r.get("away", "?"),
+            "league": r.get("ar_league") or r.get("league", ""),
+            "home_logo": r.get("home_logo", ""),
+            "away_logo": r.get("away_logo", ""),
+            "pick": r.get("pick"), "confidence": r.get("confidence"),
+            "kickoff": str(ko),
+            "awaiting": True,      # اللوحة تعرض ⏳ بدل ✓/✗ — لا حكم قبل التقييم
+        })
+    out.sort(key=lambda x: x.get("kickoff") or "", reverse=True)
+    return out
+
+
 def recent_lessons() -> list:
     """أحدث دروس المحرك 2 (المرحلة 3) لعرضها على اللوحة."""
     data = load_json(LESSONS_V2_FILE, {"lessons": []})
@@ -443,6 +498,8 @@ def build_data_v2() -> None:
         "live": [],
         "upcoming": build_upcoming(store),
         "recent_results": build_recent_results(store),
+        # ⏳ فجوة ديفونبورت: المنتهية بانتظار تقييم الصباح — عرض فقط
+        "awaiting": build_awaiting(store),
         # 🎛 REC-010: المحرك 2 يكتب شريحة دورياته في meta.stats بنفسه؛ هنا
         # نضمن وجودها حتى قبل أول تشغيلة صباحية بعد النشر (اللوحة تفتح على
         # "دورياتي" افتراضياً، فلا يصح أن تفتح فارغة يوم النشر)
@@ -562,6 +619,8 @@ def main() -> None:
         "live": build_live(state, store, store_v2),
         "upcoming": build_upcoming(store),
         "recent_results": build_recent_results(store),
+        # ⏳ فجوة ديفونبورت: المنتهية بانتظار تقييم الصباح — عرض فقط
+        "awaiting": build_awaiting(store),
         # 🎛 REC-010: شريحة دوريات المالك للمحرك 1 — تُشتق هنا قراءةً من
         # predictions.json لأن المحرك 1 مجمّد ولا يُضاف إليه حساب (قاعدة 7)
         "accuracy": _with_top_only(stats, store),
