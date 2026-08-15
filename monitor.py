@@ -1901,6 +1901,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
     # 🔬 xG الحي (ظل): نداء واحد لكل الدورة قبل الحلقة، بكبح ذاتي على الرصيد.
     # فشله يترك الخريطة فارغة ولا يمس شيئاً — الرادار يعمل كما كان تماماً.
     xg_map, xg_note = radar_live_xg(state)
+    xg_hits = 0          # كم من مبارياتنا وجد لها xG فعلاً — رقم التغطية الحقيقي
     for fid in targets:
         e = state[fid]
         try:
@@ -1918,6 +1919,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         xg = xg_lookup(xg_map, e)
         if xg:
             snap["xg_h"], snap["xg_a"] = xg
+            xg_hits += 1
         snaps = merge_fast_snap(radar.get("snaps") or [], snap)
         p = v2_pending.get(fid) or {}
         verdict = danger_score(p.get("pick"), snaps, minute, gh, ga)
@@ -1993,6 +1995,15 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
     if log_dirty:
         RADAR_FILE.write_text(
             json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    # 🔬 رقم التغطية الحقيقي: كم من مباريات الرادار وجد لها xG. صفر متكرر هنا
+    # يعني أن الباقة لا تغطي ما نراقبه — وهو الدرس المستفاد من عطل الجمع
+    # الصباحي (90 معروضة، 0 مطابقة). يُطبع كل دورة كي لا يُكتشف متأخراً.
+    if targets:
+        box = state.get("xg_live") if isinstance(state, dict) else None
+        if isinstance(box, dict):
+            box["radar_hits"] = xg_hits
+            box["radar_targets"] = len(targets)
+        print(f"🔬 xG الحي: {xg_hits} من {len(targets)} مباراة رادار لها xG")
     return swept
 
 

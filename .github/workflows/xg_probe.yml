@@ -15,6 +15,12 @@ on:
         description: "اليوم المراد فحصه (YYYY-MM-DD) — اتركه فارغاً ليفحص أمس"
         required: false
         type: string
+      mode:
+        description: "probe = تشخيص التغطية والسقف | table = جدول xG للمقارنة مع FBref"
+        required: false
+        default: probe
+        type: choice
+        options: [probe, table]
 
 # قراءة فقط: المسبار لا يكتب في المستودع إطلاقاً
 permissions:
@@ -39,8 +45,16 @@ jobs:
       # PROBE_DAY يمرّ عبر البيئة لا بالحقن المباشر في سطر الأمر: إدخال المستخدم
       # المحقون في run يفتح باب حقن أوامر الصدفة (script injection) — والاقتباس
       # حول "$PROBE_DAY" يجعل الفراغ وسيطاً فارغاً يتخطاه المسبار إلى «أمس».
+      # MODE يمرّ عبر البيئة كذلك، ويُقارن داخل الصدفة بقيمة حرفية واحدة —
+      # فحتى لو وصلت قيمة غير متوقعة لا تتحول إلى أمر يُنفَّذ.
       - name: Run xG probe
         env:
           SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
           PROBE_DAY: ${{ inputs.day }}
-        run: python sportmonks_shadow.py --probe $PROBE_DAY
+          MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$MODE" = "table" ]; then
+            python sportmonks_shadow.py --table $PROBE_DAY
+          else
+            python sportmonks_shadow.py --probe $PROBE_DAY
+          fi
