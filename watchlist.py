@@ -103,6 +103,7 @@ def get_new_messages(last_update_id: int):
         return [], last_update_id
 
     items = []
+    ignored = 0   # تحديثات صُفّيت (ليست من قناة التحكم، أو بلا نص كصورة)
     for u in updates:
         last_update_id = max(last_update_id, int(u.get("update_id", 0)))
         msg = u.get("message") or {}
@@ -112,11 +113,21 @@ def get_new_messages(last_update_id: int):
             text = (msg.get("text") or "").strip()
             if chat_id == TELEGRAM_CHAT_ID and text:
                 items.append({"type": "text", "text": text})
+            else:
+                ignored += 1
         elif cb:
             chat_id = str((((cb.get("message") or {}).get("chat")) or {}).get("id", ""))
             payload = (cb.get("data") or "").strip()
             if chat_id == TELEGRAM_CHAT_ID and payload:
                 items.append({"type": "callback", "data": payload, "id": cb.get("id")})
+            else:
+                ignored += 1
+    # التجاهل نفسه تصميم مقصود (قناة التحكم للمالك وحده) — لكن الصمت عنه
+    # ليس كذلك: أمر «تحقق» أُرسل من الجهاز الثاني (2026-08-15) واستُهلك
+    # التحديث بلا أي أثر، فبدا العطل غامضاً. نطبع العدد فقط — لا معرّفات
+    # ولا نصوص (المستودع وسجلاته عامة، قاعدة الأسرار 3).
+    if ignored:
+        print(f"تيليجرام: تجاهلت {ignored} تحديثاً ليس أمراً نصياً من قناة تحكم المالك (بالتصميم)")
     return items, last_update_id
 
 

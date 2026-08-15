@@ -79,3 +79,51 @@ class TestPickCallback(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestControlChannelFiltering(unittest.TestCase):
+    """حادثة «تحقق» من الجهاز الثاني (2026-08-15): الأمر من خارج قناة
+    التحكم يُتجاهل بالتصميم — لكن التجاهل يجب أن يُطبع لا أن يصمت،
+    والتحديث المتجاهَل يجب أن يقدّم العدّاد كي لا يُعاد قراءته للأبد."""
+
+    def _updates(self, chat_id, text=None, update_id=100):
+        u = {"update_id": update_id,
+             "message": {"chat": {"id": chat_id}, "text": text}}
+        return [u]
+
+    def _run(self, updates):
+        import unittest.mock as mock
+        resp = mock.Mock()
+        resp.json.return_value = {"result": updates}
+        resp.raise_for_status.return_value = None
+        with mock.patch.object(W.requests, "get", return_value=resp), \
+             mock.patch.object(W, "TELEGRAM_CHAT_ID", "111"):
+            import io, contextlib
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                items, last_id = W.get_new_messages(0)
+        return items, last_id, buf.getvalue()
+
+    def test_owner_text_is_accepted(self):
+        items, last_id, out = self._run(self._updates("111", "تحقق"))
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["text"], "تحقق")
+        self.assertEqual(last_id, 100)
+
+    def test_foreign_chat_is_ignored_but_offset_advances_and_logged(self):
+        """جوهر الحادثة: «تحقق» من الجهاز الثاني — يُستهلك ويُتجاهل ويُطبع."""
+        items, last_id, out = self._run(self._updates("222", "تحقق"))
+        self.assertEqual(items, [])
+        self.assertEqual(last_id, 100, "العدّاد يجب أن يتقدم وإلا أُعيدت القراءة للأبد")
+        self.assertIn("تجاهلت", out, "التجاهل الصامت هو ما جعل الحادثة غامضة")
+        self.assertNotIn("222", out, "لا معرّفات في السجل — المستودع عام (قاعدة 3)")
+        self.assertNotIn("تحقق", out.replace("تجاهلت", ""), "لا نصوص رسائل في السجل")
+
+    def test_owner_photo_without_text_is_ignored_and_logged(self):
+        items, last_id, out = self._run(self._updates("111", None))
+        self.assertEqual(items, [])
+        self.assertIn("تجاهلت", out)
+
+    def test_silence_when_nothing_ignored(self):
+        _, _, out = self._run(self._updates("111", "مسح"))
+        self.assertNotIn("تجاهلت", out)
