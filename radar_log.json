@@ -920,11 +920,14 @@
    "top": true,
    "pick": "home",
    "confidence": 52,
-   "level": "amber",
-   "score": 60,
-   "minute": 75,
+   "level": "red",
+   "score": 89,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د75)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د81)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -939,10 +942,11 @@
    "pick": "home",
    "confidence": 38,
    "level": "red",
-   "score": 66,
-   "minute": 63,
+   "score": 91,
+   "minute": 70,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د63)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د70)",
+    "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -11983,6 +11987,91 @@
       "yc": 1,
       "rc": 0,
       "sv": 5
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1563091",
+   "date": "2026-08-15",
+   "minute": 76,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Sheffield Utd",
+   "away": "Birmingham",
+   "league": "Championship (England)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 26,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 2,
+      "poss": 43,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 5,
+      "poss": 57,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 41,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 2,
+      "poss": 45,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 5,
+      "poss": 55,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 2,
+      "poss": 44,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 8,
+      "poss": 56,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
      }
     }
    ]
