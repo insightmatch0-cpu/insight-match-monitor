@@ -1147,14 +1147,14 @@
    "top": true,
    "pick": "home",
    "confidence": 44,
-   "level": "green",
-   "score": 36,
-   "minute": 35,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د35)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د43)"
    ],
-   "score_xg": 62,
-   "level_xg": "amber"
+   "score_xg": 66,
+   "level_xg": "red"
   },
   {
    "fid": "1492334",
@@ -1166,10 +1166,29 @@
    "pick": "away",
    "confidence": 41,
    "level": "amber",
-   "score": 40,
-   "minute": 43,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د43)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1493066",
+   "date": "2026-08-15",
+   "home": "Estudiantes L.P.",
+   "away": "Gimnasia L.P.",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "pick": "home",
+   "confidence": 42,
+   "level": "amber",
+   "score": 43,
+   "minute": 37,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د37)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "score_xg": null,
    "level_xg": null
@@ -12434,6 +12453,67 @@
    "silenced": false,
    "evidence": [],
    "restored": true
+  },
+  {
+   "fid": "1493066",
+   "date": "2026-08-15",
+   "minute": 37,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Estudiantes L.P.",
+   "away": "Gimnasia L.P.",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 16,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 0,
+      "poss": 69,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 31,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 37,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "poss": 66,
+      "yc": 2,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 1,
+      "poss": 34,
+      "yc": 1,
+      "rc": 1,
+      "sv": 1
+     }
+    }
+   ]
   }
  ],
  "alerts_resolved": [
