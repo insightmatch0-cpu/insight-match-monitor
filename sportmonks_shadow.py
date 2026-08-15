@@ -49,6 +49,20 @@ FORM_EDGE = 0.30         # فارق متوسطين أدنى للترجيح — �
 MAX_PAGES_PER_DAY = 4    # سقف صفحات الجلب لليوم الواحد (50 مباراة/صفحة)
 LOOKBACK_DAYS = 2        # نغطي آخر يومين — نفس أفق تقييم المحركات الصباحي
 
+# ترويسات الحد التي قد يرسلها المزوّد أو أي وسيط أمامه. سبورتمونكس v3 يضع
+# الحد في **جسم** الرد (حقل rate_limit) لا في ترويسة، لكننا نقرأ الاثنين عمداً:
+# الافتراض بأن مصدراً واحداً كافٍ هو بالضبط نوع الافتراض الذي كلّفنا يوم إنتاج
+# كامل (عطل 14 أغسطس). أسماء ترويسات عامة لا تحمل أي سرّ.
+_RATE_HEADER_KEYS = (
+    "x-ratelimit-limit", "x-ratelimit-remaining", "x-ratelimit-reset",
+    "ratelimit-limit", "ratelimit-remaining", "ratelimit-reset",
+    "retry-after",
+)
+
+# آخر ترويسات حد رُصدت — يملؤها _request ويقرأها المسبار. عامد أن يكون متغيراً
+# عاماً لا قيمة راجعة: تغيير عدد قيم _request كان سيكسر كل بدائل الاختبارات.
+_LAST_HEADERS = {}
+
 # إنذار صفر الجمع (الدرس المعمّم من عطل 14 أغسطس): تجربة ظل تجمع صفر مدخلات
 # يومين متتاليين تصرخ. **العطل الصامت هو العدو، لا العطل نفسه** — تجربة تجمع
 # صفراً بصمت أخطر من تجربة تفشل بصوت.
@@ -159,6 +173,15 @@ def _request(path: str, params: dict) -> tuple:
                          headers={"Authorization": KEY}, timeout=25)
     except Exception as e:
         return None, {"_exception": type(e).__name__}
+    # ترويسات الحد تُلتقط من **كل** رد بما فيه المرفوض — الرد الرافض هو أصدق
+    # لحظة يقول فيها المزوّد إن السقف نفد (درس عطل 14 أغسطس: الرفض يحمل المعلومة)
+    try:
+        _LAST_HEADERS.clear()
+        _LAST_HEADERS.update({k: v for k, v in
+                              ((k.lower(), v) for k, v in r.headers.items())
+                              if k in _RATE_HEADER_KEYS})
+    except Exception:                            # pragma: no cover - دفاعي
+        pass
     try:
         return r.status_code, r.json()
     except Exception as e:
@@ -293,18 +316,105 @@ def _plan_lines(body: dict) -> list:
     return out or ["    (لا معلومات اشتراك في الرد)"]
 
 
+def _rate_sample(body: dict, headers: dict = None) -> dict:
+    """يلتقط قراءة واحدة لحالة الحد من مصدرَيها: جسم الرد ثم الترويسات.
+
+    سبورتمونكس v3 يضع rate_limit في الجسم: {remaining, resets_in_seconds,
+    requested_entity} — والحد **لكل كيان** لا لكل الحساب، فاسم الكيان جزء من
+    الإجابة لا تفصيل. الترويسات تُقرأ كاحتياط لو غيّر المزوّد أو وسيط أمامه العرف.
+    """
+    rl = (body or {}).get("rate_limit") or {}
+    h = headers if headers is not None else _LAST_HEADERS
+    def _num(v):
+        try:
+            return int(float(v))
+        except (TypeError, ValueError):
+            return None
+    return {
+        "remaining": _num(rl.get("remaining")) if rl else _num(
+            h.get("x-ratelimit-remaining") or h.get("ratelimit-remaining")),
+        "resets_in": _num(rl.get("resets_in_seconds")) if rl else _num(
+            h.get("x-ratelimit-reset") or h.get("ratelimit-reset")),
+        "entity": rl.get("requested_entity") if rl else None,
+        "limit_header": _num(h.get("x-ratelimit-limit")
+                             or h.get("ratelimit-limit")),
+        "source": "جسم الرد" if rl else ("ترويسة" if h else "لا مصدر"),
+    }
+
+
+def _window_label(seconds) -> str:
+    """ثواني التصفير → وصف النافذة، **مع حدود ما يثبته رقم واحد**.
+
+    التحفظ مقصود: resets_in_seconds عدّاد تنازلي **داخل** النافذة، فقراءة 1200
+    قد تكون نافذة ساعية مرّ منها 40 دقيقة أو نافذة يومية بقي لها 20 دقيقة.
+    القيمة **القصوى** المرصودة عبر عدة نداءات هي وحدها التي تحدّ النافذة من أسفل
+    — لذلك يجمع المسبار قراءة لكل صفحة بدل قراءة واحدة.
+    """
+    if seconds is None:
+        return "غير معروفة"
+    s = int(seconds)
+    if s <= 3600:
+        return f"{s} ثانية — تتسق مع نافذة ساعية (3600 ثانية)"
+    if s <= 86400:
+        return f"{s} ثانية — أطول من ساعة، تتسق مع نافذة يومية"
+    return f"{s} ثانية — أطول من يوم"
+
+
+def rate_limit_lines(samples: list) -> list:
+    """أسطر تقرير سقف النداءات — الحاجز القاطع قبل أي بناء على الطبقة الحية.
+
+    يطبع: السقف (أو تعذُّر قراءته)، المتبقي، نافذة التصفير، وكلفة النداء الواحد
+    مقاسةً من فرق المتبقي بين نداءين متتاليين. الكلفة المقاسة هي الرقم الذي
+    يُبنى عليه التصميم: سقف ÷ كلفة الدورة = عدد الدورات التي يحتملها الرصيد.
+    """
+    real = [s for s in samples if s.get("remaining") is not None]
+    if not real:
+        return ["⛔ سقف النداءات: لم يرجع المزوّد أي بيانات حد "
+                "(لا حقل rate_limit في الجسم ولا ترويسة X-RateLimit-*) — "
+                "**لا تفترض السقف**؛ التصميم الحي يبقى محجوباً حتى يُقاس."]
+    first, last = real[0], real[-1]
+    lines = [f"🚦 سقف النداءات (المصدر: {last['source']}"
+             + (f" | الكيان: {last['entity']}" if last.get("entity") else "")
+             + ")"]
+    lines.append(f"    السقف المعلن: "
+                 + (str(last["limit_header"]) if last.get("limit_header")
+                    else "غير معلن في الرد — يُستدل عليه من المتبقي"))
+    lines.append(f"    المتبقي الآن: {last['remaining']}")
+    lines.append(f"    نافذة التصفير: {_window_label(last.get('resets_in'))}")
+    # كلفة النداء الواحد: تُقاس من نداءات المسبار نفسها لا تُفترض
+    if len(real) >= 2 and first["remaining"] is not None:
+        used = first["remaining"] - last["remaining"]
+        calls = len(real) - 1
+        if used >= 0 and calls:
+            lines.append(f"    كلفة مقاسة: {used} من الرصيد مقابل {calls} نداء "
+                         f"({used / calls:.2f} لكل نداء)")
+    else:
+        lines.append("    كلفة النداء: قراءة واحدة فقط — لا تكفي للقياس")
+    mx = max((s["resets_in"] for s in real
+              if s.get("resets_in") is not None), default=None)
+    if mx is not None:
+        lines.append(f"    أقصى عدّاد تصفير مرصود: {mx} ثانية "
+                     f"(الحد الأدنى المثبت لطول النافذة)")
+    return lines
+
+
 def _probe_day_fixtures(day: str) -> tuple:
     """يجلب صفحات اليوم ويطبع لكل صفحة: حالة HTTP، العدد، وكم منها يحمل xG.
 
-    يرجع (كل المباريات, أسطر الاشتراك). كل مباراة قاموس فيه الاسمان وعلم has_xg
-    — **بما فيها التي بلا xG**، لأن الفرق بين «رجعت بلا xG» و«لم ترجع أصلاً» هو
-    بيت القصيد في تشخيص صفر الجمع.
+    يرجع (كل المباريات, أسطر الاشتراك, قراءات الحد). كل مباراة قاموس فيه
+    الاسمان وعلم has_xg — **بما فيها التي بلا xG**، لأن الفرق بين «رجعت بلا xG»
+    و«لم ترجع أصلاً» هو بيت القصيد في تشخيص صفر الجمع. وقراءات الحد تُجمع لكل
+    صفحة لا مرة واحدة، كي تُقاس كلفة النداء الواحد بدل أن تُفترض.
     """
-    fixtures, plan_lines = [], []
+    fixtures, plan_lines, rate_samples = [], [], []
     for page in range(1, MAX_PAGES_PER_DAY + 1):
         status, body = _request(f"fixtures/date/{day}",
                                 {"per_page": 50, "page": page,
                                  "include": "xgfixture"})
+        # قراءة الحد تُلتقط من كل صفحة **قبل** أي فرع خروج: الرد الرافض يحمل
+        # حالة الحد أيضاً، وهو أهم رد نقرأه إن كان النفاد هو سبب الرفض
+        if isinstance(body, dict):
+            rate_samples.append(_rate_sample(body))
         if not isinstance(body, dict) or "_exception" in body:
             print(f"  صفحة {page}: HTTP {status} | تعذر قراءة الرد "
                   f"({(body or {}).get('_exception', 'غير معروف')})")
@@ -345,7 +455,7 @@ def _probe_day_fixtures(day: str) -> tuple:
         fixtures.extend(page_rows)
         if not pag.get("has_more"):
             break
-    return fixtures, plan_lines
+    return fixtures, plan_lines, rate_samples
 
 
 def probe(day: str = None) -> None:
@@ -355,6 +465,11 @@ def probe(day: str = None) -> None:
     فالطريقة الوحيدة لرؤية الحقيقة هي طباعتها في سجل Actions. يطبع: رمز حالة
     HTTP لكل صفحة، كم مباراة رجعت فعلاً، **كم منها يحمل xG وكم لا يحمل**،
     ملخص الاشتراك، وعيّنة أسماء من الجانبين لفحص المطابقة بالعين.
+
+    ويطبع كذلك **حالة سقف النداءات** (السقف، المتبقي، نافذة التصفير، وكلفة
+    النداء الواحد مقاسةً): هذا هو الحاجز القاطع أمام أي استطلاع حي — رصيد
+    ساعي صغير يعني أن تصميم xG الحي يجب أن يُبنى على لقطات متباعدة أو على
+    دوريات المالك وحدها، لا على استطلاع كل دورة. **يُقاس ولا يُفترض.**
 
     ثم يفصل الفرضيات صراحةً: عدد مبارياتنا التي لها نظير بالاسم في سبورتمونكس
     (بصرف النظر عن xG) مقابل عدد ما يحمل xG — الفارق بين الرقمين يقول أي طبقة
@@ -372,10 +487,14 @@ def probe(day: str = None) -> None:
           f"(per_page=50، سقف {MAX_PAGES_PER_DAY} صفحات = "
           f"{50 * MAX_PAGES_PER_DAY} مباراة كحد أقصى)")
 
-    fixtures, plan_lines = _probe_day_fixtures(day)
+    fixtures, plan_lines, rate_samples = _probe_day_fixtures(day)
     with_xg = [f for f in fixtures if f["has_xg"]]
     print(f"📊 الإجمالي من سبورتمونكس: {len(fixtures)} مباراة — "
           f"{len(with_xg)} بـxG و{len(fixtures) - len(with_xg)} بلا xG")
+
+    # الحاجز القاطع أولاً في المخرَج: لا يُبنى استطلاع حي قبل قراءة هذا الرقم
+    for line in rate_limit_lines(rate_samples):
+        print(line)
 
     print("📦 الاشتراك (كما يرجعه المزوّد — أسماء تجارية، لا أسرار):")
     for line in plan_lines:
