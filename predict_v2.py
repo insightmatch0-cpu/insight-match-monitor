@@ -27,6 +27,7 @@ from pathlib import Path
 import requests
 
 import api_guard
+import reminders
 from api_guard import ApiRefused        # noqa: F401 — يُعاد تصديره للاختبارات
 
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
@@ -76,6 +77,10 @@ SEASON_START          = "2026-08-13"
 # 🔬 يوم انطلاق تجربة xG الحي في الظل: السجلات الأقدم لا تحمل score_xg
 # فتبقى خارج الشريحة — نفس منطق REC-010، الفلتر يمتلئ من لحظة التنفيذ.
 XG_LIVE_START         = "2026-08-15"
+
+# طول نافذة تجربة ظل xG بالأيام: 21 أصلاً، ثم +14 بأمر المالك 2026-08-14
+# (الدوريات المشمولة لم تكن تلعب في معظم النافذة الأولى) — الحكم ~17 سبتمبر.
+XG_SHADOW_DAYS        = 35
 
 # 🎛 حارس العينة — REC-010 (قرار المالك 2026-08-13): أي عرض مفلتر على شريحة
 # دوريات المالك عدده أقل من هذا الحد لا يُظهر نسبة مئوية إطلاقاً، بل نص
@@ -2217,7 +2222,7 @@ def sportmonks_shadow_line() -> str:
         day_no = (now_utc().replace(tzinfo=None) - started).days + 1
     except ValueError:
         day_no = "?"
-    line = (f"🔬 ظل xG — يوم {day_no} من ~21: أمس مطابقة "
+    line = (f"🔬 ظل xG — يوم {day_no} من ~{XG_SHADOW_DAYS}: أمس مطابقة "
             f"{meta.get('last_day_matched', 0)} ومُفلت "
             f"{meta.get('last_day_unmatched', 0)}؛ "
             f"الإجمالي {meta.get('total', 0)} مباراة موثقة")
@@ -2497,6 +2502,11 @@ def main() -> None:
         delivery = api_guard.delivery_line()
         if delivery:
             digest += "\n" + delivery
+        # 📅 كتلة المواعيد (قرار المالك 2026-08-14): كل تذكير يمرّ على تيليجرام
+        # أيضاً، لا على Routines وحدها — الروتين يوقظ الوكيل ولا يصل الهاتف
+        due_lines = reminders.reminder_lines()
+        if due_lines:
+            digest += "\n" + due_lines
         send_telegram_long(digest)
 
     # 🚨 آخر شيء في التشغيلة: لو فشل تسليم رسالة إلى المالك نفسه فلا قناة
