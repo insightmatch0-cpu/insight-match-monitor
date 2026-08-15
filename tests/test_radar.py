@@ -502,3 +502,65 @@ class TestRadarFastLane(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSweepAlertRace(unittest.TestCase):
+    """سباق الكاتبَين (2026-08-15): radar_sweep يحمل نسخته من السجل في بدايته
+    ويحفظها في نهايته، وكان maybe_radar_alert يكتب للقرص نسخة خاصة أثناء
+    الجولة — فيدهس الحفظُ الختامي كلَّ تنبيه أُطلق خلالها. تنبيها Mito
+    Hollyhock وAlverca وصلا تيليجرام واختفيا من سجل القياس نهائياً.
+    العلاج: كاتب واحد — الجولة تمرر نسختها الحية للتنبيه."""
+
+    def _capture_telegram(self):
+        sent = []
+        orig = M.send_telegram
+        M.send_telegram = lambda text: sent.append(text)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+        return sent
+
+    def _tmp_radar_file(self):
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.write_text("{}", encoding="utf-8")
+        orig = M.RADAR_FILE
+        M.RADAR_FILE = tmp
+        self.addCleanup(lambda: (setattr(M, "RADAR_FILE", orig),
+                                 tmp.unlink(missing_ok=True)))
+        return tmp
+
+    def _drama_entry(self):
+        return {"score": "0-1", "minute": 78, "home": "H", "away": "A",
+                "radar": {"snaps": [snap(70, {"sog": 2, "cor": 3, "shots": 5}, {"sv": 2}),
+                                    snap(78, {"sog": 4, "cor": 5, "shots": 8}, {"sv": 4})]}}
+
+    def test_alert_lands_in_shared_log_and_survives_sweep_final_write(self):
+        """إعادة تمثيل السباق كاملاً: نسخة الجولة الحية فيها إنذار، التنبيه
+        يُلحق بها نفسها، وحفظ الجولة الختامي يحمل الاثنين معاً."""
+        self._capture_telegram()
+        tmp = self._tmp_radar_file()
+        sweep_log = {"warnings": [{"fid": "1", "level": "red"}]}
+        ok = M.maybe_radar_alert("9", self._drama_entry(), {"used": 0}, sweep_log)
+        self.assertTrue(ok)
+        self.assertEqual(len(sweep_log.get("alerts") or []), 1,
+                         "التنبيه يجب أن يدخل النسخة الحية نفسها لا نسخة منفصلة")
+        # حفظ الجولة الختامي (كما يفعل radar_sweep حين log_dirty)
+        M.RADAR_FILE.write_text(json.dumps(sweep_log, ensure_ascii=False),
+                                encoding="utf-8")
+        saved = json.loads(tmp.read_text(encoding="utf-8"))
+        self.assertEqual(len(saved["alerts"]), 1, "التنبيه دُهس — عاد سباق 2026-08-15")
+        self.assertEqual(len(saved["warnings"]), 1)
+
+    def test_fast_lane_call_without_log_still_writes_file(self):
+        """المسار السريع (بلا نسخة مشتركة) يبقى كما كان: كتابة مباشرة للملف."""
+        self._capture_telegram()
+        tmp = self._tmp_radar_file()
+        ok = M.maybe_radar_alert("9", self._drama_entry(), {"used": 0})
+        self.assertTrue(ok)
+        saved = json.loads(tmp.read_text(encoding="utf-8"))
+        self.assertEqual(len(saved["alerts"]), 1)
+
+    def test_sweep_passes_live_log_to_both_alert_paths(self):
+        """بنيوي: يسقط لو عاد نداء التنبيه داخل الجولة بلا النسخة الحية."""
+        import inspect
+        src = inspect.getsource(M.radar_sweep)
+        self.assertIn("maybe_radar_alert(fid, e, alert_budget, log)", src)
+        self.assertIn("maybe_red_alert(fid, e, alert_budget, log)", src)

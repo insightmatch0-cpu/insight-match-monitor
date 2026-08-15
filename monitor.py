@@ -1725,10 +1725,15 @@ def radar_claim_lists() -> tuple:
     return set(log.get("silenced") or []), set(log.get("proven") or [])
 
 
-def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
+def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
     """يرسل تنبيه الدراما مرة واحدة لكل مباراة (يُرقّى فقط لادعاء أقوى —
     مثال: تنبيه تعادل ثم طرد يرفعه لقلب نتيجة)، ويسجله في radar_log.json
-    ليقيَّم صباحاً على النتيجة الحقيقية — عقل S3 له لوحة صدق خاصة به."""
+    ليقيَّم صباحاً على النتيجة الحقيقية — عقل S3 له لوحة صدق خاصة به.
+
+    ⚠️ log: النسخة الحية من السجل عند النداء من داخل radar_sweep — إلزامية
+    هناك (سباق 2026-08-15: الجولة كانت تحمل نسختها في بدايتها، فكل تنبيه
+    كُتب للقرص أثناءها دُهس بحفظها الختامي — تنبيها Mito وAlverca وصلا
+    تيليجرام واختفيا من سجل القياس). كاتب واحد لكل ملف داخل الجولة."""
     try:
         gh, ga = (int(x) for x in (e.get("score") or "0-0").split("-")[:2])
     except ValueError:
@@ -1765,7 +1770,8 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict) -> bool:
         )
     radar["alerted"] = verdict["key"]
     e["radar"] = radar
-    log = load_json_file(RADAR_FILE, {}) or {}
+    if log is None:   # نداء خارج الجولة (المسار السريع) — لا نسخة حية مشتركة
+        log = load_json_file(RADAR_FILE, {}) or {}
     log.setdefault("alerts", []).append({
         "fid": fid, "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "minute": e.get("minute"), "score_at": f"{gh}-{ga}",
@@ -1808,12 +1814,14 @@ def evaluate_red_advantage(snaps: list, gh: int, ga: int):
     return {"side": "away" if red_h else "home"}
 
 
-def maybe_red_alert(fid: str, e: dict, budget: dict) -> bool:
+def maybe_red_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
     """🟥 تنبيه الأفضلية العددية (REC-009) — مسار مستقل تماماً عن سلم ادعاءات
     الدراما: علمه الخاص red_alerted (لا يستخدم alerted حتى لا يحجب أحدهما
     الآخر)، مرة واحدة لكل مباراة، يُسجَّل بمفتاح red_advantage بنفس بنية
     التنبيهات القائمة ويُقيَّم صباحاً بعدّاده المستقل — وقاعدة الإيقاف
-    REC-005 تحكمه تلقائياً كأي ادعاء."""
+    REC-005 تحكمه تلقائياً كأي ادعاء.
+    log: النسخة الحية من السجل عند النداء من داخل radar_sweep (سباق
+    2026-08-15 — انظر maybe_radar_alert)."""
     if not RADAR_RED_FAST_PATH:
         return False
     radar = e.get("radar") or {}
@@ -1847,7 +1855,8 @@ def maybe_red_alert(fid: str, e: dict, budget: dict) -> bool:
         )
     radar["red_alerted"] = True
     e["radar"] = radar
-    log = load_json_file(RADAR_FILE, {}) or {}
+    if log is None:   # نداء خارج الجولة (المسار السريع) — لا نسخة حية مشتركة
+        log = load_json_file(RADAR_FILE, {}) or {}
     log.setdefault("alerts", []).append({
         "fid": fid, "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "minute": e.get("minute"), "score_at": f"{gh}-{ga}",
@@ -1997,9 +2006,13 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         }
         swept += 1
         # 🚨 عقل S3: هل تتشكل دراما اللحظات الأخيرة؟ (د75+، مرة لكل مباراة)
-        maybe_radar_alert(fid, e, alert_budget)
+        # ⚠️ تمرير النسخة الحية log إلزامي (سباق 2026-08-15): بدونه يكتب
+        # التنبيه للقرص ثم يدهسه حفظ الجولة الختامي بنسخته القديمة
+        if maybe_radar_alert(fid, e, alert_budget, log):
+            log_dirty = True
         # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
-        maybe_red_alert(fid, e, alert_budget)
+        if maybe_red_alert(fid, e, alert_budget, log):
+            log_dirty = True
         # يُسجَّل الصف متى أنذرت **إحدى** الدرجتين، لا الحالية وحدها.
         # لولا ذلك لاستحال قياس الحالة التي تُجرى التجربة من أجلها أصلاً:
         # xG يرى خطراً لا تراه عدّادات الحجم (0.4 مقابل 2.8 بينما لوحة النتائج
