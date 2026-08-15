@@ -280,6 +280,10 @@ def main() -> None:
     send_telegram("\n".join(lines))
     print(f"تم المسح: {len(matches)} مباراة، {len(predictions)} توقع")
 
+    # 🚨 المسح لا يلتزم أي ملف، فالخروج بحالة فشل هنا بلا ثمن — ومع ذلك يجعل
+    # انقطاع قناة المالك مرئياً حمراء في صفحة Actions بدل أن يمر صامتاً.
+    api_guard.exit_if_owner_unreachable()
+
 
 if __name__ == "__main__":
     main()

@@ -109,10 +109,19 @@ def main() -> None:
         TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_BROADCAST_IDS,
         ALERT_TEXT.format(last=progress or "تاريخ غير معروف"),
     )
+    # نعيد قراءة الحالة بعد الإرسال: طبقة التسليم كتبت مفتاح `delivery` في
+    # الملف، ولو حفظنا فوق النسخة التي قرأناها قبل الإرسال لمحوناه — نفس فخ
+    # الحالة المربوطة الموصوف في api_guard.py.
+    state = api_guard.load_state()
     # العلم يُحفظ فوراً: لو ماتت التشغيلة بعد الإرسال مباشرة لتكرر الإنذار
     state.setdefault("deadman", {})["alerted_for"] = today
     api_guard.save_state(state)
     print(f"الحارس الخارجي: أُرسل إنذار التأخّر (آخر تقدّم {progress or '—'}).")
+
+    # 🚨 خطوة deadman في monitor.yml محروسة بـ || echo فلا تُفشّل التشغيلة —
+    # الطباعة الصاخبة هي المخرج هنا، والعلامة الحمراء تأتي من monitor.py
+    # في نفس التشغيلة بعد دقائق. النداء موجود لاتساق كل المرسِلين.
+    api_guard.exit_if_owner_unreachable()
 
 
 if __name__ == "__main__":

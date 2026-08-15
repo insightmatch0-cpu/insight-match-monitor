@@ -12,6 +12,7 @@
 """
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -28,12 +29,48 @@ DEVICE_3 = "333333"
 STRANGER = "999999"
 
 
+class FakeTelegramResponse:
+    """رد تيليجرام مزيّف — البنية الحقيقية: {"ok":true} أو
+    {"ok":false,"error_code":N,"description":"..."}."""
+
+    def __init__(self, payload, status_code=200):
+        self._payload = payload
+        self.status_code = status_code
+
+    def json(self):
+        if self._payload is None:
+            raise ValueError("لا JSON في الرد")
+        return self._payload
+
+
 class BroadcastHarness(unittest.TestCase):
-    """يلتقط كل نداء sendMessage بدل إرساله."""
+    """يلتقط كل نداء sendMessage بدل إرساله.
+
+    ثلاث طرق لتزييف الفشل، وكلها واقعية:
+    - fail_for      : استثناء شبكة (لا رد أصلاً)
+    - refuse_for    : رد HTTP بجسم {"ok": false, ...} — الحالة الأشيع فعلياً
+    - bodyless      : رد بلا JSON صالح (وسيط غريب) — يجب أن يُعدّ تسليماً
+    """
 
     def setUp(self):
-        self.sent = []      # (chat_id, text)
-        self.fail_for = set()
+        self.sent = []          # (chat_id, text)
+        self.fail_for = set()   # {chat_id} → استثناء شبكة
+        self.refuse_for = {}    # {chat_id: (error_code, description)}
+        self.bodyless = set()   # {chat_id} → رد بلا جسم مقروء
+        G.reset_delivery_flags()
+        self.addCleanup(G.reset_delivery_flags)
+
+        # عزل state.json إلزامي منذ 2026-08-15: الإرسال صار يسجّل نتيجة
+        # التسليم في الحالة، فبلا هذا العزل تكتب الاختبارات في ملف الإنتاج
+        # المُلتزَم — وتلوّثه التشغيلة التالية بـ git add -A.
+        G.detach_state()
+        self.addCleanup(G.detach_state)
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.write_text("{}", encoding="utf-8")
+        orig_state = G.STATE_FILE
+        G.STATE_FILE = tmp
+        self.addCleanup(lambda: (setattr(G, "STATE_FILE", orig_state),
+                                 tmp.unlink(missing_ok=True)))
 
         harness = self
 
@@ -43,15 +80,30 @@ class BroadcastHarness(unittest.TestCase):
                 cid = (json or {}).get("chat_id")
                 if cid in harness.fail_for:
                     raise RuntimeError(f"المستقبِل {cid} حظر البوت")
+                if cid in harness.refuse_for:
+                    code, desc = harness.refuse_for[cid]
+                    return FakeTelegramResponse(
+                        {"ok": False, "error_code": code, "description": desc},
+                        status_code=code,
+                    )
                 harness.sent.append((cid, (json or {}).get("text")))
-                return None
+                if cid in harness.bodyless:
+                    return FakeTelegramResponse(None)
+                return FakeTelegramResponse({"ok": True, "result": {}})
 
         orig = G.requests
         G.requests = FakeRequests
         self.addCleanup(lambda: setattr(G, "requests", orig))
 
     def recipients(self):
-        return [cid for cid, _ in self.sent]
+        """المستقبِلون الذين وصلهم **نص البث** نفسه.
+
+        نستبعد رسائل إنذار فشل التسليم (2026-08-15): هي رسالة إدارية تذهب
+        إلى المالك وحده بعد الفشل، وليست جزءاً من البث الذي تقيسه هذه
+        الاختبارات.
+        """
+        return [cid for cid, t in self.sent
+                if not str(t or "").startswith("📡 رسالة لم تصل")]
 
 
 # ================== قائمة المستقبِلين ==================
@@ -97,9 +149,13 @@ class TestBroadcastDelivery(BroadcastHarness):
     def test_one_failing_recipient_does_not_stop_the_rest(self):
         """جهاز حظر البوت أو معرّف خاطئ — البقية يجب أن تصل."""
         self.fail_for = {DEVICE_2}
-        delivered = G.send_telegram_multi("tok", OWNER, f"{DEVICE_2},{DEVICE_3}", "تنبيه")
+        result = G.send_telegram_multi("tok", OWNER, f"{DEVICE_2},{DEVICE_3}", "تنبيه")
         self.assertEqual(self.recipients(), [OWNER, DEVICE_3])
-        self.assertEqual(delivered, 2)
+        # العقد الجديد: نتيجة منظّمة بدل العدد المجرد — نفس القوة، تفصيل أكثر
+        self.assertEqual(result["delivered"], 2)
+        self.assertEqual(result["total"], 3)
+        self.assertEqual(result["sent"], [G.mask_id(OWNER), G.mask_id(DEVICE_3)])
+        self.assertEqual([f["id"] for f in result["failed"]], [G.mask_id(DEVICE_2)])
 
     def test_failing_recipient_never_raises(self):
         """التنبيه خدمة مساعدة — لا يجوز أن يُسقط التشغيلة."""

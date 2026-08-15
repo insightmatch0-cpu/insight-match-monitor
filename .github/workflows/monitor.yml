@@ -46,11 +46,16 @@ jobs:
         run: python deadman.py || echo "🛟 الحارس الخارجي فشل — التشغيلة تكمل"
 
       # أوامر تيليجرام: قائمة التركيز + تشغيل المسح الحي برسالة
+      # TELEGRAM_BROADCAST_IDS هنا لأمر /تحقق وحده (2026-08-15): يبث رسالة
+      # اختبار **خارجة** إلى كل الأجهزة ليتأكد أنها ما زالت تستقبل. الأوامر
+      # **الداخلة** ما زالت تُقرأ من TELEGRAM_CHAT_ID حصراً — والملف نفسه لا
+      # يذكر هذا السرّ إطلاقاً (يقرؤه api_guard)، وحارس بنيوي يثبت ذلك.
       - name: Telegram commands & watchlist
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python watchlist.py
 
