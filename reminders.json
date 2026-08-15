@@ -1,0 +1,125 @@
+{
+ "_doc": "سجل المواعيد والاشتراكات لكل الواجهات (أمر المالك 2026-08-14: «لكل واجهة نستعملها»). التنبيه قبل 3 أيام ثم قبل يومين، وكل رسالة تحمل اسم الخدمة وسعرها. العرض بالدولار حين يُعرف (أمر المالك 2026-08-15) — وما يُفوتر باليورو يُعرض بعملته ومعه تقدير دولاري من سعر صرف **مسجَّل** لا مخترَع. لا يُخمَّن تاريخ ولا سعر ولا سعر صرف. أي واجهة جديدة تأخذ صفاً هنا وفي سجل الاستمرارية بـCLAUDE.md في نفس الـ PR.",
+ "fx": {
+  "eur_usd": null,
+  "as_of": "",
+  "source": "",
+  "_note": "المالك أكّد العرض بالدولار (2026-08-15) دون إعطاء سعر صرف، وطلب إرجاء البقية. لا يُعرض رقم دولاري مخترَع: أسعار Sportmonks تبقى باليورو حتى يتوفر سعر مسجَّل أو مبلغ المصرف الفعلي. سطر الفجوة اليومي مُسكَت بأمر المالك (deferred=true).",
+  "deferred": true
+ },
+ "deadlines": [
+  {
+   "id": "sportmonks_interim_report",
+   "service": "Sportmonks",
+   "price": "€571/شهر بعد التجربة",
+   "amount_eur": 571,
+   "title": "التقرير المرحلي (جيد/سيئ قبل نهاية التجربة)",
+   "due": "2026-08-24",
+   "remind_at": [
+    3,
+    2,
+    0
+   ],
+   "priority": "P2",
+   "action": "صحة المجمّع + نتيجة تحقق Opta + لوحة المتوقع-مقابل-المقاس + توصية تجديد/إلغاء صريحة. **أضف بند التكلفة**: الفاتورة الحقيقية €571/شهر لا €29.",
+   "status": "open"
+  },
+  {
+   "id": "sportmonks_cost_review",
+   "service": "Sportmonks — مراجعة التكلفة قبل الدفع",
+   "price": "€571/شهر حالياً",
+   "amount_eur": 571,
+   "billable": true,
+   "title": "قرّر أي إضافات تبقى قبل أول فاتورة",
+   "due": "2026-08-24",
+   "remind_at": [
+    3,
+    2,
+    0
+   ],
+   "priority": "P1",
+   "action": "الفاتورة = Growth €99 + Euro Club Tournaments €29 + International Tournaments €129 + حزمة Pressure Index & xG €314. **حزمة الـ314 وصفها «delivered live during the match» — وعقيدتنا (البند 8) تستبعد xG الحي من المرحلة أ صراحةً.** أعد تأكيد قرار الترقية على €571 لا €29. (بطاقة الـ€49 المقصوصة: قرّر المالك 2026-08-15 عدم ملاحقتها.)",
+   "status": "open"
+  },
+  {
+   "id": "sportmonks_trial_expiry",
+   "service": "Sportmonks",
+   "price": "€571/شهر",
+   "amount_eur": 571,
+   "billable": true,
+   "title": "انتهاء التجربة المجانية وبدء الدفع",
+   "due": "2026-08-26",
+   "priority": "P1",
+   "action": "قرار المالك 2026-08-14: المضيّ في الترقية/التجديد — **اتُّخذ على أساس €29/شهر، والرقم الحقيقي €571**. راجع القرار على السعر الصحيح قبل 24 أغسطس.",
+   "backstop_trigger": "trig_01DSVp5XJqk7KcGY6aAJJyEj",
+   "status": "open"
+  },
+  {
+   "id": "xg_shadow_verdict",
+   "service": "Sportmonks",
+   "price": "€571/شهر",
+   "amount_eur": 571,
+   "title": "حكم تجربة ظل xG (مُمدَّدة أسبوعين بأمر المالك)",
+   "due": "2026-09-17",
+   "remind_at": [
+    3,
+    2,
+    0
+   ],
+   "priority": "P2",
+   "action": "الشرط الحاكم هو العيّنة لا التقويم: لا حكم قبل بلوغ الحد المُسجَّل مسبقاً.",
+   "status": "open"
+  },
+  {
+   "id": "sportmonks_paid_cycle_decision",
+   "service": "Sportmonks",
+   "price": "€571/شهر",
+   "amount_eur": 571,
+   "billable": true,
+   "title": "قرار الاستمرار قبل الدورة المدفوعة التالية",
+   "due": "2026-09-26",
+   "priority": "P1",
+   "action": "بعد حكم 17 سبتمبر: جدّد أو ألغِ. الإلغاء شهري وبلا التزام.",
+   "status": "open"
+  },
+  {
+   "id": "api_football_renewal",
+   "service": "API-Football Pro (7,500 نداء/يوم)",
+   "price": "$19/شهر",
+   "billable": true,
+   "title": "تجديد الاشتراك الشهري",
+   "due": "2026-09-15",
+   "priority": "P1",
+   "action": "جُدِّد إلى Pro يوم 2026-08-15 بإفادة المالك (~$19/شهر، قال «I think» فالسعر يُثبَّت من dashboard.api-football.com). أخطر واجهة عندنا: انتهاؤها 14 أغسطس أظلم النظام 19 ساعة.",
+   "status": "open"
+  },
+  {
+   "id": "claude_subscription_renewal",
+   "service": "اشتراك Claude (يشغّل الـ Routines)",
+   "price": "",
+   "billable": true,
+   "title": "تجديد اشتراك Claude",
+   "due": "",
+   "priority": "P1",
+   "action": "المالك: زوّدني بتاريخ التجديد والسعر بالدولار. توقّفه يُعلّق كل الـ Routines — نبضات المراقبة والتذكيرات والتدقيق الشهري.",
+   "status": "deferred",
+   "_deferred_note": "قرار المالك 2026-08-15: «ليس مطلوباً الآن — للاحقاً». يبقى الصف موثَّقاً بلا إلحاح يومي؛ يعيد فتحه المالك أو التدقيق الشهري بتغيير status إلى open."
+  },
+  {
+   "id": "github_api_version_sunset",
+   "service": "cron-job.org → GitHub API",
+   "price": "مجاني",
+   "title": "انتهاء صلاحية X-GitHub-Api-Version: 2022-11-28",
+   "due": "2028-03-10",
+   "remind_at": [
+    3,
+    2,
+    0
+   ],
+   "priority": "P3",
+   "action": "حدّث الترويسة المثبّتة قبل الموعد. روتين تذكير قائم يُطلق 2028-02-01.",
+   "status": "open"
+  }
+ ],
+ "_not_dated": "واجهات بلا تاريخ انتهاء، مسجَّلة في سجل الاستمرارية بـCLAUDE.md ولا تُكرَّر هنا: رصيد Anthropic (إعادة شحن تلقائية)، بوت تيليجرام، GitHub PAT، دقائق GitHub Actions، Open-Meteo، Google News RSS."
+}
