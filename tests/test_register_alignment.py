@@ -97,6 +97,13 @@ class TestRegisterAlignment(unittest.TestCase):
         import predict_v2 as P
         self.assertEqual(D.XG_SHADOW_TOTAL_DAYS, P.XG_SHADOW_DAYS)
 
+    def test_scenario_drop_age_agrees_between_decision_and_display(self):
+        """مهلة إسقاط التقرير العالق: القرار في predict_v2 والعرض في اللوحة —
+        رقمان مختلفان يعنيان بطاقة تقول «3/4» بينما الإسقاط يقع في يوم آخر."""
+        import dashboard_update as D
+        import predict_v2 as P
+        self.assertEqual(D.SCENARIO_MAX_AGE_DAYS, P.SCENARIO_MAX_AGE_DAYS)
+
     def test_xg_verdict_date_is_consistent_across_code_and_doctrine(self):
         """نافذة الظل مُدِّدت إلى 35 يوماً — لا يبقى تاريخ حكم قديم فاعلاً."""
         import predict_v2 as P

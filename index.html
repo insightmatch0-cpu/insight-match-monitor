@@ -703,7 +703,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 73;
+var IM_BUILD = 74;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -793,6 +793,7 @@ var I18N = {
     labReadReport:"انقر لقراءة التقرير الأصلي كاملاً",
     labOfClaims:"من {n} بنود",
     labWaitData:"انتهت المباراة — بانتظار بياناتها النهائية (تُتابع كل صباح وتُنظَّف آلياً إن تعذّرت)",
+    labWaitDays:"أيام انتظار",
     labBreakdown:"تصحيح البنود — ما نجح وما فشل",
     labOrig:"التقرير الأصلي كما كُتب قبل المباراة",
     labExpDay:"اليوم", labExpOf:"من", labExpYday:"جُمع أمس",
@@ -915,6 +916,7 @@ var I18N = {
     labReadReport:"tap to read the full original report",
     labOfClaims:"of {n} claims",
     labWaitData:"match finished — awaiting final data (checked every morning, auto-cleaned if unavailable)",
+    labWaitDays:"days waiting",
     labBreakdown:"Claim-by-claim grading — what hit and what missed",
     labOrig:"Original report as written before the match",
     labExpDay:"Day", labExpOf:"of", labExpYday:"collected yesterday",
@@ -1603,7 +1605,13 @@ function renderShadowLab(){
     } else if (!isNaN(koMs) && koMs < nowMs){
       /* انتهت منذ مدة لكن بياناتها النهائية لم تصل بعد — حالة انتظار صادقة،
          لا "مباشر" زائف (ملاحظة المالك 2026-08-01 على تقرير 29 يوليو) */
-      st = '<span class="lab-wait">🕓 '+t("labWaitData")+'</span>';
+      /* عمر الانتظار يُقال صراحةً: تقرير من قبل أيام بين تقارير اليوم بدا
+         «عالقاً» بلا سبب (بلاغ المالك 2026-08-15) */
+      st = '<span class="lab-wait">🕓 '+t("labWaitData")
+         + (w.waited_days > 0
+             ? ' · '+w.waited_days+'/'+(w.drop_after||4)+' '+t("labWaitDays")
+             : "")
+         + '</span>';
     } else {
       st = '<span class="lab-wait">⏳ '+t("labWaitKO")+(w.kickoff?" · "+timeLocal(w.kickoff):"")+'</span>';
     }

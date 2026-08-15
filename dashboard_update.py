@@ -33,6 +33,9 @@ RADAR_LOG_FILE      = Path("radar_log.json")   # إنذارات الرادار +
 PREDICTIONS_USER_FILE = Path("predictions_user.json")  # توقعات المالك (سباق الدقة)
 SPORTMONKS_SHADOW_FILE = Path("sportmonks_shadow.json")  # سجل تجربة ظل xG
 SHADOW_LAB_ROWS     = 10   # أحدث بطاقات التقييم المعروضة في مختبر الظل
+# مهلة إسقاط تقرير بلا بيانات نهائية — تُطابق SCENARIO_MAX_AGE_DAYS في
+# predict_v2.py (هناك القرار، وهنا العرض فقط). حارس التطابق يفحص تساويهما.
+SCENARIO_MAX_AGE_DAYS = 4
 # نافذة تجربة ظل xG: مُدِّدت أسبوعين بأمر المالك 2026-08-14 (الحكم ~17 سبتمبر).
 # ⚠️ يجب أن تساوي XG_SHADOW_DAYS في predict_v2.py — حارس التطابق يفحص ذلك
 # (كانت 21 هنا و35 هناك: نفس عيّنة انحراف السجلات الذي أمسكه تدقيق 15 أغسطس)
@@ -452,9 +455,18 @@ def build_shadow_lab() -> dict:
         })
     # التقارير المنتظرة (أُرسلت/التُقطت ولم تُقيَّم بعد) — تظهر بحالة حية
     waiting = []
+    today = now_utc().strftime("%Y-%m-%d")
     for p in (sc.get("pending") or {}).values():
         if not isinstance(p, dict):
             continue
+        # كم يوماً انتظر هذا التقرير؟ بلاغ المالك 2026-08-15: تقرير من 12
+        # أغسطس بدا «عالقاً» بلا تفسير بين تقارير اليوم. الرقم يحوّل الغموض
+        # إلى حقيقة معلومة: ينتظر البيانات النهائية ويُسقط تلقائياً بعد المهلة.
+        try:
+            waited = (datetime.fromisoformat(today)
+                      - datetime.fromisoformat(str(p.get("date")))).days
+        except ValueError:
+            waited = 0
         waiting.append({
             "date": p.get("date", ""),
             "kickoff": p.get("kickoff", ""),
@@ -464,8 +476,14 @@ def build_shadow_lab() -> dict:
             "league": p.get("league", ""),
             "shadow": bool(p.get("shadow")),
             "report": p.get("report", ""),
+            "waited_days": max(0, waited),
+            "drop_after": SCENARIO_MAX_AGE_DAYS,
         })
-    waiting.sort(key=lambda x: x.get("kickoff") or "")
+    # ⚠️ الأحدث أولاً — نفس اتجاه القائمة المُقيَّمة تحتها. كان تصاعدياً بينما
+    # المُقيَّمة تنازلية، فكانت التواريخ تُقرأ 12 ثم 15 ثم 13 (بلاغ المالك
+    # 2026-08-15: «غير مرتّب»). قائمة واحدة يجب أن يكون لها اتجاه واحد.
+    waiting.sort(key=lambda x: x.get("kickoff") or x.get("date") or "",
+                 reverse=True)
     # دقة كل نوع على السجل الكامل (لا العينة المعروضة فقط)
     def acc(flag):
         sub = [e for e in resolved if bool(e.get("shadow")) == flag]
