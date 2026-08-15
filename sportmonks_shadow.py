@@ -36,6 +36,17 @@ except Exception:                                # pragma: no cover - دفاعي
 # مع غياب SPORTMONKS_KEY من البيئة يشكّلان طريقَي التعطيل الطبيعيَّين
 XG_SHADOW = True
 
+# 🔴 مفتاح التعطيل الفوري للطبقة الحية وحدها — مستقل عن XG_SHADOW عمداً:
+# المجمّع الصباحي تجربة جارية في منتصف نافذتها (حتى 1-3 سبتمبر)، فيجب أن
+# يبقى حياً حتى لو أُطفئت الطبقة الحية بالكامل.
+XG_LIVE_SHADOW = True
+
+# رصيد محجوز للمجمّع الصباحي: الطبقة الحية تتوقف عن الجلب متى هبط المتبقي
+# تحت هذا الحد. **هذا هو ما يجعل البناء ممكناً قبل معرفة السقف**: الكود
+# يقرأ المتبقي من كل رد ويكبح نفسه، فأياً كان السقف لا تجوّع الطبقةُ الحية
+# التجربةَ الصباحية. الرقم متحفظ عمداً (المجمّع الصباحي يكلّف ~8 نداءات/يوم).
+XG_LIVE_RESERVE = 300
+
 KEY = os.environ.get("SPORTMONKS_KEY", "").strip()
 BASE = "https://api.sportmonks.com/v3/football"
 SHADOW_FILE = Path("sportmonks_shadow.json")
@@ -229,6 +240,69 @@ def fetch_day_xg(day: str) -> list:
         if not (body.get("pagination") or {}).get("has_more"):
             break
     return rows
+
+
+def live_xg_map(last_remaining=None, reserve: int = None) -> tuple:
+    """🔴 xG الحي لكل المباريات الجارية — **نداء واحد لكل دورة، لا نداء لكل مباراة**.
+
+    نقطة التصميم الحاسمة: سبورتمونكس يرجع كل المباريات الجارية في نداء واحد
+    (livescores/inplay)، فكلفة الطبقة الحية ~144 نداءً/يوم مهما بلغ عدد
+    المباريات — لا 20 نداءً كل 10 دقائق كما بدا في الطرح الأول. هذا وحده
+    يُخرج الاستطلاع الحي من دائرة الخطر على الرصيد.
+
+    الكبح الذاتي: يقرأ المتبقي من كل رد ويرجعه للمنادي ليخزّنه؛ متى هبط تحت
+    الحجز توقف الطبقة الحية نفسها **قبل** أن تلمس رصيد المجمّع الصباحي.
+    فالسقف المجهول لم يعد حاجزاً — صار مُدخلاً يتعامل معه الكود وقت التشغيل.
+
+    سؤال التغطية يحل نفسه هنا: مباراة بلا xG في الباقة ببساطة لا ترد بـxG،
+    فلا يوجد "نداء مهدور" أصلاً — لا نداء لكل مباراة كي يُهدر.
+
+    يرجع (خريطة {(المضيف, الضيف): (xg_h, xg_a)}, المتبقي, ملاحظة).
+    صامت المبدأ: أي عطل يرجع خريطة فارغة ولا يرفع استثناءً أبداً.
+    """
+    reserve = XG_LIVE_RESERVE if reserve is None else reserve
+    if not XG_LIVE_SHADOW or not KEY:
+        return {}, last_remaining, "مطفأ"
+    # الكبح قبل النداء: المتبقي المرصود في الدورة السابقة هو ما نحتكم إليه
+    if last_remaining is not None and last_remaining <= reserve:
+        return {}, last_remaining, f"كبح ذاتي — المتبقي {last_remaining} تحت الحجز {reserve}"
+    status, body = _request("livescores/inplay", {"include": "xgfixture"})
+    if status != 200 or not isinstance(body, dict) or "_exception" in body:
+        return {}, last_remaining, f"تعذر الجلب (HTTP {status})"
+    remaining = _rate_sample(body).get("remaining")
+    out = {}
+    for fx in (body.get("data") or []):
+        name = fx.get("name") or ""
+        if " vs " not in name:
+            continue
+        home, away = (p.strip() for p in name.split(" vs ", 1))
+        xh = xa = None
+        for x in (fx.get("xgfixture") or []):
+            if x.get("type_id") != XG_TYPE_ID:
+                continue
+            v = (x.get("data") or {}).get("value")
+            if x.get("location") == "home":
+                xh = v
+            elif x.get("location") == "away":
+                xa = v
+        if xh is not None and xa is not None:
+            try:
+                out[(home, away)] = (float(xh), float(xa))
+            except (TypeError, ValueError):
+                continue
+    return out, (remaining if remaining is not None else last_remaining), ""
+
+
+def live_xg_for(xg_map: dict, home: str, away: str):
+    """يبحث عن xG مباراة بعينها في خريطة الدورة — بالمطابقة المحافظة نفسها.
+
+    نفس names_match المستعمل في المجمّع الصباحي عمداً: مطابقة أضعف هنا كانت
+    ستنتج **أزواجاً خاطئة**، وبيانات خاطئة أسوأ من لا بيانات (درس المطابقة).
+    """
+    for (h, a), xg in (xg_map or {}).items():
+        if names_match(home, h) and names_match(away, a):
+            return xg
+    return None
 
 
 def load_json(path: Path, default):

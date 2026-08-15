@@ -73,6 +73,10 @@ INTEGRITY_MAX_DETAILS = 5     # أقصى أمثلة تُعرض لكل قانون
 # من صفر عند هذا التاريخ — ما قبله يبقى محفوظاً كسجل تأسيس، لا يُعرض كموسم.
 SEASON_START          = "2026-08-13"
 
+# 🔬 يوم انطلاق تجربة xG الحي في الظل: السجلات الأقدم لا تحمل score_xg
+# فتبقى خارج الشريحة — نفس منطق REC-010، الفلتر يمتلئ من لحظة التنفيذ.
+XG_LIVE_START         = "2026-08-15"
+
 # 🎛 حارس العينة — REC-010 (قرار المالك 2026-08-13): أي عرض مفلتر على شريحة
 # دوريات المالك عدده أقل من هذا الحد لا يُظهر نسبة مئوية إطلاقاً، بل نص
 # "عينة غير كافية". السبب مسجّل في REJ-002: نسبة على ثلاث مباريات ("دورياتك،
@@ -1861,6 +1865,23 @@ def resolve_radar_log(store: dict) -> int:
     top["min_sample"] = MIN_FILTERED_SAMPLE
     stats["top_only"] = top
 
+    # 🔬 كتلة xG الموازية (تجربة الطبقة الحية): الدرجتان تُقيَّمان على **نفس**
+    # النتائج الحقيقية وبنفس بنية العدّادات — قاعدة الحوكمة (ج): لوحة نتائج
+    # منفصلة لكل وظيفة، لا خلط أبداً.
+    #
+    # ⛔ الشرط الجوهري: المقارنة تجري على المباريات التي توفّر لها xG **فقط**
+    # (score_xg غير فارغ)، والكتلة تحمل أداء الدرجة الحالية على تلك الشريحة
+    # نفسها. لولا ذلك لقارنّا مجتمعين مختلفين وسمّينا الفارق نتيجة.
+    xg_rows = [x for x in log["resolved"] if x.get("score_xg") is not None]
+    xg_levels = {}
+    for lvl in ("red", "amber"):
+        rows = [x for x in xg_rows if x.get("level_xg") == lvl]
+        xg_levels[lvl] = {"fired": len(rows),
+                          "hit": sum(1 for x in rows if x.get("failed"))}
+    base_levels, _ = _radar_counts(xg_rows, [])
+    stats["xg"] = {"xg": xg_levels, "base": base_levels, "n": len(xg_rows),
+                   "start": XG_LIVE_START}
+
     # قاعدة الإيقاف (REC-005): تُعاد كتابة القائمتين كل صباح من السجل التراكمي
     # نفسه — كل نوع ادعاء يُحكم على حدة، ولا حكم قبل 30 تنبيهاً مُقيَّماً
     #
@@ -2151,6 +2172,33 @@ def drama_scoreboard_line() -> str:
     return "\n".join(lines)
 
 
+def xg_radar_line() -> str:
+    """🔬 سطر مقارنة درجة الخطر بـxG مقابل الحالية (رؤية يومية إلزامية — هـ).
+
+    يقرأ meta.stats.xg قراءةً فقط. النسبتان تُحسبان على **نفس** المباريات
+    (الشريحة التي توفّر لها xG) فالمقارنة عادلة لا مُجمَّلة.
+
+    حارس العينة نفسه المطبَّق في REC-010: تحت MIN_FILTERED_SAMPLE لا تُعرض
+    نسبة مئوية إطلاقاً — نسبة على أربع مباريات تصنع استنتاجاً خاطئاً بثقة،
+    وهذا نظام بُني كله لمنع ذلك (REJ-002).
+    """
+    log = load_json(RADAR_LOG_FILE, {})
+    block = ((log.get("meta") or {}).get("stats") or {}).get("xg") or {}
+    n = block.get("n") or 0
+    if not n:
+        return ""
+    xg, base = block.get("xg") or {}, block.get("base") or {}
+    def _pct(d):
+        f = (d or {}).get("fired") or 0
+        return f"{100 * (d.get('hit') or 0) / f:.0f}%" if f else "—"
+    if n < MIN_FILTERED_SAMPLE:
+        return (f"🔬 xG مقابل الحالي: عينة غير كافية "
+                f"({n} من {MIN_FILTERED_SAMPLE}) — يُجمَع ولا يُحكم بعد")
+    return (f"🔬 xG مقابل الحالي: أحمر {_pct(xg.get('red'))} ضد "
+            f"{_pct(base.get('red'))} · كهرماني {_pct(xg.get('amber'))} ضد "
+            f"{_pct(base.get('amber'))} (n={n}) — ظل، لا يؤثر على أي تنبيه")
+
+
 def sportmonks_shadow_line() -> str:
     """🔬 رؤية ظل xG اليومية (قاعدة المالك هـ: تجربة نشطة = سطر يومي بلا سؤال).
     يقرأ sportmonks_shadow.json قراءةً فقط — يكتبه المجمّع المستقل
@@ -2430,6 +2478,11 @@ def main() -> None:
         xg_line = sportmonks_shadow_line()
         if xg_line:
             digest += "\n" + xg_line
+        # 🔬 سطر xG الحي في الرادار — تجربة ثانية منفصلة، لوحة نتائج مستقلة
+        # (قاعدة الحوكمة ج: كل وظيفة تُقاس وتُعرض وحدها، بلا خلط)
+        xg_radar = xg_radar_line()
+        if xg_radar:
+            digest += "\n" + xg_radar
         # سطر النزاهة اليومي: المالك يرى كل صباح أن الحسبة سليمة، لا يفترض ذلك
         if integrity_line:
             digest += "\n" + integrity_line
