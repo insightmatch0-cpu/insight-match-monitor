@@ -212,17 +212,51 @@ def pending_lines(path: Path = None) -> str:
     return "\n".join(out)
 
 
-def reminder_lines(today: datetime = None, path: Path = None) -> str:
-    """كتلة التذكيرات للنشرة الصباحية. لا مواعيد مستحقة → نص فارغ.
+def next_deadline(today: datetime = None, path: Path = None):
+    """أقرب موعد قادم (ولو خارج نافذة التنبيه) — وقود سطر الحارس اليومي."""
+    today = today or now_utc()
+    future = []
+    for item in load_deadlines(path):
+        if str(item.get("status", "open")).lower() == "done":
+            continue
+        left = _days_left(item.get("due"), today)
+        if left is not None and left >= 0:
+            row = dict(item)
+            row["days_left"] = left
+            future.append(row)
+    return min(future, key=lambda r: r["days_left"]) if future else None
 
-    الفراغ هنا صادق: لا موعد قريب فعلاً. (يختلف عن سطر تجربة الظل الذي يجب
-    أن يظهر دائماً ما دامت التجربة نشطة — هناك الاختفاء كان يخفي عطلاً.)
+
+def reminder_lines(today: datetime = None, path: Path = None) -> str:
+    """كتلة المواعيد للنشرة الصباحية — **تظهر كل يوم بلا استثناء**.
+
+    كانت ترجع نصاً فارغاً حين لا استحقاق، وهذا بالضبط عيب «اختفاء السطر»
+    الذي أخفى عطل تجربة xG: الصمت يقرأه المالك «لا موعد قريب» بينما قد
+    يعني «الحارس نفسه مات». حارس لا يُسمع صوته يومياً لا يُعرف أنه حي.
+    فحين لا استحقاق نقول ذلك صراحةً ونذكر أقرب موعد وكم بقي له — سطر
+    واحد قصير يثبت أن السجل يُقرأ فعلاً كل صباح.
     """
+    today = today or now_utc()
     rows = due_reminders(today, path)
     blocks = []
     if rows:
         blocks.append("📅 مواعيد قادمة:\n"
                       + "\n".join(reminder_line(r) for r in rows))
+    else:
+        # يوم هادئ: يُقال إنه هادئ، لا يُترك فراغاً يُشبه العطل
+        nxt = next_deadline(today, path)
+        if nxt is None:
+            # سجل بلا أي موعد قادم = حالة عطل بحد ذاتها: إما فرغ السجل أو
+            # تقادم كله. مدير التجديد لا يجوز أن يكون بلا موعد واحد يراقبه.
+            blocks.append("⚠️ حارس المواعيد: لا موعد قادم في السجل إطلاقاً — "
+                          "راجع reminders.json")
+        else:
+            head = nxt.get("service") or nxt.get("title")
+            price = f" ({nxt['price']})" if nxt.get("price") else ""
+            blocks.append(
+                f"📅 حارس المواعيد: لا استحقاق اليوم — أقرب موعد "
+                f"{head}{price} بعد {_arabic_days(nxt['days_left'])} "
+                f"({nxt['due']})")
     gaps = pending_lines(path)
     if gaps:
         blocks.append(gaps)

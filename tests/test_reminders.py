@@ -93,11 +93,13 @@ class TestGracePeriods(unittest.TestCase):
 class TestRobustness(unittest.TestCase):
     """لا يكسر تشغيلة أبداً — نفس عقيدة api_guard وdeadman."""
 
-    def test_missing_file_returns_empty_without_raising(self):
+    def test_missing_file_shouts_instead_of_raising_or_going_silent(self):
+        """سجل مفقود حالة عطل لا يوم هادئ: لا يرفع استثناءً، ولا يصمت."""
         gone = Path(tempfile.mkstemp(suffix=".json")[1])
         gone.unlink()
-        self.assertEqual(R.load_deadlines(gone), [])
-        self.assertEqual(R.reminder_lines(_day("2026-08-23"), gone), "")
+        self.assertEqual(R.load_deadlines(gone), [])      # لا استثناء
+        line = R.reminder_lines(_day("2026-08-23"), gone)
+        self.assertIn("لا موعد قادم في السجل", line)
 
     def test_malformed_entries_are_skipped_not_fatal(self):
         f = _file([{"id": "ok", "due": "2026-08-26", "priority": "P1"},
@@ -110,10 +112,39 @@ class TestRobustness(unittest.TestCase):
         finally:
             f.unlink(missing_ok=True)
 
-    def test_no_due_deadlines_yields_empty_block(self):
-        f = _file([{"id": "x", "due": "2027-01-01", "priority": "P3"}])
+    def test_quiet_day_still_speaks(self):
+        """انحدار: كان يرجع فراغاً حين لا استحقاق — وهو عيب «اختفاء السطر»
+        نفسه الذي أخفى عطل تجربة xG. حارس لا يُسمع صوته لا يُعرف أنه حي."""
+        f = _file([{"id": "x", "service": "خدمة ما", "price": "€5",
+                    "due": "2027-01-01", "priority": "P3"}])
         try:
-            self.assertEqual(R.reminder_lines(_day("2026-08-23"), f), "")
+            line = R.reminder_lines(_day("2026-08-23"), f)
+            self.assertNotEqual(line, "")
+            self.assertIn("حارس المواعيد", line)
+            self.assertIn("لا استحقاق", line)
+            self.assertIn("خدمة ما", line)      # أقرب موعد يُسمّى
+            self.assertIn("2027-01-01", line)
+        finally:
+            f.unlink(missing_ok=True)
+
+    def test_register_with_no_future_deadline_is_flagged(self):
+        """سجل بلا موعد قادم واحد = حالة عطل، لا يوم هادئ."""
+        f = _file([{"id": "x", "service": "س", "due": "2020-01-01",
+                    "priority": "P1", "status": "done"}])
+        try:
+            line = R.reminder_lines(_day("2026-08-23"), f)
+            self.assertIn("لا موعد قادم في السجل", line)
+        finally:
+            f.unlink(missing_ok=True)
+
+    def test_watch_line_appears_every_single_day_of_a_quiet_month(self):
+        """لا يوم واحد بلا سطر — هذا هو الفرق بين مدير تجديد وسجل نائم."""
+        f = _file([{"id": "x", "service": "خدمة", "due": "2026-12-01",
+                    "priority": "P1"}])
+        try:
+            for d in range(1, 29):
+                line = R.reminder_lines(_day(f"2026-09-{d:02d}"), f)
+                self.assertTrue(line.strip(), f"يوم صامت: 2026-09-{d:02d}")
         finally:
             f.unlink(missing_ok=True)
 
