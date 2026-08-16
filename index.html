@@ -190,11 +190,29 @@
   /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي،
      والسجل التراكمي سطر ثانوي أصغر تحته — بلا حذف لأي رقم */
   .radar-acc .r-sub{font-size:10px;color:var(--muted);display:block}
-  .rspark.climb .bars span{border-radius:2px 2px 0 0}
-  .rspark.climb .d-g{background:#3f8f63}
-  .rspark.climb .d-a{background:#d0a03c}
-  .rspark.climb .d-r{background:#e0573f}
-  .rspark.climb .lbl b{font-weight:700}
+  .rspark.climb{margin-top:8px}
+  .rspark.climb .bars{
+    height:30px;position:relative;padding-top:2px;
+    /* خطا العتبتين: كهرماني عند 40 وأحمر عند 65 — العين ترى كم بقي للأحمر
+       بلا حساب. المواضع من قاع الشريط (المقياس مثبّت 0-100). */
+    background:
+      linear-gradient(to top, transparent calc(40% - 1px), rgba(208,160,60,.35) calc(40% - 1px), rgba(208,160,60,.35) 40%, transparent 40%),
+      linear-gradient(to top, transparent calc(65% - 1px), rgba(224,87,63,.40) calc(65% - 1px), rgba(224,87,63,.40) 65%, transparent 65%);
+  }
+  .rspark.climb .bars span{border-radius:2px 2px 0 0;opacity:.45;transition:opacity .3s}
+  /* الزمن يتحرك: الأحدث أوضح — وآخر عمود (الآن) متوهج بلونه */
+  .rspark.climb .bars span:nth-last-child(3){opacity:.62}
+  .rspark.climb .bars span:nth-last-child(2){opacity:.8}
+  .rspark.climb .bars span:last-child{opacity:1;box-shadow:0 0 6px 1px currentColor}
+  .rspark.climb .d-g{background:#3f8f63;color:#3f8f63}
+  .rspark.climb .d-a{background:#d0a03c;color:#d0a03c}
+  .rspark.climb .d-r{background:#e0573f;color:#e0573f}
+  .rspark.climb .lbl{min-width:110px;line-height:1.5}
+  .rspark.climb .lbl b{font-weight:700;display:block}
+  .rspark.climb .lbl .nums{direction:ltr;display:inline-block;font-weight:700}
+  .rspark.climb .lbl .mins{direction:ltr;display:inline-block;font-size:10px;opacity:.75}
+  .rspark.climb .lbl b.up{color:#e0573f}
+  .rspark.climb .lbl b.dn{color:#3f8f63}
   .r-recent{margin-top:10px}
   .r-recent summary{cursor:pointer;font-size:11px;color:var(--muted);
     letter-spacing:.02em;padding:4px 0}
@@ -712,7 +730,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 77;
+var IM_BUILD = 78;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -1929,19 +1947,24 @@ function sparkRow(cls, label, vals){
    الحالية فقط — فلا يُفرَّق بين 70 هابطة من 90 و70 صاعدة من 40. المقياس
    مثبَّت 0-100 عمداً (لا تطبيع على الأعلى) كي يعني ارتفاع العمود نفس الشيء
    في كل بطاقة، ويُلوَّن كل عمود بمستواه فيُرى عبور العتبات بالعين. */
-function dangerClimb(vals){
+function dangerClimb(vals, mins){
   if (!vals || vals.length < 2) return "";
   var bars = "";
   for (var i=0;i<vals.length;i++){
     var v = Math.max(0, Math.min(100, vals[i]||0));
     var cl = v >= 65 ? "d-r" : (v >= 40 ? "d-a" : "d-g");
-    bars += '<span class="'+cl+'" style="height:'+Math.max(6, v)+'%" title="'+esc(v)+'"></span>';
+    var tip = (mins && mins[i] != null ? "د"+mins[i]+" · " : "") + v;
+    bars += '<span class="'+cl+'" style="height:'+Math.max(6, v)+'%" title="'+esc(tip)+'"></span>';
   }
-  var d = (vals[vals.length-1]||0) - (vals[0]||0);
+  var a = vals[0]||0, b = vals[vals.length-1]||0, d = b - a;
+  var dir = d >= 8 ? "up" : (d <= -8 ? "dn" : "");
   var arrow = d >= 8 ? "▲ " + t("radarClimbUp")
             : (d <= -8 ? "▼ " + t("radarClimbDown") : "▬ " + t("radarClimbFlat"));
-  return '<div class="rspark climb"><span class="lbl">'+esc(t("radarClimb"))
-    + ' <b>'+esc(arrow)+'</b></span><div class="bars">'+bars+'</div></div>';
+  var span = (mins && mins.length > 1)
+    ? ' <span class="mins">د' + esc(mins[0]) + '→د' + esc(mins[mins.length-1]) + '</span>' : "";
+  return '<div class="rspark climb"><span class="lbl">'+esc(t("radarClimb"))+span
+    + '<b class="'+dir+'">'+esc(arrow)+' <span class="nums">'+esc(a)+'→'+esc(b)+'</span></b></span>'
+    + '<div class="bars">'+bars+'</div></div>';
 }
 
 function radarCard(m){
@@ -1970,7 +1993,7 @@ function radarCard(m){
     + '</div>'
     + (facts ? '<ul class="rfactors">'+facts+'</ul>'
              : '<div class="rfactors" style="padding:2px 0">'+esc(t("radarCalm"))+'</div>')
-    + dangerClimb(tr.danger)
+    + dangerClimb(tr.danger, tr.min)
     + sparkRow("s-h", t("radarSogH"), tr.h_sog)
     + sparkRow("s-a", t("radarSogA"), tr.a_sog)
     + '</div>';
