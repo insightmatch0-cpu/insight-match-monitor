@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-16T08:56:34.396454+00:00",
+ "updated": "2026-08-16T09:03:00.663814+00:00",
  "live": [
   {
    "fid": "1536877",
@@ -14,7 +14,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -75,7 +75,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -141,7 +141,7 @@
    "score": "2-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -205,9 +205,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/8621.png",
    "league_logo": "https://media.api-sports.io/football/leagues/346.png",
    "score": "0-3",
-   "minute": 40,
-   "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -217,10 +217,10 @@
     "confidence": 55
    },
    "radar": {
-    "score": 39,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د40)"
+     "النتيجة الحالية 0-3 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 55,
@@ -233,18 +233,145 @@
     "top": false,
     "trend": {
      "min": [
-      40
+      31,
+      45
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1562596",
+   "home": "Bohemians 1905 II",
+   "away": "Slavia III",
+   "home_en": "Bohemians 1905 II",
+   "away_en": "Slavia III",
+   "league": "3. liga - CFL A (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/14473.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26232.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/348.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      30,
+      45
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1562602",
+   "home": "Sparta Praha II",
+   "away": "Admira Praha",
+   "home_en": "Sparta Praha II",
+   "away_en": "Admira Praha",
+   "league": "3. liga - CFL A (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/8619.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7268.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/348.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 52,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      30,
+      45
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0
      ]
     }
@@ -261,9 +388,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7271.png",
    "league_logo": "https://media.api-sports.io/football/leagues/685.png",
    "score": "1-0",
-   "minute": 40,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -291,7 +418,73 @@
      "min": [
       11,
       24,
-      34
+      40
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1577889",
+   "home": "Havířov",
+   "away": "Karviná II",
+   "home_en": "Havířov",
+   "away_en": "Karviná II",
+   "league": "3. liga - MSFL (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/7293.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15134.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/349.png",
+   "score": "1-1",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      9,
+      22,
+      45
      ],
      "h_sog": [
       0,
@@ -327,68 +520,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7276.png",
    "league_logo": "https://media.api-sports.io/football/leagues/349.png",
    "score": "3-0",
-   "minute": 40,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      24,
-      34
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1562596",
-   "home": "Bohemians 1905 II",
-   "away": "Slavia III",
-   "home_en": "Bohemians 1905 II",
-   "away_en": "Slavia III",
-   "league": "3. liga - CFL A (Czech-Republic)",
-   "home_logo": "https://media.api-sports.io/football/teams/14473.png",
-   "away_logo": "https://media.api-sports.io/football/teams/26232.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/348.png",
-   "score": "0-0",
-   "minute": 39,
-   "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -398,90 +532,37 @@
     "confidence": 38
    },
    "radar": {
-    "score": 38,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د39)"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 38,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      39
+      24,
+      40
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1562602",
-   "home": "Sparta Praha II",
-   "away": "Admira Praha",
-   "home_en": "Sparta Praha II",
-   "away_en": "Admira Praha",
-   "league": "3. liga - CFL A (Czech-Republic)",
-   "home_logo": "https://media.api-sports.io/football/teams/8619.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7268.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/348.png",
-   "score": "0-0",
-   "minute": 39,
-   "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "radar": {
-    "score": 38,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د39)"
-    ],
-    "pick": "home",
-    "confidence": 52,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      39
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
+      0,
       0
      ]
     }
@@ -498,9 +579,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/8633.png",
    "league_logo": "https://media.api-sports.io/football/leagues/349.png",
    "score": "0-0",
-   "minute": 39,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 46
@@ -510,10 +591,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 38,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د39)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 46,
@@ -527,69 +608,8 @@
     "trend": {
      "min": [
       10,
-      39
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1577889",
-   "home": "Havířov",
-   "away": "Karviná II",
-   "home_en": "Havířov",
-   "away_en": "Karviná II",
-   "league": "3. liga - MSFL (Czech-Republic)",
-   "home_logo": "https://media.api-sports.io/football/teams/7293.png",
-   "away_logo": "https://media.api-sports.io/football/teams/15134.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/349.png",
-   "score": "1-1",
-   "minute": 38,
-   "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 37,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د38)"
-    ],
-    "pick": "home",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      9,
-      22,
-      38
+      29,
+      45
      ],
      "h_sog": [
       0,
@@ -625,9 +645,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/24188.png",
    "league_logo": "https://media.api-sports.io/football/leagues/686.png",
    "score": "0-0",
-   "minute": 38,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 49
@@ -637,10 +657,10 @@
     "confidence": 48
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د38)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 48,
@@ -654,7 +674,73 @@
     "trend": {
      "min": [
       2,
-      38
+      29,
+      45
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1562598",
+   "home": "Dukla Praha II",
+   "away": "Králův Dvůr",
+   "home_en": "Dukla Praha II",
+   "away_en": "Králův Dvůr",
+   "league": "3. liga - CFL A (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/15132.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7312.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/348.png",
+   "score": "1-1",
+   "minute": 40,
+   "status": "1H",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 34,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د33)"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      17,
+      33
      ],
      "h_sog": [
       0,
@@ -676,46 +762,46 @@
    }
   },
   {
-   "fid": "1562598",
-   "home": "Dukla Praha II",
-   "away": "Králův Dvůr",
-   "home_en": "Dukla Praha II",
-   "away_en": "Králův Dvůr",
-   "league": "3. liga - CFL A (Czech-Republic)",
-   "home_logo": "https://media.api-sports.io/football/teams/15132.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7312.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/348.png",
-   "score": "1-1",
-   "minute": 33,
+   "fid": "1561098",
+   "home": "Malženice",
+   "away": "Považská Bystrica",
+   "home_en": "Malženice",
+   "away_en": "Považská Bystrica",
+   "league": "2. liga (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14058.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14062.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/506.png",
+   "score": "0-0",
+   "minute": 32,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
-    "pick": "home",
+    "pick": "away",
     "confidence": 51
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 38
+    "confidence": 37
    },
    "radar": {
-    "score": 15,
+    "score": 30,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
     ],
     "pick": "home",
-    "confidence": 38,
+    "confidence": 37,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      17,
-      27
+      9,
+      25
      ],
      "h_sog": [
       0,
@@ -746,10 +832,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/10538.png",
    "away_logo": "https://media.api-sports.io/football/teams/10550.png",
    "league_logo": "https://media.api-sports.io/football/leagues/506.png",
-   "score": "1-0",
-   "minute": 26,
+   "score": "2-0",
+   "minute": 32,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -775,64 +861,8 @@
     "top": false,
     "trend": {
      "min": [
-      20
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1561098",
-   "home": "Malženice",
-   "away": "Považská Bystrica",
-   "home_en": "Malženice",
-   "away_en": "Považská Bystrica",
-   "league": "2. liga (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14058.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14062.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/506.png",
-   "score": "0-0",
-   "minute": 25,
-   "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 37
-   },
-   "radar": {
-    "score": 26,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
-    ],
-    "pick": "home",
-    "confidence": 37,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      9,
-      19
+      16,
+      26
      ],
      "h_sog": [
       0,
@@ -864,9 +894,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7319.png",
    "league_logo": "https://media.api-sports.io/football/leagues/348.png",
    "score": "1-0",
-   "minute": 25,
+   "minute": 32,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -893,7 +923,7 @@
     "trend": {
      "min": [
       9,
-      19
+      25
      ],
      "h_sog": [
       0,
@@ -925,9 +955,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1400.png",
    "league_logo": "https://media.api-sports.io/football/leagues/219.png",
    "score": "0-0",
-   "minute": 25,
+   "minute": 31,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -937,10 +967,10 @@
     "confidence": 37
    },
    "radar": {
-    "score": 26,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
     ],
     "pick": "home",
     "confidence": 37,
@@ -954,7 +984,7 @@
     "trend": {
      "min": [
       9,
-      19
+      25
      ],
      "h_sog": [
       0,
@@ -986,9 +1016,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6834.png",
    "league_logo": "https://media.api-sports.io/football/leagues/236.png",
    "score": "0-0",
-   "minute": 25,
+   "minute": 31,
    "status": "1H",
-   "seen": "2026-08-16T08:56:32.177288+00:00",
+   "seen": "2026-08-16T09:02:57.022830+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -998,10 +1028,10 @@
     "confidence": 57
    },
    "radar": {
-    "score": 26,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
     ],
     "pick": "home",
     "confidence": 57,
@@ -1015,7 +1045,7 @@
     "trend": {
      "min": [
       9,
-      19
+      25
      ],
      "h_sog": [
       0,
@@ -4082,6 +4112,20 @@
  "awaiting": [
   {
    "date": "2026-08-16",
+   "home": "كانبيرا يوفنتوس",
+   "away": "كوينبيان سيتي",
+   "home_en": "Canberra Juventus",
+   "away_en": "Queanbeyan City",
+   "league": "دوري العاصمة الأسترالي",
+   "home_logo": "https://media.api-sports.io/football/teams/23517.png",
+   "away_logo": "https://media.api-sports.io/football/teams/23519.png",
+   "pick": "home",
+   "confidence": 53,
+   "kickoff": "2026-08-16T06:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-16",
    "home": "مركوني ستاليونز",
    "away": "ساذرلاند شاركس",
    "home_en": "Marconi Stallions",
@@ -4598,16 +4642,82 @@
  },
  "news": [
   {
+   "title": "Wrexham's Premier League bid: Crazy or credible?",
+   "link": "https://www.skysports.com/football/news/12040/13572631/wrexhams-premier-league-bid-how-ready-are-the-hollywood-owned-club-from-wales-for-a-championship-promotion-race",
+   "source": "Sky Sports",
+   "time": "2026-08-16T10:00:00+00:00"
+  },
+  {
+   "title": "Community Shield buildup, Championship and club friendly updates – matchday live",
+   "link": "https://www.theguardian.com/football/live/2026/aug/16/community-shield-buildup-championship-and-friendly-updates-matchday-live",
+   "source": "The Guardian",
+   "time": "2026-08-16T08:56:14+00:00"
+  },
+  {
+   "title": "Wild celebrations sparked as St Helens keep their play-off hopes alive!",
+   "link": "https://www.skysports.com/watch/video/13573626/scenes-of-jubilation-as-st-helens-revive-their-play-off-hopes-after-beating-wakefield-trinity",
+   "source": "Sky Sports",
+   "time": "2026-08-16T08:30:00+00:00"
+  },
+  {
+   "title": "إيران تتهم قطر بتعطيل تحقيق في مصير طيارين إيرانيين والدوحة تنفي احتجازهم",
+   "link": "https://www.bbc.com/arabic/articles/c1411l05xkvo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-16T08:05:45+00:00"
+  },
+  {
+   "title": "Shields stops Scott to reclaim WBC and WBA middleweight belts",
+   "link": "https://www.skysports.com/boxing/news/12040/13573614/claressa-shields-stops-kaye-scott-to-reclaim-wbc-and-wba-middleweight-belts",
+   "source": "Sky Sports",
+   "time": "2026-08-16T07:24:00+00:00"
+  },
+  {
+   "title": "إجلاء الآلاف في إندونيسيا عقب زلزال قوي أسفر عن مقتل أكثر من 50 شخصاً",
+   "link": "https://www.bbc.com/arabic/articles/c0kmmxny0gvo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-16T07:23:37+00:00"
+  },
+  {
+   "title": "Tennis scores: Fery wins in Cincinnati on first appearance since Wimbledon heroics",
+   "link": "https://www.skysports.com/tennis/scores-schedule",
+   "source": "Sky Sports",
+   "time": "2026-08-16T07:20:00+00:00"
+  },
+  {
+   "title": "Bangladesh pull off historic Test upset against Australia",
+   "link": "https://www.skysports.com/cricket/news/12040/13573610/australia-vs-bangladesh-visitors-stun-hosts-with-historic-nine-wicket-test-win-in-darwin",
+   "source": "Sky Sports",
+   "time": "2026-08-16T07:10:00+00:00"
+  },
+  {
+   "title": "Premier League fans’ previews: our club-by-club guide to 2026-27",
+   "link": "https://www.theguardian.com/football/2026/aug/16/premier-league-fans-previews-our-club-by-club-guide-to-2026-27",
+   "source": "The Guardian",
+   "time": "2026-08-16T07:00:20+00:00"
+  },
+  {
+   "title": "Leicester learn harsh reality of life in League One but youngsters provide silver lining",
+   "link": "https://www.theguardian.com/football/2026/aug/16/leicester-learn-harsh-reality-of-life-league-one-but-youngsters-provide-silver-lining",
+   "source": "The Guardian",
+   "time": "2026-08-16T07:00:20+00:00"
+  },
+  {
+   "title": "End of an era? South Korea’s sun sets in the Premier League but Japan rise",
+   "link": "https://www.theguardian.com/football/2026/aug/16/end-of-era-south-korea-japan-premier-league",
+   "source": "The Guardian",
+   "time": "2026-08-16T07:00:19+00:00"
+  },
+  {
+   "title": "Precise faces More Thunder in Prix Jacques le Marois",
+   "link": "https://www.skysports.com/racing/news/12040/13573208/today-on-sky-sports-racing-precise-faces-more-thunder-and-zeus-olympios-in-prix-jacques-le-marois",
+   "source": "Sky Sports",
+   "time": "2026-08-16T07:00:00+00:00"
+  },
+  {
    "title": "Who am I? Guess Premier League star No 27",
    "link": "https://www.bbc.co.uk/sport/football/articles/cvg93n35ypxo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
    "time": "2026-08-16T05:48:53+00:00"
-  },
-  {
-   "title": "قطر تنفي احتجاز طيارين إيرانيين بعد مطالبات طهران بالكشف عن مصيرهم",
-   "link": "https://www.bbc.com/arabic/articles/c1411l05xkvo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-16T05:48:04+00:00"
   },
   {
    "title": "How important is Community Shield to a team's season?",
@@ -4620,72 +4730,6 @@
    "link": "https://www.bbc.co.uk/sport/football/articles/c0l5927xr89o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
    "time": "2026-08-16T05:20:47+00:00"
-  },
-  {
-   "title": "الصيام المتقطع: هل هو مفيد بالفعل أم يبالغ الناس في ترويج فوائده؟",
-   "link": "https://www.bbc.com/arabic/articles/c9v44gvnvx7o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-16T04:25:55+00:00"
-  },
-  {
-   "title": "فرق الإنقاذ تواصل البحث عن ناجين بعد زلزال قوي ضرب إندونيسيا",
-   "link": "https://www.bbc.com/arabic/articles/c0kmmxny0gvo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-16T01:01:24+00:00"
-  },
-  {
-   "title": "Scheffler retains lead in Memphis as Burns stars and McIlroy toils again",
-   "link": "https://www.skysports.com/golf/news/12040/13573540/fedex-st-jude-championship-scottie-scheffler-retains-lead-ahead-of-final-round-as-rory-mcilroy-endures-another-tough-day",
-   "source": "Sky Sports",
-   "time": "2026-08-15T23:30:00+00:00"
-  },
-  {
-   "title": "Djokovic knocked out early in Cincinnati after struggling in sapping heat",
-   "link": "https://www.skysports.com/tennis/news/12040/13573406/novak-djokovic-out-of-cincinnati-open-in-second-round-after-struggling-with-heat-and-humidity-against-thiago-agustin-tirante",
-   "source": "Sky Sports",
-   "time": "2026-08-15T22:45:00+00:00"
-  },
-  {
-   "title": "Man City latest: Maresca confirms club captains 'for now'",
-   "link": "https://www.skysports.com/football/live-blog/12040/13025499/man-city-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky Sports",
-   "time": "2026-08-15T22:30:00+00:00"
-  },
-  {
-   "title": "Papers: Lille head coach confirms Man City's Bouaddi talks",
-   "link": "https://www.skysports.com/football/news/12040/13573576/man-city-transfer-news-ayyoub-bouaddi-talks-confirmed-by-lille-head-coach-davide-ancelotti-who-hopes-deal-falls-through",
-   "source": "Sky Sports",
-   "time": "2026-08-15T22:00:00+00:00"
-  },
-  {
-   "title": "Papers: Lille head coach confirms Man City's Bouaddi talks",
-   "link": "https://www.skysports.com/football/news/12691/13573576/man-city-transfer-news-ayyoub-bouaddi-talks-confirmed-by-lille-head-coach-davide-ancelotti-who-hopes-deal-falls-through",
-   "source": "Sky News",
-   "time": "2026-08-15T22:00:00+00:00"
-  },
-  {
-   "title": "تقارير: المغرب يوقف عشرات المهاجرين أثناء محاولتهم العبور إلى سبتة",
-   "link": "https://www.bbc.com/arabic/articles/cdx77qz63epo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-15T21:32:42+00:00"
-  },
-  {
-   "title": "Tributes paid to Tarling following British cyclist's death during Volta a Portugal",
-   "link": "https://www.skysports.com/cycling/news/12040/13573557/finlay-tarling-tributes-paid-to-british-cyclist-after-death-during-volta-a-portugal",
-   "source": "Sky Sports",
-   "time": "2026-08-15T20:45:00+00:00"
-  },
-  {
-   "title": "Villa begin Suzuki talks - Sunday's gossip",
-   "link": "https://www.bbc.co.uk/sport/football/articles/cnvnndmz4reo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-15T20:23:00+00:00"
-  },
-  {
-   "title": "West Ham break EFL record to sign Engels for £22m",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c77ggr5nk7jo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-15T20:19:40+00:00"
   }
  ],
  "radar_acc": {
