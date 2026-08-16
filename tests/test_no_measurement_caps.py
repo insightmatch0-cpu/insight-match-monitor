@@ -52,6 +52,7 @@ ALLOWED_TRUNCATIONS = {
         "[-LESSONS_ON_DASHBOARD:]": "display — أحدث الدروس المعروضة",
         "[-SHADOW_LAB_ROWS:]": "display — أحدث بطاقات مختبر الظل",
         "[-30:]": "display — اتجاه دقة الرادار آخر 30 يوماً؛ radar_log كامل",
+        "[-40:]": "display — «من هو من»: آخر الإنذارات المُقيَّمة للوحة؛ radar_log كامل",
     },
     "scan.py": {},
     "watchlist.py": {},

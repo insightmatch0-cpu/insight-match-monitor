@@ -84,3 +84,41 @@ class TestPanelInDashboard(unittest.TestCase):
         m = re.search(r"IM_BUILD = (\d+)", self.html)
         self.assertIsNotNone(m)
         self.assertGreaterEqual(int(m.group(1)), 68)
+
+
+class TestRecentWarningsFaces(unittest.TestCase):
+    """«من هو من» (طلب المالك 2026-08-16): العدّاد بلا وجوهه لا يكفي للقرار —
+    آخر الإنذارات المُقيَّمة تُصدَّر بأسمائها وتُعرض تحت اللوحة تتبع المفتاح."""
+
+    def test_export_carries_recent_faces(self):
+        import dashboard_update as D
+        import json, tempfile
+        from pathlib import Path
+        tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+        tmp.write_text(json.dumps({"resolved": [
+            {"date": "2026-08-15", "home": "Sheffield Utd", "away": "Birmingham",
+             "league": "Championship (England)", "level": "red", "minute": 90,
+             "score": 100, "pick": "home", "confidence": 38,
+             "final_score": "0-0", "failed": True, "top": True},
+        ], "meta": {"stats": {}}}), encoding="utf-8")
+        orig = D.RADAR_LOG_FILE
+        D.RADAR_LOG_FILE = tmp
+        try:
+            out = D.build_radar_accuracy()
+        finally:
+            D.RADAR_LOG_FILE = orig
+            tmp.unlink(missing_ok=True)
+        rec = out.get("recent") or []
+        self.assertEqual(len(rec), 1)
+        r = rec[0]
+        self.assertEqual(r["home"], "Sheffield Utd")
+        self.assertTrue(r["hit"], "failed=True يعني الإنذار أصاب — التوقع سقط")
+        self.assertTrue(r["top"], "علامة الدوري ترافق الوجه كي يتبع المفتاح")
+        self.assertEqual(r["final"], "0-0")
+
+    def test_panel_renders_and_filters_by_scope(self):
+        """بنيوي: الواجهة تقرأ recent من التراكمي وتفلتر «دورياتي» بعلامة top."""
+        src = (Path(__file__).resolve().parent.parent / "index.html").read_text(encoding="utf-8")
+        self.assertIn("full.recent", src)
+        self.assertIn('rec40.filter(function(w){ return w.top; })', src)
+        self.assertIn("radarRecent", src)
