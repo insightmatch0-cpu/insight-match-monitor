@@ -18,7 +18,12 @@ from pathlib import Path
 
 import requests
 
-import api_guard
+# جذر المستودع في مسار البحث: التشغيل يتم بـ`python report/send_pdf.py`،
+# فيضع بايثون مجلد report/ وحده في sys.path ولا يجد api_guard (فشل تشغيلة
+# 2026-08-16 الأولى). الإضافة هنا تجعل السكربت يعمل من أي مجلد عمل.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import api_guard  # noqa: E402
 
 TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
