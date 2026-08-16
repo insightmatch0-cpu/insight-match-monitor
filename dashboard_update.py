@@ -623,19 +623,42 @@ def build_radar_accuracy() -> dict:
         out["top_only"] = dict(out["top_only"])
         out["top_only"]["daily_warnings"] = _daily_warnings(
             [w for w in resolved if (w or {}).get("top")])
-    # 📜 وجوه العدّادات (طلب المالك 2026-08-16 — «أريد أن أرى من هو من»):
-    # آخر الإنذارات المُقيَّمة بأسمائها وتفاصيلها تُصدَّر للوحة كي لا يبقى
-    # العدّاد رقماً بلا مباريات. شريحة عرض فقط (آخر 40) — السجل الكامل
-    # غير المقصوص يبقى في radar_log.json (عقيدة عدم سقف القياس).
-    out["recent"] = [{
-        "date": w.get("date"), "home": w.get("home"), "away": w.get("away"),
-        "league": w.get("league"), "level": w.get("level"),
-        "minute": w.get("minute"), "score": w.get("score"),
-        "pick": w.get("pick"), "conf": w.get("confidence"),
-        "final": w.get("final_score"),
-        "hit": bool(w.get("failed")),   # أصاب = التوقع المحذَّر منه سقط فعلاً
-        "top": bool(w.get("top")),
-    } for w in resolved[-40:]]
+    # 📜 وجوه العدّادات — نسخة منطقة التنبيه (أمر المالك 2026-08-16 الثاني):
+    # «أريد تفكيك الـ85% بعد د75 فقط، نجح أو فشل، بلا تراكم — آخر 24 ساعة،
+    # ومطابقاً لتيليجرام». فالقائمة تحمل حصراً: إنذارات د75+ (منطقة أهلية
+    # التنبيه) + تنبيهات الدراما المُقيَّمة نفسها (أحداث تيليجرام حرفياً) —
+    # لمباريات اليوم والأمس فقط (دقة اليوم التقويمي: السجل يحفظ التاريخ لا
+    # الساعة). **فلترة عرض فقط**: سجل القياس الكامل في radar_log.json لا
+    # يُمس، والعدّادات التراكمية فوق القائمة تحمل التاريخ كله.
+    fresh = (now_utc() - timedelta(days=1)).strftime("%Y-%m-%d")
+    recent = []
+    for w in resolved:
+        if (w.get("date") or "") < fresh or (w.get("minute") or 0) < 75:
+            continue
+        recent.append({
+            "kind": "warning",
+            "date": w.get("date"), "home": w.get("home"), "away": w.get("away"),
+            "league": w.get("league"), "level": w.get("level"),
+            "minute": w.get("minute"),
+            "pick": w.get("pick"), "conf": w.get("confidence"),
+            "final": w.get("final_score"),
+            "hit": bool(w.get("failed")),   # أصاب = التوقع المحذَّر منه سقط فعلاً
+            "top": bool(w.get("top")),
+        })
+    for a in (log.get("alerts_resolved") or []):
+        if (a.get("date") or "") < fresh:
+            continue
+        recent.append({
+            "kind": "alert",
+            "date": a.get("date"), "home": a.get("home"), "away": a.get("away"),
+            "league": a.get("league"), "minute": a.get("minute"),
+            "claim": a.get("key"), "side": a.get("side"),
+            "signal": a.get("signal"), "score_at": a.get("score_at"),
+            "final": a.get("final_score"),
+            "hit": bool(a.get("hit")), "top": bool(a.get("top")),
+        })
+    recent.sort(key=lambda r: (r.get("date") or "", r.get("minute") or 0))
+    out["recent"] = recent
     return out
 
 
