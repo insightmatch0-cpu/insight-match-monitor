@@ -90,16 +90,32 @@ class TestRecentWarningsFaces(unittest.TestCase):
     """«من هو من» (طلب المالك 2026-08-16): العدّاد بلا وجوهه لا يكفي للقرار —
     آخر الإنذارات المُقيَّمة تُصدَّر بأسمائها وتُعرض تحت اللوحة تتبع المفتاح."""
 
-    def test_export_carries_recent_faces(self):
+    def test_export_is_alert_zone_last_24h_only(self):
+        """أمر المالك الثاني (2026-08-16): د75+ فقط، آخر 24 ساعة، بلا تراكم —
+        وتنبيهات تيليجرام المُقيَّمة ضمن نفس القائمة (المرآة الكاملة)."""
         import dashboard_update as D
         import json, tempfile
+        from datetime import timedelta
         from pathlib import Path
+        today = D.now_utc().strftime("%Y-%m-%d")
+        old_day = (D.now_utc() - timedelta(days=5)).strftime("%Y-%m-%d")
         tmp = Path(tempfile.mkstemp(suffix=".json")[1])
         tmp.write_text(json.dumps({"resolved": [
-            {"date": "2026-08-15", "home": "Sheffield Utd", "away": "Birmingham",
+            {"date": today, "home": "Sheffield Utd", "away": "Birmingham",
              "league": "Championship (England)", "level": "red", "minute": 90,
-             "score": 100, "pick": "home", "confidence": 38,
-             "final_score": "0-0", "failed": True, "top": True},
+             "pick": "home", "confidence": 38, "final_score": "0-0",
+             "failed": True, "top": True},
+            {"date": today, "home": "Early", "away": "Amber",
+             "level": "amber", "minute": 45, "failed": False, "top": True},
+            {"date": old_day, "home": "Old", "away": "Pile",
+             "level": "red", "minute": 90, "failed": True, "top": True},
+        ], "alerts_resolved": [
+            {"date": today, "home": "Norwich", "away": "West Brom",
+             "league": "Championship (England)", "minute": 75, "key": "equalizer",
+             "side": "home", "signal": 85, "score_at": "0-1",
+             "final_score": "1-2", "hit": False, "top": True},
+            {"date": old_day, "home": "Old", "away": "Alert", "minute": 80,
+             "key": "next_goal", "side": "away", "hit": True, "top": False},
         ], "meta": {"stats": {}}}), encoding="utf-8")
         orig = D.RADAR_LOG_FILE
         D.RADAR_LOG_FILE = tmp
@@ -109,12 +125,16 @@ class TestRecentWarningsFaces(unittest.TestCase):
             D.RADAR_LOG_FILE = orig
             tmp.unlink(missing_ok=True)
         rec = out.get("recent") or []
-        self.assertEqual(len(rec), 1)
-        r = rec[0]
-        self.assertEqual(r["home"], "Sheffield Utd")
-        self.assertTrue(r["hit"], "failed=True يعني الإنذار أصاب — التوقع سقط")
-        self.assertTrue(r["top"], "علامة الدوري ترافق الوجه كي يتبع المفتاح")
-        self.assertEqual(r["final"], "0-0")
+        kinds = sorted((r["kind"], r["home"]) for r in rec)
+        self.assertEqual(kinds, [("alert", "Norwich"), ("warning", "Sheffield Utd")],
+                         "المتوقع: إنذار د90 اليوم + تنبيه اليوم فقط — "
+                         "لا كهرماني د45، لا قديم متراكم")
+        w = next(r for r in rec if r["kind"] == "warning")
+        self.assertTrue(w["hit"], "failed=True يعني الإنذار أصاب — التوقع سقط")
+        self.assertTrue(w["top"])
+        a = next(r for r in rec if r["kind"] == "alert")
+        self.assertEqual(a["claim"], "equalizer")
+        self.assertFalse(a["hit"])
 
     def test_panel_renders_and_filters_by_scope(self):
         """بنيوي: الواجهة تقرأ recent من التراكمي وتفلتر «دورياتي» بعلامة top."""
@@ -122,3 +142,4 @@ class TestRecentWarningsFaces(unittest.TestCase):
         self.assertIn("full.recent", src)
         self.assertIn('rec40.filter(function(w){ return w.top; })', src)
         self.assertIn("radarRecent", src)
+        self.assertIn('w.kind === "alert"', src)   # صفوف تيليجرام داخل القائمة
