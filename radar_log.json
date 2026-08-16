@@ -693,11 +693,11 @@
    "top": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 60,
-   "minute": 75,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د75)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -712,10 +712,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د72)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -730,10 +730,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -748,10 +748,11 @@
    "pick": "away",
    "confidence": 48,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 63,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د61)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د71)",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "score_xg": null,
    "level_xg": null
@@ -766,10 +767,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د63)"
+    "النتيجة الحالية 2-3 تُسقط التوقع (د72)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -784,10 +785,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 49,
-   "minute": 57,
+   "score": 55,
+   "minute": 67,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د57)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د67)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -917,6 +918,44 @@
    "minute": 88,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
+   ],
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1563092",
+   "date": "2026-08-16",
+   "home": "Watford",
+   "away": "Southampton",
+   "league": "Championship (England)",
+   "top": true,
+   "pick": "away",
+   "confidence": 43,
+   "level": "amber",
+   "score": 45,
+   "minute": 28,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د28)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "score_xg": 38,
+   "level_xg": "green"
+  },
+  {
+   "fid": "1496124",
+   "date": "2026-08-16",
+   "home": "Sandviken",
+   "away": "jerv",
+   "league": "2. Division - Group 1 (Norway)",
+   "top": false,
+   "pick": "away",
+   "confidence": 45,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -13461,7 +13500,77 @@
    "graded_on": "2026-08-16"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1558595",
+   "date": "2026-08-16",
+   "minute": 76,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "SK Beveren",
+   "away": "Anderlecht",
+   "league": "Jupiler Pro League (Belgium)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 28,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 47,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 1,
+      "poss": 41,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 5,
+      "poss": 59,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 6,
+      "cor": 1,
+      "poss": 41,
+      "yc": 0,
+      "rc": 0,
+      "sv": 6
+     },
+     "a": {
+      "sog": 4,
+      "shots": 11,
+      "cor": 10,
+      "poss": 59,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
