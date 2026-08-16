@@ -1,0 +1,51 @@
+name: Control Room PDF
+
+# 📄 يبني نسخة PDF داكنة من صفحة غرفة التحكم ويرسلها إلى تيليجرام.
+# لماذا داخل Actions: أسرار تيليجرام تعيش هنا وحدها (قاعدة الأسرار 3) —
+# لا يمكن لأي جلسة محادثة أن ترسل ملفاً إلى الهاتف مباشرة.
+# صفر نداءات API-Football، وصفر نداءات Claude، ولا يلمس أي محرك.
+
+on:
+  workflow_dispatch:
+    inputs:
+      caption:
+        description: "نص مرافق للملف (اختياري)"
+        required: false
+        default: ""
+  schedule:
+    # 05:45 UTC = 08:45 بتوقيت السعودية — بعد التقييم الصباحي وبعد تحديث
+    # الصفحة بملخص اليوم، فيحمل الملف أحدث تقرير لا تقرير الأمس
+    - cron: "45 5 * * *"
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Install Arabic fonts
+        # المنفّذ لا يضمن خطاً عربياً؛ بدونه يخرج الملف مربعات فارغة
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-core
+
+      - name: Build PDF
+        run: |
+          NAME="InsightMatch-غرفة-التحكم-$(date -u +%Y-%m-%d).pdf"
+          echo "PDF_NAME=$NAME" >> $GITHUB_ENV
+          python report/build_pdf.py "$NAME"
+
+      - name: Send to Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
+          CAPTION: ${{ github.event.inputs.caption }}
+        run: |
+          python report/send_pdf.py "$PDF_NAME" \
+            "${CAPTION:-🛰 غرفة تحكم InsightMatch — $(date -u +%Y-%m-%d)}"

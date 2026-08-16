@@ -1,0 +1,610 @@
+<title>غرفة تحكم InsightMatch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --surface2:#F4F7F9; --sunken:#E4EAEF;
+  --ink:#101821; --ink2:#4E5F6E; --ink3:#758795; --line:#D6DDE4;
+  --accent:#12626E; --accent-soft:#DFEFF1; --on-accent:#FFFFFF;
+  --good:#1B8A5A; --good-soft:#DDF0E6;
+  --warn:#B0700F; --warn-soft:#F7EBD6;
+  --bad:#BE3D28; --bad-soft:#F8E3DE;
+  --shadow:0 1px 2px rgba(16,24,33,.06),0 8px 24px rgba(16,24,33,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1014; --surface:#151B21; --surface2:#1A222A; --sunken:#10161B;
+    --ink:#E7EDF2; --ink2:#9DACBA; --ink3:#7A8B99; --line:#28333D;
+    --accent:#56BCC9; --accent-soft:#0F313A; --on-accent:#08171B;
+    --good:#3ABA82; --good-soft:#0F2C22;
+    --warn:#D9A244; --warn-soft:#2E2413;
+    --bad:#E56B54; --bad-soft:#331A16;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1014; --surface:#151B21; --surface2:#1A222A; --sunken:#10161B;
+  --ink:#E7EDF2; --ink2:#9DACBA; --ink3:#7A8B99; --line:#28333D;
+  --accent:#56BCC9; --accent-soft:#0F313A; --on-accent:#08171B;
+  --good:#3ABA82; --good-soft:#0F2C22;
+  --warn:#D9A244; --warn-soft:#2E2413;
+  --bad:#E56B54; --bad-soft:#331A16;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink); direction:rtl;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Segoe UI",Tahoma,sans-serif;
+  font-size:16px; line-height:1.65; -webkit-text-size-adjust:100%;
+}
+.num{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums; direction:ltr; display:inline-block}
+main{max-width:760px; margin:0 auto; padding:20px 16px 64px; display:flex; flex-direction:column; gap:26px}
+header{padding:22px 0 4px; border-bottom:2px solid var(--accent)}
+h1{margin:0 0 6px; font-size:26px; font-weight:800; letter-spacing:-.02em; text-wrap:balance}
+.sub{margin:0; color:var(--ink2); font-size:14.5px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent); direction:ltr; display:block; margin-bottom:8px}
+section{display:flex; flex-direction:column; gap:14px}
+h2{margin:0; font-size:19px; font-weight:750; letter-spacing:-.01em; display:flex; align-items:baseline; gap:10px}
+h2::after{content:""; flex:1; height:1px; background:var(--line)}
+h3{margin:0 0 2px; font-size:15.5px; font-weight:700}
+p{margin:0}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:16px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px}
+.muted{color:var(--ink2); font-size:14.5px}
+.small{font-size:13.5px; color:var(--ink2)}
+/* شريط الحالة */
+.strip{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
+@media(min-width:600px){.strip{grid-template-columns:repeat(4,1fr)}}
+.chip{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:11px 12px;
+  display:flex; flex-direction:column; gap:3px; border-inline-start:4px solid var(--good)}
+.chip.warn{border-inline-start-color:var(--warn)}
+.chip.bad{border-inline-start-color:var(--bad)}
+.chip .k{font-size:12.5px; color:var(--ink2)}
+.chip .v{font-size:19px; font-weight:750}
+.chip .n{font-size:12px; color:var(--ink3)}
+/* المخطط اليومي */
+.chart{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 12px 10px; box-shadow:var(--shadow)}
+.plot{position:relative; display:flex; gap:5px; align-items:flex-end; height:170px;
+  padding-inline-start:26px; overflow-x:auto}
+.gl{position:absolute; inset-inline:0 0; border-top:1px dashed var(--line); font-size:10px; color:var(--ink3)}
+.gl span{position:absolute; inset-inline-start:0; top:-8px; background:var(--surface); padding-inline-end:4px;
+  font-family:ui-monospace,Menlo,monospace}
+.day{flex:1 0 34px; display:flex; flex-direction:column; align-items:center; gap:4px; position:relative; z-index:1}
+.bars{display:flex; gap:3px; align-items:flex-end; height:140px; width:100%; justify-content:center}
+.bar{width:11px; border-radius:3px 3px 0 0; background:var(--sunken)}
+.bar.v1{background:var(--ink3)}
+.bar.v2{background:var(--accent)}
+.bar.ghost{background:repeating-linear-gradient(45deg,var(--bad-soft),var(--bad-soft) 3px,transparent 3px,transparent 6px);
+  border:1px dashed var(--bad)}
+.dlab{font-family:ui-monospace,Menlo,monospace; font-size:10.5px; color:var(--ink3); direction:ltr}
+.legend{display:flex; flex-wrap:wrap; gap:14px; padding:10px 4px 0; font-size:13px; color:var(--ink2)}
+.key{display:inline-flex; align-items:center; gap:6px}
+.sw{width:12px; height:12px; border-radius:3px; display:inline-block}
+/* جدول */
+.tw{overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:340px}
+th,td{padding:9px 11px; text-align:right; border-bottom:1px solid var(--line)}
+th{background:var(--surface2); font-weight:650; font-size:13px; color:var(--ink2)}
+tr:last-child td{border-bottom:0}
+td.n{font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.tw.wide table{min-width:660px}
+.tw.wide th,.tw.wide td{white-space:nowrap}
+/* سلّم المعايرة */
+.ladder{display:flex; flex-direction:column; gap:9px}
+.rung{display:grid; grid-template-columns:66px 1fr; gap:10px; align-items:center}
+.rung .lb{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--ink2); direction:ltr; text-align:left}
+.track{background:var(--sunken); border-radius:5px; height:26px; position:relative; overflow:hidden}
+.fill{position:absolute; inset-block:0; inset-inline-start:0; border-radius:5px; display:flex;
+  align-items:center; justify-content:flex-end; padding-inline-end:7px; color:var(--on-accent); font-size:12px;
+  font-family:ui-monospace,Menlo,monospace}
+.fill.a{background:var(--accent)}
+.fill.b{background:var(--ink3)}
+/* تنبيه/ملاحظة */
+.note{border-radius:10px; padding:13px 14px; font-size:14.5px; border:1px solid var(--line)}
+.note.bad{background:var(--bad-soft); border-color:var(--bad)}
+.note.warn{background:var(--warn-soft); border-color:var(--warn)}
+.note.good{background:var(--good-soft); border-color:var(--good)}
+.note.info{background:var(--accent-soft); border-color:var(--accent)}
+.note b{font-weight:750}
+/* خط زمني */
+.tl{display:flex; flex-direction:column; gap:0; position:relative}
+.tl::before{content:""; position:absolute; inset-block:10px 10px; inset-inline-start:66px; width:2px; background:var(--line)}
+.step{display:grid; grid-template-columns:60px 22px 1fr; gap:8px; align-items:start; padding:9px 0}
+.when{font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--accent); direction:ltr;
+  text-align:left; padding-top:3px; font-weight:600}
+.dot{width:12px; height:12px; border-radius:50%; background:var(--accent); margin:6px auto 0;
+  box-shadow:0 0 0 4px var(--bg); position:relative; z-index:1}
+.step .bd{font-size:14.5px}
+.step .bd b{display:block; font-size:15px; margin-bottom:2px}
+/* بطاقة الرادار التوضيحية */
+.mock{background:var(--sunken); border:1px solid var(--line); border-radius:12px; padding:13px; display:flex; flex-direction:column; gap:9px}
+.mock .mtop{display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink2)}
+.mock .mteams{display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:15px}
+.mgauge{height:8px; border-radius:4px; background:var(--surface2); overflow:hidden}
+.mgauge i{display:block; height:100%; width:99%; background:var(--bad)}
+.mrow{font-size:13.5px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.tag{display:inline-flex; align-items:center; gap:5px; font-size:12px; padding:2px 8px; border-radius:20px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink2)}
+.tag.warn{color:var(--warn); border-color:var(--warn); font-weight:700}
+.mfacts{margin:0; padding-inline-start:16px; font-size:13px; color:var(--ink2); display:flex; flex-direction:column; gap:2px}
+.callout{display:inline-flex; width:19px; height:19px; border-radius:50%; background:var(--accent);
+  color:var(--on-accent); align-items:center; justify-content:center; font-size:11.5px;
+  font-family:ui-monospace,Menlo,monospace; flex:none}
+.keylist{display:flex; flex-direction:column; gap:11px; margin:0; padding:0; list-style:none}
+.keylist li{display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start; font-size:14.5px}
+.keylist .callout{margin-top:3px}
+/* خريطة لوحة الدقة */
+.abox{border:1.5px solid var(--warn); border-radius:10px; padding:10px 12px; flex:1;
+  display:flex; flex-direction:column; gap:3px; align-items:center; text-align:center;
+  background:var(--surface); min-width:130px}
+.abox.dim{border-color:var(--line)}
+.abox .t1{font-size:12.5px; color:var(--warn); font-weight:700}
+.abox.dim .t1{color:var(--ink2)}
+.abox .t2{font-size:12px; color:var(--ink2)}
+.abox .t3{font-size:18px; font-weight:800}
+.aboxrow{display:flex; gap:10px; flex-wrap:wrap}
+.switchmock{display:inline-flex; border:1px solid var(--line); border-radius:18px; overflow:hidden; font-size:12px}
+.switchmock span{padding:3px 12px}
+.switchmock .on{background:var(--accent); color:var(--on-accent); font-weight:700}
+.lvl{display:inline-flex; align-items:center; gap:6px; padding:3px 11px; border-radius:16px;
+  font-size:12.5px; font-weight:700; border:1.5px solid}
+.lvl.g{color:var(--good); border-color:var(--good); background:var(--good-soft)}
+.lvl.a{color:var(--warn); border-color:var(--warn); background:var(--warn-soft)}
+.lvl.r{color:var(--bad); border-color:var(--bad); background:var(--bad-soft)}
+.flow{display:flex; flex-direction:column; gap:2px}
+.fstep{display:grid; grid-template-columns:30px 1fr; gap:10px; align-items:center;
+  background:var(--surface2); border:1px solid var(--line); border-radius:9px; padding:9px 11px}
+.fstep .fi{font-size:17px; text-align:center}
+.fstep .ft{font-size:14px}
+.fstep .ft b{display:block; font-size:14.5px}
+.farrow{text-align:center; color:var(--ink3); font-size:13px; padding:1px 0}
+/* أوامر تيليجرام */
+.cmds{display:flex; flex-direction:column; gap:9px}
+.cmd{display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:baseline;
+  padding:10px 12px; background:var(--surface2); border:1px solid var(--line); border-radius:9px}
+.cmd code{font-family:ui-monospace,Menlo,monospace; background:var(--surface); border:1px solid var(--line);
+  padding:2px 8px; border-radius:6px; font-size:13.5px; white-space:nowrap; font-weight:600}
+.cmd span{font-size:14px; color:var(--ink2)}
+.two{display:grid; gap:12px}
+@media(min-width:620px){.two{grid-template-columns:1fr 1fr}}
+footer{border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); font-size:13px}
+</style>
+
+<main>
+<header>
+  <span class="eyebrow">InsightMatch · status &amp; field guide</span>
+  <h1>غرفة تحكم InsightMatch</h1>
+  <p class="sub">حالة الطبقات الأربع خلال <span class="num">12</span> يوماً، وما تعطّل ولماذا، ودليل تشغيل مبسّط — قياساً من بيانات المستودع بتاريخ <span class="num">2026-08-15</span> الساعة <span class="num">19:30</span> UTC.</p>
+</header>
+
+<section>
+  <h2>الحالة الآن</h2>
+  <div class="strip">
+    <div class="chip"><span class="k">المحرك 1 (S1)</span><span class="v num">41%</span><span class="n">699 من 1714 مباراة</span></div>
+    <div class="chip"><span class="k">المحرك 2 (S2 توقعات)</span><span class="v num">50%</span><span class="n">806 من 1625 مباراة</span></div>
+    <div class="chip"><span class="k">الرادار — إنذار أحمر</span><span class="v num">90%</span><span class="n">319 من 355 إنذاراً</span></div>
+    <div class="chip warn"><span class="k">تنبيهات الدراما</span><span class="v num">27%</span><span class="n">10 من 37 · قيد المعايرة</span></div>
+  </div>
+  <div class="card">
+    <h3>📍 أين تشاهد كل رقم من هذه الأربعة بنفسك — خطوة خطوة</h3>
+    <p class="small">كلها في لوحتك: <span class="num">insightmatch0-cpu.github.io/insight-match-monitor</span> — الأزرار الثلاثة أعلى الشاشة هي التبويبات.</p>
+    <div class="tw"><table>
+      <tr><th>الرقم</th><th>الطريق إليه</th></tr>
+      <tr><td>المحرك 1 — <span class="num">41%</span></td><td>افتح اللوحة ← تبويب <b>المحرك 1</b> ← انزل لقسم «سجل الدقة» ← الرقم الإجمالي</td></tr>
+      <tr><td>المحرك 2 — <span class="num">50%</span></td><td>تبويب <b>المحرك 2</b> ← «سجل الدقة» ← الإجمالي (ومعه خانات الثقة والاتجاه اليومي)</td></tr>
+      <tr><td>الرادار أحمر — <span class="num">90%</span> (الذي حوّطته)</td><td>تبويب <b>🛰 الرادار</b> ← لوحة «🎯 سجل دقة الرادار» ← <b>اضغط «الكل» في المفتاح</b> — الافتراضي «دورياتي» يعرض دورياتك فقط (أحمر <span class="num">28/30 = 93%</span> منذ بداية الموسم)، و«الكل» يعرض السجل الكامل <span class="num">319/355 = 90%</span></td></tr>
+      <tr><td>تنبيهات الدراما — <span class="num">27%</span></td><td>نفس لوحة الرادار ← سطر «تنبيهات الدراما» أسفل الصندوقين — ويصلك ملخصها اليومي في نشرة الصباح بسطر «🧪 تنبيهات الدراما»</td></tr>
+    </table></div>
+    <p class="small">لالتقاط لقطة للمشاركة: افتح الشاشة المطلوبة ثم زر الجانب + رفع الصوت معاً (آيفون). الأرقام تتحدث تلقائياً كل 90 ثانية إلى 10 دقائق — لا حاجة لأي تحديث يدوي.</p>
+  </div>
+
+  <div class="note info">
+    <b>القراءة السريعة:</b> المحرك 2 يتفوق على المحرك 1 بفارق ثابت (<span class="num">50%</span> مقابل <span class="num">41%</span>) وقد سبقه في <span class="num">11</span> يوماً من آخر <span class="num">12</span>. الرادار الأحمر ممتاز ومستقر. الكهرماني وتنبيهات الدراما هما الطبقتان الضعيفتان — وكلاهما معلَّم «تجريبي» ولم يُرقَّ بعد.
+  </div>
+</section>
+
+<!-- DAILY-REPORT-START : يستبدل التقرير الصباحي اليومي محتوى هذا القسم كل صباح -->
+<section>
+  <h2>📋 آخر تقرير صباحي — <span class="num">2026-08-16</span></h2>
+  <div class="card">
+    <div class="tw"><table>
+      <tr><th>البند</th><th>الحصيلة</th></tr>
+      <tr><td>✅ التقييم الصباحي</td><td>جرى للمحركين. أمس: المحرك 2 <span class="num">72/159 = 45%</span> مقابل المحرك 1 <span class="num">92/250 = 37%</span> · خانة 70%+ <b class="num">3/3</b> نظيفة</td></tr>
+      <tr><td>🛰 الرادار</td><td><span class="num">11</span> تنبيه دراما قُيّم: <span class="num">3</span> أصابت (Middlesbrough + طردا Alaves 3-0 وEstudiantes 4-0) · 🎉 «دورياتي» أحمر عبر عتبة العشرين: <b class="num">28/30 = 93%</b> — أول نسبة مفلترة</td></tr>
+      <tr><td>👥 تقارير الظل</td><td><span class="num">7/7</span> قُيّمت · الأفضل: ذهبية النصر × الفتح <span class="num">5/9</span> · اكتشاف ليل أمريكا (6 تقارير MLS التهمت حصة السبت) → أُصلح ودُمج <span class="num">#106</span></td></tr>
+      <tr><td>🔬 جامع xG</td><td>انطلق: <span class="num">9</span> مطابقات أمس (سعودية + تشامبيونشيب + لا ليغا) · الإجمالي <span class="num">10</span></td></tr>
+      <tr><td>📡 التسليم والرصيد</td><td>النبض «وصلت <span class="num">2/2</span>» عمل مع النشرة لأول مرة · تحذير الـ20% أطلق أول إنذار حقيقي (أمس 20:26) · الرصيد صباحاً <span class="num">5,943/7,500</span></td></tr>
+      <tr><td>⚠️ ملاحظات</td><td>كرون الصباح تأخر (04:02/04:55 بدل 03:15/03:30) — الاحتياطات عملت والترتيب سليم · تنبيه شيفيلد أخطأ (0-0) · لا تشغيلات حمراء ولا إنذار حارس</td></tr>
+    </table></div>
+    <p class="small">يتجدد هذا القسم آلياً كل صباح ~8:15 بتوقيتك بعد التقييم، بنفس أرقام التقرير الذي يصلك في المحادثة.</p>
+  </div>
+</section>
+<!-- DAILY-REPORT-END -->
+
+<section>
+  <h2>آخر 12 يوماً</h2>
+  <div class="chart">
+    <div class="plot">
+      <div class="gl" style="bottom:calc(30px + 140px * 0.833)"><span>50%</span></div>
+      <div class="gl" style="bottom:calc(30px + 140px * 0.55)"><span>33%</span></div>
+
+      <div class="day"><div class="bars"><div class="bar v2" style="height:135px"></div><div class="bar v1" style="height:110px"></div></div><span class="dlab">04</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:124px"></div><div class="bar v1" style="height:112px"></div></div><span class="dlab">05</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:128px"></div><div class="bar v1" style="height:112px"></div></div><span class="dlab">06</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:114px"></div><div class="bar v1" style="height:105px"></div></div><span class="dlab">07</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:103px"></div><div class="bar v1" style="height:96px"></div></div><span class="dlab">08</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:119px"></div><div class="bar v1" style="height:100px"></div></div><span class="dlab">09</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:114px"></div><div class="bar v1" style="height:107px"></div></div><span class="dlab">10</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:112px"></div><div class="bar v1" style="height:86px"></div></div><span class="dlab">11</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:124px"></div><div class="bar v1" style="height:86px"></div></div><span class="dlab">12</span></div>
+      <div class="day"><div class="bars"><div class="bar v2" style="height:121px"></div><div class="bar v1" style="height:89px"></div></div><span class="dlab">13</span></div>
+      <div class="day"><div class="bars"><div class="bar ghost" style="height:84px"></div><div class="bar ghost" style="height:58px"></div></div><span class="dlab">14</span></div>
+      <div class="day"><div class="bars"><div class="bar ghost" style="height:103px"></div><div class="bar ghost" style="height:6px"></div></div><span class="dlab">15</span></div>
+    </div>
+    <div class="legend">
+      <span class="key"><i class="sw" style="background:var(--accent)"></i> المحرك 2</span>
+      <span class="key"><i class="sw" style="background:var(--ink3)"></i> المحرك 1</span>
+      <span class="key"><i class="sw" style="background:var(--bad-soft);border:1px dashed var(--bad)"></i> يوما الانقطاع — عيّنة صغيرة لا يُعتد بها</span>
+    </div>
+  </div>
+  <p class="small">النسبة = المباريات التي أصاب فيها المحرك من كل ما قُيّم ذلك اليوم. خط <span class="num">33%</span> هو الصدفة البحتة في سوق «فوز/تعادل/فوز»، وخط <span class="num">50%</span> هو حدود أفضل النماذج العالمية.</p>
+</section>
+
+<section>
+  <h2>ماذا حدث يومَي 14 و15 أغسطس</h2>
+  <div class="note bad">
+    <b>الحقيقة كاملة:</b> اشتراك مزوّد بيانات المباريات (API-Football) سقط إلى الباقة المجانية — <span class="num">100</span> نداء يومياً بدل <span class="num">7,500</span>، بينما يوم المباريات العادي يحتاج <span class="num">~2,366</span>. نفد الرصيد خلال ساعة، فلم يجد المحرك بيانات ليتنبأ أو يُقيّم. النتيجة في المخطط أعلاه: يوم <span class="num">14</span> قُيّمت <span class="num">8</span> مباريات للمحرك 1 و<span class="num">11</span> للمحرك 2 بدل <span class="num">~150</span>، ويوم <span class="num">15</span> لم يجد المحرك 1 شيئاً ليقيّمه إطلاقاً.
+  </div>
+  <div class="card">
+    <h3>لماذا لم تعرف إلا بعد 19 ساعة — وما الذي تغيّر</h3>
+    <p class="muted">ثلاثة أعطال منفصلة كان لا بد أن تجتمع كلها ليصمت النظام هكذا. كلها أُصلحت الآن ولكل واحد اختبار دائم يمنع عودته:</p>
+    <div class="tw"><table>
+      <tr><th>سبب الصمت</th><th>العلاج المُنفَّذ</th></tr>
+      <tr><td>رفض المزوّد كان يُقرأ كأنه «يوم هادئ بلا مباريات»</td><td>«لا بيانات» و«مرفوض» صارا مسارين منفصلين لا يلتقيان</td></tr>
+      <tr><td>التنبيه يشترط 3 تشغيلات فاشلة — وقعت 2 فقط</td><td>التنبيه من أول فشل، وتهدئة 6 ساعات تمنع الإغراق</td></tr>
+      <tr><td>الحارس يعيش داخل المحرك، فمات معه</td><td>حارس خارجي مستقل كل 10 دقائق، بلا اعتماد على أي محرك</td></tr>
+      <tr><td>الرصيد لم يكن مرئياً أبداً</td><td>سطر يومي «رصيد API» في نشرة الصباح + تحذير تلقائي تحت 20%</td></tr>
+    </table></div>
+    <p class="small">القاعدة المستخلصة والمسجّلة: <b>عتبة تحتاج N فشلاً سيهزمها N-1؛ والحارس الذي يعتمد على صحة ما يحرسه ليس حارساً.</b></p>
+  </div>
+  <div class="note good">
+    <b>وأثناء التدقيق ظهر عطل ثانٍ خفي وأُصلح:</b> حلقة تنظيف الذاكرة كانت تمحو كل <span class="num">10</span> دقائق ذاكرةَ الحارس نفسه — نبض تسليم الرسائل، ومانع تكرار الإنذارات، وعلم الحارس الخارجي. لو تكرر عطل كعطل أمس لأغرقتك رسائله كل <span class="num">10</span> دقائق. أُصلح ومُثبَّت بـ<span class="num">5</span> اختبارات.
+  </div>
+</section>
+
+<section>
+  <h2>هل يعرف المحرك متى يثق بنفسه؟</h2>
+  <p class="muted">هذا أهم مقياس في النظام كله: كلما رفع المحرك ثقته، يجب أن ترتفع إصابته فعلاً. النتيجة أدناه من كل السجل — والترتيب سليم تماماً في المحركين، وأقوى في المحرك 2.</p>
+  <div class="card">
+    <h3>المحرك 2 — الإصابة حسب مستوى الثقة</h3>
+    <div class="ladder">
+      <div class="rung"><span class="lb">70%+</span><div class="track"><div class="fill a" style="width:73%">73% · 8/11</div></div></div>
+      <div class="rung"><span class="lb">60-69%</span><div class="track"><div class="fill a" style="width:76%">76% · 83/109</div></div></div>
+      <div class="rung"><span class="lb">50-59%</span><div class="track"><div class="fill a" style="width:61%">61% · 174/284</div></div></div>
+      <div class="rung"><span class="lb">أقل من 50</span><div class="track"><div class="fill b" style="width:44%">44% · 541/1221</div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>المحرك 1 — للمقارنة</h3>
+    <div class="ladder">
+      <div class="rung"><span class="lb">70%+</span><div class="track"><div class="fill b" style="width:55%">55% · 16/29</div></div></div>
+      <div class="rung"><span class="lb">60-69%</span><div class="track"><div class="fill b" style="width:53%">53% · 90/169</div></div></div>
+      <div class="rung"><span class="lb">50-59%</span><div class="track"><div class="fill b" style="width:42%">42% · 546/1313</div></div></div>
+      <div class="rung"><span class="lb">أقل من 50</span><div class="track"><div class="fill b" style="width:23%">23% · 47/203</div></div></div>
+    </div>
+  </div>
+  <p class="small">لاحظ أن معظم توقعات المحرك 2 تقع تحت <span class="num">50%</span> ثقة — وهذا طبيعي بنيوياً لا ضعفاً: في سوق ثلاثي الاحتمالات نادراً ما يتجاوز الاحتمال الأعلى النصف. المهم أن كل درجة أعلى تعني إصابة أعلى فعلاً، وهي كذلك.</p>
+</section>
+
+<section>
+  <h2>الرادار (S3) يوماً بيوم</h2>
+  <div class="tw"><table>
+    <tr><th>اليوم</th><th>إنذار أحمر</th><th>إنذار كهرماني</th></tr>
+    <tr><td class="n">08-07</td><td class="n">43/48 — 90%</td><td class="n">10/26 — 38%</td></tr>
+    <tr><td class="n">08-08</td><td class="n">48/52 — 92%</td><td class="n">15/36 — 42%</td></tr>
+    <tr><td class="n">08-09</td><td class="n">31/35 — 89%</td><td class="n">11/35 — 31%</td></tr>
+    <tr><td class="n">08-10</td><td class="n">35/42 — 83%</td><td class="n">3/14 — 21%</td></tr>
+    <tr><td class="n">08-11</td><td class="n">42/46 — 91%</td><td class="n">10/24 — 42%</td></tr>
+    <tr><td class="n">08-12</td><td class="n">28/28 — 100%</td><td class="n">4/22 — 18%</td></tr>
+    <tr><td class="n">08-13</td><td class="n">23/25 — 92%</td><td class="n">6/16 — 38%</td></tr>
+    <tr><td class="n">08-14</td><td class="n">2/2 — انقطاع</td><td class="n">— انقطاع</td></tr>
+    <tr><td class="n">08-15</td><td class="n">4/4 — 100%</td><td class="n">0/1</td></tr>
+  </table></div>
+  <div class="note warn">
+    <b>الفجوة الحقيقية:</b> الأحمر يصيب <span class="num">9</span> مرات من <span class="num">10</span> — يستحق ثقتك. الكهرماني يصيب <span class="num">4</span> من <span class="num">10</span> فقط، وتنبيهات الدراما <span class="num">10</span> من <span class="num">37</span>. السبب المُشخَّص: عدّاداتنا تعامل تسديدة من <span class="num">30</span> متراً كتسديدة من داخل منطقة الست ياردات. وهذا بالضبط ما تُجرَّب طبقة xG الحية لأجله — تعمل الآن في الظل بلا أي تأثير على ما يصلك.
+  </div>
+  <div class="card">
+    <h3>البند المحوَّط: تفكيك «أحمر 4/4» ليوم 15 أغسطس</h3>
+    <p class="muted">هذه المباريات الخمس هي كل ما قُيّم صباح اليوم — مباريات أمريكا الليلية، قُيّمت رغم الانقطاع لأن إنذاراتها سُجّلت قبله. «أصاب» تعني: الرادار حذّر أن توقّع المحرك سيسقط، وسقط فعلاً.</p>
+    <div class="tw wide"><table>
+      <tr><th>المباراة</th><th>البطولة</th><th>الإنذار</th><th>توقع المحرك</th><th>النهائية</th><th>النتيجة</th></tr>
+      <tr><td>Municipal Limeño × Inter</td><td>السلفادور</td><td class="n">أحمر 69 · د90</td><td>المضيف 42%</td><td class="n">0-1</td><td>✅ أصاب — سقط التوقع</td></tr>
+      <tr><td>San Francisco × Independiente</td><td>بنما</td><td class="n">أحمر 69 · د90</td><td>الضيف 46%</td><td class="n">2-1</td><td>✅ أصاب — سقط التوقع</td></tr>
+      <tr><td>San Carlos × Herediano</td><td>كوستاريكا</td><td class="n">أحمر 67 · د88</td><td>الضيف 44%</td><td class="n">1-0</td><td>✅ أصاب — سقط التوقع</td></tr>
+      <tr><td>Vancouver × Pacific</td><td>كندا</td><td class="n">أحمر 69 · د90</td><td>الضيف 44%</td><td class="n">1-1</td><td>✅ أصاب — سقط التوقع</td></tr>
+      <tr><td>Correcaminos × Tapatío</td><td>المكسيك</td><td class="n">كهرماني 55 · د68</td><td>الضيف 36%</td><td class="n">2-3</td><td>❌ أخطأ — الضيف عاد وفاز</td></tr>
+    </table></div>
+    <p class="small">لاحظ الفرق الذي يلخص القصة كلها: الأربعة الحمر التُقطت <b>متأخرة</b> (د88-90) والنتيجة ضد التوقع — شبه محسومة. الكهرماني الوحيد التُقط <b>مبكراً</b> (د68) وكان أمام Tapatío وقت للعودة — وعاد فعلاً وسجّل هدفين. هذا بالضبط لماذا الأحمر يصيب 90% والكهرماني 37%: الكهرماني ينذر مبكراً حيث ما زال كل شيء ممكناً.</p>
+  </div>
+
+  <div class="card">
+    <h3>تنبيهات الدراما الثمانية اليوم — التفصيل الكامل</h3>
+    <p class="muted">تُقيَّم كلها صباح الغد على النتيجة النهائية. عمودا «الادعاء» و«المستفيد» هما ما سيُحاسب عليه التنبيه حرفياً.</p>
+    <div class="tw wide"><table>
+      <tr><th>المباراة</th><th>البطولة</th><th>الادعاء</th><th>المستفيد</th><th>لحظة التنبيه</th></tr>
+      <tr><td>Mito Hollyhock × Gamba Osaka</td><td>اليابان J1</td><td>الهدف القادم (إشارة 85)</td><td>Gamba Osaka</td><td class="n">د81 · 1-1</td></tr>
+      <tr><td>Norwich × West Brom</td><td>تشامبيونشيب</td><td>هدف التعادل (85)</td><td>Norwich</td><td class="n">د75 · 0-1</td></tr>
+      <tr><td>Middlesbrough × Lincoln</td><td>تشامبيونشيب</td><td>الهدف القادم (85)</td><td>Middlesbrough</td><td class="n">د75 · 1-1</td></tr>
+      <tr><td>Alverca × Estrela</td><td>البرتغال</td><td>🟥 أفضلية عددية</td><td>Estrela</td><td class="n">د78 · 2-2</td></tr>
+      <tr><td>Sheffield Utd × Birmingham</td><td>تشامبيونشيب</td><td>الهدف القادم (85)</td><td>Birmingham</td><td class="n">د76 · 0-0</td></tr>
+      <tr><td>Alaves × Getafe</td><td>لا ليغا</td><td>🟥 أفضلية عددية</td><td>Alaves</td><td class="n">د44 · 0-0</td></tr>
+      <tr><td>Al-Ittihad × Al Kholood</td><td>الدوري السعودي</td><td>🟥 أفضلية عددية</td><td>Al Kholood</td><td class="n">د64 · 1-1</td></tr>
+      <tr><td>Aldosivi × Tigre</td><td>الأرجنتين</td><td>🟥 أفضلية عددية</td><td>Aldosivi</td><td class="n">د81 · 0-0</td></tr>
+    </table></div>
+  </div>
+
+  <div class="note bad">
+    <b>وأثناء تجهيز هذا الجدول بالذات اكتشفت عطلاً وأصلحته قبل أن تقرأه:</b> تنبيها Mito وAlverca وصلاك على تيليجرام (لقطات شاشتك تثبتهما بالدقيقة) لكنهما <b>اختفيا من سجل القياس نهائياً</b> — كاتبان يكتبان نفس الملف، فكانت جولة الرادار تدهس بحفظها الختامي كل تنبيه أُطلق أثناءها، بينما تنبيهات المسار السريع تنجو. فبدا الفقد عشوائياً ولم يلحظه أحد. أُصلح الجذر (كاتب واحد للملف) واستُعيد التنبيهان من أدلة لقطاتك بوسم «restored»، فصار الجدول أعلاه يحكي <b>كل</b> ما أُطلق فعلاً — والقاعدة سُجّلت في سجل الدروس الدائم.
+  </div>
+
+  <div class="card">
+    <h3>🔬 كيف يحسب الرادار الخطر — المعادلة كاملة كما في الكود</h3>
+    <p class="muted">رياضيات شفافة، صفر ذكاء اصطناعي. ثلاث طبقات تُجمع في درجة من <span class="num">0</span> إلى <span class="num">100</span>:</p>
+    <div class="tw"><table>
+      <tr><th>الطبقة</th><th>الشرط</th><th>النقاط</th></tr>
+      <tr><td rowspan="3">1 · لوحة النتيجة<br><span class="small">(حتى 70 نقطة)</span></td><td>النتيجة الحالية تُسقط التوقع</td><td class="n">15 + 0.6×الدقيقة</td></tr>
+      <tr><td>متقدم بهدف واحد فقط (تقدم هش)</td><td class="n">+15</td></tr>
+      <tr><td>توقع تعادل صامد بعد د60</td><td class="n">+10</td></tr>
+      <tr><td rowspan="3">2 · زخم الفريق المهدِّد<br><span class="small">(حتى ~26)</span></td><td>تسديدتان+ على المرمى بين آخر لقطتين</td><td class="n">+12</td></tr>
+      <tr><td>ركنيتان+ جديدتان</td><td class="n">+8</td></tr>
+      <tr><td>3+ تسديدات إجمالية جديدة</td><td class="n">+6</td></tr>
+      <tr><td rowspan="2">3 · إشارات الضغط<br><span class="small">(حتى 18)</span></td><td>حارس الطرف المُختار: تصديتان+ متتاليتان</td><td class="n">+8</td></tr>
+      <tr><td>بطاقة حمراء ضد الطرف المُختار</td><td class="n">+10</td></tr>
+    </table></div>
+    <p class="small">«الفريق المهدِّد» = من يضرّ هدفُه القادم توقعَ المحرك (توقّعتَ المضيف؟ المهدِّد هو الضيف). العتبات: <b>كهرماني ≥40 · أحمر ≥65</b>. مثال شيفيلد أمس: 0-0 في د84 = <span class="num">15+0.6×84=65</span> من اللوحة وحدها + موجة تسديد (12) + ركنيات (8) + ضغط (6) + حارس محاصر (8) = <span class="num">99</span>.</p>
+  </div>
+
+  <div class="card">
+    <h3>🚨 ومتى يتحول الخطر إلى تنبيه على هاتفك؟ — البوابات كلها</h3>
+    <div class="tw"><table>
+      <tr><th>البوابة</th><th>القاعدة</th></tr>
+      <tr><td>النافذة الزمنية</td><td>من <b>د75</b> إلى <b>د85</b> فقط — قبلها الاحتمالات مفتوحة، وبعد د85 كانت التنبيهات شبه فائتة (قياس 2 أغسطس)</td></tr>
+      <tr><td>الاستثناء الوحيد</td><td>🟥 الأفضلية العددية: <b>من أي دقيقة</b> — أمرك الصريح؛ الطرد حدث خشن عالي المعلومة لا ضجيج زخم</td></tr>
+      <tr><td>قوة الإشارة</td><td>≥<span class="num">75</span> ويلزم حصار حارس أو طرد فوق موجة الزخم · حالة التعادل ≥<span class="num">80</span> مع فجوة سيطرة ≥<span class="num">30</span> · قلب النتيجة يلزمه طرد أو ≥<span class="num">90</span></td></tr>
+      <tr><td>منع الإزعاج</td><td>تنبيه <b>واحد لكل مباراة</b> (يُرقّى فقط لادعاء أقوى: تعادل ← قلب بعد طرد) · سقف <span class="num">5</span> تنبيهات لكل دورة</td></tr>
+      <tr><td>قاعدة الإيقاف</td><td>أي نوع ادعاء تثبت لوحة الصباح فشله المتكرر يُسكَت آلياً عن تيليجرام لكن يبقى يُقاس — فيستطيع الخروج من الصمت إذا تحسّن</td></tr>
+      <tr><td>السرعة</td><td>المسار السريع يعيد فحص أخطر المباريات كل ~<span class="num">90</span> ثانية — التنبيه يصل خلال ~دقيقة ونصف من تشكّل الإشارة</td></tr>
+      <tr><td>المحاسبة</td><td>كل تنبيه يُحفظ مع «حزمة أدلة» (آخر 3 لقطات أرقام) ويُقيَّم صباحاً بقاعدته: قلب = فاز المستفيد · تعادل = أدرك · هدف قادم = سجّل بعد التنبيه</td></tr>
+    </table></div>
+    <p class="small">وفي الظل الآن: درجة خطر موازية تستبدل عدّ التسديدات بـxG تُسجَّل مع كل إنذار — لا تمس أي تنبيه يصلك، وستُقارن الدرجتان على نفس المباريات ليحكم القياس أيهما أصدق.</p>
+  </div>
+
+  <div class="card">
+    <h3>🗺 خريطة لوحة الدقة — الجزء الذي حوّطته، مشروحاً عنصراً عنصراً</h3>
+    <p class="muted">تجدها في تبويب <b>🛰 الرادار</b> (الزر الثالث أعلى لوحتك)، تحت قمع التنبيهات مباشرة.</p>
+    <div class="note warn"><b>⚠️ تنبيه مهم:</b> الأرقام في الرسم أدناه <b>لقطة تعليمية ثابتة من مساء 15 أغسطس</b> — غرضها شرح معنى كل عنصر، وهي لا تتحدث. <b>الأرقام الحية دائماً في لوحتك</b> وتكبر كل صباح (صباح 16 أغسطس مثلاً: أحمر دورياتي 28/30 = 93%). ومنذ اليوم تجد تحت اللوحة الحية قائمة «📜 من هو من» تعرض كل إنذار مُقيَّم بمباراته ونتيجته.</div>
+    <div class="mock" style="opacity:.92">
+      <div class="small" style="text-align:center;color:var(--warn);font-weight:700">— نسخة تعليمية ثابتة (لقطة 15 أغسطس، لا تتحدث) —</div>
+      <div class="mtop"><span>🎯 سجل دقة الرادار — تراكمي، لا يُحذف شيء</span><span class="callout">1</span></div>
+      <div class="mrow" style="justify-content:space-between; width:100%">
+        <span class="small">📅 الموسم (منذ <span class="num">2026-08-13</span>) <span class="callout" style="vertical-align:middle">2</span></span>
+        <span class="switchmock"><span class="on">دورياتي</span><span>الكل</span></span>
+      </div>
+      <div class="aboxrow">
+        <div class="abox">
+          <span class="t1">خطر (أحمر)</span>
+          <span class="t2">عينة غير كافية (6 من 20) <span class="callout">3</span></span>
+          <span class="t3 num">6/6</span>
+          <span class="t2">السجل الكامل: <span class="num">6/6</span> <span class="callout">4</span></span>
+        </div>
+        <div class="abox dim">
+          <span class="t1">تحذير (كهرماني)</span>
+          <span class="t2">عينة غير كافية (4 من 20)</span>
+          <span class="t3 num">0/4</span>
+          <span class="t2">السجل الكامل: <span class="num">0/4</span></span>
+        </div>
+      </div>
+      <div class="small" style="text-align:center">دورياتك التسع فقط <span class="callout">5</span></div>
+    </div>
+    <ul class="keylist" style="margin-top:10px">
+      <li><span class="callout">1</span><div><b>المفتاح دورياتي ⇄ الكل.</b> يعيد رسم كل رقم في اللوحة. «دورياتي» = دورياتك التسع فقط (وهو الوضع الافتراضي بقرارك). اضغط «الكل» وسترى السجل الضخم: أحمر <span class="num">319/355 = 90%</span> — بنسب مئوية، لأن عيّنته كبيرة.</div></li>
+      <li><span class="callout">2</span><div><b>سطر الموسم.</b> العدّ بدأ <span class="num">2026-08-13</span> — يوم أمرت بتصفير العرض لبداية الموسم. التاريخ القديم لم يُحذف (القاعدة: فلترة لا حذف)، فقط لا يدخل عدّادات الموسم.</div></li>
+      <li><span class="callout">3</span><div><b>«عينة غير كافية (6 من 20)».</b> ليست عطلاً — هذا حارس وضعته أنت: أي رقم عيّنته أقل من <span class="num">20</span> يُعرض عدداً خاماً (<span class="num">6/6</span>) ولا يُعرض نسبةً أبداً، حتى لا تخدعك «100%» مبنية على 6 حالات. عند بلوغ الإنذار العشرين تتحول تلقائياً إلى نسبة.</div></li>
+      <li><span class="callout">4</span><div><b>«6/6» و«السجل الكامل».</b> القراءة: منذ 13 أغسطس أطلق الرادار في دورياتك <span class="num">6</span> إنذارات حمراء، أصابت كلها. «السجل الكامل» = كل ما وُسم بدورياتك منذ بدء الوسم — وهما متساويان الآن لأن الوسم نفسه بدأ يوم 13 (يمتلئ للأمام فقط).</div></li>
+      <li><span class="callout">5</span><div><b>نطاق الأرقام.</b> تذكير دائم بأن كل ما فوقه محسوب على دورياتك التسع فقط — لا خلط مع بقية العالم.</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>🎨 الألوان الثلاثة — ماذا يعني كل لون ومتى يظهر</h3>
+    <div class="mrow" style="gap:10px">
+      <span class="lvl g">أخضر · أقل من 40</span>
+      <span class="lvl a">كهرماني · 40-64</span>
+      <span class="lvl r">أحمر · 65 فأعلى</span>
+    </div>
+    <p class="muted"><b>أخضر:</b> توقع المحرك مرتاح — لا فعل. <b>كهرماني:</b> الخطر يختمر (زخم ضد التوقع) — البطاقة تصعد في الترتيب وتدخل مرحلة «تختمر» في القمع. <b>أحمر:</b> التوقع على وشك السقوط — البطاقة تتصدر الشاشة بحد أحمر. اللون يقيس الخطر <b>على توقّع المحرك</b>، وسطر «⚠️ الخطر لصالح» يسمّي المستفيد.</p>
+    <p class="small">الدرجة نفسها تُحسب بالمعادلة المفصّلة في بطاقة «كيف يحسب الرادار الخطر» أعلاه — نفس الرقم الذي يظهر كبيراً يمين كل بطاقة.</p>
+  </div>
+
+  <div class="card">
+    <h3>🔄 رحلة الإشارة كاملة — من الملعب إلى هاتفك إلى هذه العدّادات</h3>
+    <p class="small">لا شيء هنا تشغّله بيدك — السلسلة كلها آلية. دورك الوحيد اختياري: قائمة التركيز تمنح مبارياتك أولوية المراقبة.</p>
+    <div class="flow">
+      <div class="fstep"><span class="fi">⚽</span><span class="ft"><b>مباراة حية عليها توقع للمحرك 2</b>الرادار يراقب تلقائياً كل مباراة تنبأ بها المحرك — أولوية: قائمة تركيزك ثم دورياتك.</span></div>
+      <div class="farrow">▼ كل 10 دقائق (وكل ~90 ثانية لأخطر المباريات)</div>
+      <div class="fstep"><span class="fi">📸</span><span class="ft"><b>لقطة أرقام</b>تسديدات، ركنيات، تصديات، بطاقات — تُخزن سلسلة زمنية لكل مباراة.</span></div>
+      <div class="farrow">▼ معادلة الطبقات الثلاث (لوحة النتيجة + الزخم + الضغط)</div>
+      <div class="fstep"><span class="fi">🎨</span><span class="ft"><b>درجة 0-100 تلوّن البطاقة</b>أخضر / كهرماني ≥40 / أحمر ≥65 — يظهر فوراً في تبويب الرادار، مرتّباً بالأخطر أولاً.</span></div>
+      <div class="farrow">▼ فقط إذا عبرت بوابات التنبيه (د75-85، إشارة ≥75... — الطرد من أي دقيقة)</div>
+      <div class="fstep"><span class="fi">📱</span><span class="ft"><b>تنبيه تيليجرام 🛰🚨</b>يصلك في محادثة Insight Match bot خلال ~دقيقة ونصف من تشكّل الإشارة، موسوماً 🧪 ما دام قيد المعايرة — ويتجاوز صمتَ قائمة التركيز الفارغة (استثناؤك الصريح لأنه نادر).</span></div>
+      <div class="farrow">▼ صباح اليوم التالي، على النتيجة الرسمية</div>
+      <div class="fstep"><span class="fi">⚖️</span><span class="ft"><b>التقييم الآلي يحدّث هذه العدّادات</b>كل إنذار يُحاسب (هل سقط التوقع فعلاً؟) وكل تنبيه بقاعدة ادعائه — والنتيجة هي الأرقام في اللوحة أعلاه وسطر «🧪 تنبيهات الدراما» في نشرة الصباح.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>تنبيهات الدراما حسب النوع (السجل الكامل المُقيَّم)</h3>
+    <p class="muted"><span class="num">الهدف القادم 6/20</span> · <span class="num">تعادل 2/11</span> · <span class="num">قلب النتيجة 1/3</span> · <span class="num">أفضلية عددية 1/2</span></p>
+    <p class="small">كلها لا تزال معلَّمة «🧪 تجريبي — قيد المعايرة»، والوسم لا يُرفع عن أي نوع قبل أن تثبت لوحة الصباح جدارته. وثمانية تنبيهات اليوم (الجدول أعلاه) تنضم للسجل غداً صباحاً.</p>
+  </div>
+</section>
+
+<section>
+  <h2>التقارير قبل المباراة (S2)</h2>
+  <p class="muted">كل تقرير يطرح <span class="num">8</span> إلى <span class="num">9</span> ادعاءات (النتيجة، من يسجل، الركنيات، البطاقات...) ويُصحَّح صباحاً بنداً بنداً مقابل ما حدث فعلاً.</p>
+  <div class="tw"><table>
+    <tr><th>اليوم</th><th>البنود الصحيحة</th><th>عدد التقارير</th></tr>
+    <tr><td class="n">08-11</td><td class="n">17/53 — 32%</td><td class="n">6</td></tr>
+    <tr><td class="n">08-12</td><td class="n">7/25 — 28%</td><td class="n">3</td></tr>
+    <tr><td class="n">08-13</td><td class="n">20/46 — 43%</td><td class="n">6</td></tr>
+    <tr><td class="n">08-14</td><td class="n">4/9 — 44%</td><td class="n">1 (انقطاع)</td></tr>
+    <tr><td class="n">08-15</td><td class="n">16/52 — 31%</td><td class="n">6</td></tr>
+  </table></div>
+  <p class="small">الإجمالي <span class="num">115</span> تقريراً مُقيَّماً و<span class="num">2</span> بانتظار البيانات. النسبة تبدو منخفضة لأن البنود صعبة عمداً (اسم هدّاف، عدد ركنيات) — وقيمتها الحقيقية ليست النسبة بل <span class="num">49</span> درساً استخلصها المحرك من أخطائه وصار يحقنها في كل توقع لاحق.</p>
+
+  <div class="chart">
+    <h3 style="margin:0 0 10px">دقة بنود التقارير يوماً بيوم</h3>
+    <div class="plot" style="height:150px">
+      <div class="gl" style="bottom:calc(30px + 120px * 0.80)"><span>40%</span></div>
+      <div class="gl" style="bottom:calc(30px + 120px * 0.40)"><span>20%</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:67px"></div></div><span class="dlab">07</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:90px"></div></div><span class="dlab">08</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:69px"></div></div><span class="dlab">09</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:48px"></div></div><span class="dlab">10</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:77px"></div></div><span class="dlab">11</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:67px"></div></div><span class="dlab">12</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:104px"></div></div><span class="dlab">13</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar ghost" style="height:106px"></div></div><span class="dlab">14</span></div>
+      <div class="day"><div class="bars" style="height:120px"><div class="bar v2" style="height:74px"></div></div><span class="dlab">15</span></div>
+    </div>
+    <div class="legend">
+      <span class="key"><i class="sw" style="background:var(--accent)"></i> نسبة البنود الصحيحة</span>
+      <span class="key"><i class="sw" style="background:var(--bad-soft);border:1px dashed var(--bad)"></i> يوم الانقطاع — تقرير واحد فقط</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>كل تقرير منذ انطلاق الموسم (13-15 أغسطس)</h3>
+    <p class="small">👥 تقرير ظل صامت (تدريب) · 🥇 ظل ذهبي (ثقة ≥70) · ⭐ قائمة التركيز. الوقت UTC (+3 لتوقيتك).</p>
+    <div class="tw wide"><table>
+      <tr><th>المباراة</th><th>البطولة</th><th>الانطلاق</th><th>البنود</th></tr>
+      <tr><td>👥 Norwich × West Brom</td><td>تشامبيونشيب</td><td class="n">08-15 14:00</td><td class="n">4/9 — 44%</td></tr>
+      <tr><td>👥 Bristol City × Millwall</td><td>تشامبيونشيب</td><td class="n">08-15 14:00</td><td class="n">4/11 — 36%</td></tr>
+      <tr><td>👥 Portsmouth × QPR</td><td>تشامبيونشيب</td><td class="n">08-15 14:00</td><td class="n">3/8 — 38%</td></tr>
+      <tr><td>👥 Charlton × Derby</td><td>تشامبيونشيب</td><td class="n">08-15 14:00</td><td class="n">3/8 — 38%</td></tr>
+      <tr><td>👥 Bolton × Preston</td><td>تشامبيونشيب</td><td class="n">08-15 11:30</td><td class="n">2/8 — 25%</td></tr>
+      <tr><td>👥 Middlesbrough × Lincoln</td><td>تشامبيونشيب</td><td class="n">08-15 14:00</td><td class="n">0/8 — 0%</td></tr>
+      <tr><td>🥇 Al-Nassr × Al-Fateh</td><td>الدوري السعودي</td><td class="n">08-15 18:00</td><td class="n">يُقيَّم صباحاً</td></tr>
+      <tr><td>👥 Rosario Central × Corinthians</td><td>ليبرتادوريس</td><td class="n">08-14 00:30</td><td class="n">4/9 — 44%</td></tr>
+      <tr><td>👥 Universitatea Craiova × KuPS</td><td>تصفيات الدوري الأوروبي</td><td class="n">08-13 17:00</td><td class="n">5/7 — 71%</td></tr>
+      <tr><td>👥 Cruzeiro × Flamengo</td><td>ليبرتادوريس</td><td class="n">08-13 00:30</td><td class="n">5/8 — 63%</td></tr>
+      <tr><td>👥 Gornik Zabrze × Ferencvarosi</td><td>الدوري الأوروبي</td><td class="n">08-13 17:00</td><td class="n">3/8 — 38%</td></tr>
+      <tr><td>👥 Abha × Al-Hazm</td><td>الدوري السعودي</td><td class="n">08-13 16:15</td><td class="n">3/8 — 38%</td></tr>
+      <tr><td>👥 Beşiktaş × Hradec Králové</td><td>تصفيات الدوري الأوروبي</td><td class="n">08-13 17:00</td><td class="n">2/8 — 25%</td></tr>
+      <tr><td>👥 Omonia × Lincoln Red Imps</td><td>تصفيات الدوري الأوروبي</td><td class="n">08-13 17:00</td><td class="n">2/7 — 29%</td></tr>
+    </table></div>
+    <p class="small">أسوأ تقرير (Middlesbrough <span class="num">0</span> من <span class="num">8</span>) وأفضل تقرير (Craiova <span class="num">5</span> من <span class="num">7</span>) كلاهما يدخل الدروس بنفس الوزن — المحرك يتعلم من الوجهين. ومن الليلة يعمل «الحجز المسائي»: مباريات المساء في دورياتك لم تعد تُحرم من التقارير حين تلتهم مباريات الظهيرة الحصص.</p>
+  </div>
+</section>
+
+<section>
+  <h2>متى يعمل كل شيء</h2>
+  <div class="card">
+    <div class="tl">
+      <div class="step"><span class="when">T-24h</span><span class="dot"></span><span class="bd"><b>المحرك 1 ثم المحرك 2 — التوقع اليومي</b>يتنبآن بكل مباريات الـ<span class="num">24</span> ساعة القادمة ويُجمّدان التوقع. يصلك ملخصان على تيليجرام صباحاً.</span></div>
+      <div class="step"><span class="when">T-45m</span><span class="dot"></span><span class="bd"><b>تقرير ما قبل المباراة</b>تشكيلات وإصابات وحكم ومراهنات → تقرير سيناريوهات كامل. يصلك لمباريات قائمة التركيز فقط؛ ولمباريات الدوريات الكبرى يُكتب صامتاً للتدريب.</span></div>
+      <div class="step"><span class="when">LIVE</span><span class="dot"></span><span class="bd"><b>الرادار وتنبيهات الدراما</b>كل ~<span class="num">90</span> ثانية يُعاد حساب خطر كل مباراة. التنبيهات من الدقيقة <span class="num">75</span> فصاعداً — إلا الطرد فمن أي دقيقة، باستثنائك الصريح.</span></div>
+      <div class="step"><span class="when">+1 DAY</span><span class="dot"></span><span class="bd"><b>التصحيح الصباحي</b>كل توقع وكل إنذار وكل بند في كل تقرير يُقارن بالنتيجة الحقيقية، وتُستخلص الدروس، وتُحدَّث كل الأرقام أعلاه.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>تيليجرام: كيف تأمر وكيف تُبلَّغ</h2>
+  <div class="note info">
+    القاعدة الأساسية التي تفسّر كل شيء: <b>هاتفك الأساسي يأمر ويستقبل. الجهاز الثاني يستقبل فقط ولا يأمر.</b> أي أمر يُرسَل من الجهاز الثاني يُتجاهل بصمت — بتصميمك أنت، حتى تبقى قائمة التركيز وتوقعاتك الشخصية ملكك وحدك.
+  </div>
+  <h3>ما ترسله أنت</h3>
+  <div class="cmds">
+    <div class="cmd"><code>أسماء مباريات</code><span>تضعها في «قائمة التركيز» — تصير مباريات VIP: تقرير قبل المباراة، تنبيهات حية، ونبض مستمر. يردّ عليك البوت بتأكيد وتوقعات المحركين.</span></div>
+    <div class="cmd"><code>مسح</code><span>مسح حي فوري لكل مباريات العالم الجارية الآن مع توقع سريع لكل واحدة.</span></div>
+    <div class="cmd"><code>تحقق</code><span>يبث رسالة اختبار لكل أجهزتك ويردّ عليك ببطاقة: من استلم ومن لم يستلم ولماذا.</span></div>
+    <div class="cmd"><code>امسح القائمة</code><span>يُفرغ قائمة التركيز.</span></div>
+    <div class="cmd"><code>أزرار التوقع</code><span>بعد تثبيت القائمة تصلك أزرار (فوز المضيف / تعادل / فوز الضيف) — ضغطة واحدة تُسجّل توقعك في سباق الدقة الثلاثي ضد المحركين.</span></div>
+  </div>
+  <h3>ما يصلك بلا طلب</h3>
+  <div class="cmds">
+    <div class="cmd"><code>كل صباح</code><span>نشرتا المحركين + تصحيح الأمس + بطاقة تقييم التقارير + رصيد API + نبض التسليم.</span></div>
+    <div class="cmd"><code>أثناء المباريات</code><span>تنبيهات الدراما من الرادار (تصل حتى لو كانت قائمة التركيز فارغة — استثناؤك الصريح لأنها نادرة).</span></div>
+    <div class="cmd"><code>عند الخطر</code><span>إنذار فوري إن رفض المزوّد الخدمة، أو لم يجرِ التقييم الصباحي، أو فشل وصول رسالة إلى أحد أجهزتك.</span></div>
+  </div>
+  <div class="note warn">
+    <b>لماذا تصمت التنبيهات الحية أحياناً؟</b> لأن قائمة التركيز فارغة. هذا قرارك أنت بتاريخ <span class="num">2026-07-26</span>: قائمة فارغة = صمت تام في التنبيهات الحية (لا الصباحية). أرسل اسم أي مباراة ليعود الصوت.
+  </div>
+</section>
+
+<section>
+  <h2>كيف تقرأ صفحة الرادار</h2>
+  <div class="card">
+    <h3>⚖️ قبل كل شيء: البطاقة ≠ التنبيه — شيئان من رادار واحد، بلوحتي حساب</h3>
+    <div class="tw"><table>
+      <tr><th></th><th>🖥 إنذار الشاشة (البطاقة أدناه)</th><th>📱 تنبيه الدراما (تيليجرام)</th></tr>
+      <tr><td>أين؟</td><td>تبويب الرادار فقط — لا يُرسل شيئاً</td><td>رسالة 🛰🚨 على هاتفك</td></tr>
+      <tr><td>متى؟</td><td>دائماً، لكل مباراة مرصودة، كل ~90 ثانية</td><td>نادراً — بعد بوابات صارمة (د75+، إشارة ≥75)</td></tr>
+      <tr><td>يقول؟</td><td>«التوقع في خطر بدرجة كذا» — وصف حالة</td><td>«الهدف القادم لفلان» — ادعاء يُحاسَب عليه</td></tr>
+      <tr><td>عدّاده؟</td><td>صندوقا «خطر/تحذير» (<span class="num">94%</span>)</td><td>قسم «تنبيهات الدراما» (<span class="num">~27%</span> · 🧪)</td></tr>
+    </table></div>
+    <p class="small"><b>وشيفيلد×برمنغهام حدث فيها الاثنان معاً</b> — البطاقة بلغت خطر <span class="num">99</span> وأصابت ✅ (توقع شيفيلد سقط فعلاً: 0-0)، والتنبيه ادّعى هدفاً لبرمنغهام وأخطأ ❌ (لم يسجل). نفس المباراة، ادعاءان مختلفان، حسابان منفصلان — ولهذا الشاشة ناضجة تُوثق بها والدراما ما زالت قيد المعايرة.</p>
+  </div>
+  <p class="muted">هذه بطاقة حقيقية من مساء أمس (إنذار شاشة)، مشروحة بالأرقام. المفتاح الذي التبس سابقاً: الرقم الكبير يقيس <b>الخطر على توقّع المحرك</b> — لا قوة الفريق المكتوب اسمه أولاً.</p>
+  <div class="card">
+    <div class="mock">
+      <div class="mtop"><span>Championship (England) · <span class="num">د86</span></span><span class="callout">1</span></div>
+      <div class="mteams"><span>Sheffield Utd × Birmingham</span><span class="num">0-0</span></div>
+      <div class="mgauge"><i></i></div>
+      <div class="mrow"><span class="callout">2</span> <span>خطر <span class="num">99</span> من <span class="num">100</span></span></div>
+      <div class="mrow"><span class="callout">3</span> <span>توقع المحرك 2: Sheffield Utd (<span class="num">38%</span>)</span></div>
+      <div class="mrow"><span class="callout">4</span> <span class="tag warn">⚠️ الخطر لصالح: Birmingham</span></div>
+      <ul class="mfacts">
+        <li>النتيجة الحالية <span class="num">0-0</span> تُسقط التوقع (<span class="num">د84</span>)</li>
+        <li>موجة تسديد على المرمى من الضيف</li>
+        <li>ضغط هجومي متصاعد من الضيف</li>
+      </ul>
+      <div class="mrow"><span class="callout">5</span> <span class="small">تسديدات كل فريق كخط بياني صغير</span></div>
+    </div>
+  </div>
+  <ul class="keylist">
+    <li><span class="callout">1</span><div><b>الدوري والدقيقة.</b> الدقيقة تتحدث كل ~<span class="num">90</span> ثانية أثناء وجود تشغيلة نشطة، لا كل <span class="num">10</span> دقائق.</div></li>
+    <li><span class="callout">2</span><div><b>مقياس الخطر <span class="num">0</span>–<span class="num">100</span>.</b> رياضيات شفافة بلا ذكاء اصطناعي: النتيجة الحالية مقابل التوقع موزونة بالدقيقة، زائد زخم الفريق المهدِّد، زائد إشارات الضغط. أخضر تحت <span class="num">40</span>، كهرماني <span class="num">40</span>–<span class="num">64</span>، أحمر <span class="num">65</span> فأعلى.</div></li>
+    <li><span class="callout">3</span><div><b>ما توقّعه المحرك.</b> الخطر يُقاس ضد هذا التوقع تحديداً — فبطاقة بخطر <span class="num">99</span> تعني «توقّع شيفيلد على وشك السقوط».</div></li>
+    <li><span class="callout">4</span><div><b>الخطر لصالح مَن.</b> السطر الجديد الذي أضفناه اليوم بعد التباسك: يسمّي الفريق المستفيد صراحةً، ويظهر متى بلغ الخطر الكهرماني فأعلى.</div></li>
+    <li><span class="callout">5</span><div><b>خطوط التسديد.</b> آخر لقطات لكل فريق — تُظهر مَن يتصاعد ومَن يخفت.</div></li>
+  </ul>
+  <div class="card">
+    <h3>بقية عناصر الصفحة</h3>
+    <p class="muted"><b>قمع التنبيهات:</b> مرصود ← تختمر ← جاهزة ← أُرسل تنبيه. يخبرك كم مباراة تقترب من التنبيه قبل أن يصل، لا بعده.</p>
+    <p class="muted"><b>الأقرب للتنبيه:</b> أعلى مباراة إشارةً لم تُنبَّه بعد، مع عدّ تنازلي حتى الدقيقة <span class="num">75</span>.</p>
+    <p class="muted"><b>مفتاح «دورياتي ⇄ الكل»:</b> يعيد حساب كل رقم معروض على شريحة دورياتك التسع. تحت <span class="num">20</span> عيّنة يُظهر «عينة غير كافية» بدل النسبة.</p>
+    <p class="muted"><b>«⚡ تحديث حي»:</b> ختم زمني يؤكد أن الأرقام آتية من المسار السريع لا من دورة العشر دقائق.</p>
+  </div>
+</section>
+
+<section>
+  <h2>ما هو قيد التجربة الآن</h2>
+  <div class="two">
+    <div class="card"><h3>xG في الظل</h3>
+      <p class="muted">القيمة المتوقعة للأهداف — تفرّق بين تسديدة خطرة وأخرى بلا قيمة. تعمل منذ <span class="num">2026-08-13</span> بلوحة نتائج موازية، <b>بلا أي تأثير على أي تنبيه يصلك</b>.</p>
+      <p class="small">الحصيلة حتى الآن: <span class="num">1</span> مباراة فقط جُمعت — والسبب مُشخَّص ومُثبَت: مباريات الأيام الماضية كانت خارج تغطية الباقة (أمريكا الجنوبية والمكسيك)، لا عطل في الكود. الدوري السعودي والتشامبيونشيب مغطيان، فالأيام القادمة هي الاختبار الحقيقي.</p>
+    </div>
+    <div class="card"><h3>الحجز المسائي — من اليوم</h3>
+      <p class="muted">في سبتات إنجلترا كانت مباريات الظهيرة تلتهم حصص التقارير الست كلها، فتُحرم مباريات المساء منهجياً (حالة شيفيلد أمس).</p>
+      <p class="small">الآن: حصتان محجوزتان لمباريات ما بعد <span class="num">18:00</span> بتوقيتك، تلقائياً وبلا كلفة إضافية، والحجز يختفي في الأيام التي لا مباريات مسائية فيها.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  كل رقم هنا مقروء من ملفات المستودع مباشرة (<span class="num">history.json</span>، <span class="num">radar_log.json</span>، <span class="num">scenarios_v2.json</span>، ذاكرتا المحركين) — آخر تحديث <span class="num">2026-08-15 20:00</span> UTC · رصيد المزوّد عند آخر قراءة: <span class="num">1,836</span> متبقٍ من <span class="num">7,500</span>، ويتصفّر منتصف الليل UTC · إصلاحا اليوم: PR <span class="num">#104</span> (سباق الكاتبَين) و<span class="num">#105</span> (استعادة التنبيهين).
+</footer>
+</main>
