@@ -134,6 +134,16 @@ GOLD_SHADOW_EXTRA_PER_DAY = 4  # الحصة الإضافية للذهب بعد �
 # ولا حصة مهدورة. الذهب فوق هذه القاعدة (لا يُترك بلا تقرير أبداً).
 SHADOW_EVENING_FROM_UTC = 15   # حد "المساء": 15:00 UTC = 18:00 بتوقيت السعودية
 SHADOW_EVENING_RESERVE = 2     # أقصى حصص تُحجز للمساء من السقف اليومي
+# سقف الليل الأمريكي (اكتشاف صباح 2026-08-16): مباريات أمريكا الليلية تحمل
+# تاريخ اليوم الأوروبي التالي بتوقيت UTC (انطلاق 00:15-02:30)، فالتقط الرادار
+# ليلة السبت 6 تقارير MLS/أرجنتينية واستُهلكت حصة السبت كلها قبل أن تصحو
+# إنجلترا أصلاً — نفس مرض شيفيلد من باب آخر، والحجز المسائي لا يراه لأن
+# مباريات المساء لا تكون قد تُنبّئ بها بعد وقت الليل. العلاج بلا رفع سقف:
+# الليل (قبل SHADOW_NIGHT_UNTIL_UTC) يُحتسب على حصة اليوم بحد أقصى
+# SHADOW_NIGHT_MAX ولا يُلتقط منه أكثر من ذلك (الذهب فوق القاعدة كالعادة) —
+# فما زاد ليلاً لا يسد نهار أوروبا، ويوم بلا ليل أمريكي لا يتغير فيه شيء.
+SHADOW_NIGHT_UNTIL_UTC = 6     # ما قبل السادسة صباحاً UTC = ليل أمريكا
+SHADOW_NIGHT_MAX = 2           # أقصى ما يُلتقط ويُحتسب من مباريات الليل
 
 # ذاكرة تقارير السيناريوهات: كل تقرير ما قبل مباراة يُحفظ هنا، ويقيّمه
 # predict_v2.py صباحاً مقابل البيانات النهائية الحقيقية ويستخلص دروساً
@@ -1015,6 +1025,15 @@ def _shadow_is_early(kickoff_str: str) -> bool:
         return True
 
 
+def _shadow_hour(kickoff_str: str) -> int:
+    """ساعة الانطلاق UTC — تعذر القراءة = 12 (نهار مبكر: الأكثر تحفظاً،
+    يخضع لحجز المساء ولا يفلت من أي سقف)."""
+    try:
+        return datetime.fromisoformat(kickoff_str or "").hour
+    except Exception:
+        return 12
+
+
 def evening_fixtures_ahead(v2_pending: dict, scen_pending: dict, watch: set,
                            now: datetime) -> int:
     """عدد مباريات الدوريات الكبرى التي تنطلق لاحقاً اليوم بعد الحد المسائي
@@ -1047,8 +1066,13 @@ def shadow_reports(watch: set) -> None:
     todays = [e for e in list(scen["pending"].values())
               + list(scen.get("resolved") or [])
               if isinstance(e, dict) and e.get("shadow") and e.get("date") == today]
-    used = len(todays)
-    budget = SHADOW_REPORTS_PER_DAY - used
+    # سقف الليل: ما زاد عن SHADOW_NIGHT_MAX من مباريات الليل الأمريكي لا
+    # يُحتسب على حصة اليوم — فلا يسد ليلُ أمس نهارَ أوروبا (اكتشاف 2026-08-16)
+    night_used = sum(1 for e in todays
+                     if _shadow_hour(e.get("kickoff", "")) < SHADOW_NIGHT_UNTIL_UTC)
+    night_counted = min(night_used, SHADOW_NIGHT_MAX)
+    day_used = len(todays) - night_used
+    budget = SHADOW_REPORTS_PER_DAY - day_used - night_counted
     # أولوية الذهب (أمر المالك 2026-08-09): بعد نفاد الحصة العادية تبقى
     # لمباريات الثقة ≥70 حصة إضافية خاصة — الذهب لا يُترك بلا تقرير أبداً
     gold_used = sum(1 for e in todays if e.get("gold"))
@@ -1063,16 +1087,25 @@ def shadow_reports(watch: set) -> None:
     # (السقف − حجز ديناميكي بقدر المباريات المسائية الفعلية) − المستهلك مبكراً
     reserve = min(SHADOW_EVENING_RESERVE,
                   evening_fixtures_ahead(v2_pending, scen["pending"], watch, now))
-    early_used = sum(1 for e in todays if _shadow_is_early(e.get("kickoff", "")))
-    early_budget = max(0, SHADOW_REPORTS_PER_DAY - reserve - early_used)
+    day_early_used = sum(1 for e in todays
+                         if SHADOW_NIGHT_UNTIL_UTC
+                         <= _shadow_hour(e.get("kickoff", ""))
+                         < SHADOW_EVENING_FROM_UTC)
+    early_budget = max(0, SHADOW_REPORTS_PER_DAY - reserve
+                       - day_early_used - night_counted)
     for fid in select_shadow_fixtures(v2_pending, scen["pending"], watch, now,
                                       max(0, budget) + max(0, gold_budget)):
         p = v2_pending.get(fid) or {}
         gold = (SHADOW_GOLD_PRIORITY
                 and (p.get("confidence") or 0) >= GOLD_SHADOW_MIN_CONF)
-        early = _shadow_is_early(p.get("kickoff", ""))
+        hour = _shadow_hour(p.get("kickoff", ""))
+        night = hour < SHADOW_NIGHT_UNTIL_UTC
+        early = SHADOW_NIGHT_UNTIL_UTC <= hour < SHADOW_EVENING_FROM_UTC
+        # سقف الليل: بعد بلوغه لا يُلتقط ليلٌ غير ذهبي إطلاقاً
+        if night and not gold and night_used >= SHADOW_NIGHT_MAX:
+            continue
         # مباراة مبكرة غير ذهبية لا تمس الحصص المحجوزة للمساء
-        if early and not gold and early_budget <= 0:
+        if (early or night) and not gold and early_budget <= 0:
             continue
         # الذهب يستهلك الحصة العادية أولاً؛ غير الذهب لا يمس الحصة الإضافية
         if budget > 0:
@@ -1081,7 +1114,9 @@ def shadow_reports(watch: set) -> None:
             gold_budget -= 1
         else:
             continue
-        if early:
+        if night:
+            night_used += 1
+        if early or night:
             early_budget -= 1
         ctx = build_prematch_context(fid, v2_pending.get(fid),
                                      v1_pending.get(fid), None)

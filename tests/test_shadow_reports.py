@@ -118,3 +118,42 @@ class TestEveningReserve(unittest.TestCase):
         early_budget = max(0, M.SHADOW_REPORTS_PER_DAY - reserve - early_used)
         self.assertEqual(early_budget, 0,
                          "بعد 4 مبكرات والحجز 2: لا حصة مبكرة خامسة")
+
+
+class TestNightCap(unittest.TestCase):
+    """سقف الليل الأمريكي (اكتشاف 2026-08-16): ليلة السبت التقط الظل 6
+    مباريات MLS/أرجنتينية تحمل تاريخ السبت UTC — فاستُهلكت حصة اليوم كلها
+    قبل أن تصحو إنجلترا. القاعدة: الليل (قبل 06:00 UTC) يُحتسب على الحصة
+    بحد أقصى 2 ولا يُلتقط منه أكثر، والفائض الليلي لا يسد نهار أوروبا."""
+
+    def test_night_constants_sane(self):
+        self.assertTrue(0 < M.SHADOW_NIGHT_MAX < M.SHADOW_REPORTS_PER_DAY)
+        self.assertTrue(0 < M.SHADOW_NIGHT_UNTIL_UTC < M.SHADOW_EVENING_FROM_UTC)
+
+    def test_shadow_hour_parses_and_defaults_conservatively(self):
+        self.assertEqual(M._shadow_hour("2026-08-16T00:30:00+00:00"), 0)
+        self.assertEqual(M._shadow_hour("2026-08-16T14:00:00+00:00"), 14)
+        self.assertEqual(M._shadow_hour("bad"), 12, "المجهول نهارٌ مبكر — الأكثر تحفظاً")
+
+    def test_saturday_scenario_budget_math(self):
+        """إعادة تمثيل صباح 16 أغسطس: 6 ملتقطة كلها ليلية → لولا السقف
+        لكانت الحصة صفراً؛ معه يُحتسب اثنان فقط وتبقى 4 حصص لنهار إنجلترا."""
+        night_used = 6
+        night_counted = min(night_used, M.SHADOW_NIGHT_MAX)
+        day_used = 0
+        budget = M.SHADOW_REPORTS_PER_DAY - day_used - night_counted
+        self.assertEqual(budget, M.SHADOW_REPORTS_PER_DAY - M.SHADOW_NIGHT_MAX,
+                         "فائض الليل يجب ألا يسد نهار أوروبا")
+
+    def test_no_night_games_changes_nothing(self):
+        """يوم بلا ليل أمريكي: الحساب القديم حرفياً."""
+        night_used = 0
+        budget = M.SHADOW_REPORTS_PER_DAY - 3 - min(night_used, M.SHADOW_NIGHT_MAX)
+        self.assertEqual(budget, M.SHADOW_REPORTS_PER_DAY - 3)
+
+    def test_structural_night_gate_in_source(self):
+        """بنيوي: بوابة سقف الليل وعدّاده موجودان في shadow_reports."""
+        import inspect
+        src = inspect.getsource(M.shadow_reports)
+        self.assertIn("night_used >= SHADOW_NIGHT_MAX", src)
+        self.assertIn("night_counted = min(night_used, SHADOW_NIGHT_MAX)", src)
