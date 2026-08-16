@@ -128,6 +128,19 @@ td.n{font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums
   border:1px solid var(--line); background:var(--surface); color:var(--ink2)}
 .tag.warn{color:var(--warn); border-color:var(--warn); font-weight:700}
 .mfacts{margin:0; padding-inline-start:16px; font-size:13px; color:var(--ink2); display:flex; flex-direction:column; gap:2px}
+.climb{display:flex; align-items:center; gap:10px; font-size:12px; color:var(--ink2)}
+.climb .cbars{display:flex; align-items:flex-end; gap:4px; height:34px; flex:1;
+  position:relative; padding-top:2px;
+  background:
+    linear-gradient(to top, transparent calc(40% - 1px), color-mix(in srgb, var(--warn) 45%, transparent) calc(40% - 1px), color-mix(in srgb, var(--warn) 45%, transparent) 40%, transparent 40%),
+    linear-gradient(to top, transparent calc(65% - 1px), color-mix(in srgb, var(--bad) 50%, transparent) calc(65% - 1px), color-mix(in srgb, var(--bad) 50%, transparent) 65%, transparent 65%)}
+.climb .cbars i{flex:1; max-width:26px; border-radius:2px 2px 0 0; display:block}
+.climb .c-a{background:var(--warn); opacity:.55}
+.climb .c-r{background:var(--bad); opacity:.8}
+.climb .c-now{background:var(--bad); opacity:1; box-shadow:0 0 6px 1px var(--bad)}
+.climb .clbl{min-width:120px; line-height:1.5}
+.climb .clbl b{color:var(--bad)}
+.climb .clbl .num{font-size:11px}
 .callout{display:inline-flex; width:19px; height:19px; border-radius:50%; background:var(--accent);
   color:var(--on-accent); align-items:center; justify-content:center; font-size:11.5px;
   font-family:ui-monospace,Menlo,monospace; flex:none}
@@ -618,6 +631,9 @@ footer{border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); fo
       <div class="mrow"><span class="callout">2</span> <span>خطر <span class="num">99</span> من <span class="num">100</span></span></div>
       <div class="mrow"><span class="callout">3</span> <span>توقع المحرك 2: Sheffield Utd (<span class="num">38%</span>)</span></div>
       <div class="mrow"><span class="callout">4</span> <span class="tag warn">⚠️ الخطر لصالح: Birmingham</span></div>
+      <div class="climb"><span class="clbl"><span class="callout">6</span> تصاعد الخطر <span class="num mins">د50→د86</span><br><b>▲ يتصاعد <span class="num">45→99</span></b></span>
+        <div class="cbars"><i class="c-a" style="height:45%" title="د50 · 45"></i><i class="c-r" style="height:77%" title="د70 · 77"></i><i class="c-now" style="height:99%" title="د86 · 99"></i></div>
+      </div>
       <ul class="mfacts">
         <li>النتيجة الحالية <span class="num">0-0</span> تُسقط التوقع (<span class="num">د84</span>)</li>
         <li>موجة تسديد على المرمى من الضيف</li>
@@ -632,6 +648,7 @@ footer{border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); fo
     <li><span class="callout">3</span><div><b>ما توقّعه المحرك.</b> الخطر يُقاس ضد هذا التوقع تحديداً — فبطاقة بخطر <span class="num">99</span> تعني «توقّع شيفيلد على وشك السقوط».</div></li>
     <li><span class="callout">4</span><div><b>الخطر لصالح مَن.</b> السطر الجديد الذي أضفناه اليوم بعد التباسك: يسمّي الفريق المستفيد صراحةً، ويظهر متى بلغ الخطر الكهرماني فأعلى.</div></li>
     <li><span class="callout">5</span><div><b>خطوط التسديد.</b> آخر لقطات لكل فريق — تُظهر مَن يتصاعد ومَن يخفت.</div></li>
+    <li><span class="callout">6</span><div><b>📈 شريط تصاعد الخطر (أُضيف 2026-08-16).</b> رحلة درجة الخطر عبر آخر اللقطات: الخطان الخافتان هما عتبتا الكهرماني (<span class="num">40</span>) والأحمر (<span class="num">65</span>) — فترى العمود يقترب من الأحمر قبل أن يبلغه؛ الأعمدة الأقدم باهتة وعمود «الآن» متوهج؛ والأرقام «<span class="num">45→99</span>» مع نطاق الدقائق تحكي الرحلة بدقة. المقياس مثبّت <span class="num">0-100</span> في كل البطاقات كي تقارن مباراتين بنظرة. أول ظهور حي: دهوك×الغراف (<span class="num">60→69</span> بين د76→د90).</div></li>
   </ul>
   <div class="card">
     <h3>بقية عناصر الصفحة</h3>
