@@ -211,6 +211,8 @@ def build_live(state: dict, store_v1: dict, store_v2: dict) -> list:
                 "top": bool(radar.get("top")),
                 "trend": {
                     "min": [s.get("minute", 0) for s in snaps],
+                    # 📈 منحنى تصاعد الخطر — مشتق في monitor.py من نفس اللقطات
+                    "danger": radar.get("dscores") or [],
                     "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],
                     "a_sog": [(s.get("a") or {}).get("sog", 0) for s in snaps],
                     "h_cor": [(s.get("h") or {}).get("cor", 0) for s in snaps],

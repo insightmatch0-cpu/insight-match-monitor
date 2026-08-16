@@ -564,3 +564,48 @@ class TestSweepAlertRace(unittest.TestCase):
         src = inspect.getsource(M.radar_sweep)
         self.assertIn("maybe_radar_alert(fid, e, alert_budget, log)", src)
         self.assertIn("maybe_red_alert(fid, e, alert_budget, log)", src)
+
+
+class TestDangerClimb(unittest.TestCase):
+    """منحنى تصاعد الخطر (طلب المالك 2026-08-16): البطاقة كانت تعرض الدرجة
+    الحالية فقط، فلا يُفرَّق بين 70 هابطة من 90 و70 صاعدة من 40 — وهما
+    حالتان متعاكستان. المنحنى يُشتق من نفس اللقطات فيطابقها حتماً."""
+
+    def test_series_length_matches_snaps(self):
+        snaps = [snap(60, {"sog": 1}, {"sog": 1}),
+                 snap(70, {"sog": 3}, {"sog": 1}),
+                 snap(80, {"sog": 5}, {"sog": 1})]
+        s = M.danger_series("away", snaps)
+        self.assertEqual(len(s), len(snaps))
+
+    def test_escalation_is_visible_as_rising_numbers(self):
+        """توقع الضيف والنتيجة تنقلب ضده مع تصاعد الدقيقة → المنحنى يصعد."""
+        snaps = [dict(snap(50, {"sog": 1}, {"sog": 1}), gh=0, ga=0),
+                 dict(snap(70, {"sog": 3}, {"sog": 1}), gh=1, ga=0),
+                 dict(snap(88, {"sog": 6}, {"sog": 1}), gh=1, ga=0)]
+        s = M.danger_series("away", snaps)
+        self.assertLess(s[0], s[-1], "المنحنى لا يُظهر التصاعد")
+        self.assertGreaterEqual(s[-1], M.RADAR_AMBER)
+
+    def test_last_point_equals_current_score(self):
+        """آخر نقطة في المنحنى = الدرجة المعروضة كبيرة على البطاقة."""
+        snaps = [dict(snap(60, {"sog": 1}, {"sog": 1}), gh=0, ga=0),
+                 dict(snap(85, {"sog": 4}, {"sog": 1}), gh=1, ga=0)]
+        s = M.danger_series("away", snaps)
+        now = M.danger_score("away", snaps, 85, 1, 0)["score"]
+        self.assertEqual(s[-1], now)
+
+    def test_empty_and_broken_snaps_are_safe(self):
+        self.assertEqual(M.danger_series("home", []), [])
+        self.assertEqual(len(M.danger_series("home", [{}, {}])), 2)
+
+    def test_wired_into_payloads_and_card(self):
+        import inspect
+        from pathlib import Path
+        self.assertIn("danger_series", inspect.getsource(M.radar_sweep))
+        self.assertIn("danger_series", inspect.getsource(M.radar_fast_watch))
+        self.assertIn('"danger"', inspect.getsource(M._radar_trend))
+        html = (Path(__file__).resolve().parent.parent / "index.html").read_text(encoding="utf-8")
+        self.assertIn("dangerClimb(tr.danger)", html)
+        dash = (Path(__file__).resolve().parent.parent / "dashboard_update.py").read_text(encoding="utf-8")
+        self.assertIn('"danger": radar.get("dscores")', dash)
