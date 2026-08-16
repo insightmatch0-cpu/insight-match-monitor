@@ -1423,6 +1423,27 @@ def danger_score(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
     return {"score": score, "level": level, "factors": factors[:4]}
 
 
+def danger_series(pick: str, snaps: list) -> list:
+    """منحنى تصاعد الخطر: درجة الخطر عند كل لقطة محفوظة (طلب المالك
+    2026-08-16 — «أين أرى هذا وهو يتصاعد؟»).
+
+    البطاقة كانت تعرض الدرجة الحالية فقط، فلا يُرى الفرق بين خطر 70 هابط
+    من 90 وخطر 70 صاعد من 40 — وهما حالتان متعاكستان تماماً.
+
+    يُشتق من اللقطات المخزّنة نفسها في كل دورة (لا يُخزَّن مستقلاً): فيبقى
+    مطابقاً لها حتماً حتى حين يستبدل المسار السريع آخر لقطة. صفر نداءات،
+    وn ≤ 12 فالكلفة الحسابية مهملة.
+    """
+    out = []
+    for i, s in enumerate(snaps):
+        try:
+            out.append(danger_score(pick, snaps[:i + 1], s.get("minute") or 0,
+                                    s.get("gh") or 0, s.get("ga") or 0)["score"])
+        except Exception:
+            out.append(0)
+    return out
+
+
 def danger_score_xg(pick: str, snaps: list, minute: int, gh: int, ga: int) -> dict:
     """🔬 درجة الخطر البديلة — نفس لوحة النتائج، لكن الزخم بـxG بدل عدّ التسديدات.
 
@@ -1512,9 +1533,11 @@ def merge_fast_snap(snaps: list, snap: dict) -> list:
     return (snaps + [snap])[-RADAR_SNAPS_KEEP:]
 
 
-def _radar_trend(snaps: list) -> dict:
+def _radar_trend(snaps: list, dscores: list = None) -> dict:
     return {
         "min": [s.get("minute", 0) for s in snaps],
+        # 📈 منحنى تصاعد الخطر (طلب المالك 2026-08-16)
+        "danger": list(dscores or []),
         "h_sog": [(s.get("h") or {}).get("sog", 0) for s in snaps],
         "a_sog": [(s.get("a") or {}).get("sog", 0) for s in snaps],
         "h_cor": [(s.get("h") or {}).get("cor", 0) for s in snaps],
@@ -1545,7 +1568,8 @@ def radar_live_payload(state: dict) -> dict:
                       "factors": r.get("factors") or [], "pick": r.get("pick"),
                       "confidence": r.get("confidence"),
                       "drama": r.get("drama"), "alerted": r.get("alerted"),
-                      "trend": _radar_trend(r.get("snaps") or [])},
+                      "trend": _radar_trend(r.get("snaps") or [],
+                                            r.get("dscores") or [])},
         })
     # النتائج السريعة لكل المباريات الحية (لا الرادار فقط) — القائمة الحية
     # وغرفة العمليات تقرآنها أيضاً فيصل الهدف خلال ~90 ثانية لكل الشاشات
@@ -1663,6 +1687,8 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
                                    snaps, minute, gh, ga)
             d = drama_signal(snaps, gh, ga)
             radar.update({"snaps": snaps, "score": verdict["score"],
+                          "dscores": danger_series(
+                              p.get("pick") or radar.get("pick"), snaps),
                           "level": verdict["level"], "factors": verdict["factors"],
                           # 🎛 REC-010: العلامة تُحدَّث في المسار السريع أيضاً
                           "top": bool(p.get("top", radar.get("top"))),
@@ -2024,6 +2050,8 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         e["radar"] = {
             "snaps": snaps,
             "score": verdict["score"], "level": verdict["level"],
+            # 📈 منحنى التصاعد: الدرجة عند كل لقطة — يُشتق من snaps فيطابقها دوماً
+            "dscores": danger_series(p.get("pick"), snaps),
             "factors": verdict["factors"],
             "pick": p.get("pick"), "confidence": p.get("confidence"),
             # 🎛 REC-010: علامة دوريات المالك تُنسخ من صف التوقع (مشتقة

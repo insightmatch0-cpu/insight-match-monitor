@@ -190,6 +190,11 @@
   /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي،
      والسجل التراكمي سطر ثانوي أصغر تحته — بلا حذف لأي رقم */
   .radar-acc .r-sub{font-size:10px;color:var(--muted);display:block}
+  .rspark.climb .bars span{border-radius:2px 2px 0 0}
+  .rspark.climb .d-g{background:#3f8f63}
+  .rspark.climb .d-a{background:#d0a03c}
+  .rspark.climb .d-r{background:#e0573f}
+  .rspark.climb .lbl b{font-weight:700}
   .r-recent{margin-top:10px}
   .r-recent summary{cursor:pointer;font-size:11px;color:var(--muted);
     letter-spacing:.02em;padding:4px 0}
@@ -707,7 +712,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 76;
+var IM_BUILD = 77;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -766,6 +771,10 @@ var I18N = {
     radarEmpty:"لا مباريات حية عليها توقعات الآن — الرادار يلتقطها تلقائياً فور انطلاقها.",
     radarPick:"توقع المحرك 2:",
     radarThreat:"⚠️ الخطر لصالح:",
+    radarClimb:"تصاعد الخطر",
+    radarClimbUp:"يتصاعد",
+    radarClimbDown:"يهبط",
+    radarClimbFlat:"ثابت",
     radarCalm:"لا إشارات خطر — الأرقام هادئة حتى الآن.",
     radarSogH:"تسديد المضيف",
     radarSogA:"تسديد الضيف",
@@ -891,6 +900,10 @@ var I18N = {
     radarEmpty:"No live matches with predictions right now — the Radar picks them up automatically at kickoff.",
     radarPick:"Engine 2 pick:",
     radarThreat:"⚠️ Danger favors:",
+    radarClimb:"Danger climb",
+    radarClimbUp:"climbing",
+    radarClimbDown:"easing",
+    radarClimbFlat:"steady",
     radarCalm:"No danger signals — the numbers are calm so far.",
     radarSogH:"Home shots on goal",
     radarSogA:"Away shots on goal",
@@ -1912,6 +1925,25 @@ function sparkRow(cls, label, vals){
     + '<div class="bars">'+bars+'</div></div>';
 }
 
+/* 📈 منحنى تصاعد الخطر (طلب المالك 2026-08-16): البطاقة كانت تُظهر الدرجة
+   الحالية فقط — فلا يُفرَّق بين 70 هابطة من 90 و70 صاعدة من 40. المقياس
+   مثبَّت 0-100 عمداً (لا تطبيع على الأعلى) كي يعني ارتفاع العمود نفس الشيء
+   في كل بطاقة، ويُلوَّن كل عمود بمستواه فيُرى عبور العتبات بالعين. */
+function dangerClimb(vals){
+  if (!vals || vals.length < 2) return "";
+  var bars = "";
+  for (var i=0;i<vals.length;i++){
+    var v = Math.max(0, Math.min(100, vals[i]||0));
+    var cl = v >= 65 ? "d-r" : (v >= 40 ? "d-a" : "d-g");
+    bars += '<span class="'+cl+'" style="height:'+Math.max(6, v)+'%" title="'+esc(v)+'"></span>';
+  }
+  var d = (vals[vals.length-1]||0) - (vals[0]||0);
+  var arrow = d >= 8 ? "▲ " + t("radarClimbUp")
+            : (d <= -8 ? "▼ " + t("radarClimbDown") : "▬ " + t("radarClimbFlat"));
+  return '<div class="rspark climb"><span class="lbl">'+esc(t("radarClimb"))
+    + ' <b>'+esc(arrow)+'</b></span><div class="bars">'+bars+'</div></div>';
+}
+
 function radarCard(m){
   var r = m.radar;
   var lvl = r.level || "green";
@@ -1938,6 +1970,7 @@ function radarCard(m){
     + '</div>'
     + (facts ? '<ul class="rfactors">'+facts+'</ul>'
              : '<div class="rfactors" style="padding:2px 0">'+esc(t("radarCalm"))+'</div>')
+    + dangerClimb(tr.danger)
     + sparkRow("s-h", t("radarSogH"), tr.h_sog)
     + sparkRow("s-a", t("radarSogA"), tr.a_sog)
     + '</div>';
