@@ -73,6 +73,25 @@ class TestSendPdf(unittest.TestCase):
         self.assertIn('f.get("owner")', self._src())
 
 
+class TestSendPdfRunsAsInvoked(unittest.TestCase):
+    """يشغّل السكربت **بنفس طريقة الـworkflow حرفياً** (`python report/send_pdf.py`
+    من جذر المستودع). فحص النص وحده كان أخضر بينما السكربت لا يستورد أصلاً —
+    وهذا ما أسقط أول تشغيلة (ModuleNotFoundError: api_guard).
+    القاعدة: اختبار سكربت يُشغَّل من سطر الأوامر يجب أن يشغّله كما يُشغَّل."""
+
+    def test_imports_cleanly_from_repo_root(self):
+        import subprocess
+        r = subprocess.run(
+            [sys.executable, "report/send_pdf.py", "ملف-غير-موجود.pdf"],
+            cwd=ROOT, capture_output=True, text=True, timeout=60,
+        )
+        out = r.stdout + r.stderr
+        self.assertNotIn("ModuleNotFoundError", out,
+                         "السكربت لا يستورد وحداته عند التشغيل الحقيقي")
+        # الفشل المتوقع الوحيد: الملف غير موجود — دليل أن الاستيراد تم
+        self.assertIn("غير موجود", out)
+
+
 class TestWorkflow(unittest.TestCase):
 
     def _wf(self):
