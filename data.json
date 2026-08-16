@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-16T04:36:43.931045+00:00",
+ "updated": "2026-08-16T04:55:46.502054+00:00",
  "live": [
   {
    "fid": "1490386",
@@ -136,7 +136,125 @@
    "score": "2-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-16T04:32:06.483925+00:00"
+   "seen": "2026-08-16T04:28:48.918891+00:00"
+  },
+  {
+   "fid": "1490386",
+   "home": "Los Angeles FC",
+   "away": "San Diego",
+   "home_en": "Los Angeles FC",
+   "away_en": "San Diego",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1616.png",
+   "away_logo": "https://media.api-sports.io/football/teams/25484.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "0-1",
+   "minute": 89,
+   "status": "2H",
+   "seen": "2026-08-16T04:28:48.918891+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 63
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 53
+   },
+   "radar": {
+    "score": 68,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د89)"
+    ],
+    "pick": "home",
+    "confidence": 53,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      84,
+      89
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1490387",
+   "home": "San Jose Earthquakes",
+   "away": "St. Louis City",
+   "home_en": "San Jose Earthquakes",
+   "away_en": "St. Louis City",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1596.png",
+   "away_logo": "https://media.api-sports.io/football/teams/20787.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "1-3",
+   "minute": 89,
+   "status": "2H",
+   "seen": "2026-08-16T04:28:48.918891+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "radar": {
+    "score": 68,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-3 تُسقط التوقع (د89)"
+    ],
+    "pick": "home",
+    "confidence": 37,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      83,
+      89
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
   },
   {
    "fid": "1493635",
@@ -3912,12 +4030,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 355,
-   "hit": 319
+   "fired": 412,
+   "hit": 373
   },
   "amber": {
-   "fired": 236,
-   "hit": 87
+   "fired": 262,
+   "hit": 94
   },
   "alerts": {
    "flip": {
@@ -3925,7 +4043,7 @@
     "hit": 1
    },
    "equalizer": {
-    "fired": 11,
+    "fired": 13,
     "hit": 2
    },
    "goal": {
@@ -3933,55 +4051,85 @@
     "hit": 0
    },
    "next_goal": {
-    "fired": 20,
-    "hit": 6
+    "fired": 23,
+    "hit": 7
    },
    "red_advantage": {
-    "fired": 2,
-    "hit": 1
+    "fired": 8,
+    "hit": 3
    }
   },
   "season": {
    "red": {
-    "fired": 31,
-    "hit": 29
+    "fired": 88,
+    "hit": 83
    },
    "amber": {
-    "fired": 17,
-    "hit": 6
+    "fired": 43,
+    "hit": 13
    },
    "alerts": {
     "equalizer": {
-     "fired": 3,
+     "fired": 5,
      "hit": 1
     },
     "next_goal": {
-     "fired": 1,
-     "hit": 0
+     "fired": 4,
+     "hit": 1
+    },
+    "red_advantage": {
+     "fired": 6,
+     "hit": 2
     }
    },
    "start": "2026-08-13"
   },
   "top_only": {
    "red": {
-    "fired": 6,
-    "hit": 6
+    "fired": 30,
+    "hit": 28
    },
    "amber": {
-    "fired": 4,
-    "hit": 0
+    "fired": 16,
+    "hit": 2
    },
-   "alerts": {},
-   "season": {
-    "red": {
-     "fired": 6,
-     "hit": 6
-    },
-    "amber": {
-     "fired": 4,
+   "alerts": {
+    "equalizer": {
+     "fired": 2,
      "hit": 0
     },
-    "alerts": {},
+    "next_goal": {
+     "fired": 2,
+     "hit": 1
+    },
+    "red_advantage": {
+     "fired": 6,
+     "hit": 2
+    }
+   },
+   "season": {
+    "red": {
+     "fired": 30,
+     "hit": 28
+    },
+    "amber": {
+     "fired": 16,
+     "hit": 2
+    },
+    "alerts": {
+     "equalizer": {
+      "fired": 2,
+      "hit": 0
+     },
+     "next_goal": {
+      "fired": 2,
+      "hit": 1
+     },
+     "red_advantage": {
+      "fired": 6,
+      "hit": 2
+     }
+    },
     "start": "2026-08-13"
    },
    "min_sample": 20,
@@ -3993,8 +4141,36 @@
     "2026-08-15": {
      "hit": 1,
      "total": 1
+    },
+    "2026-08-16": {
+     "hit": 24,
+     "total": 36
     }
    }
+  },
+  "xg": {
+   "xg": {
+    "red": {
+     "fired": 7,
+     "hit": 5
+    },
+    "amber": {
+     "fired": 0,
+     "hit": 0
+    }
+   },
+   "base": {
+    "red": {
+     "fired": 7,
+     "hit": 5
+    },
+    "amber": {
+     "fired": 0,
+     "hit": 0
+    }
+   },
+   "n": 7,
+   "start": "2026-08-15"
   },
   "silenced": [],
   "proven": [],
@@ -4042,6 +4218,10 @@
    "2026-08-15": {
     "hit": 6,
     "total": 7
+   },
+   "2026-08-16": {
+    "hit": 61,
+    "total": 83
    }
   }
  },
