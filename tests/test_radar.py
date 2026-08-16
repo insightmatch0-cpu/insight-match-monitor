@@ -606,6 +606,6 @@ class TestDangerClimb(unittest.TestCase):
         self.assertIn("danger_series", inspect.getsource(M.radar_fast_watch))
         self.assertIn('"danger"', inspect.getsource(M._radar_trend))
         html = (Path(__file__).resolve().parent.parent / "index.html").read_text(encoding="utf-8")
-        self.assertIn("dangerClimb(tr.danger)", html)
+        self.assertIn("dangerClimb(tr.danger, tr.min)", html)
         dash = (Path(__file__).resolve().parent.parent / "dashboard_update.py").read_text(encoding="utf-8")
         self.assertIn('"danger": radar.get("dscores")', dash)
