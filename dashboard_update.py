@@ -621,6 +621,19 @@ def build_radar_accuracy() -> dict:
         out["top_only"] = dict(out["top_only"])
         out["top_only"]["daily_warnings"] = _daily_warnings(
             [w for w in resolved if (w or {}).get("top")])
+    # 📜 وجوه العدّادات (طلب المالك 2026-08-16 — «أريد أن أرى من هو من»):
+    # آخر الإنذارات المُقيَّمة بأسمائها وتفاصيلها تُصدَّر للوحة كي لا يبقى
+    # العدّاد رقماً بلا مباريات. شريحة عرض فقط (آخر 40) — السجل الكامل
+    # غير المقصوص يبقى في radar_log.json (عقيدة عدم سقف القياس).
+    out["recent"] = [{
+        "date": w.get("date"), "home": w.get("home"), "away": w.get("away"),
+        "league": w.get("league"), "level": w.get("level"),
+        "minute": w.get("minute"), "score": w.get("score"),
+        "pick": w.get("pick"), "conf": w.get("confidence"),
+        "final": w.get("final_score"),
+        "hit": bool(w.get("failed")),   # أصاب = التوقع المحذَّر منه سقط فعلاً
+        "top": bool(w.get("top")),
+    } for w in resolved[-40:]]
     return out
 
 

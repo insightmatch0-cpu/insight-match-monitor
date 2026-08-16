@@ -190,6 +190,10 @@
   /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي،
      والسجل التراكمي سطر ثانوي أصغر تحته — بلا حذف لأي رقم */
   .radar-acc .r-sub{font-size:10px;color:var(--muted);display:block}
+  .r-recent{margin-top:10px}
+  .r-recent summary{cursor:pointer;font-size:11px;color:var(--muted);
+    letter-spacing:.02em;padding:4px 0}
+  .r-recent .r-row{display:block;padding:6px 0}
   .bucket .b-sub{font-size:9.5px;color:var(--muted);margin-top:1px}
   /* بطاقة 360° في مختبر الظل: عدّادات الطبقات والنتيجة النهائية */
   .lab-chip{
@@ -703,7 +707,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 75;
+var IM_BUILD = 76;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -750,6 +754,7 @@ var I18N = {
     radarAnyMoment:"مؤهلة الآن — قد يصل التنبيه في أي لحظة",
     radarAccLine:"صدق إنذارات الرادار (توقعات سقطت فعلاً بعد التحذير) —",
     radarAccTitle:"🎯 سجل دقة الرادار (S3) — تراكمي، لا يُحذف",
+    radarRecent:"📜 آخر الإنذارات المُقيَّمة — من هو من",
     radarClaim_next_goal:"الهدف القادم", radarClaim_goal:"هدف المتأخر",
     radarClaim_equalizer:"إدراك التعادل", radarClaim_flip:"قلب النتيجة",
     radarStProven:"مُثبَت ✅ بلا وسم تجريبي", radarStSilenced:"صامت 🔇 بلا تيليجرام",
@@ -874,6 +879,7 @@ var I18N = {
     radarAnyMoment:"Eligible now — an alert may land any moment",
     radarAccLine:"Radar warning accuracy (picks that truly fell after the alert) —",
     radarAccTitle:"🎯 Radar (S3) accuracy record — cumulative, nothing deleted",
+    radarRecent:"📜 Recently graded warnings — who is who",
     radarClaim_next_goal:"Next goal", radarClaim_goal:"Trailing-side goal",
     radarClaim_equalizer:"Equalizer", radarClaim_flip:"Full comeback",
     radarStProven:"Proven ✅ no trial tag", radarStSilenced:"Silenced 🔇 no Telegram",
@@ -2115,6 +2121,29 @@ function radarAccPanel(acc){
         + esc(days[d])+" — "+(row.hit || 0)+"/"+(row.total || 0)+'"></div>';
     }
     h += '</div></div>';
+  }
+  /* 📜 وجوه العدّادات (طلب المالك 2026-08-16): آخر الإنذارات المُقيَّمة
+     بأسمائها — قائمة قابلة للطي تحت اللوحة، تتبع مفتاح دورياتي/الكل.
+     عرض فقط: لا تدخل أي حساب، والسجل الكامل في radar_log.json */
+  var rec40 = full.recent || [];
+  if (scope === "mine"){
+    rec40 = rec40.filter(function(w){ return w.top; });
+  }
+  if (rec40.length){
+    h += '<details class="r-recent"><summary>'+esc(t("radarRecent"))
+       + ' ('+rec40.length+')</summary>';
+    for (var q = rec40.length - 1; q >= 0; q--){
+      var w = rec40[q];
+      var pk = w.pick === "home" ? w.home : (w.pick === "away" ? w.away : t("pickDraw"));
+      h += '<div class="r-row"><span class="r-name">'
+         + (w.hit ? "✅ " : "❌ ")+(w.level === "red" ? "🔴 " : "🟡 ")
+         + esc(w.home)+' × '+esc(w.away)
+         + '<span class="r-sub">'+esc(w.league || "")+' · '+esc(w.date || "")
+         + ' · د'+esc(w.minute)+' · '+esc(t("radarPick"))+' '+esc(pk)
+         + (w.conf ? ' ('+esc(w.conf)+'%)' : '')
+         + ' → '+esc(w.final || "?")+'</span></span></div>';
+    }
+    h += '</details>';
   }
   return h;
 }
