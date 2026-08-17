@@ -955,10 +955,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "red",
-   "score": 84,
-   "minute": 72,
+   "score": 89,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د72)",
+    "النتيجة الحالية 1-2 تُسقط التوقع (د80)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -976,10 +976,10 @@
    "pick": "away",
    "confidence": 39,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 61,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د70)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د78)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -15320,6 +15320,80 @@
       "yc": 1,
       "rc": 0,
       "sv": 2
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1493069",
+   "date": "2026-08-17",
+   "minute": 81,
+   "score_at": "1-2",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Lanus",
+   "away": "Independiente",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 69,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 4,
+      "shots": 16,
+      "cor": 7,
+      "poss": 48,
+      "yc": 0,
+      "rc": 0
+     },
+     "a": {
+      "sog": 3,
+      "shots": 9,
+      "cor": 4,
+      "poss": 52,
+      "yc": 0,
+      "rc": 0
+     }
+    },
+    {
+     "minute": 63,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 4,
+      "shots": 16,
+      "cor": 7,
+      "poss": 48,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     }
+    },
+    {
+     "minute": 81,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 6,
+      "shots": 19,
+      "cor": 9,
+      "poss": 51,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 3,
+      "shots": 11,
+      "cor": 4,
+      "poss": 49,
+      "yc": 0,
+      "rc": 0,
+      "sv": 5
      }
     }
    ]
