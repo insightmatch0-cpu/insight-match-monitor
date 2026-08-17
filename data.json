@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-17T15:33:17.914248+00:00",
+ "updated": "2026-08-17T15:40:02.503774+00:00",
  "live": [
   {
    "fid": "1497213",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/16232.png",
    "league_logo": "https://media.api-sports.io/football/leagues/778.png",
    "score": "3-2",
-   "minute": 72,
+   "minute": 79,
    "status": "2H",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -24,10 +24,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 58,
+    "score": 62,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 3-2 تُسقط التوقع (د72)"
+     "النتيجة الحالية 3-2 تُسقط التوقع (د79)"
     ],
     "pick": "away",
     "confidence": 46,
@@ -42,12 +42,12 @@
      "min": [
       45,
       49,
-      72
+      79
      ],
      "danger": [
       15,
       0,
-      58
+      62
      ],
      "h_sog": [
       0,
@@ -83,9 +83,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/953.png",
    "league_logo": "https://media.api-sports.io/football/leagues/199.png",
    "score": "0-2",
-   "minute": 71,
+   "minute": 77,
    "status": "2H",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -111,14 +111,17 @@
      "min": [
       45,
       48,
-      64
+      58,
+      71
      ],
      "danger": [
       15,
       15,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -126,14 +129,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -152,9 +158,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3885.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1195.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -164,10 +170,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 42,
+    "score": 43,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
     ],
     "pick": "away",
     "confidence": 38,
@@ -180,10 +186,191 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      47
      ],
      "danger": [
-      42
+      43
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1571511",
+   "home": "Chernomorets 1919 Burgas",
+   "away": "CSKA Sofia II",
+   "home_en": "Chernomorets 1919 Burgas",
+   "away_en": "CSKA Sofia II",
+   "league": "Second League (Bulgaria)",
+   "home_logo": "https://media.api-sports.io/football/teams/8530.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1415.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/173.png",
+   "score": "0-1",
+   "minute": 40,
+   "status": "1H",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 39,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د40)"
+    ],
+    "pick": "home",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      40
+     ],
+     "danger": [
+      39
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1592144",
+   "home": "Auda",
+   "away": "Grobiņa",
+   "home_en": "Auda",
+   "away_en": "Grobiņa",
+   "league": "Cup (Latvia)",
+   "home_logo": "https://media.api-sports.io/football/teams/4135.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4138.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/658.png",
+   "score": "2-0",
+   "minute": 40,
+   "status": "1H",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 47
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 61
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "home",
+    "confidence": 61,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20,
+      33
+     ],
+     "danger": [
+      15,
+      0
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1610818",
+   "home": "Anagennisi Karditsas",
+   "away": "Aris Thessalonikis",
+   "home_en": "Anagennisi Karditsas",
+   "away_en": "Aris Thessalonikis",
+   "league": "Cup (Greece)",
+   "home_logo": "https://media.api-sports.io/football/teams/2094.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1123.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/199.png",
+   "score": "0-0",
+   "minute": 40,
+   "status": "1H",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 62,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      37
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
@@ -211,9 +398,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1163.png",
    "league_logo": "https://media.api-sports.io/football/leagues/244.png",
    "score": "1-1",
-   "minute": 33,
+   "minute": 39,
    "status": "1H",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -223,10 +410,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 34,
+    "score": 38,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د33)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د39)"
     ],
     "pick": "away",
     "confidence": 46,
@@ -239,12 +426,10 @@
     "top": false,
     "trend": {
      "min": [
-      16,
-      33
+      39
      ],
      "danger": [
-      24,
-      34
+      38
      ],
      "h_sog": [
       0,
@@ -276,9 +461,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14068.png",
    "league_logo": "https://media.api-sports.io/football/leagues/506.png",
    "score": "1-0",
-   "minute": 33,
+   "minute": 39,
    "status": "1H",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -288,10 +473,10 @@
     "confidence": 39
    },
    "radar": {
-    "score": 34,
+    "score": 38,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د33)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د39)"
     ],
     "pick": "away",
     "confidence": 39,
@@ -304,12 +489,10 @@
     "top": false,
     "trend": {
      "min": [
-      16,
-      33
+      39
      ],
      "danger": [
-      24,
-      34
+      38
      ],
      "h_sog": [
       0,
@@ -534,9 +717,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/599.png",
    "league_logo": "https://media.api-sports.io/football/leagues/333.png",
    "score": "1-0",
-   "minute": 30,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 60
@@ -562,8 +745,7 @@
     "top": false,
     "trend": {
      "min": [
-      14,
-      30
+      31
      ],
      "danger": [
       23,
@@ -599,9 +781,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3874.png",
    "league_logo": "https://media.api-sports.io/football/leagues/362.png",
    "score": "1-0",
-   "minute": 27,
+   "minute": 33,
    "status": "1H",
-   "seen": "2026-08-17T15:33:13.729417+00:00",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -627,8 +809,7 @@
     "top": false,
     "trend": {
      "min": [
-      10,
-      27
+      33
      ],
      "danger": [
       15,
@@ -648,6 +829,124 @@
      ],
      "a_cor": [
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1560224",
+   "home": "Zalaegerszegi TE",
+   "away": "Ferencvarosi TC",
+   "home_en": "Zalaegerszegi TE",
+   "away_en": "Ferencvarosi TC",
+   "league": "NB I (Hungary)",
+   "home_logo": "https://media.api-sports.io/football/teams/2414.png",
+   "away_logo": "https://media.api-sports.io/football/teams/651.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/271.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "away",
+    "confidence": 62,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10
+     ],
+     "danger": [
+      21
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1600293",
+   "home": "Qarabag",
+   "away": "Şamaxı FK",
+   "home_en": "Qarabag",
+   "away_en": "Şamaxı FK",
+   "league": "Premyer Liqa (Azerbaijan)",
+   "home_logo": "https://media.api-sports.io/football/teams/556.png",
+   "away_logo": "https://media.api-sports.io/football/teams/666.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/419.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-17T15:39:57.987872+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 65
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 76
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "home",
+    "confidence": 76,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10
+     ],
+     "danger": [
+      21
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
