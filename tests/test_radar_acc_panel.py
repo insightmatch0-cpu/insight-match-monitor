@@ -116,6 +116,17 @@ class TestRecentWarningsFaces(unittest.TestCase):
              "final_score": "1-2", "hit": False, "top": True},
             {"date": old_day, "home": "Old", "away": "Alert", "minute": 80,
              "key": "next_goal", "side": "away", "hit": True, "top": False},
+        ], "warnings": [
+            # ⏳ حادثة ZTE (2026-08-17): إنذار اليوم المعلق يجب أن يظهر فوراً
+            {"date": today, "home": "Zalaegerszegi", "away": "Ferencvaros",
+             "league": "NB I (Hungary)", "level": "amber", "minute": 79,
+             "pick": "away", "confidence": 62, "top": False},
+            {"date": today, "home": "PendingEarly", "away": "Out",
+             "level": "amber", "minute": 40, "top": False},
+        ], "alerts": [
+            {"date": today, "home": "Zalaegerszegi", "away": "Ferencvaros",
+             "league": "NB I (Hungary)", "minute": 79, "key": "equalizer",
+             "side": "home", "signal": 85, "score_at": "0-1", "top": False},
         ], "meta": {"stats": {}}}), encoding="utf-8")
         orig = D.RADAR_LOG_FILE
         D.RADAR_LOG_FILE = tmp
@@ -126,11 +137,22 @@ class TestRecentWarningsFaces(unittest.TestCase):
             tmp.unlink(missing_ok=True)
         rec = out.get("recent") or []
         kinds = sorted((r["kind"], r["home"]) for r in rec)
-        self.assertEqual(kinds, [("alert", "Norwich"), ("warning", "Sheffield Utd")],
-                         "المتوقع: إنذار د90 اليوم + تنبيه اليوم فقط — "
-                         "لا كهرماني د45، لا قديم متراكم")
-        w = next(r for r in rec if r["kind"] == "warning")
+        self.assertEqual(kinds,
+                         [("alert", "Norwich"), ("alert", "Zalaegerszegi"),
+                          ("warning", "Sheffield Utd"), ("warning", "Zalaegerszegi")],
+                         "المتوقع: المُقيَّم اليوم + المعلق اليوم (د75+) — "
+                         "لا كهرماني د45 ولا معلق د40 ولا قديم متراكم")
+        w = next(r for r in rec if r["kind"] == "warning" and r["home"] == "Sheffield Utd")
         self.assertTrue(w["hit"], "failed=True يعني الإنذار أصاب — التوقع سقط")
+        # حادثة ZTE: المعلق موسوم pending وبلا حكم — و⏳ في الواجهة لا ✅/❌
+        for r in rec:
+            if r["home"] == "Zalaegerszegi":
+                self.assertTrue(r.get("pending"), "المعلق يجب أن يحمل pending=True")
+                self.assertNotIn("hit", r, "لا حكم قبل تقييم الصباح")
+        # حارس بنيوي: الواجهة تعرف حالة pending (وإلا ظهر المعلق بعلامة ❌ كاذبة)
+        from pathlib import Path as _P
+        portal = _P(D.__file__).resolve().parent / "index.html"
+        self.assertIn("radarPending", portal.read_text(encoding="utf-8"))
         self.assertTrue(w["top"])
         a = next(r for r in rec if r["kind"] == "alert")
         self.assertEqual(a["claim"], "equalizer")

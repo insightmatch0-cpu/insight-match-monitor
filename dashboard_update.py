@@ -657,6 +657,32 @@ def build_radar_accuracy() -> dict:
             "final": a.get("final_score"),
             "hit": bool(a.get("hit")), "top": bool(a.get("top")),
         })
+    # ⏳ المعلق يظهر فور إطلاقه لا بعد تقييم الغد (اكتشاف المالك 2026-08-17:
+    # تنبيه ZTE وصل تيليجرام 20:06 وغاب عن القائمة حتى الصباح — خرقاً لأمر
+    # «لا فرق بين تيليجرام والبوابة». نفس فلاتر النافذة، بعلامة pending
+    # بدل ✅/❌ حتى يقيّمه الصباح فيتحول صفه المُقيَّم محله تلقائياً).
+    for w in (log.get("warnings") or []):
+        if (w.get("date") or "") < fresh or (w.get("minute") or 0) < 75:
+            continue
+        recent.append({
+            "kind": "warning", "pending": True,
+            "date": w.get("date"), "home": w.get("home"), "away": w.get("away"),
+            "league": w.get("league"), "level": w.get("level"),
+            "minute": w.get("minute"),
+            "pick": w.get("pick"), "conf": w.get("confidence"),
+            "top": bool(w.get("top")),
+        })
+    for a in (log.get("alerts") or []):
+        if (a.get("date") or "") < fresh:
+            continue
+        recent.append({
+            "kind": "alert", "pending": True,
+            "date": a.get("date"), "home": a.get("home"), "away": a.get("away"),
+            "league": a.get("league"), "minute": a.get("minute"),
+            "claim": a.get("key"), "side": a.get("side"),
+            "signal": a.get("signal"), "score_at": a.get("score_at"),
+            "top": bool(a.get("top")),
+        })
     recent.sort(key=lambda r: (r.get("date") or "", r.get("minute") or 0))
     out["recent"] = recent
     return out
