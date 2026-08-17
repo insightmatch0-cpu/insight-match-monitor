@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import api_guard as G
 import monitor as M
+import predict as V1
 import predict_v2 as P
 import watchlist as W
 
@@ -190,6 +191,33 @@ class TestEnginesBroadcast(BroadcastHarness):
         self._patch(P, DEVICE_2)
         P.send_telegram("نشرة الصباح")
         self.assertEqual(self.recipients(), [OWNER, DEVICE_2])
+
+    def test_predict_v1_broadcasts(self):
+        """حادثة 2026-08-17: predict.py استعمل TELEGRAM_BROADCAST_IDS في
+        الإرسال دون تعريفه (NameError) فسقطت نشرة المحرك 1 ثلاثة أيام بصمت
+        بينما التوقعات تُحفظ — هذا الاختبار يستدعي مسار V1 فعلياً فيمسك
+        أي اسم غير معرّف قبل الدمج."""
+        self._patch(V1, DEVICE_2)
+        V1.send_telegram("نشرة المحرك 1")
+        self.assertEqual(self.recipients(), [OWNER, DEVICE_2])
+
+    def test_predict_v1_long_digest_broadcasts(self):
+        """النشرة الحقيقية تمر عبر send_telegram_long — نغطي نفس المسار
+        الذي انهار في التشغيلة 2026-08-17."""
+        self._patch(V1, DEVICE_2)
+        V1.send_telegram_long("\n".join(f"سطر {i} " + "x" * 200 for i in range(40)))
+        self.assertGreater(len(self.sent), 2, "لم يقع تقسيم — الاختبار بلا معنى")
+        self.assertEqual(set(self.recipients()), {OWNER, DEVICE_2})
+
+    def test_every_sender_module_defines_the_broadcast_secret(self):
+        """حارس بنيوي: أي وحدة تمرر TELEGRAM_BROADCAST_IDS إلى البث يجب أن
+        تقرأه من البيئة عند الاستيراد — النسيان في وحدة واحدة هو جوهر الحادثة."""
+        for module in (M, V1, P):
+            src = Path(module.__file__).read_text(encoding="utf-8")
+            if "TELEGRAM_BROADCAST_IDS," in src or "TELEGRAM_BROADCAST_IDS)" in src:
+                self.assertIn(
+                    'os.environ.get("TELEGRAM_BROADCAST_IDS"', src,
+                    f"{Path(module.__file__).name} يستعمل سرّ البث دون تعريفه")
 
     def test_monitor_without_secret_is_owner_only(self):
         self._patch(M, "")
