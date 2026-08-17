@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2498,
+  "remaining": 2497,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
   "radar_targets": 5
  },
  "api_quota": {
-  "remaining": 3217,
+  "remaining": 3187,
   "limit": 7500,
-  "at": "2026-08-17T22:46:32.797221+00:00"
+  "at": "2026-08-17T22:52:56.527449+00:00"
  },
  "delivery": {
   "at": "2026-08-17T21:40:41.829147+00:00",
@@ -30,14 +30,14 @@
  "1606458": {
   "score": "2-0",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "Santamarina",
   "away": "Fundacion Amigos",
   "league": "Torneo Federal A (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/475.png",
   "away_logo": "https://media.api-sports.io/football/teams/27574.png",
   "league_logo": "https://media.api-sports.io/football/leagues/134.png",
-  "seen": "2026-08-17T22:46:31.832656+00:00",
+  "seen": "2026-08-17T22:52:55.808726+00:00",
   "radar": {
    "snaps": [
     {
@@ -62,7 +62,7 @@
      "a": {}
     },
     {
-     "minute": 87,
+     "minute": 90,
      "gh": 2,
      "ga": 0,
      "h": {},
@@ -91,8 +91,8 @@
   }
  },
  "1511649": {
-  "score": "0-1",
-  "status": "1H",
+  "score": "0-2",
+  "status": "HT",
   "minute": 45,
   "home": "Deportes Santa Cruz",
   "away": "San Luis",
@@ -100,7 +100,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2346.png",
   "away_logo": "https://media.api-sports.io/football/teams/2322.png",
   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-  "seen": "2026-08-17T22:46:31.832656+00:00",
+  "seen": "2026-08-17T22:52:55.808726+00:00",
   "radar": {
    "snaps": [
     {
@@ -120,21 +120,19 @@
     {
      "minute": 45,
      "gh": 0,
-     "ga": 1,
+     "ga": 2,
      "h": {},
      "a": {}
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
     38,
     34,
-    15
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "away",
    "confidence": 41,
    "top": false,
@@ -149,7 +147,7 @@
  },
  "1511650": {
   "score": "2-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Deportes Copiapo",
   "away": "Curico Unido",
@@ -157,9 +155,16 @@
   "home_logo": "https://media.api-sports.io/football/teams/2343.png",
   "away_logo": "https://media.api-sports.io/football/teams/2316.png",
   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-  "seen": "2026-08-17T22:46:31.832656+00:00",
+  "seen": "2026-08-17T22:52:55.808726+00:00",
   "radar": {
    "snaps": [
+    {
+     "minute": 45,
+     "gh": 2,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
     {
      "minute": 45,
      "gh": 2,
@@ -171,6 +176,7 @@
    "score": 0,
    "level": "green",
    "dscores": [
+    0,
     0
    ],
    "factors": [],
@@ -188,7 +194,7 @@
  },
  "1612428": {
   "score": "1-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "General Caballero",
   "away": "Tacuary",
@@ -196,7 +202,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1181.png",
   "away_logo": "https://media.api-sports.io/football/teams/10491.png",
   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-  "seen": "2026-08-17T22:46:31.832656+00:00",
+  "seen": "2026-08-17T22:52:55.808726+00:00",
   "radar": {
    "snaps": [
     {
@@ -246,14 +252,14 @@
  "1493076": {
   "score": "1-0",
   "status": "1H",
-  "minute": 31,
+  "minute": 38,
   "home": "Velez Sarsfield",
   "away": "Defensa Y Justicia",
   "league": "Liga Profesional Argentina (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/438.png",
   "away_logo": "https://media.api-sports.io/football/teams/442.png",
   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-  "seen": "2026-08-17T22:46:31.832656+00:00",
+  "seen": "2026-08-17T22:52:55.808726+00:00",
   "radar": {
    "snaps": [
     {
@@ -278,21 +284,47 @@
       "rc": 0,
       "sv": 0
      }
+    },
+    {
+     "minute": 38,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 2,
+      "poss": 57,
+      "yc": 2,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 5,
+      "poss": 43,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     }
     }
    ],
-   "score": 15,
+   "score": 29,
    "level": "green",
    "dscores": [
-    15
+    15,
+    29
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "تقدم هش بفارق هدف واحد",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 53,
    "top": true,
    "drama": {
-    "signal": 0,
+    "signal": 35,
     "side": "away",
     "ready": false
    },

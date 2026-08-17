@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-17T22:46:34.228742+00:00",
+ "updated": "2026-08-17T22:52:57.744898+00:00",
  "live": [
   {
    "fid": "1606458",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27574.png",
    "league_logo": "https://media.api-sports.io/football/leagues/134.png",
    "score": "2-0",
-   "minute": 87,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-17T22:46:31.832656+00:00",
+   "seen": "2026-08-17T22:52:55.808726+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -41,7 +41,7 @@
       36,
       79,
       72,
-      87
+      90
      ],
      "danger": [
       36,
@@ -86,10 +86,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2346.png",
    "away_logo": "https://media.api-sports.io/football/teams/2322.png",
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-   "score": "0-1",
+   "score": "0-2",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-17T22:46:31.832656+00:00",
+   "status": "HT",
+   "seen": "2026-08-17T22:52:55.808726+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -99,11 +99,9 @@
     "confidence": 41
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "away",
     "confidence": 41,
     "drama": {
@@ -122,7 +120,7 @@
      "danger": [
       38,
       34,
-      15
+      0
      ],
      "h_sog": [
       0,
@@ -159,8 +157,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
    "score": "2-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-17T22:46:31.832656+00:00",
+   "status": "HT",
+   "seen": "2026-08-17T22:52:55.808726+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -184,21 +182,98 @@
     "top": false,
     "trend": {
      "min": [
+      37,
       45
      ],
      "danger": [
+      0,
       0
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1612428",
+   "home": "General Caballero",
+   "away": "Tacuary",
+   "home_en": "General Caballero",
+   "away_en": "Tacuary",
+   "league": "Division Intermedia (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/1181.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10491.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
+   "score": "1-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-17T22:52:55.808726+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      39,
+      32,
+      45
+     ],
+     "danger": [
+      38,
+      34,
+      42
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
       0
      ]
     }
@@ -286,9 +361,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/442.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "1-0",
-   "minute": 31,
+   "minute": 38,
    "status": "1H",
-   "seen": "2026-08-17T22:46:31.832656+00:00",
+   "seen": "2026-08-17T22:52:55.808726+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -298,15 +373,17 @@
     "confidence": 53
    },
    "radar": {
-    "score": 15,
+    "score": 29,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "تقدم هش بفارق هدف واحد",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 53,
     "drama": {
-     "signal": 0,
+     "signal": 35,
      "side": "away",
      "ready": false
     },
@@ -314,22 +391,28 @@
     "top": true,
     "trend": {
      "min": [
-      31
+      23,
+      38
      ],
      "danger": [
-      15
+      15,
+      29
      ],
      "h_sog": [
+      1,
       1
      ],
      "a_sog": [
-      1
+      1,
+      2
      ],
      "h_cor": [
+      1,
       2
      ],
      "a_cor": [
-      4
+      2,
+      5
      ]
     }
    }
