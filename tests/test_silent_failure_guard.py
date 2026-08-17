@@ -449,3 +449,63 @@ class TestNoSecretsLeak(GuardHarness):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestClaudeCreditGuard(unittest.TestCase):
+    """💳 فجوة صبيحة 2026-08-17: رصيد Anthropic نفد، 109 مرشحين، 0 توقعات
+    محفوظة — والتشغيلة خرجت خضراء بلا إنذار واحد. قاعدتا العلاج من عقيدة
+    14 أغسطس نفسها: إنذار فوري من أول رفض (بتهدئة)، وصفر-من-مرشحين =
+    تشغيلة حمراء لا خضراء صامتة."""
+
+    def _capture(self, module):
+        import unittest.mock as mock
+        calls = []
+        patcher = mock.patch.object(
+            module.api_guard, "alert_once",
+            side_effect=lambda kind, text, **k: calls.append((kind, text)) or True)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        return calls
+
+    def test_v2_credit_refusal_fires_immediate_alert(self):
+        import predict_v2 as P2
+        calls = self._capture(P2)
+        P2.claude_refusal_alert(
+            '{"type":"error","error":{"message":"Your credit balance is too low"}}',
+            "المحرك 2")
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0][0], "claude_credit")
+        self.assertIn("Plans & Billing", calls[0][1])
+
+    def test_v1_has_same_guard(self):
+        import predict as P1
+        calls = self._capture(P1)
+        P1.claude_refusal_alert("credit balance is too low", "المحرك 1")
+        self.assertEqual(calls[0][0], "claude_credit")
+
+    def test_transient_errors_stay_silent(self):
+        """مهلة شبكة أو 529 مؤقت ليسا موت حساب — لا إنذار (لا إغراق)."""
+        import predict_v2 as P2
+        calls = self._capture(P2)
+        P2.claude_refusal_alert("Read timed out", "المحرك 2")
+        P2.claude_refusal_alert("529 Server Error: overloaded", "المحرك 2")
+        self.assertEqual(calls, [])
+
+    def test_zero_predictions_with_candidates_is_loud(self):
+        """بنيوي: حارس الصفر موجود في المحركين بعد الحفظ."""
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        for f in ("predict_v2.py", "predict.py"):
+            src = (root / f).read_text(encoding="utf-8")
+            with self.subTest(engine=f):
+                self.assertIn("if upcoming and not new_preds:", src)
+                self.assertIn("رفض Claude شامل", src)
+
+    def test_wrapper_calls_the_alert(self):
+        """بنيوي: مسار الخطأ في نداء Claude يستدعي الإنذار في المحركين."""
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        for f in ("predict_v2.py", "predict.py"):
+            src = (root / f).read_text(encoding="utf-8")
+            with self.subTest(engine=f):
+                self.assertIn("claude_refusal_alert(", src)

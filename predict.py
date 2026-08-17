@@ -500,7 +500,27 @@ def claude_predict_batch(batch: list, stats: dict) -> dict:
         return parse_predictions_json(text)
     except Exception as e:
         print("Claude error:", e)
+        _detail = ""
+        _resp = getattr(e, "response", None)
+        if _resp is not None:
+            try: _detail = _resp.text[:300]
+            except Exception: pass
+        claude_refusal_alert(_detail or str(e), "المحرك 1")
         return {}
+
+
+
+
+def claude_refusal_alert(detail: str, engine: str) -> None:
+    """انظر النسخة الموثقة في predict_v2.py — نفس العائلة، نفس مفتاح التهدئة."""
+    low = (detail or "").lower()
+    if ("credit balance" in low or "billing" in low
+            or "authentication" in low or "invalid x-api-key" in low):
+        api_guard.alert_once(
+            "claude_credit",
+            f"💳 {engine} متوقف: Anthropic يرفض النداءات (رصيد/فوترة/مفتاح).\n"
+            "لا توقعات حتى يُعبَّأ الرصيد.\n"
+            "الإجراء المطلوب منك: Plans & Billing في حساب Anthropic الممول.")
 
 
 def parse_predictions_json(text: str) -> dict:
@@ -630,6 +650,10 @@ def main() -> None:
     store["meta"] = {"last_run": now_utc().isoformat(), "stats": stats}
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً.")
+    # ⛔ نفس حارس المحرك 2: صفر توقعات مع مرشحين = تشغيلة حمراء (2026-08-17)
+    if upcoming and not new_preds:
+        raise SystemExit(
+            f"⛔ {len(upcoming)} مرشحاً وصفر توقعات محفوظة — رفض Claude شامل")
 
     # 4) ملخص تيليجرام
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
