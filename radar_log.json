@@ -226,10 +226,10 @@
    "pick": "home",
    "confidence": 61,
    "level": "red",
-   "score": 69,
-   "minute": 90,
+   "score": 70,
+   "minute": 97,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د97)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -298,10 +298,10 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 44,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د49)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -316,10 +316,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 44,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -343,19 +343,43 @@
    "level_xg": null
   },
   {
-   "fid": "1497034",
+   "fid": "1560224",
    "date": "2026-08-17",
-   "home": "Varhaug",
-   "away": "Stabæk II",
-   "league": "3. Division - Girone 4 (Norway)",
+   "home": "Zalaegerszegi TE",
+   "away": "Ferencvarosi TC",
+   "league": "NB I (Hungary)",
    "top": false,
    "pick": "away",
-   "confidence": 44,
+   "confidence": 62,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 49,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1564802",
+   "date": "2026-08-17",
+   "home": "Pisa",
+   "away": "Empoli",
+   "league": "Coppa Italia (Italy)",
+   "top": false,
+   "pick": "home",
+   "confidence": 47,
+   "level": "amber",
+   "score": 49,
+   "minute": 46,
+   "factors": [
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "score_xg": null,
    "level_xg": null
@@ -14557,7 +14581,61 @@
    "graded_on": "2026-08-17"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1560224",
+   "date": "2026-08-17",
+   "minute": 79,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Zalaegerszegi TE",
+   "away": "Ferencvarosi TC",
+   "league": "NB I (Hungary)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 49,
+     "gh": 0,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 63,
+     "gh": 0,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 79,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 2,
+      "poss": 52,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 4,
+      "shots": 12,
+      "cor": 1,
+      "poss": 48,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
