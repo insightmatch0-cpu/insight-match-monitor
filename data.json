@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-17T22:38:46.194378+00:00",
+ "updated": "2026-08-17T22:46:34.228742+00:00",
  "live": [
   {
    "fid": "1606458",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/475.png",
    "away_logo": "https://media.api-sports.io/football/teams/27574.png",
    "league_logo": "https://media.api-sports.io/football/leagues/134.png",
-   "score": "1-0",
-   "minute": 79,
+   "score": "2-0",
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-08-17T22:38:43.035098+00:00",
+   "seen": "2026-08-17T22:46:31.832656+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,11 +24,9 @@
     "confidence": 48
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 48,
     "drama": {
@@ -41,11 +39,89 @@
     "trend": {
      "min": [
       36,
-      79
+      79,
+      72,
+      87
      ],
      "danger": [
       36,
-      49,
+      15,
+      15,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1511649",
+   "home": "Deportes Santa Cruz",
+   "away": "San Luis",
+   "home_en": "Deportes Santa Cruz",
+   "away_en": "San Luis",
+   "league": "Primera B (Chile)",
+   "home_logo": "https://media.api-sports.io/football/teams/2346.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2322.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
+   "score": "0-1",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-17T22:46:31.832656+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 41
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 41,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      39,
+      33,
+      45
+     ],
+     "danger": [
+      38,
+      34,
       15
      ],
      "h_sog": [
@@ -72,132 +148,6 @@
    }
   },
   {
-   "fid": "1511649",
-   "home": "Deportes Santa Cruz",
-   "away": "San Luis",
-   "home_en": "Deportes Santa Cruz",
-   "away_en": "San Luis",
-   "league": "Primera B (Chile)",
-   "home_logo": "https://media.api-sports.io/football/teams/2346.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2322.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-   "score": "0-0",
-   "minute": 39,
-   "status": "1H",
-   "seen": "2026-08-17T22:38:43.035098+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 41
-   },
-   "radar": {
-    "score": 38,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د39)"
-    ],
-    "pick": "away",
-    "confidence": 41,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      39
-     ],
-     "danger": [
-      38
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1612428",
-   "home": "General Caballero",
-   "away": "Tacuary",
-   "home_en": "General Caballero",
-   "away_en": "Tacuary",
-   "league": "Division Intermedia (Paraguay)",
-   "home_logo": "https://media.api-sports.io/football/teams/1181.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10491.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-   "score": "0-1",
-   "minute": 39,
-   "status": "1H",
-   "seen": "2026-08-17T22:38:43.035098+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 42
-   },
-   "radar": {
-    "score": 38,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د39)"
-    ],
-    "pick": "home",
-    "confidence": 42,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      39
-     ],
-     "danger": [
-      38
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1511650",
    "home": "Deportes Copiapo",
    "away": "Curico Unido",
@@ -208,9 +158,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2316.png",
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
    "score": "2-0",
-   "minute": 37,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-17T22:38:43.035098+00:00",
+   "seen": "2026-08-17T22:46:31.832656+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -234,7 +184,7 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
       0
@@ -255,6 +205,77 @@
    }
   },
   {
+   "fid": "1612428",
+   "home": "General Caballero",
+   "away": "Tacuary",
+   "home_en": "General Caballero",
+   "away_en": "Tacuary",
+   "league": "Division Intermedia (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/1181.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10491.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
+   "score": "1-1",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-17T22:46:31.832656+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      39,
+      32,
+      45
+     ],
+     "danger": [
+      38,
+      34,
+      42
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1493076",
    "home": "Velez Sarsfield",
    "away": "Defensa Y Justicia",
@@ -265,9 +286,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/442.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "1-0",
-   "minute": 23,
+   "minute": 31,
    "status": "1H",
-   "seen": "2026-08-17T22:38:43.035098+00:00",
+   "seen": "2026-08-17T22:46:31.832656+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -293,7 +314,7 @@
     "top": true,
     "trend": {
      "min": [
-      23
+      31
      ],
      "danger": [
       15
@@ -305,10 +326,10 @@
       1
      ],
      "h_cor": [
-      1
+      2
      ],
      "a_cor": [
-      2
+      4
      ]
     }
    }
