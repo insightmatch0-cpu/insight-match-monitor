@@ -557,7 +557,25 @@ def claude_request(system_prompt: str, user_text: str, max_tokens: int = 2000) -
             try: detail = " — " + resp.text[:300]
             except Exception: pass
         print(f"Claude error: {e}{detail}")
+        claude_refusal_alert(detail or str(e), "المحرك 2")
         return ""
+
+
+def claude_refusal_alert(detail: str, engine: str) -> None:
+    """💳 رفض عائلة موت الحساب من Anthropic (رصيد/فوترة/مفتاح) — إنذار فوري
+    للمالك من أول فشل بتهدئة 6 ساعات (درس 14 أغسطس: عتبة تحتاج N فشلاً
+    يهزمها N-1). النداء الفاشل كان يُبتلع بهدوء فتخرج التشغيلة خضراء بصفر
+    توقعات بلا أي صرخة — وهذا ما حدث حرفياً صبيحة 2026-08-17: 109 مرشحين،
+    0 حُفظ، والحساب فارغ منذ الليل ولا رسالة. مفتاح تهدئة واحد للعائلة."""
+    low = (detail or "").lower()
+    if ("credit balance" in low or "billing" in low
+            or "authentication" in low or "invalid x-api-key" in low):
+        api_guard.alert_once(
+            "claude_credit",
+            f"💳 {engine} متوقف: Anthropic يرفض النداءات (رصيد/فوترة/مفتاح).\n"
+            "لا توقعات ولا تقارير ولا دروس حتى يُعبَّأ الرصيد.\n"
+            "الإجراء المطلوب منك: Plans & Billing في حساب Anthropic الممول — "
+            "عبّئ الرصيد وتحقق لماذا لم تعمل التعبئة التلقائية.")
 
 
 def parse_json_array(text: str) -> list:
@@ -2462,6 +2480,12 @@ def main() -> None:
     }
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
+    # ⛔ صفر توقعات مع مرشحين موجودين = رفض Claude شامل (رصيد غالباً) —
+    # تشغيلة حمراء عمداً كي يظهر العطل في Actions لا أن يمر أخضر صامتاً
+    # (فجوة صبيحة 2026-08-17). التقييم والحفظ أعلاه اكتملا قبل هذا السطر.
+    if upcoming and not new_preds:
+        raise SystemExit(
+            f"⛔ {len(upcoming)} مرشحاً وصفر توقعات محفوظة — رفض Claude شامل")
 
     # الأرشيف الدائم للتقدم (كل الأطراف، لا يُقص أبداً)
     days_total = update_history(stats, user_stats, store["resolved"])
