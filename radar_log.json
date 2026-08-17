@@ -748,15 +748,15 @@
    "pick": "home",
    "confidence": 41,
    "level": "red",
-   "score": 86,
-   "minute": 62,
+   "score": 94,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د62)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د75)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "score_xg": 72,
+   "score_xg": 83,
    "level_xg": "red"
   },
   {
@@ -769,10 +769,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د66)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د72)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -808,10 +808,10 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د50)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د56)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -826,10 +826,10 @@
    "pick": "away",
    "confidence": 43,
    "level": "amber",
-   "score": 48,
-   "minute": 56,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د56)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د62)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -15194,6 +15194,95 @@
       "yc": 1,
       "rc": 0,
       "sv": 3
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570337",
+   "date": "2026-08-17",
+   "minute": 79,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Deportivo La Coruna",
+   "away": "Elche",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 29,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 3,
+      "cor": 1,
+      "poss": 32,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 3,
+      "cor": 1,
+      "poss": 68,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 0.2024,
+     "xg_a": 0.6167
+    },
+    {
+     "minute": 53,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 1,
+      "poss": 38,
+      "yc": 2,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 4,
+      "poss": 62,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 0.2024,
+     "xg_a": 0.8092
+    },
+    {
+     "minute": 79,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 6,
+      "cor": 2,
+      "poss": 35,
+      "yc": 2,
+      "rc": 0,
+      "sv": 4
+     },
+     "a": {
+      "sog": 5,
+      "shots": 10,
+      "cor": 6,
+      "poss": 65,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
      }
     }
    ]
