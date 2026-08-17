@@ -30,6 +30,9 @@ API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+# سرّ البث الاختياري (2026-08-15): نُسي تعريفه هنا وحده فانهار إرسال النشرة
+# 3 أيام (NameError) بينما التوقعات تُحفظ — الإصلاح 2026-08-17 مع اختبار بث V1
+TELEGRAM_BROADCAST_IDS = os.environ.get("TELEGRAM_BROADCAST_IDS", "").strip()
 
 # ================== الإعدادات ==================
 PREDICTIONS_FILE = Path("predictions.json")   # سجل التوقعات الدائم (ذاكرة التعلم)
