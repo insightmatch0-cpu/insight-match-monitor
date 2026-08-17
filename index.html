@@ -730,7 +730,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 79;
+var IM_BUILD = 80;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -778,6 +778,7 @@ var I18N = {
     radarAccLine:"صدق إنذارات الرادار (توقعات سقطت فعلاً بعد التحذير) —",
     radarAccTitle:"🎯 سجل دقة الرادار (S3) — تراكمي، لا يُحذف",
     radarRecent:"📜 منطقة التنبيه (د75+) آخر 24 ساعة — نجح أم فشل",
+    radarPending:"قيد التقييم — الحكم صباحاً",
     radarClaim_next_goal:"الهدف القادم", radarClaim_goal:"هدف المتأخر",
     radarClaim_equalizer:"إدراك التعادل", radarClaim_flip:"قلب النتيجة",
     radarClaim_red_advantage:"أفضلية عددية",
@@ -908,6 +909,7 @@ var I18N = {
     radarAccLine:"Radar warning accuracy (picks that truly fell after the alert) —",
     radarAccTitle:"🎯 Radar (S3) accuracy record — cumulative, nothing deleted",
     radarRecent:"📜 Alert zone (75'+) last 24h — hit or miss",
+    radarPending:"pending — graded next morning",
     radarClaim_next_goal:"Next goal", radarClaim_goal:"Trailing-side goal",
     radarClaim_equalizer:"Equalizer", radarClaim_flip:"Full comeback",
     radarClaim_red_advantage:"Red-card advantage",
@@ -2193,25 +2195,29 @@ function radarAccPanel(acc){
     for (var q = rec40.length - 1; q >= 0; q--){
       var w = rec40[q];
       var sub = esc(w.league || "")+' · '+esc(w.date || "")+' · د'+esc(w.minute);
+      /* ⏳ المعلق (أُطلق اليوم ولم يقيَّمه الصباح بعد) يظهر فوراً — مطابقة
+         تيليجرام لحظة بلحظة (اكتشاف المالك 2026-08-17)، والحكم يحل محله غداً */
+      var face = w.pending ? "⏳ " : (w.hit ? "✅ " : "❌ ");
+      var tail = w.pending ? ' · '+esc(t("radarPending")) : ' → '+esc(w.final || "?");
       if (w.kind === "alert"){
         /* 🚨 حدث تيليجرام حرفياً: الادعاء + المستفيد + الإشارة → النتيجة */
         var ben = w.side === "home" ? w.home : w.away;
         h += '<div class="r-row"><span class="r-name">'
-           + (w.hit ? "✅ " : "❌ ")+"🚨 "+esc(w.home)+' × '+esc(w.away)
+           + face+"🚨 "+esc(w.home)+' × '+esc(w.away)
            + '<span class="r-sub">'+sub
            + ' · '+esc(t("radarClaim_"+w.claim) || w.claim)+' ← '+esc(ben || "")
            + (w.signal ? ' ('+esc(w.signal)+'%)' : '')
            + (w.score_at ? ' @ '+esc(w.score_at) : '')
-           + ' → '+esc(w.final || "?")+'</span></span></div>';
+           + tail+'</span></span></div>';
         continue;
       }
       var pk = w.pick === "home" ? w.home : (w.pick === "away" ? w.away : t("pickDraw"));
       h += '<div class="r-row"><span class="r-name">'
-         + (w.hit ? "✅ " : "❌ ")+(w.level === "red" ? "🔴 " : "🟡 ")
+         + face+(w.level === "red" ? "🔴 " : "🟡 ")
          + esc(w.home)+' × '+esc(w.away)
          + '<span class="r-sub">'+sub+' · '+esc(t("radarPick"))+' '+esc(pk)
          + (w.conf ? ' ('+esc(w.conf)+'%)' : '')
-         + ' → '+esc(w.final || "?")+'</span></span></div>';
+         + tail+'</span></span></div>';
     }
     h += '</details>';
   }
