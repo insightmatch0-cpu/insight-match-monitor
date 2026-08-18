@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T13:06:45.170966+00:00",
+ "updated": "2026-08-18T13:13:10.901527+00:00",
  "live": [
   {
    "fid": "1523198",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/830.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
    "score": "0-2",
-   "minute": 74,
+   "minute": 80,
    "status": "2H",
-   "seen": "2026-08-18T13:06:43.335770+00:00",
+   "seen": "2026-08-18T13:13:09.151651+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -24,10 +24,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 59,
+    "score": 63,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د74)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د80)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -40,10 +40,75 @@
     "top": false,
     "trend": {
      "min": [
-      74
+      63,
+      80
      ],
      "danger": [
-      59
+      52,
+      63
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1619318",
+   "home": "Thailand",
+   "away": "Singapore",
+   "home_en": "Thailand",
+   "away_en": "Singapore",
+   "league": "ASEAN Championship (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/1564.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1546.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/24.png",
+   "score": "0-0",
+   "minute": 13,
+   "status": "1H",
+   "seen": "2026-08-18T13:13:09.151651+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 66
+   },
+   "radar": {
+    "score": 22,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د13)"
+    ],
+    "pick": "home",
+    "confidence": 66,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      13
+     ],
+     "danger": [
+      22
      ],
      "h_sog": [
       0
