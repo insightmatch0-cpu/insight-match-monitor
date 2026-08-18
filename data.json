@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T13:19:36.396744+00:00",
+ "updated": "2026-08-18T13:26:38.760997+00:00",
  "live": [
   {
    "fid": "1523198",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/830.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
    "score": "0-3",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T13:19:34.637890+00:00",
+   "seen": "2026-08-18T13:26:36.339750+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -24,10 +24,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د86)"
+     "النتيجة الحالية 0-3 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -40,21 +40,27 @@
     "top": false,
     "trend": {
      "min": [
-      86
+      86,
+      90
      ],
      "danger": [
-      66
+      66,
+      69
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -71,9 +77,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1546.png",
    "league_logo": "https://media.api-sports.io/football/leagues/24.png",
    "score": "0-0",
-   "minute": 19,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-18T13:19:34.637890+00:00",
+   "seen": "2026-08-18T13:26:36.339750+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -83,10 +89,10 @@
     "confidence": 66
    },
    "radar": {
-    "score": 26,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
     ],
     "pick": "home",
     "confidence": 66,
@@ -99,10 +105,10 @@
     "top": false,
     "trend": {
      "min": [
-      19
+      26
      ],
      "danger": [
-      26
+      30
      ],
      "h_sog": [
       0
@@ -4542,19 +4548,6 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-18",
-    "home": "Shanghai Shenhua",
-    "away": "Beijing Guoan",
-    "league": "Super League (China)",
-    "level": "amber",
-    "minute": 80,
-    "pick": "home",
-    "conf": 44,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-18",
     "home": "Tsirang",
     "away": "Bhutan U19",
     "league": "Premier League (Bhutan)",
@@ -4562,6 +4555,19 @@
     "minute": 84,
     "pick": "home",
     "conf": 45,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Shanghai Shenhua",
+    "away": "Beijing Guoan",
+    "league": "Super League (China)",
+    "level": "red",
+    "minute": 87,
+    "pick": "home",
+    "conf": 44,
     "top": false
    },
    {
