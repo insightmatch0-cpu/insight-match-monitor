@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T15:43:55.677567+00:00",
+ "updated": "2026-08-18T15:50:24.295925+00:00",
  "live": [
   {
    "fid": "1516111",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4221.png",
    "league_logo": "https://media.api-sports.io/football/leagues/369.png",
    "score": "2-1",
-   "minute": 85,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -42,9 +42,11 @@
      "min": [
       45,
       49,
-      79
+      78,
+      90
      ],
      "danger": [
+      15,
       15,
       15,
       15
@@ -52,9 +54,11 @@
      "h_sog": [
       0,
       0,
+      0,
       0
      ],
      "a_sog": [
+      0,
       0,
       0,
       0
@@ -62,9 +66,11 @@
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -82,10 +88,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/12268.png",
    "away_logo": "https://media.api-sports.io/football/teams/12271.png",
    "league_logo": "https://media.api-sports.io/football/leagues/571.png",
-   "score": "2-0",
-   "minute": 84,
+   "score": "3-0",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -111,14 +117,17 @@
      "min": [
       47,
       60,
-      77
+      73,
+      84
      ],
      "danger": [
       15,
       15,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -126,14 +135,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -152,9 +164,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25764.png",
    "league_logo": "https://media.api-sports.io/football/leagues/569.png",
    "score": "3-2",
-   "minute": 80,
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -180,7 +192,7 @@
     "top": false,
     "trend": {
      "min": [
-      74
+      80
      ],
      "danger": [
       15
@@ -201,6 +213,77 @@
    }
   },
   {
+   "fid": "1627508",
+   "home": "CSM Ramnicu Valcea",
+   "away": "Chindia Targoviste",
+   "home_en": "CSM Ramnicu Valcea",
+   "away_en": "Chindia Targoviste",
+   "league": "Cupa României (Romania)",
+   "home_logo": "https://media.api-sports.io/football/teams/2616.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2586.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/285.png",
+   "score": "1-1",
+   "minute": 63,
+   "status": "2H",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 52,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د63)"
+    ],
+    "pick": "away",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      45,
+      63
+     ],
+     "danger": [
+      15,
+      15,
+      52
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1627507",
    "home": "CSM Reşiţa",
    "away": "Petrolul Ploiesti",
@@ -211,9 +294,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2598.png",
    "league_logo": "https://media.api-sports.io/football/leagues/285.png",
    "score": "1-2",
-   "minute": 56,
+   "minute": 62,
    "status": "2H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -240,90 +323,31 @@
     "trend": {
      "min": [
       36,
-      50
-     ],
-     "danger": [
-      15,
-      15
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1627508",
-   "home": "CSM Ramnicu Valcea",
-   "away": "Chindia Targoviste",
-   "home_en": "CSM Ramnicu Valcea",
-   "away_en": "Chindia Targoviste",
-   "league": "Cupa României (Romania)",
-   "home_logo": "https://media.api-sports.io/football/teams/2616.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2586.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/285.png",
-   "score": "1-1",
-   "minute": 56,
-   "status": "2H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 48,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د56)"
-    ],
-    "pick": "away",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
       45,
       56
      ],
      "danger": [
       15,
-      48
+      0,
+      15
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -341,9 +365,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14942.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-4",
-   "minute": 44,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -353,10 +377,10 @@
     "confidence": 52
    },
    "radar": {
-    "score": 41,
+    "score": 42,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-4 تُسقط التوقع (د44)"
+     "النتيجة الحالية 0-4 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 52,
@@ -370,76 +394,13 @@
     "trend": {
      "min": [
       14,
-      44
+      37,
+      45
      ],
      "danger": [
       23,
-      41
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1610985",
-   "home": "Slovan Giraltovce",
-   "away": "Partizán Bardejov",
-   "home_en": "Slovan Giraltovce",
-   "away_en": "Partizán Bardejov",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14073.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10537.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "1-3",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 59
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 59,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      19,
-      29,
-      37
-     ],
-     "danger": [
-      0,
-      0,
-      0
+      37,
+      42
      ],
      "h_sog": [
       0,
@@ -465,113 +426,48 @@
    }
   },
   {
-   "fid": "1611014",
-   "home": "Spišské Podhradie",
-   "away": "Ružomberok",
-   "home_en": "Spišské Podhradie",
-   "away_en": "Ružomberok",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14076.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3549.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-3",
-   "minute": 43,
+   "fid": "1513294",
+   "home": "Atlanta United II",
+   "away": "Chicago Fire II",
+   "home_en": "Atlanta United II",
+   "away_en": "Chicago Fire II",
+   "league": "MLS Next Pro (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/3986.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4040.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
+   "score": "2-0",
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      20,
-      37
-     ],
-     "danger": [
-      0,
-      0
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1611027",
-   "home": "Starý Smokovec",
-   "away": "Poprad",
-   "home_en": "Starý Smokovec",
-   "away_en": "Poprad",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/24415.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10539.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-1",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
-   "pred_v1": {
-    "pick": "away",
+    "pick": "home",
     "confidence": 54
    },
    "pred_v2": {
-    "pick": "away",
-    "confidence": 65
+    "pick": "home",
+    "confidence": 40
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 65,
+    "factors": [],
+    "pick": "home",
+    "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      20,
-      36
+      33,
+      41
      ],
      "danger": [
       15,
-      15
+      0
      ],
      "h_sog": [
       0,
@@ -603,9 +499,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4217.png",
    "league_logo": "https://media.api-sports.io/football/leagues/369.png",
    "score": "1-0",
-   "minute": 41,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -615,10 +511,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 39,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د41)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 40,
@@ -631,10 +527,10 @@
     "top": false,
     "trend": {
      "min": [
-      41
+      45
      ],
      "danger": [
-      39
+      42
      ],
      "h_sog": [
       0
@@ -652,57 +548,69 @@
    }
   },
   {
-   "fid": "1513294",
-   "home": "Atlanta United II",
-   "away": "Chicago Fire II",
-   "home_en": "Atlanta United II",
-   "away_en": "Chicago Fire II",
-   "league": "MLS Next Pro (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/3986.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4040.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "2-0",
-   "minute": 40,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "fid": "1610985",
+   "home": "Slovan Giraltovce",
+   "away": "Partizán Bardejov",
+   "home_en": "Slovan Giraltovce",
+   "away_en": "Partizán Bardejov",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14073.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10537.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "1-3",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 54
+    "pick": "draw",
+    "confidence": 50
    },
    "pred_v2": {
-    "pick": "home",
-    "confidence": 40
+    "pick": "away",
+    "confidence": 59
    },
    "radar": {
     "score": 0,
     "level": "green",
     "factors": [],
-    "pick": "home",
-    "confidence": 40,
+    "pick": "away",
+    "confidence": 59,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      40
+      19,
+      29,
+      43
      ],
      "danger": [
+      0,
+      0,
       0
      ],
      "h_sog": [
+      0,
+      0,
       0
      ],
      "a_sog": [
+      0,
+      0,
       0
      ],
      "h_cor": [
+      0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
       0
      ]
     }
@@ -719,9 +627,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14089.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-0",
-   "minute": 40,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -731,10 +639,10 @@
     "confidence": 56
    },
    "radar": {
-    "score": 39,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 56,
@@ -747,10 +655,268 @@
     "top": false,
     "trend": {
      "min": [
-      40
+      33,
+      45
      ],
      "danger": [
-      39
+      34,
+      42
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1611014",
+   "home": "Spišské Podhradie",
+   "away": "Ružomberok",
+   "home_en": "Spišské Podhradie",
+   "away_en": "Ružomberok",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14076.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3549.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-3",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "away",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20,
+      30,
+      44
+     ],
+     "danger": [
+      0,
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1611027",
+   "home": "Starý Smokovec",
+   "away": "Poprad",
+   "home_en": "Starý Smokovec",
+   "away_en": "Poprad",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/24415.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10539.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20,
+      42
+     ],
+     "danger": [
+      15,
+      15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1563649",
+   "home": "Rodina Moskva",
+   "away": "FC Orenburg",
+   "home_en": "Rodina Moskva",
+   "away_en": "FC Orenburg",
+   "league": "Cup (Russia)",
+   "home_logo": "https://media.api-sports.io/football/teams/6822.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1080.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/237.png",
+   "score": "0-1",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 35
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 35,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      14
+     ],
+     "danger": [
+      0
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1571517",
+   "home": "Pirin Blagoevgrad",
+   "away": "Hebar 1918",
+   "home_en": "Pirin Blagoevgrad",
+   "away_en": "Hebar 1918",
+   "league": "Second League (Bulgaria)",
+   "home_logo": "https://media.api-sports.io/football/teams/1428.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4659.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/173.png",
+   "score": "1-0",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
@@ -778,9 +944,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6786.png",
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "0-1",
-   "minute": 13,
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 65
@@ -790,10 +956,10 @@
     "confidence": 57
    },
    "radar": {
-    "score": 22,
+    "score": 26,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د13)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د19)"
     ],
     "pick": "home",
     "confidence": 57,
@@ -806,128 +972,10 @@
     "top": false,
     "trend": {
      "min": [
-      13
+      19
      ],
      "danger": [
-      22
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1563649",
-   "home": "Rodina Moskva",
-   "away": "FC Orenburg",
-   "home_en": "Rodina Moskva",
-   "away_en": "FC Orenburg",
-   "league": "Cup (Russia)",
-   "home_logo": "https://media.api-sports.io/football/teams/6822.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1080.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/237.png",
-   "score": "0-1",
-   "minute": 13,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 35
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 35,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7
-     ],
-     "danger": [
-      15
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1571517",
-   "home": "Pirin Blagoevgrad",
-   "away": "Hebar 1918",
-   "home_en": "Pirin Blagoevgrad",
-   "away_en": "Hebar 1918",
-   "league": "Second League (Bulgaria)",
-   "home_logo": "https://media.api-sports.io/football/teams/1428.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4659.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/173.png",
-   "score": "0-0",
-   "minute": 13,
-   "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 53
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 22,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د13)"
-    ],
-    "pick": "home",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      13
-     ],
-     "danger": [
-      22
+      26
      ],
      "h_sog": [
       0
@@ -957,7 +1005,7 @@
    "score": "0-0",
    "minute": 4,
    "status": "1H",
-   "seen": "2026-08-18T15:43:52.929213+00:00",
+   "seen": "2026-08-18T15:50:21.438097+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
