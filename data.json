@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T03:39:16.230895+00:00",
+ "updated": "2026-08-18T03:46:34.064105+00:00",
  "live": [
   {
    "fid": "1598809",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/17377.png",
    "league_logo": "https://media.api-sports.io/football/leagues/162.png",
    "score": "2-0",
-   "minute": 76,
+   "minute": 83,
    "status": "2H",
-   "seen": "2026-08-18T03:39:14.627526+00:00",
+   "seen": "2026-08-18T03:46:31.953928+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -39,9 +39,12 @@
     "trend": {
      "min": [
       45,
-      76
+      76,
+      69,
+      83
      ],
      "danger": [
+      0,
       0,
       0,
       0
@@ -49,9 +52,11 @@
      "h_sog": [
       0,
       0,
+      0,
       0
      ],
      "a_sog": [
+      0,
       0,
       0,
       0
@@ -59,9 +64,11 @@
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -79,10 +86,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2292.png",
    "away_logo": "https://media.api-sports.io/football/teams/2291.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "score": "0-1",
-   "minute": 33,
+   "score": "0-2",
+   "minute": 40,
    "status": "1H",
-   "seen": "2026-08-18T03:39:14.627526+00:00",
+   "seen": "2026-08-18T03:46:31.953928+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -92,15 +99,15 @@
     "confidence": 62
    },
    "radar": {
-    "score": 34,
+    "score": 39,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د33)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د40)"
     ],
     "pick": "home",
     "confidence": 62,
     "drama": {
-     "signal": 15,
+     "signal": 0,
      "side": "home",
      "ready": false
     },
@@ -108,25 +115,34 @@
     "top": false,
     "trend": {
      "min": [
-      33
+      33,
+      26,
+      40
      ],
      "danger": [
-      34
+      34,
+      30,
+      39
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
-      0,
-      1
-     ],
-     "h_cor": [
+      1,
       1,
       2
      ],
+     "h_cor": [
+      2,
+      2,
+      3
+     ],
      "a_cor": [
-      1
+      1,
+      0,
+      0
      ]
     }
    }
