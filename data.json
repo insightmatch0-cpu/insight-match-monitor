@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T00:01:39.562339+00:00",
+ "updated": "2026-08-18T00:08:53.854644+00:00",
  "live": [
   {
    "fid": "1493076",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/442.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "1-1",
-   "minute": 85,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T00:01:37.486163+00:00",
+   "seen": "2026-08-18T00:08:51.916544+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,10 +24,10 @@
     "confidence": 53
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د85)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 53,
@@ -42,30 +42,25 @@
      "min": [
       44,
       72,
-      66,
-      85
+      90
      ],
      "danger": [
       15,
       41,
-      15,
-      66
+      69
      ],
      "h_sog": [
       1,
-      3,
       3,
       3
      ],
      "a_sog": [
       2,
       5,
-      4,
       5
      ],
      "h_cor": [
       3,
-      4,
       4,
       4
      ],
@@ -89,9 +84,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1198.png",
    "league_logo": "https://media.api-sports.io/football/leagues/71.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-18T00:01:37.486163+00:00",
+   "minute": 50,
+   "status": "2H",
+   "seen": "2026-08-18T00:08:51.916544+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 68
@@ -101,16 +96,15 @@
     "confidence": 52
    },
    "radar": {
-    "score": 21,
+    "score": 15,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد",
-     "ضغط هجومي متصاعد من الضيف"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 52,
     "drama": {
-     "signal": 15,
+     "signal": 0,
      "side": "away",
      "ready": false
     },
@@ -119,11 +113,11 @@
     "trend": {
      "min": [
       45,
-      45
+      50
      ],
      "danger": [
       15,
-      21
+      15
      ],
      "h_sog": [
       2,
@@ -155,9 +149,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/149.png",
    "league_logo": "https://media.api-sports.io/football/leagues/75.png",
    "score": "2-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-18T00:01:37.486163+00:00",
+   "minute": 48,
+   "status": "2H",
+   "seen": "2026-08-18T00:08:51.916544+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -182,7 +176,7 @@
     "trend": {
      "min": [
       45,
-      45
+      48
      ],
      "danger": [
       0,
@@ -220,7 +214,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-18T00:01:37.486163+00:00",
+   "seen": "2026-08-18T00:08:51.916544+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -267,6 +261,65 @@
      ],
      "a_cor": [
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1519452",
+   "home": "Macara",
+   "away": "Universidad Catolica",
+   "home_en": "Macara",
+   "away_en": "Universidad Catolica",
+   "league": "Liga Pro (Ecuador)",
+   "home_logo": "https://media.api-sports.io/football/teams/1155.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1157.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
+   "score": "0-0",
+   "minute": 9,
+   "status": "1H",
+   "seen": "2026-08-18T00:08:51.916544+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 20,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د9)"
+    ],
+    "pick": "away",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      9
+     ],
+     "danger": [
+      20
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
@@ -3298,6 +3351,19 @@
     "pick": "home",
     "conf": 50,
     "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-17",
+    "home": "Velez Sarsfield",
+    "away": "Defensa Y Justicia",
+    "league": "Liga Profesional Argentina (Argentina)",
+    "level": "red",
+    "minute": 86,
+    "pick": "home",
+    "conf": 53,
+    "top": true
    },
    {
     "kind": "warning",
