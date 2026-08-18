@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2493,
+  "remaining": 2492,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 3
+  "radar_targets": 4
  },
  "api_quota": {
-  "remaining": 2961,
+  "remaining": 2936,
   "limit": 7500,
-  "at": "2026-08-18T22:36:57.805506+00:00"
+  "at": "2026-08-18T22:46:31.813749+00:00"
  },
  "delivery": {
   "at": "2026-08-18T18:11:02.979102+00:00",
@@ -30,31 +30,47 @@
  "1547770": {
   "score": "0-0",
   "status": "1H",
-  "minute": 37,
+  "minute": 45,
   "home": "Independ. Rivadavia",
   "away": "Fluminense",
   "league": "CONMEBOL Libertadores (World)",
   "home_logo": "https://media.api-sports.io/football/teams/473.png",
   "away_logo": "https://media.api-sports.io/football/teams/124.png",
   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
-  "seen": "2026-08-18T22:36:57.205996+00:00",
+  "seen": "2026-08-18T22:46:31.055331+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 37,
+     "minute": 45,
      "gh": 0,
      "ga": 0,
-     "h": {},
-     "a": {}
+     "h": {
+      "sv": 1,
+      "shots": 3,
+      "yc": 1,
+      "cor": 2,
+      "sog": 0,
+      "rc": 0,
+      "poss": 31
+     },
+     "a": {
+      "sv": 0,
+      "shots": 3,
+      "yc": 2,
+      "cor": 3,
+      "sog": 1,
+      "rc": 0,
+      "poss": 69
+     }
     }
    ],
-   "score": 37,
-   "level": "green",
+   "score": 42,
+   "level": "amber",
    "dscores": [
-    37
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 39,
@@ -69,16 +85,16 @@
   }
  },
  "1607651": {
-  "score": "0-1",
+  "score": "0-2",
   "status": "1H",
-  "minute": 37,
+  "minute": 45,
   "home": "Deportivo Recoleta",
   "away": "Boca Juniors",
   "league": "CONMEBOL Sudamericana (World)",
   "home_logo": "https://media.api-sports.io/football/teams/10476.png",
   "away_logo": "https://media.api-sports.io/football/teams/451.png",
   "league_logo": "https://media.api-sports.io/football/leagues/11.png",
-  "seen": "2026-08-18T22:36:57.205996+00:00",
+  "seen": "2026-08-18T22:46:31.055331+00:00",
   "radar": {
    "snaps": [
     {
@@ -94,15 +110,40 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 2,
+     "h": {
+      "sog": 1,
+      "sv": 3,
+      "shots": 3,
+      "cor": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 52
+     },
+     "a": {
+      "sog": 4,
+      "sv": 1,
+      "shots": 7,
+      "cor": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 48
+     }
     }
    ],
-   "score": 15,
+   "score": 6,
    "level": "green",
    "dscores": [
-    15
+    15,
+    15,
+    6
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "pick": "away",
    "confidence": 54,
@@ -119,34 +160,89 @@
  "1619653": {
   "score": "1-1",
   "status": "1H",
-  "minute": 37,
+  "minute": 45,
   "home": "Guabirá",
   "away": "Universitario de Vinto",
   "league": "Copa de la División Profesional (Bolivia)",
   "home_logo": "https://media.api-sports.io/football/teams/3704.png",
   "away_logo": "https://media.api-sports.io/football/teams/17762.png",
   "league_logo": "https://media.api-sports.io/football/leagues/964.png",
-  "seen": "2026-08-18T22:36:57.205996+00:00",
+  "seen": "2026-08-18T22:46:31.055331+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 37,
+     "minute": 45,
      "gh": 1,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 37,
-   "level": "green",
+   "score": 42,
+   "level": "amber",
    "dscores": [
-    37
+    42
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د37)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 42,
+   "top": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null
+  }
+ },
+ "1520826": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 15,
+  "home": "Londrina",
+  "away": "Atletico Goianiense",
+  "league": "Serie B (Brazil)",
+  "home_logo": "https://media.api-sports.io/football/teams/148.png",
+  "away_logo": "https://media.api-sports.io/football/teams/144.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/72.png",
+  "seen": "2026-08-18T22:46:31.055331+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 15,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 2,
+      "cor": 0,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 39
+     },
+     "a": {
+      "shots": 4,
+      "cor": 2,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 61
+     }
+    }
+   ],
+   "score": 24,
+   "level": "green",
+   "dscores": [
+    24
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+   ],
+   "pick": "home",
+   "confidence": 40,
    "top": false,
    "drama": {
     "signal": 0,

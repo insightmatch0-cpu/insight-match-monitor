@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T22:36:59.422298+00:00",
+ "updated": "2026-08-18T22:46:33.390119+00:00",
  "live": [
   {
    "fid": "1547770",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/124.png",
    "league_logo": "https://media.api-sports.io/football/leagues/13.png",
    "score": "0-0",
-   "minute": 37,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-18T22:36:57.205996+00:00",
+   "seen": "2026-08-18T22:46:31.055331+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -24,10 +24,10 @@
     "confidence": 39
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 39,
@@ -40,22 +40,22 @@
     "top": true,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
-      37
+      42
      ],
      "h_sog": [
       0
      ],
      "a_sog": [
-      0
+      1
      ],
      "h_cor": [
-      0
+      2
      ],
      "a_cor": [
-      0
+      3
      ]
     }
    }
@@ -70,10 +70,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/10476.png",
    "away_logo": "https://media.api-sports.io/football/teams/451.png",
    "league_logo": "https://media.api-sports.io/football/leagues/11.png",
-   "score": "0-1",
-   "minute": 37,
+   "score": "0-2",
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-18T22:36:57.205996+00:00",
+   "seen": "2026-08-18T22:46:31.055331+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 68
@@ -83,10 +83,10 @@
     "confidence": 54
    },
    "radar": {
-    "score": 15,
+    "score": 6,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 54,
@@ -99,22 +99,34 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      37,
+      31,
+      45
      ],
      "danger": [
-      15
+      15,
+      15,
+      6
      ],
      "h_sog": [
-      0
+      0,
+      0,
+      1
      ],
      "a_sog": [
-      0
+      0,
+      0,
+      4
      ],
      "h_cor": [
-      0
+      0,
+      0,
+      1
      ],
      "a_cor": [
-      0
+      0,
+      0,
+      2
      ]
     }
    }
@@ -130,9 +142,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/17762.png",
    "league_logo": "https://media.api-sports.io/football/leagues/964.png",
    "score": "1-1",
-   "minute": 37,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-18T22:36:57.205996+00:00",
+   "seen": "2026-08-18T22:46:31.055331+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -142,10 +154,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د37)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -158,10 +170,10 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
-      37
+      42
      ],
      "h_sog": [
       0
@@ -174,6 +186,65 @@
      ],
      "a_cor": [
       0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1520826",
+   "home": "Londrina",
+   "away": "Atletico Goianiense",
+   "home_en": "Londrina",
+   "away_en": "Atletico Goianiense",
+   "league": "Serie B (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/148.png",
+   "away_logo": "https://media.api-sports.io/football/teams/144.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/72.png",
+   "score": "0-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-08-18T22:46:31.055331+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      2
      ]
     }
    }
