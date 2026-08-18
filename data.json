@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T13:13:10.901527+00:00",
+ "updated": "2026-08-18T13:19:36.396744+00:00",
  "live": [
   {
    "fid": "1523198",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/833.png",
    "away_logo": "https://media.api-sports.io/football/teams/830.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-   "score": "0-2",
-   "minute": 80,
+   "score": "0-3",
+   "minute": 86,
    "status": "2H",
-   "seen": "2026-08-18T13:13:09.151651+00:00",
+   "seen": "2026-08-18T13:19:34.637890+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -24,43 +24,37 @@
     "confidence": 44
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 66,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د80)"
+     "النتيجة الحالية 0-3 تُسقط التوقع (د86)"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      63,
-      80
+      86
      ],
      "danger": [
-      52,
-      63
+      66
      ],
      "h_sog": [
-      0,
       0
      ],
      "a_sog": [
-      0,
       0
      ],
      "h_cor": [
-      0,
       0
      ],
      "a_cor": [
-      0,
       0
      ]
     }
@@ -77,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1546.png",
    "league_logo": "https://media.api-sports.io/football/leagues/24.png",
    "score": "0-0",
-   "minute": 13,
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-18T13:13:09.151651+00:00",
+   "seen": "2026-08-18T13:19:34.637890+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -89,10 +83,10 @@
     "confidence": 66
    },
    "radar": {
-    "score": 22,
+    "score": 26,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د13)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
     ],
     "pick": "home",
     "confidence": 66,
@@ -105,10 +99,10 @@
     "top": false,
     "trend": {
      "min": [
-      13
+      19
      ],
      "danger": [
-      22
+      26
      ],
      "h_sog": [
       0
@@ -4542,6 +4536,19 @@
     "score_at": "1-2",
     "final": "1-2",
     "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Shanghai Shenhua",
+    "away": "Beijing Guoan",
+    "league": "Super League (China)",
+    "level": "amber",
+    "minute": 80,
+    "pick": "home",
+    "conf": 44,
     "top": false
    },
    {
