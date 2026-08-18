@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T02:53:06.861239+00:00",
+ "updated": "2026-08-18T02:59:35.415569+00:00",
  "live": [
   {
    "fid": "1550928",
@@ -14,7 +14,7 @@
    "score": "1-2",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T02:53:04.036108+00:00",
+   "seen": "2026-08-18T02:54:54.094315+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -24,10 +24,12 @@
     "confidence": 40
    },
    "radar": {
-    "score": 69,
+    "score": 87,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 40,
@@ -41,13 +43,11 @@
     "trend": {
      "min": [
       45,
-      77,
       90
      ],
      "danger": [
       42,
-      79,
-      69
+      87
      ],
      "h_sog": [
       5,
@@ -85,7 +85,7 @@
    "score": "0-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T02:53:04.036108+00:00",
+   "seen": "2026-08-18T02:57:59.661066+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -112,12 +112,10 @@
     "trend": {
      "min": [
       45,
-      77,
       90
      ],
      "danger": [
       42,
-      61,
       69
      ],
      "h_sog": [
@@ -156,7 +154,7 @@
    "score": "2-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-18T02:53:04.036108+00:00",
+   "seen": "2026-08-18T02:56:26.613989+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -175,7 +173,7 @@
     "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
@@ -183,12 +181,10 @@
     "trend": {
      "min": [
       45,
-      75,
       90
      ],
      "danger": [
       42,
-      60,
       69
      ],
      "h_sog": [
@@ -227,7 +223,7 @@
    "score": "2-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-18T02:53:04.036108+00:00",
+   "seen": "2026-08-18T02:59:32.514894+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -251,7 +247,6 @@
     "top": false,
     "trend": {
      "min": [
-      33,
       45
      ],
      "danger": [
@@ -3736,45 +3731,6 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-18",
-    "home": "Pitbulls Santa Barbara FC",
-    "away": "CS Uruguay",
-    "league": "Liga de Ascenso (Costa-Rica)",
-    "level": "red",
-    "minute": 85,
-    "pick": "away",
-    "conf": 40,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-18",
-    "home": "Tauro FC",
-    "away": "CD Arabe Unido",
-    "league": "Liga Panameña de Fútbol (Panama)",
-    "level": "red",
-    "minute": 87,
-    "pick": "home",
-    "conf": 48,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-18",
-    "home": "Necaxa",
-    "away": "Leon",
-    "league": "Liga MX (Mexico)",
-    "level": "red",
-    "minute": 88,
-    "pick": "home",
-    "conf": 40,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-18",
     "home": "Macara",
     "away": "Universidad Catolica",
     "league": "Liga Pro (Ecuador)",
@@ -3795,6 +3751,45 @@
     "minute": 90,
     "pick": "home",
     "conf": 41,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Tauro FC",
+    "away": "CD Arabe Unido",
+    "league": "Liga Panameña de Fútbol (Panama)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 48,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Necaxa",
+    "away": "Leon",
+    "league": "Liga MX (Mexico)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 40,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Pitbulls Santa Barbara FC",
+    "away": "CS Uruguay",
+    "league": "Liga de Ascenso (Costa-Rica)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 40,
     "top": false
    }
   ]
