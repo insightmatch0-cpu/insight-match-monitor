@@ -1101,11 +1101,11 @@
    "top": false,
    "pick": "home",
    "confidence": 41,
-   "level": "amber",
-   "score": 64,
-   "minute": 82,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د82)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -1120,10 +1120,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د50)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د61)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -1138,10 +1138,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 45,
-   "minute": 51,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د51)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د61)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -1156,10 +1156,10 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
    ],
    "score_xg": null,
    "level_xg": null
@@ -15592,6 +15592,67 @@
       "yc": 0,
       "rc": 0,
       "sv": 5
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1550928",
+   "date": "2026-08-18",
+   "minute": 63,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Necaxa",
+   "away": "Leon",
+   "league": "Liga MX (Mexico)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 10,
+      "cor": 6,
+      "poss": 47,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
+     },
+     "a": {
+      "sog": 5,
+      "shots": 10,
+      "cor": 3,
+      "poss": 53,
+      "yc": 0,
+      "rc": 0,
+      "sv": 5
+     }
+    },
+    {
+     "minute": 63,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 7,
+      "shots": 13,
+      "cor": 6,
+      "poss": 48,
+      "yc": 1,
+      "rc": 0,
+      "sv": 5
+     },
+     "a": {
+      "sog": 6,
+      "shots": 12,
+      "cor": 3,
+      "poss": 52,
+      "yc": 1,
+      "rc": 1,
+      "sv": 7
      }
     }
    ]
