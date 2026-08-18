@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2496,
+  "remaining": 2495,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 1
+  "radar_targets": 2
  },
  "api_quota": {
-  "remaining": 6401,
+  "remaining": 6386,
   "limit": 7500,
-  "at": "2026-08-18T11:09:17.196737+00:00"
+  "at": "2026-08-18T11:16:33.388130+00:00"
  },
  "delivery": {
   "at": "2026-08-18T04:17:13.468796+00:00",
@@ -30,14 +30,14 @@
  "1623383": {
   "score": "0-1",
   "status": "2H",
-  "minute": 81,
+  "minute": 88,
   "home": "SD Raiders",
   "away": "Sydney",
   "league": "Australia Cup (Australia)",
   "home_logo": "https://media.api-sports.io/football/teams/16777.png",
   "away_logo": "https://media.api-sports.io/football/teams/943.png",
   "league_logo": "https://media.api-sports.io/football/leagues/874.png",
-  "seen": "2026-08-18T11:09:17.058087+00:00",
+  "seen": "2026-08-18T11:16:33.035552+00:00",
   "radar": {
    "snaps": [
     {
@@ -60,11 +60,19 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 88,
+     "gh": 0,
+     "ga": 1,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 15,
    "level": "green",
    "dscores": [
+    15,
     15,
     15,
     15
@@ -74,6 +82,47 @@
    ],
    "pick": "away",
    "confidence": 65,
+   "top": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null
+  }
+ },
+ "1611331": {
+  "score": "3-5",
+  "status": "HT",
+  "minute": 45,
+  "home": "Tsirang",
+  "away": "Bhutan U19",
+  "league": "Premier League (Bhutan)",
+  "home_logo": "https://media.api-sports.io/football/teams/21277.png",
+  "away_logo": "https://media.api-sports.io/football/teams/5433.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
+  "seen": "2026-08-18T11:16:33.035552+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 45,
+     "gh": 3,
+     "ga": 5,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 42,
+   "level": "amber",
+   "dscores": [
+    42
+   ],
+   "factors": [
+    "النتيجة الحالية 3-5 تُسقط التوقع (د45)"
+   ],
+   "pick": "home",
+   "confidence": 45,
    "top": false,
    "drama": {
     "signal": 0,
