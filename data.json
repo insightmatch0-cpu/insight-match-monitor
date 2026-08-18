@@ -1,21 +1,6 @@
 {
- "updated": "2026-08-18T21:56:58.915857+00:00",
+ "updated": "2026-08-18T22:03:52.921885+00:00",
  "live": [
-  {
-   "fid": "1560814",
-   "home": "Yaracuyanos FC",
-   "away": "Caracas FC",
-   "home_en": "Yaracuyanos FC",
-   "away_en": "Caracas FC",
-   "league": "Copa Venezuela (Venezuela)",
-   "home_logo": "https://media.api-sports.io/football/teams/2829.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2808.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
-   "score": "2-3",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-18T21:53:53.893602+00:00"
-  },
   {
    "fid": "1598011",
    "home": "Deportivo Riestra",
@@ -27,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/434.png",
    "league_logo": "https://media.api-sports.io/football/leagues/130.png",
    "score": "1-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-18T21:56:57.404685+00:00",
+   "minute": 0,
+   "status": "P",
+   "seen": "2026-08-18T22:03:51.371763+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -39,10 +24,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 69,
-    "level": "red",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د0)"
     ],
     "pick": "home",
     "confidence": 38,
@@ -56,11 +41,11 @@
     "trend": {
      "min": [
       79,
-      90
+      0
      ],
      "danger": [
       62,
-      69
+      15
      ],
      "h_sog": [
       0,
@@ -130,22 +115,6 @@
    "pick": "away",
    "confidence": 60,
    "reason": "إستوديانتس فريق أرجنتيني عريق بخبرة طويلة في المسابقات الكبرى"
-  },
-  {
-   "fid": "1598011",
-   "kickoff": "2026-08-18T20:00:00+00:00",
-   "home": "ديبورتيفو ريسترا",
-   "away": "جيمناسيا لا بلاتا",
-   "home_en": "Deportivo Riestra",
-   "home_logo": "https://media.api-sports.io/football/teams/476.png",
-   "away_logo": "https://media.api-sports.io/football/teams/434.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/130.png",
-   "away_en": "Gimnasia L.P.",
-   "league": "كأس الأرجنتين",
-   "top": false,
-   "pick": "away",
-   "confidence": 56,
-   "reason": "جيمناسيا فريق بتاريخ أقوى وخبرة أكثر في البطولات الكبرى"
   },
   {
    "fid": "1607651",
@@ -1013,6 +982,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-18",
+   "home": "بنيامين أسيفال",
+   "away": "ناسيونال أسونسيون",
+   "home_en": "Benjamín Aceval",
+   "away_en": "Nacional Asuncion",
+   "league": "كأس باراغواي",
+   "home_logo": "https://media.api-sports.io/football/teams/17183.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1175.png",
+   "pick": "away",
+   "confidence": 52,
+   "kickoff": "2026-08-18T19:30:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-18",
    "home": "دينامو زغرب",
@@ -4238,6 +4221,19 @@
     "conf": 55,
     "final": "3-2",
     "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Deportivo Riestra",
+    "away": "Gimnasia L.P.",
+    "league": "Copa Argentina (Argentina)",
+    "level": "amber",
+    "minute": 80,
+    "pick": "home",
+    "conf": 38,
     "top": false
    },
    {
