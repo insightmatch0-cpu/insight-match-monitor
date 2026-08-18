@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T03:07:07.615610+00:00",
+ "updated": "2026-08-18T03:16:31.605338+00:00",
  "live": [
   {
    "fid": "1598809",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/17377.png",
    "league_logo": "https://media.api-sports.io/football/leagues/162.png",
    "score": "2-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-18T03:07:06.214561+00:00",
+   "minute": 53,
+   "status": "2H",
+   "seen": "2026-08-18T03:16:29.935790+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -39,7 +39,7 @@
     "trend": {
      "min": [
       45,
-      45
+      53
      ],
      "danger": [
       0,
@@ -59,6 +59,65 @@
      ],
      "a_cor": [
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1550929",
+   "home": "CF Pachuca",
+   "away": "Puebla",
+   "home_en": "CF Pachuca",
+   "away_en": "Puebla",
+   "league": "Liga MX (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/2292.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2291.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-18T03:16:29.935790+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "home",
+    "confidence": 62,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10
+     ],
+     "danger": [
+      21
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      1
+     ],
+     "a_cor": [
       0
      ]
     }
