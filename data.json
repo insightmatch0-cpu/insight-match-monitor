@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-18T22:46:33.390119+00:00",
+ "updated": "2026-08-18T22:53:01.026797+00:00",
  "live": [
   {
    "fid": "1547770",
@@ -13,8 +13,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/13.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-18T22:46:31.055331+00:00",
+   "status": "HT",
+   "seen": "2026-08-18T22:52:58.833279+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -24,15 +24,17 @@
     "confidence": 39
    },
    "radar": {
-    "score": 42,
+    "score": 56,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 39,
     "drama": {
-     "signal": 0,
+     "signal": 35,
      "side": "home",
      "ready": false
     },
@@ -40,21 +42,27 @@
     "top": true,
     "trend": {
      "min": [
+      37,
       45
      ],
      "danger": [
-      42
+      37,
+      56
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       1
      ],
      "h_cor": [
+      0,
       2
      ],
      "a_cor": [
+      0,
       3
      ]
     }
@@ -72,8 +80,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/11.png",
    "score": "0-2",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-18T22:46:31.055331+00:00",
+   "status": "HT",
+   "seen": "2026-08-18T22:52:58.833279+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 68
@@ -143,8 +151,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/964.png",
    "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-18T22:46:31.055331+00:00",
+   "status": "HT",
+   "seen": "2026-08-18T22:52:58.833279+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -170,10 +178,75 @@
     "top": false,
     "trend": {
      "min": [
+      37,
       45
      ],
      "danger": [
+      37,
       42
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1520826",
+   "home": "Londrina",
+   "away": "Atletico Goianiense",
+   "home_en": "Londrina",
+   "away_en": "Atletico Goianiense",
+   "league": "Serie B (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/148.png",
+   "away_logo": "https://media.api-sports.io/football/teams/144.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/72.png",
+   "score": "0-0",
+   "minute": 22,
+   "status": "1H",
+   "seen": "2026-08-18T22:52:58.833279+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 28,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د22)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      22
+     ],
+     "danger": [
+      28
      ],
      "h_sog": [
       0
@@ -185,7 +258,7 @@
       0
      ],
      "a_cor": [
-      0
+      2
      ]
     }
    }
