@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T16:45:14.486083+00:00",
+ "updated": "2026-08-19T16:51:52.205093+00:00",
  "live": [
   {
    "fid": "1627515",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6875.png",
    "league_logo": "https://media.api-sports.io/football/leagues/285.png",
    "score": "0-0",
-   "minute": 109,
+   "minute": 113,
    "status": "ET",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -67,6 +67,101 @@
    }
   },
   {
+   "fid": "1627519",
+   "home": "USV Iaşi",
+   "away": "Sporting Lieşti",
+   "home_en": "USV Iaşi",
+   "away_en": "Sporting Lieşti",
+   "league": "Cupa României (Romania)",
+   "home_logo": "https://media.api-sports.io/football/teams/21678.png",
+   "away_logo": "https://media.api-sports.io/football/teams/6899.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/285.png",
+   "score": "1-2",
+   "minute": 113,
+   "status": "ET",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "radar": {
+    "score": 70,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-2 تُسقط التوقع (د113)"
+    ],
+    "pick": "home",
+    "confidence": 52,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      13,
+      21,
+      31,
+      90,
+      0,
+      94,
+      113
+     ],
+     "danger": [
+      22,
+      15,
+      15,
+      69,
+      15,
+      70,
+      70
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1627513",
    "home": "Slatina",
    "away": "Sepsi OSK Sfantu Gheorghe",
@@ -77,9 +172,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2585.png",
    "league_logo": "https://media.api-sports.io/football/leagues/285.png",
    "score": "0-1",
-   "minute": 107,
+   "minute": 110,
    "status": "ET",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -154,9 +249,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6892.png",
    "league_logo": "https://media.api-sports.io/football/leagues/285.png",
    "score": "1-2",
-   "minute": 105,
+   "minute": 109,
    "status": "ET",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -188,6 +283,7 @@
       69,
       62,
       0,
+      96,
       105
      ],
      "danger": [
@@ -197,6 +293,7 @@
       56,
       52,
       15,
+      70,
       15
      ],
      "h_sog": [
@@ -206,9 +303,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_sog": [
+      0,
       0,
       0,
       0,
@@ -224,99 +323,12 @@
       0,
       0,
       0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1627519",
-   "home": "USV Iaşi",
-   "away": "Sporting Lieşti",
-   "home_en": "USV Iaşi",
-   "away_en": "Sporting Lieşti",
-   "league": "Cupa României (Romania)",
-   "home_logo": "https://media.api-sports.io/football/teams/21678.png",
-   "away_logo": "https://media.api-sports.io/football/teams/6899.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/285.png",
-   "score": "1-2",
-   "minute": 93,
-   "status": "ET",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "radar": {
-    "score": 70,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د93)"
-    ],
-    "pick": "home",
-    "confidence": 52,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      13,
-      21,
-      31,
-      90,
-      0,
-      93
-     ],
-     "danger": [
-      22,
-      15,
-      15,
-      69,
-      15,
-      70
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
       0,
       0
      ],
      "a_cor": [
+      0,
+      0,
       0,
       0,
       0,
@@ -340,7 +352,7 @@
    "score": "2-2",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:50:15.412673+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -349,309 +361,6 @@
     "pick": "away",
     "confidence": 37
    }
-  },
-  {
-   "fid": "1610627",
-   "home": "Jakubov",
-   "away": "Inter Bratislava",
-   "home_en": "Jakubov",
-   "away_en": "Inter Bratislava",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/26320.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10547.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "1-4",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 60
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 60,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      21,
-      31,
-      52,
-      65,
-      75,
-      83
-     ],
-     "danger": [
-      15,
-      27,
-      33,
-      15,
-      0,
-      0,
-      0
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1611004",
-   "home": "Raslavice",
-   "away": "FK Košice",
-   "home_en": "Raslavice",
-   "away_en": "FK Košice",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/17258.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10534.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-5",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-19T16:43:39.220158+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      10,
-      23,
-      33,
-      48,
-      68,
-      78,
-      87
-     ],
-     "danger": [
-      15,
-      15,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1610998",
-   "home": "Nová Dedinka",
-   "away": "Petržalka",
-   "home_en": "Nová Dedinka",
-   "away_en": "Petržalka",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/16893.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10538.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "1-5",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      20,
-      30,
-      46,
-      66,
-      76,
-      84
-     ],
-     "danger": [
-      15,
-      15,
-      15,
-      0,
-      0,
-      0
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1611317",
-   "home": "Kechnec",
-   "away": "Slávia TU Košice",
-   "home_en": "Kechnec",
-   "away_en": "Slávia TU Košice",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14988.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14074.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-3",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1611029",
-   "home": "Závažná Poruba",
-   "away": "Kysucké Nové Mesto",
-   "home_en": "Závažná Poruba",
-   "away_en": "Kysucké Nové Mesto",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/16920.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14999.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
   },
   {
    "fid": "1606105",
@@ -664,9 +373,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10533.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-2",
-   "minute": 89,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:47:08.843190+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 53
@@ -696,7 +405,7 @@
       51,
       65,
       74,
-      83
+      90
      ],
      "danger": [
       17,
@@ -704,6 +413,99 @@
       15,
       15,
       15,
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1610627",
+   "home": "Jakubov",
+   "away": "Inter Bratislava",
+   "home_en": "Jakubov",
+   "away_en": "Inter Bratislava",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/26320.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10547.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "1-4",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:47:08.843190+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 60
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "away",
+    "confidence": 60,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      21,
+      31,
+      52,
+      65,
+      75,
+      90
+     ],
+     "danger": [
+      15,
+      27,
+      33,
+      15,
+      0,
       0,
       0
      ],
@@ -757,9 +559,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10542.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-1",
-   "minute": 89,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:50:15.412673+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -787,14 +589,17 @@
      "min": [
       20,
       30,
-      89
+      81,
+      90
      ],
      "danger": [
       27,
       33,
+      63,
       15
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -802,14 +607,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -828,9 +636,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14046.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-3",
-   "minute": 89,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:47:08.843190+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -860,7 +668,7 @@
       51,
       64,
       74,
-      83
+      89
      ],
      "danger": [
       19,
@@ -902,83 +710,6 @@
       0,
       0,
       0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1610993",
-   "home": "Tatran Krásno",
-   "away": "Podkonice",
-   "home_en": "Tatran Krásno",
-   "away_en": "Podkonice",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14091.png",
-   "away_logo": "https://media.api-sports.io/football/teams/15025.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "1-1",
-   "minute": 89,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 45
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 54
-   },
-   "radar": {
-    "score": 68,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د89)"
-    ],
-    "pick": "away",
-    "confidence": 54,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      8,
-      21,
-      31,
-      89
-     ],
-     "danger": [
-      19,
-      27,
-      33,
-      68
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
       0,
       0,
       0,
@@ -998,9 +729,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/12859.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "1-3",
-   "minute": 89,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:47:08.843190+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -1026,94 +757,16 @@
      "min": [
       19,
       29,
-      83
+      79,
+      89
      ],
      "danger": [
       26,
       32,
-      0
-     ],
-     "h_sog": [
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1610982",
-   "home": "Čaňa",
-   "away": "Lokomotíva Košice",
-   "home_en": "Čaňa",
-   "away_en": "Lokomotíva Košice",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/15088.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10549.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-5",
-   "minute": 89,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      19,
-      29,
-      44,
-      51,
-      64,
-      74,
-      82
-     ],
-     "danger": [
-      26,
-      32,
-      15,
-      0,
-      0,
       0,
       0
      ],
      "h_sog": [
-      0,
-      0,
-      0,
       0,
       0,
       0,
@@ -1123,15 +776,9 @@
       0,
       0,
       0,
-      0,
-      0,
-      0,
       0
      ],
      "h_cor": [
-      0,
-      0,
-      0,
       0,
       0,
       0,
@@ -1141,180 +788,10 @@
       0,
       0,
       0,
-      0,
-      0,
-      0,
       0
      ]
     }
    }
-  },
-  {
-   "fid": "1568138",
-   "home": "Siarka Tarnobrzeg",
-   "away": "Jarosław",
-   "home_en": "Siarka Tarnobrzeg",
-   "away_en": "Jarosław",
-   "league": "III Liga - Group 4 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/6955.png",
-   "away_logo": "https://media.api-sports.io/football/teams/20830.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/783.png",
-   "score": "1-1",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 46
-   }
-  },
-  {
-   "fid": "1568442",
-   "home": "Sparta Katowice",
-   "away": "Goczałkowice Zdrój",
-   "home_en": "Sparta Katowice",
-   "away_en": "Goczałkowice Zdrój",
-   "league": "III Liga - Group 3 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/22910.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16259.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
-   "score": "2-1",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 53
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 43
-   }
-  },
-  {
-   "fid": "1568443",
-   "home": "Karkonosze Jelenia Góra",
-   "away": "Barycz Sułów",
-   "home_en": "Karkonosze Jelenia Góra",
-   "away_en": "Barycz Sułów",
-   "league": "III Liga - Group 3 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/17402.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24785.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
-   "score": "3-0",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 46
-   }
-  },
-  {
-   "fid": "1611013",
-   "home": "Šoporňa",
-   "away": "Malženice",
-   "home_en": "Šoporňa",
-   "away_en": "Malženice",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/15094.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14058.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "2-1",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 49
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 60
-   },
-   "radar": {
-    "score": 67,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 2-1 تُسقط التوقع (د88)"
-    ],
-    "pick": "away",
-    "confidence": 60,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      19,
-      29,
-      44,
-      57,
-      88
-     ],
-     "danger": [
-      15,
-      15,
-      41,
-      49,
-      67
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1611020",
-   "home": "Tomášov",
-   "away": "Gabčíkovo",
-   "home_en": "Tomášov",
-   "away_en": "Gabčíkovo",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14052.png",
-   "away_logo": "https://media.api-sports.io/football/teams/21926.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "3-1",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
   },
   {
    "fid": "1610991",
@@ -1326,10 +803,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/14084.png",
    "away_logo": "https://media.api-sports.io/football/teams/10552.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-3",
-   "minute": 87,
+   "score": "0-4",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:48:42.201109+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -1357,16 +834,19 @@
       30,
       49,
       63,
-      81
+      77,
+      88
      ],
      "danger": [
       27,
       33,
       15,
       15,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -1378,9 +858,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -1392,44 +874,43 @@
       0,
       0,
       0,
+      0,
       0
      ]
     }
    }
   },
   {
-   "fid": "1611005",
-   "home": "Rohožník",
-   "away": "Šamorín",
-   "home_en": "Rohožník",
-   "away_en": "Šamorín",
+   "fid": "1610998",
+   "home": "Nová Dedinka",
+   "away": "Petržalka",
+   "home_en": "Nová Dedinka",
+   "away_en": "Petržalka",
    "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14047.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10545.png",
+   "home_logo": "https://media.api-sports.io/football/teams/16893.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10538.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-1",
-   "minute": 87,
+   "score": "1-5",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:45:32.469026+00:00",
    "pred_v1": {
-    "pick": "draw",
-    "confidence": 45
+    "pick": "away",
+    "confidence": 50
    },
    "pred_v2": {
     "pick": "away",
-    "confidence": 54
+    "confidence": 65
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "away",
-    "confidence": 54,
+    "confidence": 65,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
@@ -1438,18 +919,21 @@
      "min": [
       20,
       30,
-      49,
-      63,
-      87
+      46,
+      66,
+      76,
+      90
      ],
      "danger": [
-      27,
-      33,
       15,
       15,
-      15
+      15,
+      0,
+      0,
+      0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -1461,9 +945,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -1475,55 +961,10 @@
       0,
       0,
       0,
+      0,
       0
      ]
     }
-   }
-  },
-  {
-   "fid": "1568135",
-   "home": "KS Wieczysta Krakow II",
-   "away": "Sokół Kolb.",
-   "home_en": "KS Wieczysta Krakow II",
-   "away_en": "Sokół Kolb.",
-   "league": "III Liga - Group 4 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/27334.png",
-   "away_logo": "https://media.api-sports.io/football/teams/26185.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/783.png",
-   "score": "1-1",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 34
-   }
-  },
-  {
-   "fid": "1569057",
-   "home": "Mławianka Mława",
-   "away": "Lechia T. Mazowiecki",
-   "home_en": "Mławianka Mława",
-   "away_en": "Lechia T. Mazowiecki",
-   "league": "III Liga - Group 1 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/19618.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16238.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/780.png",
-   "score": "2-3",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 48
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
    }
   },
   {
@@ -1537,9 +978,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14062.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-2",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:48:42.201109+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -1568,7 +1009,8 @@
       43,
       48,
       62,
-      80
+      75,
+      87
      ],
      "danger": [
       26,
@@ -1576,7 +1018,101 @@
       15,
       15,
       15,
+      0,
       0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1611005",
+   "home": "Rohožník",
+   "away": "Šamorín",
+   "home_en": "Rohožník",
+   "away_en": "Šamorín",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14047.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10545.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:50:15.412673+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 45
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 54,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20,
+      30,
+      49,
+      63,
+      78,
+      90
+     ],
+     "danger": [
+      27,
+      33,
+      15,
+      15,
+      15,
+      15
      ],
      "h_sog": [
       0,
@@ -1611,6 +1147,144 @@
       0
      ]
     }
+   }
+  },
+  {
+   "fid": "1516107",
+   "home": "Mash'al",
+   "away": "Andijan",
+   "home_en": "Mash'al",
+   "away_en": "Andijan",
+   "league": "Super League (Uzbekistan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4213.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4209.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/369.png",
+   "score": "0-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   }
+  },
+  {
+   "fid": "1568135",
+   "home": "KS Wieczysta Krakow II",
+   "away": "Sokół Kolb.",
+   "home_en": "KS Wieczysta Krakow II",
+   "away_en": "Sokół Kolb.",
+   "league": "III Liga - Group 4 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/27334.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26185.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/783.png",
+   "score": "1-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:50:15.412673+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 34
+   }
+  },
+  {
+   "fid": "1568138",
+   "home": "Siarka Tarnobrzeg",
+   "away": "Jarosław",
+   "home_en": "Siarka Tarnobrzeg",
+   "away_en": "Jarosław",
+   "league": "III Liga - Group 4 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/6955.png",
+   "away_logo": "https://media.api-sports.io/football/teams/20830.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/783.png",
+   "score": "1-3",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 46
+   }
+  },
+  {
+   "fid": "1568442",
+   "home": "Sparta Katowice",
+   "away": "Goczałkowice Zdrój",
+   "home_en": "Sparta Katowice",
+   "away_en": "Goczałkowice Zdrój",
+   "league": "III Liga - Group 3 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/22910.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16259.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
+   "score": "2-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:50:15.412673+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 43
+   }
+  },
+  {
+   "fid": "1568443",
+   "home": "Karkonosze Jelenia Góra",
+   "away": "Barycz Sułów",
+   "home_en": "Karkonosze Jelenia Góra",
+   "away_en": "Barycz Sułów",
+   "league": "III Liga - Group 3 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/17402.png",
+   "away_logo": "https://media.api-sports.io/football/teams/24785.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
+   "score": "3-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:48:42.201109+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 46
+   }
+  },
+  {
+   "fid": "1568448",
+   "home": "Warta Gorzów",
+   "away": "Górnik Polkowice",
+   "home_en": "Warta Gorzów",
+   "away_en": "Górnik Polkowice",
+   "league": "III Liga - Group 3 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/16263.png",
+   "away_logo": "https://media.api-sports.io/football/teams/9132.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
+   "score": "0-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 46
    }
   },
   {
@@ -1624,9 +1298,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21657.png",
    "league_logo": "https://media.api-sports.io/football/leagues/781.png",
    "score": "0-1",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -1636,10 +1310,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د86)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 50,
@@ -1653,29 +1327,81 @@
     "trend": {
      "min": [
       54,
-      86
+      77,
+      90
      ],
      "danger": [
       47,
-      66
+      61,
+      69
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0
      ],
      "a_cor": [
       0,
+      0,
       0
      ]
     }
+   }
+  },
+  {
+   "fid": "1568756",
+   "home": "Wda Świecie",
+   "away": "Grom Nowy Staw",
+   "home_en": "Wda Świecie",
+   "away_en": "Grom Nowy Staw",
+   "league": "III Liga - Group 2 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/24328.png",
+   "away_logo": "https://media.api-sports.io/football/teams/24786.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
+   "score": "4-2",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 41
+   }
+  },
+  {
+   "fid": "1569057",
+   "home": "Mławianka Mława",
+   "away": "Lechia T. Mazowiecki",
+   "home_en": "Mławianka Mława",
+   "away_en": "Lechia T. Mazowiecki",
+   "league": "III Liga - Group 1 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/19618.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16238.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/780.png",
+   "score": "2-3",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
    }
   },
   {
@@ -1689,9 +1415,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/26178.png",
    "league_logo": "https://media.api-sports.io/football/leagues/780.png",
    "score": "0-2",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -1701,10 +1427,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د86)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 50,
@@ -1718,29 +1444,58 @@
     "trend": {
      "min": [
       48,
-      86
+      77,
+      90
      ],
      "danger": [
       43,
-      66
+      61,
+      69
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0
      ],
      "a_cor": [
       0,
+      0,
       0
      ]
     }
+   }
+  },
+  {
+   "fid": "1569059",
+   "home": "Wisła Płock II",
+   "away": "Łomża",
+   "home_en": "Wisła Płock II",
+   "away_en": "Łomża",
+   "league": "III Liga - Group 1 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/23046.png",
+   "away_logo": "https://media.api-sports.io/football/teams/21656.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/780.png",
+   "score": "1-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 36
    }
   },
   {
@@ -1753,10 +1508,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/26177.png",
    "away_logo": "https://media.api-sports.io/football/teams/19619.png",
    "league_logo": "https://media.api-sports.io/football/leagues/780.png",
-   "score": "1-3",
-   "minute": 86,
+   "score": "1-4",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -1777,9 +1532,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3984.png",
    "league_logo": "https://media.api-sports.io/football/leagues/236.png",
    "score": "0-1",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -1787,121 +1542,42 @@
    "pred_v2": {
     "pick": "home",
     "confidence": 50
-   }
-  },
-  {
-   "fid": "1611006",
-   "home": "Rosina",
-   "away": "MFK Bytča",
-   "home_en": "Rosina",
-   "away_en": "MFK Bytča",
-   "league": "Cup (Slovakia)",
-   "home_logo": "https://media.api-sports.io/football/teams/16900.png",
-   "away_logo": "https://media.api-sports.io/football/teams/15006.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
-   "score": "0-2",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 45
    },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 48
-   }
-  },
-  {
-   "fid": "1516107",
-   "home": "Mash'al",
-   "away": "Andijan",
-   "home_en": "Mash'al",
-   "away_en": "Andijan",
-   "league": "Super League (Uzbekistan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4213.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4209.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/369.png",
-   "score": "0-1",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 51
-   },
-   "pred_v2": {
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
+    ],
     "pick": "home",
-    "confidence": 40
-   }
-  },
-  {
-   "fid": "1568448",
-   "home": "Warta Gorzów",
-   "away": "Górnik Polkowice",
-   "home_en": "Warta Gorzów",
-   "away_en": "Górnik Polkowice",
-   "league": "III Liga - Group 3 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/16263.png",
-   "away_logo": "https://media.api-sports.io/football/teams/9132.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
-   "score": "0-0",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 46
-   }
-  },
-  {
-   "fid": "1568756",
-   "home": "Wda Świecie",
-   "away": "Grom Nowy Staw",
-   "home_en": "Wda Świecie",
-   "away_en": "Grom Nowy Staw",
-   "league": "III Liga - Group 2 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/24328.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24786.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
-   "score": "3-2",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 41
-   }
-  },
-  {
-   "fid": "1569059",
-   "home": "Wisła Płock II",
-   "away": "Łomża",
-   "home_en": "Wisła Płock II",
-   "away_en": "Łomża",
-   "league": "III Liga - Group 1 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/23046.png",
-   "away_logo": "https://media.api-sports.io/football/teams/21656.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/780.png",
-   "score": "1-1",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 36
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      90
+     ],
+     "danger": [
+      69
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
    }
   },
   {
@@ -1915,9 +1591,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/655.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-6",
-   "minute": 84,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -1948,13 +1624,110 @@
       46,
       59,
       69,
-      78
+      84
      ],
      "danger": [
       25,
       15,
       0,
       0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1610982",
+   "home": "Čaňa",
+   "away": "Lokomotíva Košice",
+   "home_en": "Čaňa",
+   "away_en": "Lokomotíva Košice",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/15088.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10549.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-4",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:47:08.843190+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "away",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      19,
+      29,
+      44,
+      51,
+      64,
+      74,
+      89
+     ],
+     "danger": [
+      26,
+      32,
+      15,
       0,
       0,
       0,
@@ -2073,6 +1846,232 @@
    }
   },
   {
+   "fid": "1611013",
+   "home": "Šoporňa",
+   "away": "Malženice",
+   "home_en": "Šoporňa",
+   "away_en": "Malženice",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/15094.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14058.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "2-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:48:42.201109+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 49
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 60
+   },
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 2-1 تُسقط التوقع (د90)"
+    ],
+    "pick": "away",
+    "confidence": 60,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      19,
+      29,
+      44,
+      57,
+      80,
+      90
+     ],
+     "danger": [
+      15,
+      15,
+      41,
+      49,
+      63,
+      69
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1611017",
+   "home": "Svaty Peter",
+   "away": "Dunajska Streda",
+   "home_en": "Svaty Peter",
+   "away_en": "Dunajska Streda",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/24417.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2257.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-13",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "away",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      60,
+      69,
+      85
+     ],
+     "danger": [
+      0,
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1611020",
+   "home": "Tomášov",
+   "away": "Gabčíkovo",
+   "home_en": "Tomášov",
+   "away_en": "Gabčíkovo",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14052.png",
+   "away_logo": "https://media.api-sports.io/football/teams/21926.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "3-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:50:15.412673+00:00"
+  },
+  {
+   "fid": "1611317",
+   "home": "Kechnec",
+   "away": "Slávia TU Košice",
+   "home_en": "Kechnec",
+   "away_en": "Slávia TU Košice",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14988.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14074.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-3",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:45:32.469026+00:00"
+  },
+  {
+   "fid": "1611029",
+   "home": "Závažná Poruba",
+   "away": "Kysucké Nové Mesto",
+   "home_en": "Závažná Poruba",
+   "away_en": "Kysucké Nové Mesto",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/16920.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14999.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-2",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-19T16:47:08.843190+00:00"
+  },
+  {
+   "fid": "1611006",
+   "home": "Rosina",
+   "away": "MFK Bytča",
+   "home_en": "Rosina",
+   "away_en": "MFK Bytča",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/16900.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15006.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "0-2",
+   "minute": 89,
+   "status": "2H",
+   "seen": "2026-08-19T16:50:15.412673+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 45
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 48
+   }
+  },
+  {
    "fid": "1554121",
    "home": "Grafičar",
    "away": "Loznica",
@@ -2083,9 +2082,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/12323.png",
    "league_logo": "https://media.api-sports.io/football/leagues/287.png",
    "score": "1-2",
-   "minute": 82,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -2105,10 +2104,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/12329.png",
    "away_logo": "https://media.api-sports.io/football/teams/12312.png",
    "league_logo": "https://media.api-sports.io/football/leagues/287.png",
-   "score": "1-1",
-   "minute": 81,
+   "score": "2-1",
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -2129,9 +2128,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3548.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-3",
-   "minute": 81,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 50
@@ -2157,7 +2156,7 @@
      "min": [
       57,
       66,
-      75
+      81
      ],
      "danger": [
       0,
@@ -2198,9 +2197,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3497.png",
    "league_logo": "https://media.api-sports.io/football/leagues/780.png",
    "score": "1-1",
-   "minute": 77,
+   "minute": 84,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -2221,9 +2220,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18385.png",
    "league_logo": "https://media.api-sports.io/football/leagues/781.png",
    "score": "0-2",
-   "minute": 58,
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1603447",
@@ -2236,9 +2235,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7343.png",
    "league_logo": "https://media.api-sports.io/football/leagues/347.png",
    "score": "4-2",
-   "minute": 58,
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1593845",
@@ -2251,9 +2250,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/13153.png",
    "league_logo": "https://media.api-sports.io/football/leagues/633.png",
    "score": "0-0",
-   "minute": 56,
+   "minute": 63,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1563650",
@@ -2266,9 +2265,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/558.png",
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "1-0",
-   "minute": 51,
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1610821",
@@ -2282,8 +2281,23 @@
    "league_logo": "https://media.api-sports.io/football/leagues/199.png",
    "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1525949",
+   "home": "ML Vitebsk",
+   "away": "Baranovichi",
+   "home_en": "ML Vitebsk",
+   "away_en": "Baranovichi",
+   "league": "Premier League (Belarus)",
+   "home_logo": "https://media.api-sports.io/football/teams/7808.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3383.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/116.png",
+   "score": "2-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1549144",
@@ -2297,98 +2311,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1525949",
-   "home": "ML Vitebsk",
-   "away": "Baranovichi",
-   "home_en": "ML Vitebsk",
-   "away_en": "Baranovichi",
-   "league": "Premier League (Belarus)",
-   "home_logo": "https://media.api-sports.io/football/teams/7808.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3383.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/116.png",
-   "score": "2-0",
-   "minute": 44,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1568446",
-   "home": "ROW Rybnik",
-   "away": "Carina Gubin",
-   "home_en": "ROW Rybnik",
-   "away_en": "Carina Gubin",
-   "league": "III Liga - Group 3 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/6949.png",
-   "away_logo": "https://media.api-sports.io/football/teams/17401.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
-   "score": "0-0",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1568450",
-   "home": "Zaglebie Sosnowiec",
-   "away": "Ślęza Wrocław",
-   "home_en": "Zaglebie Sosnowiec",
-   "away_en": "Ślęza Wrocław",
-   "league": "III Liga - Group 3 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/342.png",
-   "away_logo": "https://media.api-sports.io/football/teams/12901.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
-   "score": "1-1",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1568748",
-   "home": "Elana Toruń",
-   "away": "Unia Swarzędz",
-   "home_en": "Elana Toruń",
-   "away_en": "Unia Swarzędz",
-   "league": "III Liga - Group 2 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/6938.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16257.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
-   "score": "1-1",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1568751",
-   "home": "Kotwica Kórnik",
-   "away": "Bałtyk Koszalin",
-   "home_en": "Kotwica Kórnik",
-   "away_en": "Bałtyk Koszalin",
-   "league": "III Liga - Group 2 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/24327.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16245.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
-   "score": "0-0",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1618227",
-   "home": "Persepolis FC",
-   "away": "Esteghlal Khuzestan",
-   "home_en": "Persepolis FC",
-   "away_en": "Esteghlal Khuzestan",
-   "league": "Persian Gulf Pro League (Iran)",
-   "home_logo": "https://media.api-sports.io/football/teams/2742.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2739.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/290.png",
-   "score": "2-0",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1568139",
@@ -2401,39 +2325,69 @@
    "away_logo": "https://media.api-sports.io/football/teams/17403.png",
    "league_logo": "https://media.api-sports.io/football/leagues/783.png",
    "score": "0-0",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
-   "fid": "1618225",
-   "home": "Malavan",
-   "away": "ZOB Ahan",
-   "home_en": "Malavan",
-   "away_en": "ZOB Ahan",
-   "league": "Persian Gulf Pro League (Iran)",
-   "home_logo": "https://media.api-sports.io/football/teams/2717.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2738.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/290.png",
-   "score": "0-1",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "fid": "1568446",
+   "home": "ROW Rybnik",
+   "away": "Carina Gubin",
+   "home_en": "ROW Rybnik",
+   "away_en": "Carina Gubin",
+   "league": "III Liga - Group 3 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/6949.png",
+   "away_logo": "https://media.api-sports.io/football/teams/17401.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
-   "fid": "1618226",
-   "home": "Mes Shahr-e Babak",
-   "away": "Kheybar Khorramabad",
-   "home_en": "Mes Shahr-e Babak",
-   "away_en": "Kheybar Khorramabad",
-   "league": "Persian Gulf Pro League (Iran)",
-   "home_logo": "https://media.api-sports.io/football/teams/10388.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2716.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/290.png",
-   "score": "0-1",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "fid": "1568450",
+   "home": "Zaglebie Sosnowiec",
+   "away": "Ślęza Wrocław",
+   "home_en": "Zaglebie Sosnowiec",
+   "away_en": "Ślęza Wrocław",
+   "league": "III Liga - Group 3 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/342.png",
+   "away_logo": "https://media.api-sports.io/football/teams/12901.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/782.png",
+   "score": "1-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1568748",
+   "home": "Elana Toruń",
+   "away": "Unia Swarzędz",
+   "home_en": "Elana Toruń",
+   "away_en": "Unia Swarzędz",
+   "league": "III Liga - Group 2 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/6938.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16257.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
+   "score": "2-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1568751",
+   "home": "Kotwica Kórnik",
+   "away": "Bałtyk Koszalin",
+   "home_en": "Kotwica Kórnik",
+   "away_en": "Bałtyk Koszalin",
+   "league": "III Liga - Group 2 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/24327.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16245.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1618224",
@@ -2446,9 +2400,54 @@
    "away_logo": "https://media.api-sports.io/football/teams/2743.png",
    "league_logo": "https://media.api-sports.io/football/leagues/290.png",
    "score": "0-0",
-   "minute": 39,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1618225",
+   "home": "Malavan",
+   "away": "ZOB Ahan",
+   "home_en": "Malavan",
+   "away_en": "ZOB Ahan",
+   "league": "Persian Gulf Pro League (Iran)",
+   "home_logo": "https://media.api-sports.io/football/teams/2717.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2738.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/290.png",
+   "score": "0-1",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1618226",
+   "home": "Mes Shahr-e Babak",
+   "away": "Kheybar Khorramabad",
+   "home_en": "Mes Shahr-e Babak",
+   "away_en": "Kheybar Khorramabad",
+   "league": "Persian Gulf Pro League (Iran)",
+   "home_logo": "https://media.api-sports.io/football/teams/10388.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2716.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/290.png",
+   "score": "0-1",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1618227",
+   "home": "Persepolis FC",
+   "away": "Esteghlal Khuzestan",
+   "home_en": "Persepolis FC",
+   "away_en": "Esteghlal Khuzestan",
+   "league": "Persian Gulf Pro League (Iran)",
+   "home_logo": "https://media.api-sports.io/football/teams/2742.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2739.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/290.png",
+   "score": "2-0",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1619029",
@@ -2461,9 +2460,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/401.png",
    "league_logo": "https://media.api-sports.io/football/leagues/121.png",
    "score": "0-0",
-   "minute": 35,
+   "minute": 42,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1561585",
@@ -2476,9 +2475,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2936.png",
    "league_logo": "https://media.api-sports.io/football/leagues/504.png",
    "score": "0-0",
-   "minute": 30,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1549139",
@@ -2491,9 +2490,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2172.png",
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-2",
-   "minute": 15,
+   "minute": 22,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1549140",
@@ -2506,24 +2505,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2165.png",
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-0",
-   "minute": 15,
+   "minute": 22,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
-  },
-  {
-   "fid": "1553085",
-   "home": "FBK Karlstad",
-   "away": "GIF Sundsvall",
-   "home_en": "FBK Karlstad",
-   "away_en": "GIF Sundsvall",
-   "league": "Svenska Cupen (Sweden)",
-   "home_logo": "https://media.api-sports.io/football/teams/12622.png",
-   "away_logo": "https://media.api-sports.io/football/teams/373.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/115.png",
-   "score": "0-0",
-   "minute": 15,
-   "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1556552",
@@ -2536,9 +2520,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2241.png",
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-0",
-   "minute": 15,
+   "minute": 22,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1549138",
@@ -2551,9 +2535,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/2174.png",
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-0",
-   "minute": 14,
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1553085",
+   "home": "FBK Karlstad",
+   "away": "GIF Sundsvall",
+   "home_en": "FBK Karlstad",
+   "away_en": "GIF Sundsvall",
+   "league": "Svenska Cupen (Sweden)",
+   "home_logo": "https://media.api-sports.io/football/teams/12622.png",
+   "away_logo": "https://media.api-sports.io/football/teams/373.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/115.png",
+   "score": "0-0",
+   "minute": 21,
+   "status": "1H",
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1561328",
@@ -2566,9 +2565,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/374.png",
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-1",
-   "minute": 14,
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1561586",
@@ -2580,10 +2579,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2947.png",
    "away_logo": "https://media.api-sports.io/football/teams/10509.png",
    "league_logo": "https://media.api-sports.io/football/leagues/504.png",
-   "score": "0-1",
-   "minute": 14,
+   "score": "0-2",
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1577494",
@@ -2595,10 +2594,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6833.png",
    "away_logo": "https://media.api-sports.io/football/teams/2011.png",
    "league_logo": "https://media.api-sports.io/football/leagues/236.png",
-   "score": "0-0",
-   "minute": 14,
+   "score": "0-1",
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1611015",
@@ -2611,9 +2610,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14799.png",
    "league_logo": "https://media.api-sports.io/football/leagues/680.png",
    "score": "0-0",
-   "minute": 12,
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
   },
   {
    "fid": "1586508",
@@ -2626,9 +2625,92 @@
    "away_logo": "https://media.api-sports.io/football/teams/1649.png",
    "league_logo": "https://media.api-sports.io/football/leagues/84.png",
    "score": "0-0",
-   "minute": 11,
+   "minute": 18,
    "status": "1H",
-   "seen": "2026-08-19T16:45:11.692855+00:00"
+   "seen": "2026-08-19T16:51:48.947800+00:00"
+  },
+  {
+   "fid": "1610993",
+   "home": "Tatran Krásno",
+   "away": "Podkonice",
+   "home_en": "Tatran Krásno",
+   "away_en": "Podkonice",
+   "league": "Cup (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14091.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15025.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/680.png",
+   "score": "1-1",
+   "minute": 0,
+   "status": "BT",
+   "seen": "2026-08-19T16:51:48.947800+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 45
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د0)"
+    ],
+    "pick": "away",
+    "confidence": 54,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8,
+      21,
+      31,
+      80,
+      0
+     ],
+     "danger": [
+      19,
+      27,
+      33,
+      63,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
   }
  ],
  "upcoming": [
@@ -6984,6 +7066,32 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-19",
+    "home": "Kalisz",
+    "away": "Noteć Czarnków",
+    "league": "III Liga - Group 2 (Poland)",
+    "level": "red",
+    "minute": 86,
+    "pick": "home",
+    "conf": 50,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "Olimpia Elbląg",
+    "away": "Widzew II",
+    "league": "III Liga - Group 1 (Poland)",
+    "level": "red",
+    "minute": 86,
+    "pick": "home",
+    "conf": 50,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
     "home": "Preston Lions",
     "away": "Melbourne City II",
     "league": "Victoria NPL (Australia)",
@@ -7004,6 +7112,45 @@
     "minute": 87,
     "pick": "home",
     "conf": 38,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "KAMAZ",
+    "away": "Tekstilshchik",
+    "league": "First League (Russia)",
+    "level": "red",
+    "minute": 87,
+    "pick": "home",
+    "conf": 50,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "Šoporňa",
+    "away": "Malženice",
+    "league": "Cup (Slovakia)",
+    "level": "red",
+    "minute": 89,
+    "pick": "away",
+    "conf": 60,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "Tatran Krásno",
+    "away": "Podkonice",
+    "league": "Cup (Slovakia)",
+    "level": "red",
+    "minute": 89,
+    "pick": "away",
+    "conf": 54,
     "top": false
    },
    {
@@ -7150,6 +7297,32 @@
     "minute": 90,
     "pick": "away",
     "conf": 57,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "CIL Blaj",
+    "away": "Progresul Spartac",
+    "league": "Cupa României (Romania)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 54,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "USV Iaşi",
+    "away": "Sporting Lieşti",
+    "league": "Cupa României (Romania)",
+    "level": "red",
+    "minute": 94,
+    "pick": "home",
+    "conf": 52,
     "top": false
    },
    {
