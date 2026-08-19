@@ -542,10 +542,13 @@ class TestVerifyCommand(DeliveryHarness):
                          [OWNER, DEVICE_2, DEVICE_3])
 
     def test_ordinary_sentence_containing_the_word_is_not_the_command(self):
-        """مطابقة تامة: «تحقق من مباراة الريال» رسالة تركيز لا أمر فحص."""
+        """مطابقة تامة: «تحقق من مباراة الريال» رسالة تركيز لا أمر فحص.
+        (منذ التشغيل المشترك 2026-08-19 يُبثّ تأكيد القائمة للجهازين، فالدليل
+        على أن الأمر لم يُبتلع هو غياب بطاقة الفحص لا غياب الإرسال.)"""
         self._send_command("تحقق من مباراة الريال")
-        self.assertEqual(self.sent, [], "الأمر ابتلع رسالة عادية")
-        self.assertEqual(len(self.claude_calls), 1)
+        self.assertEqual(len(self.claude_calls), 1, "لم يُفسَّر كرسالة تركيز")
+        for _cid, t in self.sent:
+            self.assertNotIn("التسليم", t or "", "الأمر ابتلع رسالة عادية")
 
     def test_verify_sends_no_duplicate_alert(self):
         """المالك طلب الفحص وسيصله التقرير — إنذار إضافي ضجيج مكرَّر."""
@@ -553,14 +556,17 @@ class TestVerifyCommand(DeliveryHarness):
         self._send_command()
         self.assertEqual(self.alerts_to_owner(), [])
 
-    def test_control_channel_was_not_widened(self):
-        """جهاز البث ما زال لا يملك حق الأمر — ولا حتى /تحقق."""
+    def test_second_owner_device_may_run_the_command(self):
+        """التشغيل المشترك (قرار المالك 2026-08-19): جهاز المالك الثاني يأمر
+        مثل الأساسي — «يعملان كجهاز واحد». البطاقة نفسها تبقى للأساسي."""
         self.updates = [{"update_id": 1,
                          "message": {"chat": {"id": int(DEVICE_2)},
                                      "text": "تحقق"}}]
         with redirect_stdout(io.StringIO()):
             W.main()
-        self.assertEqual(self.sent, [], "غير المالك شغّل أمراً")
+        self.assertEqual([cid for cid, _t in self.sent],
+                         [OWNER, DEVICE_2, DEVICE_3],
+                         "أمر الجهاز الثاني لم يُنفَّذ")
 
     def test_command_is_documented_in_the_reply_menu(self):
         """قائمة الأوامر المفهومة تذكر الأمر الجديد."""

@@ -11,6 +11,7 @@
 الاختبار الحاسم: توسيع البث يجب ألا يفتح قناة التحكم ولو بمقدار معرّف واحد.
 """
 
+import os
 import sys
 import tempfile
 import unittest
@@ -234,7 +235,16 @@ class TestEnginesBroadcast(BroadcastHarness):
 
 # ================== التحكم يبقى للمالك حصراً ==================
 class TestControlStaysOwnerOnly(unittest.TestCase):
-    """فصل البث عن التحكم: البث اتسع، والتحكم لم يتسع معه."""
+    """عقد قناة التحكم بعد قرار المالك 2026-08-19 «الجهازان جهاز واحد»:
+
+    الأوامر النصية تُقبل من **كل أجهزة المالك** (الأساسي + قائمة البث) فتصير
+    قائمة التركيز مشتركة — اتحاد لا تنافس. وهذا نسخٌ صريح لقيد 2026-08-14
+    بأمر صاحبه نفسه، لا انفلات.
+
+    وما لم يتغير ولا يجوز أن يتغير بلا قرار جديد:
+      • الغريب يُتجاهل تماماً — لا أحد خارج أجهزة المالك يأمر.
+      • **أزرار التوقع للجهاز الأساسي حصراً**: predictions_user.json سجل
+        قياس شخصي، وخلط توقعات جهازين فيه يفسد الرقم لا الصلاحيات."""
 
     def setUp(self):
         self.updates = []
@@ -280,17 +290,32 @@ class TestControlStaysOwnerOnly(unittest.TestCase):
         items, _ = W.get_new_messages(0)
         self.assertEqual(items, [], "غير المالك غيّر قائمة التركيز")
 
-    def test_broadcast_recipient_cannot_command(self):
-        """جهاز البث يستقبل التنبيهات ولا يملك حق الأمر — جوهر الفصل."""
+    def test_owner_second_device_may_command(self):
+        """العقد الجديد: جهاز المالك الثاني يأمر — قائمة تركيز مشتركة."""
+        os.environ["TELEGRAM_BROADCAST_IDS"] = DEVICE_2
+        self.addCleanup(os.environ.pop, "TELEGRAM_BROADCAST_IDS", None)
         self.updates = [self._msg(1, int(DEVICE_2), "امسح القائمة")]
         items, _ = W.get_new_messages(0)
-        self.assertEqual(items, [])
+        self.assertEqual(len(items), 1, "أمر جهاز المالك الثاني رُفض")
 
-    def test_broadcast_recipient_cannot_press_prediction_buttons(self):
-        """أزرار التوقع للمالك وحده — predictions_user.json يجب ألا يتلوث."""
+    def test_stranger_still_rejected_even_with_broadcast_configured(self):
+        """اتساع التحكم لأجهزة المالك لا يفتحه للعالم — الحد الباقي."""
+        os.environ["TELEGRAM_BROADCAST_IDS"] = DEVICE_2
+        self.addCleanup(os.environ.pop, "TELEGRAM_BROADCAST_IDS", None)
+        self.updates = [self._msg(1, int(STRANGER), "امسح القائمة")]
+        items, _ = W.get_new_messages(0)
+        self.assertEqual(items, [], "غريب نفذ أمراً")
+
+    def test_second_device_still_cannot_press_prediction_buttons(self):
+        """الحد الباقي بعد التوحيد: الأزرار تكتب في سجل القياس الشخصي، فتبقى
+        على الجهاز الأساسي حتى مع فتح الأوامر النصية لكل الأجهزة."""
+        os.environ["TELEGRAM_BROADCAST_IDS"] = DEVICE_2
+        self.addCleanup(os.environ.pop, "TELEGRAM_BROADCAST_IDS", None)
         self.updates = [self._callback(1, int(DEVICE_2), "p|123|home")]
         items, _ = W.get_new_messages(0)
-        self.assertEqual(items, [])
+        self.assertEqual(items, [], "توقعات جهاز ثانٍ لوّثت سجل المالك")
+        self.assertFalse(W.USER_PICKS_FROM_ALL_DEVICES,
+                         "المفتاح افتراضه False — تغييره قرار مالك منفصل")
 
     def test_owner_button_still_works(self):
         self.updates = [self._callback(1, int(OWNER), "p|123|home")]
@@ -309,10 +334,13 @@ class TestControlStaysOwnerOnly(unittest.TestCase):
         self.assertEqual(items[0]["text"], "الريال وبرشلونة")
         self.assertEqual(last, 3, "offset يجب أن يتقدم فوق رسائل الغرباء أيضاً")
 
-    def test_watchlist_does_not_read_the_broadcast_secret(self):
-        """حارس بنيوي: لو أضاف أحد البث إلى قناة التحكم يسقط هذا الاختبار."""
+    def test_buttons_gate_is_structurally_present(self):
+        """حارس بنيوي بديل (حلّ محل «لا يقرأ سرّ البث» بعد قرار التوحيد):
+        بوابة الأزرار يجب أن تبقى مذكورة صراحةً في الكود — حذفها يعني أن
+        أي جهاز صار يكتب في سجل التوقعات الشخصي."""
         source = Path(W.__file__).read_text(encoding="utf-8")
-        self.assertNotIn("TELEGRAM_BROADCAST_IDS", source)
+        self.assertIn("USER_PICKS_FROM_ALL_DEVICES", source)
+        self.assertIn("allowed_cb", source)
 
 
 if __name__ == "__main__":

@@ -16,10 +16,16 @@
 4) أي رسالة أخرى → نداء Claude واحد يفسّر القصد: تحديد/إضافة/إزالة/تفريغ
    قائمة التركيز، ويرد بتأكيد يعرض توقعات المحركين للمباريات المختارة.
 
-حدود قناة التحكم لم تتغير ولا يجوز أن تتغير: الأوامر تُقرأ من TELEGRAM_CHAT_ID
-حصراً. أمر /تحقق يبث إلى الخارج فقط ولا يفتح للخارج أي حق أمر — قائمة البث
-تُقرأ داخل api_guard.verify_delivery() فلا يذكر هذا الملف سرّ البث إطلاقاً
-(حارس بنيوي في tests/test_telegram_broadcast.py يسقط لو ظهر اسمه هنا).
+حدود قناة التحكم (قرار المالك 2026-08-19 — «الجهازان يعملان كجهاز واحد»):
+الأوامر النصية تُقبل من **كل أجهزة المالك** (TELEGRAM_CHAT_ID + قائمة البث)،
+فقائمة التركيز صارت مشتركة: ما يضيفه أي جهاز يراه الآخر ويصله تنبيهه —
+اتحاد لا تنافس. وتأكيدات القائمة تُبثّ للجميع فيبقى الجهازان على صورة واحدة.
+هذا نسخٌ صريح لقيد 2026-08-14 (قناة تحكم للمالك وحده) بأمر المالك نفسه.
+
+⛔ الاستثناء الوحيد الباقي — **أزرار التوقع تبقى للجهاز الأساسي حصراً**:
+predictions_user.json سجل قياس شخصي يدخل سباق الدقة الثلاثي، وفتحه لجهاز
+ثانٍ يخلط توقعات شخصين في رقم واحد فيفسد القياس لا الصلاحيات. تغييره قرار
+مالك منفصل (مفتاح USER_PICKS_FROM_ALL_DEVICES).
 
 التكلفة: نداء تيليجرام واحد لكل تشغيلة + نداء Claude فقط عند وجود رسالة جديدة.
 لا يستهلك أي نداء من API-Football.
@@ -46,6 +52,14 @@ SCAN_WORKFLOW = "scan.yml"
 
 TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+# 📱 أجهزة المالك التي يُقبل منها الأمر (قراره 2026-08-19): الأساسي + قائمة
+# البث. المصدر الوحيد للقائمة هو api_guard.broadcast_ids حتى لا يتفرع تعريفان.
+def broadcast_raw() -> str:
+    """سرّ أجهزة المالك يُقرأ لحظة الاستعمال — القيمة واحدة في الإنتاج،
+    والقراءة الحية تجعل السلوك قابلاً للاختبار بلا مسارات خاصة."""
+    return os.environ.get("TELEGRAM_BROADCAST_IDS", "").strip()
+# ⛔ أزرار التوقع وحدها تبقى على الجهاز الأساسي — سجل قياس شخصي لا صلاحية
+USER_PICKS_FROM_ALL_DEVICES = False
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 
 SCAN_KEYWORDS = ("مسح", "مسح حي", "شنو الشغال الحين", "scan")
@@ -74,13 +88,32 @@ def save_json(path: Path, data) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def send_telegram(text: str) -> None:
+def control_ids() -> set:
+    """أجهزة المالك التي يُقبل منها الأمر النصي: الأساسي + قائمة البث.
+    تُحسب لحظة الاستعمال لا عند الاستيراد — القيم قد تُضبط بعد التحميل."""
+    return set(api_guard.broadcast_ids(TELEGRAM_CHAT_ID, broadcast_raw()))
+
+
+def send_owner_only(text: str) -> None:
+    """رسائل **إدارة الأجهزة** (بطاقة /تحقق) تبقى على الجهاز الأساسي وحده:
+    مضمونها عن الأجهزة نفسها لا عن كرة القدم، ونفس مبدأ إنذارات فشل التسليم
+    في api_guard. التشغيل المشترك (2026-08-19) وسّع المحتوى التشغيلي فقط."""
     try:
         requests.post(
             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
             json={"chat_id": TELEGRAM_CHAT_ID, "text": text},
             timeout=30,
         )
+    except Exception as e:
+        print("Telegram error:", e)
+
+
+def send_telegram(text: str) -> None:
+    """تأكيدات قائمة التركيز تُبثّ لكل أجهزة المالك (قراره 2026-08-19): أي
+    جهاز يضيف مباراة، والجهازان يريان القائمة نفسها — وإلا اختلفت صورتاهما."""
+    try:
+        api_guard.send_telegram_multi(TELEGRAM_TOKEN, TELEGRAM_CHAT_ID,
+                                      broadcast_raw(), text)
     except Exception as e:
         print("Telegram error:", e)
 
@@ -103,6 +136,7 @@ def get_new_messages(last_update_id: int):
         return [], last_update_id
 
     items = []
+    allowed_text = control_ids()   # أجهزة المالك — تُقرأ لحظة الاستعمال
     ignored = 0   # تحديثات صُفّيت (ليست من قناة التحكم، أو بلا نص كصورة)
     for u in updates:
         last_update_id = max(last_update_id, int(u.get("update_id", 0)))
@@ -111,14 +145,16 @@ def get_new_messages(last_update_id: int):
         if msg:
             chat_id = str((msg.get("chat") or {}).get("id", ""))
             text = (msg.get("text") or "").strip()
-            if chat_id == TELEGRAM_CHAT_ID and text:
+            if chat_id in allowed_text and text:
                 items.append({"type": "text", "text": text})
             else:
                 ignored += 1
         elif cb:
             chat_id = str((((cb.get("message") or {}).get("chat")) or {}).get("id", ""))
             payload = (cb.get("data") or "").strip()
-            if chat_id == TELEGRAM_CHAT_ID and payload:
+            allowed_cb = (allowed_text if USER_PICKS_FROM_ALL_DEVICES
+                          else {TELEGRAM_CHAT_ID})
+            if chat_id in allowed_cb and payload:
                 items.append({"type": "callback", "data": payload, "id": cb.get("id")})
             else:
                 ignored += 1
@@ -526,7 +562,7 @@ def main() -> None:
         # 📡 /تحقق: أمر مباشر بلا أي نداء Claude (مثل "مسح") — يبث رسالة
         # اختبار قصيرة لكل المستقبِلين ثم يرد على المالك بالتفصيل الكامل.
         if low in CHECK_KEYWORDS:
-            send_telegram(api_guard.verify_report(api_guard.verify_delivery()))
+            send_owner_only(api_guard.verify_report(api_guard.verify_delivery()))
             continue
         if any(low == k or low.startswith(k) for k in SCAN_KEYWORDS):
             if fire_scan():
