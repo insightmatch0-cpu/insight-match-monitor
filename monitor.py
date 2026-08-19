@@ -218,6 +218,18 @@ RADAR_ALERT_STOP_RULE = True
 # بمفتاح red_advantage ويُقيَّم صباحاً بعدّاده المستقل ويخضع لقاعدة الإيقاف
 # REC-005 كأي ادعاء. المتوقع المسجّل مسبقاً: دقة 45-65% مقابل خط أساس 29%.
 RADAR_RED_FAST_PATH = True    # مفتاح التراجع الفوري
+
+# 🔴 إنذار الرادار الأحمر المبكر إلى تيليجرام (قرار المالك 2026-08-19 بعد
+# قياس RND: الـ96% المعلنة للإنذار الأحمر مضلّلة — 196 من 223 إنذاراً تُطلق
+# د86+ بعامل واحد «النتيجة الحالية تُسقط التوقع (د90)»، أي أنها تقرأ لوحة
+# نتائج مباراة منتهية لا تتنبأ بشيء. الشريحة ذات القيمة هي المبكرة وحدها:
+# ≤د85 = 27 إنذاراً بدقة 85% وبمعدل ~3/يوم — وقتٌ يسمح بالتصرف فعلاً.
+# لذلك: المبكر وحده يرنّ الهاتف، وما بعد د85 يبقى شاشةً للأبد.
+# يُرسل مرة واحدة لكل مباراة (علم warn_alerted مستقل عن الدراما والطرد)،
+# ويُوسم صفه في السجل بـalerted:True فتُقاس الشريحة المُرسَلة وحدها صباحاً.
+RED_WARN_ALERT = True          # مفتاح التراجع الفوري (False = شاشة فقط كالسابق)
+RED_WARN_ALERT_MAX = 85        # لا تنبيه بعد هذه الدقيقة — بعدها قراءة لوحة لا إنذار
+RED_WARN_ALERT_CAP_PER_RUN = 3 # سقف مستقل حتى لا يزاحم تنبيهات الدراما
 _ALERT_RANK = {"goal": 1, "equalizer": 2, "next_goal": 2, "flip": 3}
 
 # معرفات الدوريات الكبرى في API-Football (تقدر تضيف عليها)
@@ -1622,6 +1634,44 @@ def publish_radar_live(state: dict) -> bool:
         return False
 
 
+def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
+                            pick: str, conf, budget: dict) -> bool:
+    """🔴 إنذار الرادار الأحمر **المبكر** إلى تيليجرام (قرار المالك 2026-08-19).
+
+    لماذا المبكر وحده: قياس 223 إنذاراً أحمر منذ انطلاق الموسم أظهر أن 196
+    منها (88%) تُطلق د86+ بعامل واحد «النتيجة الحالية تُسقط التوقع (د90)» —
+    أي أنها تصف لوحة نتائج مباراة منتهية، فدقتها 97% بلا قيمة استباقية.
+    الشريحة ≤د85 (27 إنذاراً، دقة 85%، ~3/يوم) هي الوحيدة التي تصل والوقت
+    ما زال يسمح بالتصرف. لذلك السقف الزمني ليس تحفظاً بل هو جوهر الفكرة.
+
+    مرة واحدة لكل مباراة بعلم مستقل (warn_alerted) لا يحجب الدراما ولا يُحجب
+    بها، وبسقف مستقل لكل تشغيلة. يُرجع True متى أُرسل فعلاً."""
+    if not RED_WARN_ALERT or verdict.get("level") != "red":
+        return False
+    if (minute or 0) > RED_WARN_ALERT_MAX:
+        return False
+    radar = e.get("radar") or {}
+    if radar.get("warn_alerted") or budget["used"] >= RED_WARN_ALERT_CAP_PER_RUN:
+        return False
+    budget["used"] += 1
+    ar = e.get("ar") or {}
+    h = ar.get("home") or e.get("home", "?")
+    a = ar.get("away") or e.get("away", "?")
+    threatened = h if pick == "home" else (a if pick == "away" else "التعادل")
+    trial = " (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""
+    send_telegram(
+        f"🔴 إنذار الرادار{trial} — د{minute}\n"
+        f"{h} {e.get('score') or '?'} {a}\n"
+        f"التوقع المهدَّد: {threatened}"
+        + (f" ({conf}%)" if conf else "")
+        + f" — درجة الخطر {verdict.get('score')}/100\n"
+        f"الأسباب: {'، '.join(verdict.get('factors') or []) or 'ضغط متصاعد'}"
+    )
+    radar["warn_alerted"] = True
+    e["radar"] = radar
+    return True
+
+
 def radar_fast_watch(state: dict, watch: set, deadline: float,
                      alert_budget: dict = None) -> int:
     """المسار السريع (طلب المالك 2026-08-01): يحدّث أخطر مباريات الرادار كل
@@ -1631,6 +1681,7 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
     v2_pending = (load_json_file(RADAR_PREDICTIONS_FILE, {}) or {}).get("pending") or {}
     if alert_budget is None:
         alert_budget = {"used": 0}
+    warn_budget = {"used": 0}
     published = 0
     while time.monotonic() < deadline:
         # ما دامت هناك أي مباراة حية نواصل — النتائج السريعة لكل المباريات
@@ -1701,6 +1752,11 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
             maybe_radar_alert(fid, e, alert_budget)
             # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
             maybe_red_alert(fid, e, alert_budget)
+            # 🔴 الإنذار الأحمر المبكر — ميزانيته مستقلة عن الدراما
+            maybe_red_warning_alert(fid, e, verdict, minute,
+                                    p.get("pick") or radar.get("pick"),
+                                    p.get("confidence") or radar.get("confidence"),
+                                    warn_budget)
         if publish_radar_live(state):
             published += 1
     return published
@@ -1824,7 +1880,7 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool
         trial = ("" if verdict["key"] in proven_keys
                  else (" (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""))
         send_telegram(
-            f"🛰🚨 تنبيه الرادار{trial} — د{e.get('minute')}\n"
+            f"⚡🚨 تنبيه دراما{trial} — د{e.get('minute')}\n"
             f"{h} {gh} - {ga} {a}\n"
             f"التوقع: {verdict['claim']} لصالح {target} (إشارة {verdict['signal']}%)\n"
             f"الأسباب: " + "، ".join(verdict["reasons"])
@@ -2013,6 +2069,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         return 0
     if alert_budget is None:
         alert_budget = {"used": 0}
+    warn_budget = {"used": 0}
     log = load_json_file(RADAR_FILE, {}) or {}
     log.setdefault("warnings", [])
     log.setdefault("resolved", [])
@@ -2066,6 +2123,8 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
             "alerted": radar.get("alerted"),
             # 🟥 REC-009: علم الطرد مستقل عن سلم الدراما — ينجو هو الآخر
             "red_alerted": radar.get("red_alerted"),
+            # 🔴 علم الإنذار الأحمر المبكر — ينجو بدوره وإلا تكرر كل 10 دقائق
+            "warn_alerted": radar.get("warn_alerted"),
         }
         swept += 1
         # 🚨 عقل S3: هل تتشكل دراما اللحظات الأخيرة؟ (د75+، مرة لكل مباراة)
@@ -2076,6 +2135,11 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
         if maybe_red_alert(fid, e, alert_budget, log):
             log_dirty = True
+        # 🔴 الإنذار الأحمر المبكر (≤د85) — قرار المالك 2026-08-19.
+        # يُحسب هنا لأن verdict جاهز، ويُوسم صفه أدناه بـalerted ليُقاس وحده.
+        warn_sent = maybe_red_warning_alert(
+            fid, e, verdict, minute, p.get("pick"), p.get("confidence"),
+            warn_budget)
         # يُسجَّل الصف متى أنذرت **إحدى** الدرجتين، لا الحالية وحدها.
         # لولا ذلك لاستحال قياس الحالة التي تُجرى التجربة من أجلها أصلاً:
         # xG يرى خطراً لا تراه عدّادات الحجم (0.4 مقابل 2.8 بينما لوحة النتائج
@@ -2095,6 +2159,8 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     "pick": p.get("pick"), "confidence": p.get("confidence"),
                     "level": verdict["level"], "score": verdict["score"],
                     "minute": minute, "factors": verdict["factors"],
+                    # 🔴 وسم الشريحة المُرسَلة إلى تيليجرام — تُقاس وحدها صباحاً
+                    "alerted": warn_sent or None,
                     # 🔬 الحقل الموازي — فارغ حين لا xG (غيابه لا يكسر شيئاً)
                     "score_xg": (verdict_xg["score"] if verdict_xg["has_xg"]
                                  else None),
@@ -2110,6 +2176,8 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     w.update({"level": verdict["level"],
                               "score": verdict["score"],
                               "minute": minute, "factors": verdict["factors"]})
+                if warn_sent:
+                    w["alerted"] = True
                     log_dirty = True
                 # 🔬 ذروة الدرجة الموازية تُتابَع **مستقلة**: الدرجتان تبلغان
                 # ذروتيهما في لحظتين مختلفتين، وربطُ ترقية إحداهما بالأخرى كان

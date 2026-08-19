@@ -145,7 +145,7 @@ class TestAlertGate(unittest.TestCase):
                                             {"used": 0}))
         self.assertEqual(len(sent), 1)
         self.assertNotIn("🧪", sent[0], "النوع المُثبَت يفقد وسم التجربة")
-        self.assertIn("تنبيه الرادار", sent[0])
+        self.assertIn("تنبيه دراما", sent[0])
 
     def test_unknown_claim_keeps_trial_behavior(self):
         """تحت 30 (قوائم فارغة): السلوك القديم حرفياً — إرسال بوسم 🧪."""
