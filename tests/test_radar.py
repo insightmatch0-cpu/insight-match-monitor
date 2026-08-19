@@ -357,7 +357,7 @@ class TestDramaAlerts(unittest.TestCase):
                                  snap(78, {"sog": 4, "cor": 5, "shots": 8}, {"sv": 4})]}}
         budget = {"used": 0}
         self.assertTrue(M.maybe_radar_alert("9", e, budget))
-        self.assertIn("تنبيه الرادار", sent[0])
+        self.assertIn("تنبيه دراما", sent[0])
         self.assertIn("🧪", sent[0])            # وسم المرحلة التجريبية (قرار المالك)
         self.assertIn("د78", sent[0])
         # نفس الحالة مرة أخرى → صمت (لا إزعاج)
@@ -609,3 +609,88 @@ class TestDangerClimb(unittest.TestCase):
         self.assertIn("dangerClimb(tr.danger, tr.min)", html)
         dash = (Path(__file__).resolve().parent.parent / "dashboard_update.py").read_text(encoding="utf-8")
         self.assertIn('"danger": radar.get("dscores")', dash)
+
+
+class TestEarlyRedWarningAlert(unittest.TestCase):
+    """🔴 إنذار الرادار الأحمر المبكر إلى تيليجرام (قرار المالك 2026-08-19).
+
+    الجوهر المقاس الذي بُني عليه القرار: 196 من 223 إنذاراً أحمر تُطلق د86+
+    وتصف لوحة نتائج مباراة منتهية (دقة 97% بلا قيمة)، بينما شريحة ≤د85
+    (27 إنذاراً، 85%) هي الاستباقية الحقيقية. فالسقف الزمني ليس تحفظاً
+    بل هو الميزة نفسها — وهذه الاختبارات تحرسه."""
+
+    def setUp(self):
+        self.sent = []
+        orig = M.send_telegram
+        M.send_telegram = lambda t, **k: self.sent.append(t)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+
+    @staticmethod
+    def _match(minute=80, score="1-1"):
+        return {"home": "Alpha", "away": "Beta", "score": score,
+                "minute": minute, "radar": {}}
+
+    RED = {"level": "red", "score": 72,
+           "factors": ["ضغط هجومي متصاعد", "حارس الخصم تحت الحصار"]}
+
+    def test_early_red_is_sent(self):
+        e = self._match(minute=80)
+        ok = M.maybe_red_warning_alert("1", e, self.RED, 80, "home", 61,
+                                       {"used": 0})
+        self.assertTrue(ok)
+        self.assertEqual(len(self.sent), 1)
+        self.assertIn("إنذار الرادار", self.sent[0])
+        self.assertIn("د80", self.sent[0])
+        self.assertIn("Alpha", self.sent[0])
+
+    def test_late_red_is_silent(self):
+        """د86+ = قراءة لوحة نتائج لا إنذار — القلب النابض للقرار."""
+        for m in (86, 90):
+            e = self._match(minute=m)
+            ok = M.maybe_red_warning_alert("1", e, self.RED, m, "home", 61,
+                                           {"used": 0})
+            self.assertFalse(ok, f"د{m} يجب أن يبقى شاشةً فقط")
+        self.assertEqual(self.sent, [])
+
+    def test_amber_never_alerts(self):
+        e = self._match()
+        ok = M.maybe_red_warning_alert(
+            "1", e, {"level": "amber", "score": 45, "factors": []}, 80,
+            "home", 61, {"used": 0})
+        self.assertFalse(ok)
+        self.assertEqual(self.sent, [])
+
+    def test_once_per_match(self):
+        e = self._match()
+        b = {"used": 0}
+        self.assertTrue(M.maybe_red_warning_alert("1", e, self.RED, 80,
+                                                  "home", 61, b))
+        self.assertFalse(M.maybe_red_warning_alert("1", e, self.RED, 82,
+                                                   "home", 61, b),
+                         "تكرار الإنذار لنفس المباراة")
+        self.assertEqual(len(self.sent), 1)
+
+    def test_flag_survives_radar_rebuild(self):
+        """الجولة العادية تعيد بناء e['radar'] كاملاً — علم warn_alerted
+        يجب أن يُنسخ صراحةً وإلا رنّ الهاتف كل 10 دقائق (درس alerted)."""
+        src = Path(M.__file__).read_text(encoding="utf-8")
+        self.assertIn('"warn_alerted": radar.get("warn_alerted")', src)
+
+    def test_budget_is_independent_of_drama(self):
+        """سقف مستقل: ازدحام الدراما يجب ألا يبتلع إنذارات الرادار."""
+        src = Path(M.__file__).read_text(encoding="utf-8")
+        self.assertIn("warn_budget", src)
+        self.assertNotIn("RED_WARN_ALERT_CAP_PER_RUN", "RADAR_ALERT_CAP_PER_RUN")
+        e = self._match()
+        self.assertFalse(M.maybe_red_warning_alert(
+            "1", e, self.RED, 80, "home", 61,
+            {"used": M.RED_WARN_ALERT_CAP_PER_RUN}))
+
+    def test_kill_switch(self):
+        orig = M.RED_WARN_ALERT
+        M.RED_WARN_ALERT = False
+        self.addCleanup(lambda: setattr(M, "RED_WARN_ALERT", orig))
+        e = self._match()
+        self.assertFalse(M.maybe_red_warning_alert("1", e, self.RED, 80,
+                                                   "home", 61, {"used": 0}))
+        self.assertEqual(self.sent, [])
