@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T00:12:24.352273+00:00",
+ "updated": "2026-08-19T00:19:49.418696+00:00",
  "live": [
   {
    "fid": "1520826",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/144.png",
    "league_logo": "https://media.api-sports.io/football/leagues/72.png",
    "score": "0-0",
-   "minute": 83,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T00:12:20.574817+00:00",
+   "seen": "2026-08-19T00:19:47.234937+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -24,10 +24,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 64,
-    "level": "amber",
+    "score": 69,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -42,14 +42,17 @@
      "min": [
       45,
       68,
-      83
+      76,
+      90
      ],
      "danger": [
       42,
       55,
-      64
+      60,
+      69
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -57,14 +60,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      2,
       2,
       2,
       2
@@ -83,9 +89,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7870.png",
    "league_logo": "https://media.api-sports.io/football/leagues/742.png",
    "score": "0-1",
-   "minute": 50,
+   "minute": 57,
    "status": "2H",
-   "seen": "2026-08-19T00:12:20.574817+00:00",
+   "seen": "2026-08-19T00:19:47.234937+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -112,7 +118,7 @@
     "trend": {
      "min": [
       45,
-      50
+      57
      ],
      "danger": [
       15,
@@ -150,7 +156,7 @@
    "score": "1-1",
    "minute": 0,
    "status": "P",
-   "seen": "2026-08-19T00:12:20.574817+00:00",
+   "seen": "2026-08-19T00:15:11.380905+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -3835,6 +3841,19 @@
     "final": "0-0",
     "hit": true,
     "top": true
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Londrina",
+    "away": "Atletico Goianiense",
+    "league": "Serie B (Brazil)",
+    "level": "red",
+    "minute": 84,
+    "pick": "home",
+    "conf": 40,
+    "top": false
    },
    {
     "kind": "warning",
