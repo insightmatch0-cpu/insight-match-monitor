@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T13:19:57.334267+00:00",
+ "updated": "2026-08-19T13:26:37.863894+00:00",
  "live": [
   {
    "fid": "1532866",
@@ -14,7 +14,7 @@
    "score": "1-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T13:19:54.287313+00:00",
+   "seen": "2026-08-19T13:20:24.935549+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -41,10 +41,12 @@
     "trend": {
      "min": [
       45,
+      90,
       90
      ],
      "danger": [
       42,
+      69,
       69
      ],
      "h_sog": [
@@ -81,9 +83,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21263.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
    "score": "0-1",
-   "minute": 84,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T13:19:54.287313+00:00",
+   "seen": "2026-08-19T13:26:35.408269+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -93,10 +95,10 @@
     "confidence": 70
    },
    "radar": {
-    "score": 65,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 70,
@@ -111,12 +113,14 @@
      "min": [
       12,
       45,
-      84
+      84,
+      90
      ],
      "danger": [
       22,
       42,
-      65
+      65,
+      69
      ],
      "h_sog": [
       0,
@@ -158,7 +162,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-19T13:19:54.287313+00:00",
+   "seen": "2026-08-19T13:26:35.408269+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 50
@@ -184,10 +188,75 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1545179",
+   "home": "Altay",
+   "away": "Ordabasy",
+   "home_en": "Altay",
+   "away_en": "Ordabasy",
+   "league": "Cup (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4544.png",
+   "away_logo": "https://media.api-sports.io/football/teams/692.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/498.png",
+   "score": "1-1",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T13:26:35.408269+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د26)"
+    ],
+    "pick": "away",
+    "confidence": 53,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      26
+     ],
+     "danger": [
+      30
      ],
      "h_sog": [
       0
@@ -215,9 +284,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27902.png",
    "league_logo": "https://media.api-sports.io/football/leagues/780.png",
    "score": "0-0",
-   "minute": 20,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-19T13:19:54.287313+00:00",
+   "seen": "2026-08-19T13:26:35.408269+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 50
@@ -227,10 +296,10 @@
     "confidence": 43
    },
    "radar": {
-    "score": 27,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
     ],
     "pick": "away",
     "confidence": 43,
@@ -243,69 +312,10 @@
     "top": false,
     "trend": {
      "min": [
-      20
-     ],
-     "danger": [
-      27
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1545179",
-   "home": "Altay",
-   "away": "Ordabasy",
-   "home_en": "Altay",
-   "away_en": "Ordabasy",
-   "league": "Cup (Kazakhstan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4544.png",
-   "away_logo": "https://media.api-sports.io/football/teams/692.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/498.png",
-   "score": "1-1",
-   "minute": 19,
-   "status": "1H",
-   "seen": "2026-08-19T13:19:54.287313+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 48
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 53
-   },
-   "radar": {
-    "score": 26,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د19)"
-    ],
-    "pick": "away",
-    "confidence": 53,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      19
-     ],
-     "danger": [
       26
+     ],
+     "danger": [
+      30
      ],
      "h_sog": [
       0
@@ -333,9 +343,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1538.png",
    "league_logo": "https://media.api-sports.io/football/leagues/24.png",
    "score": "0-0",
-   "minute": 19,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-19T13:19:54.287313+00:00",
+   "seen": "2026-08-19T13:26:35.408269+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -345,10 +355,10 @@
     "confidence": 47
    },
    "radar": {
-    "score": 26,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
     ],
     "pick": "home",
     "confidence": 47,
@@ -361,11 +371,11 @@
     "top": false,
     "trend": {
      "min": [
-      19
-     ],
-     "danger": [
       26
      ],
+     "danger": [
+      30
+     ],
      "h_sog": [
       0
      ],
@@ -382,35 +392,35 @@
    }
   },
   {
-   "fid": "1607205",
-   "home": "Busan I Park",
-   "away": "Bucheon FC 1995",
-   "home_en": "Busan I Park",
-   "away_en": "Bucheon FC 1995",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2752.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2745.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
+   "fid": "1563648",
+   "home": "Krylia Sovetov",
+   "away": "Zenit",
+   "home_en": "Krylia Sovetov",
+   "away_en": "Zenit",
+   "league": "Cup (Russia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1079.png",
+   "away_logo": "https://media.api-sports.io/football/teams/596.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "0-0",
-   "minute": 0,
-   "status": "P",
-   "seen": "2026-08-19T13:16:48.376465+00:00",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-19T13:26:35.408269+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 54
+    "pick": "away",
+    "confidence": 60
    },
    "pred_v2": {
-    "pick": "home",
-    "confidence": 39
+    "pick": "away",
+    "confidence": 58
    },
    "radar": {
-    "score": 15,
+    "score": 19,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د0)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د7)"
     ],
-    "pick": "home",
-    "confidence": 39,
+    "pick": "away",
+    "confidence": 58,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -420,128 +430,21 @@
     "top": false,
     "trend": {
      "min": [
-      45,
-      90,
-      0,
-      0
+      7
      ],
      "danger": [
-      42,
-      69,
-      15,
-      15
+      19
      ],
      "h_sog": [
-      0,
-      0,
-      0,
       0
      ],
      "a_sog": [
-      0,
-      0,
-      0,
       0
      ],
      "h_cor": [
-      0,
-      0,
-      0,
       0
      ],
      "a_cor": [
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607207",
-   "home": "Gangwon FC",
-   "away": "Seongnam FC",
-   "home_en": "Gangwon FC",
-   "away_en": "Seongnam FC",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2746.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2757.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
-   "score": "0-0",
-   "minute": 0,
-   "status": "P",
-   "seen": "2026-08-19T13:13:41.025917+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د0)"
-    ],
-    "pick": "home",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      10,
-      26,
-      54,
-      90,
-      98,
-      0
-     ],
-     "danger": [
-      21,
-      30,
-      47,
-      69,
-      70,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
       0
      ]
     }
@@ -3141,6 +3044,34 @@
   },
   {
    "date": "2026-08-19",
+   "home": "بوسان آي بارك",
+   "away": "بوشيون إف سي 1995",
+   "home_en": "Busan I Park",
+   "away_en": "Bucheon FC 1995",
+   "league": "كأس كوريا الجنوبية",
+   "home_logo": "https://media.api-sports.io/football/teams/2752.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2745.png",
+   "pick": "home",
+   "confidence": 54,
+   "kickoff": "2026-08-19T10:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-19",
+   "home": "جانجوون إف سي",
+   "away": "سيونجنام إف سي",
+   "home_en": "Gangwon FC",
+   "away_en": "Seongnam FC",
+   "league": "كأس كوريا الجنوبية",
+   "home_logo": "https://media.api-sports.io/football/teams/2746.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2757.png",
+   "pick": "draw",
+   "confidence": 50,
+   "kickoff": "2026-08-19T10:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-19",
    "home": "ليخ بوزنان الثانية",
    "away": "ليبنو ستيشيو",
    "home_en": "Lech Poznań II",
@@ -5037,19 +4968,6 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-19",
-    "home": "SHANGHAI SIPG",
-    "away": "Dalian Zhixing",
-    "league": "Super League (China)",
-    "level": "amber",
-    "minute": 78,
-    "pick": "home",
-    "conf": 70,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-19",
     "home": "Parceiro Nagano",
     "away": "Fukui United",
     "league": "Emperor Cup (Japan)",
@@ -5063,6 +4981,19 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-19",
+    "home": "SHANGHAI SIPG",
+    "away": "Dalian Zhixing",
+    "league": "Super League (China)",
+    "level": "red",
+    "minute": 85,
+    "pick": "home",
+    "conf": 70,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
     "home": "Preston Lions",
     "away": "Melbourne City II",
     "league": "Victoria NPL (Australia)",
@@ -5070,19 +5001,6 @@
     "minute": 87,
     "pick": "away",
     "conf": 40,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-19",
-    "home": "Nantong Haimen Codion",
-    "away": "Qingdao Red Lions",
-    "league": "League Two (China)",
-    "level": "red",
-    "minute": 87,
-    "pick": "home",
-    "conf": 37,
     "top": false
    },
    {
@@ -5177,6 +5095,19 @@
     "minute": 90,
     "pick": "away",
     "conf": 42,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-19",
+    "home": "Nantong Haimen Codion",
+    "away": "Qingdao Red Lions",
+    "league": "League Two (China)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 37,
     "top": false
    },
    {
