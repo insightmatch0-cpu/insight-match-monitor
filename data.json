@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T09:03:18.661170+00:00",
+ "updated": "2026-08-19T09:09:45.182141+00:00",
  "live": [
   {
    "fid": "1623316",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/7116.png",
    "away_logo": "https://media.api-sports.io/football/teams/4314.png",
    "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-2",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-19T09:03:16.949886+00:00",
+   "score": "0-3",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-19T09:09:43.682776+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -31,7 +31,7 @@
     "confidence": 53,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
@@ -40,7 +40,7 @@
      "min": [
       36,
       30,
-      45
+      51
      ],
      "danger": [
       15,
@@ -65,6 +65,65 @@
      "a_cor": [
       0,
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1594331",
+   "home": "Vasas II",
+   "away": "Honvéd II",
+   "home_en": "Vasas II",
+   "away_en": "Honvéd II",
+   "league": "NB III - Southeast (Hungary)",
+   "home_logo": "https://media.api-sports.io/football/teams/19462.png",
+   "away_logo": "https://media.api-sports.io/football/teams/11853.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1023.png",
+   "score": "0-0",
+   "minute": 8,
+   "status": "1H",
+   "seen": "2026-08-19T09:09:43.682776+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 36
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
+    ],
+    "pick": "home",
+    "confidence": 36,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8
+     ],
+     "danger": [
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
