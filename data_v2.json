@@ -2253,8 +2253,14 @@
   "reports": [
    {
     "fid": "1547770",
-    "score": "",
-    "s1": {},
+    "score": "1-1",
+    "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 62,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -2305,6 +2311,11 @@
     "fid": "1622622",
     "score": "0-0",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 52,
+      "correct": true
+     },
      "v2": {
       "pick": "away",
       "confidence": 39,
@@ -2380,6 +2391,11 @@
     "fid": "1622621",
     "score": "1-1",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 58,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 47,
@@ -2451,6 +2467,11 @@
     "fid": "1622620",
     "score": "2-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 65,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 54,
@@ -2999,5 +3020,5 @@
   ]
  },
  "pred_updated": "2026-08-18T04:17:12.513095+00:00",
- "updated": "2026-08-19T03:00:32.300643+00:00"
+ "updated": "2026-08-19T04:02:01.143154+00:00"
 }
