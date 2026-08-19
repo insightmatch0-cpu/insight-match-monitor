@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T00:19:49.418696+00:00",
+ "updated": "2026-08-19T00:26:35.410722+00:00",
  "live": [
   {
    "fid": "1520826",
@@ -14,7 +14,7 @@
    "score": "0-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-19T00:19:47.234937+00:00",
+   "seen": "2026-08-19T00:23:27.096947+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -42,13 +42,13 @@
      "min": [
       45,
       68,
-      76,
+      83,
       90
      ],
      "danger": [
       42,
       55,
-      60,
+      64,
       69
      ],
      "h_sog": [
@@ -89,9 +89,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7870.png",
    "league_logo": "https://media.api-sports.io/football/leagues/742.png",
    "score": "0-1",
-   "minute": 57,
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-08-19T00:19:47.234937+00:00",
+   "seen": "2026-08-19T00:26:32.956885+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -118,7 +118,7 @@
     "trend": {
      "min": [
       45,
-      57
+      64
      ],
      "danger": [
       15,
@@ -144,72 +144,119 @@
    }
   },
   {
-   "fid": "1547770",
-   "home": "Independ. Rivadavia",
-   "away": "Fluminense",
-   "home_en": "Independ. Rivadavia",
-   "away_en": "Fluminense",
-   "league": "CONMEBOL Libertadores (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/473.png",
-   "away_logo": "https://media.api-sports.io/football/teams/124.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
-   "score": "1-1",
-   "minute": 0,
-   "status": "P",
-   "seen": "2026-08-19T00:15:11.380905+00:00",
+   "fid": "1619654",
+   "home": "The Strongest",
+   "away": "Oriente Petrolero",
+   "home_en": "The Strongest",
+   "away_en": "Oriente Petrolero",
+   "league": "Copa de la División Profesional (Bolivia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3711.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3707.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/964.png",
+   "score": "0-0",
+   "minute": 12,
+   "status": "1H",
+   "seen": "2026-08-19T00:26:32.956885+00:00",
    "pred_v1": {
-    "pick": "away",
-    "confidence": 62
+    "pick": "home",
+    "confidence": 60
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 39
+    "confidence": 61
    },
    "radar": {
-    "score": 15,
+    "score": 22,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د0)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د12)"
     ],
     "pick": "home",
-    "confidence": 39,
+    "confidence": 61,
     "drama": {
      "signal": 0,
      "side": "home",
      "ready": false
     },
     "alerted": null,
-    "top": true,
+    "top": false,
     "trend": {
      "min": [
-      45,
-      90,
-      0
+      12
      ],
      "danger": [
-      42,
-      83,
-      15
+      22
      ],
      "h_sog": [
-      0,
-      0,
       0
      ],
      "a_sog": [
-      0,
-      1,
-      1
+      0
      ],
      "h_cor": [
-      0,
-      2,
-      2
+      0
      ],
      "a_cor": [
-      0,
-      3,
-      3
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1549146",
+   "home": "Banfield",
+   "away": "Midland",
+   "home_en": "Banfield",
+   "away_en": "Midland",
+   "league": "Copa Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/449.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1963.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/130.png",
+   "score": "0-0",
+   "minute": 8,
+   "status": "1H",
+   "seen": "2026-08-19T00:26:32.956885+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 59
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
+    ],
+    "pick": "home",
+    "confidence": 59,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8
+     ],
+     "danger": [
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
      ]
     }
    }
@@ -3747,19 +3794,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
-    "date": "2026-08-18",
-    "home": "Londrina",
-    "away": "Atletico Goianiense",
-    "league": "Serie B (Brazil)",
-    "level": "amber",
-    "minute": 77,
-    "pick": "home",
-    "conf": 40,
-    "top": false
-   },
-   {
-    "kind": "warning",
     "date": "2026-08-18",
     "home": "Wigan",
     "away": "Aston Villa U21",
@@ -3841,19 +3875,6 @@
     "final": "0-0",
     "hit": true,
     "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-18",
-    "home": "Londrina",
-    "away": "Atletico Goianiense",
-    "league": "Serie B (Brazil)",
-    "level": "red",
-    "minute": 84,
-    "pick": "home",
-    "conf": 40,
-    "top": false
    },
    {
     "kind": "warning",
@@ -4467,6 +4488,19 @@
     "minute": 90,
     "pick": "home",
     "conf": 38,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-18",
+    "home": "Londrina",
+    "away": "Atletico Goianiense",
+    "league": "Serie B (Brazil)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 40,
     "top": false
    },
    {
