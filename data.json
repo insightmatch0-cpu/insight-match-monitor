@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T10:17:40.865292+00:00",
+ "updated": "2026-08-19T10:26:36.304354+00:00",
  "live": [
   {
    "fid": "1594331",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/19462.png",
    "away_logo": "https://media.api-sports.io/football/teams/11853.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1023.png",
-   "score": "2-0",
-   "minute": 60,
+   "score": "3-0",
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -76,8 +76,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/102.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
+   "status": "HT",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -103,9 +103,11 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
@@ -139,8 +141,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/102.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
+   "status": "HT",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -166,9 +168,11 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
@@ -202,8 +206,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/102.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
+   "status": "HT",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -229,73 +233,12 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      15,
       15
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623384",
-   "home": "APIA Leichhardt Tigers",
-   "away": "Melbourne Victory",
-   "home_en": "APIA Leichhardt Tigers",
-   "away_en": "Melbourne Victory",
-   "league": "Australia Cup (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/3764.png",
-   "away_logo": "https://media.api-sports.io/football/teams/944.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/874.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 63
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
-    ],
-    "pick": "away",
-    "confidence": 63,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45
-     ],
-     "danger": [
-      42
      ],
      "h_sog": [
       0,
@@ -326,10 +269,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/7142.png",
    "away_logo": "https://media.api-sports.io/football/teams/10405.png",
    "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-2",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
+   "score": "1-2",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -355,11 +298,1061 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      37,
+      30,
+      45
+     ],
+     "danger": [
+      15,
+      15,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623384",
+   "home": "APIA Leichhardt Tigers",
+   "away": "Melbourne Victory",
+   "home_en": "APIA Leichhardt Tigers",
+   "away_en": "Melbourne Victory",
+   "league": "Australia Cup (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3764.png",
+   "away_logo": "https://media.api-sports.io/football/teams/944.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/874.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 63
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "away",
+    "confidence": 63,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      45
+     ],
+     "danger": [
+      42,
+      42
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607204",
+   "home": "Asan Mugunghwa",
+   "away": "Daejeon Citizen",
+   "home_en": "Asan Mugunghwa",
+   "away_en": "Daejeon Citizen",
+   "league": "FA Cup (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2753.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2750.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
+   "score": "0-1",
+   "minute": 27,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 48,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      23
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623327",
+   "home": "Kitakyushu",
+   "away": "Okinawa SV",
+   "home_en": "Kitakyushu",
+   "away_en": "Okinawa SV",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/805.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7137.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 27,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 31,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د27)"
+    ],
+    "pick": "home",
+    "confidence": 55,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      27
+     ],
+     "danger": [
+      21,
+      31
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607206",
+   "home": "Jeonbuk Motors",
+   "away": "Dangjin Citizen",
+   "home_en": "Jeonbuk Motors",
+   "away_en": "Dangjin Citizen",
+   "league": "FA Cup (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2762.png",
+   "away_logo": "https://media.api-sports.io/football/teams/18653.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
+   "score": "1-1",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د26)"
+    ],
+    "pick": "home",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      26
+     ],
+     "danger": [
+      30
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607208",
+   "home": "Gimpo Citizen",
+   "away": "Gimcheon Sangmu FC",
+   "home_en": "Gimpo Citizen",
+   "away_en": "Gimcheon Sangmu FC",
+   "league": "FA Cup (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/7078.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2768.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 49
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "away",
+    "confidence": 49,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      19
+     ],
+     "danger": [
+      26
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607209",
+   "home": "Pohang Steelers",
+   "away": "Jinju Citizen",
+   "home_en": "Pohang Steelers",
+   "away_en": "Jinju Citizen",
+   "league": "FA Cup (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2764.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16452.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
+   "score": "0-1",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 64
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د19)"
+    ],
+    "pick": "home",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      19
+     ],
+     "danger": [
+      26
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607210",
+   "home": "Ulsan Citizen",
+   "away": "Gwangju FC",
+   "home_en": "Ulsan Citizen",
+   "away_en": "Gwangju FC",
+   "league": "FA Cup (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/7108.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2759.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 60
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 57
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
+    ],
+    "pick": "away",
+    "confidence": 57,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      26
+     ],
+     "danger": [
+      21,
+      30
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623325",
+   "home": "Fukushima United",
+   "away": "Oyama",
+   "home_en": "Fukushima United",
+   "away_en": "Oyama",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4318.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15216.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "1-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 65
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 60
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 60,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      20
+     ],
+     "danger": [
+      21,
+      15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623330",
+   "home": "Parceiro Nagano",
+   "away": "Fukui United",
+   "home_en": "Parceiro Nagano",
+   "away_en": "Fukui United",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4323.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7119.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-1",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 57
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د26)"
+    ],
+    "pick": "home",
+    "confidence": 57,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      26
+     ],
+     "danger": [
+      21,
+      30
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623331",
+   "home": "Nara Club",
+   "away": "Osaka",
+   "home_en": "Nara Club",
+   "away_en": "Osaka",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/7135.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7138.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "1-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 35
+   }
+  },
+  {
+   "fid": "1623335",
+   "home": "Tochigi SC",
+   "away": "Urayasu",
+   "home_en": "Tochigi SC",
+   "away_en": "Urayasu",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/315.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7149.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
+    ],
+    "pick": "home",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      26
+     ],
+     "danger": [
+      21,
+      30
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623337",
+   "home": "Veroskronos Tsuno",
+   "away": "Kamatamare Sanuki",
+   "home_en": "Veroskronos Tsuno",
+   "away_en": "Kamatamare Sanuki",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/11437.png",
+   "away_logo": "https://media.api-sports.io/football/teams/317.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+    ],
+    "pick": "away",
+    "confidence": 56,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      20
+     ],
+     "danger": [
+      21,
+      27
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623338",
+   "home": "Verspah Oita",
+   "away": "Kochi United",
+   "home_en": "Verspah Oita",
+   "away_en": "Kochi United",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/7151.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7129.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 42
+   }
+  },
+  {
+   "fid": "1568752",
+   "home": "Lech Poznań II",
+   "away": "Lipno Stęszew",
+   "home_en": "Lech Poznań II",
+   "away_en": "Lipno Stęszew",
+   "league": "III Liga - Group 2 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/9133.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26180.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
+   "score": "1-0",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 63
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 63,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10,
+      19
      ],
      "danger": [
       15,
       15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623326",
+   "home": "Gainare Tottori",
+   "away": "Roasso Kumamoto",
+   "home_en": "Gainare Tottori",
+   "away_en": "Roasso Kumamoto",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4319.png",
+   "away_logo": "https://media.api-sports.io/football/teams/314.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 46
+   },
+   "radar": {
+    "score": 25,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د18)"
+    ],
+    "pick": "away",
+    "confidence": 46,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      9,
+      18
+     ],
+     "danger": [
+      20,
+      25
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623328",
+   "home": "Kagoshima United",
+   "away": "Renofa Yamaguchi",
+   "home_en": "Kagoshima United",
+   "away_en": "Renofa Yamaguchi",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/2236.png",
+   "away_logo": "https://media.api-sports.io/football/teams/309.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "1-0",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 60
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 34
+   }
+  },
+  {
+   "fid": "1623332",
+   "home": "Biwako Shiga",
+   "away": "Japan Soccer College",
+   "home_en": "Biwako Shiga",
+   "away_en": "Japan Soccer College",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/7117.png",
+   "away_logo": "https://media.api-sports.io/football/teams/11446.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "home",
+    "confidence": 48,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10,
+      19
+     ],
+     "danger": [
+      21,
+      26
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623334",
+   "home": "Senshu University",
+   "away": "Tsukuba University",
+   "home_en": "Senshu University",
+   "away_en": "Tsukuba University",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/28189.png",
+   "away_logo": "https://media.api-sports.io/football/teams/11424.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-1",
+   "minute": 23,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 35
+   }
+  },
+  {
+   "fid": "1623336",
+   "home": "Tohoku Gakuin University",
+   "away": "Thespakusatsu Gunma",
+   "home_en": "Tohoku Gakuin University",
+   "away_en": "Thespakusatsu Gunma",
+   "league": "Emperor Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/28190.png",
+   "away_logo": "https://media.api-sports.io/football/teams/756.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+   "score": "0-0",
+   "minute": 23,
+   "status": "1H",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 61
+   },
+   "radar": {
+    "score": 25,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+    ],
+    "pick": "away",
+    "confidence": 61,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8,
+      17
+     ],
+     "danger": [
+      19,
+      25
      ],
      "h_sog": [
       0,
@@ -393,7 +1386,7 @@
    "score": "1-0",
    "minute": 19,
    "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
+   "seen": "2026-08-19T10:26:33.605132+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 50
@@ -437,924 +1430,6 @@
       0
      ]
     }
-   }
-  },
-  {
-   "fid": "1607204",
-   "home": "Asan Mugunghwa",
-   "away": "Daejeon Citizen",
-   "home_en": "Asan Mugunghwa",
-   "away_en": "Daejeon Citizen",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2753.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2750.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
-   "score": "0-0",
-   "minute": 18,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 48
-   },
-   "radar": {
-    "score": 25,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د18)"
-    ],
-    "pick": "away",
-    "confidence": 48,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      18
-     ],
-     "danger": [
-      25
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623327",
-   "home": "Kitakyushu",
-   "away": "Okinawa SV",
-   "home_en": "Kitakyushu",
-   "away_en": "Okinawa SV",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/805.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7137.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 18,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "home",
-    "confidence": 55,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607206",
-   "home": "Jeonbuk Motors",
-   "away": "Dangjin Citizen",
-   "home_en": "Jeonbuk Motors",
-   "away_en": "Dangjin Citizen",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2762.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18653.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
-   "score": "0-1",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 25,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د17)"
-    ],
-    "pick": "home",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      17
-     ],
-     "danger": [
-      25
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607208",
-   "home": "Gimpo Citizen",
-   "away": "Gimcheon Sangmu FC",
-   "home_en": "Gimpo Citizen",
-   "away_en": "Gimcheon Sangmu FC",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/7078.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2768.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 49
-   },
-   "radar": {
-    "score": 25,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
-    ],
-    "pick": "away",
-    "confidence": 49,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      17
-     ],
-     "danger": [
-      25
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607209",
-   "home": "Pohang Steelers",
-   "away": "Jinju Citizen",
-   "home_en": "Pohang Steelers",
-   "away_en": "Jinju Citizen",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2764.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16452.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
-   "score": "0-1",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 64
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 25,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د17)"
-    ],
-    "pick": "home",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      17
-     ],
-     "danger": [
-      25
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607210",
-   "home": "Ulsan Citizen",
-   "away": "Gwangju FC",
-   "home_en": "Ulsan Citizen",
-   "away_en": "Gwangju FC",
-   "league": "FA Cup (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/7108.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2759.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/294.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 60
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 57
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "away",
-    "confidence": 57,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623325",
-   "home": "Fukushima United",
-   "away": "Oyama",
-   "home_en": "Fukushima United",
-   "away_en": "Oyama",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4318.png",
-   "away_logo": "https://media.api-sports.io/football/teams/15216.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "1-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 65
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 60
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "home",
-    "confidence": 60,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623330",
-   "home": "Parceiro Nagano",
-   "away": "Fukui United",
-   "home_en": "Parceiro Nagano",
-   "away_en": "Fukui United",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4323.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7119.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 57
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "home",
-    "confidence": 57,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623331",
-   "home": "Nara Club",
-   "away": "Osaka",
-   "home_en": "Nara Club",
-   "away_en": "Osaka",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/7135.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7138.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 35
-   }
-  },
-  {
-   "fid": "1623335",
-   "home": "Tochigi SC",
-   "away": "Urayasu",
-   "home_en": "Tochigi SC",
-   "away_en": "Urayasu",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/315.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7149.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 53
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "home",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623337",
-   "home": "Veroskronos Tsuno",
-   "away": "Kamatamare Sanuki",
-   "home_en": "Veroskronos Tsuno",
-   "away_en": "Kamatamare Sanuki",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/11437.png",
-   "away_logo": "https://media.api-sports.io/football/teams/317.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
-    ],
-    "pick": "away",
-    "confidence": 56,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623338",
-   "home": "Verspah Oita",
-   "away": "Kochi United",
-   "home_en": "Verspah Oita",
-   "away_en": "Kochi United",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/7151.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7129.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 42
-   }
-  },
-  {
-   "fid": "1568752",
-   "home": "Lech Poznań II",
-   "away": "Lipno Stęszew",
-   "home_en": "Lech Poznań II",
-   "away_en": "Lipno Stęszew",
-   "league": "III Liga - Group 2 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/9133.png",
-   "away_logo": "https://media.api-sports.io/football/teams/26180.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
-   "score": "1-0",
-   "minute": 16,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 63
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 63,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      10
-     ],
-     "danger": [
-      15
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623326",
-   "home": "Gainare Tottori",
-   "away": "Roasso Kumamoto",
-   "home_en": "Gainare Tottori",
-   "away_en": "Roasso Kumamoto",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4319.png",
-   "away_logo": "https://media.api-sports.io/football/teams/314.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 16,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 46
-   },
-   "radar": {
-    "score": 20,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د9)"
-    ],
-    "pick": "away",
-    "confidence": 46,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      9
-     ],
-     "danger": [
-      20
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623328",
-   "home": "Kagoshima United",
-   "away": "Renofa Yamaguchi",
-   "home_en": "Kagoshima United",
-   "away_en": "Renofa Yamaguchi",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/2236.png",
-   "away_logo": "https://media.api-sports.io/football/teams/309.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "1-0",
-   "minute": 16,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 60
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 34
-   }
-  },
-  {
-   "fid": "1623332",
-   "home": "Biwako Shiga",
-   "away": "Japan Soccer College",
-   "home_en": "Biwako Shiga",
-   "away_en": "Japan Soccer College",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/7117.png",
-   "away_logo": "https://media.api-sports.io/football/teams/11446.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 16,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 48
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
-    ],
-    "pick": "home",
-    "confidence": 48,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      10
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623336",
-   "home": "Tohoku Gakuin University",
-   "away": "Thespakusatsu Gunma",
-   "home_en": "Tohoku Gakuin University",
-   "away_en": "Thespakusatsu Gunma",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/28190.png",
-   "away_logo": "https://media.api-sports.io/football/teams/756.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 15,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 61
-   },
-   "radar": {
-    "score": 19,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
-    ],
-    "pick": "away",
-    "confidence": 61,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      8
-     ],
-     "danger": [
-      19
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623334",
-   "home": "Senshu University",
-   "away": "Tsukuba University",
-   "home_en": "Senshu University",
-   "away_en": "Tsukuba University",
-   "league": "Emperor Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/28189.png",
-   "away_logo": "https://media.api-sports.io/football/teams/11424.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-   "score": "0-0",
-   "minute": 14,
-   "status": "1H",
-   "seen": "2026-08-19T10:17:37.654684+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 48
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 35
    }
   }
  ],
