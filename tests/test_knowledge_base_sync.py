@@ -94,6 +94,22 @@ class TestFeatureDocsAligned(unittest.TestCase):
                          + "؛ ".join(problems))
 
 
+class TestSeasonSectionIsStamped(unittest.TestCase):
+    """حادثة 2026-08-19: قسم «منذ انطلاق الموسم» كان يقول «حتى اليوم» وأرقامه
+    مجمّدة منذ 3 أيام (رادار أحمر 83/88 بينما الحقيقة 213/223). صفحة تدّعي
+    الحداثة وهي جامدة أسوأ من صفحة تعلن تاريخها — فالختم إلزامي بنيوياً."""
+
+    def test_season_block_carries_explicit_as_of_date(self):
+        m = re.search(r"بيانات حتى <span class=\"num\">(\d{4}-\d{2}-\d{2})</span>", PAGE)
+        self.assertIsNotNone(
+            m, "قسم الموسم بلا ختم «بيانات حتى YYYY-MM-DD» — أرقامه ستتجمد بصمت")
+
+    def test_no_undated_currency_claim(self):
+        """«حتى اليوم» وحدها بلا ختم = ادعاء حداثة لا يحرسه شيء."""
+        self.assertNotIn("حتى اليوم. تحت", PAGE,
+                         "أُعيد ادعاء «حتى اليوم» بلا ختم تاريخ")
+
+
 class TestListSemanticsMatch(unittest.TestCase):
     """دلالة قائمة منطقة التنبيه واحدة في اللوحة والدليل (أمر «لا فرق»)."""
 
