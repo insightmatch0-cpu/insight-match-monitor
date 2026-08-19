@@ -932,13 +932,13 @@
    "pick": "home",
    "confidence": 70,
    "level": "amber",
-   "score": 45,
-   "minute": 51,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
    ],
    "alerted": null,
-   "score_xg": 47,
+   "score_xg": 51,
    "level_xg": "amber"
   },
   {
@@ -950,11 +950,14 @@
    "top": true,
    "pick": "home",
    "confidence": 52,
-   "level": "amber",
-   "score": 53,
-   "minute": 64,
+   "level": "red",
+   "score": 85,
+   "minute": 74,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د64)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د74)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": null,
    "score_xg": null,
@@ -970,13 +973,13 @@
    "pick": "home",
    "confidence": 39,
    "level": "red",
-   "score": 78,
-   "minute": 63,
+   "score": 92,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د63)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د72)",
     "موجة تسديد على المرمى من الضيف",
-    "ضغط هجومي متصاعد من الضيف",
-    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "score_xg": null,
@@ -18124,7 +18127,93 @@
    "graded_on": "2026-08-19"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1622623",
+   "date": "2026-08-19",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Hapoel Beer Sheva",
+   "away": "Sabah FA",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 39,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 1,
+      "poss": 65,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 35,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 32,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 1,
+      "poss": 65,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 35,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 10,
+      "cor": 1,
+      "poss": 68,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 4,
+      "shots": 5,
+      "cor": 2,
+      "poss": 32,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
