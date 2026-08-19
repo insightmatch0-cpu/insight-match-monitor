@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T01:26:34.793254+00:00",
+ "updated": "2026-08-19T01:36:37.531839+00:00",
  "live": [
   {
    "fid": "1549146",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/449.png",
    "away_logo": "https://media.api-sports.io/football/teams/1963.png",
    "league_logo": "https://media.api-sports.io/football/leagues/130.png",
-   "score": "2-0",
-   "minute": 48,
+   "score": "2-2",
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-08-19T01:26:32.843487+00:00",
+   "seen": "2026-08-19T01:36:35.696364+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 62
@@ -24,24 +24,26 @@
     "confidence": 59
    },
    "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
+    "score": 49,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 2-2 تُسقط التوقع (د58)"
+    ],
     "pick": "home",
     "confidence": 59,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      48
+      58
      ],
      "danger": [
-      0
+      49
      ],
      "h_sog": [
       0
@@ -69,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3707.png",
    "league_logo": "https://media.api-sports.io/football/leagues/964.png",
    "score": "1-0",
-   "minute": 47,
+   "minute": 57,
    "status": "2H",
-   "seen": "2026-08-19T01:26:32.843487+00:00",
+   "seen": "2026-08-19T01:36:35.696364+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 60
@@ -97,7 +99,7 @@
     "top": false,
     "trend": {
      "min": [
-      47
+      57
      ],
      "danger": [
       15
@@ -118,6 +120,86 @@
    }
   },
   {
+   "fid": "1547772",
+   "home": "U. Catolica",
+   "away": "Estudiantes L.P.",
+   "home_en": "U. Catolica",
+   "away_en": "Estudiantes L.P.",
+   "league": "CONMEBOL Libertadores (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/2994.png",
+   "away_logo": "https://media.api-sports.io/football/teams/450.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
+   "score": "0-1",
+   "minute": 48,
+   "status": "2H",
+   "seen": "2026-08-19T01:36:35.696364+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 60
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 37
+   },
+   "radar": {
+    "score": 43,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د48)"
+    ],
+    "pick": "home",
+    "confidence": 37,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      35,
+      48
+     ],
+     "danger": [
+      36,
+      43
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607653",
+   "home": "Sao Paulo",
+   "away": "Bolívar",
+   "home_en": "Sao Paulo",
+   "away_en": "Bolívar",
+   "league": "CONMEBOL Sudamericana (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/126.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3702.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/11.png",
+   "score": "1-0",
+   "minute": 46,
+   "status": "2H",
+   "seen": "2026-08-19T01:36:35.696364+00:00"
+  },
+  {
    "fid": "1547758",
    "home": "Deportes Tolima",
    "away": "Independiente del Valle",
@@ -130,7 +212,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-19T01:26:32.843487+00:00",
+   "seen": "2026-08-19T01:36:35.696364+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -183,86 +265,6 @@
    }
   },
   {
-   "fid": "1547772",
-   "home": "U. Catolica",
-   "away": "Estudiantes L.P.",
-   "home_en": "U. Catolica",
-   "away_en": "Estudiantes L.P.",
-   "league": "CONMEBOL Libertadores (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/2994.png",
-   "away_logo": "https://media.api-sports.io/football/teams/450.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
-   "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-19T01:26:32.843487+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 60
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 37
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
-    ],
-    "pick": "home",
-    "confidence": 37,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      35,
-      45
-     ],
-     "danger": [
-      36,
-      42
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1607653",
-   "home": "Sao Paulo",
-   "away": "Bolívar",
-   "home_en": "Sao Paulo",
-   "away_en": "Bolívar",
-   "league": "CONMEBOL Sudamericana (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/126.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3702.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/11.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-19T01:26:32.843487+00:00"
-  },
-  {
    "fid": "1520825",
    "home": "Goias",
    "away": "Juventude",
@@ -275,7 +277,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-19T01:26:32.843487+00:00"
+   "seen": "2026-08-19T01:36:35.696364+00:00"
   },
   {
    "fid": "1520827",
@@ -289,8 +291,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/72.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-19T01:26:32.843487+00:00"
+   "status": "HT",
+   "seen": "2026-08-19T01:36:35.696364+00:00"
   }
  ],
  "upcoming": [
@@ -1112,6 +1114,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-18",
+   "home": "كومرسيال",
+   "away": "إكس في دي بيراسيكابا",
+   "home_en": "Comercial",
+   "away_en": "XV de Piracicaba",
+   "league": "كوبا باوليستا البرازيلية",
+   "home_logo": "https://media.api-sports.io/football/teams/10031.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7870.png",
+   "pick": "draw",
+   "confidence": 50,
+   "kickoff": "2026-08-18T23:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-18",
    "home": "سي تي إي كولاتينا",
