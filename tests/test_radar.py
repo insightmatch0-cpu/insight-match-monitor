@@ -694,3 +694,16 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         self.assertFalse(M.maybe_red_warning_alert("1", e, self.RED, 80,
                                                    "home", 61, {"used": 0}))
         self.assertEqual(self.sent, [])
+
+    def test_alert_minute_is_recorded_separately(self):
+        """حادثة أول ليلة (2026-08-20): صفّان مُرسَلان ظهرا بدقيقة 90 رغم أن
+        البوابة ≤د85 — لأن `minute` في الصف يُحدَّث لاحقاً كلما ارتفعت الدرجة
+        (نقيس أقصى ما رآه الرادار). فبدت البوابة مخروقة وهي سليمة، واستحال
+        تدقيق الشريحة المُرسَلة. الحل: دقيقة الإرسال تُحفظ في حقلها الخاص."""
+        src = Path(M.__file__).read_text(encoding="utf-8")
+        self.assertIn('"alert_minute": minute if warn_sent else None', src)
+        self.assertIn('w["alert_minute"] = minute', src)
+        # وترتيب المنطق: الوسم يقع قبل ترقية الصف فلا تُطمس دقيقة الإرسال
+        i_create = src.index('"alert_minute": minute if warn_sent else None')
+        i_upd = src.index('w["alert_minute"] = minute')
+        self.assertLess(i_create, i_upd, "مسارا الوسم انقلبا")
