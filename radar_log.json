@@ -852,15 +852,15 @@
    "top": false,
    "pick": "home",
    "confidence": 52,
-   "level": "amber",
-   "score": 55,
-   "minute": 58,
+   "level": "red",
+   "score": 67,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د58)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د77)",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 77,
    "score_xg": null,
    "level_xg": null
   },
@@ -874,10 +874,10 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -894,10 +894,10 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د61)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -914,10 +914,10 @@
    "pick": "away",
    "confidence": 38,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -934,10 +934,90 @@
    "pick": "away",
    "confidence": 52,
    "level": "amber",
+   "score": 43,
+   "minute": 47,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د47)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623111",
+   "date": "2026-08-20",
+   "home": "Atalanta",
+   "away": "Hapoel Tel Aviv",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "pick": "home",
+   "confidence": 64,
+   "level": "amber",
    "score": 42,
    "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623401",
+   "date": "2026-08-20",
+   "home": "Panathinaikos",
+   "away": "Hradec Králové",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "pick": "home",
+   "confidence": 61,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623399",
+   "date": "2026-08-20",
+   "home": "Motherwell",
+   "away": "SC Freiburg",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "pick": "away",
+   "confidence": 59,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623389",
+   "date": "2026-08-20",
+   "home": "Drita",
+   "away": "Inter Club d'Escaldes",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 53,
+   "minute": 64,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -19621,6 +19701,52 @@
       "yc": 1,
       "rc": 0,
       "sv": 3
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1623402",
+   "date": "2026-08-20",
+   "minute": 77,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "PAOK",
+   "away": "Brann",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 8,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 77,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 15,
+      "cor": 3,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 1,
+      "poss": 58,
+      "yc": 1,
+      "rc": 0,
+      "sv": 4
      }
     }
    ]
