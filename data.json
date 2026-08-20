@@ -1,146 +1,6 @@
 {
- "updated": "2026-08-20T03:29:45.139134+00:00",
+ "updated": "2026-08-20T03:36:44.306739+00:00",
  "live": [
-  {
-   "fid": "1490401",
-   "home": "Seattle Sounders",
-   "away": "Austin",
-   "home_en": "Seattle Sounders",
-   "away_en": "Austin",
-   "league": "Major League Soccer (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/1595.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-20T03:29:42.425549+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 59
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 100,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د90)",
-     "موجة تسديد على المرمى من الضيف",
-     "موجة ركنيات لصالح الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 70,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": "equalizer",
-    "top": true,
-    "trend": {
-     "min": [
-      45,
-      90
-     ],
-     "danger": [
-      42,
-      100
-     ],
-     "h_sog": [
-      0,
-      6
-     ],
-     "a_sog": [
-      0,
-      2,
-      4
-     ],
-     "h_cor": [
-      2,
-      5
-     ],
-     "a_cor": [
-      1,
-      4,
-      4
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1490402",
-   "home": "Real Salt Lake",
-   "away": "FC Dallas",
-   "home_en": "Real Salt Lake",
-   "away_en": "FC Dallas",
-   "league": "Major League Soccer (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/1606.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1597.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "3-3",
-   "minute": 89,
-   "status": "2H",
-   "seen": "2026-08-20T03:29:42.425549+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 74,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 3-3 تُسقط التوقع (د89)",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      45,
-      89
-     ],
-     "danger": [
-      42,
-      74
-     ],
-     "h_sog": [
-      3,
-      4,
-      5
-     ],
-     "a_sog": [
-      3,
-      4,
-      4
-     ],
-     "h_cor": [
-      2,
-      3,
-      3
-     ],
-     "a_cor": [
-      1,
-      1,
-      2
-     ]
-    }
-   }
-  },
   {
    "fid": "1490400",
    "home": "Colorado Rapids",
@@ -152,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1616.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "1-0",
-   "minute": 87,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-20T03:29:42.425549+00:00",
+   "seen": "2026-08-20T03:36:41.011765+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -164,18 +24,15 @@
     "confidence": 36
    },
    "radar": {
-    "score": 100,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د87)",
-     "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف",
-     "ضغط هجومي متصاعد من المضيف"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 36,
     "drama": {
-     "signal": 15,
+     "signal": 0,
      "side": "away",
      "ready": false
     },
@@ -184,11 +41,13 @@
     "trend": {
      "min": [
       45,
-      87
+      87,
+      90
      ],
      "danger": [
       42,
-      100
+      100,
+      69
      ],
      "h_sog": [
       1,
@@ -208,6 +67,151 @@
      "a_cor": [
       2,
       3,
+      4
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1490401",
+   "home": "Seattle Sounders",
+   "away": "Austin",
+   "home_en": "Seattle Sounders",
+   "away_en": "Austin",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1595.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "1-2",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-20T03:35:07.513742+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 59
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 95,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-2 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": "equalizer",
+    "top": true,
+    "trend": {
+     "min": [
+      45,
+      90,
+      90
+     ],
+     "danger": [
+      42,
+      100,
+      95
+     ],
+     "h_sog": [
+      0,
+      6,
+      7
+     ],
+     "a_sog": [
+      0,
+      3,
+      6
+     ],
+     "h_cor": [
+      2,
+      5,
+      6
+     ],
+     "a_cor": [
+      1,
+      4,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1490402",
+   "home": "Real Salt Lake",
+   "away": "FC Dallas",
+   "home_en": "Real Salt Lake",
+   "away_en": "FC Dallas",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1606.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1597.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "3-4",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-20T03:36:41.011765+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 3-4 تُسقط التوقع (د90)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 70,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      45,
+      89,
+      90
+     ],
+     "danger": [
+      42,
+      74,
+      69
+     ],
+     "h_sog": [
+      3,
+      5,
+      7
+     ],
+     "a_sog": [
+      3,
+      4,
+      5
+     ],
+     "h_cor": [
+      2,
+      3,
+      6
+     ],
+     "a_cor": [
+      1,
+      2,
       3
      ]
     }
@@ -224,9 +228,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3992.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "1-1",
-   "minute": 57,
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-08-20T03:29:42.425549+00:00"
+   "seen": "2026-08-20T03:36:41.011765+00:00"
   },
   {
    "fid": "1490403",
@@ -241,7 +245,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T03:29:42.425549+00:00",
+   "seen": "2026-08-20T03:36:41.011765+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -251,29 +255,33 @@
     "confidence": 36
    },
    "radar": {
-    "score": 42,
+    "score": 52,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
     ],
     "pick": "home",
     "confidence": 36,
     "drama": {
-     "signal": 50,
-     "side": "home",
+     "signal": 35,
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": true,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
-      42
+      42,
+      52
      ],
      "h_sog": [
-      2
+      2,
+      3
      ],
      "a_sog": [
       3,
@@ -303,7 +311,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T03:29:42.425549+00:00",
+   "seen": "2026-08-20T03:36:41.011765+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -329,9 +337,11 @@
     "top": true,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
@@ -339,14 +349,15 @@
       0
      ],
      "a_sog": [
+      3,
       3
      ],
      "h_cor": [
       1,
-      1
+      2
      ],
      "a_cor": [
-      1,
+      2,
       2
      ]
     }
@@ -365,7 +376,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T03:29:42.425549+00:00",
+   "seen": "2026-08-20T03:36:41.011765+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -391,24 +402,27 @@
     "top": true,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
-      0,
+      2,
       2
      ],
      "a_sog": [
       2,
-      2
+      3
      ],
      "h_cor": [
       0,
       0
      ],
      "a_cor": [
+      1,
       1
      ]
     }
@@ -416,54 +430,6 @@
   }
  ],
  "upcoming": [
-  {
-   "fid": "1490400",
-   "kickoff": "2026-08-20T01:30:00+00:00",
-   "home": "كولورادو رابيدز",
-   "away": "لوس أنجليس إف سي",
-   "home_en": "Colorado Rapids",
-   "home_logo": "https://media.api-sports.io/football/teams/1610.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1616.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "away_en": "Los Angeles FC",
-   "league": "رابطة كرة القدم الأمريكية الاحترافية",
-   "top": true,
-   "pick": "away",
-   "confidence": 62,
-   "reason": "لوس أنجليس إف سي فريق قوي وتاريخهم أفضل من كولورادو في الموسم الحالي"
-  },
-  {
-   "fid": "1490401",
-   "kickoff": "2026-08-20T01:30:00+00:00",
-   "home": "سياتل ساوندرز",
-   "away": "أوستن",
-   "home_en": "Seattle Sounders",
-   "home_logo": "https://media.api-sports.io/football/teams/1595.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "away_en": "Austin",
-   "league": "رابطة كرة القدم الأمريكية الاحترافية",
-   "top": true,
-   "pick": "home",
-   "confidence": 59,
-   "reason": "سياتل فريق محترف وعامل الأرض يساعدهم لكن أوستن تحسنت مؤخراً"
-  },
-  {
-   "fid": "1490402",
-   "kickoff": "2026-08-20T01:30:00+00:00",
-   "home": "ريال سالت ليك",
-   "away": "إف سي دالاس",
-   "home_en": "Real Salt Lake",
-   "home_logo": "https://media.api-sports.io/football/teams/1606.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1597.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "away_en": "FC Dallas",
-   "league": "رابطة كرة القدم الأمريكية الاحترافية",
-   "top": true,
-   "pick": "home",
-   "confidence": 57,
-   "reason": "ريال سالت ليك الأقوى محلياً والأرض تدعمهم أمام منافس أضعف نسبياً"
-  },
   {
    "fid": "1490403",
    "kickoff": "2026-08-20T02:30:00+00:00",
@@ -4554,6 +4520,20 @@
     "final": "0-0",
     "hit": true,
     "top": false
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-08-20",
+    "home": "Los Angeles Galaxy",
+    "away": "San Jose Earthquakes",
+    "league": "Major League Soccer (USA)",
+    "minute": 45,
+    "claim": "red_advantage",
+    "side": "away",
+    "signal": null,
+    "score_at": "0-0",
+    "top": true
    },
    {
     "kind": "alert",
