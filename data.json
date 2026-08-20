@@ -1,102 +1,6 @@
 {
- "updated": "2026-08-20T11:57:42.957109+00:00",
+ "updated": "2026-08-20T12:04:51.990411+00:00",
  "live": [
-  {
-   "fid": "1534832",
-   "home": "Tobol 2",
-   "away": "Khan Tengri",
-   "home_en": "Tobol 2",
-   "away_en": "Khan Tengri",
-   "league": "1. Division (Kazakhstan)",
-   "home_logo": "https://media.api-sports.io/football/teams/27634.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18805.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "score": "3-4",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-20T11:54:37.150901+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 47
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 52
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 52,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      3,
-      45,
-      69,
-      90
-     ],
-     "danger": [
-      16,
-      0,
-      0,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1611333",
-   "home": "Paro",
-   "away": "RTC",
-   "home_en": "Paro",
-   "away_en": "RTC",
-   "league": "Premier League (Bhutan)",
-   "home_logo": "https://media.api-sports.io/football/teams/9426.png",
-   "away_logo": "https://media.api-sports.io/football/teams/19005.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
-   "score": "1-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-20T11:49:46.052079+00:00"
-  },
   {
    "fid": "1611338",
    "home": "Dinaz Vyshhorod",
@@ -110,7 +14,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T11:57:41.190305+00:00",
+   "seen": "2026-08-20T12:04:50.460262+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 50
@@ -136,9 +40,11 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
@@ -481,22 +387,6 @@
    "pick": "home",
    "confidence": 61,
    "reason": "كورينثيانز برازيلي عملاق بخبرة أوروبية أكثر من الأرجنتيني"
-  },
-  {
-   "fid": "1534832",
-   "kickoff": "2026-08-20T10:00:00+00:00",
-   "home": "توبول 2",
-   "away": "خان تنغري",
-   "home_en": "Tobol 2",
-   "home_logo": "https://media.api-sports.io/football/teams/27634.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18805.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "away_en": "Khan Tengri",
-   "league": "كازاخستان الدرجة الأولى",
-   "top": false,
-   "pick": "draw",
-   "confidence": 47,
-   "reason": "فريقا احتياطي وصاعد في دوري ضعيف، نتيجة مفتوحة"
   },
   {
    "fid": "1519618",
@@ -2822,6 +2712,20 @@
  "awaiting": [
   {
    "date": "2026-08-20",
+   "home": "إلفا",
+   "away": "مآردو",
+   "home_en": "Elva",
+   "away_en": "Maardu",
+   "league": "إستونيا الدرجة الأولى",
+   "home_logo": "https://media.api-sports.io/football/teams/3516.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3527.png",
+   "pick": "draw",
+   "confidence": 48,
+   "kickoff": "2026-08-20T09:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-20",
    "home": "لوس أنجليس جالاكسي",
    "away": "سان خوسيه إيرثكويكس",
    "home_en": "Los Angeles Galaxy",
@@ -4214,19 +4118,6 @@
     "final": "1-2",
     "hit": false,
     "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Tobol 2",
-    "away": "Khan Tengri",
-    "league": "1. Division (Kazakhstan)",
-    "level": "amber",
-    "minute": 79,
-    "pick": "away",
-    "conf": 52,
-    "top": false
    },
    {
     "kind": "warning",
