@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-20T04:02:59.601450+00:00",
+ "updated": "2026-08-20T04:09:23.483215+00:00",
  "live": [
   {
    "fid": "1493639",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4009.png",
    "away_logo": "https://media.api-sports.io/football/teams/3992.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "2-1",
+   "score": "3-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-20T04:02:56.309299+00:00"
+   "seen": "2026-08-20T04:07:48.764331+00:00"
   },
   {
    "fid": "1490403",
@@ -27,9 +27,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1596.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "0-0",
-   "minute": 65,
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-20T04:02:56.309299+00:00",
+   "seen": "2026-08-20T04:09:20.590788+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -39,10 +39,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 64,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د65)",
+     "النتيجة الحالية 0-0 تُسقط التوقع (د71)",
      "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
     ],
     "pick": "home",
@@ -57,11 +57,11 @@
     "trend": {
      "min": [
       45,
-      65
+      71
      ],
      "danger": [
       42,
-      64
+      67
      ],
      "h_sog": [
       2,
@@ -157,10 +157,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1617.png",
    "away_logo": "https://media.api-sports.io/football/teams/25484.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "2-1",
-   "minute": 64,
+   "score": "3-1",
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-20T04:02:56.309299+00:00",
+   "seen": "2026-08-20T04:09:20.590788+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -170,11 +170,9 @@
     "confidence": 43
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 43,
     "drama": {
@@ -187,11 +185,11 @@
     "trend": {
      "min": [
       45,
-      64
+      71
      ],
      "danger": [
       42,
-      15
+      0
      ],
      "h_sog": [
       2,
@@ -208,6 +206,71 @@
      "a_cor": [
       1,
       1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1490404",
+   "home": "Vancouver Whitecaps",
+   "away": "Houston Dynamo",
+   "home_en": "Vancouver Whitecaps",
+   "away_en": "Houston Dynamo",
+   "league": "Major League Soccer (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/1603.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1600.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "score": "0-1",
+   "minute": 70,
+   "status": "2H",
+   "seen": "2026-08-20T04:09:20.590788+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 49
+   },
+   "radar": {
+    "score": 57,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د70)"
+    ],
+    "pick": "home",
+    "confidence": 49,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      45,
+      70
+     ],
+     "danger": [
+      42,
+      57
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      3,
+      3
+     ],
+     "h_cor": [
+      1,
+      2
+     ],
+     "a_cor": [
+      2,
+      2
      ]
     }
    }
