@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-20T22:49:33.409991+00:00",
+ "updated": "2026-08-20T22:56:37.236555+00:00",
  "live": [
   {
    "fid": "1526605",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10111.png",
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "0-0",
-   "minute": 78,
+   "minute": 85,
    "status": "2H",
-   "seen": "2026-08-20T22:49:30.091553+00:00",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -24,10 +24,10 @@
     "confidence": 39
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 66,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د78)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د85)"
     ],
     "pick": "away",
     "confidence": 39,
@@ -41,25 +41,31 @@
     "trend": {
      "min": [
       37,
-      78
+      78,
+      85
      ],
      "danger": [
       37,
-      61
+      61,
+      66
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -78,8 +84,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/13.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-20T22:49:30.091553+00:00",
+   "status": "HT",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 53
@@ -105,21 +111,27 @@
     "top": true,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -137,8 +149,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-20T22:49:30.091553+00:00",
+   "status": "HT",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -164,21 +176,27 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -197,7 +215,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T22:49:30.091553+00:00",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -223,21 +241,27 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -256,7 +280,7 @@
    "score": "1-2",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T22:49:30.091553+00:00",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -282,10 +306,75 @@
     "top": false,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      15,
       15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1520820",
+   "home": "Athletic Club",
+   "away": "CRB",
+   "home_en": "Athletic Club",
+   "away_en": "CRB",
+   "league": "Serie B (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/13975.png",
+   "away_logo": "https://media.api-sports.io/football/teams/146.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/72.png",
+   "score": "0-0",
+   "minute": 27,
+   "status": "1H",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 41
+   },
+   "radar": {
+    "score": 31,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د27)"
+    ],
+    "pick": "home",
+    "confidence": 41,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      27
+     ],
+     "danger": [
+      31
      ],
      "h_sog": [
       0
@@ -303,35 +392,35 @@
    }
   },
   {
-   "fid": "1520820",
-   "home": "Athletic Club",
-   "away": "CRB",
-   "home_en": "Athletic Club",
-   "away_en": "CRB",
-   "league": "Serie B (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/13975.png",
-   "away_logo": "https://media.api-sports.io/football/teams/146.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/72.png",
+   "fid": "1549588",
+   "home": "Real Cartagena",
+   "away": "Bogota FC",
+   "home_en": "Real Cartagena",
+   "away_en": "Bogota FC",
+   "league": "Primera B (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1459.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1458.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-0",
-   "minute": 20,
+   "minute": 10,
    "status": "1H",
-   "seen": "2026-08-20T22:49:30.091553+00:00",
+   "seen": "2026-08-20T22:56:34.868147+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 54
+    "pick": "draw",
+    "confidence": 50
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 41
+    "confidence": 49
    },
    "radar": {
-    "score": 27,
+    "score": 21,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
     ],
     "pick": "home",
-    "confidence": 41,
+    "confidence": 49,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -341,10 +430,10 @@
     "top": false,
     "trend": {
      "min": [
-      20
+      10
      ],
      "danger": [
-      27
+      21
      ],
      "h_sog": [
       0
