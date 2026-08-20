@@ -1,21 +1,6 @@
 {
- "updated": "2026-08-20T04:11:51.249011+00:00",
+ "updated": "2026-08-20T04:18:20.042870+00:00",
  "live": [
-  {
-   "fid": "1493639",
-   "home": "Phoenix Rising",
-   "away": "Colorado Springs",
-   "home_en": "Phoenix Rising",
-   "away_en": "Colorado Springs",
-   "league": "USL Championship (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/4009.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3992.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "3-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-20T04:07:48.764331+00:00"
-  },
   {
    "fid": "1490403",
    "home": "Los Angeles Galaxy",
@@ -26,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1605.png",
    "away_logo": "https://media.api-sports.io/football/teams/1596.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "0-0",
-   "minute": 71,
+   "score": "1-0",
+   "minute": 80,
    "status": "2H",
-   "seen": "2026-08-20T04:09:20.590788+00:00",
+   "seen": "2026-08-20T04:18:17.710658+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -39,16 +24,18 @@
     "confidence": 36
    },
    "radar": {
-    "score": 67,
-    "level": "red",
+    "score": 39,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د71)",
+     "تقدم هش بفارق هدف واحد",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف",
      "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
     ],
     "pick": "home",
     "confidence": 36,
     "drama": {
-     "signal": 35,
+     "signal": 70,
      "side": "away",
      "ready": false
     },
@@ -57,80 +44,15 @@
     "trend": {
      "min": [
       45,
-      71
+      80
      ],
      "danger": [
       42,
-      67
+      39
      ],
      "h_sog": [
       2,
-      3
-     ],
-     "a_sog": [
-      3,
-      3
-     ],
-     "h_cor": [
-      1,
-      1
-     ],
-     "a_cor": [
-      1,
-      1
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1490404",
-   "home": "Vancouver Whitecaps",
-   "away": "Houston Dynamo",
-   "home_en": "Vancouver Whitecaps",
-   "away_en": "Houston Dynamo",
-   "league": "Major League Soccer (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/1603.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1600.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "score": "0-1",
-   "minute": 64,
-   "status": "2H",
-   "seen": "2026-08-20T04:02:56.309299+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 49
-   },
-   "radar": {
-    "score": 53,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د64)"
-    ],
-    "pick": "home",
-    "confidence": 49,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      45,
-      64
-     ],
-     "danger": [
-      42,
-      53
-     ],
-     "h_sog": [
-      0,
-      0
+      4
      ],
      "a_sog": [
       3,
@@ -141,8 +63,8 @@
       2
      ],
      "a_cor": [
-      2,
-      2
+      1,
+      4
      ]
     }
    }
@@ -158,9 +80,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25484.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "3-1",
-   "minute": 71,
+   "minute": 80,
    "status": "2H",
-   "seen": "2026-08-20T04:09:20.590788+00:00",
+   "seen": "2026-08-20T04:18:17.710658+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -170,13 +92,18 @@
     "confidence": 43
    },
    "radar": {
-    "score": 0,
+    "score": 34,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "موجة تسديد على المرمى من الضيف",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
     "pick": "home",
     "confidence": 43,
     "drama": {
-     "signal": 0,
+     "signal": 70,
      "side": "away",
      "ready": false
     },
@@ -185,19 +112,19 @@
     "trend": {
      "min": [
       45,
-      71
+      80
      ],
      "danger": [
       42,
-      0
+      34
      ],
      "h_sog": [
       2,
-      2
+      5
      ],
      "a_sog": [
       2,
-      3
+      5
      ],
      "h_cor": [
       0,
@@ -205,7 +132,7 @@
      ],
      "a_cor": [
       1,
-      1
+      5
      ]
     }
    }
@@ -221,9 +148,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1600.png",
    "league_logo": "https://media.api-sports.io/football/leagues/253.png",
    "score": "0-1",
-   "minute": 70,
+   "minute": 79,
    "status": "2H",
-   "seen": "2026-08-20T04:09:20.590788+00:00",
+   "seen": "2026-08-20T04:18:17.710658+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -233,15 +160,16 @@
     "confidence": 49
    },
    "radar": {
-    "score": 57,
-    "level": "amber",
+    "score": 68,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د70)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د79)",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 49,
     "drama": {
-     "signal": 0,
+     "signal": 35,
      "side": "home",
      "ready": false
     },
@@ -250,23 +178,23 @@
     "trend": {
      "min": [
       45,
-      70
+      79
      ],
      "danger": [
       42,
-      57
+      68
      ],
      "h_sog": [
       0,
-      0
+      1
      ],
      "a_sog": [
       3,
-      3
+      4
      ],
      "h_cor": [
       1,
-      2
+      4
      ],
      "a_cor": [
       2,
