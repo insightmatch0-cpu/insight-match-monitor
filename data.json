@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-20T10:59:30.624582+00:00",
+ "updated": "2026-08-20T11:06:45.602291+00:00",
  "live": [
   {
    "fid": "1519617",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3527.png",
    "league_logo": "https://media.api-sports.io/football/leagues/328.png",
    "score": "1-0",
-   "minute": 74,
+   "minute": 81,
    "status": "2H",
-   "seen": "2026-08-20T10:59:28.928183+00:00",
+   "seen": "2026-08-20T11:06:42.832412+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -41,14 +41,18 @@
     "trend": {
      "min": [
       45,
-      74
+      74,
+      67,
+      81
      ],
      "danger": [
       42,
-      45,
+      15,
+      15,
       15
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -56,9 +60,11 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0
@@ -66,10 +72,26 @@
      "a_cor": [
       0,
       0,
+      0,
       0
      ]
     }
    }
+  },
+  {
+   "fid": "1611333",
+   "home": "Paro",
+   "away": "RTC",
+   "home_en": "Paro",
+   "away_en": "RTC",
+   "league": "Premier League (Bhutan)",
+   "home_logo": "https://media.api-sports.io/football/teams/9426.png",
+   "away_logo": "https://media.api-sports.io/football/teams/19005.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
+   "score": "1-0",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-20T11:06:42.832412+00:00"
   },
   {
    "fid": "1534832",
@@ -82,9 +104,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18805.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "0-3",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-20T10:59:28.928183+00:00",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-20T11:06:42.832412+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -109,45 +131,36 @@
     "trend": {
      "min": [
       3,
-      45
+      45,
+      47
      ],
      "danger": [
       16,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0
      ],
      "a_cor": [
       0,
+      0,
       0
      ]
     }
    }
-  },
-  {
-   "fid": "1611333",
-   "home": "Paro",
-   "away": "RTC",
-   "home_en": "Paro",
-   "away_en": "RTC",
-   "league": "Premier League (Bhutan)",
-   "home_logo": "https://media.api-sports.io/football/teams/9426.png",
-   "away_logo": "https://media.api-sports.io/football/teams/19005.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-20T10:59:28.928183+00:00"
   }
  ],
  "upcoming": [
@@ -470,22 +483,6 @@
    "pick": "home",
    "confidence": 61,
    "reason": "كورينثيانز برازيلي عملاق بخبرة أوروبية أكثر من الأرجنتيني"
-  },
-  {
-   "fid": "1611338",
-   "kickoff": "2026-08-20T09:00:00+00:00",
-   "home": "ديناز فيشهوراد",
-   "away": "يارود ماريوبول",
-   "home_en": "Dinaz Vyshhorod",
-   "home_logo": "https://media.api-sports.io/football/teams/6487.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14441.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-   "away_en": "Yarud Mariupol'",
-   "league": "كأس أوكرانيا",
-   "top": false,
-   "pick": "away",
-   "confidence": 50,
-   "reason": "كأس محلية، فريقان متقاربان وغياب معلومات كافية"
   },
   {
    "fid": "1519617",
