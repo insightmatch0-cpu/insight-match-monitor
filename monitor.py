@@ -2159,8 +2159,13 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     "pick": p.get("pick"), "confidence": p.get("confidence"),
                     "level": verdict["level"], "score": verdict["score"],
                     "minute": minute, "factors": verdict["factors"],
-                    # 🔴 وسم الشريحة المُرسَلة إلى تيليجرام — تُقاس وحدها صباحاً
+                    # 🔴 وسم الشريحة المُرسَلة إلى تيليجرام — تُقاس وحدها صباحاً.
+                    # ودقيقة الإرسال تُحفظ منفصلة عن minute: الأخيرة تُحدَّث
+                    # لاحقاً كلما ارتفعت الدرجة (نقيس أقصى ما رآه الرادار)،
+                    # فلو قرأنا البوابة منها بدت إنذارات د90 وقد أُرسلت ≤د85
+                    # فعلاً — حقل يكذب على مراجعه لا يُصلَح بالشرح بل بحقل ثانٍ.
                     "alerted": warn_sent or None,
+                    "alert_minute": minute if warn_sent else None,
                     # 🔬 الحقل الموازي — فارغ حين لا xG (غيابه لا يكسر شيئاً)
                     "score_xg": (verdict_xg["score"] if verdict_xg["has_xg"]
                                  else None),
@@ -2178,6 +2183,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                               "minute": minute, "factors": verdict["factors"]})
                 if warn_sent:
                     w["alerted"] = True
+                    w["alert_minute"] = minute   # دقيقة الإرسال لا دقيقة الذروة
                     log_dirty = True
                 # 🔬 ذروة الدرجة الموازية تُتابَع **مستقلة**: الدرجتان تبلغان
                 # ذروتيهما في لحظتين مختلفتين، وربطُ ترقية إحداهما بالأخرى كان
