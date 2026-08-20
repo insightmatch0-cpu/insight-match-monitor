@@ -1047,7 +1047,7 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 60,
+   "score_xg": 62,
    "level_xg": "amber"
   },
   {
@@ -1099,14 +1099,16 @@
    "top": false,
    "pick": "away",
    "confidence": 53,
-   "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "level": "red",
+   "score": 83,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د80)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 80,
    "score_xg": null,
    "level_xg": null
   },
@@ -1119,14 +1121,16 @@
    "top": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 58,
-   "minute": 73,
+   "level": "red",
+   "score": 80,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د73)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د83)",
+    "ضغط هجومي متصاعد من الضيف",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 83,
    "score_xg": null,
    "level_xg": null
   },
@@ -1140,10 +1144,10 @@
    "pick": "away",
    "confidence": 49,
    "level": "red",
-   "score": 66,
-   "minute": 85,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د85)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د90)"
    ],
    "alerted": true,
    "alert_minute": 85,
@@ -1222,11 +1226,11 @@
    "top": false,
    "pick": "home",
    "confidence": 43,
-   "level": "amber",
-   "score": 64,
-   "minute": 82,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د82)"
+    "النتيجة الحالية 2-3 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1243,10 +1247,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "red",
-   "score": 66,
-   "minute": 86,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د86)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1283,10 +1287,10 @@
    "pick": "away",
    "confidence": 63,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 47,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1303,10 +1307,10 @@
    "pick": "away",
    "confidence": 38,
    "level": "red",
-   "score": 67,
-   "minute": 87,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د87)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -20120,6 +20124,112 @@
       "yc": 0,
       "rc": 0,
       "sv": 2
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1623391",
+   "date": "2026-08-20",
+   "minute": 83,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Getafe",
+   "away": "FK Partizan",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 52,
+     "gh": 1,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 59,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 1,
+      "poss": 64,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 1,
+      "poss": 36,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 83,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 10,
+      "cor": 1,
+      "poss": 65,
+      "yc": 3,
+      "rc": 1,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 2,
+      "poss": 35,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1623393",
+   "date": "2026-08-20",
+   "minute": 82,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "HNK Hajduk Split",
+   "away": "Raków Częstochowa",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 82,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 0,
+      "cor": 7,
+      "poss": 54,
+      "yc": 2,
+      "rc": 1,
+      "sv": 0
+     },
+     "a": {
+      "sog": 4,
+      "shots": 0,
+      "cor": 4,
+      "poss": 46,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
      }
     }
    ]
