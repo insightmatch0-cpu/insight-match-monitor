@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-20T21:53:06.364397+00:00",
+ "updated": "2026-08-20T21:53:23.762210+00:00",
  "live": [
   {
    "fid": "1547791",
@@ -3334,12 +3334,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 594,
-   "hit": 545
+   "fired": 635,
+   "hit": 580
   },
   "amber": {
-   "fired": 363,
-   "hit": 135
+   "fired": 387,
+   "hit": 146
   },
   "alerts": {
    "flip": {
@@ -3347,8 +3347,8 @@
     "hit": 1
    },
    "equalizer": {
-    "fired": 19,
-    "hit": 3
+    "fired": 20,
+    "hit": 4
    },
    "goal": {
     "fired": 1,
@@ -3359,18 +3359,18 @@
     "hit": 9
    },
    "red_advantage": {
-    "fired": 11,
-    "hit": 5
+    "fired": 15,
+    "hit": 6
    }
   },
   "season": {
    "red": {
-    "fired": 270,
-    "hit": 255
+    "fired": 311,
+    "hit": 290
    },
    "amber": {
-    "fired": 144,
-    "hit": 54
+    "fired": 168,
+    "hit": 65
    },
    "alerts": {
     "flip": {
@@ -3378,28 +3378,28 @@
      "hit": 0
     },
     "equalizer": {
-     "fired": 11,
-     "hit": 2
+     "fired": 12,
+     "hit": 3
     },
     "next_goal": {
      "fired": 9,
      "hit": 3
     },
     "red_advantage": {
-     "fired": 9,
-     "hit": 4
+     "fired": 13,
+     "hit": 5
     }
    },
    "start": "2026-08-13"
   },
   "top_only": {
    "red": {
-    "fired": 70,
-    "hit": 63
+    "fired": 78,
+    "hit": 69
    },
    "amber": {
-    "fired": 30,
-    "hit": 8
+    "fired": 35,
+    "hit": 11
    },
    "alerts": {
     "equalizer": {
@@ -3411,18 +3411,18 @@
      "hit": 3
     },
     "red_advantage": {
-     "fired": 8,
+     "fired": 9,
      "hit": 3
     }
    },
    "season": {
     "red": {
-     "fired": 70,
-     "hit": 63
+     "fired": 78,
+     "hit": 69
     },
     "amber": {
-     "fired": 30,
-     "hit": 8
+     "fired": 35,
+     "hit": 11
     },
     "alerts": {
      "equalizer": {
@@ -3434,7 +3434,7 @@
       "hit": 3
      },
      "red_advantage": {
-      "fired": 8,
+      "fired": 9,
       "hit": 3
      }
     },
@@ -3467,16 +3467,16 @@
      "total": 6
     },
     "2026-08-20": {
-     "hit": 10,
-     "total": 14
+     "hit": 19,
+     "total": 27
     }
    }
   },
   "xg": {
    "xg": {
     "red": {
-     "fired": 12,
-     "hit": 10
+     "fired": 13,
+     "hit": 11
     },
     "amber": {
      "fired": 2,
@@ -3485,15 +3485,15 @@
    },
    "base": {
     "red": {
-     "fired": 13,
-     "hit": 11
+     "fired": 14,
+     "hit": 12
     },
     "amber": {
      "fired": 1,
      "hit": 0
     }
    },
-   "n": 14,
+   "n": 15,
    "start": "2026-08-15"
   },
   "silenced": [],
@@ -3560,8 +3560,8 @@
     "total": 61
    },
    "2026-08-20": {
-    "hit": 10,
-    "total": 14
+    "hit": 56,
+    "total": 79
    }
   },
   "recent": [
@@ -4212,7 +4212,6 @@
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Los Angeles Galaxy",
     "away": "San Jose Earthquakes",
@@ -4222,11 +4221,12 @@
     "side": "away",
     "signal": null,
     "score_at": "0-0",
+    "final": "1-0",
+    "hit": false,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Olimpik-Mobiuz",
     "away": "Aral",
@@ -4235,6 +4235,8 @@
     "minute": 75,
     "pick": "home",
     "conf": 46,
+    "final": "2-1",
+    "hit": false,
     "top": false
    },
    {
@@ -4268,6 +4270,20 @@
     "top": true
    },
    {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Van",
+    "away": "Syunik",
+    "league": "Premier League (Armenia)",
+    "level": "amber",
+    "minute": 77,
+    "pick": "home",
+    "conf": 48,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
     "kind": "alert",
     "date": "2026-08-20",
     "home": "Seattle Sounders",
@@ -4283,21 +4299,7 @@
     "top": true
    },
    {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Van",
-    "away": "Syunik",
-    "league": "Premier League (Armenia)",
-    "level": "amber",
-    "minute": 77,
-    "pick": "home",
-    "conf": 48,
-    "top": false
-   },
-   {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-20",
     "home": "PAOK",
     "away": "Brann",
@@ -4307,11 +4309,12 @@
     "side": "home",
     "signal": 85,
     "score_at": "0-1",
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Naft Maysan",
     "away": "Naft",
@@ -4320,11 +4323,12 @@
     "minute": 78,
     "pick": "home",
     "conf": 37,
+    "final": "0-0",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Yelimay Semey 2",
     "away": "Aktobe Jas",
@@ -4333,11 +4337,12 @@
     "minute": 80,
     "pick": "away",
     "conf": 36,
+    "final": "2-5",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Ghaz Al Shamal",
     "away": "Al Kahrabaa",
@@ -4346,6 +4351,8 @@
     "minute": 80,
     "pick": "home",
     "conf": 36,
+    "final": "1-1",
+    "hit": true,
     "top": true
    },
    {
@@ -4364,7 +4371,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Bunyodkor",
     "away": "Kokand-1912",
@@ -4373,6 +4379,8 @@
     "minute": 82,
     "pick": "home",
     "conf": 50,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
@@ -4391,7 +4399,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Yaypan",
     "away": "Pakhtakor II",
@@ -4400,11 +4407,12 @@
     "minute": 83,
     "pick": "away",
     "conf": 41,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Getafe",
     "away": "FK Partizan",
@@ -4413,6 +4421,8 @@
     "minute": 83,
     "pick": "home",
     "conf": 50,
+    "final": "3-1",
+    "hit": false,
     "top": false
    },
    {
@@ -4446,7 +4456,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Tobol 2",
     "away": "Khan Tengri",
@@ -4455,11 +4464,12 @@
     "minute": 85,
     "pick": "away",
     "conf": 52,
+    "final": "3-4",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Arlanda",
     "away": "Ostersunds FK",
@@ -4468,11 +4478,12 @@
     "minute": 85,
     "pick": "away",
     "conf": 55,
+    "final": "1-2",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Caen",
     "away": "Aubagne",
@@ -4481,11 +4492,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 50,
+    "final": "1-0",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "KäPa",
     "away": "JIPPO",
@@ -4494,11 +4506,12 @@
     "minute": 88,
     "pick": "home",
     "conf": 38,
+    "final": "1-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "St. Truiden",
     "away": "Omonia Nicosia",
@@ -4507,11 +4520,12 @@
     "minute": 88,
     "pick": "home",
     "conf": 45,
+    "final": "1-0",
+    "hit": false,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Le Puy Foot",
     "away": "Amiens",
@@ -4520,11 +4534,12 @@
     "minute": 88,
     "pick": "away",
     "conf": 46,
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Rangers",
     "away": "FK Jablonec",
@@ -4534,11 +4549,12 @@
     "side": "away",
     "signal": null,
     "score_at": "1-0",
+    "final": "1-0",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Parnu JK Vaprus U21",
     "away": "Tulevik",
@@ -4547,11 +4563,12 @@
     "minute": 89,
     "pick": "away",
     "conf": 55,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Kolkheti Khobi",
     "away": "WIT Georgia",
@@ -4560,11 +4577,12 @@
     "minute": 89,
     "pick": "away",
     "conf": 43,
+    "final": "3-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "FC Lugano",
     "away": "Maccabi Tel Aviv",
@@ -4573,11 +4591,12 @@
     "minute": 89,
     "pick": "away",
     "conf": 42,
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-20",
     "home": "HNK Hajduk Split",
     "away": "Raków Częstochowa",
@@ -4587,6 +4606,8 @@
     "side": "away",
     "signal": null,
     "score_at": "2-1",
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
@@ -4632,6 +4653,370 @@
     "top": true
    },
    {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Dinaz Vyshhorod",
+    "away": "Yarud Mariupol'",
+    "league": "Cup (Ukraine)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 58,
+    "final": "0-6",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Tartu Welco",
+    "away": "FCI Levadia II",
+    "league": "Esiliiga A (Estonia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 50,
+    "final": "4-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Johvi Phoenix",
+    "away": "JK Tabasalu",
+    "league": "Esiliiga B (Estonia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 49,
+    "final": "2-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Arys",
+    "away": "Taraz",
+    "league": "1. Division (Kazakhstan)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 48,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "FC Tallinn",
+    "away": "Nõmme United II",
+    "league": "Esiliiga A (Estonia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 42,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Akademiya Ontustik",
+    "away": "Ekibastuz",
+    "league": "1. Division (Kazakhstan)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 41,
+    "final": "3-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Iberia 2010",
+    "away": "Varketili",
+    "league": "Liga 3 (Georgia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 40,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Al Wakrah",
+    "away": "Qatar SC",
+    "league": "Stars League (Qatar)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 50,
+    "final": "2-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Mjallby AIF",
+    "away": "Red Bull Salzburg",
+    "league": "UEFA Europa League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 49,
+    "final": "0-1",
+    "hit": false,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Inter Turku",
+    "away": "FC Copenhagen",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 62,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Lincoln Red Imps FC",
+    "away": "Larne",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 42,
+    "final": "0-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Egnatia Rrogozhinë",
+    "away": "Lillestrom",
+    "league": "UEFA Europa League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 37,
+    "final": "0-0",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Tromso",
+    "away": "Brighton",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 63,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Universitatea Craiova",
+    "away": "Ararat-Armenia",
+    "league": "UEFA Europa League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 60,
+    "final": "1-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Trabzonspor",
+    "away": "Ferencvarosi TC",
+    "league": "UEFA Europa League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 50,
+    "final": "0-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "PAOK",
+    "away": "Brann",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 52,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "OFI",
+    "away": "CSKA Sofia",
+    "league": "UEFA Europa League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 40,
+    "final": "3-0",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Al Minaa Basra",
+    "away": "Zakho",
+    "league": "Iraqi League (Iraq)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 38,
+    "final": "2-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Drita",
+    "away": "Inter Club d'Escaldes",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 58,
+    "final": "2-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Dinamo Tirana",
+    "away": "Pafos",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 53,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Gobelins",
+    "away": "Valenciennes",
+    "league": "Ligue 3 (France)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 49,
+    "final": "2-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Gent",
+    "away": "Hibernian",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 45,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Bastia",
+    "away": "Versailles",
+    "league": "Ligue 3 (France)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 43,
+    "final": "2-3",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Bourg-en-bresse 01",
+    "away": "Thionville Lusitanos",
+    "league": "Ligue 3 (France)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 42,
+    "final": "0-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Tacuary",
+    "away": "Libertad Asuncion",
+    "league": "Copa Paraguay (Paraguay)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 63,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "La Roche VF",
+    "away": "Cannes",
+    "league": "Ligue 3 (France)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 38,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
     "kind": "alert",
     "date": "2026-08-20",
     "home": "Toronto FC",
@@ -4647,346 +5032,7 @@
     "top": true
    },
    {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Dinaz Vyshhorod",
-    "away": "Yarud Mariupol'",
-    "league": "Cup (Ukraine)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 58,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Tartu Welco",
-    "away": "FCI Levadia II",
-    "league": "Esiliiga A (Estonia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 50,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Johvi Phoenix",
-    "away": "JK Tabasalu",
-    "league": "Esiliiga B (Estonia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 49,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Arys",
-    "away": "Taraz",
-    "league": "1. Division (Kazakhstan)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 48,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "FC Tallinn",
-    "away": "Nõmme United II",
-    "league": "Esiliiga A (Estonia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Akademiya Ontustik",
-    "away": "Ekibastuz",
-    "league": "1. Division (Kazakhstan)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 41,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Iberia 2010",
-    "away": "Varketili",
-    "league": "Liga 3 (Georgia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 40,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Al Wakrah",
-    "away": "Qatar SC",
-    "league": "Stars League (Qatar)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Mjallby AIF",
-    "away": "Red Bull Salzburg",
-    "league": "UEFA Europa League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 49,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Inter Turku",
-    "away": "FC Copenhagen",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 62,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Lincoln Red Imps FC",
-    "away": "Larne",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Egnatia Rrogozhinë",
-    "away": "Lillestrom",
-    "league": "UEFA Europa League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 37,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Tromso",
-    "away": "Brighton",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 63,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Universitatea Craiova",
-    "away": "Ararat-Armenia",
-    "league": "UEFA Europa League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 60,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Trabzonspor",
-    "away": "Ferencvarosi TC",
-    "league": "UEFA Europa League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "PAOK",
-    "away": "Brann",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 52,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "OFI",
-    "away": "CSKA Sofia",
-    "league": "UEFA Europa League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 40,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Al Minaa Basra",
-    "away": "Zakho",
-    "league": "Iraqi League (Iraq)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 38,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Drita",
-    "away": "Inter Club d'Escaldes",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 58,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Dinamo Tirana",
-    "away": "Pafos",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 53,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Gobelins",
-    "away": "Valenciennes",
-    "league": "Ligue 3 (France)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 49,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Gent",
-    "away": "Hibernian",
-    "league": "UEFA Europa Conference League (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 45,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Bastia",
-    "away": "Versailles",
-    "league": "Ligue 3 (France)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 43,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Bourg-en-bresse 01",
-    "away": "Thionville Lusitanos",
-    "league": "Ligue 3 (France)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Tacuary",
-    "away": "Libertad Asuncion",
-    "league": "Copa Paraguay (Paraguay)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 63,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "La Roche VF",
-    "away": "Cannes",
-    "league": "Ligue 3 (France)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 38,
-    "top": false
-   },
-   {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Getafe",
     "away": "FK Partizan",
@@ -4996,11 +5042,12 @@
     "side": "away",
     "signal": null,
     "score_at": "2-1",
+    "final": "3-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Vasalund",
     "away": "IFK Norrkoping",
@@ -5009,11 +5056,12 @@
     "minute": 95,
     "pick": "away",
     "conf": 56,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Hässleholms IF",
     "away": "Landskrona BoIS",
@@ -5022,11 +5070,12 @@
     "minute": 96,
     "pick": "away",
     "conf": 54,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "CSA Steaua Bucureşti",
     "away": "Csikszereda",
@@ -5035,6 +5084,8 @@
     "minute": 104,
     "pick": "away",
     "conf": 37,
+    "final": "1-1",
+    "hit": true,
     "top": false
    }
   ]
