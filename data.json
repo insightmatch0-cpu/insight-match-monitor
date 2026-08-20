@@ -1,21 +1,6 @@
 {
- "updated": "2026-08-20T11:44:56.690256+00:00",
+ "updated": "2026-08-20T11:51:19.649182+00:00",
  "live": [
-  {
-   "fid": "1611333",
-   "home": "Paro",
-   "away": "RTC",
-   "home_en": "Paro",
-   "away_en": "RTC",
-   "league": "Premier League (Bhutan)",
-   "home_logo": "https://media.api-sports.io/football/teams/9426.png",
-   "away_logo": "https://media.api-sports.io/football/teams/19005.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
-   "score": "1-0",
-   "minute": 89,
-   "status": "2H",
-   "seen": "2026-08-20T11:44:54.557492+00:00"
-  },
   {
    "fid": "1534832",
    "home": "Tobol 2",
@@ -27,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18805.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "3-3",
-   "minute": 85,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-20T11:44:54.557492+00:00",
+   "seen": "2026-08-20T11:51:17.893007+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -39,10 +24,10 @@
     "confidence": 52
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 3-3 تُسقط التوقع (د85)"
+     "النتيجة الحالية 3-3 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 52,
@@ -58,15 +43,18 @@
       3,
       45,
       69,
-      85
+      76,
+      90
      ],
      "danger": [
       16,
       0,
       0,
-      66
+      15,
+      69
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -76,9 +64,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -88,10 +78,26 @@
       0,
       0,
       0,
+      0,
       0
      ]
     }
    }
+  },
+  {
+   "fid": "1611333",
+   "home": "Paro",
+   "away": "RTC",
+   "home_en": "Paro",
+   "away_en": "RTC",
+   "league": "Premier League (Bhutan)",
+   "home_logo": "https://media.api-sports.io/football/teams/9426.png",
+   "away_logo": "https://media.api-sports.io/football/teams/19005.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
+   "score": "1-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-20T11:49:46.052079+00:00"
   },
   {
    "fid": "1611338",
@@ -104,9 +110,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14441.png",
    "league_logo": "https://media.api-sports.io/football/leagues/335.png",
    "score": "0-1",
-   "minute": 34,
+   "minute": 41,
    "status": "1H",
-   "seen": "2026-08-20T11:44:54.557492+00:00",
+   "seen": "2026-08-20T11:51:17.893007+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 50
@@ -116,10 +122,10 @@
     "confidence": 58
    },
    "radar": {
-    "score": 35,
+    "score": 39,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د34)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د41)"
     ],
     "pick": "home",
     "confidence": 58,
@@ -132,21 +138,27 @@
     "top": false,
     "trend": {
      "min": [
-      34
+      26,
+      41
      ],
      "danger": [
-      35
+      30,
+      39
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -4276,6 +4288,19 @@
     "final": "2-2",
     "hit": false,
     "top": true
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-20",
+    "home": "Tobol 2",
+    "away": "Khan Tengri",
+    "league": "1. Division (Kazakhstan)",
+    "level": "red",
+    "minute": 85,
+    "pick": "away",
+    "conf": 52,
+    "top": false
    },
    {
     "kind": "warning",
