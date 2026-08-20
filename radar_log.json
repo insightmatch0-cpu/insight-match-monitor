@@ -1047,8 +1047,8 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 62,
-   "level_xg": "amber"
+   "score_xg": 66,
+   "level_xg": "red"
   },
   {
    "fid": "1623403",
@@ -1100,10 +1100,10 @@
    "pick": "away",
    "confidence": 53,
    "level": "red",
-   "score": 83,
-   "minute": 80,
+   "score": 87,
+   "minute": 87,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د80)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د87)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف"
    ],
@@ -1287,10 +1287,10 @@
    "pick": "away",
    "confidence": 63,
    "level": "amber",
-   "score": 47,
-   "minute": 54,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1306,6 +1306,46 @@
    "top": false,
    "pick": "away",
    "confidence": 38,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1547791",
+   "date": "2026-08-20",
+   "home": "Cde Juventud Italiana",
+   "away": "Delfin SC",
+   "league": "Copa Ecuador (Ecuador)",
+   "top": false,
+   "pick": "away",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623404",
+   "date": "2026-08-20",
+   "home": "Shamrock Rovers",
+   "away": "KuPS",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "pick": "home",
+   "confidence": 42,
    "level": "red",
    "score": 69,
    "minute": 90,
@@ -20131,8 +20171,8 @@
   {
    "fid": "1623391",
    "date": "2026-08-20",
-   "minute": 83,
-   "score_at": "1-1",
+   "minute": 90,
+   "score_at": "2-1",
    "side": "away",
    "key": "red_advantage",
    "home": "Getafe",
@@ -20141,13 +20181,6 @@
    "top": false,
    "silenced": false,
    "evidence": [
-    {
-     "minute": 52,
-     "gh": 1,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
     {
      "minute": 59,
      "gh": 1,
@@ -20172,8 +20205,31 @@
      }
     },
     {
-     "minute": 83,
+     "minute": 79,
      "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 9,
+      "cor": 1,
+      "poss": 66,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 3,
+      "cor": 2,
+      "poss": 34,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 90,
+     "gh": 2,
      "ga": 1,
      "h": {
       "sog": 3,
@@ -20199,7 +20255,7 @@
   {
    "fid": "1623393",
    "date": "2026-08-20",
-   "minute": 82,
+   "minute": 89,
    "score_at": "2-1",
    "side": "away",
    "key": "red_advantage",
@@ -20210,7 +20266,7 @@
    "silenced": false,
    "evidence": [
     {
-     "minute": 82,
+     "minute": 89,
      "gh": 2,
      "ga": 1,
      "h": {
