@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-20T21:22:57.167868+00:00",
+ "updated": "2026-08-20T21:29:27.517102+00:00",
  "live": [
   {
    "fid": "1547791",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1149.png",
    "league_logo": "https://media.api-sports.io/football/leagues/917.png",
    "score": "0-0",
-   "minute": 63,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-08-20T21:22:54.774027+00:00",
+   "seen": "2026-08-20T21:29:24.986948+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -24,10 +24,10 @@
     "confidence": 58
    },
    "radar": {
-    "score": 52,
+    "score": 56,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د63)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د69)"
     ],
     "pick": "away",
     "confidence": 58,
@@ -43,15 +43,13 @@
       3,
       17,
       31,
-      47,
-      63
+      69
      ],
      "danger": [
       16,
       25,
       33,
-      43,
-      52
+      56
      ],
      "h_sog": [
       0,
@@ -97,7 +95,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T21:22:54.774027+00:00",
+   "seen": "2026-08-20T21:29:24.986948+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -174,7 +172,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T21:22:54.774027+00:00",
+   "seen": "2026-08-20T21:29:24.986948+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -251,7 +249,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-20T21:22:54.774027+00:00",
+   "seen": "2026-08-20T21:29:24.986948+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -430,6 +428,160 @@
      ],
      "h_sog": [
       0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1526605",
+   "home": "San Antonio",
+   "away": "9 de Octubre",
+   "home_en": "San Antonio",
+   "away_en": "9 de Octubre",
+   "league": "Liga Pro Serie B (Ecuador)",
+   "home_logo": "https://media.api-sports.io/football/teams/23310.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10111.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/243.png",
+   "score": "0-0",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-20T21:29:24.986948+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20
+     ],
+     "danger": [
+      27
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1612598",
+   "home": "Tacuary",
+   "away": "Libertad Asuncion",
+   "home_en": "Tacuary",
+   "away_en": "Libertad Asuncion",
+   "league": "Copa Paraguay (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/10491.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1179.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
+   "score": "0-0",
+   "minute": 0,
+   "status": "P",
+   "seen": "2026-08-20T21:29:24.986948+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 63
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د0)"
+    ],
+    "pick": "away",
+    "confidence": 63,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      26,
+      33,
+      45,
+      81,
+      74,
+      0
+     ],
+     "danger": [
+      21,
+      30,
+      34,
+      42,
+      63,
+      59,
+      15
+     ],
+     "h_sog": [
       0,
       0,
       0,
