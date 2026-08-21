@@ -1635,7 +1635,7 @@ def publish_radar_live(state: dict) -> bool:
 
 
 def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
-                            pick: str, conf, budget: dict) -> bool:
+                            pick: str, conf, budget: dict, log: dict = None) -> bool:
     """🔴 إنذار الرادار الأحمر **المبكر** إلى تيليجرام (قرار المالك 2026-08-19).
 
     لماذا المبكر وحده: قياس 223 إنذاراً أحمر منذ انطلاق الموسم أظهر أن 196
@@ -1652,6 +1652,18 @@ def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
         return False
     radar = e.get("radar") or {}
     if radar.get("warn_alerted") or budget["used"] >= RED_WARN_ALERT_CAP_PER_RUN:
+        return False
+    # 🔒 بوابة ثانية دائمة (حادثة Drukpa 2026-08-21: تنبيهان لنفس المباراة
+    # بفارق دقيقتين). العلم warn_alerted يعيش في state.json الذي **يُحفظ في
+    # نهاية التشغيلة**، بينما radar_log.json يُحفظ داخلها — فتشغيلة أُجهضت
+    # بعد الإرسال وقبل الحفظ تُسلّم الرسالة وتفقد علمها، فتعيدها التشغيلة
+    # التالية. السجل هو السِّجل الدائم لما أُرسل فعلاً، فهو الحكم.
+    if log is None:
+        log = load_json_file(RADAR_FILE, {}) or {}
+    if any(str(w.get("fid")) == str(fid) and w.get("alerted")
+           for w in (log.get("warnings") or [])):
+        radar["warn_alerted"] = True   # أعِد بناء العلم المفقود في الذاكرة
+        e["radar"] = radar
         return False
     budget["used"] += 1
     ar = e.get("ar") or {}
@@ -2139,7 +2151,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         # يُحسب هنا لأن verdict جاهز، ويُوسم صفه أدناه بـalerted ليُقاس وحده.
         warn_sent = maybe_red_warning_alert(
             fid, e, verdict, minute, p.get("pick"), p.get("confidence"),
-            warn_budget)
+            warn_budget, log)
         # يُسجَّل الصف متى أنذرت **إحدى** الدرجتين، لا الحالية وحدها.
         # لولا ذلك لاستحال قياس الحالة التي تُجرى التجربة من أجلها أصلاً:
         # xG يرى خطراً لا تراه عدّادات الحجم (0.4 مقابل 2.8 بينما لوحة النتائج
