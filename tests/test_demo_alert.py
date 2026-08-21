@@ -69,3 +69,14 @@ class TestNoApiCalls(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestDeliveryEvidence(unittest.TestCase):
+    """التشغيلة يجب أن تترك دليلاً مطبوعاً على التسليم، لا صمتاً أخضر."""
+
+    def test_main_prints_a_receipt_per_message(self):
+        src = open(os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "demo_alert.py"), encoding="utf-8").read()
+        self.assertIn("res['delivered']", src)
+        self.assertIn("res['total']", src)
+        self.assertIn("print(", src.split("def main(")[1])
