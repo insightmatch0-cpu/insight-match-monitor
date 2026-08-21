@@ -642,6 +642,63 @@ footer{border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); fo
 </section>
 
 <section>
+  <h2>📕 كيف تُقرأ إنذارات الرادار — دليل التشغيل (SOP)</h2>
+  <div class="note info">
+    طلبك يوم <span class="num">2026-08-21</span> بعد تنبيه Drukpa: «أعطني المصطلح، والمثال، ولماذا نجح ولماذا فشل». هذا القسم هو الجواب الدائم.
+    <b>بيانات حتى <span class="num">2026-08-21</span></b> — <span class="num">27</span> إنذاراً مُرسلاً مُقيَّماً.
+  </div>
+
+  <h3>1) المصطلحات</h3>
+  <div class="card"><div class="tw"><table>
+    <tr><th>المصطلح</th><th>معناه بالضبط</th></tr>
+    <tr><td>التوقع</td><td>ما قاله المحرك 2 صباحاً: فوز مضيف / تعادل / فوز ضيف + نسبة ثقة</td></tr>
+    <tr><td>درجة الخطر</td><td>رقم <span class="num">0</span>–<span class="num">100</span> بالرياضيات فقط (بلا ذكاء اصطناعي)</td></tr>
+    <tr><td>المستوى</td><td>🟢 أخضر تحت <span class="num">40</span> · 🟡 كهرماني <span class="num">40</span>–<span class="num">64</span> · 🔴 أحمر <span class="num">65</span> فأعلى</td></tr>
+    <tr><td>العامل</td><td>نوعان: <b>لوحة النتائج</b> (النتيجة نفسها تُسقط التوقع) و<b>الزخم</b> (تسديد/ركنيات/ضغط/حصار الحارس/بطاقة حمراء)</td></tr>
+    <tr><td>دقيقة الإنذار</td><td>دقيقة وصول الرسالة — لا تتجاوز <span class="num">د85</span> أبداً</td></tr>
+    <tr><td>«صحيح» ✅</td><td>الرادار كان محقاً: التوقع الذي حذّر منه <b>سقط فعلاً</b></td></tr>
+    <tr><td>«خطأ» ❌</td><td>الرادار أنذر لكن التوقع <b>نجا</b></td></tr>
+  </table></div></div>
+
+  <div class="note warn">
+    <b>قاعدة التقييم (تُطبَّق آلياً كل صباح، بلا اجتهاد):</b> يُقارَن التوقع الصباحي بنتيجة الدقيقة <span class="num">90</span>. سقط التوقع ⇒ الإنذار صحيح. نجا ⇒ الإنذار خطأ.
+  </div>
+
+  <h3>2) الشرائح بأمثلة حقيقية</h3>
+  <div class="card"><div class="tw"><table>
+    <tr><th>الشريحة</th><th>العدد</th><th>الدقة</th><th>✅ مثال نجح</th><th>❌ مثال فشل</th></tr>
+    <tr><td><b>إنذاراتك المُرسلة ≤<span class="num">د85</span></b></td><td class="num">27</td><td><b class="num">74%</b></td>
+        <td>Monarcas × Correcaminos — توقع فوز المضيف <span class="num">54%</span>، وعند <span class="num">د85</span> كانت <span class="num">0-3</span>. انتهت <span class="num">1-3</span></td>
+        <td>Tobol 2 × Khan Tengri — توقع فوز الضيف <span class="num">52%</span> و<span class="num">3-3</span> عند <span class="num">د85</span>، ثم سجّل الضيف ⇒ <span class="num">3-4</span></td></tr>
+    <tr><td>أحمر بعامل لوحة النتائج وحده</td><td class="num">15</td><td class="num">80%</td>
+        <td>Al Minaa × Zakho — <span class="num">2-1</span> عند <span class="num">د85</span> ولم تتغير</td>
+        <td>Mjallby × Salzburg — <span class="num">0-0</span> عند <span class="num">د85</span> ثم هدف متأخر ⇒ <span class="num">0-1</span></td></tr>
+    <tr><td>أحمر مع عوامل زخم</td><td class="num">12</td><td class="num">67%</td>
+        <td>Trabzonspor × Ferencvaros — <span class="num">0-1</span> + موجة ضيف ⇒ انتهت <span class="num">0-1</span></td>
+        <td>Hapoel B.S × Sabah — خطر <span class="num">92</span> وضغط كامل، ومع ذلك فاز المضيف <span class="num">2-1</span></td></tr>
+    <tr><td>أحمر في الدقائق <span class="num">80</span>–<span class="num">85</span></td><td class="num">43</td><td class="num">74%</td><td colspan="2">—</td></tr>
+    <tr><td>كل الأحمر ≤<span class="num">د85</span></td><td class="num">69</td><td class="num">67%</td><td colspan="2">—</td></tr>
+    <tr><td>أحمر بعد <span class="num">د85</span> (شاشة فقط)</td><td class="num">571</td><td class="num">94%</td><td colspan="2">وصفي لا تنبؤي — لهذا لا يصل هاتفك</td></tr>
+    <tr><td>الكهرماني (شاشة فقط)</td><td class="num">394</td><td class="num">38%</td><td colspan="2">ضعيف بنيوياً — لا يُرسل إطلاقاً</td></tr>
+  </table></div></div>
+
+  <h3>3) القاعدة الذهبية 🔑</h3>
+  <div class="card"><div class="tw"><table>
+    <tr><th>وضع الفريق المُتوقَّع فوزه لحظة الإنذار</th><th>العدد</th><th>الدقة</th><th>ماذا يعني لك</th></tr>
+    <tr><td><b>متأخر بالنتيجة</b></td><td class="num">7</td><td><b class="num">100%</b></td><td>لم يَنجُ توقع واحد — اعتبره حكماً نهائياً</td></tr>
+    <tr><td><b>متعادل</b></td><td class="num">20</td><td class="num">65%</td><td>تحذير حقيقي لا حكم — ثلث الحالات ينقذها هدف متأخر</td></tr>
+  </table></div></div>
+
+  <h3>4) لماذا يفشل الإنذار حين يفشل — ثلاثة أسباب فقط</h3>
+  <ul class="keylist">
+    <li><span class="callout">1</span><div><b>هدف متأخر جداً.</b> السبب الأول بفارق كبير — كل حالات النجاة تقريباً جاءت من هدف بعد <span class="num">د85</span>.</div></li>
+    <li><span class="callout">2</span><div><b>الزخم يخدع.</b> الرادار يعدّ التسديدات لا خطورتها، فتسديدة من <span class="num">30</span> متراً وأخرى من داخل المرمى الصغير سواء في عدّاداتنا. لهذا إنذارات الزخم (<span class="num">67%</span>) أضعف من إنذارات لوحة النتائج (<span class="num">80%</span>) — وهذا بالضبط ما تقيسه تجربة xG.</div></li>
+    <li><span class="callout">3</span><div><b>التوقع نفسه كان ضعيفاً.</b> <span class="num">88%</span> من الإنذارات على توقعات بثقة أقل من <span class="num">45%</span> كانت صحيحة — الرادار «ينجح» هنا لأن التوقع هشّ أصلاً.</div></li>
+  </ul>
+</section>
+
+
+<section>
   <h2>كيف تقرأ صفحة الرادار</h2>
   <div class="card">
     <h3>⚖️ قبل كل شيء: البطاقة ≠ التنبيه — شيئان من رادار واحد، بلوحتي حساب</h3>
