@@ -707,3 +707,31 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         i_create = src.index('"alert_minute": minute if warn_sent else None')
         i_upd = src.index('w["alert_minute"] = minute')
         self.assertLess(i_create, i_upd, "مسارا الوسم انقلبا")
+
+    def test_log_row_blocks_repeat_across_runs(self):
+        """حادثة Drukpa (2026-08-21): وصل المالك تنبيهان لنفس المباراة بفارق
+        دقيقتين. السبب: `warn_alerted` يعيش في state.json المحفوظ **نهاية**
+        التشغيلة، بينما radar_log.json يُحفظ داخلها — فتشغيلة أُجهضت بعد
+        الإرسال سلّمت الرسالة وفقدت علمها. السجل هو الدليل الدائم على ما
+        أُرسل، فصار بوابة ثانية."""
+        e = self._match(minute=80)          # ذاكرة نظيفة: العلم مفقود
+        log = {"warnings": [{"fid": "1", "alerted": True, "minute": 78}]}
+        ok = M.maybe_red_warning_alert("1", e, self.RED, 80, "home", 61,
+                                       {"used": 0}, log)
+        self.assertFalse(ok, "تكرر التنبيه رغم أن السجل يقول إنه أُرسل")
+        self.assertEqual(self.sent, [])
+        self.assertTrue((e.get("radar") or {}).get("warn_alerted"),
+                        "العلم المفقود لم يُعَد بناؤه في الذاكرة")
+
+    def test_log_without_alerted_row_still_allows_first_alert(self):
+        """البوابة الثانية تمنع التكرار فقط — لا تخنق التنبيه الأول."""
+        e = self._match(minute=80)
+        log = {"warnings": [{"fid": "1", "minute": 78}]}   # صف بلا alerted
+        self.assertTrue(M.maybe_red_warning_alert("1", e, self.RED, 80,
+                                                  "home", 61, {"used": 0}, log))
+        self.assertEqual(len(self.sent), 1)
+
+    def test_sweep_passes_its_live_log(self):
+        """حارس بنيوي (درس سباق 2026-08-15): الجولة تمرّر نسختها الحية."""
+        src = Path(M.__file__).read_text(encoding="utf-8")
+        self.assertIn("warn_budget, log)", src)
