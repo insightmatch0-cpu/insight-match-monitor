@@ -624,10 +624,10 @@
    "pick": "away",
    "confidence": 51,
    "level": "amber",
-   "score": 53,
-   "minute": 64,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د64)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د72)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -692,7 +692,7 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 42,
+   "score_xg": 46,
    "level_xg": "amber"
   },
   {
@@ -705,10 +705,10 @@
    "pick": "away",
    "confidence": 44,
    "level": "amber",
-   "score": 48,
-   "minute": 56,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د56)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -725,10 +725,90 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 47,
-   "minute": 54,
+   "score": 56,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د54)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د69)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623451",
+   "date": "2026-08-21",
+   "home": "Albion FC",
+   "away": "Boston River",
+   "league": "Primera División (Uruguay)",
+   "top": false,
+   "pick": "away",
+   "confidence": 48,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د86)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1567884",
+   "date": "2026-08-21",
+   "home": "Admira Wacker",
+   "away": "First Vienna",
+   "league": "2. Liga (Austria)",
+   "top": false,
+   "pick": "home",
+   "confidence": 39,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د86)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1492751",
+   "date": "2026-08-21",
+   "home": "Bohemians",
+   "away": "Derry City",
+   "league": "Premier Division (Ireland)",
+   "top": false,
+   "pick": "away",
+   "confidence": 38,
+   "level": "amber",
+   "score": 57,
+   "minute": 70,
+   "factors": [
+    "النتيجة الحالية 3-2 تُسقط التوقع (د70)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1492753",
+   "date": "2026-08-21",
+   "home": "Dundalk",
+   "away": "Galway United",
+   "league": "Premier Division (Ireland)",
+   "top": false,
+   "pick": "home",
+   "confidence": 37,
+   "level": "amber",
+   "score": 57,
+   "minute": 71,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -21202,7 +21282,93 @@
    "graded_on": "2026-08-21"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1553137",
+   "date": "2026-08-21",
+   "minute": 77,
+   "score_at": "1-2",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Cracovia Krakow",
+   "away": "Wieczysta Kraków",
+   "league": "Ekstraklasa (Poland)",
+   "top": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 50,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 2,
+      "poss": 37,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 7,
+      "poss": 63,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 62,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 2,
+      "poss": 37,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 7,
+      "poss": 63,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 4,
+      "shots": 12,
+      "cor": 5,
+      "poss": 39,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 4,
+      "shots": 9,
+      "cor": 8,
+      "poss": 61,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
