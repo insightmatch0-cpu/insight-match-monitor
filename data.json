@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-21T00:36:40.438989+00:00",
+ "updated": "2026-08-21T00:46:36.375609+00:00",
  "live": [
   {
    "fid": "1549588",
@@ -14,7 +14,7 @@
    "score": "2-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-21T00:36:38.478795+00:00",
+   "seen": "2026-08-21T00:40:25.710086+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -81,9 +81,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2297.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
    "score": "3-2",
-   "minute": 76,
+   "minute": 85,
    "status": "2H",
-   "seen": "2026-08-21T00:36:38.478795+00:00",
+   "seen": "2026-08-21T00:46:34.461881+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 53
@@ -112,7 +112,7 @@
       40,
       45,
       53,
-      76
+      85
      ],
      "danger": [
       15,
@@ -158,9 +158,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/125.png",
    "league_logo": "https://media.api-sports.io/football/leagues/72.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-21T00:33:34.711975+00:00",
+   "minute": 57,
+   "status": "2H",
+   "seen": "2026-08-21T00:46:34.461881+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -188,7 +188,7 @@
      "min": [
       30,
       24,
-      45
+      57
      ],
      "danger": [
       15,
@@ -217,6 +217,124 @@
      ]
     }
    }
+  },
+  {
+   "fid": "1547767",
+   "home": "Corinthians",
+   "away": "Rosario Central",
+   "home_en": "Corinthians",
+   "away_en": "Rosario Central",
+   "league": "CONMEBOL Libertadores (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/131.png",
+   "away_logo": "https://media.api-sports.io/football/teams/437.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/13.png",
+   "score": "0-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-08-21T00:46:34.461881+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 61
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+    ],
+    "pick": "home",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      16
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1607201",
+   "home": "Botafogo",
+   "away": "Cienciano",
+   "home_en": "Botafogo",
+   "away_en": "Cienciano",
+   "league": "CONMEBOL Sudamericana (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/120.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2562.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/11.png",
+   "score": "1-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-08-21T00:46:34.461881+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 61
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 61
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 61,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      16
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
   }
  ],
  "upcoming": [
@@ -235,22 +353,6 @@
    "pick": "home",
    "confidence": 61,
    "reason": "كورينثيانز برازيلي عملاق بخبرة أوروبية أكثر من الأرجنتيني"
-  },
-  {
-   "fid": "1549588",
-   "kickoff": "2026-08-20T22:45:00+00:00",
-   "home": "ريال كارتاخينا",
-   "away": "بوغوتا إف سي",
-   "home_en": "Real Cartagena",
-   "home_logo": "https://media.api-sports.io/football/teams/1459.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1458.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-   "away_en": "Bogota FC",
-   "league": "الدرجة الأولى ب (كولومبيا)",
-   "top": false,
-   "pick": "draw",
-   "confidence": 50,
-   "reason": "مباراة محلية بين فريقين متقاربي المستوى، التعادل احتمال واقعي"
   },
   {
    "fid": "1581394",
