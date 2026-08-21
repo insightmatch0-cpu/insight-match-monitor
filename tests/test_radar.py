@@ -624,6 +624,14 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         orig = M.send_telegram
         M.send_telegram = lambda t, **k: self.sent.append(t)
         self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+        # 📌 منذ إصلاح الكتابة الفورية (2026-08-21) صار الإنذار يكتب سجل
+        # الرادار لحظة الإرسال — نعزل الاختبارات عن الملف الحقيقي
+        import tempfile
+        from pathlib import Path as _P
+        self._tmp = tempfile.mkdtemp()
+        orig_file = M.RADAR_FILE
+        M.RADAR_FILE = _P(self._tmp) / "radar_log.json"
+        self.addCleanup(lambda: setattr(M, "RADAR_FILE", orig_file))
 
     @staticmethod
     def _match(minute=80, score="1-1"):
@@ -701,11 +709,14 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         (نقيس أقصى ما رآه الرادار). فبدت البوابة مخروقة وهي سليمة، واستحال
         تدقيق الشريحة المُرسَلة. الحل: دقيقة الإرسال تُحفظ في حقلها الخاص."""
         src = Path(M.__file__).read_text(encoding="utf-8")
-        self.assertIn('"alert_minute": minute if warn_sent else None', src)
-        self.assertIn('w["alert_minute"] = minute', src)
+        # داخل جولة المسح تحديداً (الكتابة الفورية 2026-08-21 أضافت وسماً
+        # ثالثاً في _upsert_warn_row خارجها — ليس موضوع هذا الحارس)
+        sweep = src.split("def radar_sweep(")[1].split("\ndef ")[0]
+        self.assertIn('"alert_minute": minute if warn_sent else None', sweep)
+        self.assertIn('w["alert_minute"] = minute', sweep)
         # وترتيب المنطق: الوسم يقع قبل ترقية الصف فلا تُطمس دقيقة الإرسال
-        i_create = src.index('"alert_minute": minute if warn_sent else None')
-        i_upd = src.index('w["alert_minute"] = minute')
+        i_create = sweep.index('"alert_minute": minute if warn_sent else None')
+        i_upd = sweep.index('w["alert_minute"] = minute')
         self.assertLess(i_create, i_upd, "مسارا الوسم انقلبا")
 
     def test_log_row_blocks_repeat_across_runs(self):
@@ -735,3 +746,52 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         """حارس بنيوي (درس سباق 2026-08-15): الجولة تمرّر نسختها الحية."""
         src = Path(M.__file__).read_text(encoding="utf-8")
         self.assertIn("warn_budget, log)", src)
+
+
+class TestDurableWriteAtSendTime(unittest.TestCase):
+    """📌 قاعدة 2026-08-21 (تكرار Drukpa ثم Cracovia): سجل «ما أُرسل» يُكتب
+    لحظة الإرسال — تشغيلة تُجهض بعد التسليم لا يجوز أن تفقد أثر إرسالها."""
+
+    def setUp(self):
+        self.sent = []
+        orig = M.send_telegram
+        M.send_telegram = lambda t, **k: self.sent.append(t)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+        import tempfile
+        from pathlib import Path as _P
+        self._tmp = tempfile.mkdtemp()
+        orig_file = M.RADAR_FILE
+        M.RADAR_FILE = _P(self._tmp) / "radar_log.json"
+        self.addCleanup(lambda: setattr(M, "RADAR_FILE", orig_file))
+
+    RED = {"level": "red", "score": 72, "factors": ["ضغط"]}
+
+    def _e(self):
+        return {"home": "Alpha", "away": "Beta", "score": "1-1",
+                "minute": 80, "radar": {}, "date": "2026-08-21"}
+
+    def test_fast_lane_send_lands_on_disk_immediately(self):
+        # المسار السريع (log=None): قبل الإصلاح لم يكتب صفاً إطلاقاً
+        ok = M.maybe_red_warning_alert("9", self._e(), self.RED, 80,
+                                       "home", 61, {"used": 0})
+        self.assertTrue(ok)
+        saved = json.loads(M.RADAR_FILE.read_text(encoding="utf-8"))
+        row = saved["warnings"][0]
+        self.assertEqual(row["fid"], "9")
+        self.assertTrue(row["alerted"])
+        self.assertEqual(row["alert_minute"], 80)
+
+    def test_evicted_run_cannot_cause_a_repeat(self):
+        # التشغيلة الأولى تُرسل ثم "تُجهض" (لا حفظ حالة) — الثانية تبدأ نظيفة
+        self.assertTrue(M.maybe_red_warning_alert(
+            "9", self._e(), self.RED, 80, "home", 61, {"used": 0}))
+        ok2 = M.maybe_red_warning_alert(
+            "9", self._e(), self.RED, 84, "home", 61, {"used": 0})
+        self.assertFalse(ok2)
+        self.assertEqual(len(self.sent), 1)
+
+    def test_sweep_flushes_log_the_moment_an_alert_leaves(self):
+        src = Path(M.__file__).read_text(encoding="utf-8")
+        body = src.split("def radar_sweep(")[1].split("\ndef ")[0]
+        self.assertIn("if sent_now or warn_sent:", body)
+        self.assertIn("_flush_radar_log(log)", body)

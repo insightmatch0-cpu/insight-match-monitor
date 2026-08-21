@@ -1658,7 +1658,8 @@ def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
     # نهاية التشغيلة**، بينما radar_log.json يُحفظ داخلها — فتشغيلة أُجهضت
     # بعد الإرسال وقبل الحفظ تُسلّم الرسالة وتفقد علمها، فتعيدها التشغيلة
     # التالية. السجل هو السِّجل الدائم لما أُرسل فعلاً، فهو الحكم.
-    if log is None:
+    own_log = log is None
+    if own_log:
         log = load_json_file(RADAR_FILE, {}) or {}
     if any(str(w.get("fid")) == str(fid) and w.get("alerted")
            for w in (log.get("warnings") or [])):
@@ -1681,7 +1682,49 @@ def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
     )
     radar["warn_alerted"] = True
     e["radar"] = radar
+    # 📌 قاعدة 2026-08-21 (تكرار Drukpa ثم Cracovia): سجل «ما أُرسل» يُكتب
+    # **لحظة الإرسال** لا في نهاية الجولة — تشغيلة تُجهض بعد التسليم كانت
+    # تفقد علمها وصفّها معاً فتعيد التالية الإرسال. في المسار السريع (كان
+    # لا يكتب صفاً إطلاقاً) نرفع الصف ونحفظ الملف هنا فوراً؛ في المسح تُرفع
+    # العلامة على النسخة الحية ويتكفل المسح بالحفظ الفوري بعد ندائه مباشرة.
+    _upsert_warn_row(log, fid, e, verdict, minute, pick, conf)
+    if own_log:
+        _flush_radar_log(log)
     return True
+
+
+def _upsert_warn_row(log: dict, fid: str, e: dict, verdict: dict,
+                     minute: int, pick: str, conf) -> None:
+    """يرفع صف الإنذار الموسوم alerted إلى السجل الحي (ينشئه إن لم يوجد).
+    نفس مخطط صفوف المسح حرفياً حتى يقيَّم صباحاً كأي صف آخر."""
+    log.setdefault("warnings", [])
+    w = next((w for w in log["warnings"] if str(w.get("fid")) == str(fid)), None)
+    if w is None:
+        log["warnings"].append({
+            "fid": str(fid),
+            "date": e.get("date")
+                    or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "home": e.get("home"), "away": e.get("away"),
+            "league": e.get("league"), "top": radar_is_top(e),
+            "pick": pick, "confidence": conf,
+            "level": verdict.get("level"), "score": verdict.get("score"),
+            "minute": minute, "factors": verdict.get("factors") or [],
+            "alerted": True, "alert_minute": minute,
+            "score_xg": None, "level_xg": None,
+        })
+    else:
+        w["alerted"] = True
+        w["alert_minute"] = minute
+
+
+def _flush_radar_log(log: dict) -> None:
+    """كتابة فورية للسجل — تُستدعى لحظة إرسال أي تنبيه (قاعدة 2026-08-21).
+    فشلها لا يمنع التنبيه ولا يكسر التشغيلة."""
+    try:
+        RADAR_FILE.write_text(
+            json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception as exc:
+        print("تعذر الحفظ الفوري لسجل الرادار:", exc)
 
 
 def radar_fast_watch(state: dict, watch: set, deadline: float,
@@ -2142,11 +2185,12 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         # 🚨 عقل S3: هل تتشكل دراما اللحظات الأخيرة؟ (د75+، مرة لكل مباراة)
         # ⚠️ تمرير النسخة الحية log إلزامي (سباق 2026-08-15): بدونه يكتب
         # التنبيه للقرص ثم يدهسه حفظ الجولة الختامي بنسخته القديمة
+        sent_now = False
         if maybe_radar_alert(fid, e, alert_budget, log):
-            log_dirty = True
+            log_dirty = sent_now = True
         # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
         if maybe_red_alert(fid, e, alert_budget, log):
-            log_dirty = True
+            log_dirty = sent_now = True
         # 🔴 الإنذار الأحمر المبكر (≤د85) — قرار المالك 2026-08-19.
         # يُحسب هنا لأن verdict جاهز، ويُوسم صفه أدناه بـalerted ليُقاس وحده.
         warn_sent = maybe_red_warning_alert(
@@ -2205,6 +2249,11 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     w.update({"score_xg": verdict_xg["score"],
                               "level_xg": verdict_xg["level"]})
                     log_dirty = True
+        # 📌 قاعدة 2026-08-21: أي تنبيه غادر إلى تيليجرام في هذه اللفة يُحفظ
+        # سجله إلى القرص الآن — لا عند نهاية الجولة التي قد لا تأتي أبداً
+        # (إجهاض الأمسيات المزدحمة هو ما كرّر إنذاري Drukpa وCracovia)
+        if sent_now or warn_sent:
+            _flush_radar_log(log)
     if log_dirty:
         RADAR_FILE.write_text(
             json.dumps(log, ensure_ascii=False, indent=1), encoding="utf-8")
