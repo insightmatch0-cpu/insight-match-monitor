@@ -1,6 +1,65 @@
 {
- "updated": "2026-08-21T02:46:36.217592+00:00",
+ "updated": "2026-08-21T02:56:34.845848+00:00",
  "live": [
+  {
+   "fid": "1581396",
+   "home": "Monarcas",
+   "away": "Correcaminos Uat",
+   "home_en": "Monarcas",
+   "away_en": "Correcaminos Uat",
+   "league": "Liga de Expansión MX (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/2284.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2313.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
+   "score": "0-3",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-21T02:56:33.213309+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 49
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-3 تُسقط التوقع (د90)"
+    ],
+    "pick": "home",
+    "confidence": 54,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      90
+     ],
+     "danger": [
+      69
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
   {
    "fid": "1581398",
    "home": "Tepatitlán",
@@ -12,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14280.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
    "score": "3-0",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-21T02:46:34.673830+00:00",
+   "seen": "2026-08-21T02:56:33.213309+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -38,69 +97,10 @@
     "top": false,
     "trend": {
      "min": [
-      86
+      90
      ],
      "danger": [
       0
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1581396",
-   "home": "Monarcas",
-   "away": "Correcaminos Uat",
-   "home_en": "Monarcas",
-   "away_en": "Correcaminos Uat",
-   "league": "Liga de Expansión MX (Mexico)",
-   "home_logo": "https://media.api-sports.io/football/teams/2284.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2313.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "score": "0-3",
-   "minute": 81,
-   "status": "2H",
-   "seen": "2026-08-21T02:46:34.673830+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 49
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "radar": {
-    "score": 63,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د81)"
-    ],
-    "pick": "home",
-    "confidence": 54,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      81
-     ],
-     "danger": [
-      63
      ],
      "h_sog": [
       0
@@ -128,9 +128,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4019.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "2-0",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-08-21T02:46:34.673830+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-21T02:56:33.213309+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -154,7 +154,7 @@
     "top": false,
     "trend": {
      "min": [
-      43
+      45
      ],
      "danger": [
       0
@@ -4249,6 +4249,19 @@
     "conf": 37,
     "final": "1-1",
     "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-21",
+    "home": "Monarcas",
+    "away": "Correcaminos Uat",
+    "league": "Liga de Expansión MX (Mexico)",
+    "level": "red",
+    "minute": 85,
+    "pick": "home",
+    "conf": 54,
     "top": false
    }
   ]
