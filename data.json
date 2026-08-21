@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-21T02:02:08.903022+00:00",
+ "updated": "2026-08-21T02:08:36.026608+00:00",
  "live": [
   {
    "fid": "1547767",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/437.png",
    "league_logo": "https://media.api-sports.io/football/leagues/13.png",
    "score": "0-0",
-   "minute": 74,
+   "minute": 80,
    "status": "2H",
-   "seen": "2026-08-21T02:02:05.652898+00:00",
+   "seen": "2026-08-21T02:08:33.791050+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -24,10 +24,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 59,
+    "score": 63,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د74)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د80)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -40,12 +40,10 @@
     "top": true,
     "trend": {
      "min": [
-      59,
-      74
+      80
      ],
      "danger": [
-      50,
-      59
+      63
      ],
      "h_sog": [
       2,
@@ -77,9 +75,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2562.png",
    "league_logo": "https://media.api-sports.io/football/leagues/11.png",
    "score": "1-0",
-   "minute": 69,
+   "minute": 75,
    "status": "2H",
-   "seen": "2026-08-21T02:02:05.652898+00:00",
+   "seen": "2026-08-21T02:08:33.791050+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -105,8 +103,66 @@
     "top": false,
     "trend": {
      "min": [
-      54,
-      69
+      75
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1581398",
+   "home": "Tepatitlán",
+   "away": "Tlaxcala",
+   "home_en": "Tepatitlán",
+   "away_en": "Tlaxcala",
+   "league": "Liga de Expansión MX (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/14279.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14280.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
+   "score": "1-0",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-21T02:08:33.791050+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      47
      ],
      "danger": [
       15,
@@ -144,7 +200,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-21T02:02:05.652898+00:00",
+   "seen": "2026-08-21T02:08:33.791050+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -174,65 +230,6 @@
      ],
      "danger": [
       42
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1581398",
-   "home": "Tepatitlán",
-   "away": "Tlaxcala",
-   "home_en": "Tepatitlán",
-   "away_en": "Tlaxcala",
-   "league": "Liga de Expansión MX (Mexico)",
-   "home_logo": "https://media.api-sports.io/football/teams/14279.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14280.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-21T02:02:05.652898+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 48
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45
-     ],
-     "danger": [
-      15
      ],
      "h_sog": [
       0
