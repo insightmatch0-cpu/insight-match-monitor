@@ -180,6 +180,10 @@ LIVE_GRADES_PER_CYCLE  = 2     # سقف تقييمات لكل دورة مراق�
 
 SEND_TELEGRAM_DIGEST = True
 DIGEST_TOP_ONLY      = True
+# ⭐/⚡ قسما النشرة البارزان (طلب المالك 2026-08-21: «كل شيء مخلوط») — نفس
+# مصطلحات البوابة حرفياً حتى يتطابق الهاتف مع الشاشة. عرض فقط، صفر نداءات
+DIGEST_GOLD_MIN_CONF = 70          # عتبة الشريحة الذهبية — نفس رقم اللوحة
+DIGEST_SECTIONS      = True        # مفتاح التراجع: False يعيد النشرة القديمة
 DASHBOARD_URL = "https://insightmatch0-cpu.github.io/insight-match-monitor/"
 
 TOP_LEAGUE_IDS = {
@@ -2313,10 +2317,46 @@ def race_line(user_stats: dict, v2_stats: dict) -> str:
     return "🏆 سباق الدقة — " + " | ".join(parts)
 
 
+def digest_sections(new_preds: list) -> list:
+    """⭐/⚡ القسمان البارزان في رأس النشرة (طلب المالك 2026-08-21).
+
+    كانت الاختيارات الذهبية ومخالفات السوق مدفونة وسط قائمة الدوريات —
+    «كل شيء مخلوط» بتعبير المالك. القسمان يستلان أثمن الصفوف ويضعانها
+    أولاً بنفس مصطلحات البوابة حرفياً (الذهبية من كل الدوريات لأن شريحة
+    الـ70%+ لا تعرف دورياً؛ ضد السوق من المباريات الغنية الحاملة لأودز).
+    المباراة تبقى في قائمتها الأصلية أيضاً — هذان ملخصان لا نقل."""
+    lines = []
+    gold = [p for p in new_preds
+            if (p.get("confidence") or 0) >= DIGEST_GOLD_MIN_CONF]
+    if gold:
+        lines.append(f"\n⭐ الاختيارات الذهبية — ثقة 70%+ ({len(gold)})")
+        for p in gold:
+            h = p.get("ar_home") or p["home"]
+            a = p.get("ar_away") or p["away"]
+            lines.append(f"• {h} 🆚 {a} — {pick_label(p)} ({p['confidence']}%)")
+    contra = [p for p in new_preds
+              if market_favorite(p) and p.get("pick")
+              and market_favorite(p) != p["pick"]]
+    if contra:
+        lines.append(f"\n⚡ ضد السوق — المحرك يخالف المرشح ({len(contra)})")
+        for p in contra:
+            h = p.get("ar_home") or p["home"]
+            a = p.get("ar_away") or p["away"]
+            fav = market_favorite(p)
+            fav_lbl = PICK_AR[fav].format(h=h, a=a)
+            mkt_pct = p.get(f"mkt_{fav}")
+            lines.append(
+                f"• {h} 🆚 {a} — المحرك: {pick_label(p)} ({p['confidence']}%)"
+                f" · السوق: {fav_lbl} ({mkt_pct}%)")
+    return lines
+
+
 def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
                  new_lessons: int = 0, user_stats: dict = None) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
     v1_preds = v1_preds or {}
+    if DIGEST_SECTIONS:
+        lines += digest_sections(new_preds)
     shown = [p for p in new_preds if p["top"]] if DIGEST_TOP_ONLY else new_preds
     rest = len(new_preds) - len(shown)
 

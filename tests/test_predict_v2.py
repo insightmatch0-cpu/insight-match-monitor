@@ -250,3 +250,45 @@ class TestWhyLine(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestDigestSections(unittest.TestCase):
+    """⭐/⚡ قسما رأس النشرة (طلب المالك 2026-08-21: «كل شيء مخلوط»)."""
+
+    def _preds(self):
+        return [
+            {"fid": "1", "home": "A", "away": "B", "pick": "home",
+             "confidence": 74, "top": True, "prob_home": 74, "prob_draw": 16,
+             "prob_away": 10, "mkt_home": 80, "mkt_draw": 12, "mkt_away": 8},
+            {"fid": "2", "home": "C", "away": "D", "pick": "away",
+             "confidence": 35, "top": False, "prob_home": 34, "prob_draw": 31,
+             "prob_away": 35, "mkt_home": 38, "mkt_draw": 30, "mkt_away": 32},
+            {"fid": "3", "home": "E", "away": "F", "pick": "home",
+             "confidence": 50, "top": True, "prob_home": 50, "prob_draw": 30,
+             "prob_away": 20},
+        ]
+
+    def test_gold_and_contra_extracted_with_portal_terminology(self):
+        text = "\n".join(P.digest_sections(self._preds()))
+        self.assertIn("⭐ الاختيارات الذهبية — ثقة 70%+ (1)", text)
+        self.assertIn("⚡ ضد السوق — المحرك يخالف المرشح (1)", text)
+        self.assertIn("C 🆚 D", text)
+        # المباراة بلا أودز لا تدخل قسم السوق، والثقة 50 لا تدخل الذهبية
+        self.assertNotIn("E 🆚 F", text)
+
+    def test_agreement_with_market_stays_out_of_contra(self):
+        # الصف الأول يوافق السوق (كلاهما home) — الذهبية نعم، ضد السوق لا
+        text = "\n".join(P.digest_sections([self._preds()[0]]))
+        self.assertIn("الاختيارات الذهبية", text)
+        self.assertNotIn("ضد السوق", text)
+
+    def test_empty_input_yields_no_headers(self):
+        self.assertEqual(P.digest_sections([]), [])
+
+    def test_build_digest_guarded_by_kill_switch(self):
+        import os as _os
+        src = open(_os.path.join(_os.path.dirname(_os.path.dirname(
+            _os.path.abspath(__file__))), "predict_v2.py"), encoding="utf-8").read()
+        body = src.split("def build_digest(")[1]
+        self.assertIn("if DIGEST_SECTIONS:", body)
+        self.assertIn("digest_sections(new_preds)", body)
