@@ -329,9 +329,10 @@ class TestRadarTopStamp(unittest.TestCase):
                              "علامة الدوري لا تُشتق من نص")
 
     def test_every_radar_log_write_stamps_the_flag(self):
-        """المواضع الثلاثة (إنذار مستوى + تنبيه دراما + تنبيه طرد) كلها تختم."""
+        """المواضع الأربعة (إنذار مستوى + تنبيه دراما + تنبيه طرد + صف
+        الإنذار المبكر الفوري _upsert_warn_row) كلها تختم."""
         src = (ROOT / "monitor.py").read_text(encoding="utf-8")
-        self.assertEqual(src.count('"top": radar_is_top(e)'), 3)
+        self.assertEqual(src.count('"top": radar_is_top(e)'), 4)
         # والعلامة تُبنى في مسارَي الرادار (العادي والسريع) من صف التوقع
         self.assertEqual(src.count('bool(p.get("top", radar.get("top")))'), 2)
 
