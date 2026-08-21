@@ -2368,9 +2368,14 @@ def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
             current_league = lg
         t = ""
         try:
-            t = datetime.fromisoformat(p["kickoff"]).astimezone(
-                timezone(timedelta(hours=3))
-            ).strftime("%H:%M")
+            ko = datetime.fromisoformat(p["kickoff"]).astimezone(
+                timezone(timedelta(hours=3)))
+            t = ko.strftime("%H:%M")
+            # «غداً» حين تلعب المباراة بعد منتصف الليل بتوقيت السعودية —
+            # الوقت وحده يوهم أنها الليلة (ملاحظة المالك 2026-08-21)
+            today_ksa = datetime.now(timezone(timedelta(hours=3))).date()
+            if ko.date() > today_ksa:
+                t = f"غداً {t}"
         except Exception:
             pass
         h = p.get("ar_home") or p["home"]
