@@ -402,3 +402,27 @@ class TestRadarTab(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestContraSection(unittest.TestCase):
+    """⚡ قسم «ضد السوق» (طلب المالك 2026-08-21): قائمة مستقلة تحت الذهبية،
+    ولا يجوز أبداً أن تُدمج اختيارات الخلاف في شريحة الـ70%+ نفسها."""
+
+    def test_section_and_renderer_exist(self):
+        self.assertIn('id="contra-sec"', HTML)
+        self.assertIn("function renderContra(", HTML)
+        self.assertIn("function mktFav(", HTML)
+
+    def test_contra_never_widens_the_gold_bucket(self):
+        # الذهبية تبقى مرشَّحة بالثقة وحدها — لا ذكر للسوق داخل renderGold
+        gold = HTML.split("function renderGold(")[1].split("function ")[0]
+        self.assertIn(">= 70", gold)
+        self.assertNotIn("mkt", gold)
+
+    def test_contra_filters_on_disagreement_only(self):
+        contra = HTML.split("function renderContra(")[1].split("function ")[0]
+        self.assertIn("f !== p.pick", contra)
+
+
+if __name__ == "__main__":
+    unittest.main()
