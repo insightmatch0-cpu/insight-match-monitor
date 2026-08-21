@@ -1,0 +1,26 @@
+name: Radar Channel Examples
+
+on:
+  workflow_dispatch:   # زر يدوي فقط — لا جدولة، لا التزام بأي ملف
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send channel examples
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
+        run: python demo_alert.py
