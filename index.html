@@ -457,6 +457,10 @@
   #gold-sec details.pred{border-color:rgba(212,160,23,.55)}
   #gold-sec .sec-head h2{color:#e8b923}
 
+  /* ======== ⚡ ضد السوق (المحرك يخالف مرشح الأودز — تبويب المحرك 2) ======== */
+  #contra-sec details.pred{border-color:rgba(232,185,35,.45)}
+  #contra-sec .sec-head h2{color:#e8b923}
+
   /* ======== بحث النتائج ======== */
   .res-search{
     width:100%;box-sizing:border-box;margin:2px 0 10px;
@@ -657,6 +661,18 @@
       <div id="gold-list"></div>
     </section>
 
+    <!-- ⚡ ضد السوق — مباريات يخالف فيها المحرك مرشح الأودز؛ قائمة منفصلة عن
+         الشريحة الذهبية عمداً: ثقة هذه الاختيارات 30-45% ولا يجوز خلطها
+         بشريحة الـ70%+ المقدسة (قرار مسجّل 2026-08-21) -->
+    <section class="sec" id="contra-sec" style="display:none">
+      <div class="sec-head">
+        <h2 data-i="contra">⚡ ضد السوق — المحرك يخالف المرشح</h2>
+        <span class="rule"></span>
+        <span class="count" id="contra-count">0</span>
+      </div>
+      <div id="contra-list"></div>
+    </section>
+
     <section class="sec">
       <div class="sec-head">
         <h2 data-i="upcoming">توقعات الـ 24 ساعة</h2>
@@ -730,7 +746,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 80;
+var IM_BUILD = 81;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -819,6 +835,7 @@ var I18N = {
     lessonsNew:"جديد اليوم",
     gold:"⭐ الاختيارات الذهبية — ثقة 70%+",
     mkt:"السوق", engineLbl:"المحرك", mktDiff:"⚡ يخالف السوق",
+    contra:"⚡ ضد السوق — المحرك يخالف المرشح",
     shadowLab:"🔬 مختبر الظل — تقييم التقارير",
     labShadow:"تقرير ظل", labWatch:"قائمة التركيز",
     labGraded:"إجمالي التقييمات", labPending:"بانتظار التقييم",
@@ -950,6 +967,7 @@ var I18N = {
     lessonsNew:"new today",
     gold:"⭐ Gold picks — 70%+ confidence",
     mkt:"Market", engineLbl:"Engine", mktDiff:"⚡ disagrees with market",
+    contra:"⚡ Against the market — engine disagrees",
     shadowLab:"🔬 Shadow lab — report scorecards",
     labShadow:"shadow report", labWatch:"focus list",
     labGraded:"Total graded", labPending:"Awaiting grading",
@@ -1320,6 +1338,7 @@ function renderUpcoming(list){
   }
   el.innerHTML = h;
   renderGold(list);
+  renderContra(list);
 }
 
 /* بطاقة توقع واحدة — تُستخدم في قائمة الـ 24 ساعة وقسم الاختيارات الذهبية */
@@ -1363,6 +1382,32 @@ function renderGold(list){
   var nowMs = Date.now(), h = "";
   for (var i=0;i<gl.length;i++) h += predCard(gl[i], true, nowMs);
   document.getElementById("gold-list").innerHTML = h;
+}
+
+/* مرشح السوق من الاحتمالات الضمنية — null حين لا أودز (المباريات غير الغنية) */
+function mktFav(p){
+  if (p.mkt_home == null) return null;
+  var m = {home:p.mkt_home, draw:p.mkt_draw||0, away:p.mkt_away||0};
+  var fav = "home";
+  if (m.draw > m[fav]) fav = "draw";
+  if (m.away > m[fav]) fav = "away";
+  return fav;
+}
+
+/* ⚡ ضد السوق — كل مباراة قادمة يخالف فيها المحرك مرشح الأودز، مجموعة في
+   قسم واحد تحت الذهبية. منفصلة عن شريحة الـ70%+ عمداً: ثقتها 30-45%
+   وخلطها بالشريحة الذهبية يفسد معنى الشريحة (السجل: 10/19 = 53% للمحرك
+   مقابل 5/19 = 26% لمرشح السوق على مباريات الخلاف المُقيَّمة) */
+function renderContra(list){
+  var sec = document.getElementById("contra-sec");
+  var cl = (engine === "v2")
+    ? list.filter(function(p){ var f = mktFav(p); return f && p.pick && f !== p.pick; })
+    : [];
+  sec.style.display = cl.length ? "" : "none";
+  document.getElementById("contra-count").textContent = cl.length;
+  var nowMs = Date.now(), h = "";
+  for (var i=0;i<cl.length;i++) h += predCard(cl[i], true, nowMs);
+  document.getElementById("contra-list").innerHTML = h;
 }
 
 function accBox(label, obj){
