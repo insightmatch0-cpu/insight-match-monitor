@@ -91,9 +91,14 @@ def main():
     if not (TELEGRAM_TOKEN and TELEGRAM_CHAT_ID):
         print("لا مفاتيح تيليجرام — توقف نظيف.")
         return
-    for text in build_messages(load_rows()):
-        api_guard.send_telegram_multi(
+    # طبقة الإرسال صامتة عند النجاح، فنطبع الإيصال بأنفسنا: بلا هذا السطر
+    # تنتهي التشغيلة خضراء بلا أي دليل على أن الرسائل وصلت فعلاً — وهذا
+    # بالضبط نوع الصمت الذي كلّفنا 19 ساعة في 14 أغسطس.
+    for i, text in enumerate(build_messages(load_rows()), 1):
+        res = api_guard.send_telegram_multi(
             TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_BROADCAST_IDS, text)
+        print(f"الرسالة {i}: وصلت إلى {res['delivered']} من {res['total']} "
+              f"— المستقبِلون {res['sent']} (آخر 4 أرقام)")
     api_guard.exit_if_owner_unreachable()
 
 
