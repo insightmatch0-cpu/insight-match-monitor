@@ -292,3 +292,15 @@ class TestDigestSections(unittest.TestCase):
         body = src.split("def build_digest(")[1]
         self.assertIn("if DIGEST_SECTIONS:", body)
         self.assertIn("digest_sections(new_preds)", body)
+
+
+class TestDigestTomorrowLabel(unittest.TestCase):
+    """«غداً» في سطر النشرة حين تلعب المباراة بعد منتصف الليل بتوقيت السعودية."""
+
+    def test_build_digest_marks_after_midnight_kickoffs(self):
+        import os as _os
+        src = open(_os.path.join(_os.path.dirname(_os.path.dirname(
+            _os.path.abspath(__file__))), "predict_v2.py"), encoding="utf-8").read()
+        body = src.split("def build_digest(")[1].split("\ndef ")[0]
+        self.assertIn('t = f"غداً {t}"', body)
+        self.assertIn("ko.date() > today_ksa", body)

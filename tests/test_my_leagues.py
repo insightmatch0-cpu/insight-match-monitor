@@ -476,7 +476,7 @@ class TestScopeSwitch(unittest.TestCase):
 
     def test_build_bumped(self):
         """قاعدة دائمة: كل PR يمسّ index.html يرفع IM_BUILD (درس 2026-08-02)."""
-        self.assertIn("var IM_BUILD = 81;", SCRIPT)
+        self.assertIn("var IM_BUILD = 82;", SCRIPT)
 
 
 # ============ (هـ) تكافؤ مفاتيح i18n ============

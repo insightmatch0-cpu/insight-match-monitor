@@ -746,7 +746,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 81;
+var IM_BUILD = 82;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -835,6 +835,7 @@ var I18N = {
     lessonsNew:"جديد اليوم",
     gold:"⭐ الاختيارات الذهبية — ثقة 70%+",
     mkt:"السوق", engineLbl:"المحرك", mktDiff:"⚡ يخالف السوق",
+    dayToday:"اليوم", dayTomorrow:"غداً",
     contra:"⚡ ضد السوق — المحرك يخالف المرشح",
     shadowLab:"🔬 مختبر الظل — تقييم التقارير",
     labShadow:"تقرير ظل", labWatch:"قائمة التركيز",
@@ -967,6 +968,7 @@ var I18N = {
     lessonsNew:"new today",
     gold:"⭐ Gold picks — 70%+ confidence",
     mkt:"Market", engineLbl:"Engine", mktDiff:"⚡ disagrees with market",
+    dayToday:"Today", dayTomorrow:"Tomorrow",
     contra:"⚡ Against the market — engine disagrees",
     shadowLab:"🔬 Shadow lab — report scorecards",
     labShadow:"shadow report", labWatch:"focus list",
@@ -1043,6 +1045,19 @@ function timeLocal(iso){
     var d = new Date(iso);
     return d.toLocaleTimeString(lang === "ar" ? "ar-u-nu-latn" : "en-GB",
       {hour:"2-digit", minute:"2-digit"});
+  } catch(e){ return ""; }
+}
+
+/* «اليوم» أم «غداً»؟ — نافذة الـ24 ساعة تمتد لبعد منتصف الليل، والوقت وحده
+   يوهم أن مباراة الغد تلعب الليلة (ملاحظة المالك 2026-08-21: الفتح × الاتفاق).
+   كلمة لا تاريخ — أوضح للقراءة السريعة على الهاتف */
+function dayTag(iso, nowMs){
+  try {
+    var d = new Date(iso), n = new Date(nowMs);
+    if (d.toDateString() === n.toDateString()) return t("dayToday") + " ";
+    if (d.toDateString() === new Date(nowMs + 864e5).toDateString())
+      return t("dayTomorrow") + " ";
+    return "";
   } catch(e){ return ""; }
 }
 function pctOf(o){
@@ -1353,7 +1368,7 @@ function predCard(p, withLeagueEyebrow, nowMs){
     /* انطلقت لكنها لم تصل للقسم الحي بعد (فارق دورة المراقبة) → شارة حمراء نابضة */
     + (Date.parse(p.kickoff) < nowMs
         ? '<span class="ko ko-live">● '+t("liveBadge")+'</span>'
-        : '<span class="ko">'+timeLocal(p.kickoff)+'</span>')
+        : '<span class="ko">'+dayTag(p.kickoff, nowMs)+timeLocal(p.kickoff)+'</span>')
     + '<span class="tname a">'+esc(away)+'</span>'
     + badge(away, p.away_logo)
     + '</div>'

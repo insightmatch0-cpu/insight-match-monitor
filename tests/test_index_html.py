@@ -400,6 +400,19 @@ class TestRadarTab(unittest.TestCase):
         self.assertIn("radarAccPanel(", render.group(1))
 
 
+class TestDayTag(unittest.TestCase):
+    """«اليوم/غداً» على بطاقة التوقع (ملاحظة المالك 2026-08-21): نافذة الـ24
+    ساعة تعبر منتصف الليل والوقت وحده يوهم أن مباراة الغد تلعب الليلة."""
+
+    def test_helper_exists_and_card_uses_it(self):
+        self.assertIn("function dayTag(", HTML)
+        self.assertIn("dayTag(p.kickoff, nowMs)+timeLocal(p.kickoff)", HTML)
+
+    def test_both_labels_in_both_languages(self):
+        for key in ("dayToday", "dayTomorrow"):
+            self.assertEqual(HTML.count(key + ':"'), 2, key)
+
+
 if __name__ == "__main__":
     unittest.main()
 
