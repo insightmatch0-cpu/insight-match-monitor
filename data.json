@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-21T04:06:52.100620+00:00",
+ "updated": "2026-08-21T04:10:55.461770+00:00",
  "live": [],
  "upcoming": [
   {
@@ -3566,12 +3566,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 635,
-   "hit": 580
+   "fired": 640,
+   "hit": 585
   },
   "amber": {
-   "fired": 387,
-   "hit": 146
+   "fired": 394,
+   "hit": 150
   },
   "alerts": {
    "flip": {
@@ -3597,12 +3597,12 @@
   },
   "season": {
    "red": {
-    "fired": 311,
-    "hit": 290
+    "fired": 316,
+    "hit": 295
    },
    "amber": {
-    "fired": 168,
-    "hit": 65
+    "fired": 175,
+    "hit": 69
    },
    "alerts": {
     "flip": {
@@ -3626,11 +3626,11 @@
   },
   "top_only": {
    "red": {
-    "fired": 78,
-    "hit": 69
+    "fired": 79,
+    "hit": 70
    },
    "amber": {
-    "fired": 35,
+    "fired": 36,
     "hit": 11
    },
    "alerts": {
@@ -3649,11 +3649,11 @@
    },
    "season": {
     "red": {
-     "fired": 78,
-     "hit": 69
+     "fired": 79,
+     "hit": 70
     },
     "amber": {
-     "fired": 35,
+     "fired": 36,
      "hit": 11
     },
     "alerts": {
@@ -3701,6 +3701,10 @@
     "2026-08-20": {
      "hit": 19,
      "total": 27
+    },
+    "2026-08-21": {
+     "hit": 1,
+     "total": 2
     }
    }
   },
@@ -3794,6 +3798,10 @@
    "2026-08-20": {
     "hit": 56,
     "total": 79
+   },
+   "2026-08-21": {
+    "hit": 9,
+    "total": 12
    }
   },
   "recent": [
@@ -3958,7 +3966,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Real Santander",
     "away": "Barranquilla",
@@ -3967,6 +3974,8 @@
     "minute": 81,
     "pick": "home",
     "conf": 37,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
@@ -3985,7 +3994,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-20",
     "home": "Deportivo Cuenca Juniors",
     "away": "Gualaceo SC",
@@ -3994,6 +4002,8 @@
     "minute": 82,
     "pick": "home",
     "conf": 38,
+    "final": "0-3",
+    "hit": true,
     "top": false
    },
    {
@@ -4053,6 +4063,20 @@
     "top": true
    },
    {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Ind. Juniors",
+    "away": "El Nacional",
+    "league": "Liga Pro Serie B (Ecuador)",
+    "level": "red",
+    "minute": 84,
+    "pick": "away",
+    "conf": 44,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
     "kind": "alert",
     "date": "2026-08-20",
     "home": "Philadelphia Union",
@@ -4066,19 +4090,6 @@
     "final": "2-2",
     "hit": false,
     "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Ind. Juniors",
-    "away": "El Nacional",
-    "league": "Liga Pro Serie B (Ecuador)",
-    "level": "red",
-    "minute": 84,
-    "pick": "away",
-    "conf": 44,
-    "top": false
    },
    {
     "kind": "warning",
@@ -4643,6 +4654,48 @@
     "top": false
    },
    {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "LDU de Quito",
+    "away": "Mirassol",
+    "league": "CONMEBOL Libertadores (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 61,
+    "final": "0-0",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Macara",
+    "away": "Santos",
+    "league": "CONMEBOL Sudamericana (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 46,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-08-20",
+    "home": "Leones FC",
+    "away": "Real Cundinamarca",
+    "league": "Primera B (Colombia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 40,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
     "kind": "alert",
     "date": "2026-08-20",
     "home": "Toronto FC",
@@ -4670,45 +4723,6 @@
     "score_at": "2-1",
     "final": "3-1",
     "hit": false,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "LDU de Quito",
-    "away": "Mirassol",
-    "league": "CONMEBOL Libertadores (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 61,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Macara",
-    "away": "Santos",
-    "league": "CONMEBOL Sudamericana (World)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 46,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-20",
-    "home": "Leones FC",
-    "away": "Real Cundinamarca",
-    "league": "Primera B (Colombia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 40,
     "top": false
    },
    {
@@ -4755,7 +4769,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-21",
     "home": "Monarcas",
     "away": "Correcaminos Uat",
@@ -4764,6 +4777,8 @@
     "minute": 85,
     "pick": "home",
     "conf": 54,
+    "final": "1-3",
+    "hit": true,
     "top": false
    }
   ]
