@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-21T02:08:36.026608+00:00",
+ "updated": "2026-08-21T02:16:38.850830+00:00",
  "live": [
   {
    "fid": "1547767",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/131.png",
    "away_logo": "https://media.api-sports.io/football/teams/437.png",
    "league_logo": "https://media.api-sports.io/football/leagues/13.png",
-   "score": "0-0",
-   "minute": 80,
+   "score": "1-0",
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-08-21T02:08:33.791050+00:00",
+   "seen": "2026-08-21T02:16:36.302351+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -24,40 +24,48 @@
     "confidence": 42
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د80)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 42,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": true,
     "trend": {
      "min": [
-      80
+      80,
+      74,
+      89
      ],
      "danger": [
-      63
+      63,
+      59,
+      15
      ],
      "h_sog": [
+      2,
       2,
       2
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       3,
+      3,
       3
      ],
      "a_cor": [
+      5,
       5,
       5
      ]
@@ -75,9 +83,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2562.png",
    "league_logo": "https://media.api-sports.io/football/leagues/11.png",
    "score": "1-0",
-   "minute": 75,
+   "minute": 84,
    "status": "2H",
-   "seen": "2026-08-21T02:08:33.791050+00:00",
+   "seen": "2026-08-21T02:16:36.302351+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -103,21 +111,33 @@
     "top": false,
     "trend": {
      "min": [
-      75
+      75,
+      69,
+      84
      ],
      "danger": [
+      15,
+      15,
       15
      ],
      "h_sog": [
+      0,
+      0,
       0
      ],
      "a_sog": [
+      0,
+      0,
       0
      ],
      "h_cor": [
+      0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
       0
      ]
     }
@@ -133,10 +153,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/14279.png",
    "away_logo": "https://media.api-sports.io/football/teams/14280.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "score": "1-0",
-   "minute": 47,
+   "score": "2-0",
+   "minute": 56,
    "status": "2H",
-   "seen": "2026-08-21T02:08:33.791050+00:00",
+   "seen": "2026-08-21T02:16:36.302351+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -146,11 +166,9 @@
     "confidence": 40
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 40,
     "drama": {
@@ -162,26 +180,21 @@
     "top": false,
     "trend": {
      "min": [
-      47
+      56
      ],
      "danger": [
-      15,
-      15
+      0
      ],
      "h_sog": [
-      0,
       0
      ],
      "a_sog": [
-      0,
       0
      ],
      "h_cor": [
-      0,
       0
      ],
      "a_cor": [
-      0,
       0
      ]
     }
@@ -198,9 +211,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2313.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-21T02:08:33.791050+00:00",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-21T02:16:36.302351+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -210,10 +223,10 @@
     "confidence": 54
    },
    "radar": {
-    "score": 42,
+    "score": 45,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د51)"
     ],
     "pick": "home",
     "confidence": 54,
@@ -226,10 +239,69 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      51
      ],
      "danger": [
-      42
+      45
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1513301",
+   "home": "Los Angeles FC II",
+   "away": "Sporting KC II",
+   "home_en": "Los Angeles FC II",
+   "away_en": "Sporting KC II",
+   "league": "MLS Next Pro (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/21141.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4019.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
+   "score": "1-0",
+   "minute": 13,
+   "status": "1H",
+   "seen": "2026-08-21T02:16:36.302351+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 43
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 43,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      13
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
