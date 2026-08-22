@@ -1706,6 +1706,7 @@ def _upsert_warn_row(log: dict, fid: str, e: dict, verdict: dict,
                     or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
             "home": e.get("home"), "away": e.get("away"),
             "league": e.get("league"), "top": radar_is_top(e),
+            "mine": radar_is_mine(e),
             "pick": pick, "confidence": conf,
             "level": verdict.get("level"), "score": verdict.get("score"),
             "minute": minute, "factors": verdict.get("factors") or [],
@@ -1798,6 +1799,7 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
                           "level": verdict["level"], "factors": verdict["factors"],
                           # 🎛 REC-010: العلامة تُحدَّث في المسار السريع أيضاً
                           "top": bool(p.get("top", radar.get("top"))),
+                          "mine": bool(p.get("mine", radar.get("mine"))),
                           "drama": {"signal": (d or {}).get("signal", 0),
                                     "side": (d or {}).get("side"),
                                     "ready": bool(d and d["dominant"]
@@ -1953,6 +1955,7 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool
         # 🎛 REC-010: علامة دوريات المالك تُختم مع السجل عند الكتابة —
         # التقييم الصباحي يبني منها شريحة موازية بلا أي مطابقة أسماء
         "top": radar_is_top(e),
+        "mine": radar_is_mine(e),
         # قاعدة الإيقاف (REC-005): وسم الإسكات يُحفظ مع التنبيه — تبويب الرادار
         # يعرف أنه لم يُرسل، والتقييم الصباحي يقيسه كالمعتاد
         "silenced": silent,
@@ -2036,6 +2039,7 @@ def maybe_red_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
         "home": e.get("home"), "away": e.get("away"),
         "league": e.get("league"),
         "top": radar_is_top(e),   # 🎛 REC-010
+        "mine": radar_is_mine(e),
         "silenced": silent,
         # حزمة الأدلة (نهج 2026-08-02): آخر لقطات الأرقام تُحفظ مع التنبيه
         "evidence": (radar.get("snaps") or [])[-3:],
@@ -2096,6 +2100,14 @@ def radar_is_top(e: dict) -> bool:
     (2026-08-01) — اسم لا يحمل الكلمة المفتاحية يمرّ بصمت. المعرف الرقمي
     لا يفشل مفتوحاً."""
     return bool((e.get("radar") or {}).get("top"))
+
+
+def radar_is_mine(e: dict) -> bool:
+    """🎛 الشريحة الثالثة (قرار المالك 2026-08-22): دورياته التسعة حرفياً.
+    نفس عقيدة radar_is_top سطراً بسطر: المصدر الوحيد علامة `mine` المنسوخة
+    من صف توقع المحرك 2 (المشتقة بالمعرف من OWNER_LEAGUE_IDS) — ومطابقة
+    اسم الدوري نصاً ممنوعة قطعياً بنفس درس WK-League."""
+    return bool((e.get("radar") or {}).get("mine"))
 
 
 def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
@@ -2169,6 +2181,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
             # 🎛 REC-010: علامة دوريات المالك تُنسخ من صف التوقع (مشتقة
             # بالمعرف من TOP_LEAGUE_IDS) لتُختم بها سجلات الرادار عند الكتابة
             "top": bool(p.get("top", radar.get("top"))),
+            "mine": bool(p.get("mine", radar.get("mine"))),
             # قمع الاستباق: الإشارة الخام + الجاهزية قبل شرط الدقيقة 75
             "drama": {"signal": (d or {}).get("signal", 0),
                       "side": (d or {}).get("side"),
@@ -2212,6 +2225,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
                     "home": e.get("home"), "away": e.get("away"),
                     "league": e.get("league"),
                     "top": radar_is_top(e),   # 🎛 REC-010
+                    "mine": radar_is_mine(e),
                     "pick": p.get("pick"), "confidence": p.get("confidence"),
                     "level": verdict["level"], "score": verdict["score"],
                     "minute": minute, "factors": verdict["factors"],

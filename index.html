@@ -746,7 +746,7 @@
 /* رقم البناء — يُرفع في كل PR يلمس هذا الملف (قاعدة دائمة 2026-08-02):
    التبويب المفتوح على TV يفحصه كل 10 دقائق ويعيد تحميل نفسه تلقائياً عند
    نشر نسخة أحدث — إصلاح مدموج لا يصل شاشة مفتوحة كان ثغرة حقيقية */
-var IM_BUILD = 83;
+var IM_BUILD = 84;
 
 /* ================= الترجمة ================= */
 var I18N = {
@@ -821,8 +821,9 @@ var I18N = {
     accScopeSeason:"أرقام الموسم منذ 2026-08-13 — لا يُحذف أي سجل",
     accScopeAll:"كامل السجل المحفوظ — عدّاد الموسم يبدأ من صفر في 2026-08-13",
     /* 🎛 مفتاح "دورياتي فقط ⇄ الكل" — REC-010 (قرار المالك 2026-08-13) */
-    scopeMine:"دورياتي فقط", scopeAll:"الكل",
+    scopeMine9:"دورياتي التسعة", scopeMine:"دوريات الصدارة", scopeAll:"الكل",
     scopeMineNote:"دوريات الصدارة التي يرصدها المحرك بعمق (21 مسابقة — دورياتك التسعة وكبرى البطولات)",
+    scopeMine9Note:"دورياتك التسعة حرفياً — الشريحة تمتلئ من 2026-08-22 فصاعداً",
     smallSample:"عينة غير كافية ({n} من {m})",
     mineNoData:"لا يوجد سجل مُقيَّم من دورياتك بعد.",
     mineNoBlock:"شريحة دورياتك غير متوفرة في هذه البيانات — تظهر بعد أول تشغيلة صباحية.",
@@ -954,8 +955,9 @@ var I18N = {
     accScopeSeason:"Season numbers since 2026-08-13 — nothing is ever deleted",
     accScopeAll:"Full stored record — season counter starts at zero on 2026-08-13",
     /* 🎛 "My leagues only ⇄ All" switch — REC-010 */
-    scopeMine:"My leagues only", scopeAll:"All",
+    scopeMine9:"My 9 leagues", scopeMine:"Top competitions", scopeAll:"All",
     scopeMineNote:"premium competitions the engine tracks in depth (21 — your nine leagues plus the top continental ones)",
+    scopeMine9Note:"your nine leagues literally — this slice fills from 2026-08-22 onward",
     smallSample:"Sample too small ({n} of {m})",
     mineNoData:"No graded record from your leagues yet.",
     mineNoBlock:"Your-leagues slice is not in this payload — it appears after the next morning run.",
@@ -1074,17 +1076,33 @@ function pctOf(o){
 var MIN_FILTERED_SAMPLE = 20;
 var scope = "mine";
 try { scope = localStorage.getItem("im-scope") || "mine"; } catch(e){}
-if (scope !== "all" && scope !== "mine") scope = "mine";
+if (scope !== "all" && scope !== "mine" && scope !== "mine9") scope = "mine";
 
 function setScope(s){
-  scope = (s === "all") ? "all" : "mine";
+  scope = (s === "all" || s === "mine9") ? s : "mine";
   try { localStorage.setItem("im-scope", scope); } catch(e){}
   renderAll();
+}
+/* 🎛 الشريحة المفلترة (قرار المالك 2026-08-22: ثلاث شرائح لا اثنتان):
+   mine9 = دورياته التسعة حرفياً (mine_only، تمتلئ من يوم التنفيذ) ·
+   mine = دوريات الصدارة الـ 21 (top_only) · all = السجل كاملاً.
+   حارس العينة وقواعد العرض المفلتر تسري على الشريحتين الضيقتين معاً. */
+function scopeFiltered(){ return scope !== "all"; }
+function scopeBlockOf(acc){
+  if (!acc) return null;
+  if (scope === "mine9") return acc.mine_only || null;
+  if (scope === "mine") return acc.top_only || null;
+  return acc;
+}
+function scopeNote(){
+  return scope === "mine9" ? t("scopeMine9Note") : t("scopeMineNote");
 }
 function renderScopeSwitch(){
   /* stopPropagation: المفتاح داخل رأس القسم القابل للطي — نقرته تبدّل
      الأرقام ولا تطوي القسم تحت يد المالك */
-  var h = '<button type="button" class="sc-btn'+(scope === "mine" ? " on" : "")+'"'
+  var h = '<button type="button" class="sc-btn'+(scope === "mine9" ? " on" : "")+'"'
+        + ' onclick="event.stopPropagation();setScope(\'mine9\')">'+esc(t("scopeMine9"))+'</button>'
+        + '<button type="button" class="sc-btn'+(scope === "mine" ? " on" : "")+'"'
         + ' onclick="event.stopPropagation();setScope(\'mine\')">'+esc(t("scopeMine"))+'</button>'
         + '<button type="button" class="sc-btn'+(scope === "all" ? " on" : "")+'"'
         + ' onclick="event.stopPropagation();setScope(\'all\')">'+esc(t("scopeAll"))+'</button>';
@@ -1113,7 +1131,7 @@ function sampleOf(o){ var v = normCount(o); return v ? v.n : 0; }
    يرجع {small, text} — small=true يعني: لا رقم أداء هنا. */
 function scopedVal(o){
   var n = sampleOf(o);
-  if (scope === "mine" && n < MIN_FILTERED_SAMPLE){
+  if (scopeFiltered() && n < MIN_FILTERED_SAMPLE){
     return {small: true,
             text: t("smallSample").replace("{n}", String(n))
                                   .replace("{m}", String(MIN_FILTERED_SAMPLE))};
@@ -1437,16 +1455,17 @@ function renderAccuracy(acc){
   var el = document.getElementById("acc-body");
   /* 🎛 REC-010: في شريحة "دورياتي" تُقرأ كل الأرقام من الشجرة الموازية
      top_only التي يحسبها الخادم بنفس الدوال — لا حساب واجهة موازٍ. */
-  if (scope === "mine"){
-    if (!acc || !acc.top_only){
-      /* لوحة قديمة أُنتجت قبل تنفيذ REC-010 — نقولها صراحة بدل عرض فراغ */
+  if (scopeFiltered()){
+    var blk = scopeBlockOf(acc);
+    if (!blk){
+      /* لوحة قديمة أُنتجت قبل تنفيذ الشريحة — نقولها صراحة بدل عرض فراغ */
       el.innerHTML = '<div class="empty">'+esc(t("mineNoBlock"))+"</div>"; return;
     }
-    acc = acc.top_only;   /* الشريحة المفلترة تصير مصدر كل رقم معروض أدناه */
+    acc = blk;   /* الشريحة المفلترة تصير مصدر كل رقم معروض أدناه */
   }
   if (!acc || !acc.overall || !acc.overall.total){
     el.innerHTML = '<div class="empty">'
-      + esc(scope === "mine" ? t("mineNoData") : t("noAcc")) + "</div>"; return;
+      + esc(scopeFiltered() ? t("mineNoData") : t("noAcc")) + "</div>"; return;
   }
   /* عدّاد الموسم (أمر المالك 2026-08-09): من 2026-08-13 الأرقام الرئيسية هي
      أرقام الموسم وحده (تبدأ من صفر)، والسجل الكامل يبقى محفوظاً بلا حذف.
@@ -1457,7 +1476,7 @@ function renderAccuracy(acc){
      واحدة من دوريات المالك في يوم الانطلاق كانت ستُصدّر له "عينة غير كافية"
      بينما سجله الكامل لدورياته جاهز — والتوصية تنص أن فلتر الدقة يعمل
      بأثر رجعي كامل. النطاق يبقى معنوناً صراحةً تحت الشرائح. */
-  if (scope === "mine"){
+  if (scopeFiltered()){
     seasonOn = !!(season.overall
                   && season.overall.total >= MIN_FILTERED_SAMPLE);
   }
@@ -1465,7 +1484,7 @@ function renderAccuracy(acc){
     + accBox(seasonOn ? t("accSeason") : t("accOverall"),
              seasonOn ? season.overall : acc.overall)
     + accBox(t("acc30"), acc.last30);
-  if (scope === "mine"){
+  if (scopeFiltered()){
     /* 🎛 REC-010: داخل شريحة دورياته يصبح تقسيم "الكبرى ⇄ البقية" بلا معنى
        (كل الصفوف كبرى، والبقية صفر أبداً) — وعرض "عينة غير كافية (0 من 20)"
        على خانة فارغة بحكم البناء يوهم أن أرقاماً قادمة. تُستبدل بخانة
@@ -1497,7 +1516,7 @@ function renderAccuracy(acc){
   /* عنونة النطاق: القارئ يعرف دائماً أي نافذة يقيسها الرقم (درس 2026-08-09) */
   bh += '<div class="t-label" style="margin-top:6px">'
     + esc(seasonOn ? t("accScopeSeason") : t("accScopeAll"))
-    + (scope === "mine" ? " · " + esc(t("scopeMineNote")) : "") + '</div>';
+    + (scopeFiltered() ? " · " + esc(scopeNote()) : "") + '</div>';
 
   /* الدقة يوماً بيوم — أعمدة صغيرة لآخر 30 يوماً (من الأرشيف الدائم إن وجد) */
   var th = "";
@@ -1517,7 +1536,7 @@ function renderAccuracy(acc){
   /* ⛔ حارس العينة على الاتجاه اليومي: عمود ارتفاعه نسبة مئوية، ويوم من 3
      مباريات هو بالضبط الرقم المضلل الذي رُفض في REJ-002 — فتُستبعد الأيام
      تحت الحد في الشريحة المفلترة (وغالباً يختفي الاتجاه كله، وهذا صادق). */
-  if (scope === "mine"){
+  if (scopeFiltered()){
     days = days.filter(function(d){
       return sampleOf(daily[d]) >= MIN_FILTERED_SAMPLE; });
     if (days.length < 3){
@@ -2156,11 +2175,12 @@ function radarAccPanel(acc){
      التنفيذ بلا علامة دوري، فهي "غير مصنّفة" ولا تدخل الشريحة — الفلتر
      يمتلئ من اليوم فصاعداً (منصوص عليه في التوصية ومقبول من المالك). */
   var full = acc;   /* التراكمي كما وصل — يبقى مرجع قرارات الإرسال */
-  if (scope === "mine"){
-    if (!acc.top_only){
+  if (scopeFiltered()){
+    var rblk = scopeBlockOf(acc);
+    if (!rblk){
       return '<div class="scope-note">'+esc(t("radarMineEmpty"))+'</div>';
     }
-    acc = acc.top_only;   /* الشريحة المفلترة تصير مصدر كل رقم معروض أدناه */
+    acc = rblk;   /* الشريحة المفلترة تصير مصدر كل رقم معروض أدناه */
   }
   var red = acc.red, amb = acc.amber, al = acc.alerts || {};
   /* قائمتا قاعدة الإيقاف (REC-005) تُقرآن من التراكمي دائماً — قرار إرسال
@@ -2170,7 +2190,7 @@ function radarAccPanel(acc){
   var claimKeys = ["next_goal", "goal", "equalizer", "flip"].filter(
     function(k){ return al[k] && al[k].fired; });
   if (!hasLevels && !claimKeys.length){
-    return (scope === "mine")
+    return scopeFiltered()
       ? '<div class="scope-note">'+esc(t("radarMineEmpty"))+'</div>' : "";
   }
   /* عدّاد الموسم (أمر المالك 2026-08-13): أرقام الموسم عنوان رئيسي، والسجل
@@ -2222,14 +2242,14 @@ function radarAccPanel(acc){
         + chip + '</div>';
     }
   }
-  if (scope === "mine"){
-    h += '<div class="scope-note">'+esc(t("scopeMineNote"))+'</div>';
+  if (scopeFiltered()){
+    h += '<div class="scope-note">'+esc(scopeNote())+'</div>';
   }
   /* اتجاه دقة الإنذارات يوماً بيوم — نفس أعمدة سجل المحركين */
   var dw = acc.daily_warnings || {};
   var days = Object.keys(dw).sort().slice(-30);
   /* ⛔ حارس العينة على الاتجاه: يوم من إنذارين لا يُرسم كنسبة (REJ-002) */
-  if (scope === "mine"){
+  if (scopeFiltered()){
     days = days.filter(function(d){ return sampleOf(dw[d]) >= MIN_FILTERED_SAMPLE; });
   }
   if (days.length >= 3){
@@ -2248,6 +2268,8 @@ function radarAccPanel(acc){
   var rec40 = full.recent || [];
   if (scope === "mine"){
     rec40 = rec40.filter(function(w){ return w.top; });
+  } else if (scope === "mine9"){
+    rec40 = rec40.filter(function(w){ return w.mine; });
   }
   if (rec40.length){
     h += '<details class="r-recent"><summary>'+esc(t("radarRecent"))

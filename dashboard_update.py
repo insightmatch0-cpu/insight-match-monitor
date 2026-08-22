@@ -593,15 +593,25 @@ def top_only_accuracy(resolved: list) -> dict:
     return top_only_stats(resolved or [])
 
 
-def _with_top_only(stats: dict, store: dict) -> dict:
-    """يعيد نسخة من إحصاءات محرك مضموناً فيها كتلة `top_only` (REC-010).
+def mine_only_accuracy(resolved: list) -> dict:
+    """🎛 الشريحة الثالثة (دورياته التسعة — قراره 2026-08-22) لمحرك تُقرأ
+    ذاكرته هنا. نفس نمط top_only_accuracy: رياضيات predict_v2 حرفياً."""
+    from predict_v2 import mine_only_stats
+    return mine_only_stats(resolved or [])
 
-    المحرك 2 يكتبها بنفسه كل صباح فتُمرَّر كما هي؛ المحرك 1 مجمّد فتُشتق
-    هنا، وكذلك تُشتق لأي لوحة أُنتجت قبل أول تشغيلة صباحية بعد النشر.
+
+def _with_top_only(stats: dict, store: dict) -> dict:
+    """يعيد نسخة من إحصاءات محرك مضموناً فيها الشريحتان الموازيتان:
+    `top_only` (REC-010) و`mine_only` (دورياته التسعة — قراره 2026-08-22).
+
+    المحرك 2 يكتبهما بنفسه كل صباح فتُمرَّران كما هما؛ المحرك 1 مجمّد
+    فتُشتقان هنا، وكذلك لأي لوحة أُنتجت قبل أول تشغيلة صباحية بعد النشر.
     **لا يُمسّ أي مفتاح آخر** — أرقام "الكل" تخرج كما دخلت حرفياً."""
     out = dict(stats or {})
     if not isinstance(out.get("top_only"), dict):
         out["top_only"] = top_only_accuracy((store or {}).get("resolved") or [])
+    if not isinstance(out.get("mine_only"), dict):
+        out["mine_only"] = mine_only_accuracy((store or {}).get("resolved") or [])
     return out
 
 
@@ -623,6 +633,12 @@ def build_radar_accuracy() -> dict:
         out["top_only"] = dict(out["top_only"])
         out["top_only"]["daily_warnings"] = _daily_warnings(
             [w for w in resolved if (w or {}).get("top")])
+    # 🎛 الشريحة الثالثة (دورياته التسعة): نفس النمط — الكتلة من التقييم
+    # الصباحي، وهنا اتجاهها اليومي فقط. تمتلئ من يوم التنفيذ فصاعداً.
+    if isinstance(out.get("mine_only"), dict):
+        out["mine_only"] = dict(out["mine_only"])
+        out["mine_only"]["daily_warnings"] = _daily_warnings(
+            [w for w in resolved if (w or {}).get("mine")])
     # 📜 وجوه العدّادات — نسخة منطقة التنبيه (أمر المالك 2026-08-16 الثاني):
     # «أريد تفكيك الـ85% بعد د75 فقط، نجح أو فشل، بلا تراكم — آخر 24 ساعة،
     # ومطابقاً لتيليجرام». فالقائمة تحمل حصراً: إنذارات د75+ (منطقة أهلية

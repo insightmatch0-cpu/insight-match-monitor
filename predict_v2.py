@@ -190,6 +190,13 @@ TOP_LEAGUE_IDS = {
     1, 2, 3, 4, 9, 13, 15, 39, 40, 61, 71, 78, 88, 94, 128, 135, 140, 253, 307, 417, 542,
 }
 
+# 🎛 دوريات المالك التسعة حرفياً (قراره 2026-08-22: شريحة عرض ثالثة أضيق) —
+# البريميرليغ والتشامبيونشيب والكالتشو والبوندسليغا واللاليغا والليغ آن
+# والسعودي والبحريني والعراقي. **مجموعة عرض وقياس فقط**: لا تمس الإثراء ولا
+# الأولوية ولا التنبيهات — تلك كلها تبقى على TOP_LEAGUE_IDS (قراره 2026-08-21
+# «أبقِها كما هي» مسجَّل في REC-010). الاشتقاق بالمعرف حصراً، أبداً لا بالاسم.
+OWNER_LEAGUE_IDS = {39, 40, 61, 78, 135, 140, 307, 417, 542}
+
 EXCLUDED_COUNTRIES = {
     "india", "pakistan", "bangladesh",
     "algeria", "angola", "benin", "botswana", "burkina faso", "burkina-faso",
@@ -402,13 +409,29 @@ def top_only_stats(resolved: list) -> dict:
     return tree
 
 
+def mine_only_stats(resolved: list) -> dict:
+    """🎛 الشريحة الثالثة: دوريات المالك التسعة حرفياً (قراره 2026-08-22).
+
+    نفس بناء top_only_stats على الصفوف الحاملة علامة `mine` فقط. الصفوف
+    الأقدم من يوم التنفيذ لا تحمل العلامة (الصفوف المُقيَّمة لا تخزن معرف
+    الدوري، والاشتقاق بالاسم ممنوع بدرس WK-League) — فالشريحة تمتلئ من
+    يوم التنفيذ فصاعداً، وحارس العينة يتكفل بعرضها الصادق حتى تكبر."""
+    rows = [r for r in resolved if r.get("mine")]
+    tree = _stats_tree(rows)
+    tree["market_bench"] = market_bench_stats(rows)
+    tree["min_sample"] = MIN_FILTERED_SAMPLE
+    return tree
+
+
 def compute_stats(resolved: list) -> dict:
     """يحسب دقة المحرك 2: إجمالي، آخر 30 يوماً، حسب مستوى الثقة، وحسب نوع
     الدوري — وكتلة "الموسم" (من SEASON_START) بعدّاداتها المستقلة التي تبدأ
-    من صفر في 2026-08-13 (أمر المالك 2026-08-09) — وشجرة موازية لدوريات
-    المالك وحدها (`top_only` — REC-010) لا تغيّر أي رقم من أرقام "الكل"."""
+    من صفر في 2026-08-13 (أمر المالك 2026-08-09) — وشجرتان موازيتان لا
+    تغيّران أي رقم من أرقام "الكل": دوريات الصدارة (`top_only` — REC-010)
+    ودورياته التسعة حرفياً (`mine_only` — قراره 2026-08-22)."""
     stats = _stats_tree(resolved)
     stats["top_only"] = top_only_stats(resolved)
+    stats["mine_only"] = mine_only_stats(resolved)
     return stats
 
 
@@ -498,6 +521,7 @@ def resolve_pending(store: dict):
                 "league_logo": p.get("league_logo") or logos.get("league_logo", ""),
                 "league": p.get("league"), "ar_league": p.get("ar_league"),
                 "top": p.get("top", False),
+                "mine": p.get("mine", False),   # 🎛 تملأ من يوم التنفيذ فقط
                 "pick": p.get("pick"),
                 "confidence": p.get("confidence"),
                 "prob_home": p.get("prob_home"),
@@ -1085,6 +1109,7 @@ def get_upcoming_24h() -> list:
                 league.get("country"),
             ) if x),
             "top": league.get("id") in TOP_LEAGUE_IDS,
+            "mine": league.get("id") in OWNER_LEAGUE_IDS,   # 🎛 الشريحة الثالثة
             "is_cup": is_cup_fixture(league.get("name"), league.get("round")),
         })
 
@@ -1891,6 +1916,22 @@ def resolve_radar_log(store: dict) -> int:
     # حارس العينة (REC-010): الحد يسافر مع الأرقام حتى تقرأه اللوحة من مصدره
     top["min_sample"] = MIN_FILTERED_SAMPLE
     stats["top_only"] = top
+
+    # 🎛 الشريحة الثالثة (دورياته التسعة — قراره 2026-08-22): نفس البناء على
+    # الصفوف الحاملة `mine`، وتمتلئ من يوم التنفيذ فقط. نفس تحذير REC-005:
+    # قاعدة الإيقاف تقرأ التراكمي وحده — لا تُربط بهذه الكتلة أبداً.
+    mine_warns = [x for x in log["resolved"] if x.get("mine")]
+    mine_alerts = [x for x in log["alerts_resolved"] if x.get("mine")]
+    mine, mine_claims = _radar_counts(mine_warns, mine_alerts)
+    mine["alerts"] = mine_claims
+    mine_season, mine_season_claims = _radar_counts(
+        [x for x in mine_warns if x.get("date", "") >= SEASON_START],
+        [x for x in mine_alerts if x.get("date", "") >= SEASON_START])
+    mine_season["alerts"] = mine_season_claims
+    mine_season["start"] = SEASON_START
+    mine["season"] = mine_season
+    mine["min_sample"] = MIN_FILTERED_SAMPLE
+    stats["mine_only"] = mine
 
     # 🔬 كتلة xG الموازية (تجربة الطبقة الحية): الدرجتان تُقيَّمان على **نفس**
     # النتائج الحقيقية وبنفس بنية العدّادات — قاعدة الحوكمة (ج): لوحة نتائج
