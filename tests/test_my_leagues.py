@@ -148,13 +148,15 @@ class TestAllNumbersUnchanged(_FrozenClock):
     def test_only_new_key_added(self):
         """المفتاح الجديد الوحيد هو top_only — لا مفتاح قائم حُذف أو أُعيد تسميته."""
         stats = P.compute_stats(MIXED)
-        self.assertEqual(set(stats) - set(GOLDEN_ALL), {"top_only"})
+        self.assertEqual(set(stats) - set(GOLDEN_ALL),
+                         {"top_only", "mine_only"})
         self.assertEqual(set(GOLDEN_ALL) - set(stats), set())
 
     def test_filtered_block_never_feeds_back_into_all(self):
         """وجود الكتلة الموازية لا يغيّر رقماً واحداً في الشجرة الكاملة."""
         full = P.compute_stats(MIXED)
         del full["top_only"]
+        del full["mine_only"]
         self.assertEqual(full, P._stats_tree(MIXED))
 
     def test_rows_without_top_flag_still_counted_in_all(self):
@@ -363,6 +365,7 @@ class TestSampleGuardJS(unittest.TestCase):
             self.skipTest("node غير متوفر")
         js = (
             'var scope = "' + scope + '";\n'
+            'function scopeFiltered(){ return scope !== "all"; }\n'
             + self._min_sample_decl() + "\n"
             'function t(k){ return k === "smallSample"'
             ' ? "عينة غير كافية ({n} من {m})" : k; }\n'
@@ -443,9 +446,10 @@ class TestScopeSwitch(unittest.TestCase):
     def test_default_is_my_leagues(self):
         self.assertIn('var scope = "mine";', SCRIPT)
         self.assertIn('localStorage.getItem("im-scope") || "mine"', SCRIPT)
-        # أي قيمة محفوظة تالفة تعود للافتراضي لا لـ "الكل"
-        self.assertIn('if (scope !== "all" && scope !== "mine") scope = "mine";',
-                      SCRIPT)
+        # أي قيمة محفوظة تالفة تعود للافتراضي لا لـ "الكل" — والقيم الصالحة
+        # ثلاث منذ قرار المالك 2026-08-22 (دورياته التسعة شريحة ثالثة)
+        self.assertIn('if (scope !== "all" && scope !== "mine"'
+                      ' && scope !== "mine9") scope = "mine";', SCRIPT)
 
     def test_choice_is_persisted(self):
         self.assertIn('localStorage.setItem("im-scope", scope)', SCRIPT)
@@ -456,11 +460,17 @@ class TestScopeSwitch(unittest.TestCase):
         self.assertIn("renderAll()", body)
 
     def test_both_panels_read_the_filtered_block(self):
+        """منذ 2026-08-22 اللوحتان تقرآن الشجرة عبر scopeBlockOf الموحّد —
+        top_only لدوريات الصدارة وmine_only لدورياته التسعة."""
         for fn in ("renderAccuracy", "radarAccPanel"):
             body = re.search(r"function " + fn + r"\(acc\)\{[\s\S]*?\n\}",
                              SCRIPT).group(0)
-            self.assertIn("acc = acc.top_only;", body,
-                          f"{fn} يجب أن يقرأ الشجرة الموازية في شريحة دورياته")
+            self.assertIn("scopeBlockOf(acc)", body,
+                          f"{fn} يجب أن يقرأ الشجرة الموازية في الشرائح المفلترة")
+        picker = re.search(r"function scopeBlockOf\(acc\)\{[\s\S]*?\n\}",
+                           SCRIPT).group(0)
+        self.assertIn("acc.top_only", picker)
+        self.assertIn("acc.mine_only", picker)
 
     def test_switch_click_does_not_collapse_the_section(self):
         """🐞 علة رُصدت في المتصفح أثناء التطوير: المفتاح يسكن داخل رأس القسم
@@ -468,7 +478,7 @@ class TestScopeSwitch(unittest.TestCase):
         طبقتا الحماية: إيقاف صعود الحدث من الزر + فحص الصنف في معالِج الرأس.
         الفحص بالصنف لا بـ closest عمداً — الزر يُعاد رسمه قبل صعود الحدث
         فيصير عنصراً منفصلاً عن الشجرة وترجع closest عندها null."""
-        self.assertEqual(SCRIPT.count("event.stopPropagation();setScope("), 2)
+        self.assertEqual(SCRIPT.count("event.stopPropagation();setScope("), 3)
         head = re.search(r'head\.addEventListener\("click"[\s\S]*?\n    \}\);',
                          SCRIPT).group(0)
         code = re.sub(r"/\*[\s\S]*?\*/", "", head)   # التعليقات ليست كوداً
@@ -477,14 +487,15 @@ class TestScopeSwitch(unittest.TestCase):
 
     def test_build_bumped(self):
         """قاعدة دائمة: كل PR يمسّ index.html يرفع IM_BUILD (درس 2026-08-02)."""
-        self.assertIn("var IM_BUILD = 83;", SCRIPT)
+        self.assertIn("var IM_BUILD = 84;", SCRIPT)
 
 
 # ============ (هـ) تكافؤ مفاتيح i18n ============
 class TestI18nParity(unittest.TestCase):
     """كل مفتاح جديد موجود بالعربية والإنجليزية — لا نص مكسور عند التبديل."""
 
-    NEW_KEYS = ("scopeMine", "scopeAll", "scopeMineNote", "smallSample",
+    NEW_KEYS = ("scopeMine9", "scopeMine", "scopeAll", "scopeMineNote",
+                "scopeMine9Note", "smallSample",
                 "mineNoData", "mineNoBlock", "radarMineEmpty", "trendSmall")
 
     def test_every_new_key_exists_twice(self):
@@ -493,7 +504,11 @@ class TestI18nParity(unittest.TestCase):
                              f"المفتاح {key} يجب أن يوجد بالعربية والإنجليزية")
 
     def test_arabic_wording_is_the_owners_text(self):
-        self.assertIn('scopeMine:"دورياتي فقط"', HTML)
+        # التسمية منذ 2026-08-22: «دورياتي التسعة» حرفياً، و«دوريات الصدارة»
+        # للـ 21 (كانت «دورياتي فقط» — أُعيدت تسميتها لإزالة الالتباس المقاس
+        # في حادثة كاسا بيا × بنفيكا)
+        self.assertIn('scopeMine9:"دورياتي التسعة"', HTML)
+        self.assertIn('scopeMine:"دوريات الصدارة"', HTML)
         self.assertIn('scopeAll:"الكل"', HTML)
         self.assertIn('smallSample:"عينة غير كافية ({n} من {m})"', HTML)
 
@@ -511,6 +526,70 @@ class TestI18nParity(unittest.TestCase):
             for val in re.findall(key + r':"([^"]*)"', HTML):
                 self.assertFalse(re.search(r"[٠-٩]", val),
                                  f"رقم عربي-هندي في {key}")
+
+
+# ============ 🎛 الشريحة الثالثة: دورياته التسعة حرفياً (2026-08-22) ============
+class TestMineNineSlice(_FrozenClock):
+    """قرار المالك 2026-08-22: شريحة عرض ثالثة لدورياته التسعة حرفياً —
+    بجانب دوريات الصدارة الـ 21 (التي بقيت كما هي بقراره 2026-08-21) والكل."""
+
+    def test_owner_league_ids_are_exactly_the_nine(self):
+        """التسعة بالمعرف حصراً — البريميرليغ والتشامبيونشيب والكالتشو
+        والبوندسليغا واللاليغا والليغ آن والسعودي والبحريني والعراقي."""
+        self.assertEqual(P.OWNER_LEAGUE_IDS,
+                         {39, 40, 61, 78, 135, 140, 307, 417, 542})
+        # وكلها داخل مجموعة الصدارة — التسعة شريحة أضيق لا مجموعة موازية
+        self.assertTrue(P.OWNER_LEAGUE_IDS <= P.TOP_LEAGUE_IDS)
+
+    def test_mine_flag_is_stamped_by_id_never_by_name(self):
+        src = (ROOT / "predict_v2.py").read_text(encoding="utf-8")
+        self.assertIn('"mine": league.get("id") in OWNER_LEAGUE_IDS', src)
+
+    def test_mine_only_tree_counts_only_mine_rows(self):
+        rows = [
+            dict(_row("2026-08-13", True, True, 72), mine=True),
+            dict(_row("2026-08-13", True, False, 65), mine=False),  # صدارة لا تسعة
+            _row("2026-08-12", False, True, 55),                    # بلا علامة
+        ]
+        mine = P.mine_only_stats(rows)
+        self.assertEqual(mine["overall"], {"correct": 1, "total": 1})
+        self.assertEqual(mine["min_sample"], P.MIN_FILTERED_SAMPLE)
+
+    def test_compute_stats_carries_both_parallel_trees(self):
+        stats = P.compute_stats([dict(_row("2026-08-13", True, True, 72),
+                                      mine=True)])
+        self.assertIn("top_only", stats)
+        self.assertIn("mine_only", stats)
+        self.assertEqual(stats["mine_only"]["overall"],
+                         {"correct": 1, "total": 1})
+
+    def test_resolve_carries_mine_flag_like_top(self):
+        src = (ROOT / "predict_v2.py").read_text(encoding="utf-8")
+        self.assertIn('"mine": p.get("mine", False)', src)
+
+    def test_radar_stamps_mine_alongside_top(self):
+        src = (ROOT / "monitor.py").read_text(encoding="utf-8")
+        self.assertIn("def radar_is_mine(", src)
+        # كل موضع ختم top يرافقه ختم mine — العدّان متساويان بحكم البناء
+        self.assertEqual(src.count('"mine": radar_is_mine(e)'),
+                         src.count('"top": radar_is_top(e)'))
+        self.assertEqual(src.count('"mine": bool(p.get("mine", radar.get("mine")))'),
+                         src.count('"top": bool(p.get("top", radar.get("top")))'))
+
+    def test_radar_resolve_builds_mine_only_block(self):
+        src = (ROOT / "predict_v2.py").read_text(encoding="utf-8")
+        self.assertIn('stats["mine_only"] = mine', src)
+
+    def test_switch_offers_three_buttons(self):
+        # الأزرار تُبنى داخل سلسلة JS فالاقتباسات مهرَّبة بشرطة مائلة
+        self.assertIn("setScope(\\'mine9\\')", SCRIPT)
+        self.assertIn("setScope(\\'mine\\')", SCRIPT)
+        self.assertIn("setScope(\\'all\\')", SCRIPT)
+
+    def test_default_scope_unchanged(self):
+        """الافتراضي يبقى دوريات الصدارة (القرار المسجَّل) — الشريحة التسعة
+        فارغة أول أسابيعها وافتراضها كان سيُصدّر «عينة غير كافية» دائماً."""
+        self.assertIn('var scope = "mine";', SCRIPT)
 
 
 # ============ اللوحة: الكتلتان تصلان data.json و data_v2.json ============
@@ -533,7 +612,7 @@ class TestDashboardPayload(_FrozenClock):
         out = D._with_top_only(dict(stats), {"resolved": MIXED})
         for key, val in stats.items():
             self.assertEqual(out[key], val)
-        self.assertEqual(set(out) - set(stats), {"top_only"})
+        self.assertEqual(set(out) - set(stats), {"top_only", "mine_only"})
 
     def test_engine2_block_passed_through_untouched(self):
         """إن كتبها المحرك 2 بنفسه صباحاً تُمرَّر كما هي بلا إعادة حساب."""
