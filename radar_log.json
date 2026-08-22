@@ -811,14 +811,14 @@
    "pick": "away",
    "confidence": 65,
    "level": "amber",
-   "score": 54,
-   "minute": 65,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د65)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د72)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 54,
+   "alerted": true,
+   "alert_minute": 79,
+   "score_xg": 58,
    "level_xg": "amber"
   },
   {
@@ -832,14 +832,14 @@
    "pick": "home",
    "confidence": 49,
    "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "score": 58,
+   "minute": 73,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د66)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د73)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 69,
+   "alerted": true,
+   "alert_minute": 76,
+   "score_xg": 73,
    "level_xg": "red"
   },
   {
@@ -22322,7 +22322,94 @@
    "graded_on": "2026-08-22"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1563095",
+   "date": "2026-08-22",
+   "minute": 76,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Birmingham",
+   "away": "Bristol City",
+   "league": "Championship (England)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 71,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 1,
+      "poss": 58,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 0,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 65,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 1,
+      "poss": 58,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 0,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 5,
+      "poss": 63,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 11,
+      "cor": 2,
+      "poss": 37,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
