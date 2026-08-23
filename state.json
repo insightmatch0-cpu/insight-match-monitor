@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2498,
+  "remaining": 2497,
   "note": "",
   "matches": 3,
   "radar_hits": 3,
-  "radar_targets": 20
+  "radar_targets": 18
  },
  "api_quota": {
-  "remaining": 3343,
+  "remaining": 3296,
   "limit": 7500,
-  "at": "2026-08-23T13:48:22.026097+00:00"
+  "at": "2026-08-23T13:56:44.710334+00:00"
  },
  "delivery": {
   "at": "2026-08-23T13:45:17.568869+00:00",
@@ -64,7 +64,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/366.png",
   "away_logo": "https://media.api-sports.io/football/teams/372.png",
   "league_logo": "https://media.api-sports.io/football/leagues/113.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:50:25.306024+00:00",
   "radar": {
    "snaps": [
     {
@@ -91,9 +91,9 @@
      }
     },
     {
-     "minute": 84,
+     "minute": 90,
      "gh": 1,
-     "ga": 0,
+     "ga": 1,
      "h": {
       "sog": 6,
       "shots": 20,
@@ -114,23 +114,22 @@
      }
     }
    ],
-   "score": 21,
-   "level": "green",
+   "score": 69,
+   "level": "red",
    "dscores": [
     15,
-    21
+    69
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 38,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 15,
-    "side": "away",
+    "signal": 0,
+    "side": "home",
     "ready": false
    },
    "alerted": null,
@@ -148,19 +147,66 @@
   "home_logo": "https://media.api-sports.io/football/teams/2241.png",
   "away_logo": "https://media.api-sports.io/football/teams/374.png",
   "league_logo": "https://media.api-sports.io/football/leagues/113.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:50:25.306024+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 90,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 3,
+      "poss": 46,
+      "yc": 2,
+      "rc": 0,
+      "sv": 4
+     },
+     "a": {
+      "sog": 4,
+      "shots": 12,
+      "cor": 2,
+      "poss": 54,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    }
+   ],
+   "score": 69,
+   "level": "red",
+   "dscores": [
+    69
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
+   ],
+   "pick": "away",
+   "confidence": 37,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
  },
  "1495767": {
   "score": "2-4",
   "status": "2H",
-  "minute": 88,
+  "minute": 90,
   "home": "KuPS",
   "away": "Mariehamn",
   "league": "Veikkausliiga (Finland)",
   "home_logo": "https://media.api-sports.io/football/teams/1165.png",
   "away_logo": "https://media.api-sports.io/football/teams/587.png",
   "league_logo": "https://media.api-sports.io/football/leagues/244.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:55:07.473389+00:00",
   "radar": {
    "snaps": [
     {
@@ -197,18 +243,27 @@
      "ga": 4,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 90,
+     "gh": 2,
+     "ga": 4,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 67,
+   "score": 69,
    "level": "red",
    "dscores": [
     21,
     27,
     45,
-    67
+    67,
+    63,
+    69
    ],
    "factors": [
-    "النتيجة الحالية 2-4 تُسقط التوقع (د88)"
+    "النتيجة الحالية 2-4 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 70,
@@ -225,16 +280,16 @@
   }
  },
  "1495768": {
-  "score": "2-2",
+  "score": "2-3",
   "status": "2H",
-  "minute": 84,
+  "minute": 90,
   "home": "HJK Helsinki",
   "away": "Gnistan",
   "league": "Veikkausliiga (Finland)",
   "home_logo": "https://media.api-sports.io/football/teams/649.png",
   "away_logo": "https://media.api-sports.io/football/teams/2082.png",
   "league_logo": "https://media.api-sports.io/football/leagues/244.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:56:41.981906+00:00",
   "radar": {
    "snaps": [
     {
@@ -278,20 +333,28 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 86,
+     "gh": 2,
+     "ga": 2,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 66,
+   "level": "red",
    "dscores": [
     21,
     27,
     15,
     0,
     0,
-    15
+    15,
+    66
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د86)"
    ],
    "pick": "home",
    "confidence": 62,
@@ -299,7 +362,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "away",
+    "side": "home",
     "ready": false
    },
    "alerted": null,
@@ -308,7 +371,7 @@
   }
  },
  "1519623": {
-  "score": "2-3",
+  "score": "2-4",
   "status": "2H",
   "minute": 90,
   "home": "Nõmme Kalju II",
@@ -317,7 +380,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/13826.png",
   "away_logo": "https://media.api-sports.io/football/teams/3524.png",
   "league_logo": "https://media.api-sports.io/football/leagues/328.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:50:25.306024+00:00",
   "radar": {
    "snaps": [
     {
@@ -342,24 +405,22 @@
      "a": {}
     },
     {
-     "minute": 87,
+     "minute": 90,
      "gh": 2,
-     "ga": 3,
+     "ga": 4,
      "h": {},
      "a": {}
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
     15,
     20,
     32,
-    15
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "away",
    "confidence": 45,
    "top": false,
@@ -374,202 +435,17 @@
    "warn_alerted": null
   }
  },
- "1521669": {
-  "score": "2-3",
-  "status": "2H",
-  "minute": 90,
-  "home": "Luunja",
-  "away": "Johvi Phoenix",
-  "league": "Esiliiga B (Estonia)",
-  "home_logo": "https://media.api-sports.io/football/teams/10168.png",
-  "away_logo": "https://media.api-sports.io/football/teams/24237.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/1126.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 79,
-     "gh": 2,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 90,
-     "gh": 2,
-     "ga": 3,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 69,
-   "level": "red",
-   "dscores": [
-    15,
-    69
-   ],
-   "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د90)"
-   ],
-   "pick": "home",
-   "confidence": 39,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1521669": {
-  "score": "2-2",
-  "status": "2H",
-  "minute": 87,
-  "home": "Luunja",
-  "away": "Johvi Phoenix",
-  "league": "Esiliiga B (Estonia)",
-  "home_logo": "https://media.api-sports.io/football/teams/10168.png",
-  "away_logo": "https://media.api-sports.io/football/teams/24237.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/1126.png",
-  "seen": "2026-08-23T13:41:30.718059+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 87,
-     "gh": 2,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 67,
-   "level": "red",
-   "dscores": [
-    67
-   ],
-   "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د87)"
-   ],
-   "pick": "home",
-   "confidence": 39,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": true
-  }
- },
- "1521670": {
-  "score": "3-3",
-  "status": "2H",
-  "minute": 90,
-  "home": "Tulevik",
-  "away": "Narva U21",
-  "league": "Esiliiga B (Estonia)",
-  "home_logo": "https://media.api-sports.io/football/teams/3531.png",
-  "away_logo": "https://media.api-sports.io/football/teams/24236.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/1126.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 1,
-     "gh": 0,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 9,
-     "gh": 0,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 19,
-     "gh": 0,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 29,
-     "gh": 0,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 54,
-     "gh": 2,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 78,
-     "gh": 2,
-     "ga": 3,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 90,
-     "gh": 3,
-     "ga": 3,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 69,
-   "level": "red",
-   "dscores": [
-    15,
-    20,
-    26,
-    32,
-    47,
-    61,
-    69
-   ],
-   "factors": [
-    "النتيجة الحالية 3-3 تُسقط التوقع (د90)"
-   ],
-   "pick": "home",
-   "confidence": 57,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": true
-  }
- },
  "1523250": {
   "score": "0-1",
   "status": "2H",
-  "minute": 89,
+  "minute": 90,
   "home": "Chongqing Tongliang Long",
   "away": "Dalian Zhixing",
   "league": "Super League (China)",
   "home_logo": "https://media.api-sports.io/football/teams/21262.png",
   "away_logo": "https://media.api-sports.io/football/teams/21263.png",
   "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:55:07.473389+00:00",
   "radar": {
    "snaps": [
     {
@@ -640,133 +516,59 @@
       "rc": 0,
       "sv": 1
      }
+    },
+    {
+     "minute": 90,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 9,
+      "cor": 3,
+      "poss": 56,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 12,
+      "cor": 5,
+      "poss": 44,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
     }
    ],
-   "score": 94,
+   "score": 77,
    "level": "red",
    "dscores": [
     21,
-    94
+    94,
+    64,
+    77
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د89)",
-    "موجة تسديد على المرمى من الضيف",
-    "موجة ركنيات لصالح الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د90)",
+    "موجة ركنيات لصالح الضيف"
    ],
    "pick": "home",
    "confidence": 45,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 85,
+    "signal": 35,
     "side": "home",
-    "ready": true
+    "ready": false
    },
    "alerted": null,
    "red_alerted": null,
    "warn_alerted": true
   }
  },
- "1534411": {
-  "score": "0-4",
-  "status": "2H",
-  "minute": 90,
-  "home": "Gomel II",
-  "away": "Uni Minsk",
-  "league": "1. Division (Belarus)",
-  "home_logo": "https://media.api-sports.io/football/teams/23433.png",
-  "away_logo": "https://media.api-sports.io/football/teams/18857.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/117.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 3,
-     "gh": 0,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 11,
-     "gh": 0,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 21,
-     "gh": 0,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 31,
-     "gh": 0,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 48,
-     "gh": 0,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 55,
-     "gh": 0,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 72,
-     "gh": 0,
-     "ga": 3,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 86,
-     "gh": 0,
-     "ga": 4,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 0,
-   "level": "green",
-   "dscores": [
-    16,
-    21,
-    15,
-    15,
-    0,
-    0,
-    0,
-    0
-   ],
-   "factors": [],
-   "pick": "away",
-   "confidence": 47,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": null,
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
  "1536881": {
-  "score": "1-2",
+  "score": "2-2",
   "status": "2H",
   "minute": 90,
   "home": "Nosta",
@@ -775,7 +577,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6818.png",
   "away_logo": "https://media.api-sports.io/football/teams/27651.png",
   "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:50:25.306024+00:00",
   "radar": {
    "snaps": [
     {
@@ -793,8 +595,8 @@
      "a": {}
     },
     {
-     "minute": 84,
-     "gh": 1,
+     "minute": 90,
+     "gh": 2,
      "ga": 2,
      "h": {},
      "a": {}
@@ -804,10 +606,11 @@
    "level": "red",
    "dscores": [
     15,
+    69,
     69
    ],
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 44,
@@ -826,14 +629,14 @@
  "1548996": {
   "score": "2-2",
   "status": "2H",
-  "minute": 88,
+  "minute": 90,
   "home": "Aarhus",
   "away": "Odense",
   "league": "Superliga (Denmark)",
   "home_logo": "https://media.api-sports.io/football/teams/406.png",
   "away_logo": "https://media.api-sports.io/football/teams/405.png",
   "league_logo": "https://media.api-sports.io/football/leagues/119.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:55:07.473389+00:00",
   "radar": {
    "snaps": [
     {
@@ -904,25 +707,48 @@
       "rc": 0,
       "sv": 2
      }
+    },
+    {
+     "minute": 90,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 5,
+      "shots": 23,
+      "cor": 10,
+      "poss": 70,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 2,
+      "shots": 5,
+      "cor": 0,
+      "poss": 30,
+      "yc": 4,
+      "rc": 0,
+      "sv": 3
+     }
     }
    ],
-   "score": 85,
+   "score": 69,
    "level": "red",
    "dscores": [
     33,
-    85
+    85,
+    63,
+    69
    ],
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د88)",
-    "موجة تسديد على المرمى من الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 45,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 65,
     "side": "home",
     "ready": false
    },
@@ -934,18 +760,25 @@
  "1555036": {
   "score": "2-1",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "Yverdon Sport",
   "away": "FC Aarau",
   "league": "Challenge League (Switzerland)",
   "home_logo": "https://media.api-sports.io/football/teams/6653.png",
   "away_logo": "https://media.api-sports.io/football/teams/2177.png",
   "league_logo": "https://media.api-sports.io/football/leagues/208.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:56:41.981906+00:00",
   "radar": {
    "snaps": [
     {
      "minute": 81,
+     "gh": 2,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 89,
      "gh": 2,
      "ga": 1,
      "h": {},
@@ -955,6 +788,7 @@
    "score": 15,
    "level": "green",
    "dscores": [
+    15,
     15
    ],
    "factors": [
@@ -984,7 +818,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/565.png",
   "away_logo": "https://media.api-sports.io/football/teams/660.png",
   "league_logo": "https://media.api-sports.io/football/leagues/207.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:50:25.306024+00:00",
   "radar": {
    "snaps": [
     {
@@ -1087,30 +921,30 @@
      }
     },
     {
-     "minute": 85,
-     "gh": 3,
+     "minute": 90,
+     "gh": 4,
      "ga": 2,
      "h": {
-      "sog": 7,
-      "shots": 15,
+      "sog": 9,
+      "shots": 19,
       "cor": 6,
-      "poss": 37,
+      "poss": 40,
       "yc": 0,
       "rc": 0,
-      "sv": 3
+      "sv": 4
      },
      "a": {
-      "sog": 5,
-      "shots": 13,
-      "cor": 3,
-      "poss": 63,
+      "sog": 6,
+      "shots": 16,
+      "cor": 4,
+      "poss": 60,
       "yc": 4,
       "rc": 0,
-      "sv": 4
+      "sv": 5
      }
     }
    ],
-   "score": 15,
+   "score": 6,
    "level": "green",
    "dscores": [
     16,
@@ -1118,10 +952,10 @@
     15,
     41,
     41,
-    15
+    6
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 72,
@@ -1138,7 +972,7 @@
   }
  },
  "1568761": {
-  "score": "3-3",
+  "score": "3-4",
   "status": "2H",
   "minute": 90,
   "home": "Grom Nowy Staw",
@@ -1147,7 +981,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/24786.png",
   "away_logo": "https://media.api-sports.io/football/teams/17398.png",
   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:53:33.288923+00:00",
   "radar": {
    "snaps": [
     {
@@ -1158,21 +992,21 @@
      "a": {}
     },
     {
-     "minute": 87,
+     "minute": 90,
      "gh": 3,
-     "ga": 2,
+     "ga": 4,
      "h": {},
      "a": {}
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 69,
+   "level": "red",
    "dscores": [
     61,
-    15
+    69
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "النتيجة الحالية 3-4 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 41,
@@ -1180,7 +1014,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "away",
+    "side": "home",
     "ready": false
    },
    "alerted": null,
@@ -1191,38 +1025,38 @@
  "1587431": {
   "score": "1-1",
   "status": "2H",
-  "minute": 88,
+  "minute": 90,
   "home": "Paderborn II",
   "away": "Bonner SC",
   "league": "Regionalliga - West (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/12827.png",
   "away_logo": "https://media.api-sports.io/football/teams/1637.png",
   "league_logo": "https://media.api-sports.io/football/leagues/87.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:50:25.306024+00:00"
  },
  "1619393": {
-  "score": "2-0",
+  "score": "2-1",
   "status": "2H",
-  "minute": 89,
+  "minute": 90,
   "home": "Novyi Rozdil",
   "away": "Atlet",
   "league": "Cup (Ukraine)",
   "home_logo": "https://media.api-sports.io/football/teams/28128.png",
   "away_logo": "https://media.api-sports.io/football/teams/26187.png",
   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:53:33.288923+00:00"
  },
  "1548998": {
   "score": "1-0",
   "status": "2H",
-  "minute": 85,
+  "minute": 90,
   "home": "FC Midtjylland",
   "away": "Randers FC",
   "league": "Superliga (Denmark)",
   "home_logo": "https://media.api-sports.io/football/teams/397.png",
   "away_logo": "https://media.api-sports.io/football/teams/401.png",
   "league_logo": "https://media.api-sports.io/football/leagues/119.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:55:07.473389+00:00",
   "radar": {
    "snaps": [
     {
@@ -1323,6 +1157,29 @@
       "rc": 0,
       "sv": 5
      }
+    },
+    {
+     "minute": 88,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 6,
+      "shots": 20,
+      "cor": 9,
+      "poss": 59,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 4,
+      "poss": 41,
+      "yc": 2,
+      "rc": 0,
+      "sv": 5
+     }
     }
    ],
    "score": 15,
@@ -1331,6 +1188,7 @@
     18,
     23,
     23,
+    15,
     15,
     15
    ],
@@ -1352,16 +1210,16 @@
   }
  },
  "1579435": {
-  "score": "0-2",
+  "score": "0-3",
   "status": "2H",
-  "minute": 85,
+  "minute": 90,
   "home": "ROHDA Raalte",
   "away": "De Treffers",
   "league": "Tweede Divisie (Netherlands)",
   "home_logo": "https://media.api-sports.io/football/teams/6269.png",
   "away_logo": "https://media.api-sports.io/football/teams/1277.png",
   "league_logo": "https://media.api-sports.io/football/leagues/492.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:53:33.288923+00:00",
   "radar": {
    "snaps": [
     {
@@ -1419,6 +1277,13 @@
      "ga": 2,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 87,
+     "gh": 0,
+     "ga": 2,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 0,
@@ -1431,6 +1296,7 @@
     43,
     15,
     15,
+    0,
     0
    ],
    "factors": [],
@@ -1451,26 +1317,26 @@
  "1586524": {
   "score": "1-3",
   "status": "2H",
-  "minute": 85,
+  "minute": 90,
   "home": "Eintracht Norderstedt",
   "away": "Weiche Flensburg",
   "league": "Regionalliga - Nord (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/1631.png",
   "away_logo": "https://media.api-sports.io/football/teams/1649.png",
   "league_logo": "https://media.api-sports.io/football/leagues/84.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:55:07.473389+00:00"
  },
  "1587429": {
   "score": "0-1",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "Sportfreunde Lotte",
   "away": "Bochum II",
   "league": "Regionalliga - West (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/1323.png",
   "away_logo": "https://media.api-sports.io/football/teams/24430.png",
   "league_logo": "https://media.api-sports.io/football/leagues/87.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:55:07.473389+00:00"
  },
  "1510648": {
   "score": "2-2",
@@ -1482,7 +1348,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/11673.png",
   "away_logo": "https://media.api-sports.io/football/teams/12571.png",
   "league_logo": "https://media.api-sports.io/football/leagues/592.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:50:25.306024+00:00",
   "radar": {
    "snaps": [
     {
@@ -1514,7 +1380,7 @@
      "a": {}
     },
     {
-     "minute": 86,
+     "minute": 90,
      "gh": 2,
      "ga": 2,
      "h": {},
@@ -1527,6 +1393,7 @@
     27,
     15,
     15,
+    69,
     69
    ],
    "factors": [
@@ -1549,38 +1416,38 @@
  "1561368": {
   "score": "3-1",
   "status": "2H",
-  "minute": 73,
+  "minute": 81,
   "home": "Dynamo",
   "away": "Rodina Moskva",
   "league": "Premier League (Russia)",
   "home_logo": "https://media.api-sports.io/football/teams/1088.png",
   "away_logo": "https://media.api-sports.io/football/teams/6822.png",
   "league_logo": "https://media.api-sports.io/football/leagues/235.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1543464": {
   "score": "1-0",
   "status": "2H",
-  "minute": 60,
+  "minute": 69,
   "home": "Kári",
   "away": "Fjolnir",
   "league": "2. Deild (Iceland)",
   "home_logo": "https://media.api-sports.io/football/teams/4170.png",
   "away_logo": "https://media.api-sports.io/football/teams/273.png",
   "league_logo": "https://media.api-sports.io/football/leagues/166.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1552140": {
   "score": "5-1",
   "status": "2H",
-  "minute": 56,
+  "minute": 65,
   "home": "PSV Eindhoven",
   "away": "Groningen",
   "league": "Eredivisie (Netherlands)",
   "home_logo": "https://media.api-sports.io/football/teams/197.png",
   "away_logo": "https://media.api-sports.io/football/teams/202.png",
   "league_logo": "https://media.api-sports.io/football/leagues/88.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:56:41.981906+00:00",
   "radar": {
    "snaps": [
     {
@@ -1674,6 +1541,29 @@
       "rc": 0,
       "sv": 3
      }
+    },
+    {
+     "minute": 58,
+     "gh": 5,
+     "ga": 1,
+     "h": {
+      "sog": 6,
+      "shots": 14,
+      "cor": 2,
+      "poss": 64,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 3,
+      "shots": 5,
+      "cor": 1,
+      "poss": 36,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     }
     }
    ],
    "score": 0,
@@ -1682,6 +1572,7 @@
     21,
     33,
     15,
+    0,
     0
    ],
    "factors": [],
@@ -1691,7 +1582,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "away",
+    "side": null,
     "ready": false
    },
    "alerted": null,
@@ -1702,54 +1593,54 @@
  "1558186": {
   "score": "1-0",
   "status": "2H",
-  "minute": 59,
+  "minute": 68,
   "home": "Miedz Legnica",
   "away": "Arka Gdynia",
   "league": "I Liga (Poland)",
   "home_logo": "https://media.api-sports.io/football/teams/335.png",
   "away_logo": "https://media.api-sports.io/football/teams/344.png",
   "league_logo": "https://media.api-sports.io/football/leagues/107.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1559756": {
   "score": "0-1",
   "status": "2H",
-  "minute": 58,
+  "minute": 67,
   "home": "Baník Ostrava II",
   "away": "Arsenal Česká Lípa",
   "league": "FNL (Czech-Republic)",
   "home_logo": "https://media.api-sports.io/football/teams/8621.png",
   "away_logo": "https://media.api-sports.io/football/teams/7270.png",
   "league_logo": "https://media.api-sports.io/football/leagues/346.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1561632": {
   "score": "0-1",
   "status": "2H",
-  "minute": 59,
+  "minute": 68,
   "home": "Lechia Zielona Góra",
   "away": "Hutnik Kraków",
   "league": "II Liga - East (Poland)",
   "home_logo": "https://media.api-sports.io/football/teams/14143.png",
   "away_logo": "https://media.api-sports.io/football/teams/6942.png",
   "league_logo": "https://media.api-sports.io/football/leagues/109.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1553143": {
   "score": "0-0",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 49,
   "home": "Radomiak Radom",
   "away": "Zaglebie Lubin",
   "league": "Ekstraklasa (Poland)",
   "home_logo": "https://media.api-sports.io/football/teams/4248.png",
   "away_logo": "https://media.api-sports.io/football/teams/345.png",
   "league_logo": "https://media.api-sports.io/football/leagues/106.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1497665": {
   "score": "0-2",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "IK brage",
   "away": "United Nordic",
@@ -1757,11 +1648,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/2175.png",
   "away_logo": "https://media.api-sports.io/football/teams/16601.png",
   "league_logo": "https://media.api-sports.io/football/leagues/114.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1511060": {
-  "score": "1-0",
-  "status": "1H",
+  "score": "2-0",
+  "status": "HT",
   "minute": 45,
   "home": "IFK Trelleborg",
   "away": "Lilla Torg",
@@ -1769,7 +1660,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/20839.png",
   "away_logo": "https://media.api-sports.io/football/teams/27849.png",
   "league_logo": "https://media.api-sports.io/football/leagues/597.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1536879": {
   "score": "1-0",
@@ -1781,7 +1672,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/27650.png",
   "away_logo": "https://media.api-sports.io/football/teams/14140.png",
   "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1536883": {
   "score": "0-0",
@@ -1793,11 +1684,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/21032.png",
   "away_logo": "https://media.api-sports.io/football/teams/12887.png",
   "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1552729": {
   "score": "0-2",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Angers",
   "away": "Lille",
@@ -1805,7 +1696,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/77.png",
   "away_logo": "https://media.api-sports.io/football/teams/79.png",
   "league_logo": "https://media.api-sports.io/football/leagues/61.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:56:41.981906+00:00",
   "radar": {
    "snaps": [
     {
@@ -1843,7 +1734,7 @@
      "xg_a": 0.5113
     },
     {
-     "minute": 42,
+     "minute": 45,
      "gh": 0,
      "ga": 2,
      "h": {
@@ -1864,7 +1755,7 @@
       "rc": 0,
       "sv": 0
      },
-     "xg_h": 0.35869999999999996,
+     "xg_h": 0.4179,
      "xg_a": 0.8057000000000001
     }
    ],
@@ -1892,7 +1783,7 @@
  },
  "1557373": {
   "score": "4-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Brighton",
   "away": "Aston Villa",
@@ -1900,7 +1791,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/51.png",
   "away_logo": "https://media.api-sports.io/football/teams/66.png",
   "league_logo": "https://media.api-sports.io/football/leagues/39.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:56:41.981906+00:00",
   "radar": {
    "snaps": [
     {
@@ -1963,14 +1854,14 @@
      "xg_a": 0.2209
     },
     {
-     "minute": 42,
+     "minute": 45,
      "gh": 4,
      "ga": 0,
      "h": {
       "sog": 3,
-      "shots": 5,
+      "shots": 7,
       "cor": 1,
-      "poss": 57,
+      "poss": 60,
       "yc": 2,
       "rc": 0,
       "sv": 0
@@ -1979,12 +1870,12 @@
       "sog": 0,
       "shots": 4,
       "cor": 1,
-      "poss": 43,
+      "poss": 40,
       "yc": 2,
-      "rc": 0,
+      "rc": 1,
       "sv": 0
      },
-     "xg_h": 1.7505,
+     "xg_h": 2.2319,
      "xg_a": 0.2209
     }
    ],
@@ -2013,7 +1904,7 @@
  },
  "1557374": {
   "score": "0-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Manchester City",
   "away": "Bournemouth",
@@ -2021,7 +1912,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/50.png",
   "away_logo": "https://media.api-sports.io/football/teams/35.png",
   "league_logo": "https://media.api-sports.io/football/leagues/39.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00",
+  "seen": "2026-08-23T13:56:41.981906+00:00",
   "radar": {
    "snaps": [
     {
@@ -2079,7 +1970,9 @@
       "yc": 0,
       "rc": 0,
       "sv": 1
-     }
+     },
+     "xg_h": 0.6469,
+     "xg_a": 0.5139
     }
    ],
    "score": 42,
@@ -2116,7 +2009,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2585.png",
   "away_logo": "https://media.api-sports.io/football/teams/2596.png",
   "league_logo": "https://media.api-sports.io/football/leagues/283.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1576463": {
   "score": "1-0",
@@ -2128,11 +2021,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/235.png",
   "away_logo": "https://media.api-sports.io/football/teams/761.png",
   "league_logo": "https://media.api-sports.io/football/leagues/95.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1577496": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Leningradets",
   "away": "Chelyabinsk",
@@ -2140,11 +2033,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/6811.png",
   "away_logo": "https://media.api-sports.io/football/teams/6790.png",
   "league_logo": "https://media.api-sports.io/football/leagues/236.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1611337": {
   "score": "1-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Vilkhivtsi",
   "away": "Chornomorets",
@@ -2152,11 +2045,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/24570.png",
   "away_logo": "https://media.api-sports.io/football/teams/3615.png",
   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1627548": {
   "score": "1-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "LSTM Lutsk",
   "away": "Chernihiv",
@@ -2164,11 +2057,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/28231.png",
   "away_logo": "https://media.api-sports.io/football/teams/14433.png",
   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1628936": {
   "score": "1-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Benjamín Aceval",
   "away": "Deportivo Santani",
@@ -2176,7 +2069,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/17183.png",
   "away_logo": "https://media.api-sports.io/football/teams/1189.png",
   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1628937": {
   "score": "1-2",
@@ -2188,7 +2081,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/20786.png",
   "away_logo": "https://media.api-sports.io/football/teams/23155.png",
   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1628938": {
   "score": "0-0",
@@ -2200,11 +2093,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/10491.png",
   "away_logo": "https://media.api-sports.io/football/teams/21374.png",
   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1629875": {
   "score": "3-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Fløya",
   "away": "Junkeren",
@@ -2212,7 +2105,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6984.png",
   "away_logo": "https://media.api-sports.io/football/teams/7000.png",
   "league_logo": "https://media.api-sports.io/football/leagues/105.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1629890": {
   "score": "0-3",
@@ -2224,11 +2117,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/28260.png",
   "away_logo": "https://media.api-sports.io/football/teams/326.png",
   "league_logo": "https://media.api-sports.io/football/leagues/105.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1629891": {
   "score": "0-3",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Trysil FK",
   "away": "Ham-Kam",
@@ -2236,11 +2129,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/28261.png",
   "away_logo": "https://media.api-sports.io/football/teams/2159.png",
   "league_logo": "https://media.api-sports.io/football/leagues/105.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1536882": {
-  "score": "0-0",
-  "status": "1H",
+  "score": "1-0",
+  "status": "HT",
   "minute": 45,
   "home": "Orenburg II",
   "away": "Chelyabinsk II",
@@ -2248,7 +2141,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/14141.png",
   "away_logo": "https://media.api-sports.io/football/teams/25866.png",
   "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1569069": {
   "score": "1-0",
@@ -2260,78 +2153,90 @@
   "home_logo": "https://media.api-sports.io/football/teams/27902.png",
   "away_logo": "https://media.api-sports.io/football/teams/16236.png",
   "league_logo": "https://media.api-sports.io/football/leagues/780.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1550676": {
   "score": "0-1",
   "status": "1H",
-  "minute": 18,
+  "minute": 27,
   "home": "Bahlinger SC",
   "away": "1. FC Magdeburg",
   "league": "DFB Pokal (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/9359.png",
   "away_logo": "https://media.api-sports.io/football/teams/179.png",
   "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1550677": {
   "score": "1-0",
   "status": "1H",
-  "minute": 18,
+  "minute": 27,
   "home": "Eintracht Braunschweig",
   "away": "Union Berlin",
   "league": "DFB Pokal (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/744.png",
   "away_logo": "https://media.api-sports.io/football/teams/182.png",
   "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1550688": {
   "score": "0-1",
   "status": "1H",
-  "minute": 18,
+  "minute": 27,
   "home": "FC Carl Zeiss Jena",
   "away": "SV Darmstadt 98",
   "league": "DFB Pokal (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/1325.png",
   "away_logo": "https://media.api-sports.io/football/teams/181.png",
   "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1550689": {
-  "score": "0-0",
+  "score": "0-2",
   "status": "1H",
-  "minute": 18,
+  "minute": 27,
   "home": "Krieschow",
   "away": "FSV Mainz 05",
   "league": "DFB Pokal (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/14713.png",
   "away_logo": "https://media.api-sports.io/football/teams/164.png",
   "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1550697": {
-  "score": "0-0",
+  "score": "0-2",
   "status": "1H",
-  "minute": 18,
+  "minute": 27,
   "home": "Schott Mainz",
   "away": "Borussia Mönchengladbach",
   "league": "DFB Pokal (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/14524.png",
   "away_logo": "https://media.api-sports.io/football/teams/163.png",
   "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  },
  "1550702": {
   "score": "0-2",
   "status": "1H",
-  "minute": 18,
+  "minute": 27,
   "home": "Westfalia Rhynern",
   "away": "Dynamo Dresden",
   "league": "DFB Pokal (Germany)",
   "home_logo": "https://media.api-sports.io/football/teams/14826.png",
   "away_logo": "https://media.api-sports.io/football/teams/183.png",
   "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-  "seen": "2026-08-23T13:48:20.962604+00:00"
+  "seen": "2026-08-23T13:56:41.981906+00:00"
+ },
+ "1556558": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 12,
+  "home": "Bsk Bijelo Brdo",
+  "away": "Dinamo Zagreb U21",
+  "league": "First NL (Croatia)",
+  "home_logo": "https://media.api-sports.io/football/teams/1487.png",
+  "away_logo": "https://media.api-sports.io/football/teams/22416.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/211.png",
+  "seen": "2026-08-23T13:56:41.981906+00:00"
  }
 }
