@@ -1722,15 +1722,16 @@
    "mine": true,
    "pick": "away",
    "confidence": 59,
-   "level": "amber",
-   "score": 60,
-   "minute": 75,
+   "level": "red",
+   "score": 70,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د75)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د82)",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
-   "alert_minute": 80,
-   "score_xg": 60,
+   "alert_minute": 82,
+   "score_xg": 64,
    "level_xg": "amber"
   },
   {
@@ -1809,16 +1810,16 @@
    "mine": false,
    "pick": "home",
    "confidence": 51,
-   "level": "amber",
-   "score": 62,
-   "minute": 55,
+   "level": "red",
+   "score": 66,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د55)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د62)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
-   "alert_minute": 60,
+   "alert_minute": 62,
    "score_xg": null,
    "level_xg": null
   },
@@ -25788,74 +25789,9 @@
    ]
   },
   {
-   "fid": "1550088",
-   "date": "2026-08-23",
-   "minute": 77,
-   "score_at": "2-1",
-   "side": "away",
-   "key": "equalizer",
-   "signal": 85,
-   "home": "Atalanta",
-   "away": "Sassuolo",
-   "league": "Serie A (Italy)",
-   "top": true,
-   "mine": true,
-   "silenced": false,
-   "evidence": [
-    {
-     "minute": 45,
-     "gh": 1,
-     "ga": 0,
-     "h": {
-      "sog": 3,
-      "shots": 5,
-      "cor": 2,
-      "poss": 50,
-      "yc": 0,
-      "rc": 0,
-      "sv": 2
-     },
-     "a": {
-      "sog": 2,
-      "shots": 8,
-      "cor": 2,
-      "poss": 50,
-      "yc": 0,
-      "rc": 0,
-      "sv": 2
-     }
-    },
-    {
-     "minute": 77,
-     "gh": 2,
-     "ga": 1,
-     "h": {
-      "sog": 6,
-      "shots": 10,
-      "cor": 3,
-      "poss": 58,
-      "yc": 0,
-      "rc": 0,
-      "sv": 7
-     },
-     "a": {
-      "sog": 8,
-      "shots": 20,
-      "cor": 4,
-      "poss": 42,
-      "yc": 0,
-      "rc": 0,
-      "sv": 4
-     },
-     "xg_h": 0.636,
-     "xg_a": 2.5243
-    }
-   ]
-  },
-  {
    "fid": "1552735",
    "date": "2026-08-23",
-   "minute": 80,
+   "minute": 82,
    "score_at": "2-1",
    "side": "away",
    "key": "equalizer",
@@ -25891,7 +25827,7 @@
      }
     },
     {
-     "minute": 80,
+     "minute": 82,
      "gh": 2,
      "ga": 1,
      "h": {
@@ -25911,7 +25847,74 @@
       "yc": 0,
       "rc": 0,
       "sv": 0
+     },
+     "xg_h": 0.6401,
+     "xg_a": 1.4049
+    }
+   ]
+  },
+  {
+   "fid": "1550088",
+   "date": "2026-08-23",
+   "minute": 83,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Atalanta",
+   "away": "Sassuolo",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 5,
+      "cor": 2,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 8,
+      "cor": 2,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
      }
+    },
+    {
+     "minute": 83,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 6,
+      "shots": 10,
+      "cor": 3,
+      "poss": 58,
+      "yc": 0,
+      "rc": 0,
+      "sv": 7
+     },
+     "a": {
+      "sog": 8,
+      "shots": 20,
+      "cor": 4,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
+     },
+     "xg_h": 0.6638999999999999,
+     "xg_a": 2.5243
     }
    ]
   }
