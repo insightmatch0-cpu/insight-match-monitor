@@ -1240,13 +1240,13 @@
    "pick": "home",
    "confidence": 70,
    "level": "amber",
-   "score": 60,
-   "minute": 75,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 2-4 تُسقط التوقع (د75)"
+    "النتيجة الحالية 2-4 تُسقط التوقع (د81)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 85,
    "score_xg": null,
    "level_xg": null
   },
@@ -1260,11 +1260,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 57,
-   "level": "amber",
-   "score": 62,
-   "minute": 79,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د79)"
+    "النتيجة الحالية 2-3 تُسقط التوقع (د86)"
    ],
    "alerted": true,
    "alert_minute": 84,
@@ -1303,10 +1303,10 @@
    "pick": "away",
    "confidence": 45,
    "level": "amber",
-   "score": 61,
-   "minute": 77,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د77)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1324,10 +1324,10 @@
    "pick": "home",
    "confidence": 45,
    "level": "red",
-   "score": 82,
-   "minute": 69,
+   "score": 90,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د69)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د83)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -1348,10 +1348,10 @@
    "pick": "home",
    "confidence": 45,
    "level": "red",
-   "score": 73,
-   "minute": 67,
+   "score": 81,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د67)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د81)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -1435,11 +1435,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 63,
-   "minute": 81,
+   "level": "red",
+   "score": 67,
+   "minute": 87,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د81)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د87)"
    ],
    "alerted": true,
    "alert_minute": 84,
@@ -1456,14 +1456,14 @@
    "mine": false,
    "pick": "home",
    "confidence": 44,
-   "level": "amber",
-   "score": 61,
-   "minute": 78,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د78)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 84,
    "score_xg": null,
    "level_xg": null
   },
@@ -1498,11 +1498,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 39,
-   "level": "amber",
-   "score": 63,
-   "minute": 81,
+   "level": "red",
+   "score": 67,
+   "minute": 88,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د81)"
+    "النتيجة الحالية 2-3 تُسقط التوقع (د88)"
    ],
    "alerted": true,
    "alert_minute": 84,
@@ -25166,7 +25166,71 @@
    "graded_on": "2026-08-23"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1548996",
+   "date": "2026-08-23",
+   "minute": 81,
+   "score_at": "2-2",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Aarhus",
+   "away": "Odense",
+   "league": "Superliga (Denmark)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "evidence": [
+    {
+     "minute": 30,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 0,
+      "shots": 3,
+      "cor": 3,
+      "poss": 60,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "poss": 40,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 81,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 3,
+      "shots": 19,
+      "cor": 7,
+      "poss": 70,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 0,
+      "poss": 30,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
