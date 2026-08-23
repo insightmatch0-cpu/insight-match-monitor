@@ -1587,18 +1587,18 @@
    "pick": "away",
    "confidence": 49,
    "level": "red",
-   "score": 81,
-   "minute": 68,
+   "score": 94,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د68)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د75)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
    "alert_minute": 61,
-   "score_xg": 55,
-   "level_xg": "amber"
+   "score_xg": 68,
+   "level_xg": "red"
   }
  ],
  "resolved": [
@@ -25468,6 +25468,55 @@
       "rc": 0,
       "sv": 2
      }
+    }
+   ]
+  },
+  {
+   "fid": "1557375",
+   "date": "2026-08-23",
+   "minute": 75,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Newcastle",
+   "away": "Liverpool",
+   "league": "Premier League (England)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 75,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 11,
+      "cor": 2,
+      "poss": 43,
+      "yc": 3,
+      "rc": 0,
+      "sv": 4
+     },
+     "a": {
+      "sog": 5,
+      "shots": 20,
+      "cor": 5,
+      "poss": 57,
+      "yc": 2,
+      "rc": 0,
+      "sv": 2
+     },
+     "xg_h": 0.997,
+     "xg_a": 2.4188
     }
    ]
   }
