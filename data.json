@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-23T08:29:30.662867+00:00",
+ "updated": "2026-08-23T08:36:45.248687+00:00",
  "live": [
   {
    "fid": "1569826",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25720.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1234.png",
    "score": "4-2",
-   "minute": 67,
+   "minute": 74,
    "status": "2H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -40,14 +40,19 @@
      "min": [
       33,
       46,
-      61
+      61,
+      54,
+      68
      ],
      "danger": [
       34,
       42,
+      0,
+      15,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -57,9 +62,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -68,6 +75,137 @@
      "a_cor": [
       0,
       0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1520536",
+   "home": "Jeonbuk Motors II",
+   "away": "Ulsan Citizen",
+   "home_en": "Jeonbuk Motors II",
+   "away_en": "Ulsan Citizen",
+   "league": "K3 League (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/25717.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7108.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/295.png",
+   "score": "0-0",
+   "minute": 37,
+   "status": "1H",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 37,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+    ],
+    "pick": "away",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      29,
+      37
+     ],
+     "danger": [
+      32,
+      37
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1569827",
+   "home": "Seosan Pioneer",
+   "away": "Geumsan Insam",
+   "home_en": "Seosan Pioneer",
+   "away_en": "Geumsan Insam",
+   "league": "K4 League (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/27865.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27858.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1234.png",
+   "score": "0-2",
+   "minute": 37,
+   "status": "1H",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 47
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 37,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-2 تُسقط التوقع (د37)"
+    ],
+    "pick": "home",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      29,
+      37
+     ],
+     "danger": [
+      32,
+      37
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
       0,
       0
      ]
@@ -85,9 +223,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2608.png",
    "league_logo": "https://media.api-sports.io/football/leagues/284.png",
    "score": "0-0",
-   "minute": 30,
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -97,10 +235,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 33,
+    "score": 37,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د30)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -113,83 +251,32 @@
     "top": false,
     "trend": {
      "min": [
-      30
+      30,
+      23,
+      37
      ],
      "danger": [
-      33
+      33,
+      28,
+      37
      ],
      "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1520536",
-   "home": "Jeonbuk Motors II",
-   "away": "Ulsan Citizen",
-   "home_en": "Jeonbuk Motors II",
-   "away_en": "Ulsan Citizen",
-   "league": "K3 League (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/25717.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7108.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/295.png",
-   "score": "0-0",
-   "minute": 29,
-   "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 32,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د29)"
-    ],
-    "pick": "away",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      29
-     ],
-     "danger": [
-      32
-     ],
-     "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -207,9 +294,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7068.png",
    "league_logo": "https://media.api-sports.io/football/leagues/295.png",
    "score": "0-0",
-   "minute": 29,
+   "minute": 36,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -219,10 +306,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 32,
+    "score": 36,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د29)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
     ],
     "pick": "away",
     "confidence": 38,
@@ -235,83 +322,32 @@
     "top": false,
     "trend": {
      "min": [
-      29
+      29,
+      22,
+      36
      ],
      "danger": [
-      32
+      32,
+      28,
+      36
      ],
      "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1569827",
-   "home": "Seosan Pioneer",
-   "away": "Geumsan Insam",
-   "home_en": "Seosan Pioneer",
-   "away_en": "Geumsan Insam",
-   "league": "K4 League (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/27865.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27858.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1234.png",
-   "score": "0-2",
-   "minute": 29,
-   "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 47
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 32,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د29)"
-    ],
-    "pick": "home",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      29
-     ],
-     "danger": [
-      32
-     ],
-     "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -329,9 +365,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7469.png",
    "league_logo": "https://media.api-sports.io/football/leagues/284.png",
    "score": "1-1",
-   "minute": 29,
+   "minute": 36,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -341,10 +377,10 @@
     "confidence": 56
    },
    "radar": {
-    "score": 32,
+    "score": 36,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د29)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د36)"
     ],
     "pick": "home",
     "confidence": 56,
@@ -357,55 +393,67 @@
     "top": false,
     "trend": {
      "min": [
-      29
+      29,
+      22,
+      36
      ],
      "danger": [
-      32
+      32,
+      28,
+      36
      ],
      "h_sog": [
+      0,
+      0,
       0
      ],
      "a_sog": [
+      0,
+      0,
       0
      ],
      "h_cor": [
+      0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
       0
      ]
     }
    }
   },
   {
-   "fid": "1559758",
-   "home": "Slavia Praha II",
-   "away": "Hanácká",
-   "home_en": "Slavia Praha II",
-   "away_en": "Hanácká",
-   "league": "FNL (Czech-Republic)",
-   "home_logo": "https://media.api-sports.io/football/teams/8618.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7291.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/346.png",
+   "fid": "1607304",
+   "home": "North District",
+   "away": "Wofoo Tai Po",
+   "home_en": "North District",
+   "away_en": "Wofoo Tai Po",
+   "league": "Premier League (Hong-Kong)",
+   "home_logo": "https://media.api-sports.io/football/teams/6401.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4457.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/380.png",
    "score": "0-0",
-   "minute": 29,
+   "minute": 36,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 58
+    "pick": "away",
+    "confidence": 50
    },
    "pred_v2": {
-    "pick": "home",
+    "pick": "away",
     "confidence": 46
    },
    "radar": {
-    "score": 32,
+    "score": 36,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د29)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
     ],
-    "pick": "home",
+    "pick": "away",
     "confidence": 46,
     "drama": {
      "signal": 0,
@@ -416,10 +464,10 @@
     "top": false,
     "trend": {
      "min": [
-      29
+      36
      ],
      "danger": [
-      32
+      36
      ],
      "h_sog": [
       0
@@ -447,9 +495,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7276.png",
    "league_logo": "https://media.api-sports.io/football/leagues/349.png",
    "score": "2-0",
-   "minute": 17,
+   "minute": 24,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -459,11 +507,9 @@
     "confidence": 48
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 48,
     "drama": {
@@ -475,21 +521,27 @@
     "top": false,
     "trend": {
      "min": [
-      10
+      10,
+      18
      ],
      "danger": [
-      15
+      15,
+      0
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -505,10 +557,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/8618.png",
    "away_logo": "https://media.api-sports.io/football/teams/7291.png",
    "league_logo": "https://media.api-sports.io/football/leagues/346.png",
-   "score": "0-0",
-   "minute": 14,
+   "score": "1-0",
+   "minute": 22,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -518,26 +570,26 @@
     "confidence": 46
    },
    "radar": {
-    "score": 23,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د14)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 46,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      14
+      19
      ],
      "danger": [
-      23
+      15
      ],
      "h_sog": [
       0
@@ -565,9 +617,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/8617.png",
    "league_logo": "https://media.api-sports.io/football/leagues/348.png",
    "score": "0-0",
-   "minute": 13,
+   "minute": 21,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -577,13 +629,72 @@
     "confidence": 44
    },
    "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د21)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      21
+     ],
+     "danger": [
+      27
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1562726",
+   "home": "Hradec Králové II",
+   "away": "Chrudim",
+   "home_en": "Hradec Králové II",
+   "away_en": "Chrudim",
+   "league": "3. liga - CFL B (Czech-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/14495.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3722.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/685.png",
+   "score": "0-0",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 45
+   },
+   "radar": {
     "score": 22,
     "level": "green",
     "factors": [
      "النتيجة الحالية 0-0 تُسقط التوقع (د13)"
     ],
-    "pick": "home",
-    "confidence": 44,
+    "pick": "away",
+    "confidence": 45,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -614,65 +725,6 @@
    }
   },
   {
-   "fid": "1562726",
-   "home": "Hradec Králové II",
-   "away": "Chrudim",
-   "home_en": "Hradec Králové II",
-   "away_en": "Chrudim",
-   "league": "3. liga - CFL B (Czech-Republic)",
-   "home_logo": "https://media.api-sports.io/football/teams/14495.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3722.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/685.png",
-   "score": "0-0",
-   "minute": 13,
-   "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 18,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د6)"
-    ],
-    "pick": "away",
-    "confidence": 45,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      6
-     ],
-     "danger": [
-      18
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1562480",
    "home": "Chlumec nad Cidlinou",
    "away": "Kosmonosy",
@@ -683,9 +735,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14004.png",
    "league_logo": "https://media.api-sports.io/football/leagues/352.png",
    "score": "0-0",
-   "minute": 12,
+   "minute": 19,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -695,10 +747,10 @@
     "confidence": 45
    },
    "radar": {
-    "score": 18,
+    "score": 26,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د6)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
     ],
     "pick": "home",
     "confidence": 45,
@@ -711,10 +763,10 @@
     "top": false,
     "trend": {
      "min": [
-      6
+      19
      ],
      "danger": [
-      18
+      26
      ],
      "h_sog": [
       0
@@ -741,10 +793,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/7343.png",
    "away_logo": "https://media.api-sports.io/football/teams/7366.png",
    "league_logo": "https://media.api-sports.io/football/leagues/354.png",
-   "score": "1-0",
-   "minute": 11,
+   "score": "1-1",
+   "minute": 18,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -770,7 +822,7 @@
     "top": false,
     "trend": {
      "min": [
-      5
+      12
      ],
      "danger": [
       15
@@ -801,9 +853,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/8624.png",
    "league_logo": "https://media.api-sports.io/football/leagues/349.png",
    "score": "1-0",
-   "minute": 9,
+   "minute": 16,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -813,26 +865,26 @@
     "confidence": 43
    },
    "radar": {
-    "score": 16,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د3)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 43,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      3
+      10
      ],
      "danger": [
-      16
+      15
      ],
      "h_sog": [
       0
@@ -860,9 +912,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/7332.png",
    "league_logo": "https://media.api-sports.io/football/leagues/349.png",
    "score": "1-0",
-   "minute": 9,
+   "minute": 16,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -872,26 +924,26 @@
     "confidence": 47
    },
    "radar": {
-    "score": 16,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د3)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 47,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      3
+      10
      ],
      "danger": [
-      16
+      15
      ],
      "h_sog": [
       0
@@ -918,10 +970,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/12797.png",
    "away_logo": "https://media.api-sports.io/football/teams/7372.png",
    "league_logo": "https://media.api-sports.io/football/leagues/685.png",
-   "score": "0-0",
-   "minute": 8,
+   "score": "1-0",
+   "minute": 15,
    "status": "1H",
-   "seen": "2026-08-23T08:29:28.280481+00:00",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -931,10 +983,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 16,
+    "score": 20,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د2)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د9)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -947,10 +999,69 @@
     "top": false,
     "trend": {
      "min": [
-      2
+      9
      ],
      "danger": [
-      16
+      20
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1561108",
+   "home": "Žilina II",
+   "away": "Malženice",
+   "home_en": "Žilina II",
+   "away_en": "Malženice",
+   "league": "2. liga (Slovakia)",
+   "home_logo": "https://media.api-sports.io/football/teams/10546.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14058.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/506.png",
+   "score": "0-0",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-23T08:36:41.544906+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د1)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      1
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
