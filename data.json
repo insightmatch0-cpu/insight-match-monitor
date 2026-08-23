@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-23T07:24:43.806171+00:00",
+ "updated": "2026-08-23T07:31:05.729457+00:00",
  "live": [
   {
    "fid": "1630746",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10210.png",
    "league_logo": "https://media.api-sports.io/football/leagues/481.png",
    "score": "0-0",
-   "minute": 96,
+   "minute": 116,
    "status": "ET",
-   "seen": "2026-08-23T07:24:39.525425+00:00",
+   "seen": "2026-08-23T07:31:04.121065+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -27,7 +27,7 @@
     "score": 70,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د96)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د116)"
     ],
     "pick": "home",
     "confidence": 47,
@@ -42,14 +42,17 @@
      "min": [
       87,
       0,
-      96
+      96,
+      116
      ],
      "danger": [
       67,
       15,
+      70,
       70
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -57,14 +60,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -73,65 +79,57 @@
    }
   },
   {
-   "fid": "1522009",
-   "home": "South Melbourne",
-   "away": "Heidelberg United",
-   "home_en": "South Melbourne",
-   "away_en": "Heidelberg United",
-   "league": "Victoria NPL (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/3811.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3803.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/195.png",
-   "score": "1-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-23T07:24:39.525425+00:00",
+   "fid": "1569826",
+   "home": "Jecheon Citizen",
+   "away": "Sejong SA",
+   "home_en": "Jecheon Citizen",
+   "away_en": "Sejong SA",
+   "league": "K4 League (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/27860.png",
+   "away_logo": "https://media.api-sports.io/football/teams/25720.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1234.png",
+   "score": "2-0",
+   "minute": 14,
+   "status": "1H",
+   "seen": "2026-08-23T07:31:04.121065+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 55
+    "pick": "draw",
+    "confidence": 48
    },
    "pred_v2": {
     "pick": "home",
     "confidence": 40
    },
    "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
-    ],
+    "score": 0,
+    "level": "green",
+    "factors": [],
     "pick": "home",
     "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      38,
-      90
+      14
      ],
      "danger": [
-      37,
-      69
+      0
      ],
      "h_sog": [
-      0,
       0
      ],
      "a_sog": [
-      0,
       0
      ],
      "h_cor": [
-      0,
       0
      ],
      "a_cor": [
-      0,
       0
      ]
     }
@@ -723,22 +721,6 @@
    "pick": "away",
    "confidence": 62,
    "reason": "بوكا جونيورز فريق كبير تاريخياً وقوي أمام ريسينج كلوب"
-  },
-  {
-   "fid": "1522009",
-   "kickoff": "2026-08-23T05:30:00+00:00",
-   "home": "ساوث ملبورن",
-   "away": "هايدلبرج يونايتد",
-   "home_en": "South Melbourne",
-   "home_logo": "https://media.api-sports.io/football/teams/3811.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3803.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/195.png",
-   "away_en": "Heidelberg United",
-   "league": "دوري فيكتوريا (أستراليا)",
-   "top": false,
-   "pick": "home",
-   "confidence": 55,
-   "reason": "ساوث ملبورن يتمتع بأرض قوية ولديه تاريخ جيد محلياً"
   },
   {
    "fid": "1569826",
@@ -3238,6 +3220,62 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-23",
+   "home": "سيدني أولمبيك",
+   "away": "مارتيني ستاليونز",
+   "home_en": "Sydney Olympic",
+   "away_en": "Marconi Stallions",
+   "league": "دوري نيو ساوث ويلز (أستراليا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3774.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3768.png",
+   "pick": "home",
+   "confidence": 52,
+   "kickoff": "2026-08-23T05:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-23",
+   "home": "وولونجونج وولفز",
+   "away": "فريق وسترن سيدني الشاب",
+   "home_en": "Wollongong Wolves",
+   "away_en": "Western Sydney Wanderers U23",
+   "league": "دوري نيو ساوث ويلز (أستراليا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3777.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14025.png",
+   "pick": "home",
+   "confidence": 60,
+   "kickoff": "2026-08-23T05:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-23",
+   "home": "سنترال كوست الثاني",
+   "away": "ماونت درويت تاون",
+   "home_en": "Central Coast II",
+   "away_en": "Mt Druitt Town",
+   "league": "دوري نيو ساوث ويلز الثاني (أستراليا)",
+   "home_logo": "https://media.api-sports.io/football/teams/16772.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3769.png",
+   "pick": "home",
+   "confidence": 52,
+   "kickoff": "2026-08-23T05:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-23",
+   "home": "ملبورن نايتس",
+   "away": "لانجواريل",
+   "home_en": "Melbourne Knights",
+   "away_en": "Langwarrin",
+   "league": "دوري فيكتوريا الثاني (أستراليا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3807.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16783.png",
+   "pick": "away",
+   "confidence": 51,
+   "kickoff": "2026-08-23T05:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-23",
    "home": "سيدني يونايتد",
