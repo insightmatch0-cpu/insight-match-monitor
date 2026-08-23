@@ -1586,17 +1586,17 @@
    "mine": true,
    "pick": "away",
    "confidence": 49,
-   "level": "amber",
-   "score": 61,
-   "minute": 54,
+   "level": "red",
+   "score": 65,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د54)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د61)",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
    "alert_minute": 61,
-   "score_xg": 47,
+   "score_xg": 51,
    "level_xg": "amber"
   }
  ],
@@ -25382,6 +25382,91 @@
      },
      "xg_h": 1.0110999999999999,
      "xg_a": 2.1959
+    }
+   ]
+  },
+  {
+   "fid": "1570344",
+   "date": "2026-08-23",
+   "minute": 89,
+   "score_at": "2-2",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Atletico Madrid",
+   "away": "Villarreal",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 8,
+      "cor": 3,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 1,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 84,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 3,
+      "shots": 15,
+      "cor": 5,
+      "poss": 48,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 3,
+      "shots": 9,
+      "cor": 3,
+      "poss": 52,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 89,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 4,
+      "shots": 18,
+      "cor": 5,
+      "poss": 52,
+      "yc": 2,
+      "rc": 1,
+      "sv": 3
+     },
+     "a": {
+      "sog": 5,
+      "shots": 11,
+      "cor": 3,
+      "poss": 48,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
     }
    ]
   }
