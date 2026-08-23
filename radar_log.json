@@ -1723,14 +1723,14 @@
    "pick": "away",
    "confidence": 59,
    "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "score": 60,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د69)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د75)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 56,
+   "alerted": true,
+   "alert_minute": 80,
+   "score_xg": 60,
    "level_xg": "amber"
   },
   {
@@ -1810,15 +1810,15 @@
    "pick": "home",
    "confidence": 51,
    "level": "amber",
-   "score": 58,
-   "minute": 49,
+   "score": 62,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د55)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 60,
    "score_xg": null,
    "level_xg": null
   },
@@ -1845,6 +1845,27 @@
    "alert_minute": null,
    "score_xg": 83,
    "level_xg": "red"
+  },
+  {
+   "fid": "1575466",
+   "date": "2026-08-23",
+   "home": "FC Porto",
+   "away": "Arouca",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 72,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
@@ -25763,6 +25784,134 @@
      },
      "xg_h": 0.997,
      "xg_a": 2.4188
+    }
+   ]
+  },
+  {
+   "fid": "1550088",
+   "date": "2026-08-23",
+   "minute": 77,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Atalanta",
+   "away": "Sassuolo",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 5,
+      "cor": 2,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 8,
+      "cor": 2,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 6,
+      "shots": 10,
+      "cor": 3,
+      "poss": 58,
+      "yc": 0,
+      "rc": 0,
+      "sv": 7
+     },
+     "a": {
+      "sog": 8,
+      "shots": 20,
+      "cor": 4,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
+     },
+     "xg_h": 0.636,
+     "xg_a": 2.5243
+    }
+   ]
+  },
+  {
+   "fid": "1552735",
+   "date": "2026-08-23",
+   "minute": 80,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Rennes",
+   "away": "Paris Saint Germain",
+   "league": "Ligue 1 (France)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 2,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 0,
+      "poss": 28,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 7,
+      "cor": 7,
+      "poss": 72,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 80,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 7,
+      "cor": 0,
+      "poss": 30,
+      "yc": 2,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 4,
+      "shots": 16,
+      "cor": 10,
+      "poss": 70,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
     }
    ]
   }
