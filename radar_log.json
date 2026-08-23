@@ -1562,16 +1562,18 @@
    "mine": true,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 63,
-   "minute": 71,
+   "level": "red",
+   "score": 95,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د71)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د77)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
-   "alert_minute": 74,
-   "score_xg": 78,
+   "alert_minute": 67,
+   "score_xg": 92,
    "level_xg": "red"
   },
   {
@@ -1585,16 +1587,16 @@
    "pick": "away",
    "confidence": 49,
    "level": "amber",
-   "score": 57,
-   "minute": 48,
+   "score": 61,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د48)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د54)",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 43,
+   "alerted": true,
+   "alert_minute": 61,
+   "score_xg": 47,
    "level_xg": "amber"
   }
  ],
@@ -25315,6 +25317,71 @@
       "rc": 0,
       "sv": 2
      }
+    }
+   ]
+  },
+  {
+   "fid": "1570344",
+   "date": "2026-08-23",
+   "minute": 77,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Atletico Madrid",
+   "away": "Villarreal",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": true,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 8,
+      "cor": 3,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 1,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 15,
+      "cor": 5,
+      "poss": 48,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 3,
+      "shots": 9,
+      "cor": 3,
+      "poss": 52,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "xg_h": 1.0110999999999999,
+     "xg_a": 2.1959
     }
    ]
   }
