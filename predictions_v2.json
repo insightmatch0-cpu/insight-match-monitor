@@ -90,37 +90,6 @@
    "ar_away": "كولورادو رابيدز",
    "ar_league": "الدوري الأمريكي الممتاز"
   },
-  "1490418": {
-   "fid": "1490418",
-   "kickoff": "2026-08-23T02:30:00+00:00",
-   "date": "2026-08-23",
-   "home": "San Jose Earthquakes",
-   "away": "Minnesota United FC",
-   "home_id": 1596,
-   "away_id": 1612,
-   "home_logo": "https://media.api-sports.io/football/teams/1596.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1612.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "league": "Major League Soccer (USA)",
-   "league_id": 253,
-   "season": 2026,
-   "round": "Regular Season - 21",
-   "venue": "PayPal Park, San Jose, USA",
-   "top": true,
-   "is_cup": false,
-   "mkt_home": 44,
-   "mkt_draw": 24,
-   "mkt_away": 32,
-   "pick": "away",
-   "confidence": 38,
-   "prob_home": 34,
-   "prob_draw": 28,
-   "prob_away": 38,
-   "reason": "سان خوسيه بلا فوز في آخر 5 مباريات مع دفاع منهار (12 هدفاً مستقبلاً)، ومينيسوتا يتفوق تاريخياً عليه والنموذج الإحصائي يرجح الضيف",
-   "ar_home": "سان خوسيه إيرثكويكس",
-   "ar_away": "مينيسوتا يونايتد",
-   "ar_league": "الدوري الأمريكي الممتاز"
-  },
   "1533142": {
    "fid": "1533142",
    "kickoff": "2026-08-22T04:30:00+00:00",
@@ -4597,6 +4566,35 @@
    "ar_home": "روهدا رالته",
    "ar_away": "دي تريفرز",
    "ar_league": "الدرجة الثانية الهولندية"
+  },
+  "1580193": {
+   "fid": "1580193",
+   "kickoff": "2026-08-23T12:00:00+00:00",
+   "date": "2026-08-23",
+   "home": "Oldenburger SV",
+   "away": "Union Neumünster",
+   "home_id": 16073,
+   "away_id": 16076,
+   "home_logo": "https://media.api-sports.io/football/teams/16073.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16076.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/744.png",
+   "league": "Oberliga - Schleswig-Holstein (Germany)",
+   "league_id": 744,
+   "season": 2026,
+   "round": "Schleswig-Holstein - 5",
+   "venue": "Germany",
+   "top": false,
+   "mine": false,
+   "is_cup": false,
+   "pick": "home",
+   "confidence": 40,
+   "prob_home": 40,
+   "prob_draw": 28,
+   "prob_away": 32,
+   "reason": "دوري ألماني هاوٍ متقارب المستوى مع أفضلية أرضية طفيفة للمضيف دون فارق فورمة واضح",
+   "ar_home": "أولدنبورغر إس في",
+   "ar_away": "أونيون نويمونستر",
+   "ar_league": "أوبرليغا شليسفيغ-هولشتاين (ألمانيا)"
   }
  },
  "resolved": [
@@ -75511,20 +75509,47 @@
    "actual": "draw",
    "score": "2-2",
    "correct": false
+  },
+  {
+   "fid": "1490418",
+   "date": "2026-08-23",
+   "home": "San Jose Earthquakes",
+   "away": "Minnesota United FC",
+   "ar_home": "سان خوسيه إيرثكويكس",
+   "ar_away": "مينيسوتا يونايتد",
+   "home_logo": "https://media.api-sports.io/football/teams/1596.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1612.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "league": "Major League Soccer (USA)",
+   "ar_league": "الدوري الأمريكي الممتاز",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 38,
+   "prob_home": 34,
+   "prob_draw": 28,
+   "prob_away": 38,
+   "mkt_home": 44,
+   "mkt_draw": 24,
+   "mkt_away": 32,
+   "reason": "سان خوسيه بلا فوز في آخر 5 مباريات مع دفاع منهار (12 هدفاً مستقبلاً)، ومينيسوتا يتفوق تاريخياً عليه والنموذج الإحصائي يرجح الضيف",
+   "actual": "away",
+   "score": "1-5",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-08-23T04:28:16.726662+00:00",
+  "last_run": "2026-08-23T04:35:51.116453+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 1320,
-    "total": 2722
+    "correct": 1321,
+    "total": 2723
    },
    "top_leagues": {
-    "correct": 147,
-    "total": 320
+    "correct": 148,
+    "total": 321
    },
    "other_leagues": {
     "correct": 1173,
@@ -75544,13 +75569,13 @@
      "total": 499
     },
     "<50": {
-     "correct": 870,
-     "total": 2007
+     "correct": 871,
+     "total": 2008
     }
    },
    "last30": {
-    "correct": 1320,
-    "total": 2722
+    "correct": 1321,
+    "total": 2723
    },
    "daily": {
     "2026-08-01": {
@@ -75642,18 +75667,18 @@
      "total": 134
     },
     "2026-08-23": {
-     "correct": 4,
-     "total": 6
+     "correct": 5,
+     "total": 7
     }
    },
    "season": {
     "overall": {
-     "correct": 564,
-     "total": 1197
+     "correct": 565,
+     "total": 1198
     },
     "top_leagues": {
-     "correct": 99,
-     "total": 215
+     "correct": 100,
+     "total": 216
     },
     "other_leagues": {
      "correct": 465,
@@ -75673,20 +75698,20 @@
       "total": 240
      },
      "<50": {
-      "correct": 359,
-      "total": 847
+      "correct": 360,
+      "total": 848
      }
     },
     "start": "2026-08-13"
    },
    "top_only": {
     "overall": {
-     "correct": 147,
-     "total": 320
+     "correct": 148,
+     "total": 321
     },
     "top_leagues": {
-     "correct": 147,
-     "total": 320
+     "correct": 148,
+     "total": 321
     },
     "other_leagues": {
      "correct": 0,
@@ -75706,13 +75731,13 @@
       "total": 75
      },
      "<50": {
-      "correct": 79,
-      "total": 200
+      "correct": 80,
+      "total": 201
      }
     },
     "last30": {
-     "correct": 147,
-     "total": 320
+     "correct": 148,
+     "total": 321
     },
     "daily": {
      "2026-08-01": {
@@ -75804,18 +75829,18 @@
       "total": 52
      },
      "2026-08-23": {
-      "correct": 4,
-      "total": 6
+      "correct": 5,
+      "total": 7
      }
     },
     "season": {
      "overall": {
-      "correct": 99,
-      "total": 215
+      "correct": 100,
+      "total": 216
      },
      "top_leagues": {
-      "correct": 99,
-      "total": 215
+      "correct": 100,
+      "total": 216
      },
      "other_leagues": {
       "correct": 0,
@@ -75835,17 +75860,17 @@
        "total": 45
       },
       "<50": {
-       "correct": 55,
-       "total": 141
+       "correct": 56,
+       "total": 142
       }
      },
      "start": "2026-08-13"
     },
     "market_bench": {
-     "n": 297,
-     "engine_correct": 142,
+     "n": 298,
+     "engine_correct": 143,
      "market_correct": 133,
-     "disagree": 27
+     "disagree": 28
     },
     "min_sample": 20
    },
@@ -75927,10 +75952,10 @@
     "min_sample": 20
    },
    "market_bench": {
-    "n": 297,
-    "engine_correct": 142,
+    "n": 298,
+    "engine_correct": 143,
     "market_correct": 133,
-    "disagree": 27
+    "disagree": 28
    }
   }
  }
