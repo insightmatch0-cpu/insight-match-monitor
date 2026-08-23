@@ -1,6 +1,89 @@
 {
- "updated": "2026-08-23T13:17:19.293372+00:00",
+ "updated": "2026-08-23T13:26:37.623292+00:00",
  "live": [
+  {
+   "fid": "1523249",
+   "home": "SHANGHAI SIPG",
+   "away": "Qingdao Jonoon",
+   "home_en": "SHANGHAI SIPG",
+   "away_en": "Qingdao Jonoon",
+   "league": "Super League (China)",
+   "home_logo": "https://media.api-sports.io/football/teams/836.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1431.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/169.png",
+   "score": "2-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 60
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 66
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 66,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8,
+      21,
+      68,
+      75,
+      85
+     ],
+     "danger": [
+      19,
+      27,
+      33,
+      15,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      1,
+      1,
+      1
+     ],
+     "a_sog": [
+      0,
+      0,
+      2,
+      2,
+      2
+     ],
+     "h_cor": [
+      0,
+      0,
+      3,
+      3,
+      3
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
   {
    "fid": "1532885",
    "home": "Chengdu Rongcheng II",
@@ -12,9 +95,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/5665.png",
    "league_logo": "https://media.api-sports.io/football/leagues/929.png",
    "score": "0-1",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:23:29.615496+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -40,30 +123,59 @@
     "top": false,
     "trend": {
      "min": [
-      71,
-      81
+      74,
+      81,
+      90
      ],
      "danger": [
+      15,
       15,
       15
      ],
      "h_sog": [
       0,
+      0,
       0
      ],
      "a_sog": [
+      0,
       0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
       0,
+      0,
       0
      ]
     }
+   }
+  },
+  {
+   "fid": "1532886",
+   "home": "Guangzhou Dandelion",
+   "away": "Guizhou Zhucheng",
+   "home_en": "Guangzhou Dandelion",
+   "away_en": "Guizhou Zhucheng",
+   "league": "League Two (China)",
+   "home_logo": "https://media.api-sports.io/football/teams/25774.png",
+   "away_logo": "https://media.api-sports.io/football/teams/25775.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/929.png",
+   "score": "0-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
    }
   },
   {
@@ -77,9 +189,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25773.png",
    "league_logo": "https://media.api-sports.io/football/leagues/929.png",
    "score": "1-0",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -100,9 +212,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/5660.png",
    "league_logo": "https://media.api-sports.io/football/leagues/929.png",
    "score": "0-1",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:23:29.615496+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -112,10 +224,10 @@
     "confidence": 41
    },
    "radar": {
-    "score": 67,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د88)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 41,
@@ -128,10 +240,10 @@
     "top": false,
     "trend": {
      "min": [
-      88
+      90
      ],
      "danger": [
-      67
+      69
      ],
      "h_sog": [
       0
@@ -146,52 +258,6 @@
       0
      ]
     }
-   }
-  },
-  {
-   "fid": "1532890",
-   "home": "Xiamen Feilu",
-   "away": "Yichun Grand Tiger",
-   "home_en": "Xiamen Feilu",
-   "away_en": "Yichun Grand Tiger",
-   "league": "League Two (China)",
-   "home_logo": "https://media.api-sports.io/football/teams/27622.png",
-   "away_logo": "https://media.api-sports.io/football/teams/17272.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/929.png",
-   "score": "0-2",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   }
-  },
-  {
-   "fid": "1532886",
-   "home": "Guangzhou Dandelion",
-   "away": "Guizhou Zhucheng",
-   "home_en": "Guangzhou Dandelion",
-   "away_en": "Guizhou Zhucheng",
-   "league": "League Two (China)",
-   "home_logo": "https://media.api-sports.io/football/teams/25774.png",
-   "away_logo": "https://media.api-sports.io/football/teams/25775.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/929.png",
-   "score": "0-0",
-   "minute": 86,
-   "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
    }
   },
   {
@@ -205,9 +271,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/19320.png",
    "league_logo": "https://media.api-sports.io/football/leagues/929.png",
    "score": "3-0",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:25:02.547899+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -218,80 +284,26 @@
    }
   },
   {
-   "fid": "1523249",
-   "home": "SHANGHAI SIPG",
-   "away": "Qingdao Jonoon",
-   "home_en": "SHANGHAI SIPG",
-   "away_en": "Qingdao Jonoon",
-   "league": "Super League (China)",
-   "home_logo": "https://media.api-sports.io/football/teams/836.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1431.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-   "score": "2-1",
-   "minute": 82,
+   "fid": "1532890",
+   "home": "Xiamen Feilu",
+   "away": "Yichun Grand Tiger",
+   "home_en": "Xiamen Feilu",
+   "away_en": "Yichun Grand Tiger",
+   "league": "League Two (China)",
+   "home_logo": "https://media.api-sports.io/football/teams/27622.png",
+   "away_logo": "https://media.api-sports.io/football/teams/17272.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/929.png",
+   "score": "0-2",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:25:02.547899+00:00",
    "pred_v1": {
     "pick": "home",
-    "confidence": 60
+    "confidence": 52
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 66
-   },
-   "radar": {
-    "score": 33,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد",
-     "موجة تسديد على المرمى من الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 66,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      8,
-      21,
-      62,
-      75
-     ],
-     "danger": [
-      19,
-      27,
-      70,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      1,
-      1
-     ],
-     "a_sog": [
-      0,
-      0,
-      2,
-      2
-     ],
-     "h_cor": [
-      0,
-      0,
-      3
-     ],
-     "a_cor": [
-      0,
-      0,
-      0
-     ]
-    }
+    "confidence": 40
    }
   },
   {
@@ -305,9 +317,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/24237.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1126.png",
    "score": "1-1",
-   "minute": 63,
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -315,6 +327,83 @@
    "pred_v2": {
     "pick": "home",
     "confidence": 39
+   }
+  },
+  {
+   "fid": "1510648",
+   "home": "Motala",
+   "away": "IF Karlstad II",
+   "home_en": "Motala",
+   "away_en": "IF Karlstad II",
+   "league": "Division 2 - Norra Götaland (Sweden)",
+   "home_logo": "https://media.api-sports.io/football/teams/11673.png",
+   "away_logo": "https://media.api-sports.io/football/teams/12571.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/592.png",
+   "score": "2-2",
+   "minute": 72,
+   "status": "2H",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 58,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 2-2 تُسقط التوقع (د72)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      21,
+      30,
+      49,
+      72
+     ],
+     "danger": [
+      27,
+      15,
+      15,
+      58
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
    }
   },
   {
@@ -328,9 +417,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18857.png",
    "league_logo": "https://media.api-sports.io/football/leagues/117.png",
    "score": "0-3",
-   "minute": 62,
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -347,7 +436,7 @@
     "confidence": 47,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
@@ -358,8 +447,9 @@
       11,
       21,
       31,
-      45,
-      55
+      48,
+      55,
+      65
      ],
      "danger": [
       16,
@@ -367,9 +457,11 @@
       15,
       15,
       0,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -383,6 +475,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -391,9 +484,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -405,35 +500,35 @@
    }
   },
   {
-   "fid": "1510648",
-   "home": "Motala",
-   "away": "IF Karlstad II",
-   "home_en": "Motala",
-   "away_en": "IF Karlstad II",
-   "league": "Division 2 - Norra Götaland (Sweden)",
-   "home_logo": "https://media.api-sports.io/football/teams/11673.png",
-   "away_logo": "https://media.api-sports.io/football/teams/12571.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/592.png",
-   "score": "2-2",
-   "minute": 62,
+   "fid": "1568761",
+   "home": "Grom Nowy Staw",
+   "away": "Kluczevia Stargard",
+   "home_en": "Grom Nowy Staw",
+   "away_en": "Kluczevia Stargard",
+   "league": "III Liga - Group 2 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/24786.png",
+   "away_logo": "https://media.api-sports.io/football/teams/17398.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
+   "score": "1-2",
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
-    "pick": "home",
-    "confidence": 52
+    "pick": "away",
+    "confidence": 55
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 45
+    "confidence": 41
    },
    "radar": {
-    "score": 52,
+    "score": 57,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 2-2 تُسقط التوقع (د62)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د71)"
     ],
     "pick": "home",
-    "confidence": 45,
+    "confidence": 41,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -443,39 +538,21 @@
     "top": false,
     "trend": {
      "min": [
-      21,
-      30,
-      45,
-      62
+      71
      ],
      "danger": [
-      27,
-      15,
-      0,
-      52
+      57
      ],
      "h_sog": [
-      0,
-      0,
-      0,
       0
      ],
      "a_sog": [
-      0,
-      0,
-      0,
       0
      ],
      "h_cor": [
-      0,
-      0,
-      0,
       0
      ],
      "a_cor": [
-      0,
-      0,
-      0,
       0
      ]
     }
@@ -492,9 +569,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/374.png",
    "league_logo": "https://media.api-sports.io/football/leagues/113.png",
    "score": "0-0",
-   "minute": 61,
+   "minute": 70,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 53
@@ -515,9 +592,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/24236.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1126.png",
    "score": "2-3",
-   "minute": 61,
+   "minute": 70,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -527,10 +604,10 @@
     "confidence": 57
    },
    "radar": {
-    "score": 51,
+    "score": 57,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 2-3 تُسقط التوقع (د61)"
+     "النتيجة الحالية 2-3 تُسقط التوقع (د70)"
     ],
     "pick": "home",
     "confidence": 57,
@@ -547,16 +624,16 @@
       9,
       19,
       29,
-      45,
-      61
+      54,
+      70
      ],
      "danger": [
       15,
       20,
       26,
       32,
-      42,
-      51
+      47,
+      57
      ],
      "h_sog": [
       0,
@@ -588,65 +665,6 @@
       0,
       0,
       0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1568761",
-   "home": "Grom Nowy Staw",
-   "away": "Kluczevia Stargard",
-   "home_en": "Grom Nowy Staw",
-   "away_en": "Kluczevia Stargard",
-   "league": "III Liga - Group 2 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/24786.png",
-   "away_logo": "https://media.api-sports.io/football/teams/17398.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
-   "score": "1-2",
-   "minute": 61,
-   "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 41
-   },
-   "radar": {
-    "score": 51,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د61)"
-    ],
-    "pick": "home",
-    "confidence": 41,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      61
-     ],
-     "danger": [
-      51
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
       0
      ]
     }
@@ -662,10 +680,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/366.png",
    "away_logo": "https://media.api-sports.io/football/teams/372.png",
    "league_logo": "https://media.api-sports.io/football/leagues/113.png",
-   "score": "0-0",
-   "minute": 60,
+   "score": "1-0",
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 54
@@ -685,240 +703,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6818.png",
    "away_logo": "https://media.api-sports.io/football/teams/27651.png",
    "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-   "score": "1-1",
-   "minute": 60,
-   "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 47
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 44
-   },
-   "radar": {
-    "score": 51,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د60)"
-    ],
-    "pick": "home",
-    "confidence": 44,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45,
-      60
-     ],
-     "danger": [
-      15,
-      51
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1521670",
-   "home": "Tulevik",
-   "away": "Narva U21",
-   "home_en": "Tulevik",
-   "away_en": "Narva U21",
-   "league": "Esiliiga B (Estonia)",
-   "home_logo": "https://media.api-sports.io/football/teams/3531.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24236.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1126.png",
-   "score": "2-2",
-   "minute": 54,
-   "status": "2H",
-   "seen": "2026-08-23T13:10:38.946368+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 57
-   },
-   "radar": {
-    "score": 47,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 2-2 تُسقط التوقع (د54)"
-    ],
-    "pick": "home",
-    "confidence": 57,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      1,
-      9,
-      19,
-      29,
-      54
-     ],
-     "danger": [
-      15,
-      20,
-      26,
-      32,
-      47
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1568761",
-   "home": "Grom Nowy Staw",
-   "away": "Kluczevia Stargard",
-   "home_en": "Grom Nowy Staw",
-   "away_en": "Kluczevia Stargard",
-   "league": "III Liga - Group 2 (Poland)",
-   "home_logo": "https://media.api-sports.io/football/teams/24786.png",
-   "away_logo": "https://media.api-sports.io/football/teams/17398.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/781.png",
    "score": "1-2",
-   "minute": 54,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-08-23T13:10:38.946368+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 41
-   },
-   "radar": {
-    "score": 47,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د54)"
-    ],
-    "pick": "home",
-    "confidence": 41,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      54
-     ],
-     "danger": [
-      47
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1494251",
-   "home": "IFK Goteborg",
-   "away": "IF Elfsborg",
-   "home_en": "IFK Goteborg",
-   "away_en": "IF Elfsborg",
-   "league": "Allsvenskan (Sweden)",
-   "home_logo": "https://media.api-sports.io/football/teams/366.png",
-   "away_logo": "https://media.api-sports.io/football/teams/372.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/113.png",
-   "score": "0-0",
-   "minute": 53,
-   "status": "2H",
-   "seen": "2026-08-23T13:10:38.946368+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 38
-   }
-  },
-  {
-   "fid": "1536881",
-   "home": "Nosta",
-   "away": "Pobeda Nizhniy Novgorod",
-   "home_en": "Nosta",
-   "away_en": "Pobeda Nizhniy Novgorod",
-   "league": "Second League - Group 4 (Russia)",
-   "home_logo": "https://media.api-sports.io/football/teams/6818.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27651.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/653.png",
-   "score": "1-1",
-   "minute": 53,
-   "status": "2H",
-   "seen": "2026-08-23T13:10:38.946368+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -928,37 +716,43 @@
     "confidence": 44
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 56,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د69)"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      46
+      46,
+      69
      ],
      "danger": [
-      15
+      15,
+      56
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -975,9 +769,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/660.png",
    "league_logo": "https://media.api-sports.io/football/leagues/207.png",
    "score": "3-2",
-   "minute": 60,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 72
@@ -1009,7 +803,7 @@
       2,
       10,
       20,
-      57
+      63
      ],
      "danger": [
       16,
@@ -1055,9 +849,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3524.png",
    "league_logo": "https://media.api-sports.io/football/leagues/328.png",
    "score": "2-1",
-   "minute": 59,
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -1067,10 +861,10 @@
     "confidence": 45
    },
    "radar": {
-    "score": 50,
+    "score": 55,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 2-1 تُسقط التوقع (د59)"
+     "النتيجة الحالية 2-1 تُسقط التوقع (د68)"
     ],
     "pick": "away",
     "confidence": 45,
@@ -1086,13 +880,13 @@
       1,
       9,
       29,
-      59
+      68
      ],
      "danger": [
       15,
       20,
       32,
-      50
+      55
      ],
      "h_sog": [
       0,
@@ -1131,10 +925,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/21262.png",
    "away_logo": "https://media.api-sports.io/football/teams/21263.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-   "score": "0-0",
-   "minute": 58,
+   "score": "0-1",
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -1144,18 +938,19 @@
     "confidence": 45
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 81,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د58)",
+     "النتيجة الحالية 0-1 تُسقط التوقع (د68)",
+     "موجة تسديد على المرمى من الضيف",
      "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 45,
     "drama": {
-     "signal": 35,
-     "side": "away",
+     "signal": 15,
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -1163,19 +958,19 @@
     "trend": {
      "min": [
       10,
-      58
+      68
      ],
      "danger": [
       21,
-      63
+      81
      ],
      "h_sog": [
       0,
-      0
+      1
      ],
      "a_sog": [
       0,
-      1
+      2
      ],
      "h_cor": [
       0,
@@ -1198,10 +993,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/28128.png",
    "away_logo": "https://media.api-sports.io/football/teams/26187.png",
    "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-   "score": "0-0",
-   "minute": 58,
+   "score": "1-0",
+   "minute": 67,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1495767",
@@ -1213,10 +1008,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1165.png",
    "away_logo": "https://media.api-sports.io/football/teams/587.png",
    "league_logo": "https://media.api-sports.io/football/leagues/244.png",
-   "score": "1-3",
-   "minute": 57,
+   "score": "2-4",
+   "minute": 66,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -1226,10 +1021,10 @@
     "confidence": 70
    },
    "radar": {
-    "score": 45,
+    "score": 51,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-3 تُسقط التوقع (د50)"
+     "النتيجة الحالية 1-3 تُسقط التوقع (د60)"
     ],
     "pick": "home",
     "confidence": 70,
@@ -1244,14 +1039,17 @@
      "min": [
       10,
       21,
-      50
+      50,
+      60
      ],
      "danger": [
       21,
       27,
-      45
+      45,
+      51
      ],
      "h_sog": [
+      0,
       0,
       0,
       0
@@ -1259,14 +1057,17 @@
      "a_sog": [
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -1285,9 +1086,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/405.png",
    "league_logo": "https://media.api-sports.io/football/leagues/119.png",
    "score": "1-2",
-   "minute": 57,
+   "minute": 66,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -1297,34 +1098,34 @@
     "confidence": 45
    },
    "radar": {
-    "score": 67,
+    "score": 72,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د57)",
+     "النتيجة الحالية 1-2 تُسقط التوقع (د66)",
      "موجة تسديد على المرمى من الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 45,
     "drama": {
-     "signal": 65,
+     "signal": 85,
      "side": "home",
-     "ready": false
+     "ready": true
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
       30,
-      57
+      66
      ],
      "danger": [
       33,
-      67
+      72
      ],
      "h_sog": [
       0,
-      2
+      3
      ],
      "a_sog": [
       0,
@@ -1332,7 +1133,7 @@
      ],
      "h_cor": [
       3,
-      5
+      7
      ],
      "a_cor": [
       0,
@@ -1348,13 +1149,13 @@
    "home_en": "Paderborn II",
    "away_en": "Bonner SC",
    "league": "Regionalliga - West (Germany)",
-   "home_logo": "https://media.api-sports.io/football/teams/1323.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24430.png",
+   "home_logo": "https://media.api-sports.io/football/teams/12827.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1637.png",
    "league_logo": "https://media.api-sports.io/football/leagues/87.png",
-   "score": "0-1",
-   "minute": 57,
+   "score": "1-1",
+   "minute": 66,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1555036",
@@ -1366,10 +1167,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6653.png",
    "away_logo": "https://media.api-sports.io/football/teams/2177.png",
    "league_logo": "https://media.api-sports.io/football/leagues/208.png",
-   "score": "2-0",
-   "minute": 56,
+   "score": "2-1",
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -1390,9 +1191,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/24430.png",
    "league_logo": "https://media.api-sports.io/football/leagues/87.png",
    "score": "0-1",
-   "minute": 56,
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1548998",
@@ -1405,9 +1206,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/401.png",
    "league_logo": "https://media.api-sports.io/football/leagues/119.png",
    "score": "1-0",
-   "minute": 55,
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -1417,16 +1218,15 @@
     "confidence": 64
    },
    "radar": {
-    "score": 23,
+    "score": 15,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد",
-     "موجة ركنيات لصالح الضيف"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 64,
     "drama": {
-     "signal": 20,
+     "signal": 0,
      "side": "away",
      "ready": false
     },
@@ -1436,31 +1236,37 @@
      "min": [
       5,
       35,
-      48
+      48,
+      58
      ],
      "danger": [
       18,
       23,
-      23
+      23,
+      15
      ],
      "h_sog": [
       0,
       3,
-      4
+      4,
+      5
      ],
      "a_sog": [
       0,
       1,
-      1
+      1,
+      2
      ],
      "h_cor": [
       0,
       4,
-      5
+      5,
+      7
      ],
      "a_cor": [
       0,
       2,
+      4,
       4
      ]
     }
@@ -1477,9 +1283,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1649.png",
    "league_logo": "https://media.api-sports.io/football/leagues/84.png",
    "score": "1-1",
-   "minute": 55,
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1579435",
@@ -1491,10 +1297,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6269.png",
    "away_logo": "https://media.api-sports.io/football/teams/1277.png",
    "league_logo": "https://media.api-sports.io/football/leagues/492.png",
-   "score": "0-0",
-   "minute": 54,
+   "score": "0-1",
+   "minute": 63,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -1504,10 +1310,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 43,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د48)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "away",
     "confidence": 50,
@@ -1524,16 +1330,19 @@
       16,
       26,
       36,
-      48
+      48,
+      57
      ],
      "danger": [
       18,
       24,
       30,
       36,
-      43
+      43,
+      15
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -1545,6 +1354,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -1552,9 +1362,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -1575,9 +1387,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2082.png",
    "league_logo": "https://media.api-sports.io/football/leagues/244.png",
    "score": "2-0",
-   "minute": 53,
+   "minute": 62,
    "status": "2H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 70
@@ -1604,15 +1416,18 @@
       10,
       20,
       30,
-      46
+      46,
+      56
      ],
      "danger": [
       21,
       27,
       15,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -1622,15 +1437,18 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -1649,10 +1467,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1088.png",
    "away_logo": "https://media.api-sports.io/football/teams/6822.png",
    "league_logo": "https://media.api-sports.io/football/leagues/235.png",
-   "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "score": "2-1",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1543464",
@@ -1666,8 +1484,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/166.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "status": "HT",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1552140",
@@ -1679,10 +1497,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/197.png",
    "away_logo": "https://media.api-sports.io/football/teams/202.png",
    "league_logo": "https://media.api-sports.io/football/leagues/88.png",
-   "score": "2-1",
+   "score": "3-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "status": "HT",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 72
@@ -1692,17 +1510,13 @@
     "confidence": 63
    },
    "radar": {
-    "score": 33,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد",
-     "موجة تسديد على المرمى من الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 63,
     "drama": {
-     "signal": 45,
+     "signal": 0,
      "side": "away",
      "ready": false
     },
@@ -1711,28 +1525,36 @@
     "trend": {
      "min": [
       10,
-      40
+      40,
+      36,
+      45
      ],
      "danger": [
       21,
-      33
+      33,
+      15,
+      0
      ],
      "h_sog": [
       0,
-      0,
-      2
+      2,
+      2,
+      6
      ],
      "a_sog": [
       0,
-      0,
-      2
+      2,
+      2,
+      3
      ],
      "h_cor": [
       0,
       0,
-      0
+      0,
+      2
      ],
      "a_cor": [
+      1,
       1,
       1,
       1
@@ -1752,8 +1574,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/107.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "status": "HT",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1559756",
@@ -1767,8 +1589,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/346.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "status": "HT",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1561632",
@@ -1782,8 +1604,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/109.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "status": "HT",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1553143",
@@ -1796,9 +1618,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/345.png",
    "league_logo": "https://media.api-sports.io/football/leagues/106.png",
    "score": "0-0",
-   "minute": 31,
+   "minute": 40,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1497665",
@@ -1811,9 +1633,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/16601.png",
    "league_logo": "https://media.api-sports.io/football/leagues/114.png",
    "score": "0-2",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1536879",
@@ -1826,9 +1648,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14140.png",
    "league_logo": "https://media.api-sports.io/football/leagues/653.png",
    "score": "1-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1536883",
@@ -1841,68 +1663,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/12887.png",
    "league_logo": "https://media.api-sports.io/football/leagues/653.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
-  },
-  {
-   "fid": "1552729",
-   "home": "Angers",
-   "away": "Lille",
-   "home_en": "Angers",
-   "away_en": "Lille",
-   "league": "Ligue 1 (France)",
-   "home_logo": "https://media.api-sports.io/football/teams/77.png",
-   "away_logo": "https://media.api-sports.io/football/teams/79.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/61.png",
-   "score": "0-1",
-   "minute": 17,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 53
-   },
-   "radar": {
-    "score": 21,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
-    ],
-    "pick": "away",
-    "confidence": 53,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      10
-     ],
-     "danger": [
-      21
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1557373",
@@ -1914,10 +1677,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/51.png",
    "away_logo": "https://media.api-sports.io/football/teams/66.png",
    "league_logo": "https://media.api-sports.io/football/leagues/39.png",
-   "score": "1-0",
-   "minute": 17,
+   "score": "2-0",
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 61
@@ -1927,10 +1690,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 15,
+    "score": 6,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 40,
@@ -1943,22 +1706,28 @@
     "top": true,
     "trend": {
      "min": [
-      11
+      11,
+      20
      ],
      "danger": [
-      15
+      15,
+      6
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
-      0
+      0,
+      1
      ]
     }
    }
@@ -1974,9 +1743,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2596.png",
    "league_logo": "https://media.api-sports.io/football/leagues/283.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1577496",
@@ -1989,9 +1758,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6790.png",
    "league_logo": "https://media.api-sports.io/football/leagues/236.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1628936",
@@ -2004,9 +1773,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1189.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1628937",
@@ -2019,9 +1788,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/23155.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
    "score": "0-1",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1628938",
@@ -2034,9 +1803,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21374.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1629890",
@@ -2049,9 +1818,104 @@
    "away_logo": "https://media.api-sports.io/football/teams/326.png",
    "league_logo": "https://media.api-sports.io/football/leagues/105.png",
    "score": "0-2",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
+  },
+  {
+   "fid": "1536882",
+   "home": "Orenburg II",
+   "away": "Chelyabinsk II",
+   "home_en": "Orenburg II",
+   "away_en": "Chelyabinsk II",
+   "league": "Second League - Group 4 (Russia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14141.png",
+   "away_logo": "https://media.api-sports.io/football/teams/25866.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/653.png",
+   "score": "0-1",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
+  },
+  {
+   "fid": "1569069",
+   "home": "Weszlo",
+   "away": "Jagiellonia II",
+   "home_en": "Weszlo",
+   "away_en": "Jagiellonia II",
+   "league": "III Liga - Group 1 (Poland)",
+   "home_logo": "https://media.api-sports.io/football/teams/27902.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16236.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/780.png",
+   "score": "1-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
+  },
+  {
+   "fid": "1552729",
+   "home": "Angers",
+   "away": "Lille",
+   "home_en": "Angers",
+   "away_en": "Lille",
+   "league": "Ligue 1 (France)",
+   "home_logo": "https://media.api-sports.io/football/teams/77.png",
+   "away_logo": "https://media.api-sports.io/football/teams/79.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/61.png",
+   "score": "0-1",
+   "minute": 25,
+   "status": "1H",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 53,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      10,
+      20
+     ],
+     "danger": [
+      21,
+      15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      3
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      2
+     ]
+    }
+   }
   },
   {
    "fid": "1576463",
@@ -2064,9 +1928,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/761.png",
    "league_logo": "https://media.api-sports.io/football/leagues/95.png",
    "score": "0-0",
-   "minute": 16,
+   "minute": 25,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1629875",
@@ -2078,10 +1942,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6984.png",
    "away_logo": "https://media.api-sports.io/football/teams/7000.png",
    "league_logo": "https://media.api-sports.io/football/leagues/105.png",
-   "score": "1-0",
-   "minute": 16,
+   "score": "2-0",
+   "minute": 25,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1629891",
@@ -2094,9 +1958,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2159.png",
    "league_logo": "https://media.api-sports.io/football/leagues/105.png",
    "score": "0-0",
-   "minute": 16,
+   "minute": 25,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1511060",
@@ -2109,83 +1973,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27849.png",
    "league_logo": "https://media.api-sports.io/football/leagues/597.png",
    "score": "0-0",
-   "minute": 15,
+   "minute": 24,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
-  },
-  {
-   "fid": "1627548",
-   "home": "LSTM Lutsk",
-   "away": "Chernihiv",
-   "home_en": "LSTM Lutsk",
-   "away_en": "Chernihiv",
-   "league": "Cup (Ukraine)",
-   "home_logo": "https://media.api-sports.io/football/teams/28231.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14433.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-   "score": "1-0",
-   "minute": 15,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
-  },
-  {
-   "fid": "1557374",
-   "home": "Manchester City",
-   "away": "Bournemouth",
-   "home_en": "Manchester City",
-   "away_en": "Bournemouth",
-   "league": "Premier League (England)",
-   "home_logo": "https://media.api-sports.io/football/teams/50.png",
-   "away_logo": "https://media.api-sports.io/football/teams/35.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/39.png",
-   "score": "0-0",
-   "minute": 14,
-   "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 75
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 62
-   },
-   "radar": {
-    "score": 19,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د7)"
-    ],
-    "pick": "home",
-    "confidence": 62,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      7
-     ],
-     "danger": [
-      19
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
+   "seen": "2026-08-23T13:26:35.339629+00:00"
   },
   {
    "fid": "1611337",
@@ -2198,9 +1988,89 @@
    "away_logo": "https://media.api-sports.io/football/teams/3615.png",
    "league_logo": "https://media.api-sports.io/football/leagues/335.png",
    "score": "0-0",
-   "minute": 14,
+   "minute": 24,
    "status": "1H",
-   "seen": "2026-08-23T13:17:14.655332+00:00"
+   "seen": "2026-08-23T13:26:35.339629+00:00"
+  },
+  {
+   "fid": "1627548",
+   "home": "LSTM Lutsk",
+   "away": "Chernihiv",
+   "home_en": "LSTM Lutsk",
+   "away_en": "Chernihiv",
+   "league": "Cup (Ukraine)",
+   "home_logo": "https://media.api-sports.io/football/teams/28231.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14433.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
+   "score": "1-0",
+   "minute": 24,
+   "status": "1H",
+   "seen": "2026-08-23T13:26:35.339629+00:00"
+  },
+  {
+   "fid": "1557374",
+   "home": "Manchester City",
+   "away": "Bournemouth",
+   "home_en": "Manchester City",
+   "away_en": "Bournemouth",
+   "league": "Premier League (England)",
+   "home_logo": "https://media.api-sports.io/football/teams/50.png",
+   "away_logo": "https://media.api-sports.io/football/teams/35.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/39.png",
+   "score": "0-0",
+   "minute": 23,
+   "status": "1H",
+   "seen": "2026-08-23T13:26:35.339629+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 75
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "radar": {
+    "score": 25,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+    ],
+    "pick": "home",
+    "confidence": 62,
+    "drama": {
+     "signal": 15,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      7,
+      17
+     ],
+     "danger": [
+      19,
+      25
+     ],
+     "h_sog": [
+      0,
+      1
+     ],
+     "a_sog": [
+      0,
+      1
+     ],
+     "h_cor": [
+      0,
+      1
+     ],
+     "a_cor": [
+      0,
+      1
+     ]
+    }
+   }
   }
  ],
  "upcoming": [
@@ -6583,19 +6453,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
-    "date": "2026-08-23",
-    "home": "Shenzhen 2028",
-    "away": "Hubei Chufeng Heli",
-    "league": "League Two (China)",
-    "level": "amber",
-    "minute": 81,
-    "pick": "home",
-    "conf": 41,
-    "top": false
-   },
-   {
-    "kind": "warning",
     "date": "2026-08-23",
     "home": "St. Louis City",
     "away": "Houston Dynamo",
@@ -6989,38 +6846,12 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-23",
-    "home": "Shenyang Urban",
-    "away": "Henan Jianye",
-    "league": "Super League (China)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 44,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-23",
-    "home": "Umeå FC",
-    "away": "Enköping",
-    "league": "Ettan - Norra (Sweden)",
+    "home": "Shenzhen 2028",
+    "away": "Hubei Chufeng Heli",
+    "league": "League Two (China)",
     "level": "red",
     "minute": 90,
     "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-23",
-    "home": "KDV",
-    "away": "Khimik Dzerzhinsk",
-    "league": "Second League - Group 4 (Russia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
     "conf": 41,
     "top": false
    }
