@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2499,
+  "remaining": 2498,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 2
+  "radar_targets": 3
  },
  "api_quota": {
-  "remaining": 5704,
+  "remaining": 5687,
   "limit": 7500,
-  "at": "2026-08-23T07:16:34.265923+00:00"
+  "at": "2026-08-23T07:24:41.670247+00:00"
  },
  "delivery": {
   "at": "2026-08-23T07:13:30.662965+00:00",
@@ -57,14 +57,14 @@
  "1630746": {
   "score": "0-0",
   "status": "ET",
-  "minute": 105,
+  "minute": 96,
   "home": "Maitland",
   "away": "Weston Bears",
   "league": "Northern NSW NPL (Australia)",
   "home_logo": "https://media.api-sports.io/football/teams/10208.png",
   "away_logo": "https://media.api-sports.io/football/teams/10210.png",
   "league_logo": "https://media.api-sports.io/football/leagues/481.png",
-  "seen": "2026-08-23T07:16:33.869333+00:00",
+  "seen": "2026-08-23T07:24:39.525425+00:00",
   "radar": {
    "snaps": [
     {
@@ -82,7 +82,7 @@
      "a": {}
     },
     {
-     "minute": 105,
+     "minute": 96,
      "gh": 0,
      "ga": 0,
      "h": {},
@@ -97,7 +97,7 @@
     70
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د105)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د96)"
    ],
    "pick": "home",
    "confidence": 47,
@@ -114,16 +114,16 @@
   }
  },
  "1522009": {
-  "score": "1-1",
+  "score": "1-2",
   "status": "2H",
-  "minute": 88,
+  "minute": 90,
   "home": "South Melbourne",
   "away": "Heidelberg United",
   "league": "Victoria NPL (Australia)",
   "home_logo": "https://media.api-sports.io/football/teams/3811.png",
   "away_logo": "https://media.api-sports.io/football/teams/3803.png",
   "league_logo": "https://media.api-sports.io/football/leagues/195.png",
-  "seen": "2026-08-23T07:16:33.869333+00:00",
+  "seen": "2026-08-23T07:24:39.525425+00:00",
   "radar": {
    "snaps": [
     {
@@ -134,21 +134,21 @@
      "a": {}
     },
     {
-     "minute": 88,
+     "minute": 90,
      "gh": 1,
-     "ga": 1,
+     "ga": 2,
      "h": {},
      "a": {}
     }
    ],
-   "score": 67,
+   "score": 69,
    "level": "red",
    "dscores": [
     37,
-    67
+    69
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 40,
@@ -162,6 +162,47 @@
    "alerted": null,
    "red_alerted": null,
    "warn_alerted": true
+  }
+ },
+ "1569826": {
+  "score": "2-0",
+  "status": "1H",
+  "minute": 8,
+  "home": "Jecheon Citizen",
+  "away": "Sejong SA",
+  "league": "K4 League (South-Korea)",
+  "home_logo": "https://media.api-sports.io/football/teams/27860.png",
+  "away_logo": "https://media.api-sports.io/football/teams/25720.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/1234.png",
+  "seen": "2026-08-23T07:24:39.525425+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 8,
+     "gh": 2,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 0,
+   "level": "green",
+   "dscores": [
+    0
+   ],
+   "factors": [],
+   "pick": "home",
+   "confidence": 40,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "away",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
   }
  }
 }
