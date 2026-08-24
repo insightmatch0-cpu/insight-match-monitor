@@ -1,0 +1,44 @@
+name: Weekly Best Report
+
+# 🏆 تقرير «أين نتفوق؟» الأسبوعي إلى تيليجرام (طلب المالك 2026-08-24:
+# «Add this report weekly to the Telegram PDF schedule»).
+# كل رقم يُحسب لحظة التشغيل من ملفات القياس — لا أرقام مجمّدة.
+# صفر نداءات API-Football وصفر نداءات Claude؛ لا يلتزم بأي ملف.
+
+on:
+  workflow_dispatch:
+  schedule:
+    # الاثنين 05:50 UTC = 08:50 بتوقيت السعودية — بعد التقييم الصباحي
+    # وبعد نشرة اليوم، فيلخص أسبوع كرة مكتملاً (عطلة نهاية الأسبوع مُقيَّمة)
+    - cron: "50 5 * * 1"
+
+jobs:
+  best:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Install Arabic fonts
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-core
+
+      - name: Build weekly best report
+        run: |
+          NAME="InsightMatch-أين-نتفوق-$(date -u +%Y-%m-%d).pdf"
+          echo "PDF_NAME=$NAME" >> $GITHUB_ENV
+          python report/best_report.py "$NAME"
+
+      - name: Send to Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BROADCAST_IDS: ${{ secrets.TELEGRAM_BROADCAST_IDS }}
+        run: |
+          python report/send_pdf.py "$PDF_NAME" \
+            "🏆 أين نتفوق؟ — التقرير الأسبوعي $(date -u +%Y-%m-%d)"
