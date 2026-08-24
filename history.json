@@ -655,7 +655,7 @@
   "2026-08-20": {
    "v1": {
     "correct": 46,
-    "total": 122
+    "total": 123
    },
    "v2": {
     "correct": 54,
@@ -682,16 +682,16 @@
   },
   "2026-08-21": {
    "v1": {
-    "correct": 2,
-    "total": 5
+    "correct": 69,
+    "total": 151
    },
    "v2": {
     "correct": 61,
-    "total": 127,
+    "total": 128,
     "buckets": {
      "<50": {
       "correct": 46,
-      "total": 102
+      "total": 103
      },
      "60-69": {
       "correct": 5,
@@ -707,22 +707,94 @@
      }
     }
    }
+  },
+  "2026-08-22": {
+   "v2": {
+    "correct": 63,
+    "total": 135,
+    "buckets": {
+     "60-69": {
+      "correct": 4,
+      "total": 7
+     },
+     "<50": {
+      "correct": 40,
+      "total": 101
+     },
+     "50-59": {
+      "correct": 16,
+      "total": 24
+     },
+     "70+": {
+      "correct": 3,
+      "total": 3
+     }
+    }
+   },
+   "v1": {
+    "correct": 52,
+    "total": 135
+   }
+  },
+  "2026-08-23": {
+   "v2": {
+    "correct": 65,
+    "total": 153,
+    "buckets": {
+     "<50": {
+      "correct": 42,
+      "total": 118
+     },
+     "50-59": {
+      "correct": 12,
+      "total": 20
+     },
+     "60-69": {
+      "correct": 8,
+      "total": 11
+     },
+     "70+": {
+      "correct": 3,
+      "total": 4
+     }
+    }
+   },
+   "v1": {
+    "correct": 65,
+    "total": 152
+   }
+  },
+  "2026-08-24": {
+   "v1": {
+    "correct": 0,
+    "total": 1
+   },
+   "v2": {
+    "correct": 0,
+    "total": 1,
+    "buckets": {
+     "<50": {
+      "correct": 0,
+      "total": 1
+     }
+    }
+   }
   }
  },
  "meta": {
-  "updated": "2026-08-22T04:29:11.563972+00:00",
+  "updated": "2026-08-24T04:21:58.265947+00:00",
   "lessons_stored": 100
  },
  "integrity": {
   "resolved_counts": {
-   "v2": 2582,
-   "v1": 2553,
+   "v2": 2872,
+   "v1": 2988,
    "user": 3,
-   "history_days": 37,
-   "radar_resolved": 1079,
-   "radar_alerts_resolved": 69,
-   "scen_resolved": 157
+   "history_days": 40,
+   "radar_resolved": 1265,
+   "radar_alerts_resolved": 85,
+   "scen_resolved": 174
   },
-  "checked_on": "2026-08-22"
+  "checked_on": "2026-08-24"
  }
 }
