@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-24T21:06:52.270593+00:00",
+ "updated": "2026-08-24T21:13:24.218879+00:00",
  "live": [
   {
    "fid": "1550684",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1316.png",
    "away_logo": "https://media.api-sports.io/football/teams/174.png",
    "league_logo": "https://media.api-sports.io/football/leagues/81.png",
-   "score": "2-4",
-   "minute": 113,
+   "score": "2-5",
+   "minute": 119,
    "status": "ET",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "seen": "2026-08-24T21:13:21.441884+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 61
@@ -24,14 +24,18 @@
     "confidence": 58
    },
    "radar": {
-    "score": 0,
+    "score": 26,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "موجة تسديد على المرمى من المضيف",
+     "ضغط هجومي متصاعد من المضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
     "pick": "away",
     "confidence": 58,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": "next_goal",
@@ -42,33 +46,38 @@
       23,
       78,
       99,
-      94
+      100,
+      119
      ],
      "danger": [
       18,
       28,
       79,
       23,
-      0
+      15,
+      26
      ],
      "h_sog": [
       0,
       0,
       2,
       3,
-      4
+      3,
+      5
      ],
      "a_sog": [
       0,
       1,
       6,
       7,
-      9
+      9,
+      10
      ],
      "h_cor": [
       0,
       0,
       1,
+      3,
       3,
       3
      ],
@@ -77,191 +86,109 @@
       0,
       7,
       7,
-      8
+      8,
+      9
      ]
     }
    }
   },
   {
-   "fid": "1609000",
-   "home": "Salernitana",
-   "away": "Sorrento",
-   "home_en": "Salernitana",
-   "away_en": "Sorrento",
-   "league": "Serie C - Girone C (Italy)",
-   "home_logo": "https://media.api-sports.io/football/teams/514.png",
-   "away_logo": "https://media.api-sports.io/football/teams/9537.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/943.png",
-   "score": "1-2",
+   "fid": "1575467",
+   "home": "GIL Vicente",
+   "away": "Casa Pia",
+   "home_en": "GIL Vicente",
+   "away_en": "Casa Pia",
+   "league": "Primeira Liga (Portugal)",
+   "home_logo": "https://media.api-sports.io/football/teams/762.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4716.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/94.png",
+   "score": "2-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-24T21:00:35.188547+00:00",
+   "seen": "2026-08-24T21:11:48.707682+00:00",
    "pred_v1": {
     "pick": "home",
-    "confidence": 62
+    "confidence": 52
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 57
+    "confidence": 58
    },
    "radar": {
-    "score": 69,
-    "level": "red",
+    "score": 6,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
-    "confidence": 57,
+    "confidence": 58,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
-    "top": false,
+    "top": true,
     "trend": {
      "min": [
-      8,
+      5,
+      13,
+      28,
+      35,
+      52,
+      66,
+      72,
+      90
+     ],
+     "danger": [
+      18,
       22,
       15,
-      30,
-      59,
-      75,
-      90
-     ],
-     "danger": [
-      19,
-      28,
-      24,
-      33,
-      50,
-      60,
-      69
+      15,
+      6,
+      0,
+      0,
+      6
      ],
      "h_sog": [
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      2,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4
      ],
      "a_sog": [
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
      ],
      "h_cor": [
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2
      ],
      "a_cor": [
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1508843",
-   "home": "Breidablik",
-   "away": "Fram Reykjavik",
-   "home_en": "Breidablik",
-   "away_en": "Fram Reykjavik",
-   "league": "Úrvalsdeild (Iceland)",
-   "home_logo": "https://media.api-sports.io/football/teams/276.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2117.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/164.png",
-   "score": "3-4",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-24T21:05:15.745118+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 3-4 تُسقط التوقع (د90)"
-    ],
-    "pick": "home",
-    "confidence": 55,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      15,
-      36,
-      37,
-      80,
-      90
-     ],
-     "danger": [
-      15,
-      15,
-      36,
-      37,
-      63,
-      69
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      2,
+      3,
+      3,
+      4
      ]
     }
    }
@@ -279,7 +206,7 @@
    "score": "0-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "seen": "2026-08-24T21:11:48.707682+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 60
@@ -356,105 +283,6 @@
    }
   },
   {
-   "fid": "1575467",
-   "home": "GIL Vicente",
-   "away": "Casa Pia",
-   "home_en": "GIL Vicente",
-   "away_en": "Casa Pia",
-   "league": "Primeira Liga (Portugal)",
-   "home_logo": "https://media.api-sports.io/football/teams/762.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4716.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/94.png",
-   "score": "2-0",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 58,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      5,
-      13,
-      28,
-      35,
-      52,
-      66,
-      72,
-      82
-     ],
-     "danger": [
-      18,
-      22,
-      15,
-      15,
-      6,
-      0,
-      0,
-      0
-     ],
-     "h_sog": [
-      0,
-      2,
-      3,
-      3,
-      4,
-      4,
-      4,
-      4
-     ],
-     "a_sog": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-     ],
-     "h_cor": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2
-     ],
-     "a_cor": [
-      0,
-      0,
-      1,
-      1,
-      2,
-      3,
-      3,
-      3
-     ]
-    }
-   }
-  },
-  {
    "fid": "1569890",
    "home": "Granada CF",
    "away": "Mallorca",
@@ -464,10 +292,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/715.png",
    "away_logo": "https://media.api-sports.io/football/teams/798.png",
    "league_logo": "https://media.api-sports.io/football/leagues/141.png",
-   "score": "1-0",
-   "minute": 77,
+   "score": "2-0",
+   "minute": 84,
    "status": "2H",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "seen": "2026-08-24T21:13:21.441884+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -477,10 +305,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 15,
+    "score": 6,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 36,
@@ -495,12 +323,12 @@
      "min": [
       48,
       61,
-      77
+      84
      ],
      "danger": [
       15,
       21,
-      15
+      6
      ],
      "h_sog": [
       4,
@@ -520,7 +348,7 @@
      "a_cor": [
       0,
       0,
-      0
+      1
      ]
     }
    }
@@ -536,9 +364,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/544.png",
    "league_logo": "https://media.api-sports.io/football/leagues/140.png",
    "score": "1-1",
-   "minute": 77,
+   "minute": 84,
    "status": "2H",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "seen": "2026-08-24T21:13:21.441884+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -548,19 +376,20 @@
     "confidence": 36
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 71,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د77)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
+     "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 36,
     "drama": {
-     "signal": 20,
+     "signal": 85,
      "side": "away",
-     "ready": false
+     "ready": true
     },
-    "alerted": null,
+    "alerted": "next_goal",
     "top": true,
     "trend": {
      "min": [
@@ -568,14 +397,14 @@
       20,
       45,
       61,
-      77
+      84
      ],
      "danger": [
       22,
       27,
       56,
       51,
-      61
+      71
      ],
      "h_sog": [
       0,
@@ -589,14 +418,14 @@
       0,
       1,
       2,
-      3
+      4
      ],
      "h_cor": [
       1,
       1,
       5,
       5,
-      5
+      6
      ],
      "a_cor": [
       1,
@@ -619,9 +448,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1465.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "1-0",
-   "minute": 48,
+   "minute": 55,
    "status": "2H",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "seen": "2026-08-24T21:13:21.441884+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -631,10 +460,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 43,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د48)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د55)"
     ],
     "pick": "away",
     "confidence": 40,
@@ -650,13 +479,13 @@
       14,
       21,
       45,
-      48
+      55
      ],
      "danger": [
       23,
       27,
       42,
-      43
+      48
      ],
      "h_sog": [
       0,
@@ -696,9 +525,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/22462.png",
    "league_logo": "https://media.api-sports.io/football/leagues/282.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-24T21:13:21.441884+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -708,10 +537,10 @@
     "confidence": 55
    },
    "radar": {
-    "score": 42,
+    "score": 43,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
     ],
     "pick": "home",
     "confidence": 55,
@@ -727,13 +556,13 @@
       9,
       16,
       33,
-      45
+      47
      ],
      "danger": [
       20,
       24,
       34,
-      42
+      43
      ],
      "h_sog": [
       0,
@@ -773,9 +602,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27411.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-0",
-   "minute": 36,
+   "minute": 43,
    "status": "1H",
-   "seen": "2026-08-24T21:06:49.212476+00:00",
+   "seen": "2026-08-24T21:13:21.441884+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -785,10 +614,10 @@
     "confidence": 45
    },
    "radar": {
-    "score": 36,
-    "level": "green",
+    "score": 40,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
     ],
     "pick": "home",
     "confidence": 45,
@@ -803,12 +632,12 @@
      "min": [
       8,
       21,
-      36
+      43
      ],
      "danger": [
       19,
       27,
-      36
+      40
      ],
      "h_sog": [
       0,
@@ -5037,6 +4866,46 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-24",
+    "home": "Malaga",
+    "away": "Deportivo La Coruna",
+    "league": "La Liga (Spain)",
+    "level": "red",
+    "minute": 79,
+    "pick": "away",
+    "conf": 36,
+    "top": true
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-08-24",
+    "home": "Malaga",
+    "away": "Deportivo La Coruna",
+    "league": "La Liga (Spain)",
+    "minute": 79,
+    "claim": "next_goal",
+    "side": "away",
+    "signal": 85,
+    "score_at": "1-1",
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-24",
+    "home": "Breidablik",
+    "away": "Fram Reykjavik",
+    "league": "Úrvalsdeild (Iceland)",
+    "level": "amber",
+    "minute": 80,
+    "pick": "home",
+    "conf": 55,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-24",
     "home": "Shkendija",
     "away": "Struga",
     "league": "First League (Macedonia)",
@@ -5083,19 +4952,6 @@
     "minute": 84,
     "pick": "home",
     "conf": 50,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-24",
-    "home": "Feirense",
-    "away": "FC Porto B",
-    "league": "Segunda Liga (Portugal)",
-    "level": "red",
-    "minute": 87,
-    "pick": "home",
-    "conf": 43,
     "top": false
    },
    {
@@ -5395,6 +5251,19 @@
     "minute": 90,
     "pick": "home",
     "conf": 50,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-24",
+    "home": "Feirense",
+    "away": "FC Porto B",
+    "league": "Segunda Liga (Portugal)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 43,
     "top": false
    },
    {
