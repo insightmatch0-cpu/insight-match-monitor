@@ -266,15 +266,27 @@ class TestRegisteredDeadlines(unittest.TestCase):
                 self.assertIsNotNone(
                     R._days_left(it["due"], R.now_utc()), it["id"])
 
-    def test_trial_expiry_reminds_three_days_ahead(self):
-        """طلب المالك الحرفي: قبل الانتهاء بثلاثة أيام."""
+    def test_trial_expiry_closed_by_owner_decision(self):
+        """قرار المالك 2026-08-24 («keep for another two weeks»): الصف أُقفل
+        بقراره فلا يذكّر بعد الآن — والمراجعة التالية صف مستقل مفتوح."""
         sub = next(i for i in self.items
                    if i["id"] == "sportmonks_trial_expiry")
         self.assertEqual(sub["due"], "2026-08-26")
         self.assertEqual(sub["priority"], "P1")
+        self.assertEqual(sub["status"], "done")
+        self.assertIn("قرار المالك 2026-08-24", sub.get("resolution", ""))
+        self.assertFalse(R.is_due(sub, _day("2026-08-23")))
+        self.assertFalse(R.is_due(sub, _day("2026-08-26")))
+
+    def test_two_week_review_reminds_three_days_ahead(self):
+        """المراجعة الجديدة (استحقاق 2026-09-07) ترث قاعدة T-3 حرفياً."""
+        sub = next(i for i in self.items
+                   if i["id"] == "sportmonks_two_week_review")
+        self.assertEqual(sub["due"], "2026-09-07")
+        self.assertEqual(sub["priority"], "P1")
         self.assertEqual(R._lead(sub), 3)
-        self.assertTrue(R.is_due(sub, _day("2026-08-23")))
-        self.assertFalse(R.is_due(sub, _day("2026-08-22")))
+        self.assertTrue(R.is_due(sub, _day("2026-09-04")))
+        self.assertFalse(R.is_due(sub, _day("2026-09-03")))
 
     def test_verdict_moved_two_weeks_later(self):
         """التمديد أسبوعان: الحكم من 1-3 سبتمبر إلى ~17 سبتمبر."""
