@@ -674,11 +674,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د66)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -695,11 +695,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 49,
-   "minute": 58,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د58)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -716,11 +716,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 49,
-   "level": "amber",
-   "score": 53,
-   "minute": 64,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د64)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -737,11 +737,14 @@
    "mine": false,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "level": "red",
+   "score": 95,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د66)"
+    "النتيجة الحالية 0-3 تُسقط التوقع (د90)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -758,16 +761,26 @@
    "mine": true,
    "pick": "home",
    "confidence": 53,
-   "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "level": "red",
+   "score": 72,
+   "minute": 73,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د73)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 42,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 62,
+   "score_xg": 69,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 66,
+   "sent_minute": 62,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د62)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1525958",
@@ -779,12 +792,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 54,
-   "minute": 45,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
-    "موجة تسديد على المرمى من الضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -801,11 +813,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د69)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -823,10 +835,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "amber",
-   "score": 54,
-   "minute": 65,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د65)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -845,12 +857,570 @@
    "confidence": 42,
    "level": "red",
    "score": 68,
+   "minute": 89,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د89)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1565226",
+   "date": "2026-08-24",
+   "home": "Oţelul",
+   "away": "Arges Pitesti",
+   "league": "Liga I (Romania)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "red",
+   "score": 76,
    "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1500061",
+   "date": "2026-08-24",
+   "home": "Deportivo Español",
+   "away": "Lujan",
+   "league": "Primera C (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 41,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1554132",
+   "date": "2026-08-24",
+   "home": "FK Spartak Zdrepceva KRV",
+   "away": "Javor",
+   "league": "Prva Liga (Serbia)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 40,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1500060",
+   "date": "2026-08-24",
+   "home": "Centro Español",
+   "away": "Estrella Del Sur",
+   "league": "Primera C (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "amber",
+   "score": 47,
+   "minute": 54,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1551085",
+   "date": "2026-08-24",
+   "home": "Lokomotiv Plovdiv",
+   "away": "Arda Kardzhali",
+   "league": "First League (Bulgaria)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1602991",
+   "date": "2026-08-24",
+   "home": "Al-Ittihad FC",
+   "away": "Al-Hazm",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 62,
+   "level": "red",
+   "score": 66,
+   "minute": 76,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د76)",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": true,
+   "alert_minute": 74,
+   "score_xg": 60,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 74,
+   "sent_factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د74)",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
+  },
+  {
+   "fid": "1557376",
+   "date": "2026-08-24",
+   "home": "Fulham",
+   "away": "Chelsea",
+   "league": "Premier League (England)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 46,
+   "level": "red",
+   "score": 65,
+   "minute": 40,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": true,
+   "alert_minute": 40,
+   "score_xg": 37,
+   "level_xg": "green",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 40,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
+  },
+  {
+   "fid": "1550684",
+   "date": "2026-08-24",
+   "home": "Hallescher FC",
+   "away": "FC Schalke 04",
+   "league": "DFB Pokal (Germany)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 58,
+   "level": "red",
+   "score": 78,
+   "minute": 94,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د94)",
+    "موجة ركنيات لصالح المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1552447",
+   "date": "2026-08-24",
+   "home": "Reims",
+   "away": "Annecy",
+   "league": "Ligue 2 (France)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 52,
+   "level": "red",
+   "score": 68,
+   "minute": 59,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د59)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1609000",
+   "date": "2026-08-24",
+   "home": "Salernitana",
+   "away": "Sorrento",
+   "league": "Serie C - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 57,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1608996",
+   "date": "2026-08-24",
+   "home": "Crotone",
+   "away": "Foggia",
+   "league": "Serie C - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 54,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1609000",
+   "date": "2026-08-24",
+   "home": "Salernitana",
+   "away": "Sorrento",
+   "league": "Serie C - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 57,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1608996",
+   "date": "2026-08-24",
+   "home": "Crotone",
+   "away": "Foggia",
+   "league": "Serie C - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د43)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1570349",
+   "date": "2026-08-24",
+   "home": "Malaga",
+   "away": "Deportivo La Coruna",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 36,
+   "level": "red",
+   "score": 71,
+   "minute": 84,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": true,
+   "alert_minute": 84,
+   "score_xg": 65,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 71,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
+  },
+  {
+   "fid": "1508843",
+   "date": "2026-08-24",
+   "home": "Breidablik",
+   "away": "Fram Reykjavik",
+   "league": "Úrvalsdeild (Iceland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 3-4 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1585716",
+   "date": "2026-08-24",
+   "home": "Sivasspor",
+   "away": "Manisa F.K.",
+   "league": "1. Lig (Turkey)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 50,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1576460",
+   "date": "2026-08-24",
+   "home": "Feirense",
+   "away": "FC Porto B",
+   "league": "Segunda Liga (Portugal)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 43,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1608234",
+   "date": "2026-08-24",
+   "home": "Folgore Caratese",
+   "away": "Dolomiti Bellunesi",
+   "league": "Serie C - Girone A (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1498745",
+   "date": "2026-08-24",
+   "home": "Club Atlético Güemes",
+   "away": "Atletico DE Rafaela",
+   "league": "Primera Nacional (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 36,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1570349",
+   "date": "2026-08-24",
+   "home": "Malaga",
+   "away": "Deportivo La Coruna",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 36,
+   "level": "amber",
+   "score": 54,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د43)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 40,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1608991",
+   "date": "2026-08-24",
+   "home": "Team Altamura",
+   "away": "SS Monopoli",
+   "league": "Serie C - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 36,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623369",
+   "date": "2026-08-24",
+   "home": "Alianza Universidad",
+   "away": "Bentín Tacna Heroica",
+   "league": "Segunda División (Peru)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 43,
+   "minute": 47,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1608618",
+   "date": "2026-08-24",
+   "home": "Reggiana",
+   "away": "Ravenna",
+   "league": "Serie C - Girone B (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 47,
+   "level": "red",
+   "score": 68,
+   "minute": 89,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د89)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549610",
+   "date": "2026-08-24",
+   "home": "Tigres FC",
+   "away": "Union Magdalena",
+   "league": "Primera B (Colombia)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 40,
+   "level": "amber",
+   "score": 48,
+   "minute": 55,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د55)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549609",
+   "date": "2026-08-24",
+   "home": "Real Santander",
+   "away": "Ind. Yumbo",
+   "league": "Primera B (Colombia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -26947,6 +27517,261 @@
       "rc": 0,
       "sv": 0
      }
+    }
+   ]
+  },
+  {
+   "fid": "1570350",
+   "date": "2026-08-24",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Osasuna",
+   "away": "Levante",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": true,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 2,
+      "poss": 46,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "poss": 54,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 0.1086,
+     "xg_a": 0.0508
+    },
+    {
+     "minute": 26,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 3,
+      "poss": 37,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 0,
+      "poss": 63,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 0.1086,
+     "xg_a": 0.09570000000000001
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 7,
+      "shots": 11,
+      "cor": 9,
+      "poss": 49,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 8,
+      "cor": 3,
+      "poss": 51,
+      "yc": 1,
+      "rc": 0,
+      "sv": 7
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1550684",
+   "date": "2026-08-24",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Hallescher FC",
+   "away": "FC Schalke 04",
+   "league": "DFB Pokal (Germany)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 5,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 23,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 29,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 71,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 5,
+      "cor": 1,
+      "poss": 17,
+      "yc": 3,
+      "rc": 0,
+      "sv": 5
+     },
+     "a": {
+      "sog": 6,
+      "shots": 17,
+      "cor": 7,
+      "poss": 83,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570349",
+   "date": "2026-08-24",
+   "minute": 84,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Malaga",
+   "away": "Deportivo La Coruna",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": true,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 5,
+      "poss": 63,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 1,
+      "poss": 37,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     },
+     "xg_h": 0.1376,
+     "xg_a": 0.9369
+    },
+    {
+     "minute": 61,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 5,
+      "cor": 5,
+      "poss": 55,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 3,
+      "cor": 1,
+      "poss": 45,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     },
+     "xg_h": 0.9936,
+     "xg_a": 1.0119
+    },
+    {
+     "minute": 84,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 11,
+      "cor": 6,
+      "poss": 55,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 4,
+      "shots": 6,
+      "cor": 4,
+      "poss": 45,
+      "yc": 3,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 1.2278,
+     "xg_a": 1.9591
     }
    ]
   }
