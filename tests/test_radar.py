@@ -869,3 +869,63 @@ class TestDurableWriteAtSendTime(unittest.TestCase):
         body = src.split("def radar_sweep(")[1].split("\ndef ")[0]
         self.assertIn("if sent_now or warn_sent:", body)
         self.assertIn("_flush_radar_log(log)", body)
+
+
+class TestLoadShed(unittest.TestCase):
+    """🛗 REC-018 (قرار المالك 2026-08-24): تحت 15% من سقف API يقتصر الرادار
+    على قائمة التركيز ودوريات الصدارة — المغمور أول ما يُضحى به."""
+
+    def _state(self, remaining, limit=7500):
+        return {"api_quota": {"remaining": remaining, "limit": limit},
+                "10": {"status": "1H"}, "20": {"status": "1H"},
+                "30": {"status": "1H"}}
+
+    PEND = {"10": {"top": True, "confidence": 60},
+            "20": {"top": False, "confidence": 80},
+            "30": {"top": False, "confidence": 40}}
+
+    def setUp(self):
+        # note_load_shed يرسل إنذاراً ويكتب الحالة — نعزله
+        orig = M.note_load_shed
+        M.note_load_shed = lambda s: None
+        self.addCleanup(lambda: setattr(M, "note_load_shed", orig))
+
+    def test_below_threshold_drops_obscure_keeps_top_and_watch(self):
+        st = self._state(remaining=900)          # 12% < 15%
+        out = M.select_radar_fixtures(st, self.PEND, watch={"30"})
+        self.assertIn("10", out)                 # صدارة تبقى
+        self.assertIn("30", out)                 # قائمة التركيز لا تُمس أبداً
+        self.assertNotIn("20", out)              # المغمور يُسقط
+
+    def test_above_threshold_everything_selected(self):
+        st = self._state(remaining=3000)         # 40%
+        out = M.select_radar_fixtures(st, self.PEND, watch=set())
+        self.assertEqual(set(out), {"10", "20", "30"})
+
+    def test_no_quota_reading_means_no_shedding(self):
+        st = {"10": {"status": "1H"}, "20": {"status": "1H"}}
+        out = M.select_radar_fixtures(st, self.PEND, watch=set())
+        self.assertEqual(set(out), {"10", "20"})
+
+    def test_kill_switch(self):
+        orig = M.LOAD_SHED
+        M.LOAD_SHED = False
+        self.addCleanup(lambda: setattr(M, "LOAD_SHED", orig))
+        self.assertFalse(M.load_shed_active(self._state(remaining=100)))
+
+
+class TestS2PromptSurgery(unittest.TestCase):
+    """🔬 REC-019 (قرار المالك 2026-08-24): بنود الركنيات ذرية والثابتة
+    نعم/لا — والتقارير الجديدة موسومة prompt_rev:2 فلا تختلط بسجل 1042 بنداً."""
+
+    def test_atomic_bullets_in_prematch_prompt(self):
+        self.assertIn("أغلبية الركنيات", M.SYSTEM_PROMPT_PREMATCH)
+        self.assertIn("نطاق الركنيات", M.SYSTEM_PROMPT_PREMATCH)
+        self.assertIn("هدف من كرة ثابتة", M.SYSTEM_PROMPT_PREMATCH)
+        # الصياغة المركبة القديمة زالت من بنود المخرجات
+        self.assertNotIn("الركنيات: من يكسب أكثر وتقدير إجماليها",
+                         M.SYSTEM_PROMPT_PREMATCH)
+
+    def test_both_captures_stamp_prompt_rev(self):
+        src = Path(M.__file__).read_text(encoding="utf-8")
+        self.assertEqual(src.count('"prompt_rev": 2,'), 2)

@@ -232,6 +232,12 @@ RED_WARN_ALERT = True          # مفتاح التراجع الفوري (False =
 # فيضان 51/55 رسالة يومي 22-23 أغسطس مقابل تصميم ~3/يوم. الشاشة والقياس
 # كاملان لكل العالم؛ الكبح على رسالة تيليجرام وحدها. False = عالمي كالسابق
 RED_WARN_MINE_ONLY = True
+# 🛗 REC-018 (قرار المالك 2026-08-24): سلّم تخفيف حمولة API-Football المسجَّل
+# مسبقاً — ذروة مقاسة 88.5% من السقف يوم خميس تصفيات، ودور المجموعات قادم.
+# تحت النسبة يقتصر الرادار على قائمة التركيز + دوريات الصدارة (المغمور أول
+# ما يُضحى به، ودورياته والتقييم والحرس آخر ما يُمس). مفتاح التراجع LOAD_SHED
+LOAD_SHED = True
+LOAD_SHED_RATIO = 0.15
 # 📸 REC-015: حالة لحظة الإرسال تُجمَّد في حقول sent_* — الصف يخزن ذروة المسح
 # وقد تكون أقدم/أدنى من قراءة الإرسال (21 صفاً أحمر أُرسل واحتُسب كهرمانياً)
 SENT_SNAPSHOT = True
@@ -683,9 +689,10 @@ SYSTEM_PROMPT_PREMATCH = (
     "⚽ النتيجة المتوقعة وهامش الفوز\n"
     "🥅 كلا الفريقين يسجلان؟ وإجمالي الأهداف المتوقع (فوق/تحت 2.5)\n"
     "🎯 المسجل المحتمل بالاسم (وصانع اللعب الأخطر)\n"
-    "🚩 الركنيات: من يكسب أكثر وتقدير إجماليها\n"
+    "🚩 أغلبية الركنيات: أي فريق يكسب ركنيات أكثر؟ (ادعاء واحد لا غير)\n"
+    "🚩 نطاق الركنيات: إجمالي ركنيات المباراة أكثر أم أقل من 9.5؟\n"
     "🟨 البطاقات: لاعبون مرشحون بالاسم إن أمكن، واحتمال بطاقة حمراء\n"
-    "⚡ الكرات الثابتة: خطورة الركلات الحرة والرميات الطويلة\n"
+    "⚡ هدف من كرة ثابتة (ركلة حرة/ركنية/رمية): نعم أم لا؟\n"
     "⏱ نمط الشوطين: أيهما أغزر أهدافاً، واحتمال انقلاب النتيجة\n"
     "🔑 مفتاح المباراة: المعركة الحاسمة التي تحسم اللقاء\n"
     "ثم سطر أخير: تذكير: هذه توقعات تحليلية وليست ضمانات.\n"
@@ -997,6 +1004,7 @@ def prematch_reports(wl_data: dict, watch: set) -> bool:
             "ar_home": p.get("ar_home", ""), "ar_away": p.get("ar_away", ""),
             "league": p.get("ar_league") or p.get("league", ""),
             "report": report,
+            "prompt_rev": 2,   # 🔬 REC-019: بنود ذرية — تُقاس شريحة مستقلة
             "sent_at": datetime.now(timezone.utc).isoformat(),
         }
         SCENARIOS_FILE.write_text(
@@ -1153,6 +1161,7 @@ def shadow_reports(watch: set) -> None:
             "ar_home": p.get("ar_home", ""), "ar_away": p.get("ar_away", ""),
             "league": p.get("ar_league") or p.get("league", ""),
             "report": report,
+            "prompt_rev": 2,   # 🔬 REC-019: بنود ذرية — تُقاس شريحة مستقلة
             "shadow": True,                # صامت — التقط للتعلم فقط
             "gold": gold,                  # ذهب (ثقة ≥70) — لعدّاد الحصة الإضافية
             "sent_at": datetime.now(timezone.utc).isoformat(),
@@ -2138,9 +2147,47 @@ def radar_is_mine(e: dict) -> bool:
     return bool((e.get("radar") or {}).get("mine"))
 
 
+def load_shed_active(state: dict) -> bool:
+    """🛗 REC-018: هل الرصيد تحت عتبة التخفيف؟ يقرأ آخر قراءة سقف حقيقية
+    (api_guard يخزنها من ترويسات كل رد). غياب القراءة = لا تخفيف — الحارس
+    لا يخنق النظام على جهل."""
+    if not LOAD_SHED:
+        return False
+    q = (state.get("api_quota") or {}) if isinstance(state, dict) else {}
+    try:
+        remaining, limit = int(q.get("remaining")), int(q.get("limit"))
+    except (TypeError, ValueError):
+        return False
+    return limit > 0 and (remaining / limit) < LOAD_SHED_RATIO
+
+
+def note_load_shed(state: dict) -> None:
+    """يسجّل تفعيل اليوم (عدّاد أيام + آخر تفعيل) ويُنذر المالك مرة كل 6h."""
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    box = state.setdefault("load_shed", {"days": 0, "last": ""})
+    if box.get("last") != today:
+        box["days"] = int(box.get("days") or 0) + 1
+        box["last"] = today
+    try:
+        api_guard.alert_once(
+            "load_shed",
+            "🛗 تخفيف حمولة API مفعّل\n"
+            "الرصيد تحت 15% من السقف — الرادار يقتصر الآن على قائمة التركيز "
+            "ودوريات الصدارة، والدوريات المغمورة تتوقف إحصاءاتها مؤقتاً حتى "
+            "يتصفّر الرصيد منتصف الليل UTC.\n"
+            "دورياتك والتقييم الصباحي والحراس لا يُمسون.")
+    except Exception as exc:
+        print("تعذر إنذار التخفيف:", exc)
+
+
 def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
     """اختيار مباريات الرادار تحت السقف: قائمة التركيز أولاً، ثم الدوريات
-    الكبرى، ثم الأعلى ثقة — الأهم للمالك لا يُزاحم أبداً."""
+    الكبرى، ثم الأعلى ثقة — الأهم للمالك لا يُزاحم أبداً.
+    🛗 وتحت عتبة REC-018 يُسقط المغمور كلياً (أول درجات السلّم)."""
+    shed = load_shed_active(state)
+    if shed:
+        note_load_shed(state)
+        print("🛗 تخفيف الحمولة: رادار قائمة التركيز ودوريات الصدارة فقط")
     cands = []
     for fid, e in state.items():
         if e.get("status") not in LIVE_STATUSES:
@@ -2148,6 +2195,8 @@ def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
         p = v2_pending.get(fid)
         if not p:
             continue
+        if shed and fid not in watch and not p.get("top"):
+            continue   # 🛗 المغمور يُضحى به أولاً — القائمة والصدارة محفوظتان
         rank = (0 if fid in watch else (1 if p.get("top") else 2),
                 -(p.get("confidence") or 0))
         cands.append((rank, fid))

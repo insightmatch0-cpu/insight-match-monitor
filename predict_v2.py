@@ -2425,6 +2425,25 @@ def digest_sections(new_preds: list) -> list:
     return lines
 
 
+def load_shed_line(state: dict = None) -> str:
+    """🛗 سطر نشرة REC-018: يظهر فقط حين فُعّل التخفيف مؤخراً — صمت في
+    الأيام العادية (الضجيج عدو الانتباه)."""
+    try:
+        st = state if state is not None else api_guard.load_state()
+        box = (st or {}).get("load_shed") or {}
+        last, days = box.get("last") or "", int(box.get("days") or 0)
+        if not last:
+            return ""
+        today = now_utc().strftime("%Y-%m-%d")
+        yday = (now_utc() - timedelta(days=1)).strftime("%Y-%m-%d")
+        if last not in (today, yday):
+            return ""
+        return (f"🛗 تخفيف الحمولة فُعِّل ({'اليوم' if last == today else 'أمس'}) — "
+                f"رادار المغمور توقف مؤقتاً لحماية دورياتك. أيام التفعيل: {days}")
+    except Exception:
+        return ""
+
+
 def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
                  new_lessons: int = 0, user_stats: dict = None) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
@@ -2639,6 +2658,9 @@ def main() -> None:
         quota = api_guard.quota_line()
         if quota:
             digest += "\n" + quota
+        shed = load_shed_line()
+        if shed:
+            digest += "\n" + shed
         # 📡 نبض التسليم (2026-08-15): النظام يتحقق أن رسائله وصلت فعلاً.
         # يُحسب من آخر بث مسجّل في state.json. «وصلت إلى الجهاز» لا «قُرئت» —
         # تيليجرام لا يمنح البوتات إيصال قراءة، ولن ندّعي ما لا نعرفه.
