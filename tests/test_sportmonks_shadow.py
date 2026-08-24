@@ -47,9 +47,13 @@ class TestXgFormPick(unittest.TestCase):
         return [{"date": "2026-08-01", "xf": f, "xa": a} for f, a in pairs]
 
     def test_no_pick_before_min_matches(self):
-        h = self._hist((2, 1), (2, 1))          # مباراتان فقط
-        a = self._hist((1, 1), (1, 1), (1, 1))
-        self.assertIsNone(S.xgform_pick(h, a))
+        """لا ترجيح تحت الحد الأدنى — الحد نفسه يُقرأ من الثابت لا يُثبَّت رقماً
+        (تحديث 2026-08-24: خُفض 3 → 2 بعد أن أنتج القياس صفراً 11 يوماً؛
+        الحارس هو أن الترجيح يمتنع تحت الحد أياً كان)."""
+        short = self._hist(*([(2, 1)] * (S.FORM_MIN_MATCHES - 1)))
+        enough = self._hist(*([(1, 1)] * S.FORM_MIN_MATCHES))
+        self.assertIsNone(S.xgform_pick(short, enough))
+        self.assertIsNone(S.xgform_pick(enough, short))
 
     def test_clear_edge_picks_stronger_side(self):
         h = self._hist((2.5, 0.5), (2.0, 0.8), (1.9, 0.6))
@@ -120,9 +124,13 @@ class TestMeasurementIntegrity(unittest.TestCase):
                          "قص جديد في المجمّع — صنّفه (عقيدة لا-أسقف-قياس)")
 
     def test_pick_computed_before_history_append(self):
-        """الترجيح يُحسب قبل إلحاق مباراة اليوم — وإلا تسرّب المستقبل للقياس."""
+        """الترجيح يُحسب قبل إلحاق مباريات اليوم — وإلا تسرّب المستقبل للقياس.
+        (أُعيد ربطه ببنية 2026-08-24: التاريخ صار يُبنى من كل مباريات اليوم
+        في كتلة تالية للترجيحات — نفس الحارس، بنفس القوة، على المرساة الجديدة.)"""
         src = inspect.getsource(S.main)
-        self.assertLess(src.index("xgform_pick("), src.index("h_hist.append"))
+        self.assertLess(src.index("xgform_pick("),
+                        src.index('shadow["teams"].setdefault(_team_key(sm["home"])'),
+                        "إدخال مباريات اليوم للتاريخ سبق حساب الترجيح — تسريب مستقبل")
 
 
 class TestKillSwitch(unittest.TestCase):
