@@ -2496,8 +2496,14 @@
   "reports": [
    {
     "fid": "1493087",
-    "score": "",
-    "s1": {},
+    "score": "1-1",
+    "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 62,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -2552,6 +2558,11 @@
     "fid": "1575466",
     "score": "2-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 72,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 72,
@@ -2618,6 +2629,11 @@
     "fid": "1570344",
     "score": "2-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 64,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 50,
@@ -2697,6 +2713,11 @@
     "fid": "1552141",
     "score": "2-5",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 69,
+      "correct": true
+     },
      "v2": {
       "pick": "away",
       "confidence": 71,
@@ -2757,6 +2778,11 @@
     "fid": "1563104",
     "score": "3-1",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 58,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 36,
@@ -2819,6 +2845,11 @@
     "fid": "1552139",
     "score": "3-1",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 55,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 57,
@@ -3164,5 +3195,5 @@
   ]
  },
  "pred_updated": "2026-08-23T04:35:51.116453+00:00",
- "updated": "2026-08-24T03:07:09.886484+00:00"
+ "updated": "2026-08-24T04:09:04.894635+00:00"
 }
