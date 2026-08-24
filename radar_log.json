@@ -1047,10 +1047,10 @@
    "pick": "away",
    "confidence": 58,
    "level": "red",
-   "score": 67,
-   "minute": 57,
+   "score": 75,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د57)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د71)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
@@ -1093,10 +1093,10 @@
    "pick": "home",
    "confidence": 57,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 52,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د52)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1114,10 +1114,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 43,
-   "minute": 48,
+   "score": 47,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د48)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د54)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1219,11 +1219,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 63,
-   "minute": 80,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د80)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د86)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1262,10 +1262,10 @@
    "pick": "home",
    "confidence": 38,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1283,15 +1283,38 @@
    "pick": "home",
    "confidence": 36,
    "level": "amber",
-   "score": 43,
-   "minute": 47,
+   "score": 46,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
    ],
    "alerted": null,
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1570349",
+   "date": "2026-08-24",
+   "home": "Malaga",
+   "away": "Deportivo La Coruna",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 36,
+   "level": "amber",
+   "score": 54,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د43)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 40,
+   "level_xg": "amber"
   }
  ],
  "resolved": [
@@ -27473,6 +27496,77 @@
       "yc": 1,
       "rc": 0,
       "sv": 7
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1550684",
+   "date": "2026-08-24",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Hallescher FC",
+   "away": "FC Schalke 04",
+   "league": "DFB Pokal (Germany)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 5,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 23,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 29,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 71,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 5,
+      "cor": 1,
+      "poss": 17,
+      "yc": 3,
+      "rc": 0,
+      "sv": 5
+     },
+     "a": {
+      "sog": 6,
+      "shots": 17,
+      "cor": 7,
+      "poss": 83,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
      }
     }
    ]
