@@ -565,7 +565,9 @@ class TestMineNineSlice(_FrozenClock):
 
     def test_resolve_carries_mine_flag_like_top(self):
         src = (ROOT / "predict_v2.py").read_text(encoding="utf-8")
-        self.assertIn('"mine": p.get("mine", False)', src)
+        # REC-016 (قرار المالك 2026-08-24): غياب المصدر → None لا False
+        self.assertIn('"mine": p.get("mine")', src)
+        self.assertNotIn('"mine": p.get("mine", False)', src)
 
     def test_radar_stamps_mine_alongside_top(self):
         src = (ROOT / "monitor.py").read_text(encoding="utf-8")
@@ -573,7 +575,8 @@ class TestMineNineSlice(_FrozenClock):
         # كل موضع ختم top يرافقه ختم mine — العدّان متساويان بحكم البناء
         self.assertEqual(src.count('"mine": radar_is_mine(e)'),
                          src.count('"top": radar_is_top(e)'))
-        self.assertEqual(src.count('"mine": bool(p.get("mine", radar.get("mine")))'),
+        # REC-016: نسخ mine بلا bool() قسرية (None يبقى None — غير مصنف)
+        self.assertEqual(src.count('"mine": p.get("mine", radar.get("mine"))'),
                          src.count('"top": bool(p.get("top", radar.get("top")))'))
 
     def test_radar_resolve_builds_mine_only_block(self):
