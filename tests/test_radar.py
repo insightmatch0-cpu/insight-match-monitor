@@ -259,6 +259,14 @@ class TestDramaAlerts(unittest.TestCase):
     """🚨 عقل S3 (سيناريوهات المالك الحرفية 2026-08-01): تنبيه هدف/تعادل/قلب
     نتيجة من الدقيقة 75 فقط، مرة لكل مباراة، ويُقيَّم صباحاً بلوحته الخاصة."""
 
+    def setUp(self):
+        # 📵 بوابة التسعة/المفضلة (قرار المالك 2026-08-24 مساءً) تُفحص في
+        # جرزها المخصصة — هنا نعطلها لفحص الآليات الأخرى بمعزل عنها
+        _orig_gate = M.DRAMA_MINE_ONLY
+        M.DRAMA_MINE_ONLY = False
+        self.addCleanup(lambda: setattr(M, "DRAMA_MINE_ONLY", _orig_gate))
+
+
     def test_owner_scenario_1_trailing_team_surging(self):
         """سيناريو المالك 1: الهلال متأخر 0-1 ويضغط بقوة حقيقية (موجة تسديد
         وركنيات وضغط وحارس الخصم محاصر) → تنبيه هدف التعادل.
@@ -562,8 +570,8 @@ class TestSweepAlertRace(unittest.TestCase):
         """بنيوي: يسقط لو عاد نداء التنبيه داخل الجولة بلا النسخة الحية."""
         import inspect
         src = inspect.getsource(M.radar_sweep)
-        self.assertIn("maybe_radar_alert(fid, e, alert_budget, log)", src)
-        self.assertIn("maybe_red_alert(fid, e, alert_budget, log)", src)
+        self.assertIn("maybe_radar_alert(fid, e, alert_budget, log, watch=watch)", src)
+        self.assertIn("maybe_red_alert(fid, e, alert_budget, log, watch=watch)", src)
 
 
 class TestDangerClimb(unittest.TestCase):
@@ -762,7 +770,7 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
     def test_sweep_passes_its_live_log(self):
         """حارس بنيوي (درس سباق 2026-08-15): الجولة تمرّر نسختها الحية."""
         src = Path(M.__file__).read_text(encoding="utf-8")
-        self.assertIn("warn_budget, log)", src)
+        self.assertIn("warn_budget, log, watch=watch)", src)
 
 
 class TestSentSnapshotAndDedup(unittest.TestCase):
@@ -929,3 +937,80 @@ class TestS2PromptSurgery(unittest.TestCase):
     def test_both_captures_stamp_prompt_rev(self):
         src = Path(M.__file__).read_text(encoding="utf-8")
         self.assertEqual(src.count('"prompt_rev": 2,'), 2)
+
+
+class TestDramaPhoneGate(unittest.TestCase):
+    """📵 قرار المالك 2026-08-24 مساءً: تنبيهات الدراما تصل الهاتف لدورياته
+    التسعة + مباريات قائمة التركيز فقط — والصف يُسجَّل للقياس بوسم gated."""
+
+    def setUp(self):
+        self.sent = []
+        orig = M.send_telegram
+        M.send_telegram = lambda t, **k: self.sent.append(t)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+        import tempfile
+        from pathlib import Path as _P
+        orig_file = M.RADAR_FILE
+        M.RADAR_FILE = _P(tempfile.mkdtemp()) / "radar_log.json"
+        self.addCleanup(lambda: setattr(M, "RADAR_FILE", orig_file))
+
+    def _e(self, mine):
+        snaps = [
+            {"minute": 70, "gh": 0, "ga": 1,
+             "h": {"sog": 2, "cor": 3, "shots": 5, "sv": 0, "rc": 0},
+             "a": {"sog": 0, "cor": 0, "shots": 1, "sv": 2, "rc": 0}},
+            {"minute": 80, "gh": 0, "ga": 1,
+             "h": {"sog": 5, "cor": 6, "shots": 9, "sv": 0, "rc": 0},
+             "a": {"sog": 0, "cor": 0, "shots": 1, "sv": 5, "rc": 0}},
+        ]
+        return {"home": "H", "away": "A", "score": "0-1", "minute": 80,
+                "radar": {"snaps": snaps, "mine": mine}}
+
+    def test_outside_gate_logged_not_sent(self):
+        log = {"alerts": []}
+        M.maybe_radar_alert("1", self._e(mine=False), {"used": 0}, log,
+                            watch=set())
+        self.assertEqual(self.sent, [])
+        self.assertEqual(len(log["alerts"]), 1)
+        self.assertTrue(log["alerts"][0]["gated"])
+
+    def test_mine_league_sends(self):
+        log = {"alerts": []}
+        ok = M.maybe_radar_alert("2", self._e(mine=True), {"used": 0}, log,
+                                 watch=set())
+        self.assertTrue(ok)
+        self.assertEqual(len(self.sent), 1)
+        self.assertIsNone(log["alerts"][0].get("gated"))
+
+    def test_watchlist_favorite_sends_even_outside_nine(self):
+        log = {"alerts": []}
+        M.maybe_radar_alert("3", self._e(mine=False), {"used": 0}, log,
+                            watch={"3"})
+        self.assertEqual(len(self.sent), 1)
+
+    def test_red_advantage_gate_same_rule(self):
+        e = self._e(mine=False)
+        e["radar"]["snaps"][-1]["a"]["rc"] = 1   # طرد على المتقدم
+        log = {"alerts": []}
+        M.maybe_red_alert("4", e, {"used": 0}, log, watch=set())
+        self.assertEqual(self.sent, [])
+        self.assertEqual(len(log["alerts"]), 1)
+        self.assertTrue(log["alerts"][0]["gated"])
+
+    def test_early_red_gate_accepts_watchlist(self):
+        e = {"home": "H", "away": "A", "score": "0-1", "minute": 80,
+             "radar": {"mine": False}}
+        red = {"level": "red", "score": 72, "factors": ["x"]}
+        ok = M.maybe_red_warning_alert("5", e, red, 80, "home", 60,
+                                       {"used": 0}, {"warnings": []},
+                                       watch={"5"})
+        self.assertTrue(ok)
+
+    def test_kill_switch_restores_worldwide(self):
+        orig = M.DRAMA_MINE_ONLY
+        M.DRAMA_MINE_ONLY = False
+        self.addCleanup(lambda: setattr(M, "DRAMA_MINE_ONLY", orig))
+        log = {"alerts": []}
+        M.maybe_radar_alert("6", self._e(mine=False), {"used": 0}, log,
+                            watch=set())
+        self.assertEqual(len(self.sent), 1)

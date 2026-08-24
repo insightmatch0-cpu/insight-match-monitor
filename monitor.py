@@ -238,6 +238,10 @@ RED_WARN_MINE_ONLY = True
 # ما يُضحى به، ودورياته والتقييم والحرس آخر ما يُمس). مفتاح التراجع LOAD_SHED
 LOAD_SHED = True
 LOAD_SHED_RATIO = 0.15
+# 📵 قرار المالك 2026-08-24 مساءً (لقطة النشرة): تنبيهات الدراما تصل الهاتف
+# لدورياته التسعة + مباريات قائمة التركيز (المفضلة) فقط — الشاشة والقياس
+# يواصلان تغطية العالم (الصف يُسجَّل بوسم gated). False = عالمي كما كان
+DRAMA_MINE_ONLY = True
 # 📸 REC-015: حالة لحظة الإرسال تُجمَّد في حقول sent_* — الصف يخزن ذروة المسح
 # وقد تكون أقدم/أدنى من قراءة الإرسال (21 صفاً أحمر أُرسل واحتُسب كهرمانياً)
 SENT_SNAPSHOT = True
@@ -1651,7 +1655,8 @@ def publish_radar_live(state: dict) -> bool:
 
 
 def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
-                            pick: str, conf, budget: dict, log: dict = None) -> bool:
+                            pick: str, conf, budget: dict, log: dict = None,
+                            watch: set = None) -> bool:
     """🔴 إنذار الرادار الأحمر **المبكر** إلى تيليجرام (قرار المالك 2026-08-19).
 
     لماذا المبكر وحده: قياس 223 إنذاراً أحمر منذ انطلاق الموسم أظهر أن 196
@@ -1666,9 +1671,10 @@ def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
         return False
     if (minute or 0) > RED_WARN_ALERT_MAX:
         return False
-    # 🎛 بوابة التسعة (قرار المالك 2026-08-24 — REC-014 ج): رسالة الهاتف
-    # لدورياته حصراً؛ الإنذار يبقى مسجلاً ومقيساً للجميع على الشاشة
-    if RED_WARN_MINE_ONLY and not radar_is_mine(e):
+    # 🎛 بوابة التسعة + المفضلة (قرارا المالك 2026-08-24 صباحاً ومساءً):
+    # رسالة الهاتف لدورياته أو لمباراة على قائمة تركيزه؛ الإنذار يبقى
+    # مسجلاً ومقيساً للجميع على الشاشة
+    if RED_WARN_MINE_ONLY and not radar_phone_worthy(fid, e, watch):
         return False
     radar = e.get("radar") or {}
     if radar.get("warn_alerted") or budget["used"] >= RED_WARN_ALERT_CAP_PER_RUN:
@@ -1843,14 +1849,14 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
                                                   and d["signal"] >= RADAR_ALERT_SIGNAL_MIN)}})
             e["radar"] = radar
             # 🚨 عقل S3 في المسار السريع: التنبيه يصل خلال ~90 ثانية من الإشارة
-            maybe_radar_alert(fid, e, alert_budget)
+            maybe_radar_alert(fid, e, alert_budget, watch=watch)
             # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
-            maybe_red_alert(fid, e, alert_budget)
+            maybe_red_alert(fid, e, alert_budget, watch=watch)
             # 🔴 الإنذار الأحمر المبكر — ميزانيته مستقلة عن الدراما
             maybe_red_warning_alert(fid, e, verdict, minute,
                                     p.get("pick") or radar.get("pick"),
                                     p.get("confidence") or radar.get("confidence"),
-                                    warn_budget)
+                                    warn_budget, watch=watch)
         if publish_radar_live(state):
             published += 1
     return published
@@ -1936,7 +1942,8 @@ def radar_claim_lists() -> tuple:
     return set(log.get("silenced") or []), set(log.get("proven") or [])
 
 
-def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
+def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None,
+                      watch: set = None) -> bool:
     """يرسل تنبيه الدراما مرة واحدة لكل مباراة (يُرقّى فقط لادعاء أقوى —
     مثال: تنبيه تعادل ثم طرد يرفعه لقلب نتيجة)، ويسجله في radar_log.json
     ليقيَّم صباحاً على النتيجة الحقيقية — عقل S3 له لوحة صدق خاصة به.
@@ -1961,7 +1968,10 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool
     silenced_keys, proven_keys = (radar_claim_lists() if RADAR_ALERT_STOP_RULE
                                   else (set(), set()))
     silent = verdict["key"] in silenced_keys
-    if not silent:
+    # 📵 بوابة التسعة + المفضلة (قرار المالك 2026-08-24 مساءً): خارجها
+    # يُسجَّل التنبيه للقياس بوسم gated ولا يُرسل — كالإسكات تماماً
+    gated = DRAMA_MINE_ONLY and not radar_phone_worthy(fid, e, watch)
+    if not silent and not gated:
         if budget["used"] >= RADAR_ALERT_CAP_PER_RUN:
             return False
         budget["used"] += 1
@@ -1996,6 +2006,7 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool
         # قاعدة الإيقاف (REC-005): وسم الإسكات يُحفظ مع التنبيه — تبويب الرادار
         # يعرف أنه لم يُرسل، والتقييم الصباحي يقيسه كالمعتاد
         "silenced": silent,
+        "gated": gated or None,   # 📵 خارج التسعة/المفضلة — مُقاس غير مُرسل
         # حزمة الأدلة (طلب المالك 2026-08-02 — تحقق الجذر): آخر لقطات الأرقام
         # التي بُني عليها التنبيه تُحفظ معه، فأي خطأ مستقبلي يُشرَّح لأرقامه
         "evidence": (radar.get("snaps") or [])[-3:],
@@ -2026,7 +2037,8 @@ def evaluate_red_advantage(snaps: list, gh: int, ga: int):
     return {"side": "away" if red_h else "home"}
 
 
-def maybe_red_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
+def maybe_red_alert(fid: str, e: dict, budget: dict, log: dict = None,
+                    watch: set = None) -> bool:
     """🟥 تنبيه الأفضلية العددية (REC-009) — مسار مستقل تماماً عن سلم ادعاءات
     الدراما: علمه الخاص red_alerted (لا يستخدم alerted حتى لا يحجب أحدهما
     الآخر)، مرة واحدة لكل مباراة، يُسجَّل بمفتاح red_advantage بنفس بنية
@@ -2049,7 +2061,8 @@ def maybe_red_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
     silenced_keys, proven_keys = (radar_claim_lists() if RADAR_ALERT_STOP_RULE
                                   else (set(), set()))
     silent = "red_advantage" in silenced_keys
-    if not silent:
+    gated = DRAMA_MINE_ONLY and not radar_phone_worthy(fid, e, watch)  # 📵
+    if not silent and not gated:
         if budget["used"] >= RADAR_ALERT_CAP_PER_RUN:
             return False
         budget["used"] += 1
@@ -2078,6 +2091,7 @@ def maybe_red_alert(fid: str, e: dict, budget: dict, log: dict = None) -> bool:
         "top": radar_is_top(e),   # 🎛 REC-010
         "mine": radar_is_mine(e),
         "silenced": silent,
+        "gated": gated or None,   # 📵 خارج التسعة/المفضلة — مُقاس غير مُرسل
         # حزمة الأدلة (نهج 2026-08-02): آخر لقطات الأرقام تُحفظ مع التنبيه
         "evidence": (radar.get("snaps") or [])[-3:],
     })
@@ -2137,6 +2151,12 @@ def radar_is_top(e: dict) -> bool:
     (2026-08-01) — اسم لا يحمل الكلمة المفتاحية يمرّ بصمت. المعرف الرقمي
     لا يفشل مفتوحاً."""
     return bool((e.get("radar") or {}).get("top"))
+
+
+def radar_phone_worthy(fid, e: dict, watch=None) -> bool:
+    """📵 من يستحق رسالة هاتف من قنوات الرادار؟ (قرار المالك 2026-08-24):
+    دورياته التسعة أو مباراة على قائمة تركيزه — الاثنان بالمعرف حصراً."""
+    return radar_is_mine(e) or bool(watch and str(fid) in watch)
 
 
 def radar_is_mine(e: dict) -> bool:
@@ -2278,16 +2298,16 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None,
         # ⚠️ تمرير النسخة الحية log إلزامي (سباق 2026-08-15): بدونه يكتب
         # التنبيه للقرص ثم يدهسه حفظ الجولة الختامي بنسخته القديمة
         sent_now = False
-        if maybe_radar_alert(fid, e, alert_budget, log):
+        if maybe_radar_alert(fid, e, alert_budget, log, watch=watch):
             log_dirty = sent_now = True
         # 🟥 REC-009: مسار الطرد المستقل — من أي دقيقة
-        if maybe_red_alert(fid, e, alert_budget, log):
+        if maybe_red_alert(fid, e, alert_budget, log, watch=watch):
             log_dirty = sent_now = True
         # 🔴 الإنذار الأحمر المبكر (≤د85) — قرار المالك 2026-08-19.
         # يُحسب هنا لأن verdict جاهز، ويُوسم صفه أدناه بـalerted ليُقاس وحده.
         warn_sent = maybe_red_warning_alert(
             fid, e, verdict, minute, p.get("pick"), p.get("confidence"),
-            warn_budget, log)
+            warn_budget, log, watch=watch)
         # يُسجَّل الصف متى أنذرت **إحدى** الدرجتين، لا الحالية وحدها.
         # لولا ذلك لاستحال قياس الحالة التي تُجرى التجربة من أجلها أصلاً:
         # xG يرى خطراً لا تراه عدّادات الحجم (0.4 مقابل 2.8 بينما لوحة النتائج

@@ -182,6 +182,14 @@ class TestTwoScoreboardsNeverMix(unittest.TestCase):
 class TestNoAlertReadsXg(unittest.TestCase):
     """(د) لا تنبيه يقرأ score_xg — الحد الذي لا يُتجاوز، مثبتاً بنيوياً."""
 
+    def setUp(self):
+        # 📵 بوابة التسعة/المفضلة (قرار المالك 2026-08-24 مساءً) تُفحص في
+        # جرزها المخصصة — هنا نعطلها لفحص الآليات الأخرى بمعزل عنها
+        _orig_gate = M.DRAMA_MINE_ONLY
+        M.DRAMA_MINE_ONLY = False
+        self.addCleanup(lambda: setattr(M, "DRAMA_MINE_ONLY", _orig_gate))
+
+
     ALERT_FUNCS = ("maybe_radar_alert", "maybe_red_alert",
                    "evaluate_comeback", "drama_signal", "should_alert")
 
@@ -212,9 +220,10 @@ class TestNoAlertReadsXg(unittest.TestCase):
         # تُحسب قبل maybe_radar_alert، لكن لا تُمرَّر إليه — النداء يحمل
         # النسخة الحية من السجل فقط (إصلاح سباق 2026-08-15)، لا أي حقل xG
         self.assertIn("verdict_xg", src)
-        self.assertIn("maybe_radar_alert(fid, e, alert_budget, log)", src)
-        self.assertNotIn("maybe_radar_alert(fid, e, alert_budget, log, ", src)
-        self.assertNotIn("verdict_xg)", src.split("maybe_radar_alert")[1][:80])
+        self.assertIn("maybe_radar_alert(fid, e, alert_budget, log, watch=watch)", src)
+        # watch وسيط بوابة هاتف (قرار 2026-08-24) لا حقل xG — المحظور هو xG
+        call = src.split("maybe_radar_alert(fid, e", 1)[1].split(")")[0]
+        self.assertNotIn("xg", call.lower())
 
 
 class TestKillSwitch(unittest.TestCase):
