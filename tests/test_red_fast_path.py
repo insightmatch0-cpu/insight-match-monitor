@@ -63,6 +63,14 @@ class TestRedAdvantageSignal(unittest.TestCase):
 class TestRedAdvantageAlert(unittest.TestCase):
     """التنبيه نفسه: من أي دقيقة، مرة لكل مباراة، مفتاح تراجع، إسكات REC-005."""
 
+    def setUp(self):
+        # 📵 بوابة التسعة/المفضلة (قرار المالك 2026-08-24 مساءً) تُفحص في
+        # جرزها المخصصة — هنا نعطلها لفحص الآليات الأخرى بمعزل عنها
+        _orig_gate = M.DRAMA_MINE_ONLY
+        M.DRAMA_MINE_ONLY = False
+        self.addCleanup(lambda: setattr(M, "DRAMA_MINE_ONLY", _orig_gate))
+
+
     def _capture_telegram(self):
         sent = []
         orig = M.send_telegram
