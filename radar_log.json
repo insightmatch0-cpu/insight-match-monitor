@@ -1176,21 +1176,21 @@
    "pick": "away",
    "confidence": 36,
    "level": "red",
-   "score": 68,
-   "minute": 79,
+   "score": 71,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د79)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
-   "alert_minute": 79,
-   "score_xg": 61,
-   "level_xg": "amber",
+   "alert_minute": 84,
+   "score_xg": 65,
+   "level_xg": "red",
    "sent_level": "red",
-   "sent_score": 68,
-   "sent_minute": 79,
+   "sent_score": 71,
+   "sent_minute": 84,
    "sent_factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د79)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
     "ضغط هجومي متصاعد من المضيف"
    ]
   },
@@ -1354,10 +1354,10 @@
    "pick": "home",
    "confidence": 55,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 43,
+   "minute": 47,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1396,10 +1396,31 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 43,
-   "minute": 48,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د48)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د55)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549609",
+   "date": "2026-08-24",
+   "home": "Real Santander",
+   "away": "Ind. Yumbo",
+   "league": "Primera B (Colombia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -27664,7 +27685,7 @@
   {
    "fid": "1570349",
    "date": "2026-08-24",
-   "minute": 79,
+   "minute": 84,
    "score_at": "1-1",
    "side": "away",
    "key": "next_goal",
@@ -27728,12 +27749,12 @@
      "xg_a": 1.0119
     },
     {
-     "minute": 79,
+     "minute": 84,
      "gh": 1,
      "ga": 1,
      "h": {
       "sog": 2,
-      "shots": 8,
+      "shots": 11,
       "cor": 6,
       "poss": 55,
       "yc": 1,
@@ -27745,10 +27766,12 @@
       "shots": 6,
       "cor": 4,
       "poss": 45,
-      "yc": 2,
+      "yc": 3,
       "rc": 0,
       "sv": 1
-     }
+     },
+     "xg_h": 1.2278,
+     "xg_a": 1.9591
     }
    ]
   }
