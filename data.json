@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-24T01:19:38.366078+00:00",
+ "updated": "2026-08-24T01:26:27.997332+00:00",
  "live": [
   {
    "fid": "1511659",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2316.png",
    "away_logo": "https://media.api-sports.io/football/teams/2340.png",
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-   "score": "1-0",
+   "score": "2-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:24:55.296534+00:00"
   },
   {
    "fid": "1549463",
@@ -29,7 +29,7 @@
    "score": "3-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:21:52.854419+00:00"
   },
   {
    "fid": "1618987",
@@ -42,9 +42,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3700.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "1-1",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1600575",
@@ -57,9 +57,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/19763.png",
    "league_logo": "https://media.api-sports.io/football/leagues/370.png",
    "score": "1-0",
-   "minute": 82,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1551667",
@@ -72,24 +72,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/823.png",
    "league_logo": "https://media.api-sports.io/football/leagues/162.png",
    "score": "0-0",
-   "minute": 58,
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
-  },
-  {
-   "fid": "1519459",
-   "home": "LDU de Quito",
-   "away": "Emelec",
-   "home_en": "LDU de Quito",
-   "away_en": "Emelec",
-   "league": "Liga Pro (Ecuador)",
-   "home_logo": "https://media.api-sports.io/football/teams/1158.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1148.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "score": "2-0",
-   "minute": 57,
-   "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1559617",
@@ -102,9 +87,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/3657.png",
    "league_logo": "https://media.api-sports.io/football/leagues/339.png",
    "score": "2-0",
-   "minute": 57,
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
+  },
+  {
+   "fid": "1519459",
+   "home": "LDU de Quito",
+   "away": "Emelec",
+   "home_en": "LDU de Quito",
+   "away_en": "Emelec",
+   "league": "Liga Pro (Ecuador)",
+   "home_logo": "https://media.api-sports.io/football/teams/1158.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1148.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
+   "score": "2-0",
+   "minute": 63,
+   "status": "2H",
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1493087",
@@ -118,8 +118,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-24T01:19:36.854552+00:00",
+   "status": "HT",
+   "seen": "2026-08-24T01:26:26.623147+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -137,7 +137,7 @@
     "pick": "away",
     "confidence": 37,
     "drama": {
-     "signal": 15,
+     "signal": 0,
      "side": "home",
      "ready": false
     },
@@ -145,27 +145,46 @@
     "top": true,
     "trend": {
      "min": [
+      45,
       45
      ],
      "danger": [
+      42,
       42
      ],
      "h_sog": [
+      2,
       2
      ],
      "a_sog": [
-      0,
+      1,
       1
      ],
      "h_cor": [
-      0,
+      1,
       1
      ],
      "a_cor": [
+      1,
       1
      ]
     }
    }
+  },
+  {
+   "fid": "1513305",
+   "home": "Colorado Rapids II",
+   "away": "Real Monarchs",
+   "home_en": "Colorado Rapids II",
+   "away_en": "Real Monarchs",
+   "league": "MLS Next Pro (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/4102.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4012.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1513314",
@@ -179,23 +198,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
-  },
-  {
-   "fid": "1513305",
-   "home": "Colorado Rapids II",
-   "away": "Real Monarchs",
-   "home_en": "Colorado Rapids II",
-   "away_en": "Real Monarchs",
-   "league": "MLS Next Pro (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/4102.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4012.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "0-0",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "status": "HT",
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1586107",
@@ -208,9 +212,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4647.png",
    "league_logo": "https://media.api-sports.io/football/leagues/396.png",
    "score": "0-0",
-   "minute": 20,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1581393",
@@ -222,10 +226,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/14278.png",
    "away_logo": "https://media.api-sports.io/football/teams/2299.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "score": "1-0",
-   "minute": 19,
+   "score": "2-0",
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   },
   {
    "fid": "1550938",
@@ -238,9 +242,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/2288.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
    "score": "0-0",
-   "minute": 18,
+   "minute": 25,
    "status": "1H",
-   "seen": "2026-08-24T01:19:36.854552+00:00"
+   "seen": "2026-08-24T01:26:26.623147+00:00"
+  },
+  {
+   "fid": "1549741",
+   "home": "Junior",
+   "away": "Once Caldas",
+   "home_en": "Junior",
+   "away_en": "Once Caldas",
+   "league": "Primera A (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1135.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1136.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
+   "score": "0-0",
+   "minute": 11,
+   "status": "1H",
+   "seen": "2026-08-24T01:26:26.623147+00:00"
   }
  ],
  "upcoming": [
