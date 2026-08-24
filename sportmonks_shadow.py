@@ -55,10 +55,26 @@ V1_FILE = Path("predictions.json")
 
 XG_TYPE_ID = 5304        # معرف نوع xG للمباراة (مؤكد من المسبار)
 FORM_WINDOW = 5          # نافذة حساب الفورمة: آخر 5 مباريات موثقة للفريق
-FORM_MIN_MATCHES = 3     # لا ترجيح قبل 3 مباريات موثقة لكلا الطرفين
+FORM_MIN_MATCHES = 2     # كان 3 — تشخيص 2026-08-24: بعد 11 يوماً و62 مباراة
+                         # لم يبلغ **أي** فريق 3 مباريات موثقة (78 بواحدة، 23
+                         # باثنتين)، فأنتج القياس التنبؤي صفر نقاط. التغطية
+                         # الضيقة (~53 دوري من 1200+) تعني أن الفرق تتراكم ببطء،
+                         # والنافذة تنتهي ~17 سبتمبر. اثنتان تفتح القياس فوراً
+                         # وتبقى شرطاً حقيقياً (لا ترجيح من مباراة واحدة يتيمة)
 FORM_EDGE = 0.30         # فارق متوسطين أدنى للترجيح — دونه "تعادل"
+
+# 🆕 عتبة "متفوّق xG" داخل المباراة الواحدة (إضافة 2026-08-24). هذا قياس
+# **لاحق لا تنبؤي**: xG المباراة لا يتوفر قبلها، فلا يصلح مُدخلاً لتوقع.
+# قيمته أنه يجيب — بعينة تبدأ من اليوم لا بعد أسابيع — السؤالَ الذي تقوم
+# عليه المرحلة B كلها: هل يحمل xG إشارةً يفوّتها المحرك؟ فحين يختلف
+# المتفوّق في xG عن اختيار المحرك، أيّهما يطابق النتيجة أكثر؟ إن لم يتفوّق
+# xG في هذه المواجهة فمخمّد الثقة المقترح بلا أساس، وتُغلق المرحلة B مبكراً
+# ونوفّر الاشتراك. تحت العتبة = تكافؤ، ولا ادعاء بلا فارق واضح.
+XG_LEAD_EDGE = 0.50
 MAX_PAGES_PER_DAY = 4    # سقف صفحات الجلب لليوم الواحد (50 مباراة/صفحة)
 LOOKBACK_DAYS = 2        # نغطي آخر يومين — نفس أفق تقييم المحركات الصباحي
+# سقف أيام التأسيس لمرة واحدة (بناء تاريخ الفرق بأثر رجعي من بداية التجربة)
+HISTORY_BOOTSTRAP_MAX_DAYS = 14
 
 # ترويسات الحد التي قد يرسلها المزوّد أو أي وسيط أمامه. سبورتمونكس v3 يضع
 # الحد في **جسم** الرد (حقل rate_limit) لا في ترويسة، لكننا نقرأ الاثنين عمداً:
@@ -180,6 +196,50 @@ def xgform_pick(h_hist: list, a_hist: list):
     if gap < -FORM_EDGE:
         return "away"
     return "draw"
+
+
+def xg_leader(xh, xa):
+    """من تفوّق في xG داخل المباراة نفسها؟ None = تكافؤ (لا ادعاء).
+
+    قياس لاحق لا تنبؤي — انظر تعليق XG_LEAD_EDGE أعلاه."""
+    if xh is None or xa is None:
+        return None
+    if xh - xa > XG_LEAD_EDGE:
+        return "home"
+    if xa - xh > XG_LEAD_EDGE:
+        return "away"
+    return None
+
+
+def backfill_leader(fixtures: list) -> int:
+    """يحسب حقلي المتفوّق للمباريات المحفوظة سابقاً — من أرقامها المخزّنة
+    وحدها (صفر نداءات)، وآمن التكرار: يتخطى ما حُسب. بهذا تبدأ العينة من
+    62 مباراة مجموعة أصلاً بدل الصفر."""
+    n = 0
+    for f in fixtures:
+        if "xg_leader" in f:
+            continue
+        lead = xg_leader(f.get("xg_home"), f.get("xg_away"))
+        f["xg_leader"] = lead
+        f["xg_leader_correct"] = (None if lead is None
+                                  else lead == f.get("result"))
+        n += 1
+    return n
+
+
+def xg_signal_stats(fixtures: list) -> dict:
+    """لوحة الإشارة اللاحقة: هل المتفوّق في xG هو من يفوز؟ والأهم —
+    عند اختلافه مع اختيار المحرك 2، أيّهما طابق النتيجة؟ (سؤال المرحلة B)."""
+    lead = [f for f in fixtures if f.get("xg_leader")]
+    dis = [f for f in lead
+           if f.get("v2_pick") and f["v2_pick"] != f["xg_leader"]]
+    return {
+        "n": len(lead),
+        "leader_right": sum(1 for f in lead if f.get("xg_leader_correct")),
+        "disagree": len(dis),
+        "xg_right": sum(1 for f in dis if f.get("xg_leader_correct")),
+        "v2_right": sum(1 for f in dis if f.get("v2_correct")),
+    }
 
 
 def _request(path: str, params: dict) -> tuple:
@@ -761,10 +821,36 @@ def main() -> None:
             if r.get("date") in dates and str(r.get("fid")) not in seen
             and r.get("score")]
     matched = unmatched = 0
-    if rows:
-        day_xg = {d: fetch_day_xg(d) for d in sorted({r["date"] for r in rows})}
-        for r in rows:
-            sm = next((s for s in day_xg.get(r["date"], [])
+
+    # 🔓 فكّ الاختناق (2026-08-24): تاريخ الفرق يُبنى من **كل** مباراة تعيدها
+    # الباقة، لا من المباريات المطابَقة فقط. كنا نجلب اليوم كاملاً ثم نرمي
+    # 95% منه، فتراكمت الفرق مباراةً كل أسبوعين وبقي القياس التنبؤي صفراً.
+    # نفس النداءات بالضبط — صفر تكلفة إضافية، والمعلومة كانت بين أيدينا.
+    hist_seen = set(shadow.setdefault("hist_seen", []))
+    if not hist_seen:
+        # بذرة أولى: ما دخل التاريخ سابقاً عبر المباريات المطابَقة لا يُعاد
+        hist_seen = {f"{f.get('date')}|{f.get('sm_home')}|{f.get('sm_away')}"
+                     for f in shadow["fixtures"]}
+    boot = []
+    if not meta.get("hist_bootstrap"):
+        # تأسيس لمرة واحدة: أيام التجربة الماضية تُجلب لبناء تاريخ الفرق
+        start = meta.get("started") or today.strftime("%Y-%m-%d")
+        d0 = datetime.strptime(start, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        span = min((today - d0).days, HISTORY_BOOTSTRAP_MAX_DAYS)
+        boot = [(d0 + timedelta(days=i)).strftime("%Y-%m-%d")
+                for i in range(max(0, span))]
+
+    day_xg = {}
+    # أيام النافذة تُجلب دائماً (لا أيام الصفوف فقط): التاريخ ينمو حتى في
+    # يوم لم يقيّم فيه المحرك شيئاً — وهو المورد النادر في هذه التجربة
+    for d in sorted(set(boot) | set(dates) | {r["date"] for r in rows}):
+        day_xg[d] = fetch_day_xg(d)
+
+    # الترتيب الزمني إلزامي: ترجيحات يومٍ تُحسب **قبل** إدخال مبارياته للتاريخ،
+    # وإلا رأى الترجيح مباراته نفسها (تسريب مستقبل يُبطل القياس كله)
+    for d in sorted(day_xg):
+        for r in [x for x in rows if x.get("date") == d]:
+            sm = next((s for s in day_xg.get(d, [])
                        if names_match(r.get("home"), s["home"])
                        and names_match(r.get("away"), s["away"])), None)
             if sm is None:
@@ -788,12 +874,31 @@ def main() -> None:
                 "top": bool(r.get("top")),
                 "xgform_pick": pick,
                 "xgform_correct": (None if pick is None else pick == result),
+                # القياس اللاحق (2026-08-24): من تفوّق في xG وهل فاز فعلاً
+                "xg_leader": xg_leader(sm["xg_home"], sm["xg_away"]),
+                "xg_leader_correct": (
+                    None if xg_leader(sm["xg_home"], sm["xg_away"]) is None
+                    else xg_leader(sm["xg_home"], sm["xg_away"]) == result),
             })
-            h_hist.append({"date": r.get("date"), "xf": sm["xg_home"],
-                           "xa": sm["xg_away"]})
-            a_hist.append({"date": r.get("date"), "xf": sm["xg_away"],
-                           "xa": sm["xg_home"]})
+        # كل مباريات اليوم (المطابَقة وغيرها) تدخل تاريخ الفرق — بعد الترجيحات
+        for sm in day_xg.get(d, []):
+            key = f"{d}|{sm['home']}|{sm['away']}"
+            if key in hist_seen:
+                continue
+            hist_seen.add(key)
+            shadow["teams"].setdefault(_team_key(sm["home"]), []).append(
+                {"date": d, "xf": sm["xg_home"], "xa": sm["xg_away"]})
+            shadow["teams"].setdefault(_team_key(sm["away"]), []).append(
+                {"date": d, "xf": sm["xg_away"], "xa": sm["xg_home"]})
 
+    # تاريخ كل فريق مرتب زمنياً — نافذة الفورمة تقرأ الأحدث، فالترتيب معنى لا شكل
+    for hist in shadow["teams"].values():
+        hist.sort(key=lambda e: e.get("date") or "")
+    shadow["hist_seen"] = sorted(hist_seen)
+    if boot:
+        meta["hist_bootstrap"] = today.strftime("%Y-%m-%d")
+    # تعبئة رجعية لحقول المتفوّق على المباريات المحفوظة قبل هذا الإصلاح
+    filled = backfill_leader(shadow["fixtures"])
     judged = [f for f in shadow["fixtures"] if f.get("xgform_pick") is not None]
     meta.update({
         "updated": today.isoformat(),
@@ -801,14 +906,19 @@ def main() -> None:
         "total": len(shadow["fixtures"]),
         "xgform": {"n": len(judged),
                    "correct": sum(1 for f in judged if f.get("xgform_correct"))},
+        # اللوحة الثانية المستقلة (قاعدة المالك ج: لا خلط بين الوظائف)
+        "xg_signal": xg_signal_stats(shadow["fixtures"]),
     })
     # إنذار صفر الجمع قبل الحفظ: العدّاد نفسه جزء من السجل المحفوظ
     alerted = _maybe_alert_zero(meta, len(rows), matched,
                                 today.strftime("%Y-%m-%d"))
     _save(shadow)
+    sig = meta.get("xg_signal") or {}
     print(f"🔬 ظل xG: مطابقة {matched} ومُفلت {unmatched} — "
           f"الإجمالي {meta['total']} | فورمة xG: "
-          f"{meta['xgform']['correct']}/{meta['xgform']['n']}")
+          f"{meta['xgform']['correct']}/{meta['xgform']['n']} | "
+          f"إشارة xG: {sig.get('leader_right', 0)}/{sig.get('n', 0)}"
+          + (f" (عُبِّئ رجعياً {filled})" if filled else ""))
     if meta.get("zero_streak"):
         print(f"⚠️ ظل xG: {meta['zero_streak']} يوم متتالٍ بصفر جمع"
               + (" — أُرسل إنذار تيليجرام" if alerted else ""))
