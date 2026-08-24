@@ -901,10 +901,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د70)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -922,10 +922,10 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د72)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -985,15 +985,15 @@
    "pick": "home",
    "confidence": 62,
    "level": "red",
-   "score": 65,
-   "minute": 74,
+   "score": 66,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د74)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د76)",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 74,
-   "score_xg": 55,
+   "score_xg": 60,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 65,
@@ -1013,18 +1013,28 @@
    "mine": true,
    "pick": "away",
    "confidence": 46,
-   "level": "amber",
-   "score": 50,
-   "minute": 29,
+   "level": "red",
+   "score": 65,
+   "minute": 40,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د29)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د40)",
     "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 36,
-   "level_xg": "green"
+   "alerted": true,
+   "alert_minute": 40,
+   "score_xg": 37,
+   "level_xg": "green",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 40,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
   },
   {
    "fid": "1550684",
@@ -1037,10 +1047,12 @@
    "pick": "away",
    "confidence": 58,
    "level": "amber",
-   "score": 42,
+   "score": 60,
    "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
