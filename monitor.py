@@ -228,6 +228,13 @@ RADAR_RED_FAST_PATH = True    # مفتاح التراجع الفوري
 # يُرسل مرة واحدة لكل مباراة (علم warn_alerted مستقل عن الدراما والطرد)،
 # ويُوسم صفه في السجل بـalerted:True فتُقاس الشريحة المُرسَلة وحدها صباحاً.
 RED_WARN_ALERT = True          # مفتاح التراجع الفوري (False = شاشة فقط كالسابق)
+# 🎛 قرار المالك 2026-08-24 (REC-014 خيار ج): الإرسال لدورياته التسعة حرفياً —
+# فيضان 51/55 رسالة يومي 22-23 أغسطس مقابل تصميم ~3/يوم. الشاشة والقياس
+# كاملان لكل العالم؛ الكبح على رسالة تيليجرام وحدها. False = عالمي كالسابق
+RED_WARN_MINE_ONLY = True
+# 📸 REC-015: حالة لحظة الإرسال تُجمَّد في حقول sent_* — الصف يخزن ذروة المسح
+# وقد تكون أقدم/أدنى من قراءة الإرسال (21 صفاً أحمر أُرسل واحتُسب كهرمانياً)
+SENT_SNAPSHOT = True
 RED_WARN_ALERT_MAX = 85        # لا تنبيه بعد هذه الدقيقة — بعدها قراءة لوحة لا إنذار
 RED_WARN_ALERT_CAP_PER_RUN = 3 # سقف مستقل حتى لا يزاحم تنبيهات الدراما
 _ALERT_RANK = {"goal": 1, "equalizer": 2, "next_goal": 2, "flip": 3}
@@ -1650,6 +1657,10 @@ def maybe_red_warning_alert(fid: str, e: dict, verdict: dict, minute: int,
         return False
     if (minute or 0) > RED_WARN_ALERT_MAX:
         return False
+    # 🎛 بوابة التسعة (قرار المالك 2026-08-24 — REC-014 ج): رسالة الهاتف
+    # لدورياته حصراً؛ الإنذار يبقى مسجلاً ومقيساً للجميع على الشاشة
+    if RED_WARN_MINE_ONLY and not radar_is_mine(e):
+        return False
     radar = e.get("radar") or {}
     if radar.get("warn_alerted") or budget["used"] >= RED_WARN_ALERT_CAP_PER_RUN:
         return False
@@ -1699,6 +1710,11 @@ def _upsert_warn_row(log: dict, fid: str, e: dict, verdict: dict,
     نفس مخطط صفوف المسح حرفياً حتى يقيَّم صباحاً كأي صف آخر."""
     log.setdefault("warnings", [])
     w = next((w for w in log["warnings"] if str(w.get("fid")) == str(fid)), None)
+    sent = ({"sent_level": verdict.get("level"),
+             "sent_score": verdict.get("score"),
+             "sent_minute": minute,
+             "sent_factors": verdict.get("factors") or []}
+            if SENT_SNAPSHOT else {})
     if w is None:
         log["warnings"].append({
             "fid": str(fid),
@@ -1712,10 +1728,21 @@ def _upsert_warn_row(log: dict, fid: str, e: dict, verdict: dict,
             "minute": minute, "factors": verdict.get("factors") or [],
             "alerted": True, "alert_minute": minute,
             "score_xg": None, "level_xg": None,
+            **sent,
         })
     else:
         w["alerted"] = True
         w["alert_minute"] = minute
+        # 📸 REC-015: قراءة لحظة الإرسال حمراء بالبوابة، والصف قد يخزن ذروة
+        # مسح كهرمانية أقدم — نرقّيه لقراءة الإرسال (نفس شرط المسح) ونجمّد
+        # حقول sent_* فلا تمحوها أي إعادة كتابة لاحقة
+        if (verdict.get("score") or 0) > (w.get("score") or 0):
+            w.update({"level": verdict.get("level"),
+                      "score": verdict.get("score"),
+                      "minute": minute,
+                      "factors": verdict.get("factors") or []})
+        if SENT_SNAPSHOT and "sent_level" not in w:
+            w.update(sent)
 
 
 def _flush_radar_log(log: dict) -> None:
@@ -1729,7 +1756,7 @@ def _flush_radar_log(log: dict) -> None:
 
 
 def radar_fast_watch(state: dict, watch: set, deadline: float,
-                     alert_budget: dict = None) -> int:
+                     alert_budget: dict = None, warn_budget: dict = None) -> int:
     """المسار السريع (طلب المالك 2026-08-01): يحدّث أخطر مباريات الرادار كل
     ~90 ثانية فيما تبقى من ميزانية التشغيلة وينشر كل جولة إلى radar-live.
     ليالي قائمة التركيز يستهلك رصدها السريع الميزانية أولاً — لا ازدواج،
@@ -1737,7 +1764,8 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
     v2_pending = (load_json_file(RADAR_PREDICTIONS_FILE, {}) or {}).get("pending") or {}
     if alert_budget is None:
         alert_budget = {"used": 0}
-    warn_budget = {"used": 0}
+    if warn_budget is None:   # 🔧 توحيد السقف (جلسة 2026-08-24): يُمرَّر من main
+        warn_budget = {"used": 0}
     published = 0
     while time.monotonic() < deadline:
         # ما دامت هناك أي مباراة حية نواصل — النتائج السريعة لكل المباريات
@@ -1799,7 +1827,7 @@ def radar_fast_watch(state: dict, watch: set, deadline: float,
                           "level": verdict["level"], "factors": verdict["factors"],
                           # 🎛 REC-010: العلامة تُحدَّث في المسار السريع أيضاً
                           "top": bool(p.get("top", radar.get("top"))),
-                          "mine": bool(p.get("mine", radar.get("mine"))),
+                          "mine": p.get("mine", radar.get("mine")),
                           "drama": {"signal": (d or {}).get("signal", 0),
                                     "side": (d or {}).get("side"),
                                     "ready": bool(d and d["dominant"]
@@ -2126,7 +2154,8 @@ def select_radar_fixtures(state: dict, v2_pending: dict, watch: set) -> list:
     return [fid for _, fid in sorted(cands)][:RADAR_STATS_CAP]
 
 
-def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
+def radar_sweep(state: dict, watch: set, alert_budget: dict = None,
+                warn_budget: dict = None) -> int:
     """دورة الرادار: لقطة أرقام + درجة خطر لكل مباراة حية عليها توقع، وتسجيل
     الإنذارات (كهرماني/أحمر) في radar_log.json ليقيَّم صدقها صباحاً.
     أي فشل لمباراة واحدة لا يوقف البقية — والفشل الكامل لا يوقف التشغيلة."""
@@ -2136,7 +2165,8 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
         return 0
     if alert_budget is None:
         alert_budget = {"used": 0}
-    warn_budget = {"used": 0}
+    if warn_budget is None:   # 🔧 توحيد السقف (جلسة 2026-08-24): يُمرَّر من main
+        warn_budget = {"used": 0}
     log = load_json_file(RADAR_FILE, {}) or {}
     log.setdefault("warnings", [])
     log.setdefault("resolved", [])
@@ -2181,7 +2211,7 @@ def radar_sweep(state: dict, watch: set, alert_budget: dict = None) -> int:
             # 🎛 REC-010: علامة دوريات المالك تُنسخ من صف التوقع (مشتقة
             # بالمعرف من TOP_LEAGUE_IDS) لتُختم بها سجلات الرادار عند الكتابة
             "top": bool(p.get("top", radar.get("top"))),
-            "mine": bool(p.get("mine", radar.get("mine"))),
+            "mine": p.get("mine", radar.get("mine")),
             # قمع الاستباق: الإشارة الخام + الجاهزية قبل شرط الدقيقة 75
             "drama": {"signal": (d or {}).get("signal", 0),
                       "side": (d or {}).get("side"),
@@ -2558,8 +2588,11 @@ def main() -> None:
     # الرادار: إنذار مبكر رياضي لكل توقعات المحرك 2 الحية (صفر Claude)
     radar_count = 0
     radar_alerts = {"used": 0}   # سقف تنبيهات الدراما مشترك بين الدورة والمسار السريع
+    # 🔧 جلسة 2026-08-24: سقف الإنذار المبكر مشترك أيضاً — كان يُنشأ مرتين
+    # فيتضاعف فعلياً إلى 6/تشغيلة بدل 3 المعلنة
+    radar_warns = {"used": 0}
     try:
-        radar_count = radar_sweep(state, watch, radar_alerts)
+        radar_count = radar_sweep(state, watch, radar_alerts, radar_warns)
         publish_radar_live(state)   # أول نسخة حية لهذه الدورة (فشلها صامت)
     except Exception as e:
         print("الرادار — خطأ غير متوقع:", e)
@@ -2577,7 +2610,7 @@ def main() -> None:
     # أخطر المباريات كل ~90 ثانية ونشرها الحي (طلب المالك 2026-08-01)
     radar_published = 0
     try:
-        radar_published = radar_fast_watch(state, watch, fast_deadline, radar_alerts)
+        radar_published = radar_fast_watch(state, watch, fast_deadline, radar_alerts, radar_warns)
     except Exception as e:
         print("الرادار السريع — خطأ غير متوقع:", e)
 

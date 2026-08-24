@@ -176,3 +176,23 @@ class TestPostGradingSentinel(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestLeakGuardSeesCountry(unittest.TestCase):
+    """🔧 REC-016 (قرار المالك 2026-08-24): الحارس كان يمرر country فارغة
+    فتعبره دوريات الدول المحظورة إن كان اسمها بريئاً من الكلمات المفتاحية."""
+
+    def test_banned_country_with_innocent_name_is_caught(self):
+        import predict_v2 as P
+        store = {"pending": {"1": {"home": "A", "away": "B",
+                                   "league": "Super Division (India)"}},
+                 "resolved": []}
+        leaks = P.find_data_leaks(store)
+        self.assertEqual(len(leaks), 1)
+
+    def test_clean_league_still_passes(self):
+        import predict_v2 as P
+        store = {"pending": {"1": {"home": "A", "away": "B",
+                                   "league": "Premier League (England)"}},
+                 "resolved": []}
+        self.assertEqual(P.find_data_leaks(store), [])

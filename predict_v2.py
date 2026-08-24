@@ -88,6 +88,7 @@ XG_SHADOW_DAYS        = 35
 # 0%") ضجيج يبدو كارثة، أو 100% من مباراتين فيبدو عبقرية — آلة استنتاجات
 # خاطئة داخل نظام بُني كله لمنعها. الرقم يُقرأ من هنا في اللوحة أيضاً.
 MIN_FILTERED_SAMPLE   = 20
+RADAR_LOG_DEDUP       = True   # 🔧 REC-015: دمج صفوف الإنذار المكررة قبل التقييم
 
 # قاعدة إيقاف تنبيهات الدراما — REC-005 (قرار المالك 2026-08-08): نهاية مكتوبة
 # مسبقاً لتجربة قد تدور بلا نهاية، بقياس كل نوع ادعاء على حدة (قاعدة المالك ج —
@@ -521,7 +522,9 @@ def resolve_pending(store: dict):
                 "league_logo": p.get("league_logo") or logos.get("league_logo", ""),
                 "league": p.get("league"), "ar_league": p.get("ar_league"),
                 "top": p.get("top", False),
-                "mine": p.get("mine", False),   # 🎛 تملأ من يوم التنفيذ فقط
+                # 🎛 REC-016: غياب المصدر يبقى None لا False — قيمة افتراضية
+                # تتنكر كتصنيف هي بالضبط ما لوّث 65 صفاً يوم 2026-08-22
+                "mine": p.get("mine"),
                 "pick": p.get("pick"),
                 "confidence": p.get("confidence"),
                 "prob_home": p.get("prob_home"),
@@ -1749,7 +1752,11 @@ def find_data_leaks(store: dict) -> list:
             return True
         if is_youth_match(e.get("home"), e.get("away")):
             return True
-        return is_excluded({"name": e.get("league") or "", "country": ""})
+        # 🔧 REC-016: الدولة مخزنة داخل «League (Country)» — نستخرجها فيرى
+        # الحارس استبعادات الدول أيضاً بدل الكلمات المفتاحية وحدها
+        lg = e.get("league") or ""
+        country = lg.rsplit("(", 1)[1].rstrip(")").strip() if "(" in lg else ""
+        return is_excluded({"name": lg, "country": country})
     leaks = []
     for p in (store.get("pending") or {}).values():
         if bad(p):
@@ -1815,6 +1822,32 @@ def resolve_radar_log(store: dict) -> int:
     يبني إحصاءات صدق الإنذار لكل مستوى — قاعدة معايرة أوزان الرادار لاحقاً."""
     log = load_json(RADAR_LOG_FILE, {})
     warnings = log.get("warnings") or []
+    # 🔧 REC-015 (جلسة 2026-08-24): سباق نادر يترك صفين لنفس (المباراة،
+    # المستوى، اليوم) فيُقيَّم الإنذار مرتين ويتضخم fired — نُدمج قبل التقييم:
+    # الذروة الأعلى تبقى، وأعلام alerted/sent_* بالاتحاد (أول إرسال يفوز)
+    if RADAR_LOG_DEDUP and warnings:
+        merged, seen = [], {}
+        for w in warnings:
+            key = (str(w.get("fid")), w.get("date"), w.get("level"))
+            if key not in seen:
+                seen[key] = w
+                merged.append(w)
+                continue
+            kept = seen[key]
+            if (w.get("score") or 0) > (kept.get("score") or 0):
+                for f in ("score", "minute", "factors"):
+                    kept[f] = w.get(f)
+            if w.get("alerted") and not kept.get("alerted"):
+                kept["alerted"] = True
+                kept["alert_minute"] = w.get("alert_minute")
+                for f in ("sent_level", "sent_score", "sent_minute",
+                          "sent_factors"):
+                    if f in w:
+                        kept[f] = w[f]
+        if len(merged) != len(warnings):
+            print(f"رادار: دُمجت {len(warnings) - len(merged)} صفوف مكررة قبل التقييم")
+            warnings = merged
+            log["warnings"] = merged
     alerts = log.get("alerts") or []
     if not warnings and not alerts:
         # قاعدة الإيقاف (REC-005): أول صباح بعد تفعيلها قد لا يكون فيه إنذار

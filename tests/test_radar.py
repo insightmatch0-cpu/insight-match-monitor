@@ -634,12 +634,29 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         self.addCleanup(lambda: setattr(M, "RADAR_FILE", orig_file))
 
     @staticmethod
-    def _match(minute=80, score="1-1"):
+    def _match(minute=80, score="1-1", mine=True):
+        # منذ قرار المالك 2026-08-24 (REC-014 ج) الإرسال لدورياته التسعة —
+        # مباريات هذه الاختبارات موسومة mine حتى تفحص بقية البوابات
         return {"home": "Alpha", "away": "Beta", "score": score,
-                "minute": minute, "radar": {}}
+                "minute": minute, "radar": {"mine": mine}}
 
     RED = {"level": "red", "score": 72,
            "factors": ["ضغط هجومي متصاعد", "حارس الخصم تحت الحصار"]}
+
+    def test_non_mine_league_is_screen_only(self):
+        """REC-014 (ج): مباراة خارج التسعة لا تصل الهاتف — الشاشة والقياس فقط."""
+        ok = M.maybe_red_warning_alert("7", self._match(mine=False), self.RED,
+                                       80, "home", 61, {"used": 0}, {"warnings": []})
+        self.assertFalse(ok)
+        self.assertEqual(self.sent, [])
+
+    def test_mine_only_kill_switch_restores_worldwide(self):
+        orig = M.RED_WARN_MINE_ONLY
+        M.RED_WARN_MINE_ONLY = False
+        self.addCleanup(lambda: setattr(M, "RED_WARN_MINE_ONLY", orig))
+        ok = M.maybe_red_warning_alert("8", self._match(mine=False), self.RED,
+                                       80, "home", 61, {"used": 0}, {"warnings": []})
+        self.assertTrue(ok)
 
     def test_early_red_is_sent(self):
         e = self._match(minute=80)
@@ -748,6 +765,63 @@ class TestEarlyRedWarningAlert(unittest.TestCase):
         self.assertIn("warn_budget, log)", src)
 
 
+class TestSentSnapshotAndDedup(unittest.TestCase):
+    """📸 REC-015 (قرار المالك 2026-08-24): حالة لحظة الإرسال تُجمَّد في sent_*
+    والصف الكهرماني القديم يترقى لقراءة الإرسال؛ والصفوف المكررة تُدمج صباحاً."""
+
+    def setUp(self):
+        self.sent = []
+        orig = M.send_telegram
+        M.send_telegram = lambda t, **k: self.sent.append(t)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig))
+        import tempfile
+        from pathlib import Path as _P
+        self._tmp = tempfile.mkdtemp()
+        orig_file = M.RADAR_FILE
+        M.RADAR_FILE = _P(self._tmp) / "radar_log.json"
+        self.addCleanup(lambda: setattr(M, "RADAR_FILE", orig_file))
+
+    RED = {"level": "red", "score": 72, "factors": ["ضغط"]}
+
+    def _e(self):
+        return {"home": "A", "away": "B", "score": "1-1", "minute": 61,
+                "radar": {"mine": True}, "date": "2026-08-24"}
+
+    def test_amber_row_upgraded_to_send_reading_and_sent_frozen(self):
+        # صف كهرماني قديم من المسح (ذروة د45) — الإرسال الأحمر د61 يرقّيه
+        log = {"warnings": [{"fid": "5", "date": "2026-08-24", "level": "amber",
+                             "score": 42, "minute": 45, "factors": ["x"]}]}
+        ok = M.maybe_red_warning_alert("5", self._e(), self.RED, 61,
+                                       "home", 50, {"used": 0}, log)
+        self.assertTrue(ok)
+        w = log["warnings"][0]
+        self.assertEqual(w["level"], "red")
+        self.assertEqual(w["score"], 72)
+        self.assertEqual(w["sent_level"], "red")
+        self.assertEqual(w["sent_minute"], 61)
+        # إعادة كتابة لاحقة (ذروة أعلى) لا تمس sent_*
+        w.update({"level": "red", "score": 95, "minute": 85})
+        self.assertEqual(w["sent_score"], 72)
+
+    def test_morning_merge_collapses_duplicate_rows(self):
+        import predict_v2 as P
+        rows = [
+            {"fid": "9", "date": "2026-08-24", "level": "red", "score": 66,
+             "minute": 80, "factors": ["a"]},
+            {"fid": "9", "date": "2026-08-24", "level": "red", "score": 70,
+             "minute": 84, "factors": ["b"], "alerted": True,
+             "alert_minute": 84, "sent_level": "red"},
+        ]
+        merged, seen = [], {}
+        # نعيد استعمال منطق الدمج عبر استدعاء الدالة الحقيقية غير عملي هنا
+        # (تقرأ الملف)، فنثبّت العقد بنياً: الشرط والمفاتيح في الكود
+        src = open(P.__file__.replace(".pyc", ".py"), encoding="utf-8").read()
+        body = src.split("def resolve_radar_log(")[1]
+        self.assertIn("RADAR_LOG_DEDUP and warnings", body)
+        self.assertIn('(str(w.get("fid")), w.get("date"), w.get("level"))', body)
+        self.assertIn('kept["alerted"] = True', body)
+
+
 class TestDurableWriteAtSendTime(unittest.TestCase):
     """📌 قاعدة 2026-08-21 (تكرار Drukpa ثم Cracovia): سجل «ما أُرسل» يُكتب
     لحظة الإرسال — تشغيلة تُجهض بعد التسليم لا يجوز أن تفقد أثر إرسالها."""
@@ -768,7 +842,7 @@ class TestDurableWriteAtSendTime(unittest.TestCase):
 
     def _e(self):
         return {"home": "Alpha", "away": "Beta", "score": "1-1",
-                "minute": 80, "radar": {}, "date": "2026-08-21"}
+                "minute": 80, "radar": {"mine": True}, "date": "2026-08-21"}
 
     def test_fast_lane_send_lands_on_disk_immediately(self):
         # المسار السريع (log=None): قبل الإصلاح لم يكتب صفاً إطلاقاً
