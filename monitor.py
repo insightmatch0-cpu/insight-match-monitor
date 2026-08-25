@@ -1007,6 +1007,9 @@ def prematch_reports(wl_data: dict, watch: set) -> bool:
             "home": p.get("home", "?"), "away": p.get("away", "?"),
             "ar_home": p.get("ar_home", ""), "ar_away": p.get("ar_away", ""),
             "league": p.get("ar_league") or p.get("league", ""),
+            # RND-011 (أمر المالك 2026-08-25): المعرّف هو مفتاح التجميع الصادق —
+            # الاسم العربي ينقسم (5 أسماء للتشامبيونشيب). ملء للأمام كنمط mine
+            "league_id": p.get("league_id"),
             "report": report,
             "prompt_rev": 2,   # 🔬 REC-019: بنود ذرية — تُقاس شريحة مستقلة
             "sent_at": datetime.now(timezone.utc).isoformat(),
@@ -1164,6 +1167,8 @@ def shadow_reports(watch: set) -> None:
             "home": p.get("home", "?"), "away": p.get("away", "?"),
             "ar_home": p.get("ar_home", ""), "ar_away": p.get("ar_away", ""),
             "league": p.get("ar_league") or p.get("league", ""),
+            # RND-011 (أمر المالك 2026-08-25): نفس ختم المعرّف في مسار الظل
+            "league_id": p.get("league_id"),
             "report": report,
             "prompt_rev": 2,   # 🔬 REC-019: بنود ذرية — تُقاس شريحة مستقلة
             "shadow": True,                # صامت — التقط للتعلم فقط

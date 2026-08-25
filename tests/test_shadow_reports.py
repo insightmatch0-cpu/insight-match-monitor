@@ -157,3 +157,33 @@ class TestNightCap(unittest.TestCase):
         src = inspect.getsource(M.shadow_reports)
         self.assertIn("night_used >= SHADOW_NIGHT_MAX", src)
         self.assertIn("night_counted = min(night_used, SHADOW_NIGHT_MAX)", src)
+
+
+class TestScenarioLeagueIdStamp(unittest.TestCase):
+    """🔖 RND-011 (أمر المالك 2026-08-25): كل تقرير S2 يُختم بمعرّف الدوري
+    لحظة الالتقاط — الاسم العربي ينقسم (5 أسماء للتشامبيونشيب، و69% من
+    البنود تحت أسماء منقسمة) فالمعرّف هو مفتاح التجميع الصادق. ملء للأمام
+    فقط كنمط mine؛ الصفوف التاريخية لا يُعاد بناؤها بمطابقة أسماء أبداً
+    (درس WK-League)."""
+
+    def setUp(self):
+        root = Path(__file__).resolve().parent.parent
+        self.src = (root / "monitor.py").read_text(encoding="utf-8")
+
+    def test_both_capture_sites_stamp_league_id(self):
+        """بنيوي: موضعا الالتقاط (تقرير القائمة + الظل) يختمان المعرّف
+        من صف pending نفسه — لا من الاسم ولا من أي مطابقة."""
+        self.assertEqual(self.src.count('"league_id": p.get("league_id"),'), 2,
+                         "ختم league_id يجب أن يكون في موضعَي الالتقاط كليهما")
+
+    def test_stamp_sits_inside_scenario_entries(self):
+        """الختم داخل قاموسَي scen["pending"][fid] تحديداً — بجوار prompt_rev."""
+        for chunk in self.src.split('scen["pending"][fid] = {')[1:]:
+            body = chunk.split("}")[0]
+            self.assertIn('"league_id": p.get("league_id")', body)
+            self.assertIn('"prompt_rev": 2', body)
+
+    def test_no_name_matching_backfill(self):
+        """ممنوع أي تعبئة رجعية بمطابقة الاسم (النمط الفاشل المفتوح)."""
+        self.assertNotIn("ar_league ==", self.src)
+        self.assertNotIn('backfill_league', self.src)
