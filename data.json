@@ -1,6 +1,111 @@
 {
- "updated": "2026-08-25T20:56:42.831427+00:00",
+ "updated": "2026-08-25T21:03:22.213205+00:00",
  "live": [
+  {
+   "fid": "1610924",
+   "home": "Lask Linz",
+   "away": "Celtic",
+   "home_en": "Lask Linz",
+   "away_en": "Celtic",
+   "league": "UEFA Champions League (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/1026.png",
+   "away_logo": "https://media.api-sports.io/football/teams/247.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
+   "score": "4-1",
+   "minute": 95,
+   "status": "ET",
+   "seen": "2026-08-25T21:03:17.824492+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 63
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      12,
+      20,
+      45,
+      48,
+      55,
+      63,
+      78,
+      0,
+      95
+     ],
+     "danger": [
+      22,
+      27,
+      68,
+      43,
+      15,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      1,
+      1,
+      2,
+      3,
+      4,
+      6,
+      6
+     ],
+     "a_sog": [
+      0,
+      1,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+     ],
+     "h_cor": [
+      0,
+      1,
+      4,
+      4,
+      5,
+      5,
+      6,
+      8,
+      8
+     ],
+     "a_cor": [
+      0,
+      1,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      3
+     ]
+    }
+   }
+  },
   {
    "fid": "1570342",
    "home": "Valencia",
@@ -14,7 +119,7 @@
    "score": "0-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "seen": "2026-08-25T20:58:36.982250+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 56
@@ -24,17 +129,18 @@
     "confidence": 43
    },
    "radar": {
-    "score": 29,
+    "score": 37,
     "level": "green",
     "factors": [
      "تقدم هش بفارق هدف واحد",
+     "موجة ركنيات لصالح المضيف",
      "ضغط هجومي متصاعد من المضيف",
      "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
     ],
     "pick": "away",
     "confidence": 43,
     "drama": {
-     "signal": 35,
+     "signal": 55,
      "side": "home",
      "ready": false
     },
@@ -55,7 +161,7 @@
       40,
       49,
       77,
-      29
+      37
      ],
      "h_sog": [
       2,
@@ -79,7 +185,7 @@
       2,
       2,
       5,
-      6
+      7
      ],
      "a_cor": [
       0,
@@ -105,7 +211,7 @@
    "score": "3-3",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "seen": "2026-08-25T21:01:44.125003+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -131,174 +237,28 @@
     "top": false,
     "trend": {
      "min": [
+      79,
       90
      ],
      "danger": [
+      15,
       69
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623100",
-   "home": "Nottingham Forest",
-   "away": "Leeds",
-   "home_en": "Nottingham Forest",
-   "away_en": "Leeds",
-   "league": "League Cup (England)",
-   "home_logo": "https://media.api-sports.io/football/teams/65.png",
-   "away_logo": "https://media.api-sports.io/football/teams/63.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-25T20:53:33.300572+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 41
-   },
-   "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د90)"
-    ],
-    "pick": "home",
-    "confidence": 41,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      69
-     ],
-     "h_sog": [
-      3
-     ],
-     "a_sog": [
-      5
-     ],
-     "h_cor": [
-      3
-     ],
-     "a_cor": [
-      2
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1622627",
-   "home": "Bodo/Glimt",
-   "away": "NEC Nijmegen",
-   "home_en": "Bodo/Glimt",
-   "away_en": "NEC Nijmegen",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/327.png",
-   "away_logo": "https://media.api-sports.io/football/teams/413.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "3-0",
-   "minute": 89,
-   "status": "2H",
-   "seen": "2026-08-25T20:50:24.844514+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 60
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 60,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      13,
-      21,
-      37,
-      51,
-      59,
-      74,
-      89
-     ],
-     "danger": [
-      22,
-      27,
-      37,
-      0,
-      0,
       0,
       0
      ],
-     "h_sog": [
-      1,
-      1,
-      3,
-      7,
-      8,
-      9,
-      9
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      2,
-      2
-     ],
-     "h_cor": [
-      0,
-      0,
-      3,
-      3,
-      3,
-      4,
-      4
-     ],
      "a_cor": [
       0,
-      0,
-      1,
-      2,
-      2,
-      2,
-      2
+      0
      ]
     }
    }
@@ -313,10 +273,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/3514.png",
    "away_logo": "https://media.api-sports.io/football/teams/2121.png",
    "league_logo": "https://media.api-sports.io/football/leagues/165.png",
-   "score": "1-0",
-   "minute": 81,
+   "score": "2-0",
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "seen": "2026-08-25T21:03:17.824492+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -326,11 +286,9 @@
     "confidence": 50
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 50,
     "drama": {
@@ -342,21 +300,27 @@
     "top": false,
     "trend": {
      "min": [
-      81
+      73,
+      87
      ],
      "danger": [
-      15
+      15,
+      0
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -375,7 +339,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "seen": "2026-08-25T21:03:17.824492+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -434,7 +398,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "seen": "2026-08-25T21:03:17.824492+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -490,10 +454,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1460.png",
    "away_logo": "https://media.api-sports.io/football/teams/1458.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-   "score": "0-1",
-   "minute": 25,
+   "score": "1-1",
+   "minute": 32,
    "status": "1H",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "seen": "2026-08-25T21:03:17.824492+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -503,10 +467,10 @@
     "confidence": 41
    },
    "radar": {
-    "score": 30,
+    "score": 34,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د25)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د32)"
     ],
     "pick": "home",
     "confidence": 41,
@@ -519,245 +483,28 @@
     "top": false,
     "trend": {
      "min": [
-      25
+      17,
+      32
      ],
      "danger": [
-      30
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623097",
-   "home": "Stoke City",
-   "away": "Hull City",
-   "home_en": "Stoke City",
-   "away_en": "Hull City",
-   "league": "League Cup (England)",
-   "home_logo": "https://media.api-sports.io/football/teams/75.png",
-   "away_logo": "https://media.api-sports.io/football/teams/64.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-   "score": "1-1",
-   "minute": 0,
-   "status": "P",
-   "seen": "2026-08-25T20:51:59.806617+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د0)"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      0,
-      0
-     ],
-     "danger": [
-      15,
-      15
-     ],
-     "h_sog": [
-      4,
-      4
-     ],
-     "a_sog": [
-      6,
-      6
-     ],
-     "h_cor": [
-      1,
-      1
-     ],
-     "a_cor": [
-      4,
-      4
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623098",
-   "home": "Walsall",
-   "away": "Leyton Orient",
-   "home_en": "Walsall",
-   "away_en": "Leyton Orient",
-   "league": "League Cup (England)",
-   "home_logo": "https://media.api-sports.io/football/teams/1342.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1373.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-   "score": "0-0",
-   "minute": 0,
-   "status": "P",
-   "seen": "2026-08-25T20:53:33.300572+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د0)"
-    ],
-    "pick": "away",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      0
-     ],
-     "danger": [
-      15
-     ],
-     "h_sog": [
-      4
-     ],
-     "a_sog": [
-      5
-     ],
-     "h_cor": [
-      2
-     ],
-     "a_cor": [
-      8
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1610924",
-   "home": "Lask Linz",
-   "away": "Celtic",
-   "home_en": "Lask Linz",
-   "away_en": "Celtic",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/1026.png",
-   "away_logo": "https://media.api-sports.io/football/teams/247.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "4-1",
-   "minute": 0,
-   "status": "BT",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 63
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      12,
-      20,
-      45,
-      48,
-      55,
-      63,
-      78,
-      90
-     ],
-     "danger": [
-      22,
-      27,
-      68,
-      43,
-      15,
-      0,
-      0,
-      0
+      25,
+      34
      ],
      "h_sog": [
       0,
-      0,
-      1,
-      1,
-      2,
-      3,
-      4,
-      5
+      0
      ],
      "a_sog": [
       0,
-      1,
-      3,
-      3,
-      3,
-      3,
-      3,
-      3
+      0
      ],
      "h_cor": [
       0,
-      1,
-      4,
-      4,
-      5,
-      5,
-      6,
-      8
+      0
      ],
      "a_cor": [
       0,
-      1,
-      3,
-      3,
-      2,
-      2,
-      2,
-      2
+      0
      ]
     }
    }
@@ -774,8 +521,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/501.png",
    "score": "2-2",
    "minute": 0,
-   "status": "BT",
-   "seen": "2026-08-25T20:56:39.514427+00:00",
+   "status": "P",
+   "seen": "2026-08-25T21:03:17.824492+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -801,9 +548,11 @@
     "top": false,
     "trend": {
      "min": [
+      0,
       0
      ],
      "danger": [
+      15,
       15
      ],
      "h_sog": [
@@ -824,54 +573,6 @@
  ],
  "upcoming": [
   {
-   "fid": "1570342",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "فالنسيا",
-   "away": "بيتيس",
-   "home_en": "Valencia",
-   "home_logo": "https://media.api-sports.io/football/teams/532.png",
-   "away_logo": "https://media.api-sports.io/football/teams/543.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-   "away_en": "Real Betis",
-   "league": "الدوري الإسباني",
-   "top": true,
-   "pick": "draw",
-   "confidence": 56,
-   "reason": "فريقا الدرجة الأولى إسبانية متقاربا القوة وبيتيس قوي بعيداً عن الأرض"
-  },
-  {
-   "fid": "1610924",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "لاسك لينز",
-   "away": "سلتيك",
-   "home_en": "Lask Linz",
-   "home_logo": "https://media.api-sports.io/football/teams/1026.png",
-   "away_logo": "https://media.api-sports.io/football/teams/247.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "away_en": "Celtic",
-   "league": "دوري أطباع أوروبا",
-   "top": true,
-   "pick": "away",
-   "confidence": 63,
-   "reason": "سلتيك فريق اسكتلندي قوي والفارق في مستوى التدريب أوروبي بينهما"
-  },
-  {
-   "fid": "1622627",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "بودو/جليمت",
-   "away": "نيك خيميخن",
-   "home_en": "Bodo/Glimt",
-   "home_logo": "https://media.api-sports.io/football/teams/327.png",
-   "away_logo": "https://media.api-sports.io/football/teams/413.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "away_en": "NEC Nijmegen",
-   "league": "دوري أبطال أوروبا",
-   "top": true,
-   "pick": "home",
-   "confidence": 62,
-   "reason": "بودو يلعب على أرضه وهو الأقوى في المقابلة، NEC فريق هولندي في مستوى أقل"
-  },
-  {
    "fid": "1547769",
    "kickoff": "2026-08-26T00:30:00+00:00",
    "home": "إندبندينتي ديل فالي",
@@ -886,70 +587,6 @@
    "pick": "home",
    "confidence": 55,
    "reason": "إندبندينتي له تاريخ أفضل في المسابقة، لكن تولیما منافس قوي والمباراة متقاربة"
-  },
-  {
-   "fid": "1612599",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "خنرال كابالييرو",
-   "away": "روبيو نو",
-   "home_en": "General Caballero",
-   "home_logo": "https://media.api-sports.io/football/teams/1181.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1185.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
-   "away_en": "Rubio NU",
-   "league": "كأس باراغواي",
-   "top": false,
-   "pick": "home",
-   "confidence": 54,
-   "reason": "ميزة الأرض قد تحسم المباراة في دوري أقل تنافسية نسبياً"
-  },
-  {
-   "fid": "1618988",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "غوالبيرتو بيلاروييل",
-   "away": "أورينتي بيترولييرو",
-   "home_en": "Gualberto Villarroel SJ",
-   "home_logo": "https://media.api-sports.io/football/teams/22266.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3707.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "away_en": "Oriente Petrolero",
-   "league": "الدرجة الأولى البوليفية",
-   "top": false,
-   "pick": "away",
-   "confidence": 51,
-   "reason": "أورينتي بيترولييرو فريق تاريخي بقدرات أفضل في البطولة المحلية"
-  },
-  {
-   "fid": "1623082",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "برمنجهام",
-   "away": "برينتفورد",
-   "home_en": "Birmingham",
-   "home_logo": "https://media.api-sports.io/football/teams/54.png",
-   "away_logo": "https://media.api-sports.io/football/teams/55.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-   "away_en": "Brentford",
-   "league": "كأس الرابطة الإنجليزية",
-   "top": false,
-   "pick": "away",
-   "confidence": 63,
-   "reason": "برينتفورد فريق من الدرجة الأولى بمستوى عالي، برمنجهام أضعف نسبياً"
-  },
-  {
-   "fid": "1623100",
-   "kickoff": "2026-08-25T19:00:00+00:00",
-   "home": "نوتنجهام فوريست",
-   "away": "ليدز",
-   "home_en": "Nottingham Forest",
-   "home_logo": "https://media.api-sports.io/football/teams/65.png",
-   "away_logo": "https://media.api-sports.io/football/teams/63.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-   "away_en": "Leeds",
-   "league": "كأس الرابطة الإنجليزية",
-   "top": false,
-   "pick": "home",
-   "confidence": 57,
-   "reason": "نوتنجهام فوريست في الدرجة الأولى بخبرة أكثر، وميزة الأرض مهمة"
   },
   {
    "fid": "1514238",
@@ -1849,6 +1486,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-25",
+   "home": "دونكاستر",
+   "away": "ميدلسبره",
+   "home_en": "Doncaster",
+   "away_en": "Middlesbrough",
+   "league": "كأس الرابطة الإنجليزية",
+   "home_logo": "https://media.api-sports.io/football/teams/1354.png",
+   "away_logo": "https://media.api-sports.io/football/teams/70.png",
+   "pick": "away",
+   "confidence": 58,
+   "kickoff": "2026-08-25T18:30:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-25",
    "home": "الاتفاق",
@@ -3566,94 +3217,94 @@
  },
  "news": [
   {
-   "title": "Carabao Cup round two LIVE!",
-   "link": "https://www.skysports.com/football/live-blog/12040/13577036/carabao-cup-round-two-live-commentary-updates-scores-streams-and-team-news-with-leeds-brentford-west-ham-in-action",
+   "title": "Ipswich latest: Bid made for Leverkusen midfielder",
+   "link": "https://www.skysports.com/football/live-blog/12040/13279317/ipswich-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
    "source": "Sky Sports",
-   "time": "2026-08-25T18:55:00+00:00"
+   "time": "2026-08-25T21:53:00+00:00"
   },
   {
-   "title": "Forest latest: Delap to have medical on Wednesday ahead of club-record move",
-   "link": "https://www.skysports.com/football/live-blog/12691/13279316/nottingham-forest-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
+   "title": "Ipswich latest: Bid made for Leverkusen midfielder",
+   "link": "https://www.skysports.com/football/live-blog/12691/13279317/ipswich-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
    "source": "Sky News",
-   "time": "2026-08-25T18:52:00+00:00"
+   "time": "2026-08-25T21:53:00+00:00"
   },
   {
-   "title": "FREE STREAM: The Transfer Show on Sky Sports News",
-   "link": "https://www.skysports.com/football/news/12040/13569345/free-stream-the-transfer-show-on-sky-sports-news-latest-football-transfer-news-updates-and-rumours",
+   "title": "Nunez scores from near halfway line in stunning strike for Ipswich against Leicester",
+   "link": "https://www.skysports.com/watch/video/13577168/ipswich-v-leciester-marcelino-nunez-scores-from-near-the-halfway-line-in-stunning-strike-for-ipswich-against-leicester-in-the-carabao-cup",
    "source": "Sky Sports",
-   "time": "2026-08-25T18:50:00+00:00"
+   "time": "2026-08-25T21:46:00+00:00"
   },
   {
-   "title": "Forest agree club-record deal for Chelsea's Delap",
-   "link": "https://www.skysports.com/football/news/12040/13577090/liam-delap-transfer-nottingham-forest-agree-club-record-deal-to-sign-chelsea-striker",
+   "title": "Leeds get deserved breakthrough vs Forest through lovely James finish!",
+   "link": "https://www.skysports.com/watch/video/13577143/dan-james-claims-deserved-breakthrough-for-leeds-in-carabao-cup-tie-against-nottingham-forest",
    "source": "Sky Sports",
-   "time": "2026-08-25T18:45:00+00:00"
+   "time": "2026-08-25T21:12:00+00:00"
   },
   {
-   "title": "Forest agree club-record deal for Chelsea's Delap",
-   "link": "https://www.skysports.com/football/news/12691/13577090/liam-delap-transfer-nottingham-forest-agree-club-record-deal-to-sign-chelsea-striker",
-   "source": "Sky News",
-   "time": "2026-08-25T18:45:00+00:00"
-  },
-  {
-   "title": "Liverpool hold positive Barcola talks with optimism over deal with PSG",
-   "link": "https://www.skysports.com/football/news/12040/13567087/bradley-barcola-transfer-news-liverpool-hold-positive-talks-with-optimism-deal-can-be-done-with-psg-for-france-international",
+   "title": "Fernandes crowned PFA Players' Player of the Year as Shaw wins women's award",
+   "link": "https://www.skysports.com/football/news/12040/13577089/bruno-fernandes-man-utd-captain-wins-2025-26-pfa-players-player-of-the-year-as-bunny-shaw-wins-womens-award",
    "source": "Sky Sports",
-   "time": "2026-08-25T18:20:00+00:00"
+   "time": "2026-08-25T21:00:00+00:00"
   },
   {
-   "title": "Liverpool hold positive Barcola talks with optimism over deal with PSG",
-   "link": "https://www.skysports.com/football/news/12691/13567087/bradley-barcola-transfer-news-liverpool-hold-positive-talks-with-optimism-deal-can-be-done-with-psg-for-france-international",
-   "source": "Sky News",
-   "time": "2026-08-25T18:20:00+00:00"
+   "title": "حلّ قوات سوريا الديمقراطية بعد اتفاق مع دمشق",
+   "link": "https://www.bbc.com/arabic/articles/clylz82zwp3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-25T20:57:46+00:00"
   },
   {
-   "title": "Littler's bid for historic PDC majors sweep suffers blow with PC27 exit",
-   "link": "https://www.skysports.com/darts/news/12040/13577079/luke-littler-suffers-players-championship-27-quarter-final-exit-with-loss-to-jermaine-wattimena",
+   "title": "'What a finish!' - Dowell's 'special' strike brings Hull level",
+   "link": "https://www.skysports.com/watch/video/13577132/stoke-city-vs-hull-city-kieran-dowell-levels-for-hull-with-pretty-special-finish",
    "source": "Sky Sports",
-   "time": "2026-08-25T17:45:00+00:00"
+   "time": "2026-08-25T20:37:00+00:00"
   },
   {
-   "title": "Tottenham latest: Savio could make debut on Wednesday...",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025489/tottenham-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-25T17:24:00+00:00"
-  },
-  {
-   "title": "Aston Villa latest: 'Talks begin with Chelsea over £65m striker deal'",
-   "link": "https://www.skysports.com/football/live-blog/12040/13025491/aston-villa-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky Sports",
-   "time": "2026-08-25T17:21:00+00:00"
-  },
-  {
-   "title": "Man Utd latest: 'Club of my dreams' - Baleba's first words after arrival...",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-   "source": "Sky News",
-   "time": "2026-08-25T17:15:00+00:00"
-  },
-  {
-   "title": "LASK to hold silence for Celtic fan who died during Champions League match",
-   "link": "https://www.bbc.co.uk/news/articles/cj642ld8px1o?at_medium=RSS&at_campaign=rss",
+   "title": "Wednesday's gossip: Villa make offer for Palace striker Mateta",
+   "link": "https://www.bbc.co.uk/sport/football/articles/ce8e0l7prg6o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-08-25T16:46:38+00:00"
+   "time": "2026-08-25T20:12:19+00:00"
   },
   {
-   "title": "Man Utd complete Baleba signing",
-   "link": "https://www.skysports.com/football/news/12040/13575283/carlos-baleba-transfer-manchester-united-complete-signing-of-cameroon-midfielder-from-brighton",
+   "title": "Wilson scores SIX minutes into first Brentford start",
+   "link": "https://www.skysports.com/watch/video/13577124/callum-wilson-scores-on-first-brentford-start-against-birmingham-carabao-cup",
    "source": "Sky Sports",
-   "time": "2026-08-25T16:45:00+00:00"
+   "time": "2026-08-25T20:11:00+00:00"
   },
   {
-   "title": "Man Utd complete Baleba signing",
-   "link": "https://www.skysports.com/football/news/12691/13575283/carlos-baleba-transfer-manchester-united-complete-signing-of-cameroon-midfielder-from-brighton",
+   "title": "Brighton latest: Left-back Hadjam joins from Young Boys",
+   "link": "https://www.skysports.com/football/live-blog/12040/13279295/brighton-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
+   "source": "Sky Sports",
+   "time": "2026-08-25T20:10:00+00:00"
+  },
+  {
+   "title": "Brighton latest: Left-back Hadjam joins from Young Boys",
+   "link": "https://www.skysports.com/football/live-blog/12691/13279295/brighton-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
    "source": "Sky News",
-   "time": "2026-08-25T16:45:00+00:00"
+   "time": "2026-08-25T20:10:00+00:00"
   },
   {
-   "title": "'A glimmer of hope' | Could Alvarez still end up at Arsenal?",
-   "link": "https://www.skysports.com/watch/video/13577035/transfer-latest-how-julian-alvarez-still-end-up-at-arsenal",
+   "title": "Xavi hopes time at the ‘university of football’ will end with Dutch success",
+   "link": "https://www.theguardian.com/football/2026/aug/25/xavi-hernandez-university-of-football-netherlands-head-coach-barcelona",
+   "source": "The Guardian",
+   "time": "2026-08-25T19:58:37+00:00"
+  },
+  {
+   "title": "'Absolutely ruthless!' | Coventry hit Plymouth with early quick-fire double",
+   "link": "https://www.skysports.com/watch/video/13577118/coventry-hit-plymouth-with-quick-fire-early-double-with-taiwo-awoniyi-nets-his-first-goal-for-the-club",
    "source": "Sky Sports",
-   "time": "2026-08-25T16:35:00+00:00"
+   "time": "2026-08-25T19:55:00+00:00"
+  },
+  {
+   "title": "Fernandes and Shaw win PFA player of the year awards",
+   "link": "https://www.bbc.co.uk/sport/football/articles/ckgwj62e5yno?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-25T19:47:35+00:00"
+  },
+  {
+   "title": "إيران \"تتحدى\" عقوبات واشنطن وتراهن على شركائها، وترامب يلوّح بعودة الضربات العسكرية",
+   "link": "https://www.bbc.com/arabic/articles/cj4jx71xq99o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-25T19:45:49+00:00"
   }
  ],
  "radar_acc": {
@@ -4792,9 +4443,22 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-25",
-    "home": "Gualberto Villarroel SJ",
-    "away": "Oriente Petrolero",
-    "league": "Primera División (Bolivia)",
+    "home": "General Caballero",
+    "away": "Rubio NU",
+    "league": "Copa Paraguay (Paraguay)",
+    "level": "red",
+    "minute": 84,
+    "pick": "home",
+    "conf": 42,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-25",
+    "home": "Nottingham Forest",
+    "away": "Leeds",
+    "league": "League Cup (England)",
     "level": "red",
     "minute": 86,
     "pick": "home",
@@ -5026,26 +4690,13 @@
     "kind": "warning",
     "pending": true,
     "date": "2026-08-25",
-    "home": "General Caballero",
-    "away": "Rubio NU",
-    "league": "Copa Paraguay (Paraguay)",
+    "home": "Gualberto Villarroel SJ",
+    "away": "Oriente Petrolero",
+    "league": "Primera División (Bolivia)",
     "level": "red",
     "minute": 90,
     "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-08-25",
-    "home": "Nottingham Forest",
-    "away": "Leeds",
-    "league": "League Cup (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 41,
+    "conf": 47,
     "top": false
    },
    {
