@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-25T12:09:19.338962+00:00",
+ "updated": "2026-08-25T12:16:36.677700+00:00",
  "live": [
   {
    "fid": "1507040",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2762.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
    "score": "0-0",
-   "minute": 80,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-25T12:09:17.697456+00:00",
+   "seen": "2026-08-25T12:16:34.618566+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -24,10 +24,10 @@
     "confidence": 49
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د80)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د88)"
     ],
     "pick": "away",
     "confidence": 49,
@@ -41,25 +41,31 @@
     "trend": {
      "min": [
       45,
-      80
+      80,
+      88
      ],
      "danger": [
       42,
-      63
+      63,
+      67
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -77,9 +83,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2764.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
    "score": "0-2",
-   "minute": 80,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-25T12:09:17.697456+00:00",
+   "seen": "2026-08-25T12:16:34.618566+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 59
@@ -104,7 +110,8 @@
     "trend": {
      "min": [
       45,
-      80
+      80,
+      88
      ],
      "danger": [
       15,
@@ -145,9 +152,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2745.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
    "score": "1-0",
-   "minute": 80,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-25T12:09:17.697456+00:00",
+   "seen": "2026-08-25T12:16:34.618566+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -174,7 +181,8 @@
     "trend": {
      "min": [
       45,
-      80
+      80,
+      88
      ],
      "danger": [
       42,
@@ -199,6 +207,65 @@
      "a_cor": [
       0,
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1588809",
+   "home": "Andranik",
+   "away": "Echmiadzin",
+   "home_en": "Andranik",
+   "away_en": "Echmiadzin",
+   "league": "Cup (Armenia)",
+   "home_logo": "https://media.api-sports.io/football/teams/21877.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27986.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/709.png",
+   "score": "0-0",
+   "minute": 17,
+   "status": "1H",
+   "seen": "2026-08-25T12:16:34.618566+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 25,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      17
+     ],
+     "danger": [
+      25
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
