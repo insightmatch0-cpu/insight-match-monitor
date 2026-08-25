@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-25T01:13:15.625322+00:00",
+ "updated": "2026-08-25T01:19:49.311778+00:00",
  "live": [
   {
    "fid": "1505501",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2324.png",
    "league_logo": "https://media.api-sports.io/football/leagues/265.png",
    "score": "3-1",
-   "minute": 84,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-25T01:13:12.674913+00:00",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,13 +24,17 @@
     "confidence": 40
    },
    "radar": {
-    "score": 0,
+    "score": 22,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
     "pick": "home",
     "confidence": 40,
     "drama": {
-     "signal": 0,
+     "signal": 40,
      "side": "away",
      "ready": false
     },
@@ -39,18 +43,15 @@
     "trend": {
      "min": [
       36,
-      68,
-      84
+      90
      ],
      "danger": [
       0,
-      22,
-      0
+      22
      ],
      "h_sog": [
       3,
-      5,
-      6
+      8
      ],
      "a_sog": [
       1,
@@ -81,9 +82,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2333.png",
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
    "score": "0-1",
-   "minute": 83,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-25T01:13:12.674913+00:00",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -93,10 +94,10 @@
     "confidence": 35
    },
    "radar": {
-    "score": 64,
-    "level": "amber",
+    "score": 69,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د83)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 35,
@@ -110,13 +111,11 @@
     "trend": {
      "min": [
       36,
-      67,
-      83
+      90
      ],
      "danger": [
       36,
-      55,
-      64
+      69
      ],
      "h_sog": [
       0,
@@ -152,9 +151,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1155.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "1-0",
-   "minute": 54,
+   "minute": 60,
    "status": "2H",
-   "seen": "2026-08-25T01:13:12.674913+00:00",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -184,7 +183,7 @@
     "trend": {
      "min": [
       21,
-      54
+      60
      ],
      "danger": [
       15,
@@ -200,7 +199,7 @@
      ],
      "h_cor": [
       2,
-      2
+      3
      ],
      "a_cor": [
       1,
@@ -222,7 +221,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-25T01:13:12.674913+00:00",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -281,7 +280,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-25T01:13:12.674913+00:00",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 54
@@ -338,9 +337,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1466.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "1-0",
-   "minute": 27,
+   "minute": 34,
    "status": "1H",
-   "seen": "2026-08-25T01:13:12.674913+00:00",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -366,8 +365,7 @@
     "top": false,
     "trend": {
      "min": [
-      11,
-      27
+      34
      ],
      "danger": [
       15,
@@ -494,6 +492,124 @@
      ],
      "danger": [
       22
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1583746",
+   "home": "Alianza FC",
+   "away": "Tauro FC",
+   "home_en": "Alianza FC",
+   "away_en": "Tauro FC",
+   "league": "Liga Panameña de Fútbol (Panama)",
+   "home_logo": "https://media.api-sports.io/football/teams/2881.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2885.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/304.png",
+   "score": "1-0",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 41
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د20)"
+    ],
+    "pick": "away",
+    "confidence": 41,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20
+     ],
+     "danger": [
+      27
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1601413",
+   "home": "Guadalupe FC",
+   "away": "AD Carmelita",
+   "home_en": "Guadalupe FC",
+   "away_en": "AD Carmelita",
+   "league": "Liga de Ascenso (Costa-Rica)",
+   "home_logo": "https://media.api-sports.io/football/teams/821.png",
+   "away_logo": "https://media.api-sports.io/football/teams/814.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/163.png",
+   "score": "0-0",
+   "minute": 19,
+   "status": "1H",
+   "seen": "2026-08-25T01:19:45.807401+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 47
+   },
+   "radar": {
+    "score": 26,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د19)"
+    ],
+    "pick": "home",
+    "confidence": 47,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      19
+     ],
+     "danger": [
+      26
      ],
      "h_sog": [
       0
@@ -3859,6 +3975,19 @@
     "conf": 42,
     "final": "2-1",
     "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-24",
+    "home": "San Luis",
+    "away": "Santiago Wanderers",
+    "league": "Primera B (Chile)",
+    "level": "amber",
+    "minute": 83,
+    "pick": "home",
+    "conf": 35,
     "top": false
    },
    {
