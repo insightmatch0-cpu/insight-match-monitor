@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2492,
+  "remaining": 2491,
   "note": "",
-  "matches": 1,
+  "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 4
+  "radar_targets": 5
  },
  "api_quota": {
-  "remaining": 2418,
+  "remaining": 2379,
   "limit": 7500,
-  "at": "2026-08-25T21:16:37.808541+00:00"
+  "at": "2026-08-25T21:26:44.521179+00:00"
  },
  "delivery": {
   "at": "2026-08-25T20:42:42.005387+00:00",
@@ -67,16 +67,16 @@
   "alerted_for": "2026-08-21"
  },
  "1610924": {
-  "score": "4-1",
+  "score": "5-1",
   "status": "ET",
-  "minute": 108,
+  "minute": 114,
   "home": "Lask Linz",
   "away": "Celtic",
   "league": "UEFA Champions League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/1026.png",
   "away_logo": "https://media.api-sports.io/football/teams/247.png",
   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-  "seen": "2026-08-25T21:16:36.659255+00:00",
+  "seen": "2026-08-25T21:26:42.921409+00:00",
   "radar": {
    "snaps": [
     {
@@ -264,7 +264,7 @@
      }
     },
     {
-     "minute": 108,
+     "minute": 95,
      "gh": 4,
      "ga": 1,
      "h": {
@@ -285,6 +285,29 @@
       "rc": 0,
       "sv": 2
      }
+    },
+    {
+     "minute": 114,
+     "gh": 5,
+     "ga": 1,
+     "h": {
+      "sog": 7,
+      "shots": 37,
+      "cor": 9,
+      "poss": 51,
+      "yc": 2,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 4,
+      "poss": 49,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
     }
    ],
    "score": 0,
@@ -295,6 +318,7 @@
     68,
     43,
     15,
+    0,
     0,
     0,
     0,
@@ -318,31 +342,31 @@
  "1589394": {
   "score": "1-1",
   "status": "2H",
-  "minute": 50,
+  "minute": 60,
   "home": "Alianza Atletico",
   "away": "UTC Cajamarca",
   "league": "Copa De La Liga (Peru)",
   "home_logo": "https://media.api-sports.io/football/teams/2560.png",
   "away_logo": "https://media.api-sports.io/football/teams/2539.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
-  "seen": "2026-08-25T21:16:36.659255+00:00",
+  "seen": "2026-08-25T21:26:42.921409+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 50,
+     "minute": 60,
      "gh": 1,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 45,
+   "score": 51,
    "level": "amber",
    "dscores": [
-    45
+    51
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د50)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د60)"
    ],
    "pick": "home",
    "confidence": 45,
@@ -361,18 +385,18 @@
  "1605341": {
   "score": "1-0",
   "status": "2H",
-  "minute": 56,
+  "minute": 66,
   "home": "Jarabacoa",
   "away": "Atlántico",
   "league": "Liga Mayor (Dominican-Republic)",
   "home_logo": "https://media.api-sports.io/football/teams/16140.png",
   "away_logo": "https://media.api-sports.io/football/teams/16138.png",
   "league_logo": "https://media.api-sports.io/football/leagues/759.png",
-  "seen": "2026-08-25T21:16:36.659255+00:00",
+  "seen": "2026-08-25T21:26:42.921409+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 56,
+     "minute": 66,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -403,7 +427,7 @@
  },
  "1549603": {
   "score": "1-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Popayan",
   "away": "Bogota FC",
@@ -411,7 +435,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1460.png",
   "away_logo": "https://media.api-sports.io/football/teams/1458.png",
   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-  "seen": "2026-08-25T21:16:36.659255+00:00",
+  "seen": "2026-08-25T21:26:42.921409+00:00",
   "radar": {
    "snaps": [
     {
@@ -440,6 +464,49 @@
    ],
    "pick": "home",
    "confidence": 41,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1632402": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 8,
+  "home": "Defensor Sporting",
+  "away": "Rentistas",
+  "league": "Copa Uruguay (Uruguay)",
+  "home_logo": "https://media.api-sports.io/football/teams/2350.png",
+  "away_logo": "https://media.api-sports.io/football/teams/2371.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/930.png",
+  "seen": "2026-08-25T21:26:42.921409+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 8,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 19,
+   "level": "green",
+   "dscores": [
+    19
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
+   ],
+   "pick": "home",
+   "confidence": 51,
    "top": false,
    "mine": false,
    "drama": {

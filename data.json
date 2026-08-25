@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-25T21:16:39.538176+00:00",
+ "updated": "2026-08-25T21:26:46.144267+00:00",
  "live": [
   {
    "fid": "1610924",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1026.png",
    "away_logo": "https://media.api-sports.io/football/teams/247.png",
    "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "4-1",
-   "minute": 108,
+   "score": "5-1",
+   "minute": 114,
    "status": "ET",
-   "seen": "2026-08-25T21:16:36.659255+00:00",
+   "seen": "2026-08-25T21:26:42.921409+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 63
@@ -46,7 +46,8 @@
       63,
       78,
       102,
-      108
+      95,
+      114
      ],
      "danger": [
       22,
@@ -54,6 +55,7 @@
       68,
       43,
       15,
+      0,
       0,
       0,
       0,
@@ -68,11 +70,13 @@
       3,
       4,
       6,
-      6
+      6,
+      7
      ],
      "a_sog": [
       0,
       1,
+      3,
       3,
       3,
       3,
@@ -90,7 +94,8 @@
       5,
       6,
       8,
-      8
+      8,
+      9
      ],
      "a_cor": [
       0,
@@ -101,6 +106,7 @@
       2,
       2,
       3,
+      4,
       4
      ]
     }
@@ -117,9 +123,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/16138.png",
    "league_logo": "https://media.api-sports.io/football/leagues/759.png",
    "score": "1-0",
-   "minute": 56,
+   "minute": 66,
    "status": "2H",
-   "seen": "2026-08-25T21:16:36.659255+00:00",
+   "seen": "2026-08-25T21:26:42.921409+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -145,7 +151,7 @@
     "top": false,
     "trend": {
      "min": [
-      56
+      66
      ],
      "danger": [
       15
@@ -176,9 +182,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2539.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
    "score": "1-1",
-   "minute": 50,
+   "minute": 60,
    "status": "2H",
-   "seen": "2026-08-25T21:16:36.659255+00:00",
+   "seen": "2026-08-25T21:26:42.921409+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -188,10 +194,10 @@
     "confidence": 45
    },
    "radar": {
-    "score": 45,
+    "score": 51,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د50)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د60)"
     ],
     "pick": "home",
     "confidence": 45,
@@ -204,10 +210,10 @@
     "top": false,
     "trend": {
      "min": [
-      50
+      60
      ],
      "danger": [
-      45
+      51
      ],
      "h_sog": [
       0
@@ -236,8 +242,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-25T21:16:36.659255+00:00",
+   "status": "HT",
+   "seen": "2026-08-25T21:26:42.921409+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -284,6 +290,65 @@
      ],
      "a_cor": [
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1632402",
+   "home": "Defensor Sporting",
+   "away": "Rentistas",
+   "home_en": "Defensor Sporting",
+   "away_en": "Rentistas",
+   "league": "Copa Uruguay (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2350.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2371.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/930.png",
+   "score": "0-0",
+   "minute": 8,
+   "status": "1H",
+   "seen": "2026-08-25T21:26:42.921409+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
+    ],
+    "pick": "home",
+    "confidence": 51,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8
+     ],
+     "danger": [
+      19
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
