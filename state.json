@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2499,
+  "remaining": 2498,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
   "radar_targets": 6
  },
  "api_quota": {
-  "remaining": 2081,
+  "remaining": 2037,
   "limit": 7500,
-  "at": "2026-08-25T22:16:44.591935+00:00"
+  "at": "2026-08-25T22:23:15.399460+00:00"
  },
  "delivery": {
   "at": "2026-08-25T20:42:42.005387+00:00",
@@ -76,7 +76,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2560.png",
   "away_logo": "https://media.api-sports.io/football/teams/2539.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
-  "seen": "2026-08-25T22:16:43.339158+00:00",
+  "seen": "2026-08-25T22:23:14.195797+00:00",
   "radar": {
    "snaps": [
     {
@@ -128,14 +128,14 @@
  "1549603": {
   "score": "1-2",
   "status": "2H",
-  "minute": 89,
+  "minute": 90,
   "home": "Popayan",
   "away": "Bogota FC",
   "league": "Primera B (Colombia)",
   "home_logo": "https://media.api-sports.io/football/teams/1460.png",
   "away_logo": "https://media.api-sports.io/football/teams/1458.png",
   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-  "seen": "2026-08-25T22:16:43.339158+00:00",
+  "seen": "2026-08-25T22:21:41.479184+00:00",
   "radar": {
    "snaps": [
     {
@@ -158,17 +158,25 @@
      "ga": 2,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 90,
+     "gh": 1,
+     "ga": 2,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 68,
+   "score": 69,
    "level": "red",
    "dscores": [
     30,
     64,
-    68
+    60,
+    69
    ],
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د89)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
    ],
    "pick": "home",
    "confidence": 41,
@@ -194,7 +202,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2350.png",
   "away_logo": "https://media.api-sports.io/football/teams/2371.png",
   "league_logo": "https://media.api-sports.io/football/leagues/930.png",
-  "seen": "2026-08-25T22:16:43.339158+00:00",
+  "seen": "2026-08-25T22:23:14.195797+00:00",
   "radar": {
    "snaps": [
     {
@@ -245,11 +253,18 @@
   "home_logo": "https://media.api-sports.io/football/teams/1177.png",
   "away_logo": "https://media.api-sports.io/football/teams/1187.png",
   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
-  "seen": "2026-08-25T22:16:43.339158+00:00",
+  "seen": "2026-08-25T22:23:14.195797+00:00",
   "radar": {
    "snaps": [
     {
      "minute": 39,
+     "gh": 1,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 45,
      "gh": 1,
      "ga": 1,
      "h": {},
@@ -267,6 +282,7 @@
    "level": "amber",
    "dscores": [
     38,
+    34,
     42
    ],
    "factors": [
@@ -288,7 +304,7 @@
  },
  "1628885": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "2 de Mayo",
   "away": "Club Guarani",
@@ -296,7 +312,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2140.png",
   "away_logo": "https://media.api-sports.io/football/teams/1174.png",
   "league_logo": "https://media.api-sports.io/football/leagues/252.png",
-  "seen": "2026-08-25T22:16:43.339158+00:00",
+  "seen": "2026-08-25T22:23:14.195797+00:00",
   "radar": {
    "snaps": [
     {
@@ -344,12 +360,36 @@
       "rc": 0,
       "sv": 0
      }
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 2,
+      "poss": 55,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 7,
+      "poss": 45,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
     }
    ],
    "score": 42,
    "level": "amber",
    "dscores": [
     38,
+    34,
     42
    ],
    "factors": [
@@ -397,6 +437,49 @@
    ],
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د12)"
+   ],
+   "pick": "home",
+   "confidence": 38,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1498659": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 18,
+  "home": "Deportivo Madryn",
+  "away": "Godoy Cruz",
+  "league": "Primera Nacional (Argentina)",
+  "home_logo": "https://media.api-sports.io/football/teams/1929.png",
+  "away_logo": "https://media.api-sports.io/football/teams/439.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/129.png",
+  "seen": "2026-08-25T22:23:14.195797+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 18,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 25,
+   "level": "green",
+   "dscores": [
+    25
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د18)"
    ],
    "pick": "home",
    "confidence": 38,
