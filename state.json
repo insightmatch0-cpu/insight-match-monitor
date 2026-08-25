@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2496,
+  "remaining": 2495,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 6
+  "radar_targets": 5
  },
  "api_quota": {
-  "remaining": 2203,
+  "remaining": 2164,
   "limit": 7500,
-  "at": "2026-08-25T21:56:33.178657+00:00"
+  "at": "2026-08-25T22:02:58.233026+00:00"
  },
  "delivery": {
   "at": "2026-08-25T20:42:42.005387+00:00",
@@ -76,11 +76,18 @@
   "home_logo": "https://media.api-sports.io/football/teams/2560.png",
   "away_logo": "https://media.api-sports.io/football/teams/2539.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
-  "seen": "2026-08-25T21:56:32.397960+00:00",
+  "seen": "2026-08-25T22:02:57.560566+00:00",
   "radar": {
    "snaps": [
     {
      "minute": 60,
+     "gh": 1,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 90,
      "gh": 1,
      "ga": 1,
      "h": {},
@@ -98,6 +105,7 @@
    "level": "red",
    "dscores": [
     51,
+    63,
     69
    ],
    "factors": [
@@ -117,66 +125,17 @@
    "warn_alerted": null
   }
  },
- "1605341": {
-  "score": "2-0",
-  "status": "2H",
-  "minute": 90,
-  "home": "Jarabacoa",
-  "away": "Atlántico",
-  "league": "Liga Mayor (Dominican-Republic)",
-  "home_logo": "https://media.api-sports.io/football/teams/16140.png",
-  "away_logo": "https://media.api-sports.io/football/teams/16138.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/759.png",
-  "seen": "2026-08-25T21:56:32.397960+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 79,
-     "gh": 1,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 90,
-     "gh": 2,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 0,
-   "level": "green",
-   "dscores": [
-    15,
-    0
-   ],
-   "factors": [],
-   "pick": "home",
-   "confidence": 36,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "away",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
  "1549603": {
   "score": "1-2",
   "status": "2H",
-  "minute": 69,
+  "minute": 76,
   "home": "Popayan",
   "away": "Bogota FC",
   "league": "Primera B (Colombia)",
   "home_logo": "https://media.api-sports.io/football/teams/1460.png",
   "away_logo": "https://media.api-sports.io/football/teams/1458.png",
   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-  "seen": "2026-08-25T21:56:32.397960+00:00",
+  "seen": "2026-08-25T22:02:57.560566+00:00",
   "radar": {
    "snaps": [
     {
@@ -192,16 +151,24 @@
      "ga": 2,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 2,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 56,
+   "score": 60,
    "level": "amber",
    "dscores": [
     30,
-    56
+    50,
+    60
    ],
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د69)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د76)"
    ],
    "pick": "home",
    "confidence": 41,
@@ -220,14 +187,14 @@
  "1632402": {
   "score": "0-0",
   "status": "1H",
-  "minute": 38,
+  "minute": 45,
   "home": "Defensor Sporting",
   "away": "Rentistas",
   "league": "Copa Uruguay (Uruguay)",
   "home_logo": "https://media.api-sports.io/football/teams/2350.png",
   "away_logo": "https://media.api-sports.io/football/teams/2371.png",
   "league_logo": "https://media.api-sports.io/football/leagues/930.png",
-  "seen": "2026-08-25T21:56:32.397960+00:00",
+  "seen": "2026-08-25T22:02:57.560566+00:00",
   "radar": {
    "snaps": [
     {
@@ -236,15 +203,23 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 37,
-   "level": "green",
+   "score": 42,
+   "level": "amber",
    "dscores": [
-    37
+    31,
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د38)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 51,
@@ -263,14 +238,14 @@
  "1612600": {
   "score": "1-1",
   "status": "1H",
-  "minute": 26,
+  "minute": 33,
   "home": "SOL DE America",
   "away": "Sportivo Trinidense",
   "league": "Copa Paraguay (Paraguay)",
   "home_logo": "https://media.api-sports.io/football/teams/1177.png",
   "away_logo": "https://media.api-sports.io/football/teams/1187.png",
   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
-  "seen": "2026-08-25T21:56:32.397960+00:00",
+  "seen": "2026-08-25T22:02:57.560566+00:00",
   "radar": {
    "snaps": [
     {
@@ -279,15 +254,23 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 33,
+     "gh": 1,
+     "ga": 1,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 30,
+   "score": 34,
    "level": "green",
    "dscores": [
-    30
+    24,
+    34
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د26)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د33)"
    ],
    "pick": "away",
    "confidence": 41,
@@ -306,14 +289,14 @@
  "1628885": {
   "score": "0-0",
   "status": "1H",
-  "minute": 26,
+  "minute": 33,
   "home": "2 de Mayo",
   "away": "Club Guarani",
   "league": "Division Profesional - Clausura (Paraguay)",
   "home_logo": "https://media.api-sports.io/football/teams/2140.png",
   "away_logo": "https://media.api-sports.io/football/teams/1174.png",
   "league_logo": "https://media.api-sports.io/football/leagues/252.png",
-  "seen": "2026-08-25T21:56:32.397960+00:00",
+  "seen": "2026-08-25T22:02:57.560566+00:00",
   "radar": {
    "snaps": [
     {
@@ -338,23 +321,47 @@
       "rc": 0,
       "sv": 0
      }
+    },
+    {
+     "minute": 33,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 1,
+      "poss": 61,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 3,
+      "poss": 39,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
     }
    ],
-   "score": 30,
+   "score": 34,
    "level": "green",
    "dscores": [
-    30
+    24,
+    34
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د33)"
    ],
    "pick": "away",
    "confidence": 43,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
-    "side": "home",
+    "signal": 20,
+    "side": "away",
     "ready": false
    },
    "alerted": null,
