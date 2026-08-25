@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-25T10:33:11.039007+00:00",
+ "updated": "2026-08-25T10:39:41.774079+00:00",
  "live": [
   {
    "fid": "1541317",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/16785.png",
    "away_logo": "https://media.api-sports.io/football/teams/26150.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1226.png",
-   "score": "0-3",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-25T10:33:09.049074+00:00",
+   "score": "1-3",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-25T10:39:39.091331+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -24,16 +24,16 @@
     "confidence": 40
    },
    "radar": {
-    "score": 42,
+    "score": 45,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د45)"
+     "النتيجة الحالية 1-3 تُسقط التوقع (د51)"
     ],
     "pick": "home",
     "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": null,
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -42,12 +42,12 @@
      "min": [
       37,
       30,
-      45
+      51
      ],
      "danger": [
       37,
       33,
-      42
+      45
      ],
      "h_sog": [
       0,
@@ -83,9 +83,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25418.png",
    "league_logo": "https://media.api-sports.io/football/leagues/874.png",
    "score": "4-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-25T10:33:09.049074+00:00",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-08-25T10:39:39.091331+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -110,7 +110,7 @@
     "trend": {
      "min": [
       38,
-      45
+      51
      ],
      "danger": [
       0,
@@ -146,9 +146,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6802.png",
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "1-1",
-   "minute": 32,
+   "minute": 39,
    "status": "1H",
-   "seen": "2026-08-25T10:33:09.049074+00:00",
+   "seen": "2026-08-25T10:39:39.091331+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -158,10 +158,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 34,
+    "score": 38,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د32)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د39)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -174,10 +174,187 @@
     "top": false,
     "trend": {
      "min": [
-      32
+      39
      ],
      "danger": [
-      34
+      38
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507042",
+   "home": "FC Seoul",
+   "away": "Bucheon FC 1995",
+   "home_en": "FC Seoul",
+   "away_en": "Bucheon FC 1995",
+   "league": "K League 1 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2766.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2745.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-25T10:39:39.091331+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 61
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "home",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10
+     ],
+     "danger": [
+      21
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507040",
+   "home": "Gimcheon Sangmu FC",
+   "away": "Jeonbuk Motors",
+   "home_en": "Gimcheon Sangmu FC",
+   "away_en": "Jeonbuk Motors",
+   "league": "K League 1 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2768.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2762.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
+   "score": "0-0",
+   "minute": 9,
+   "status": "1H",
+   "seen": "2026-08-25T10:39:39.091331+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 49
+   },
+   "radar": {
+    "score": 20,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د9)"
+    ],
+    "pick": "away",
+    "confidence": 49,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      9
+     ],
+     "danger": [
+      20
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507041",
+   "home": "Jeju United FC",
+   "away": "Pohang Steelers",
+   "home_en": "Jeju United FC",
+   "away_en": "Pohang Steelers",
+   "league": "K League 1 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2761.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2764.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
+   "score": "0-0",
+   "minute": 9,
+   "status": "1H",
+   "seen": "2026-08-25T10:39:39.091331+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 59
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 35
+   },
+   "radar": {
+    "score": 20,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د9)"
+    ],
+    "pick": "away",
+    "confidence": 35,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      9
+     ],
+     "danger": [
+      20
      ],
      "h_sog": [
       0
