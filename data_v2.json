@@ -1,26 +1,6 @@
 {
  "live": [],
- "upcoming": [
-  {
-   "fid": "1513315",
-   "kickoff": "2026-08-25T02:00:00+00:00",
-   "home": "تاكوما ديفاينس",
-   "away": "سبورتينغ كانساس سيتي 2",
-   "home_en": "Tacoma Defiance",
-   "home_logo": "https://media.api-sports.io/football/teams/4020.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4019.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "away_en": "Sporting KC II",
-   "league": "إم إل إس نكست برو",
-   "top": false,
-   "pick": "home",
-   "confidence": 44,
-   "reason": "تاكوما أقوى على أرضه وسبورتينغ كانساس الرديف متذبذب دفاعياً",
-   "prob_home": 44,
-   "prob_draw": 25,
-   "prob_away": 31
-  }
- ],
+ "upcoming": [],
  "recent_results": [
   {
    "date": "2026-08-24",
@@ -2707,8 +2687,14 @@
   "reports": [
    {
     "fid": "1493090",
-    "score": "",
-    "s1": {},
+    "score": "2-2",
+    "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 54,
+      "correct": true
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -2765,8 +2751,14 @@
    },
    {
     "fid": "1493085",
-    "score": "",
-    "s1": {},
+    "score": "1-1",
+    "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 55,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -2825,6 +2817,11 @@
     "fid": "1550087",
     "score": "4-0",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 55,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 55,
@@ -2885,6 +2882,11 @@
     "fid": "1602991",
     "score": "3-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 64,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 62,
@@ -2951,6 +2953,11 @@
     "fid": "1570350",
     "score": "0-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 62,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 53,
@@ -3024,6 +3031,11 @@
     "fid": "1602990",
     "score": "0-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 58,
+      "correct": false
+     },
      "v2": {
       "pick": "away",
       "confidence": 43,
@@ -3086,6 +3098,11 @@
     "fid": "1550089",
     "score": "0-1",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 54,
+      "correct": false
+     },
      "v2": {
       "pick": "away",
       "confidence": 36,
@@ -3403,5 +3420,5 @@
   ]
  },
  "pred_updated": "2026-08-24T04:21:58.195362+00:00",
- "updated": "2026-08-25T03:36:37.375581+00:00"
+ "updated": "2026-08-25T04:02:52.715586+00:00"
 }
