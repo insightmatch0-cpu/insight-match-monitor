@@ -606,10 +606,10 @@
    "pick": "home",
    "confidence": 44,
    "level": "red",
-   "score": 71,
-   "minute": 70,
+   "score": 75,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د70)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د77)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -650,10 +650,10 @@
    "pick": "away",
    "confidence": 56,
    "level": "red",
-   "score": 68,
-   "minute": 89,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د89)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -671,10 +671,10 @@
    "pick": "home",
    "confidence": 56,
    "level": "red",
-   "score": 67,
-   "minute": 87,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د87)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -734,10 +734,10 @@
    "pick": "home",
    "confidence": 44,
    "level": "amber",
-   "score": 49,
-   "minute": 58,
+   "score": 53,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د58)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -776,10 +776,10 @@
    "pick": "away",
    "confidence": 43,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -890,6 +890,29 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1602994",
+   "date": "2026-08-25",
+   "home": "Al-Ettifaq",
+   "away": "Al-Nassr",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 70,
+   "level": "amber",
+   "score": 45,
+   "minute": 24,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د24)",
+    "ضغط هجومي متصاعد من المضيف",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 40,
+   "level_xg": "amber"
   }
  ],
  "resolved": [
@@ -28837,6 +28860,93 @@
      },
      "xg_h": 0.1004,
      "xg_a": 0.0707
+    }
+   ]
+  },
+  {
+   "fid": "1622626",
+   "date": "2026-08-25",
+   "minute": 77,
+   "score_at": "2-2",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Sabah FA",
+   "away": "Hapoel Beer Sheva",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 11,
+      "cor": 4,
+      "poss": 52,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 1,
+      "poss": 48,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     }
+    },
+    {
+     "minute": 54,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 12,
+      "cor": 4,
+      "poss": 52,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 3,
+      "shots": 8,
+      "cor": 1,
+      "poss": 48,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 6,
+      "shots": 19,
+      "cor": 7,
+      "poss": 55,
+      "yc": 2,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 4,
+      "shots": 12,
+      "cor": 3,
+      "poss": 45,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
+     }
     }
    ]
   }
