@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-25T11:39:25.452366+00:00",
+ "updated": "2026-08-25T11:46:41.279647+00:00",
  "live": [
   {
    "fid": "1627492",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6802.png",
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "1-2",
-   "minute": 81,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-08-25T11:39:23.374311+00:00",
+   "seen": "2026-08-25T11:46:36.560546+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -24,10 +24,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د81)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د88)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -40,89 +40,32 @@
     "top": false,
     "trend": {
      "min": [
-      81
+      81,
+      74,
+      88
      ],
      "danger": [
-      63
+      63,
+      59,
+      67
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1507040",
-   "home": "Gimcheon Sangmu FC",
-   "away": "Jeonbuk Motors",
-   "home_en": "Gimcheon Sangmu FC",
-   "away_en": "Jeonbuk Motors",
-   "league": "K League 1 (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2768.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2762.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
-   "score": "0-0",
-   "minute": 50,
-   "status": "2H",
-   "seen": "2026-08-25T11:39:23.374311+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 49
-   },
-   "radar": {
-    "score": 45,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
-    ],
-    "pick": "away",
-    "confidence": 49,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45,
-      50
-     ],
-     "danger": [
-      42,
-      45
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
       0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -140,9 +83,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2764.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
    "score": "0-2",
-   "minute": 50,
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-08-25T11:39:23.374311+00:00",
+   "seen": "2026-08-25T11:46:36.560546+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 59
@@ -167,7 +110,7 @@
     "trend": {
      "min": [
       45,
-      50
+      58
      ],
      "danger": [
       15,
@@ -203,9 +146,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2745.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
    "score": "1-0",
-   "minute": 50,
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-08-25T11:39:23.374311+00:00",
+   "seen": "2026-08-25T11:46:36.560546+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -232,11 +175,76 @@
     "trend": {
      "min": [
       45,
-      50
+      58
      ],
      "danger": [
       42,
       15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507040",
+   "home": "Gimcheon Sangmu FC",
+   "away": "Jeonbuk Motors",
+   "home_en": "Gimcheon Sangmu FC",
+   "away_en": "Jeonbuk Motors",
+   "league": "K League 1 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2768.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2762.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
+   "score": "0-0",
+   "minute": 57,
+   "status": "2H",
+   "seen": "2026-08-25T11:46:36.560546+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 49
+   },
+   "radar": {
+    "score": 49,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د57)"
+    ],
+    "pick": "away",
+    "confidence": 49,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      57
+     ],
+     "danger": [
+      42,
+      49
      ],
      "h_sog": [
       0,
@@ -3866,94 +3874,94 @@
  },
  "news": [
   {
-   "title": "Villa make 'serious' approach to sign Leao from AC Milan",
-   "link": "https://www.skysports.com/football/news/12040/13576879/rafael-leao-transfer-news-aston-villa-make-approach-to-sign-portugal-forward-who-is-open-to-leaving-ac-milan",
-   "source": "Sky Sports",
-   "time": "2026-08-25T08:52:00+00:00"
-  },
-  {
-   "title": "Villa make 'serious' approach to sign Leao from AC Milan",
-   "link": "https://www.skysports.com/football/news/12691/13576879/rafael-leao-transfer-news-aston-villa-make-approach-to-sign-portugal-forward-who-is-open-to-leaving-ac-milan",
-   "source": "Sky News",
-   "time": "2026-08-25T08:52:00+00:00"
-  },
-  {
-   "title": "FREE STREAM: Good Morning Transfers on Sky Sports News",
+   "title": "FREE STREAM: Transfer Talk on Sky Sports News",
    "link": "https://www.skysports.com/football/news/12040/13569345/free-stream-the-transfer-show-on-sky-sports-news-latest-football-transfer-news-updates-and-rumours",
    "source": "Sky Sports",
-   "time": "2026-08-25T08:50:00+00:00"
+   "time": "2026-08-25T12:20:00+00:00"
   },
   {
-   "title": "Leeds and Rangers co-owner York arrested",
-   "link": "https://www.skysports.com/football/news/12040/13576878/leeds-and-rangers-co-owner-jed-york-arrested-in-ohio-and-pleads-no-contest-to-misdemeanour-charges-of-disorderly-conduct-and-possessing-criminal-tools",
-   "source": "Sky Sports",
-   "time": "2026-08-25T08:44:00+00:00"
-  },
-  {
-   "title": "Football transfer rumours: Manchester City and Spurs chase Cody Gakpo?",
-   "link": "https://www.theguardian.com/football/2026/aug/25/football-transfer-rumours-manchester-city-tottenham-cody-gakpo",
-   "source": "The Guardian",
-   "time": "2026-08-25T08:32:29+00:00"
-  },
-  {
-   "title": "Have your say: What should Liverpool do with Wirtz?",
-   "link": "https://www.skysports.com/football/live-blog/12691/13025501/liverpool-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+   "title": "Sunderland latest: Mundle signs new deal",
+   "link": "https://www.skysports.com/football/live-blog/12691/13375102/sunderland-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
    "source": "Sky News",
-   "time": "2026-08-25T08:22:00+00:00"
+   "time": "2026-08-25T12:10:00+00:00"
   },
   {
-   "title": "\"سيختفي نصف عملي\": شركات في كندا والولايات المتحدة تخشى حرباً تجارية",
-   "link": "https://www.bbc.com/arabic/articles/c1dl7n1rq5lo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-25T08:15:43+00:00"
-  },
-  {
-   "title": "Problems mounting for threadbare Villa and Emery ahead of Arsenal",
-   "link": "https://www.skysports.com/football/news/12040/13576531/aston-villa-unai-emerys-problems-mounting-ahead-of-arsenal-test-after-threadbare-squad-falls-apart-against-brighton",
+   "title": "Villa make contact for Mateta and approach AC Milan for Leao",
+   "link": "https://www.skysports.com/football/news/12040/13576879/rafael-leao-transfer-news-aston-villa-make-approach-to-sign-portugal-forward-who-is-open-to-leaving-ac-milan",
    "source": "Sky Sports",
-   "time": "2026-08-25T08:00:00+00:00"
+   "time": "2026-08-25T12:00:00+00:00"
   },
   {
-   "title": "Villa latest: 'Watkins returns and apologises to teammates for Brighton absence'",
+   "title": "Villa make contact for Mateta and approach AC Milan for Leao",
+   "link": "https://www.skysports.com/football/news/12691/13576879/rafael-leao-transfer-news-aston-villa-make-approach-to-sign-portugal-forward-who-is-open-to-leaving-ac-milan",
+   "source": "Sky News",
+   "time": "2026-08-25T12:00:00+00:00"
+  },
+  {
+   "title": "الصين تؤكد دفاعها عن مصالحها \"بكل حزم\" رداً على خطط الولايات المتحدة لـ\"خنق\" إيران وشركائها التجاريين",
+   "link": "https://www.bbc.com/arabic/articles/c87vgy7q1d3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-25T11:33:06+00:00"
+  },
+  {
+   "title": "كيف غيّرت الإدارة الأمريكية الحالية شكل التحالفات الدولية حول العالم؟- مقال في واشنطن بوست",
+   "link": "https://www.bbc.com/arabic/articles/c4gvdy2x5p5o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-08-25T11:31:25+00:00"
+  },
+  {
+   "title": "Littler and Van Gerwen to headline World Series of Darts Finals",
+   "link": "https://www.skysports.com/darts/news/12040/13576932/world-series-of-darts-finals-luke-littler-and-michael-van-gerwen-to-headline-450k-event-as-full-32-player-field-confirmed",
+   "source": "Sky Sports",
+   "time": "2026-08-25T11:27:00+00:00"
+  },
+  {
+   "title": "When is the EFL Cup third-round draw?",
+   "link": "https://www.bbc.co.uk/sport/football/articles/clyegmmvr4vo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-08-25T11:22:52+00:00"
+  },
+  {
+   "title": "'Not the best version of me' - Hamilton regrets frustrated Dutch GP comments",
+   "link": "https://www.skysports.com/f1/news/12040/13576896/lewis-hamilton-ferrari-driver-takes-responsibility-for-frustrated-radio-and-media-comments-at-dutch-gp",
+   "source": "Sky Sports",
+   "time": "2026-08-25T11:20:00+00:00"
+  },
+  {
+   "title": "WSL academy teams to play in third tier after FA approves controversial plan",
+   "link": "https://www.theguardian.com/football/2026/aug/25/wsl-academy-teams-third-tier-fa-approves-plan",
+   "source": "The Guardian",
+   "time": "2026-08-25T11:07:54+00:00"
+  },
+  {
+   "title": "Aston Villa latest: 'Watkins returns to training and apologises'",
    "link": "https://www.skysports.com/football/live-blog/12691/13025491/aston-villa-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
    "source": "Sky News",
-   "time": "2026-08-25T07:50:00+00:00"
+   "time": "2026-08-25T11:00:00+00:00"
   },
   {
-   "title": "Ranking the best managers in Premier League history",
-   "link": "https://www.bbc.co.uk/sport/football/articles/cr59zj42plvo?at_medium=RSS&at_campaign=rss",
+   "title": "Leeds and Rangers co-owner jailed after prostitution arrest",
+   "link": "https://www.bbc.co.uk/news/articles/c790wyyv71vo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-08-25T07:42:03+00:00"
+   "time": "2026-08-25T10:55:25+00:00"
   },
   {
-   "title": "Are O'Neill's Celtic ready for Champions League?",
-   "link": "https://www.bbc.co.uk/sounds/play/p0p64scs?at_medium=RSS&at_campaign=rss",
+   "title": "Leeds and Rangers co-owner jailed after prostitution arrest",
+   "link": "https://www.bbc.co.uk/news/articles/c790wyyv71vo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-08-25T07:07:00+00:00"
+   "time": "2026-08-25T10:55:25+00:00"
   },
   {
-   "title": "Lazurite looks to make it third time lucky at Lingfield Park",
-   "link": "https://www.skysports.com/racing/news/12040/13576610/today-on-sky-sports-racing-all-weather-action-from-lingfield-park",
+   "title": "West Ham latest: Olympiakos make loan bid for Alvarez",
+   "link": "https://www.skysports.com/football/live-blog/12691/13210475/west-ham-latest-news",
+   "source": "Sky News",
+   "time": "2026-08-25T10:33:00+00:00"
+  },
+  {
+   "title": "Rugby league legend Sir Billy Boston dies aged 92",
+   "link": "https://www.skysports.com/rugby-league/news/12040/13573943/sir-billy-boston-trailblazing-rugby-league-player-dies-aged-92",
    "source": "Sky Sports",
-   "time": "2026-08-25T07:00:00+00:00"
-  },
-  {
-   "title": "Hearts close to deal for teenage winger Benjaminsen - gossip",
-   "link": "https://www.bbc.co.uk/sport/football/articles/cd94dy2yxelo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-25T06:40:29+00:00"
-  },
-  {
-   "title": "الشرع: \"سوريا تمزق بأيديها صفحة من ماضيها ‌‏الأليم\" بعد رفعها من قوائم الإرهاب الأمريكية",
-   "link": "https://www.bbc.com/arabic/articles/clyl8g7d765o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-08-25T06:35:59+00:00"
-  },
-  {
-   "title": "'Change is necessary' - players unite against Fifa",
-   "link": "https://www.bbc.co.uk/sport/football/articles/cy4zl2mz9rko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-08-25T06:31:19+00:00"
+   "time": "2026-08-25T10:30:00+00:00"
   }
  ],
  "radar_acc": {
