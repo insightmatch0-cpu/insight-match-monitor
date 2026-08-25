@@ -902,17 +902,17 @@
    "pick": "away",
    "confidence": 70,
    "level": "red",
-   "score": 73,
-   "minute": 50,
+   "score": 77,
+   "minute": 57,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د50)",
+    "النتيجة الحالية 2-0 تُسقط التوقع (د57)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": true,
    "alert_minute": 41,
-   "score_xg": 55,
+   "score_xg": 59,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 67,
@@ -935,17 +935,17 @@
    "pick": "home",
    "confidence": 56,
    "level": "red",
-   "score": 72,
-   "minute": 52,
+   "score": 77,
+   "minute": 60,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د52)",
+    "النتيجة الحالية 2-3 تُسقط التوقع (د60)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 52,
-   "score_xg": 46,
+   "score_xg": 51,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 72,
@@ -29029,6 +29029,55 @@
       "yc": 0,
       "rc": 1,
       "sv": 1
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1602995",
+   "date": "2026-08-25",
+   "minute": 66,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Al Shabab",
+   "away": "Al Riyadh",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 1,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {},
+     "xg_h": 0.0,
+     "xg_a": 0.065
+    },
+    {
+     "minute": 66,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 5,
+      "shots": 16,
+      "cor": 3,
+      "poss": 62,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 4,
+      "shots": 11,
+      "cor": 3,
+      "poss": 38,
+      "yc": 2,
+      "rc": 1,
+      "sv": 3
      }
     }
    ]
