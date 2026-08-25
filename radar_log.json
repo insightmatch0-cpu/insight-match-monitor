@@ -934,18 +934,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 56,
-   "level": "amber",
-   "score": 60,
-   "minute": 45,
+   "level": "red",
+   "score": 69,
+   "minute": 47,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د45)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د47)",
     "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 47,
    "score_xg": 42,
-   "level_xg": "amber"
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 69,
+   "sent_minute": 47,
+   "sent_factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د47)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   }
  ],
  "resolved": [
@@ -28979,6 +28989,46 @@
       "yc": 0,
       "rc": 0,
       "sv": 4
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1622627",
+   "date": "2026-08-25",
+   "minute": 7,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Bodo/Glimt",
+   "away": "NEC Nijmegen",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 7,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "poss": 70,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 30,
+      "yc": 0,
+      "rc": 1,
+      "sv": 0
      }
     }
    ]
