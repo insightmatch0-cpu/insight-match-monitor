@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2497,
+  "remaining": 2496,
   "note": "",
   "matches": 3,
   "radar_hits": 3,
   "radar_targets": 20
  },
  "api_quota": {
-  "remaining": 3269,
+  "remaining": 3203,
   "limit": 7500,
-  "at": "2026-08-25T19:36:53.130155+00:00"
+  "at": "2026-08-25T19:43:35.037045+00:00"
  },
  "delivery": {
   "at": "2026-08-25T19:36:51.496640+00:00",
@@ -67,16 +67,16 @@
   "alerted_for": "2026-08-21"
  },
  "1588877": {
-  "score": "2-1",
+  "score": "2-2",
   "status": "2H",
-  "minute": 80,
+  "minute": 86,
   "home": "Bristol Rovers",
   "away": "Chelsea U21",
   "league": "EFL Trophy (England)",
   "home_logo": "https://media.api-sports.io/football/teams/1334.png",
   "away_logo": "https://media.api-sports.io/football/teams/7192.png",
   "league_logo": "https://media.api-sports.io/football/leagues/46.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -126,16 +126,16 @@
   }
  },
  "1602994": {
-  "score": "2-0",
+  "score": "2-2",
   "status": "2H",
-  "minute": 73,
+  "minute": 80,
   "home": "Al-Ettifaq",
   "away": "Al-Nassr",
   "league": "Pro League (Saudi-Arabia)",
   "home_logo": "https://media.api-sports.io/football/teams/2934.png",
   "away_logo": "https://media.api-sports.io/football/teams/2939.png",
   "league_logo": "https://media.api-sports.io/football/leagues/307.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -167,26 +167,48 @@
       "rc": 1,
       "sv": 3
      }
+    },
+    {
+     "minute": 80,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 5,
+      "shots": 14,
+      "cor": 2,
+      "poss": 61,
+      "yc": 1,
+      "rc": 0,
+      "sv": 5
+     },
+     "a": {
+      "sog": 7,
+      "shots": 12,
+      "cor": 5,
+      "poss": 39,
+      "yc": 1,
+      "rc": 1,
+      "sv": 3
+     }
     }
    ],
-   "score": 100,
+   "score": 73,
    "level": "red",
    "dscores": [
     15,
-    100
+    88,
+    73
    ],
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د73)",
-    "موجة تسديد على المرمى من المضيف",
-    "موجة ركنيات لصالح المضيف",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د80)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "pick": "away",
    "confidence": 70,
    "top": true,
    "mine": true,
    "drama": {
-    "signal": 70,
+    "signal": 45,
     "side": "away",
     "ready": false
    },
@@ -196,16 +218,16 @@
   }
  },
  "1602995": {
-  "score": "2-3",
+  "score": "3-3",
   "status": "2H",
-  "minute": 76,
+  "minute": 83,
   "home": "Al Shabab",
   "away": "Al Riyadh",
   "league": "Pro League (Saudi-Arabia)",
   "home_logo": "https://media.api-sports.io/football/teams/2940.png",
   "away_logo": "https://media.api-sports.io/football/teams/10511.png",
   "league_logo": "https://media.api-sports.io/football/leagues/307.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -239,28 +261,49 @@
       "rc": 1,
       "sv": 4
      }
+    },
+    {
+     "minute": 83,
+     "gh": 3,
+     "ga": 3,
+     "h": {
+      "sog": 6,
+      "shots": 20,
+      "cor": 5,
+      "poss": 65,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 4,
+      "shots": 12,
+      "cor": 3,
+      "poss": 35,
+      "yc": 2,
+      "rc": 1,
+      "sv": 4
+     }
     }
    ],
-   "score": 86,
-   "level": "red",
+   "score": 64,
+   "level": "amber",
    "dscores": [
     15,
-    86
+    80,
+    64
    ],
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د76)",
-    "موجة تسديد على المرمى من الضيف",
-    "موجة ركنيات لصالح الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 3-3 تُسقط التوقع (د83)"
    ],
    "pick": "home",
    "confidence": 56,
    "top": true,
    "mine": true,
    "drama": {
-    "signal": 95,
+    "signal": 70,
     "side": "home",
-    "ready": true
+    "ready": false
    },
    "alerted": "flip",
    "red_alerted": true,
@@ -270,14 +313,14 @@
  "1622634": {
   "score": "1-2",
   "status": "2H",
-  "minute": 76,
+  "minute": 82,
   "home": "Al Fahaheel",
   "away": "Al Qadsia",
   "league": "Premier League (Kuwait)",
   "home_logo": "https://media.api-sports.io/football/teams/3533.png",
   "away_logo": "https://media.api-sports.io/football/teams/3537.png",
   "league_logo": "https://media.api-sports.io/football/leagues/330.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -309,7 +352,7 @@
      "a": {}
     },
     {
-     "minute": 70,
+     "minute": 76,
      "gh": 1,
      "ga": 2,
      "h": {},
@@ -343,28 +386,28 @@
   }
  },
  "1623086": {
-  "score": "0-1",
+  "score": "0-2",
   "status": "2H",
-  "minute": 77,
+  "minute": 84,
   "home": "Cardiff",
   "away": "Norwich",
   "league": "League Cup (England)",
   "home_logo": "https://media.api-sports.io/football/teams/43.png",
   "away_logo": "https://media.api-sports.io/football/teams/71.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1627937": {
   "score": "4-0",
   "status": "2H",
-  "minute": 77,
+  "minute": 83,
   "home": "Al Zawra'a",
   "away": "Naft Maysan",
   "league": "Iraqi League (Iraq)",
   "home_logo": "https://media.api-sports.io/football/teams/8010.png",
   "away_logo": "https://media.api-sports.io/football/teams/11074.png",
   "league_logo": "https://media.api-sports.io/football/leagues/542.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -396,7 +439,7 @@
      "a": {}
     },
     {
-     "minute": 70,
+     "minute": 77,
      "gh": 4,
      "ga": 0,
      "h": {},
@@ -428,16 +471,16 @@
   }
  },
  "1499595": {
-  "score": "1-0",
+  "score": "2-0",
   "status": "2H",
-  "minute": 75,
+  "minute": 82,
   "home": "Arsenal Sarandi",
   "away": "Ituzaingó",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/459.png",
   "away_logo": "https://media.api-sports.io/football/teams/8386.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -489,14 +532,14 @@
  "1499600": {
   "score": "2-0",
   "status": "2H",
-  "minute": 74,
+  "minute": 81,
   "home": "Real Pilar",
   "away": "Brown DE Adrogue",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/2422.png",
   "away_logo": "https://media.api-sports.io/football/teams/468.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -519,17 +562,25 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 81,
+     "gh": 2,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 59,
+   "score": 63,
    "level": "amber",
    "dscores": [
     30,
     36,
-    59
+    53,
+    63
    ],
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د74)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د81)"
    ],
    "pick": "away",
    "confidence": 41,
@@ -548,26 +599,26 @@
  "1499601": {
   "score": "2-2",
   "status": "2H",
-  "minute": 69,
+  "minute": 76,
   "home": "San Martín Burzaco",
   "away": "Argentino Quilmes",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/8387.png",
   "away_logo": "https://media.api-sports.io/football/teams/8376.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1499602": {
-  "score": "0-1",
+  "score": "0-2",
   "status": "2H",
-  "minute": 77,
+  "minute": 84,
   "home": "Sportivo Italiano",
   "away": "Defensores Unidos",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/8388.png",
   "away_logo": "https://media.api-sports.io/football/teams/1945.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -609,16 +660,16 @@
   }
  },
  "1499603": {
-  "score": "0-1",
+  "score": "0-2",
   "status": "2H",
-  "minute": 75,
+  "minute": 82,
   "home": "UAI Urquiza",
   "away": "Deportivo Laferrere",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/1956.png",
   "away_logo": "https://media.api-sports.io/football/teams/1924.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -641,17 +692,25 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 82,
+     "gh": 0,
+     "ga": 2,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 60,
+   "score": 64,
    "level": "amber",
    "dscores": [
     24,
     45,
-    60
+    54,
+    64
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د75)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د82)"
    ],
    "pick": "home",
    "confidence": 45,
@@ -670,14 +729,14 @@
  "1499604": {
   "score": "0-0",
   "status": "2H",
-  "minute": 74,
+  "minute": 80,
   "home": "Villa Dalmine",
   "away": "Talleres Remedios",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/481.png",
   "away_logo": "https://media.api-sports.io/football/teams/1927.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -693,16 +752,24 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 80,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 59,
+   "score": 63,
    "level": "amber",
    "dscores": [
     31,
-    59
+    53,
+    63
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د74)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د80)"
    ],
    "pick": "home",
    "confidence": 39,
@@ -721,50 +788,50 @@
  "1499605": {
   "score": "2-1",
   "status": "2H",
-  "minute": 77,
+  "minute": 83,
   "home": "Villa San Carlos",
   "away": "Flandria",
   "league": "Primera B Metropolitana (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/8380.png",
   "away_logo": "https://media.api-sports.io/football/teams/471.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1500028": {
   "score": "1-2",
   "status": "2H",
-  "minute": 74,
+  "minute": 80,
   "home": "Leandro N. Alem",
   "away": "Juventud Unida",
   "league": "Primera C (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/1940.png",
   "away_logo": "https://media.api-sports.io/football/teams/486.png",
   "league_logo": "https://media.api-sports.io/football/leagues/132.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1500184": {
   "score": "2-1",
   "status": "2H",
-  "minute": 74,
+  "minute": 81,
   "home": "Leones de Rosario",
   "away": "Deportivo Muñiz",
   "league": "Primera C (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/27282.png",
   "away_logo": "https://media.api-sports.io/football/teams/8393.png",
   "league_logo": "https://media.api-sports.io/football/leagues/132.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623087": {
   "score": "0-1",
   "status": "2H",
-  "minute": 49,
+  "minute": 55,
   "home": "Doncaster",
   "away": "Middlesbrough",
   "league": "League Cup (England)",
   "home_logo": "https://media.api-sports.io/football/teams/1354.png",
   "away_logo": "https://media.api-sports.io/football/teams/70.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -823,7 +890,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/4668.png",
   "away_logo": "https://media.api-sports.io/football/teams/4669.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -855,7 +922,7 @@
      "a": {}
     },
     {
-     "minute": 44,
+     "minute": 45,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -898,7 +965,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1391.png",
   "away_logo": "https://media.api-sports.io/football/teams/6776.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -963,7 +1030,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6757.png",
   "away_logo": "https://media.api-sports.io/football/teams/6759.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1014,7 +1081,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7431.png",
   "away_logo": "https://media.api-sports.io/football/teams/6779.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593553": {
   "score": "0-1",
@@ -1026,7 +1093,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7435.png",
   "away_logo": "https://media.api-sports.io/football/teams/6767.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593554": {
   "score": "0-0",
@@ -1038,7 +1105,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6763.png",
   "away_logo": "https://media.api-sports.io/football/teams/16852.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1089,7 +1156,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/4667.png",
   "away_logo": "https://media.api-sports.io/football/teams/6765.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593556": {
   "score": "1-1",
@@ -1101,7 +1168,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7436.png",
   "away_logo": "https://media.api-sports.io/football/teams/19158.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593557": {
   "score": "1-2",
@@ -1113,11 +1180,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/1382.png",
   "away_logo": "https://media.api-sports.io/football/teams/16845.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593558": {
   "score": "1-2",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "East Fife",
   "away": "St. Mirren U21",
@@ -1125,7 +1192,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6764.png",
   "away_logo": "https://media.api-sports.io/football/teams/6783.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1157,24 +1224,24 @@
      "a": {}
     },
     {
-     "minute": 43,
+     "minute": 45,
      "gh": 1,
      "ga": 2,
      "h": {},
      "a": {}
     }
    ],
-   "score": 40,
+   "score": 42,
    "level": "amber",
    "dscores": [
     16,
     15,
     30,
     34,
-    40
+    42
    ],
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د43)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 54,
@@ -1200,7 +1267,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/4250.png",
   "away_logo": "https://media.api-sports.io/football/teams/6768.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1259,7 +1326,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6769.png",
   "away_logo": "https://media.api-sports.io/football/teams/6755.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593561": {
   "score": "0-1",
@@ -1271,7 +1338,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/248.png",
   "away_logo": "https://media.api-sports.io/football/teams/6766.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1322,7 +1389,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/4251.png",
   "away_logo": "https://media.api-sports.io/football/teams/6762.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593564": {
   "score": "1-0",
@@ -1334,7 +1401,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6777.png",
   "away_logo": "https://media.api-sports.io/football/teams/16851.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1385,7 +1452,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1384.png",
   "away_logo": "https://media.api-sports.io/football/teams/6772.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1410,23 +1477,23 @@
      "a": {}
     },
     {
-     "minute": 44,
+     "minute": 45,
      "gh": 0,
      "ga": 0,
      "h": {},
      "a": {}
     }
    ],
-   "score": 41,
+   "score": 42,
    "level": "amber",
    "dscores": [
     17,
     27,
     35,
-    41
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د44)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 56,
@@ -1452,7 +1519,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/902.png",
   "away_logo": "https://media.api-sports.io/football/teams/6729.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1525,7 +1592,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6781.png",
   "away_logo": "https://media.api-sports.io/football/teams/6771.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1593568": {
   "score": "1-0",
@@ -1537,7 +1604,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/6785.png",
   "away_logo": "https://media.api-sports.io/football/teams/7443.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1562,7 +1629,7 @@
      "a": {}
     },
     {
-     "minute": 44,
+     "minute": 45,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -1604,7 +1671,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/4677.png",
   "away_logo": "https://media.api-sports.io/football/teams/4694.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596398": {
   "score": "1-0",
@@ -1616,7 +1683,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7693.png",
   "away_logo": "https://media.api-sports.io/football/teams/7236.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596399": {
   "score": "0-1",
@@ -1628,7 +1695,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7695.png",
   "away_logo": "https://media.api-sports.io/football/teams/7754.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596400": {
   "score": "0-1",
@@ -1640,7 +1707,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1344.png",
   "away_logo": "https://media.api-sports.io/football/teams/7726.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1665,23 +1732,23 @@
      "a": {}
     },
     {
-     "minute": 44,
+     "minute": 45,
      "gh": 0,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 41,
+   "score": 42,
    "level": "amber",
    "dscores": [
     17,
     27,
     35,
-    41
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د44)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 55,
@@ -1707,7 +1774,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7631.png",
   "away_logo": "https://media.api-sports.io/football/teams/7757.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596402": {
   "score": "1-0",
@@ -1719,7 +1786,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1824.png",
   "away_logo": "https://media.api-sports.io/football/teams/8953.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596403": {
   "score": "1-1",
@@ -1731,7 +1798,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/8903.png",
   "away_logo": "https://media.api-sports.io/football/teams/4691.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596404": {
   "score": "0-0",
@@ -1743,7 +1810,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/16994.png",
   "away_logo": "https://media.api-sports.io/football/teams/11936.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596405": {
   "score": "0-1",
@@ -1755,7 +1822,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7756.png",
   "away_logo": "https://media.api-sports.io/football/teams/4703.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1596406": {
   "score": "0-1",
@@ -1767,7 +1834,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/7265.png",
   "away_logo": "https://media.api-sports.io/football/teams/8918.png",
   "league_logo": "https://media.api-sports.io/football/leagues/59.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623081": {
   "score": "3-1",
@@ -1779,7 +1846,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/747.png",
   "away_logo": "https://media.api-sports.io/football/teams/1363.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623083": {
   "score": "1-1",
@@ -1791,7 +1858,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1356.png",
   "away_logo": "https://media.api-sports.io/football/teams/1379.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623085": {
   "score": "0-1",
@@ -1803,7 +1870,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1370.png",
   "away_logo": "https://media.api-sports.io/football/teams/58.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623088": {
   "score": "0-0",
@@ -1815,7 +1882,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/57.png",
   "away_logo": "https://media.api-sports.io/football/teams/46.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623090": {
   "score": "1-1",
@@ -1827,7 +1894,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/41.png",
   "away_logo": "https://media.api-sports.io/football/teams/48.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623091": {
   "score": "0-2",
@@ -1839,7 +1906,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1368.png",
   "away_logo": "https://media.api-sports.io/football/teams/53.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623093": {
   "score": "0-1",
@@ -1851,7 +1918,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/67.png",
   "away_logo": "https://media.api-sports.io/football/teams/62.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623094": {
   "score": "3-0",
@@ -1863,7 +1930,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1336.png",
   "away_logo": "https://media.api-sports.io/football/teams/1352.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623095": {
   "score": "1-2",
@@ -1875,7 +1942,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1357.png",
   "away_logo": "https://media.api-sports.io/football/teams/1346.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623096": {
   "score": "0-2",
@@ -1887,7 +1954,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/74.png",
   "away_logo": "https://media.api-sports.io/football/teams/39.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -1985,38 +2052,37 @@
     {
      "minute": 45,
      "gh": 0,
-     "ga": 1,
+     "ga": 2,
      "h": {
       "sog": 3,
       "shots": 7,
       "cor": 1,
-      "poss": 40,
+      "poss": 41,
       "yc": 1,
       "rc": 0,
       "sv": 2
      },
      "a": {
-      "sog": 2,
-      "shots": 6,
-      "cor": 3,
-      "poss": 60,
+      "sog": 3,
+      "shots": 7,
+      "cor": 4,
+      "poss": 59,
       "yc": 1,
       "rc": 0,
       "sv": 3
      }
     }
    ],
-   "score": 41,
-   "level": "amber",
+   "score": 26,
+   "level": "green",
    "dscores": [
     15,
     15,
     15,
     15,
-    41
+    26
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
@@ -2026,7 +2092,7 @@
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 65,
+    "signal": 50,
     "side": "home",
     "ready": false
    },
@@ -2045,7 +2111,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/75.png",
   "away_logo": "https://media.api-sports.io/football/teams/64.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623098": {
   "score": "0-0",
@@ -2057,7 +2123,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1342.png",
   "away_logo": "https://media.api-sports.io/football/teams/1373.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623099": {
   "score": "0-2",
@@ -2069,11 +2135,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/38.png",
   "away_logo": "https://media.api-sports.io/football/teams/1350.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1627935": {
   "score": "0-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Al Quwa Al Jawiya",
   "away": "Ghaz Al Shamal",
@@ -2081,7 +2147,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/8009.png",
   "away_logo": "https://media.api-sports.io/football/teams/28223.png",
   "league_logo": "https://media.api-sports.io/football/leagues/542.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -2099,22 +2165,22 @@
      "a": {}
     },
     {
-     "minute": 40,
+     "minute": 45,
      "gh": 0,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 39,
-   "level": "green",
+   "score": 42,
+   "level": "amber",
    "dscores": [
     24,
     33,
-    39
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د40)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 64,
@@ -2133,14 +2199,14 @@
  "1570342": {
   "score": "0-0",
   "status": "1H",
-  "minute": 35,
+  "minute": 42,
   "home": "Valencia",
   "away": "Real Betis",
   "league": "La Liga (Spain)",
   "home_logo": "https://media.api-sports.io/football/teams/532.png",
   "away_logo": "https://media.api-sports.io/football/teams/543.png",
   "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -2169,47 +2235,47 @@
      "xg_a": 0.0153
     },
     {
-     "minute": 29,
+     "minute": 36,
      "gh": 0,
      "ga": 0,
      "h": {
       "sog": 2,
       "shots": 5,
       "cor": 2,
-      "poss": 43,
+      "poss": 37,
       "yc": 1,
       "rc": 0,
       "sv": 0
      },
      "a": {
       "sog": 0,
-      "shots": 3,
-      "cor": 0,
-      "poss": 57,
+      "shots": 4,
+      "cor": 1,
+      "poss": 63,
       "yc": 0,
       "rc": 0,
       "sv": 2
      },
-     "xg_h": 0.30469999999999997,
-     "xg_a": 0.2264
+     "xg_h": 0.3077,
+     "xg_a": 0.2283
     }
    ],
-   "score": 32,
+   "score": 36,
    "level": "green",
    "dscores": [
     26,
-    32
+    36
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د29)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
    ],
    "pick": "away",
    "confidence": 43,
    "top": true,
    "mine": true,
    "drama": {
-    "signal": 0,
-    "side": "home",
+    "signal": 15,
+    "side": "away",
     "ready": false
    },
    "alerted": null,
@@ -2218,28 +2284,28 @@
   }
  },
  "1593562": {
-  "score": "1-1",
+  "score": "2-1",
   "status": "1H",
-  "minute": 37,
+  "minute": 43,
   "home": "Kelty Hearts",
   "away": "Clydebank",
   "league": "Challenge Cup (Scotland)",
   "home_logo": "https://media.api-sports.io/football/teams/6773.png",
   "away_logo": "https://media.api-sports.io/football/teams/17025.png",
   "league_logo": "https://media.api-sports.io/football/leagues/182.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1610924": {
   "score": "1-1",
   "status": "1H",
-  "minute": 36,
+  "minute": 43,
   "home": "Lask Linz",
   "away": "Celtic",
   "league": "UEFA Champions League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/1026.png",
   "away_logo": "https://media.api-sports.io/football/teams/247.png",
   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -2289,14 +2355,14 @@
      }
     },
     {
-     "minute": 36,
+     "minute": 43,
      "gh": 1,
      "ga": 1,
      "h": {
       "sog": 1,
-      "shots": 9,
-      "cor": 3,
-      "poss": 48,
+      "shots": 12,
+      "cor": 4,
+      "poss": 54,
       "yc": 0,
       "rc": 0,
       "sv": 2
@@ -2304,24 +2370,25 @@
      "a": {
       "sog": 3,
       "shots": 5,
-      "cor": 2,
-      "poss": 52,
+      "cor": 3,
+      "poss": 46,
       "yc": 0,
       "rc": 0,
       "sv": 1
      }
     }
    ],
-   "score": 54,
-   "level": "amber",
+   "score": 66,
+   "level": "red",
    "dscores": [
     22,
     27,
-    54
+    66
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د36)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د43)",
     "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
@@ -2329,7 +2396,7 @@
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 45,
+    "signal": 65,
     "side": "away",
     "ready": false
    },
@@ -2341,38 +2408,38 @@
  "1612599": {
   "score": "1-1",
   "status": "1H",
-  "minute": 37,
+  "minute": 44,
   "home": "General Caballero",
   "away": "Rubio NU",
   "league": "Copa Paraguay (Paraguay)",
   "home_logo": "https://media.api-sports.io/football/teams/1181.png",
   "away_logo": "https://media.api-sports.io/football/teams/1185.png",
   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1618988": {
   "score": "1-1",
   "status": "1H",
-  "minute": 37,
+  "minute": 43,
   "home": "Gualberto Villarroel SJ",
   "away": "Oriente Petrolero",
   "league": "Primera División (Bolivia)",
   "home_logo": "https://media.api-sports.io/football/teams/22266.png",
   "away_logo": "https://media.api-sports.io/football/teams/3707.png",
   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1622627": {
   "score": "0-0",
   "status": "1H",
-  "minute": 37,
+  "minute": 44,
   "home": "Bodo/Glimt",
   "away": "NEC Nijmegen",
   "league": "UEFA Champions League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/327.png",
   "away_logo": "https://media.api-sports.io/football/teams/413.png",
   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00",
+  "seen": "2026-08-25T19:43:32.834097+00:00",
   "radar": {
    "snaps": [
     {
@@ -2422,14 +2489,14 @@
      }
     },
     {
-     "minute": 31,
+     "minute": 37,
      "gh": 0,
      "ga": 0,
      "h": {
-      "sog": 2,
-      "shots": 7,
-      "cor": 2,
-      "poss": 76,
+      "sog": 3,
+      "shots": 8,
+      "cor": 3,
+      "poss": 74,
       "yc": 0,
       "rc": 0,
       "sv": 0
@@ -2438,31 +2505,31 @@
       "sog": 0,
       "shots": 0,
       "cor": 1,
-      "poss": 24,
+      "poss": 26,
       "yc": 1,
       "rc": 1,
-      "sv": 2
+      "sv": 3
      }
     }
    ],
-   "score": 33,
+   "score": 37,
    "level": "green",
    "dscores": [
     22,
     27,
-    33
+    37
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د31)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
    ],
    "pick": "home",
    "confidence": 60,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 55,
+    "signal": 95,
     "side": "home",
-    "ready": false
+    "ready": true
    },
    "alerted": null,
    "red_alerted": true,
@@ -2470,39 +2537,39 @@
   }
  },
  "1623082": {
-  "score": "1-2",
+  "score": "1-3",
   "status": "1H",
-  "minute": 37,
+  "minute": 44,
   "home": "Birmingham",
   "away": "Brentford",
   "league": "League Cup (England)",
   "home_logo": "https://media.api-sports.io/football/teams/54.png",
   "away_logo": "https://media.api-sports.io/football/teams/55.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1623100": {
   "score": "0-0",
   "status": "1H",
-  "minute": 36,
+  "minute": 43,
   "home": "Nottingham Forest",
   "away": "Leeds",
   "league": "League Cup (England)",
   "home_logo": "https://media.api-sports.io/football/teams/65.png",
   "away_logo": "https://media.api-sports.io/football/teams/63.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  },
  "1514238": {
   "score": "0-0",
   "status": "1H",
-  "minute": 19,
+  "minute": 26,
   "home": "Afturelding",
   "away": "Grotta",
   "league": "1. Deild (Iceland)",
   "home_logo": "https://media.api-sports.io/football/teams/3514.png",
   "away_logo": "https://media.api-sports.io/football/teams/2121.png",
   "league_logo": "https://media.api-sports.io/football/leagues/165.png",
-  "seen": "2026-08-25T19:36:49.988986+00:00"
+  "seen": "2026-08-25T19:43:32.834097+00:00"
  }
 }
