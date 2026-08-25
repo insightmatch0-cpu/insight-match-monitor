@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2495,
+  "remaining": 2499,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 1
+  "radar_targets": 2
  },
  "api_quota": {
-  "remaining": 6439,
+  "remaining": 6424,
   "limit": 7500,
-  "at": "2026-08-25T09:30:29.088169+00:00"
+  "at": "2026-08-25T09:46:30.036907+00:00"
  },
  "delivery": {
   "at": "2026-08-25T04:18:05.616573+00:00",
@@ -65,5 +65,91 @@
  },
  "deadman": {
   "alerted_for": "2026-08-21"
+ },
+ "1541317": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 14,
+  "home": "Moreland City",
+  "away": "Nunawading",
+  "league": "Victoria Premier League 2 (Australia)",
+  "home_logo": "https://media.api-sports.io/football/teams/16785.png",
+  "away_logo": "https://media.api-sports.io/football/teams/26150.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/1226.png",
+  "seen": "2026-08-25T09:46:29.749240+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 14,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 23,
+   "level": "green",
+   "dscores": [
+    23
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د14)"
+   ],
+   "pick": "home",
+   "confidence": 40,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1623385": {
+  "score": "1-0",
+  "status": "1H",
+  "minute": 16,
+  "home": "Lions",
+  "away": "North Sunshine Eagles",
+  "league": "Australia Cup (Australia)",
+  "home_logo": "https://media.api-sports.io/football/teams/10217.png",
+  "away_logo": "https://media.api-sports.io/football/teams/25418.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/874.png",
+  "seen": "2026-08-25T09:46:29.749240+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 16,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 15,
+   "level": "green",
+   "dscores": [
+    15
+   ],
+   "factors": [
+    "تقدم هش بفارق هدف واحد"
+   ],
+   "pick": "home",
+   "confidence": 40,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "away",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
  }
 }
