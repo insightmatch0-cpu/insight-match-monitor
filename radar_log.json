@@ -472,16 +472,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 35,
-   "level": "amber",
-   "score": 59,
-   "minute": 74,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د74)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د85)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 85,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 66,
+   "sent_minute": 85,
+   "sent_factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د85)"
+   ]
   },
   {
    "fid": "1627938",
@@ -558,7 +564,7 @@
    ],
    "alerted": true,
    "alert_minute": 50,
-   "score_xg": 47,
+   "score_xg": 51,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 71,
@@ -581,10 +587,10 @@
    "pick": "home",
    "confidence": 58,
    "level": "amber",
-   "score": 55,
-   "minute": 67,
+   "score": 59,
+   "minute": 74,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د67)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د74)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -602,10 +608,10 @@
    "pick": "home",
    "confidence": 44,
    "level": "amber",
-   "score": 41,
-   "minute": 34,
+   "score": 45,
+   "minute": 41,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د34)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د41)",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
@@ -670,6 +676,27 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1515887",
+   "date": "2026-08-25",
+   "home": "Auda",
+   "away": "FK Liepaja",
+   "league": "Virsliga (Latvia)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 50,
+   "level": "amber",
+   "score": 54,
+   "minute": 66,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د66)"
    ],
    "alerted": null,
    "alert_minute": null,
