@@ -773,10 +773,10 @@
    "pick": "away",
    "confidence": 47,
    "level": "red",
-   "score": 66,
-   "minute": 85,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د85)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "alerted": true,
    "alert_minute": 85,
@@ -863,18 +863,18 @@
    "pick": "away",
    "confidence": 37,
    "level": "red",
-   "score": 89,
-   "minute": 68,
+   "score": 95,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د68)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د78)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
    "alert_minute": 42,
-   "score_xg": 63,
-   "level_xg": "amber",
+   "score_xg": 69,
+   "level_xg": "red",
    "sent_level": "red",
    "sent_score": 66,
    "sent_minute": 42,
@@ -1001,10 +1001,10 @@
    "pick": "away",
    "confidence": 50,
    "level": "red",
-   "score": 69,
-   "minute": 90,
+   "score": 70,
+   "minute": 100,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د100)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -30529,6 +30529,74 @@
       "rc": 0,
       "sv": 2
      }
+    }
+   ]
+  },
+  {
+   "fid": "1602996",
+   "date": "2026-08-26",
+   "minute": 78,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Al-Faisaly FC",
+   "away": "Al-Fateh",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "silenced": true,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 8,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 35,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 65,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "xg_h": 0.186,
+     "xg_a": 0.0
+    },
+    {
+     "minute": 78,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 8,
+      "cor": 2,
+      "poss": 55,
+      "yc": 4,
+      "rc": 1,
+      "sv": 2
+     },
+     "a": {
+      "sog": 4,
+      "shots": 7,
+      "cor": 3,
+      "poss": 45,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     },
+     "xg_h": 1.0289,
+     "xg_a": 1.158
     }
    ]
   }
