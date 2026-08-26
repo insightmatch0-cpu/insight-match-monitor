@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2498,
+  "remaining": 2497,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
   "radar_targets": 20
  },
  "api_quota": {
-  "remaining": 6386,
+  "remaining": 6329,
   "limit": 7500,
-  "at": "2026-08-26T10:46:34.413423+00:00"
+  "at": "2026-08-26T10:54:29.133531+00:00"
  },
  "delivery": {
   "at": "2026-08-26T04:21:53.801132+00:00",
@@ -67,16 +67,16 @@
   "alerted_for": "2026-08-21"
  },
  "1630754": {
-  "score": "1-0",
+  "score": "1-1",
   "status": "2H",
-  "minute": 59,
+  "minute": 67,
   "home": "Tokyo Verdy",
   "away": "Thespakusatsu Gunma",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/306.png",
   "away_logo": "https://media.api-sports.io/football/teams/756.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -106,11 +106,19 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 61,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 15,
    "level": "green",
    "dscores": [
+    15,
     15,
     15,
     15,
@@ -134,16 +142,16 @@
   }
  },
  "1623386": {
-  "score": "1-0",
+  "score": "1-1",
   "status": "2H",
-  "minute": 57,
+  "minute": 65,
   "home": "Preston Lions",
   "away": "South Melbourne",
   "league": "Australia Cup (Australia)",
   "home_logo": "https://media.api-sports.io/football/teams/19705.png",
   "away_logo": "https://media.api-sports.io/football/teams/3811.png",
   "league_logo": "https://media.api-sports.io/football/leagues/874.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -154,75 +162,24 @@
      "a": {}
     },
     {
-     "minute": 57,
+     "minute": 65,
      "gh": 1,
-     "ga": 0,
+     "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 49,
+   "score": 54,
    "level": "amber",
    "dscores": [
     36,
-    49
+    54
    ],
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د57)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د65)"
    ],
    "pick": "away",
    "confidence": 44,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "away",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1630749": {
-  "score": "1-1",
-  "status": "2H",
-  "minute": 54,
-  "home": "Cerezo Osaka",
-  "away": "FC Gifu",
-  "league": "Emperor Cup (Japan)",
-  "home_logo": "https://media.api-sports.io/football/teams/291.png",
-  "away_logo": "https://media.api-sports.io/football/teams/297.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 45,
-     "gh": 1,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 54,
-     "gh": 1,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 47,
-   "level": "amber",
-   "dscores": [
-    42,
-    47
-   ],
-   "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د54)"
-   ],
-   "pick": "home",
-   "confidence": 54,
    "top": false,
    "mine": false,
    "drama": {
@@ -235,17 +192,68 @@
    "warn_alerted": null
   }
  },
+ "1630749": {
+  "score": "2-1",
+  "status": "2H",
+  "minute": 62,
+  "home": "Cerezo Osaka",
+  "away": "FC Gifu",
+  "league": "Emperor Cup (Japan)",
+  "home_logo": "https://media.api-sports.io/football/teams/291.png",
+  "away_logo": "https://media.api-sports.io/football/teams/297.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/102.png",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 55,
+     "gh": 2,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 15,
+   "level": "green",
+   "dscores": [
+    42,
+    15
+   ],
+   "factors": [
+    "تقدم هش بفارق هدف واحد"
+   ],
+   "pick": "home",
+   "confidence": 54,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "away",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
  "1630750": {
   "score": "1-0",
   "status": "2H",
-  "minute": 60,
+  "minute": 68,
   "home": "Machida Zelvia",
   "away": "Grulla Morioka",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/303.png",
   "away_logo": "https://media.api-sports.io/football/teams/4321.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -268,11 +276,19 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 61,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 15,
    "level": "green",
    "dscores": [
+    15,
     15,
     15,
     15
@@ -297,18 +313,25 @@
  "1630751": {
   "score": "1-0",
   "status": "2H",
-  "minute": 57,
+  "minute": 65,
   "home": "Nagoya Grampus",
   "away": "Gainare Tottori",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/288.png",
   "away_logo": "https://media.api-sports.io/football/teams/4319.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
      "minute": 51,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 59,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -318,6 +341,7 @@
    "score": 15,
    "level": "green",
    "dscores": [
+    15,
     15
    ],
    "factors": [
@@ -340,14 +364,14 @@
  "1630752": {
   "score": "3-1",
   "status": "2H",
-  "minute": 56,
+  "minute": 64,
   "home": "Sanfrecce Hiroshima",
   "away": "Okinawa SV",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/282.png",
   "away_logo": "https://media.api-sports.io/football/teams/7137.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -363,17 +387,23 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 58,
+     "gh": 3,
+     "ga": 1,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
     15,
-    15
+    15,
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "home",
    "confidence": 58,
    "top": false,
@@ -391,14 +421,14 @@
  "1630753": {
   "score": "2-0",
   "status": "2H",
-  "minute": 59,
+  "minute": 67,
   "home": "Tokushima Vortis",
   "away": "FC Tokushima",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/299.png",
   "away_logo": "https://media.api-sports.io/football/teams/7118.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -414,17 +444,23 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 61,
+     "gh": 2,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
     15,
-    15
+    15,
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "home",
    "confidence": 59,
    "top": false,
@@ -442,14 +478,14 @@
  "1630755": {
   "score": "2-1",
   "status": "2H",
-  "minute": 54,
+  "minute": 63,
   "home": "Yokohama FC",
   "away": "Criacao Shinjuku",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/307.png",
   "away_logo": "https://media.api-sports.io/football/teams/18378.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -490,7 +526,7 @@
  },
  "1623340": {
   "score": "1-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Consadole Sapporo",
   "away": "Ventforet Kofu",
@@ -498,11 +534,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/279.png",
   "away_logo": "https://media.api-sports.io/football/teams/308.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623341": {
   "score": "2-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Imabari",
   "away": "Blaublitz Akita",
@@ -510,23 +546,23 @@
   "home_logo": "https://media.api-sports.io/football/teams/10075.png",
   "away_logo": "https://media.api-sports.io/football/teams/4315.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623342": {
   "score": "0-0",
-  "status": "1H",
-  "minute": 39,
+  "status": "HT",
+  "minute": 45,
   "home": "Iwaki",
   "away": "Oita Trinita",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/7127.png",
   "away_logo": "https://media.api-sports.io/football/teams/298.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623343": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Jubilo Iwata",
   "away": "Tegevajaro Miyazaki",
@@ -534,11 +570,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/280.png",
   "away_logo": "https://media.api-sports.io/football/teams/10409.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623344": {
   "score": "3-2",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Montedio Yamagata",
   "away": "Fujieda MYFC",
@@ -546,35 +582,35 @@
   "home_logo": "https://media.api-sports.io/football/teams/312.png",
   "away_logo": "https://media.api-sports.io/football/teams/4317.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623345": {
   "score": "1-0",
-  "status": "1H",
-  "minute": 44,
+  "status": "HT",
+  "minute": 45,
   "home": "Omiya Ardija",
   "away": "Vanraure Hachinohe",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/313.png",
   "away_logo": "https://media.api-sports.io/football/teams/4326.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623346": {
-  "score": "0-0",
-  "status": "1H",
-  "minute": 44,
+  "score": "1-0",
+  "status": "HT",
+  "minute": 45,
   "home": "Sagan Tosu",
   "away": "Kataller Toyama",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/295.png",
   "away_logo": "https://media.api-sports.io/football/teams/4322.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1623347": {
-  "score": "1-0",
-  "status": "1H",
+  "score": "1-1",
+  "status": "HT",
   "minute": 45,
   "home": "Vegalta Sendai",
   "away": "Tochigi City",
@@ -582,35 +618,35 @@
   "home_logo": "https://media.api-sports.io/football/teams/286.png",
   "away_logo": "https://media.api-sports.io/football/teams/7145.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1630756": {
   "score": "0-1",
-  "status": "1H",
-  "minute": 43,
+  "status": "HT",
+  "minute": 45,
   "home": "Albirex Niigata",
   "away": "Kagoshima United",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/311.png",
   "away_logo": "https://media.api-sports.io/football/teams/2236.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1630758": {
   "score": "0-0",
   "status": "1H",
-  "minute": 40,
+  "minute": 45,
   "home": "JEF United Chiba",
   "away": "Azul Claro Numazu",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/301.png",
   "away_logo": "https://media.api-sports.io/football/teams/4314.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1630759": {
-  "score": "2-0",
-  "status": "1H",
+  "score": "3-0",
+  "status": "HT",
   "minute": 45,
   "home": "FC Tokyo",
   "away": "Parceiro Nagano",
@@ -618,7 +654,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/292.png",
   "away_logo": "https://media.api-sports.io/football/teams/4323.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -636,7 +672,7 @@
      "a": {}
     },
     {
-     "minute": 40,
+     "minute": 45,
      "gh": 2,
      "ga": 0,
      "h": {},
@@ -667,15 +703,15 @@
  },
  "1630760": {
   "score": "2-0",
-  "status": "1H",
-  "minute": 43,
+  "status": "HT",
+  "minute": 45,
   "home": "Gamba Osaka",
   "away": "Biwako Shiga",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/293.png",
   "away_logo": "https://media.api-sports.io/football/teams/7117.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -705,6 +741,13 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 44,
+     "gh": 2,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 0,
@@ -712,6 +755,7 @@
    "dscores": [
     15,
     15,
+    0,
     0,
     0
    ],
@@ -732,7 +776,7 @@
  },
  "1630761": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Kashima",
   "away": "Suzuka Unlimited",
@@ -740,7 +784,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/290.png",
   "away_logo": "https://media.api-sports.io/football/teams/10408.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -774,16 +818,16 @@
   }
  },
  "1630762": {
-  "score": "1-0",
+  "score": "2-0",
   "status": "1H",
-  "minute": 40,
+  "minute": 45,
   "home": "Kashiwa Reysol",
   "away": "Senshu University",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/281.png",
   "away_logo": "https://media.api-sports.io/football/teams/28189.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -806,6 +850,13 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 42,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 15,
@@ -813,6 +864,7 @@
    "dscores": [
     23,
     29,
+    15,
     15
    ],
    "factors": [
@@ -833,16 +885,16 @@
   }
  },
  "1630763": {
-  "score": "0-1",
-  "status": "1H",
-  "minute": 42,
+  "score": "1-1",
+  "status": "HT",
+  "minute": 45,
   "home": "Kawasaki Frontale",
   "away": "Tochigi SC",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/294.png",
   "away_logo": "https://media.api-sports.io/football/teams/315.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -860,22 +912,22 @@
      "a": {}
     },
     {
-     "minute": 42,
-     "gh": 0,
+     "minute": 45,
+     "gh": 1,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 40,
+   "score": 42,
    "level": "amber",
    "dscores": [
     24,
     30,
-    40
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د42)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 62,
@@ -893,7 +945,7 @@
  },
  "1630764": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Kyoto Sanga",
   "away": "Maruyasu Okazaki",
@@ -901,7 +953,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/302.png",
   "away_logo": "https://media.api-sports.io/football/teams/10405.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -936,32 +988,32 @@
  },
  "1630765": {
   "score": "0-1",
-  "status": "1H",
-  "minute": 44,
+  "status": "HT",
+  "minute": 45,
   "home": "Mito Hollyhock",
   "away": "Kyoto Sangyo University",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/305.png",
   "away_logo": "https://media.api-sports.io/football/teams/11431.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 44,
+     "minute": 45,
      "gh": 0,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 41,
+   "score": 42,
    "level": "amber",
    "dscores": [
-    41
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د44)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 63,
@@ -979,7 +1031,7 @@
  },
  "1630766": {
   "score": "1-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Fagiano Okayama",
   "away": "Beluga Rosso Iwami",
@@ -987,7 +1039,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/310.png",
   "away_logo": "https://media.api-sports.io/football/teams/21344.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -1005,7 +1057,7 @@
      "a": {}
     },
     {
-     "minute": 40,
+     "minute": 45,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -1038,7 +1090,7 @@
  },
  "1630767": {
   "score": "0-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Shimizu S-pulse",
   "away": "Osaka",
@@ -1046,7 +1098,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/283.png",
   "away_logo": "https://media.api-sports.io/football/teams/7138.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -1082,14 +1134,14 @@
  "1630768": {
   "score": "0-0",
   "status": "1H",
-  "minute": 42,
+  "minute": 45,
   "home": "Shonan Bellmare",
   "away": "Reinmeer Aomori",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/284.png",
   "away_logo": "https://media.api-sports.io/football/teams/10406.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -1119,18 +1171,26 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 36,
-   "level": "green",
+   "score": 42,
+   "level": "amber",
    "dscores": [
     19,
     24,
     30,
-    36
+    36,
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 62,
@@ -1148,15 +1208,15 @@
  },
  "1630769": {
   "score": "2-0",
-  "status": "1H",
-  "minute": 40,
+  "status": "HT",
+  "minute": 45,
   "home": "Urawa",
   "away": "Yamanashi Gakuin",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/287.png",
   "away_logo": "https://media.api-sports.io/football/teams/7153.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -1179,12 +1239,20 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 42,
+     "gh": 2,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 0,
    "level": "green",
    "dscores": [
     23,
+    0,
     0,
     0
    ],
@@ -1205,19 +1273,19 @@
  },
  "1630770": {
   "score": "1-0",
-  "status": "1H",
-  "minute": 43,
+  "status": "HT",
+  "minute": 45,
   "home": "Vissel Kobe",
   "away": "Veroskronos Tsuno",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/289.png",
   "away_logo": "https://media.api-sports.io/football/teams/11437.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 39,
+     "minute": 45,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -1248,32 +1316,32 @@
  },
  "1630771": {
   "score": "0-0",
-  "status": "1H",
-  "minute": 43,
+  "status": "HT",
+  "minute": 45,
   "home": "V-varen Nagasaki",
   "away": "Ehime FC",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/285.png",
   "away_logo": "https://media.api-sports.io/football/teams/318.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 43,
+     "minute": 45,
      "gh": 0,
      "ga": 0,
      "h": {},
      "a": {}
     }
    ],
-   "score": 40,
+   "score": 42,
    "level": "amber",
    "dscores": [
-    40
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 55,
@@ -1292,14 +1360,14 @@
  "1630772": {
   "score": "1-0",
   "status": "1H",
-  "minute": 39,
+  "minute": 45,
   "home": "Yokohama F. Marinos",
   "away": "Fukushima United",
   "league": "Emperor Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/296.png",
   "away_logo": "https://media.api-sports.io/football/teams/4318.png",
   "league_logo": "https://media.api-sports.io/football/leagues/102.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00",
+  "seen": "2026-08-26T10:54:27.509741+00:00",
   "radar": {
    "snaps": [
     {
@@ -1329,18 +1397,26 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 41,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 34,
+   "score": 15,
    "level": "green",
    "dscores": [
     18,
     23,
     29,
-    34
+    34,
+    15
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د33)"
+    "تقدم هش بفارق هدف واحد"
    ],
    "pick": "home",
    "confidence": 58,
@@ -1348,7 +1424,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "home",
+    "side": "away",
     "ready": false
    },
    "alerted": null,
@@ -1359,37 +1435,37 @@
  "1507045": {
   "score": "0-1",
   "status": "1H",
-  "minute": 17,
+  "minute": 25,
   "home": "Gangwon FC",
   "away": "Gwangju FC",
   "league": "K League 1 (South-Korea)",
   "home_logo": "https://media.api-sports.io/football/teams/2746.png",
   "away_logo": "https://media.api-sports.io/football/teams/2759.png",
   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1507043": {
   "score": "0-0",
   "status": "1H",
-  "minute": 16,
+  "minute": 24,
   "home": "FC Anyang",
   "away": "Incheon United",
   "league": "K League 1 (South-Korea)",
   "home_logo": "https://media.api-sports.io/football/teams/2748.png",
   "away_logo": "https://media.api-sports.io/football/teams/2763.png",
   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  },
  "1507044": {
   "score": "0-0",
   "status": "1H",
-  "minute": 16,
+  "minute": 24,
   "home": "Daejeon Citizen",
   "away": "Ulsan Hyundai FC",
   "league": "K League 1 (South-Korea)",
   "home_logo": "https://media.api-sports.io/football/teams/2750.png",
   "away_logo": "https://media.api-sports.io/football/teams/2767.png",
   "league_logo": "https://media.api-sports.io/football/leagues/292.png",
-  "seen": "2026-08-26T10:46:33.362572+00:00"
+  "seen": "2026-08-26T10:54:27.509741+00:00"
  }
 }
