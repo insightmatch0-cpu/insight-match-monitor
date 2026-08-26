@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-26T20:56:49.442850+00:00",
+ "updated": "2026-08-26T21:06:48.817417+00:00",
  "live": [
   {
    "fid": "1622628",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4360.png",
    "away_logo": "https://media.api-sports.io/football/teams/656.png",
    "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "1-1",
-   "minute": 97,
+   "score": "1-2",
+   "minute": 103,
    "status": "ET",
-   "seen": "2026-08-26T20:56:45.532817+00:00",
+   "seen": "2026-08-26T21:06:46.845985+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -24,10 +24,13 @@
     "confidence": 38
    },
    "radar": {
-    "score": 70,
+    "score": 96,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د97)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د103)",
+     "موجة تسديد على المرمى من الضيف",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 38,
@@ -41,11 +44,11 @@
     "trend": {
      "min": [
       0,
-      97
+      103
      ],
      "danger": [
       15,
-      70
+      96
      ],
      "h_sog": [
       6,
@@ -53,7 +56,7 @@
      ],
      "a_sog": [
       5,
-      5
+      7
      ],
      "h_cor": [
       5,
@@ -61,285 +64,25 @@
      ],
      "a_cor": [
       4,
-      4
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1618990",
-   "home": "San Antonio Bulo Bulo",
-   "away": "The Strongest",
-   "home_en": "San Antonio Bulo Bulo",
-   "away_en": "The Strongest",
-   "league": "Primera División (Bolivia)",
-   "home_logo": "https://media.api-sports.io/football/teams/17760.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3711.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
-  },
-  {
-   "fid": "1560816",
-   "home": "Bolívar",
-   "away": "Monagas SC",
-   "home_en": "Bolívar",
-   "away_en": "Monagas SC",
-   "league": "Copa Venezuela (Venezuela)",
-   "home_logo": "https://media.api-sports.io/football/teams/21231.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2811.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
-   "score": "1-3",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:55:11.587600+00:00"
-  },
-  {
-   "fid": "1570340",
-   "home": "Real Madrid",
-   "away": "Real Sociedad",
-   "home_en": "Real Madrid",
-   "away_en": "Real Sociedad",
-   "league": "La Liga (Spain)",
-   "home_logo": "https://media.api-sports.io/football/teams/541.png",
-   "away_logo": "https://media.api-sports.io/football/teams/548.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-   "score": "4-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 72
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 71
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 71,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      0
-     ],
-     "h_sog": [
-      11
-     ],
-     "a_sog": [
-      3
-     ],
-     "h_cor": [
-      4
-     ],
-     "a_cor": [
-      7
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1612601",
-   "home": "Deportivo Santani",
-   "away": "Deportivo Recoleta",
-   "home_en": "Deportivo Santani",
-   "away_en": "Deportivo Recoleta",
-   "league": "Copa Paraguay (Paraguay)",
-   "home_logo": "https://media.api-sports.io/football/teams/1189.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10476.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:50:30.073297+00:00"
-  },
-  {
-   "fid": "1622629",
-   "home": "AEK Athens FC",
-   "away": "Levski Sofia",
-   "home_en": "AEK Athens FC",
-   "away_en": "Levski Sofia",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/575.png",
-   "away_logo": "https://media.api-sports.io/football/teams/646.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "4-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:50:30.073297+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 58,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      0
-     ],
-     "h_sog": [
-      7
-     ],
-     "a_sog": [
-      3
-     ],
-     "h_cor": [
-      6
-     ],
-     "a_cor": [
-      3
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1622630",
-   "home": "Lyon",
-   "away": "Fenerbahçe",
-   "home_en": "Lyon",
-   "away_en": "Fenerbahçe",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/80.png",
-   "away_logo": "https://media.api-sports.io/football/teams/611.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "1-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:53:38.126074+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
-    ],
-    "pick": "home",
-    "confidence": 52,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      69
-     ],
-     "h_sog": [
-      6
-     ],
-     "a_sog": [
-      7
-     ],
-     "h_cor": [
-      5
-     ],
-     "a_cor": [
-      7
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1622631",
-   "home": "Viking",
-   "away": "Dinamo Zagreb",
-   "home_en": "Viking",
-   "away_en": "Dinamo Zagreb",
-   "league": "UEFA Champions League (World)",
-   "home_logo": "https://media.api-sports.io/football/teams/759.png",
-   "away_logo": "https://media.api-sports.io/football/teams/620.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "score": "3-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-26T20:52:04.054145+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 64
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 37
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 37,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      0
-     ],
-     "h_sog": [
       8
-     ],
-     "a_sog": [
-      4
-     ],
-     "h_cor": [
-      3
-     ],
-     "a_cor": [
-      5
      ]
     }
    }
+  },
+  {
+   "fid": "1623477",
+   "home": "Boavista SC",
+   "away": "Madureira",
+   "home_en": "Boavista SC",
+   "away_en": "Madureira",
+   "league": "Copa Rio (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/2206.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7780.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1035.png",
+   "score": "2-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-08-26T21:05:14.638897+00:00"
   },
   {
    "fid": "1627936",
@@ -354,7 +97,7 @@
    "score": "1-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00",
+   "seen": "2026-08-26T21:06:46.845985+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -401,21 +144,6 @@
    }
   },
   {
-   "fid": "1623477",
-   "home": "Boavista SC",
-   "away": "Madureira",
-   "home_en": "Boavista SC",
-   "away_en": "Madureira",
-   "league": "Copa Rio (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/2206.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7780.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1035.png",
-   "score": "1-0",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
-  },
-  {
    "fid": "1560818",
    "home": "Atletico el Vigia FC",
    "away": "Club Atletico Barinas",
@@ -426,9 +154,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27528.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
    "score": "1-0",
-   "minute": 70,
+   "minute": 81,
    "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1560822",
@@ -441,9 +169,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2816.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
    "score": "3-0",
-   "minute": 69,
+   "minute": 79,
    "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1560820",
@@ -456,9 +184,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/2858.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
    "score": "4-0",
-   "minute": 66,
+   "minute": 76,
    "status": "2H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
+  },
+  {
+   "fid": "1560824",
+   "home": "Zamora FC",
+   "away": "Real Frontera",
+   "home_en": "Zamora FC",
+   "away_en": "Real Frontera",
+   "league": "Copa Venezuela (Venezuela)",
+   "home_logo": "https://media.api-sports.io/football/teams/2806.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2847.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
+   "score": "4-0",
+   "minute": 50,
+   "status": "2H",
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1560815",
@@ -471,9 +214,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/2829.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
    "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-08-26T21:06:46.845985+00:00"
+  },
+  {
+   "fid": "1589396",
+   "home": "Sporting Cristal",
+   "away": "Sport Huancayo",
+   "home_en": "Sporting Cristal",
+   "away_en": "Sport Huancayo",
+   "league": "Copa De La Liga (Peru)",
+   "home_logo": "https://media.api-sports.io/football/teams/2546.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2555.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
+   "score": "2-1",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1560823",
@@ -488,22 +246,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
-  },
-  {
-   "fid": "1560824",
-   "home": "Zamora FC",
-   "away": "Real Frontera",
-   "home_en": "Zamora FC",
-   "away_en": "Real Frontera",
-   "league": "Copa Venezuela (Venezuela)",
-   "home_logo": "https://media.api-sports.io/football/teams/2806.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2847.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1113.png",
-   "score": "4-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1589395",
@@ -518,22 +261,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
-  },
-  {
-   "fid": "1589396",
-   "home": "Sporting Cristal",
-   "away": "Sport Huancayo",
-   "home_en": "Sporting Cristal",
-   "away_en": "Sport Huancayo",
-   "league": "Copa De La Liga (Peru)",
-   "home_logo": "https://media.api-sports.io/football/teams/2546.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2555.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
-   "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1632406",
@@ -546,9 +274,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2369.png",
    "league_logo": "https://media.api-sports.io/football/leagues/930.png",
    "score": "0-0",
-   "minute": 28,
+   "minute": 38,
    "status": "1H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1632414",
@@ -561,9 +289,24 @@
    "away_logo": "https://media.api-sports.io/football/teams/1988.png",
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "0-0",
-   "minute": 25,
+   "minute": 35,
    "status": "1H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
+  },
+  {
+   "fid": "1605343",
+   "home": "Vega Real",
+   "away": "Universidad O&M",
+   "home_en": "Vega Real",
+   "away_en": "Universidad O&M",
+   "league": "Liga Mayor (Dominican-Republic)",
+   "home_logo": "https://media.api-sports.io/football/teams/16142.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16141.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/759.png",
+   "score": "1-0",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   },
   {
    "fid": "1623479",
@@ -578,91 +321,10 @@
    "score": "0-0",
    "minute": 6,
    "status": "1H",
-   "seen": "2026-08-26T20:56:45.532817+00:00"
+   "seen": "2026-08-26T21:06:46.845985+00:00"
   }
  ],
- "upcoming": [
-  {
-   "fid": "1570340",
-   "kickoff": "2026-08-26T19:00:00+00:00",
-   "home": "ريال مدريد",
-   "away": "ريال سوسيداد",
-   "home_en": "Real Madrid",
-   "home_logo": "https://media.api-sports.io/football/teams/541.png",
-   "away_logo": "https://media.api-sports.io/football/teams/548.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-   "away_en": "Real Sociedad",
-   "league": "الدوري الإسباني",
-   "top": true,
-   "pick": "home",
-   "confidence": 72,
-   "reason": "ريال مدريد أقوى بكثير مع أرضه، وسوسيداد فريق قوي لكن التفاوت واضح"
-  },
-  {
-   "fid": "1622628",
-   "kickoff": "2026-08-26T19:00:00+00:00",
-   "home": "تسيلييه",
-   "away": "سلوفان براتسلافا",
-   "home_en": "Celje",
-   "home_logo": "https://media.api-sports.io/football/teams/4360.png",
-   "away_logo": "https://media.api-sports.io/football/teams/656.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "away_en": "Slovan Bratislava",
-   "league": "دوري أبطال أوروبا",
-   "top": true,
-   "pick": "away",
-   "confidence": 56,
-   "reason": "براتسلافا أقوى سجلاً أوروبياً، وتسيلييه فريق محلي بمستوى أقل"
-  },
-  {
-   "fid": "1622629",
-   "kickoff": "2026-08-26T19:00:00+00:00",
-   "home": "إيه إي كيه أثينا",
-   "away": "ليفسكي صوفيا",
-   "home_en": "AEK Athens FC",
-   "home_logo": "https://media.api-sports.io/football/teams/575.png",
-   "away_logo": "https://media.api-sports.io/football/teams/646.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "away_en": "Levski Sofia",
-   "league": "دوري أبطال أوروبا",
-   "top": true,
-   "pick": "home",
-   "confidence": 58,
-   "reason": "أثينا أقوى تاريخياً وأمام جماهيره، صوفيا فريق متوسط أوروبياً"
-  },
-  {
-   "fid": "1622630",
-   "kickoff": "2026-08-26T19:00:00+00:00",
-   "home": "ليون",
-   "away": "فنربخشة",
-   "home_en": "Lyon",
-   "home_logo": "https://media.api-sports.io/football/teams/80.png",
-   "away_logo": "https://media.api-sports.io/football/teams/611.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "away_en": "Fenerbahçe",
-   "league": "دوري أبطال أوروبا",
-   "top": true,
-   "pick": "home",
-   "confidence": 62,
-   "reason": "ليون بأرضه وأقوى حالياً من فنر، لكن الفريق التركي خطر في الأوروبي"
-  },
-  {
-   "fid": "1622631",
-   "kickoff": "2026-08-26T19:00:00+00:00",
-   "home": "فايكينغ",
-   "away": "دينامو زغرب",
-   "home_en": "Viking",
-   "home_logo": "https://media.api-sports.io/football/teams/759.png",
-   "away_logo": "https://media.api-sports.io/football/teams/620.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/2.png",
-   "away_en": "Dinamo Zagreb",
-   "league": "دوري أبطال أوروبا",
-   "top": true,
-   "pick": "away",
-   "confidence": 64,
-   "reason": "زغرب أقوى بشكل واضح وفايكينغ فريق نرويجي بمستوى أدنى أوروبياً"
-  }
- ],
+ "upcoming": [],
  "recent_results": [
   {
    "date": "2026-08-26",
