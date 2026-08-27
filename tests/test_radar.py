@@ -1014,3 +1014,76 @@ class TestDramaPhoneGate(unittest.TestCase):
         M.maybe_radar_alert("6", self._e(mine=False), {"used": 0}, log,
                             watch=set())
         self.assertEqual(len(self.sent), 1)
+
+
+class TestNextGoalUnmute(unittest.TestCase):
+    """🎯 استثناء المالك 2026-08-27: «الهدف القادم» يصل الهاتف رغم إسكات
+    قاعدة الإيقاف، بعنوان مميز — وبقية القواعد (البوابة، القياس) كما هي."""
+
+    def setUp(self):
+        self.sent = []
+        orig_send = M.send_telegram
+        M.send_telegram = lambda t, **k: self.sent.append(t)
+        self.addCleanup(lambda: setattr(M, "send_telegram", orig_send))
+        import tempfile
+        from pathlib import Path as _P
+        orig_file = M.RADAR_FILE
+        M.RADAR_FILE = _P(tempfile.mkdtemp()) / "radar_log.json"
+        self.addCleanup(lambda: setattr(M, "RADAR_FILE", orig_file))
+        # قاعدة الإيقاف تُسكت الهدف القادم — مصدر الحقيقة في هذا الاختبار
+        orig_lists = M.radar_claim_lists
+        M.radar_claim_lists = lambda: ({"next_goal", "equalizer"}, set())
+        self.addCleanup(lambda: setattr(M, "radar_claim_lists", orig_lists))
+
+    def _force_verdict(self, key):
+        v = {"key": key, "side": "home", "claim": "ادعاء اختبار",
+             "signal": 85, "reasons": ["سبب"]}
+        orig = M.evaluate_comeback
+        M.evaluate_comeback = lambda *a, **k: dict(v)
+        self.addCleanup(lambda: setattr(M, "evaluate_comeback", orig))
+
+    def _e(self, mine=True):
+        return {"home": "H", "away": "A", "score": "1-1", "minute": 80,
+                "radar": {"snaps": [{"minute": 80, "gh": 1, "ga": 1,
+                                     "h": {}, "a": {}}], "mine": mine}}
+
+    def test_silenced_next_goal_sends_with_distinct_title(self):
+        self._force_verdict("next_goal")
+        log = {"alerts": []}
+        ok = M.maybe_radar_alert("1", self._e(), {"used": 0}, log, watch=set())
+        self.assertTrue(ok)
+        self.assertEqual(len(self.sent), 1)
+        self.assertIn("⚽🎯 تنبيه الهدف القادم", self.sent[0])
+        self.assertNotIn("تنبيه دراما", self.sent[0])
+        self.assertFalse(log["alerts"][0]["silenced"],
+                         "أُرسل فعلاً — فلا يوسم صامتاً في سجل القياس")
+
+    def test_kill_switch_restores_silence(self):
+        self._force_verdict("next_goal")
+        orig = M.RADAR_UNMUTE_KEYS
+        M.RADAR_UNMUTE_KEYS = set()
+        self.addCleanup(lambda: setattr(M, "RADAR_UNMUTE_KEYS", orig))
+        log = {"alerts": []}
+        M.maybe_radar_alert("2", self._e(), {"used": 0}, log, watch=set())
+        self.assertEqual(self.sent, [])
+        self.assertTrue(log["alerts"][0]["silenced"])
+
+    def test_other_silenced_claims_stay_silent(self):
+        self._force_verdict("equalizer")
+        log = {"alerts": []}
+        M.maybe_radar_alert("3", self._e(), {"used": 0}, log, watch=set())
+        self.assertEqual(self.sent, [])
+        self.assertTrue(log["alerts"][0]["silenced"])
+
+    def test_phone_gate_still_above_the_exception(self):
+        self._force_verdict("next_goal")
+        log = {"alerts": []}
+        M.maybe_radar_alert("4", self._e(mine=False), {"used": 0}, log,
+                            watch=set())
+        self.assertEqual(self.sent, [])
+        self.assertTrue(log["alerts"][0]["gated"])
+
+    def test_constant_synced_across_modules(self):
+        import predict_v2 as P
+        self.assertEqual(M.RADAR_UNMUTE_KEYS, P.RADAR_UNMUTE_KEYS)
+        self.assertEqual(M.RADAR_UNMUTE_KEYS, {"next_goal"})

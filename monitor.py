@@ -242,6 +242,14 @@ LOAD_SHED_RATIO = 0.15
 # لدورياته التسعة + مباريات قائمة التركيز (المفضلة) فقط — الشاشة والقياس
 # يواصلان تغطية العالم (الصف يُسجَّل بوسم gated). False = عالمي كما كان
 DRAMA_MINE_ONLY = True
+# 🎯 استثناء المالك الصريح (2026-08-27): «الهدف القادم» يصل هاتفه رغم إسكات
+# قاعدة الإيقاف له — سجله المقاس وقتها 13/44 = 30% (أضعف الادعاءات) وعُرض
+# عليه الرقم صراحةً؛ قراره: يستقبله بعنوان مميز «⚽🎯» ليفرّقه عن بقية
+# الدراما. النوع يبقى في قائمة silenced ويُقاس كالمعتاد (القائمة مصدر
+# القياس لا قرار الإرسال هنا)، ويحمل وسم التجربة، وبوابة التسعة+المفضلة
+# فوقه كما هي. التراجع: أفرغ المجموعة. (مكررة في predict_v2.py لعرض
+# الحالة في النشرة — اختبار بنيوي يثبّت تطابقهما)
+RADAR_UNMUTE_KEYS = {"next_goal"}
 # 📸 REC-015: حالة لحظة الإرسال تُجمَّد في حقول sent_* — الصف يخزن ذروة المسح
 # وقد تكون أقدم/أدنى من قراءة الإرسال (21 صفاً أحمر أُرسل واحتُسب كهرمانياً)
 SENT_SNAPSHOT = True
@@ -1972,7 +1980,8 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None,
     # (فيستمر قياسه ويستطيع الخروج من الصمت)، ونوع مُثبَت يفقد وسم 🧪.
     silenced_keys, proven_keys = (radar_claim_lists() if RADAR_ALERT_STOP_RULE
                                   else (set(), set()))
-    silent = verdict["key"] in silenced_keys
+    silent = (verdict["key"] in silenced_keys
+              and verdict["key"] not in RADAR_UNMUTE_KEYS)
     # 📵 بوابة التسعة + المفضلة (قرار المالك 2026-08-24 مساءً): خارجها
     # يُسجَّل التنبيه للقياس بوسم gated ولا يُرسل — كالإسكات تماماً
     gated = DRAMA_MINE_ONLY and not radar_phone_worthy(fid, e, watch)
@@ -1988,8 +1997,12 @@ def maybe_radar_alert(fid: str, e: dict, budget: dict, log: dict = None,
         # قيد المعايرة — الوسم يُرفع فقط حين يثبت السجل الصباحي جدارة الادعاء
         trial = ("" if verdict["key"] in proven_keys
                  else (" (🧪 تجريبي — قيد المعايرة)" if RADAR_ALERT_TRIAL else ""))
+        # 🎯 عنوان مميز لادعاء الهدف القادم (طلب المالك 2026-08-27) —
+        # ليفرّقه بنظرة عن بقية تنبيهات الدراما
+        title = ("⚽🎯 تنبيه الهدف القادم" if verdict["key"] == "next_goal"
+                 else "⚡🚨 تنبيه دراما")
         send_telegram(
-            f"⚡🚨 تنبيه دراما{trial} — د{e.get('minute')}\n"
+            f"{title}{trial} — د{e.get('minute')}\n"
             f"{h} {gh} - {ga} {a}\n"
             f"التوقع: {verdict['claim']} لصالح {target} (إشارة {verdict['signal']}%)\n"
             f"الأسباب: " + "، ".join(verdict["reasons"])
