@@ -244,11 +244,11 @@
    "mine": false,
    "pick": "away",
    "confidence": 44,
-   "level": "amber",
-   "score": 59,
-   "minute": 74,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د74)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د84)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -266,11 +266,10 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 48,
-   "minute": 45,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -352,14 +351,57 @@
    "mine": false,
    "pick": "away",
    "confidence": 50,
-   "level": "amber",
-   "score": 59,
-   "minute": 30,
+   "level": "red",
+   "score": 65,
+   "minute": 40,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د30)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د40)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1553779",
+   "date": "2026-08-27",
+   "home": "Lindo FF",
+   "away": "Malmo FF",
+   "league": "Svenska Cupen (Sweden)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 65,
+   "level": "amber",
+   "score": 47,
+   "minute": 54,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د54)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623418",
+   "date": "2026-08-27",
+   "home": "Inter Club d'Escaldes",
+   "away": "Drita",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 52,
+   "level": "amber",
+   "score": 47,
+   "minute": 41,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د41)",
+    "موجة ركنيات لصالح المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -31117,7 +31159,78 @@
    "graded_on": "2026-08-27"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1623422",
+   "date": "2026-08-27",
+   "minute": 83,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Maccabi Tel Aviv",
+   "away": "FC Lugano",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 1,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 73,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 4,
+      "shots": 6,
+      "cor": 3,
+      "poss": 53,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 6,
+      "cor": 2,
+      "poss": 47,
+      "yc": 3,
+      "rc": 1,
+      "sv": 4
+     }
+    },
+    {
+     "minute": 83,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 11,
+      "cor": 3,
+      "poss": 55,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 7,
+      "cor": 2,
+      "poss": 45,
+      "yc": 4,
+      "rc": 1,
+      "sv": 4
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
