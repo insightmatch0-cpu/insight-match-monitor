@@ -102,6 +102,9 @@ RADAR_ALERT_STOP_RULE = True
 RADAR_STOP_MIN_GRADED = 30    # الحد الأدنى من التنبيهات المُقيَّمة قبل أي حكم
 RADAR_STOP_SILENCE_LT = 40    # دقة أقل من هذه (٪) → النوع صامت
 RADAR_STOP_PROVEN_GTE = 50    # دقة من هذه (٪) فأعلى → النوع مُثبَت
+# 🎯 استثناء المالك (2026-08-27): أنواع يستقبلها رغم الإسكات — للعرض في
+# النشرة فقط؛ قرار الإرسال في monitor.py (اختبار بنيوي يثبّت التطابق)
+RADAR_UNMUTE_KEYS = {"next_goal"}
 
 CLAUDE_MODEL = "claude-fable-5"
 
@@ -2263,6 +2266,8 @@ def drama_scoreboard_line() -> str:
         # مربوطة بالسجل الكامل عمداً (انظر التحذير في resolve_radar_log)
         if key in proven:
             status = "مُثبَت ✅ — يُرسل بلا وسم تجريبي"
+        elif key in silenced and key in RADAR_UNMUTE_KEYS:
+            status = "صامت بالقاعدة — يُرسل بأمر المالك 🎯 (2026-08-27)"
         elif key in silenced:
             status = "صامت 🔇 — يُسجَّل بلا تيليجرام"
         else:
