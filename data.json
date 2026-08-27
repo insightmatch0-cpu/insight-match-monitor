@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-27T11:06:47.318350+00:00",
+ "updated": "2026-08-27T11:16:33.693829+00:00",
  "live": [
   {
    "fid": "1534836",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21502.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-27T11:06:45.591974+00:00",
+   "minute": 54,
+   "status": "2H",
+   "seen": "2026-08-27T11:16:32.029861+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -40,7 +40,7 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      54
      ],
      "danger": [
       15
@@ -70,10 +70,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/6794.png",
    "away_logo": "https://media.api-sports.io/football/teams/665.png",
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
-   "score": "2-0",
-   "minute": 35,
+   "score": "3-0",
+   "minute": 44,
    "status": "1H",
-   "seen": "2026-08-27T11:06:45.591974+00:00",
+   "seen": "2026-08-27T11:16:32.029861+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -90,17 +90,76 @@
     "confidence": 37,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": null,
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      35
+      44
      ],
      "danger": [
       0
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534841",
+   "home": "Yelimay Semey 2",
+   "away": "Shakhter Karagandy",
+   "home_en": "Yelimay Semey 2",
+   "away_en": "Shakhter Karagandy",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/27635.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4566.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-08-27T11:16:32.029861+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 70
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+    ],
+    "pick": "away",
+    "confidence": 70,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      24
      ],
      "h_sog": [
       0
