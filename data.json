@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-27T21:26:34.499774+00:00",
+ "updated": "2026-08-27T21:37:13.910076+00:00",
  "live": [
   {
    "fid": "1623421",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/5354.png",
    "away_logo": "https://media.api-sports.io/football/teams/667.png",
    "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-   "score": "0-2",
-   "minute": 118,
+   "score": "0-3",
+   "minute": 123,
    "status": "ET",
-   "seen": "2026-08-27T21:26:32.229710+00:00",
+   "seen": "2026-08-27T21:31:03.388891+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 62
@@ -24,17 +24,18 @@
     "confidence": 42
    },
    "radar": {
-    "score": 80,
+    "score": 92,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د118)",
+     "النتيجة الحالية 0-3 تُسقط التوقع (د123)",
+     "موجة تسديد على المرمى من الضيف",
      "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
     ],
     "pick": "home",
     "confidence": 42,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
@@ -46,7 +47,7 @@
       64,
       74,
       96,
-      118
+      123
      ],
      "danger": [
       42,
@@ -54,7 +55,7 @@
       53,
       59,
       100,
-      80
+      92
      ],
      "h_sog": [
       1,
@@ -70,7 +71,7 @@
       3,
       3,
       6,
-      6
+      8
      ],
      "h_cor": [
       2,
@@ -102,9 +103,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/22489.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
    "score": "1-0",
-   "minute": 67,
+   "minute": 78,
    "status": "2H",
-   "seen": "2026-08-27T21:26:32.229710+00:00",
+   "seen": "2026-08-27T21:37:11.545896+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -133,7 +134,7 @@
       9,
       19,
       29,
-      67
+      78
      ],
      "danger": [
       15,
@@ -179,9 +180,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/19414.png",
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-27T21:26:32.229710+00:00",
+   "minute": 48,
+   "status": "2H",
+   "seen": "2026-08-27T21:37:11.545896+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -191,10 +192,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 42,
+    "score": 43,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د48)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -209,12 +210,83 @@
      "min": [
       11,
       20,
-      45
+      48
      ],
      "danger": [
       21,
       27,
-      42
+      43
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1632421",
+   "home": "Cuniburo",
+   "away": "Atletico FC",
+   "home_en": "Cuniburo",
+   "away_en": "Atletico FC",
+   "league": "Liga Pro Serie B (Ecuador)",
+   "home_logo": "https://media.api-sports.io/football/teams/21103.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27548.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/243.png",
+   "score": "1-0",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-27T21:37:11.545896+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11,
+      21,
+      47
+     ],
+     "danger": [
+      21,
+      27,
+      15
      ],
      "h_sog": [
       0,
@@ -252,7 +324,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-27T21:26:32.229710+00:00",
+   "seen": "2026-08-27T21:37:11.545896+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -311,77 +383,6 @@
    }
   },
   {
-   "fid": "1632421",
-   "home": "Cuniburo",
-   "away": "Atletico FC",
-   "home_en": "Cuniburo",
-   "away_en": "Atletico FC",
-   "league": "Liga Pro Serie B (Ecuador)",
-   "home_logo": "https://media.api-sports.io/football/teams/21103.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27548.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/243.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-27T21:26:32.229710+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      11,
-      21,
-      45
-     ],
-     "danger": [
-      21,
-      27,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1632409",
    "home": "Club Nacional",
    "away": "Albion FC",
@@ -392,9 +393,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2378.png",
    "league_logo": "https://media.api-sports.io/football/leagues/930.png",
    "score": "0-0",
-   "minute": 10,
+   "minute": 22,
    "status": "1H",
-   "seen": "2026-08-27T21:26:32.229710+00:00",
+   "seen": "2026-08-27T21:37:11.545896+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -404,10 +405,10 @@
     "confidence": 65
    },
    "radar": {
-    "score": 21,
+    "score": 28,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د22)"
     ],
     "pick": "home",
     "confidence": 65,
@@ -420,10 +421,69 @@
     "top": false,
     "trend": {
      "min": [
-      10
+      22
      ],
      "danger": [
-      21
+      28
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1612604",
+   "home": "Resistencia",
+   "away": "Cerro Porteno",
+   "home_en": "Resistencia",
+   "away_en": "Cerro Porteno",
+   "league": "Copa Paraguay (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2135.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1176.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/501.png",
+   "score": "0-0",
+   "minute": 7,
+   "status": "1H",
+   "seen": "2026-08-27T21:37:11.545896+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 62
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د7)"
+    ],
+    "pick": "away",
+    "confidence": 62,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7
+     ],
+     "danger": [
+      19
      ],
      "h_sog": [
       0
@@ -1468,6 +1528,104 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-27",
+   "home": "برشلونة",
+   "away": "أتلتيك بيلباو",
+   "home_en": "Barcelona",
+   "away_en": "Athletic Club",
+   "league": "الدوري الإسباني",
+   "home_logo": "https://media.api-sports.io/football/teams/529.png",
+   "away_logo": "https://media.api-sports.io/football/teams/531.png",
+   "pick": "home",
+   "confidence": 70,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-27",
+   "home": "غوايرينا",
+   "away": "12 أكتوبر",
+   "home_en": "Guairena FC",
+   "away_en": "12 de Octubre",
+   "league": "كأس باراغواي",
+   "home_logo": "https://media.api-sports.io/football/teams/2138.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3832.png",
+   "pick": "home",
+   "confidence": 54,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-27",
+   "home": "ألويز رديز",
+   "away": "أوروا",
+   "home_en": "Always Ready",
+   "away_en": "Aurora",
+   "league": "الدوري الممتاز البوليفياني",
+   "home_logo": "https://media.api-sports.io/football/teams/3700.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3637.png",
+   "pick": "home",
+   "confidence": 55,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-27",
+   "home": "فولهام",
+   "away": "إيه إف سي ويمبليدون",
+   "home_en": "Fulham",
+   "away_en": "AFC Wimbledon",
+   "league": "كأس الرابطة الإنجليزية",
+   "home_logo": "https://media.api-sports.io/football/teams/36.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1333.png",
+   "pick": "home",
+   "confidence": 72,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-27",
+   "home": "هيبيرنيان",
+   "away": "جنت",
+   "home_en": "Hibernian",
+   "away_en": "Gent",
+   "league": "دوري المؤتمر الأوروبي",
+   "home_logo": "https://media.api-sports.io/football/teams/249.png",
+   "away_logo": "https://media.api-sports.io/football/teams/631.png",
+   "pick": "away",
+   "confidence": 56,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-27",
+   "home": "بارتيزان",
+   "away": "خيتافي",
+   "home_en": "FK Partizan",
+   "away_en": "Getafe",
+   "league": "دوري المؤتمر الأوروبي",
+   "home_logo": "https://media.api-sports.io/football/teams/573.png",
+   "away_logo": "https://media.api-sports.io/football/teams/546.png",
+   "pick": "home",
+   "confidence": 59,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-27",
+   "home": "ويلستيرمان كوبيراتيفا",
+   "away": "أتليتيكو جونيورز",
+   "home_en": "Wilstermann Cooperativa",
+   "away_en": "Atletico Juniors",
+   "league": "الدوري الثاني البوليفياني",
+   "home_logo": "https://media.api-sports.io/football/teams/17763.png",
+   "away_logo": "https://media.api-sports.io/football/teams/28289.png",
+   "pick": "draw",
+   "confidence": 48,
+   "kickoff": "2026-08-27T19:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-27",
    "home": "كان",
