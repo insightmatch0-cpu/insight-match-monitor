@@ -107,6 +107,12 @@ PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 4
 # summary… always keep it in this way» لكل مباراة مفضلة): رسالة حتمية
 # بالكامل — صفر Claude، نداءا API (سوق + إصابات) — تسبق التقرير الكامل.
 PREMATCH_BRIEF = True
+# ✅ تتبع الادعاءات الحي للمفضلة (طلب المالك 2026-08-27: «whenever there is
+# a success, immediate message — no need to wait for the match to end»):
+# ادعاءات حتمية قابلة للفحص الآلي تُولَّد مع الموجز، يُؤكَّد فوراً ما تحقق
+# نهائياً أثناء اللعب، ويُرسل الحصاد الكامل عند الصافرة.
+FOCUS_CLAIMS = True
+FOCUS_CLAIM_MARKET_MIN = 58   # لا ادعاء سوقي (أهداف/تسجيل) تحت هذه الثقة الضمنية
 
 # REC-006 (قرار المالك 2026-08-08): تقرير ما قبل المباراة كان يكتب نسبه بلا أي
 # تغذية راجعة عن أدائه (مبالغة ~17 نقطة في كل مستوى نسب، وعمى عن معدلات الأساس
@@ -965,6 +971,122 @@ def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
     return "\n".join(lines)
 
 
+def build_focus_claims(fid: str, v2p: dict) -> list:
+    """✅ يولّد ادعاءات المباراة المفضلة القابلة للفحص الآلي — حتمية بالكامل:
+    اتجاه النتيجة من اختيار المحرك، وفوق/تحت 2.5 وكلا الفريقين من سوق
+    المراهنات فقط حين تتجاوز ثقته الضمنية FOCUS_CLAIM_MARKET_MIN (بعد
+    إزالة الهامش). نداء API واحد؛ أي فشل يرجع اتجاه النتيجة وحده."""
+    claims = []
+    p = v2p or {}
+    ar_h = p.get("ar_home") or p.get("home", "?")
+    ar_a = p.get("ar_away") or p.get("away", "?")
+    pick = p.get("pick")
+    if pick in ("home", "draw", "away"):
+        txt = {"home": f"فوز {ar_h}", "draw": "تعادل",
+               "away": f"فوز {ar_a}"}[pick]
+        claims.append({"key": "result", "side": pick,
+                       "text": f"{txt} (المحرك {p.get('confidence')}%)",
+                       "status": "pending"})
+    try:
+        bets = ((api_football(f"odds?fixture={fid}") or [{}])[0]
+                .get("bookmakers", [{}])[:1] or [{}])[0].get("bets", [])
+        def implied(values):
+            inv = {}
+            for v in values:
+                try:
+                    inv[str(v.get("value"))] = 1.0 / float(v.get("odd"))
+                except (TypeError, ValueError, ZeroDivisionError):
+                    pass
+            tot = sum(inv.values())
+            return ({k: 100.0 * x / tot for k, x in inv.items()}
+                    if tot > 0 else {})
+        for bet in bets:
+            name = bet.get("name")
+            if name == "Goals Over/Under":
+                imp = implied([v for v in bet.get("values", [])
+                               if str(v.get("value")) in ("Over 2.5",
+                                                          "Under 2.5")])
+                ov, un = imp.get("Over 2.5", 0), imp.get("Under 2.5", 0)
+                if ov >= FOCUS_CLAIM_MARKET_MIN:
+                    claims.append({"key": "over25", "status": "pending",
+                                   "text": f"فوق 2.5 هدف (السوق {round(ov)}%)"})
+                elif un >= FOCUS_CLAIM_MARKET_MIN:
+                    claims.append({"key": "under25", "status": "pending",
+                                   "text": f"تحت 2.5 هدف (السوق {round(un)}%)"})
+            elif name == "Both Teams Score":
+                imp = implied(bet.get("values", []))
+                yes, no = imp.get("Yes", 0), imp.get("No", 0)
+                if yes >= FOCUS_CLAIM_MARKET_MIN:
+                    claims.append({"key": "btts_yes", "status": "pending",
+                                   "text": f"كلا الفريقين يسجلان (السوق {round(yes)}%)"})
+                elif no >= FOCUS_CLAIM_MARKET_MIN:
+                    claims.append({"key": "btts_no", "status": "pending",
+                                   "text": f"لن يسجل كلاهما (السوق {round(no)}%)"})
+    except Exception as e:
+        print("ادعاءات المفضلة — فشل السوق:", e)
+    return claims
+
+
+def focus_claim_updates(fid: str, wl_data: dict, gh: int, ga: int,
+                        final: bool = False) -> bool:
+    """✅ يفحص ادعاءات مباراة مفضلة على النتيجة الحالية. أثناء اللعب: ما
+    تحقق نهائياً (فوق 2.5 عند الهدف الثالث، كلا الفريقين عند تسجيل
+    الثاني) يُرسل تأكيده فوراً. عند النهاية (final=True): تُحسم البقية
+    (اتجاه النتيجة، تحت 2.5، عدم تسجيل كليهما) ويُرسل الحصاد الكامل.
+    كل إرسال يكتب watchlist.json في نفس اللحظة (قاعدة 2026-08-21).
+    يرجع True إن تغيّر شيء."""
+    if not FOCUS_CLAIMS:
+        return False
+    entry = (wl_data.get("matches") or {}).get(fid) or {}
+    claims = entry.get("claims") or []
+    if not claims:
+        return False
+    dirty = False
+    total = gh + ga
+    won = "home" if gh > ga else ("away" if ga > gh else "draw")
+    live_hits = []
+    for c in claims:
+        if c.get("status") != "pending":
+            continue
+        k = c.get("key")
+        if k == "over25" and total >= 3:
+            c["status"] = "hit"; live_hits.append(c)
+        elif k == "btts_yes" and gh >= 1 and ga >= 1:
+            c["status"] = "hit"; live_hits.append(c)
+        elif final:
+            hit = {"result": c.get("side") == won,
+                   "under25": total <= 2,
+                   "btts_no": gh == 0 or ga == 0,
+                   "over25": False, "btts_yes": False}.get(k, False)
+            c["status"] = "hit" if hit else "miss"
+            dirty = True
+    label = entry.get("label") or fid
+    if live_hits and not final:
+        for c in live_hits:
+            send_telegram(f"✅ تحقق ادعاء مبكراً — {label}\n"
+                          f"«{c.get('text')}» حدث فعلاً "
+                          f"والنتيجة الآن {gh}-{ga} — لم ننتظر الصافرة.")
+        dirty = True
+    if final:
+        hits = sum(1 for c in claims if c.get("status") == "hit")
+        lines = [f"🏁 حصاد الادعاءات — {label} ({gh}-{ga})",
+                 f"📊 أصاب {hits} من {len(claims)}"]
+        for c in claims:
+            icon = "✅" if c.get("status") == "hit" else "❌"
+            lines.append(f"{icon} {c.get('text')}")
+        send_telegram("\n".join(lines))
+        entry["claims_settled"] = True
+        dirty = True
+    if dirty:
+        try:
+            WATCHLIST_FILE.write_text(
+                json.dumps(wl_data, ensure_ascii=False, indent=1),
+                encoding="utf-8")
+        except Exception as e:
+            print("ادعاءات المفضلة — فشل الحفظ الفوري:", e)
+    return dirty
+
+
 def prematch_brief(fid: str, entry: dict, v2p: dict, v1p: dict,
                    minutes_left: float) -> str:
     """⭐ موجز أدلة رفيع المستوى لمباراة مفضلة — حتمي بالكامل (صفر Claude):
@@ -1054,6 +1176,9 @@ def prematch_reports(wl_data: dict, watch: set) -> bool:
             send_telegram(prematch_brief(fid, entry, v2_pending.get(fid),
                                          v1_pending.get(fid), minutes_left))
             entry["brief_sent"] = True
+            # ✅ ادعاءات المتابعة الحية تُولَّد مع الموجز وتُخزن مع المباراة
+            if FOCUS_CLAIMS and not entry.get("claims"):
+                entry["claims"] = build_focus_claims(fid, v2_pending.get(fid))
             dirty = True
             WATCHLIST_FILE.write_text(
                 json.dumps(wl_data, ensure_ascii=False, indent=1),
@@ -1397,6 +1522,9 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                     label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 قراءة المباراة الآن"
                     msg += f"\n{label}:\n{analysis}"
                 send_telegram(msg)
+                # ✅ تأكيد فوري لادعاءات المفضلة التي حسمها هذا الهدف
+                if fid in watch:
+                    wl_dirty = focus_claim_updates(fid, wl_data, gh, ga) or wl_dirty
                 if enriched and analysis:
                     prev["pulse"] = analysis
                 sig = live_signature(fid)
@@ -1413,6 +1541,11 @@ def focus_fast_watch(state: dict, wl_data: dict, watch: set,
                 if wl_entry is not None and not wl_entry.get("result"):
                     wl_entry["result"] = f"{gh}-{ga}"
                     wl_dirty = True
+                # ✅ حصاد الادعاءات عند الصافرة — مرة واحدة
+                if (fid in watch and wl_entry is not None
+                        and not wl_entry.get("claims_settled")):
+                    wl_dirty = (focus_claim_updates(fid, wl_data, gh, ga,
+                                                    final=True) or wl_dirty)
                 prev.update({"score": score, "status": status, "minute": minute,
                          "seen": seen_now})
                 continue
@@ -2686,6 +2819,9 @@ def main() -> None:
                 label = "🤖 المحرك 2 (مباشر)" if enriched else "🤖 قراءة المباراة الآن"
                 msg += f"\n{label}:\n{analysis}"
             send_telegram(msg)
+            # ✅ تأكيد فوري لادعاءات المفضلة التي حسمها هذا الهدف (~90 ثانية)
+            if fid in watch:
+                wl_dirty = focus_claim_updates(fid, wl_data, gh, ga) or wl_dirty
 
         # --- حدث 3: نهاية المباراة ---
         if status in FINAL_STATUSES and prev.get("status") not in FINAL_STATUSES:
@@ -2703,6 +2839,11 @@ def main() -> None:
             if fid in watch and wl_entry is not None and not wl_entry.get("result"):
                 wl_entry["result"] = f"{gh}-{ga}"
                 wl_dirty = True
+            # ✅ حصاد الادعاءات عند الصافرة — مرة واحدة (المسار السريع)
+            if (fid in watch and wl_entry is not None
+                    and not wl_entry.get("claims_settled")):
+                wl_dirty = (focus_claim_updates(fid, wl_data, gh, ga,
+                                                final=True) or wl_dirty)
 
         # --- نبض المحرك 2: مراقبة مستمرة لمباريات قائمة التركيز بين الأحداث ---
         # (لا هدف هذه الجولة — لكن هل يتشكل سيناريو خطر؟ ركنيات، هدف قادم،
