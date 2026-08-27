@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-27T21:17:14.527181+00:00",
+ "updated": "2026-08-27T21:26:34.499774+00:00",
  "live": [
   {
    "fid": "1623421",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/667.png",
    "league_logo": "https://media.api-sports.io/football/leagues/848.png",
    "score": "0-2",
-   "minute": 96,
+   "minute": 118,
    "status": "ET",
-   "seen": "2026-08-27T21:17:12.077804+00:00",
+   "seen": "2026-08-27T21:26:32.229710+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 62
@@ -24,18 +24,16 @@
     "confidence": 42
    },
    "radar": {
-    "score": 100,
+    "score": 80,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د96)",
-     "موجة تسديد على المرمى من الضيف",
-     "موجة ركنيات لصالح الضيف",
+     "النتيجة الحالية 0-2 تُسقط التوقع (د118)",
      "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
     ],
     "pick": "home",
     "confidence": 42,
     "drama": {
-     "signal": 5,
+     "signal": 0,
      "side": "home",
      "ready": false
     },
@@ -47,18 +45,21 @@
       54,
       64,
       74,
-      96
+      96,
+      118
      ],
      "danger": [
       42,
       47,
       53,
       59,
-      100
+      100,
+      80
      ],
      "h_sog": [
       1,
       1,
+      2,
       2,
       2,
       2
@@ -68,6 +69,7 @@
       3,
       3,
       3,
+      6,
       6
      ],
      "h_cor": [
@@ -75,6 +77,7 @@
       3,
       5,
       5,
+      7,
       7
      ],
      "a_cor": [
@@ -82,6 +85,7 @@
       3,
       4,
       4,
+      7,
       7
      ]
     }
@@ -98,9 +102,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/22489.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1232.png",
    "score": "1-0",
-   "minute": 58,
+   "minute": 67,
    "status": "2H",
-   "seen": "2026-08-27T21:17:12.077804+00:00",
+   "seen": "2026-08-27T21:26:32.229710+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -129,7 +133,7 @@
       9,
       19,
       29,
-      58
+      67
      ],
      "danger": [
       15,
@@ -176,8 +180,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-27T21:17:12.077804+00:00",
+   "status": "HT",
+   "seen": "2026-08-27T21:26:32.229710+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -247,8 +251,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-27T21:17:12.077804+00:00",
+   "status": "HT",
+   "seen": "2026-08-27T21:26:32.229710+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -318,8 +322,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-27T21:17:12.077804+00:00",
+   "status": "HT",
+   "seen": "2026-08-27T21:26:32.229710+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -372,6 +376,65 @@
      "a_cor": [
       0,
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1632409",
+   "home": "Club Nacional",
+   "away": "Albion FC",
+   "home_en": "Club Nacional",
+   "away_en": "Albion FC",
+   "league": "Copa Uruguay (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2356.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2378.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/930.png",
+   "score": "0-0",
+   "minute": 10,
+   "status": "1H",
+   "seen": "2026-08-27T21:26:32.229710+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    ],
+    "pick": "home",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      10
+     ],
+     "danger": [
+      21
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
@@ -4069,6 +4132,19 @@
     "minute": 107,
     "pick": "home",
     "conf": 61,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-27",
+    "home": "Larne",
+    "away": "Lincoln Red Imps FC",
+    "league": "UEFA Europa Conference League (World)",
+    "level": "red",
+    "minute": 112,
+    "pick": "home",
+    "conf": 42,
     "top": false
    }
   ]
