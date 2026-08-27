@@ -103,6 +103,10 @@ SIG_THRESHOLDS = {
 # تركيز (طلب المالك 2026-07-15). يمكن توسيع النافذة مؤقتاً عبر متغير البيئة
 # PREMATCH_WINDOW (زر التشغيل اليدوي في monitor.yml).
 PREMATCH_REPORT_MINUTES = int(os.environ.get("PREMATCH_WINDOW", "").strip() or 45)
+# ⭐ موجز الأدلة قبل تقرير السيناريوهات (طلب المالك 2026-08-27: «beautiful
+# summary… always keep it in this way» لكل مباراة مفضلة): رسالة حتمية
+# بالكامل — صفر Claude، نداءا API (سوق + إصابات) — تسبق التقرير الكامل.
+PREMATCH_BRIEF = True
 
 # REC-006 (قرار المالك 2026-08-08): تقرير ما قبل المباراة كان يكتب نسبه بلا أي
 # تغذية راجعة عن أدائه (مبالغة ~17 نقطة في كل مستوى نسب، وعمى عن معدلات الأساس
@@ -961,6 +965,64 @@ def build_prematch_context(fid: str, v2p: dict, v1p: dict, userp: dict) -> str:
     return "\n".join(lines)
 
 
+def prematch_brief(fid: str, entry: dict, v2p: dict, v1p: dict,
+                   minutes_left: float) -> str:
+    """⭐ موجز أدلة رفيع المستوى لمباراة مفضلة — حتمي بالكامل (صفر Claude):
+    إجماع المحركين والسوق + قراءة المحرك + الغيابات. أي فشل جزئي يسقط
+    سطره وحده فيصل الموجز ولو ناقصاً — رسالة المفضلة لا تُحجب بعطل فرعي."""
+    p = v2p or v1p or {}
+    ar_h = p.get("ar_home") or p.get("home", "?")
+    ar_a = p.get("ar_away") or p.get("away", "?")
+    pick_ar = {"home": f"فوز {ar_h}", "draw": "تعادل", "away": f"فوز {ar_a}"}
+    lines = [
+        f"⭐ موجز ما قبل المباراة — {entry.get('label') or f'{ar_h} 🆚 {ar_a}'}",
+        f"🏆 {p.get('ar_league') or p.get('league', '')} · "
+        f"⏰ الانطلاق خلال ~{int(minutes_left)} دقيقة",
+        "",
+        "📊 الإجماع:",
+    ]
+    if v2p:
+        lines.append(f"• المحرك 2: {pick_ar.get(v2p.get('pick'), '?')} — "
+                     f"{v2p.get('confidence')}% "
+                     f"({v2p.get('prob_home')}/{v2p.get('prob_draw')}"
+                     f"/{v2p.get('prob_away')})")
+    if v1p:
+        lines.append(f"• المحرك 1: {pick_ar.get(v1p.get('pick'), '?')} — "
+                     f"{v1p.get('confidence')}%")
+    try:
+        for bk in (api_football(f"odds?fixture={fid}") or [{}])[0].get(
+                "bookmakers", [])[:1]:
+            for bet in bk.get("bets", []):
+                if bet.get("name") != "Match Winner":
+                    continue
+                inv = {}
+                for v in bet.get("values", []):
+                    try:
+                        inv[v.get("value")] = 1.0 / float(v.get("odd"))
+                    except (TypeError, ValueError, ZeroDivisionError):
+                        pass
+                tot = sum(inv.values())
+                if tot > 0 and len(inv) == 3:
+                    imp = {k: round(100 * x / tot) for k, x in inv.items()}
+                    lines.append(f"• السوق: {ar_h} {imp.get('Home', '?')}% · "
+                                 f"تعادل {imp.get('Draw', '?')}% · "
+                                 f"{ar_a} {imp.get('Away', '?')}%")
+    except Exception as e:
+        print("موجز ما قبل المباراة — فشل السوق:", e)
+    if v2p and v2p.get("reason"):
+        lines += ["", f"🧠 قراءة المحرك: {v2p['reason']}"]
+    try:
+        inj = [f"{((i.get('player') or {}).get('name') or '?')} "
+               f"({(i.get('team') or {}).get('name', '?')})"
+               for i in api_football(f"injuries?fixture={fid}")[:10]]
+        if inj:
+            lines += ["", "🚑 الغيابات المعلنة: " + "، ".join(inj)]
+    except Exception as e:
+        print("موجز ما قبل المباراة — فشل الإصابات:", e)
+    lines += ["", "📋 تقرير السيناريوهات الكامل يليه خلال دقائق."]
+    return "\n".join(lines)
+
+
 def prematch_reports(wl_data: dict, watch: set) -> bool:
     """يرسل تقرير سيناريوهات المحرك 2 لكل مباراة تركيز تنطلق خلال
     PREMATCH_REPORT_MINUTES دقيقة (مرة واحدة لكل مباراة — علم prematch_sent).
@@ -986,6 +1048,16 @@ def prematch_reports(wl_data: dict, watch: set) -> bool:
         minutes_left = (kickoff - now).total_seconds() / 60
         if minutes_left > PREMATCH_REPORT_MINUTES:
             continue
+        # ⭐ الموجز أولاً وبعلمه الخاص — يصل حتى لو فشل تقرير Claude بعده،
+        # ويُحفظ العلم فوراً (قاعدة 2026-08-21: الكتابة لحظة الإرسال)
+        if PREMATCH_BRIEF and not entry.get("brief_sent"):
+            send_telegram(prematch_brief(fid, entry, v2_pending.get(fid),
+                                         v1_pending.get(fid), minutes_left))
+            entry["brief_sent"] = True
+            dirty = True
+            WATCHLIST_FILE.write_text(
+                json.dumps(wl_data, ensure_ascii=False, indent=1),
+                encoding="utf-8")
         ctx = build_prematch_context(fid, v2_pending.get(fid),
                                      v1_pending.get(fid), user_pending.get(fid))
         report = analyze_with_claude(
