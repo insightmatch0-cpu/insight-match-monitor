@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2492,
+  "remaining": 2499,
   "note": "",
   "matches": 1,
   "radar_hits": 1,
   "radar_targets": 20
  },
  "api_quota": {
-  "remaining": 4919,
+  "remaining": 4880,
   "limit": 7500,
-  "at": "2026-08-27T19:06:42.675637+00:00"
+  "at": "2026-08-27T19:16:45.336274+00:00"
  },
  "delivery": {
   "at": "2026-08-27T19:06:58.543658+00:00",
@@ -67,16 +67,16 @@
   "alerted_for": "2026-08-21"
  },
  "1622633": {
-  "score": "4-1",
-  "status": "BT",
-  "minute": 0,
+  "score": "5-1",
+  "status": "ET",
+  "minute": 100,
   "home": "Plzen",
   "away": "FK Crvena Zvezda",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/567.png",
   "away_logo": "https://media.api-sports.io/football/teams/598.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -113,6 +113,13 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 100,
+     "gh": 5,
+     "ga": 1,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 0,
@@ -121,6 +128,7 @@
     15,
     27,
     15,
+    0,
     0,
     0
    ],
@@ -142,14 +150,14 @@
  "1623417": {
   "score": "1-1",
   "status": "ET",
-  "minute": 96,
+  "minute": 101,
   "home": "Hradec Králové",
   "away": "Panathinaikos",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/3723.png",
   "away_logo": "https://media.api-sports.io/football/teams/617.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -245,40 +253,43 @@
      }
     },
     {
-     "minute": 96,
+     "minute": 101,
      "gh": 1,
      "ga": 1,
      "h": {
-      "sog": 3,
-      "shots": 6,
+      "sog": 6,
+      "shots": 9,
       "cor": 2,
-      "poss": 52,
+      "poss": 55,
       "yc": 1,
       "rc": 0,
       "sv": 2
      },
      "a": {
       "sog": 3,
-      "shots": 12,
+      "shots": 13,
       "cor": 7,
-      "poss": 48,
+      "poss": 45,
       "yc": 4,
       "rc": 0,
-      "sv": 4
+      "sv": 5
      }
     }
    ],
-   "score": 70,
+   "score": 96,
    "level": "red",
    "dscores": [
     21,
     27,
     80,
     15,
-    70
+    96
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د96)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د101)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "pick": "away",
    "confidence": 50,
@@ -286,7 +297,7 @@
    "mine": false,
    "drama": {
     "signal": 65,
-    "side": "away",
+    "side": "home",
     "ready": false
    },
    "alerted": null,
@@ -297,14 +308,14 @@
  "1623418": {
   "score": "0-0",
   "status": "ET",
-  "minute": 96,
+  "minute": 106,
   "home": "Inter Club d'Escaldes",
   "away": "Drita",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/3342.png",
   "away_logo": "https://media.api-sports.io/football/teams/14281.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -398,27 +409,49 @@
       "rc": 0,
       "sv": 0
      }
+    },
+    {
+     "minute": 106,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 0,
+      "cor": 6,
+      "poss": 40,
+      "yc": 3,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 1,
+      "poss": 60,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     }
     }
    ],
-   "score": 90,
+   "score": 70,
    "level": "red",
    "dscores": [
     21,
     27,
     63,
-    90
+    90,
+    70
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د96)",
-    "موجة تسديد على المرمى من المضيف",
-    "موجة ركنيات لصالح المضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د106)"
    ],
    "pick": "away",
    "confidence": 52,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 50,
+    "signal": 0,
     "side": "home",
     "ready": false
    },
@@ -429,15 +462,15 @@
  },
  "1623424": {
   "score": "2-2",
-  "status": "BT",
-  "minute": 0,
+  "status": "ET",
+  "minute": 97,
   "home": "Pafos",
   "away": "Dinamo Tirana",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/3403.png",
   "away_logo": "https://media.api-sports.io/football/teams/3326.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -554,26 +587,50 @@
       "rc": 0,
       "sv": 3
      }
+    },
+    {
+     "minute": 97,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 5,
+      "shots": 14,
+      "cor": 3,
+      "poss": 50,
+      "yc": 2,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 2,
+      "shots": 7,
+      "cor": 2,
+      "poss": 50,
+      "yc": 3,
+      "rc": 0,
+      "sv": 3
+     }
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 70,
+   "level": "red",
    "dscores": [
     19,
     25,
     32,
     51,
-    15
+    15,
+    70
    ],
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د0)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د97)"
    ],
    "pick": "home",
    "confidence": 61,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 65,
+    "signal": 0,
     "side": "home",
     "ready": false
    },
@@ -583,16 +640,16 @@
   }
  },
  "1623427": {
-  "score": "2-2",
-  "status": "BT",
-  "minute": 0,
+  "score": "2-3",
+  "status": "ET",
+  "minute": 100,
   "home": "Raków Częstochowa",
   "away": "HNK Hajduk Split",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/3491.png",
   "away_logo": "https://media.api-sports.io/football/teams/608.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -644,14 +701,14 @@
  "1623448": {
   "score": "2-1",
   "status": "ET",
-  "minute": 94,
+  "minute": 104,
   "home": "Lillestrom",
   "away": "Egnatia Rrogozhinë",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/321.png",
   "away_logo": "https://media.api-sports.io/football/teams/3327.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -688,6 +745,13 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 104,
+     "gh": 2,
+     "ga": 1,
+     "h": {},
+     "a": {}
     }
    ],
    "score": 15,
@@ -697,6 +761,7 @@
     27,
     33,
     55,
+    15,
     15
    ],
    "factors": [
@@ -719,38 +784,38 @@
  "1619050": {
   "score": "2-0",
   "status": "2H",
-  "minute": 76,
+  "minute": 86,
   "home": "Vejle",
   "away": "Silkeborg",
   "league": "DBU Pokalen (Denmark)",
   "home_logo": "https://media.api-sports.io/football/teams/395.png",
   "away_logo": "https://media.api-sports.io/football/teams/2073.png",
   "league_logo": "https://media.api-sports.io/football/leagues/121.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00"
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  },
  "1603978": {
   "score": "1-0",
   "status": "2H",
-  "minute": 49,
+  "minute": 59,
   "home": "Al Jandal",
   "away": "Al Saqer",
   "league": "Division 1 (Saudi-Arabia)",
   "home_logo": "https://media.api-sports.io/football/teams/10507.png",
   "away_logo": "https://media.api-sports.io/football/teams/27480.png",
   "league_logo": "https://media.api-sports.io/football/leagues/308.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00"
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  },
  "1632408": {
   "score": "0-0",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 53,
   "home": "Fenix",
   "away": "Liverpool Montevideo",
   "league": "Copa Uruguay (Uruguay)",
   "home_logo": "https://media.api-sports.io/football/teams/2357.png",
   "away_logo": "https://media.api-sports.io/football/teams/2358.png",
   "league_logo": "https://media.api-sports.io/football/leagues/930.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -801,15 +866,15 @@
  },
  "1622638": {
   "score": "1-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 51,
   "home": "Al Tadhamon",
   "away": "Kazma",
   "league": "Premier League (Kuwait)",
   "home_logo": "https://media.api-sports.io/football/teams/3539.png",
   "away_logo": "https://media.api-sports.io/football/teams/3540.png",
   "league_logo": "https://media.api-sports.io/football/leagues/330.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -827,22 +892,22 @@
      "a": {}
     },
     {
-     "minute": 45,
+     "minute": 51,
      "gh": 1,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 42,
+   "score": 45,
    "level": "amber",
    "dscores": [
     21,
     30,
-    42
+    45
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د51)"
    ],
    "pick": "home",
    "confidence": 52,
@@ -860,15 +925,15 @@
  },
  "1623112": {
   "score": "0-0",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 53,
   "home": "Hapoel Tel Aviv",
   "away": "Atalanta",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/4501.png",
   "away_logo": "https://media.api-sports.io/football/teams/499.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -939,27 +1004,49 @@
       "rc": 0,
       "sv": 0
      }
+    },
+    {
+     "minute": 53,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 5,
+      "cor": 5,
+      "poss": 54,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 7,
+      "cor": 1,
+      "poss": 46,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
     }
    ],
-   "score": 56,
+   "score": 46,
    "level": "amber",
    "dscores": [
     21,
     30,
-    56
+    56,
+    46
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
-    "موجة ركنيات لصالح المضيف",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
    ],
    "pick": "away",
    "confidence": 62,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 35,
-    "side": "home",
+    "signal": 15,
+    "side": "away",
     "ready": false
    },
    "alerted": null,
@@ -968,16 +1055,16 @@
   }
  },
  "1623409": {
-  "score": "3-2",
-  "status": "HT",
-  "minute": 45,
+  "score": "4-2",
+  "status": "2H",
+  "minute": 52,
   "home": "Ajax",
   "away": "FC Sion",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/194.png",
   "away_logo": "https://media.api-sports.io/football/teams/630.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1027,38 +1114,39 @@
      }
     },
     {
-     "minute": 45,
-     "gh": 3,
+     "minute": 52,
+     "gh": 4,
      "ga": 2,
      "h": {
-      "sog": 6,
-      "shots": 9,
-      "cor": 2,
-      "poss": 60,
+      "sog": 8,
+      "shots": 11,
+      "cor": 3,
+      "poss": 54,
       "yc": 0,
       "rc": 0,
       "sv": 1
      },
      "a": {
-      "sog": 2,
-      "shots": 6,
-      "cor": 1,
-      "poss": 40,
+      "sog": 3,
+      "shots": 7,
+      "cor": 2,
+      "poss": 46,
       "yc": 0,
       "rc": 0,
       "sv": 5
      }
     }
    ],
-   "score": 21,
+   "score": 26,
    "level": "green",
    "dscores": [
     15,
     39,
-    21
+    26
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
@@ -1066,7 +1154,7 @@
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 15,
+    "signal": 50,
     "side": "away",
     "ready": false
    },
@@ -1085,19 +1173,19 @@
   "home_logo": "https://media.api-sports.io/football/teams/1011.png",
   "away_logo": "https://media.api-sports.io/football/teams/398.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00"
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  },
  "1623441": {
   "score": "0-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 47,
   "home": "Aarhus",
   "away": "Benfica",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/406.png",
   "away_logo": "https://media.api-sports.io/football/teams/211.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1115,7 +1203,7 @@
      "a": {}
     },
     {
-     "minute": 45,
+     "minute": 47,
      "gh": 0,
      "ga": 1,
      "h": {},
@@ -1148,15 +1236,15 @@
  },
  "1623444": {
   "score": "0-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 52,
   "home": "CSKA Sofia",
   "away": "OFI",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/853.png",
   "away_logo": "https://media.api-sports.io/football/teams/1124.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1174,22 +1262,22 @@
      "a": {}
     },
     {
-     "minute": 45,
+     "minute": 52,
      "gh": 0,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 42,
+   "score": 46,
    "level": "amber",
    "dscores": [
     21,
     30,
-    42
+    46
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د52)"
    ],
    "pick": "home",
    "confidence": 56,
@@ -1207,15 +1295,15 @@
  },
  "1627596": {
   "score": "2-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 52,
   "home": "FC Thun",
   "away": "Lech Poznan",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/1012.png",
   "away_logo": "https://media.api-sports.io/football/teams/347.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1233,22 +1321,22 @@
      "a": {}
     },
     {
-     "minute": 45,
+     "minute": 52,
      "gh": 2,
      "ga": 1,
      "h": {},
      "a": {}
     }
    ],
-   "score": 42,
+   "score": 46,
    "level": "amber",
    "dscores": [
     21,
     30,
-    42
+    46
    ],
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د52)"
    ],
    "pick": "away",
    "confidence": 39,
@@ -1267,14 +1355,14 @@
  "1570336": {
   "score": "1-0",
   "status": "1H",
-  "minute": 29,
+  "minute": 39,
   "home": "Celta Vigo",
   "away": "Osasuna",
   "league": "La Liga (Spain)",
   "home_logo": "https://media.api-sports.io/football/teams/538.png",
   "away_logo": "https://media.api-sports.io/football/teams/727.png",
   "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1308,6 +1396,15 @@
      "a": {},
      "xg_h": 0.0464,
      "xg_a": 0.054099999999999995
+    },
+    {
+     "minute": 39,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {},
+     "xg_h": 0.0464,
+     "xg_a": 0.054099999999999995
     }
    ],
    "score": 15,
@@ -1315,6 +1412,7 @@
    "dscores": [
     16,
     21,
+    15,
     15,
     15
    ],
@@ -1338,14 +1436,14 @@
  "1623102": {
   "score": "0-0",
   "status": "1H",
-  "minute": 31,
+  "minute": 40,
   "home": "Chelsea",
   "away": "Luton",
   "league": "League Cup (England)",
   "home_logo": "https://media.api-sports.io/football/teams/49.png",
   "away_logo": "https://media.api-sports.io/football/teams/1359.png",
   "league_logo": "https://media.api-sports.io/football/leagues/48.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1375,18 +1473,26 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 40,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 33,
+   "score": 39,
    "level": "green",
    "dscores": [
     16,
     21,
     27,
-    33
+    33,
+    39
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د31)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
    ],
    "pick": "home",
    "confidence": 65,
@@ -1405,14 +1511,14 @@
  "1623410": {
   "score": "0-0",
   "status": "1H",
-  "minute": 30,
+  "minute": 40,
   "home": "Austria Vienna",
   "away": "SC Braga",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/601.png",
   "away_logo": "https://media.api-sports.io/football/teams/217.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1460,16 +1566,40 @@
       "rc": 0,
       "sv": 0
      }
+    },
+    {
+     "minute": 40,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 0,
+      "poss": 67,
+      "yc": 1,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "poss": 33,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     }
     }
    ],
-   "score": 33,
+   "score": 39,
    "level": "green",
    "dscores": [
     27,
-    33
+    33,
+    39
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د30)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
    ],
    "pick": "away",
    "confidence": 50,
@@ -1488,14 +1618,14 @@
  "1623411": {
   "score": "0-1",
   "status": "1H",
-  "minute": 30,
+  "minute": 40,
   "home": "Borac Banja Luka",
   "away": "Vikingur Reykjavik",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/3364.png",
   "away_logo": "https://media.api-sports.io/football/teams/278.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1545,16 +1675,16 @@
   }
  },
  "1623413": {
-  "score": "1-0",
+  "score": "3-0",
   "status": "1H",
-  "minute": 29,
+  "minute": 39,
   "home": "Brighton",
   "away": "Tromso",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/51.png",
   "away_logo": "https://media.api-sports.io/football/teams/325.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1625,25 +1755,47 @@
       "rc": 0,
       "sv": 1
      }
+    },
+    {
+     "minute": 39,
+     "gh": 3,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 7,
+      "cor": 3,
+      "poss": 85,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 15,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
     20,
     26,
-    15
+    15,
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "home",
    "confidence": 62,
    "top": false,
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "away",
+    "side": null,
     "ready": false
    },
    "alerted": null,
@@ -1654,14 +1806,14 @@
  "1623442": {
   "score": "0-0",
   "status": "1H",
-  "minute": 30,
+  "minute": 40,
   "home": "Anderlecht",
   "away": "Kairat Almaty",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/554.png",
   "away_logo": "https://media.api-sports.io/football/teams/664.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1691,18 +1843,26 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 40,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 33,
+   "score": 39,
    "level": "green",
    "dscores": [
     16,
     21,
     26,
-    33
+    33,
+    39
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د30)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
    ],
    "pick": "home",
    "confidence": 60,
@@ -1721,14 +1881,14 @@
  "1623445": {
   "score": "1-0",
   "status": "1H",
-  "minute": 30,
+  "minute": 40,
   "home": "Ferencvarosi TC",
   "away": "Trabzonspor",
   "league": "UEFA Europa League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/651.png",
   "away_logo": "https://media.api-sports.io/football/teams/998.png",
   "league_logo": "https://media.api-sports.io/football/leagues/3.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
   "radar": {
    "snaps": [
     {
@@ -1758,18 +1918,26 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 40,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 33,
+   "score": 39,
    "level": "green",
    "dscores": [
     16,
     21,
     27,
-    33
+    33,
+    39
    ],
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د30)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د40)"
    ],
    "pick": "away",
    "confidence": 37,
@@ -1788,55 +1956,232 @@
  "1574707": {
   "score": "0-1",
   "status": "1H",
-  "minute": 15,
+  "minute": 25,
   "home": "Caen",
   "away": "Bastia",
   "league": "Ligue 3 (France)",
   "home_logo": "https://media.api-sports.io/football/teams/88.png",
   "away_logo": "https://media.api-sports.io/football/teams/1305.png",
   "league_logo": "https://media.api-sports.io/football/leagues/63.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00"
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  },
  "1585177": {
   "score": "0-0",
   "status": "1H",
-  "minute": 16,
+  "minute": 26,
   "home": "Boreham Wood",
   "away": "Boston United",
   "league": "National League (England)",
   "home_logo": "https://media.api-sports.io/football/teams/1830.png",
   "away_logo": "https://media.api-sports.io/football/teams/8146.png",
   "league_logo": "https://media.api-sports.io/football/leagues/43.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00"
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  },
  "1623428": {
-  "score": "1-0",
+  "score": "1-1",
   "status": "1H",
-  "minute": 14,
+  "minute": 24,
   "home": "HNK Rijeka",
   "away": "FC Midtjylland",
   "league": "UEFA Europa Conference League (World)",
   "home_logo": "https://media.api-sports.io/football/teams/561.png",
   "away_logo": "https://media.api-sports.io/football/teams/397.png",
   "league_logo": "https://media.api-sports.io/football/leagues/848.png",
-  "seen": "2026-08-27T19:00:35.007330+00:00"
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  },
  "1570335": {
   "score": "0-0",
   "status": "1H",
-  "minute": 1,
+  "minute": 11,
   "home": "Barcelona",
   "away": "Athletic Club",
   "league": "La Liga (Spain)",
   "home_logo": "https://media.api-sports.io/football/teams/529.png",
   "away_logo": "https://media.api-sports.io/football/teams/531.png",
   "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-  "seen": "2026-08-27T19:06:42.249382+00:00",
+  "seen": "2026-08-27T19:16:44.750481+00:00",
   "ar": {
    "home": "برشلونة",
    "away": "أتلتيك بيلباو",
    "league": "الدوري الإسباني (إسبانيا)"
   },
-  "pulse": "المباراة في دقيقتها الأولى ولا توجد إحصائيات دالة بعد، لذا القراءة مبنية على المعطيات العامة: برشلونة بأسلوبه الاستحواذي الضاغط عادة ما يفرض إيقاعه مبكراً على ملعبه، بينما يعتمد بيلباو على الصلابة الدفاعية والضغط العالي المتقطع والكرات الثابتة كسلاح رئيسي. المفتاح سيكون قدرة بيلباو على الصمود في أول 30 دقيقة أمام موجات برشلونة.\nالسيناريو: 1) الهدف القادم لبرشلونة عبر ليفاندوفسكي أو لامين يامال (صناعة من بيدري) — نسبة تقديرية 55%. 2) بيلباو يكسب بطاقات أكثر بسبب التدخلات القوية لإيقاف يامال ورافينيا، مع مرشح للإنذار من الظهير المواجه ليامال — 60%. 3) موجة ركنيات لصالح برشلونة مع تكرار التشتيت من دفاع بيلباو (أغلبية الركنيات لبرشلونة بفارق واضح) — 65%. سيناريو \"كلا الفريقين يسجلان\" متوسط الاحتمال (~45%) لأن بيلباو يهدد غالباً من كرة ثابتة واحدة عبر الأخوين ويليامز.\nالتوقع: برشلونة — ثقة 62%"
+  "pulse": "المباراة في دقيقتها الأولى ولا توجد إحصائيات دالة بعد، لذا القراءة مبنية على المعطيات العامة: برشلونة بأسلوبه الاستحواذي الضاغط عادة ما يفرض إيقاعه مبكراً على ملعبه، بينما يعتمد بيلباو على الصلابة الدفاعية والضغط العالي المتقطع والكرات الثابتة كسلاح رئيسي. المفتاح سيكون قدرة بيلباو على الصمود في أول 30 دقيقة أمام موجات برشلونة.\nالسيناريو: 1) الهدف القادم لبرشلونة عبر ليفاندوفسكي أو لامين يامال (صناعة من بيدري) — نسبة تقديرية 55%. 2) بيلباو يكسب بطاقات أكثر بسبب التدخلات القوية لإيقاف يامال ورافينيا، مع مرشح للإنذار من الظهير المواجه ليامال — 60%. 3) موجة ركنيات لصالح برشلونة مع تكرار التشتيت من دفاع بيلباو (أغلبية الركنيات لبرشلونة بفارق واضح) — 65%. سيناريو \"كلا الفريقين يسجلان\" متوسط الاحتمال (~45%) لأن بيلباو يهدد غالباً من كرة ثابتة واحدة عبر الأخوين ويليامز.\nالتوقع: برشلونة — ثقة 62%",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 5,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 18,
+   "level": "green",
+   "dscores": [
+    18
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د5)"
+   ],
+   "pick": "home",
+   "confidence": 75,
+   "top": true,
+   "mine": true,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1612603": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 10,
+  "home": "Guairena FC",
+  "away": "12 de Octubre",
+  "league": "Copa Paraguay (Paraguay)",
+  "home_logo": "https://media.api-sports.io/football/teams/2138.png",
+  "away_logo": "https://media.api-sports.io/football/teams/3832.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/501.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00"
+ },
+ "1618993": {
+  "score": "1-0",
+  "status": "1H",
+  "minute": 10,
+  "home": "Always Ready",
+  "away": "Aurora",
+  "league": "Primera División (Bolivia)",
+  "home_logo": "https://media.api-sports.io/football/teams/3700.png",
+  "away_logo": "https://media.api-sports.io/football/teams/3637.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/344.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 10,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 15,
+   "level": "green",
+   "dscores": [
+    15
+   ],
+   "factors": [
+    "تقدم هش بفارق هدف واحد"
+   ],
+   "pick": "home",
+   "confidence": 62,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "away",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1623103": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 9,
+  "home": "Fulham",
+  "away": "AFC Wimbledon",
+  "league": "League Cup (England)",
+  "home_logo": "https://media.api-sports.io/football/teams/36.png",
+  "away_logo": "https://media.api-sports.io/football/teams/1333.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/48.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 9,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 20,
+   "level": "green",
+   "dscores": [
+    20
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د9)"
+   ],
+   "pick": "home",
+   "confidence": 61,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1623416": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 10,
+  "home": "Hibernian",
+  "away": "Gent",
+  "league": "UEFA Europa Conference League (World)",
+  "home_logo": "https://media.api-sports.io/football/teams/249.png",
+  "away_logo": "https://media.api-sports.io/football/teams/631.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/848.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00"
+ },
+ "1623421": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 10,
+  "home": "Larne",
+  "away": "Lincoln Red Imps FC",
+  "league": "UEFA Europa Conference League (World)",
+  "home_logo": "https://media.api-sports.io/football/teams/5354.png",
+  "away_logo": "https://media.api-sports.io/football/teams/667.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/848.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00"
+ },
+ "1623425": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 8,
+  "home": "FK Partizan",
+  "away": "Getafe",
+  "league": "UEFA Europa Conference League (World)",
+  "home_logo": "https://media.api-sports.io/football/teams/573.png",
+  "away_logo": "https://media.api-sports.io/football/teams/546.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/848.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00"
+ },
+ "1635388": {
+  "score": "0-2",
+  "status": "1H",
+  "minute": 6,
+  "home": "Wilstermann Cooperativa",
+  "away": "Atletico Juniors",
+  "league": "Nacional B (Bolivia)",
+  "home_logo": "https://media.api-sports.io/football/teams/17763.png",
+  "away_logo": "https://media.api-sports.io/football/teams/28289.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/710.png",
+  "seen": "2026-08-27T19:10:29.005463+00:00"
  }
 }
