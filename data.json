@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-27T15:46:41.572025+00:00",
+ "updated": "2026-08-27T15:56:44.018763+00:00",
  "live": [
   {
    "fid": "1507420",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3500.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
    "score": "1-1",
-   "minute": 80,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-27T15:46:38.448557+00:00",
+   "seen": "2026-08-27T15:56:41.442313+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -24,10 +24,10 @@
     "confidence": 49
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 69,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د80)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 49,
@@ -41,11 +41,11 @@
     "trend": {
      "min": [
       48,
-      80
+      90
      ],
      "danger": [
       15,
-      63
+      69
      ],
      "h_sog": [
       0,
@@ -77,9 +77,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2916.png",
    "league_logo": "https://media.api-sports.io/football/leagues/305.png",
    "score": "1-1",
-   "minute": 68,
+   "minute": 78,
    "status": "2H",
-   "seen": "2026-08-27T15:46:38.448557+00:00",
+   "seen": "2026-08-27T15:56:41.442313+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -89,10 +89,10 @@
     "confidence": 63
    },
    "radar": {
-    "score": 55,
+    "score": 61,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د68)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د78)"
     ],
     "pick": "home",
     "confidence": 63,
@@ -105,10 +105,10 @@
     "top": false,
     "trend": {
      "min": [
-      68
+      78
      ],
      "danger": [
-      55
+      61
      ],
      "h_sog": [
       0
@@ -126,6 +126,67 @@
    }
   },
   {
+   "fid": "1507418",
+   "home": "Betlemi",
+   "away": "Guria",
+   "home_en": "Betlemi",
+   "away_en": "Guria",
+   "league": "Liga 3 (Georgia)",
+   "home_logo": "https://media.api-sports.io/football/teams/13860.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3506.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
+   "score": "0-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-08-27T15:56:41.442313+00:00",
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 36
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 36,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8,
+      45
+     ],
+     "danger": [
+      19,
+      15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1623420",
    "home": "KuPS",
    "away": "Shamrock Rovers",
@@ -137,8 +198,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/848.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-08-27T15:46:38.448557+00:00",
+   "status": "HT",
+   "seen": "2026-08-27T15:56:41.442313+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -192,67 +253,6 @@
    }
   },
   {
-   "fid": "1507418",
-   "home": "Betlemi",
-   "away": "Guria",
-   "home_en": "Betlemi",
-   "away_en": "Guria",
-   "league": "Liga 3 (Georgia)",
-   "home_logo": "https://media.api-sports.io/football/teams/13860.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3506.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
-   "score": "0-1",
-   "minute": 39,
-   "status": "1H",
-   "seen": "2026-08-27T15:46:38.448557+00:00",
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 36
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 36,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      8,
-      39
-     ],
-     "danger": [
-      19,
-      15
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1553084",
    "home": "Falu BS",
    "away": "IF Brommapojkarna",
@@ -263,9 +263,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/371.png",
    "league_logo": "https://media.api-sports.io/football/leagues/115.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 27,
    "status": "1H",
-   "seen": "2026-08-27T15:46:38.448557+00:00",
+   "seen": "2026-08-27T15:56:41.442313+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -275,10 +275,10 @@
     "confidence": 65
    },
    "radar": {
-    "score": 25,
+    "score": 31,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د27)"
     ],
     "pick": "away",
     "confidence": 65,
@@ -291,10 +291,69 @@
     "top": false,
     "trend": {
      "min": [
-      17
+      27
      ],
      "danger": [
-      25
+      31
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1632236",
+   "home": "Al Sahel",
+   "away": "Al Sulaibikhat",
+   "home_en": "Al Sahel",
+   "away_en": "Al Sulaibikhat",
+   "league": "Premier League (Kuwait)",
+   "home_logo": "https://media.api-sports.io/football/teams/3542.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3543.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/330.png",
+   "score": "0-0",
+   "minute": 11,
+   "status": "1H",
+   "seen": "2026-08-27T15:56:41.442313+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      11
+     ],
+     "danger": [
+      21
      ],
      "h_sog": [
       0
