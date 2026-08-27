@@ -674,11 +674,14 @@
    "mine": false,
    "pick": "away",
    "confidence": 37,
-   "level": "amber",
-   "score": 51,
-   "minute": 60,
+   "level": "red",
+   "score": 87,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 3-0 تُسقط التوقع (د60)"
+    "النتيجة الحالية 3-0 تُسقط التوقع (د71)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -759,16 +762,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 47,
-   "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "level": "red",
+   "score": 100,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د61)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د71)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 72,
-   "level_xg": "red"
+   "alerted": true,
+   "alert_minute": 71,
+   "score_xg": 100,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 100,
+   "sent_minute": 71,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د71)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1635388",
@@ -827,6 +842,91 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1574707",
+   "date": "2026-08-27",
+   "home": "Caen",
+   "away": "Bastia",
+   "league": "Ligue 3 (France)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 49,
+   "minute": 57,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د57)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623430",
+   "date": "2026-08-27",
+   "home": "FC ST. Gallen",
+   "away": "FC Nordsjaelland",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "red",
+   "score": 79,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 2-3 تُسقط التوقع (د90)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623425",
+   "date": "2026-08-27",
+   "home": "FK Partizan",
+   "away": "Getafe",
+   "league": "UEFA Europa Conference League (World)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 39,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1585177",
+   "date": "2026-08-27",
+   "home": "Boreham Wood",
+   "away": "Boston United",
+   "league": "National League (England)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "amber",
+   "score": 50,
+   "minute": 59,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
