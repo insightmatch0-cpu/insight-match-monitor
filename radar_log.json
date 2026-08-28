@@ -1180,18 +1180,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 37,
-   "level": "amber",
-   "score": 45,
-   "minute": 20,
+   "level": "red",
+   "score": 80,
+   "minute": 66,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د20)",
+    "النتيجة الحالية 1-2 تُسقط التوقع (د66)",
     "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 66,
-   "level_xg": "red"
+   "alerted": true,
+   "alert_minute": 66,
+   "score_xg": 68,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 80,
+   "sent_minute": 66,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د66)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1550097",
@@ -1204,14 +1214,15 @@
    "pick": "home",
    "confidence": 64,
    "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "score": 62,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د69)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 50,
+   "score_xg": 56,
    "level_xg": "amber"
   },
   {
@@ -1225,14 +1236,35 @@
    "pick": "away",
    "confidence": 49,
    "level": "amber",
-   "score": 46,
-   "minute": 52,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د52)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د62)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 47,
+   "score_xg": 52,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1570353",
+   "date": "2026-08-28",
+   "home": "Alaves",
+   "away": "Villarreal",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 41,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
    "level_xg": "amber"
   }
  ],
