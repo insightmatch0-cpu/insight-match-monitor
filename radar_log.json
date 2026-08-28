@@ -1264,17 +1264,26 @@
    "mine": true,
    "pick": "away",
    "confidence": 41,
-   "level": "amber",
-   "score": 59,
-   "minute": 64,
+   "level": "red",
+   "score": 74,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د64)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د75)",
+    "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 53,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 75,
+   "score_xg": 60,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 74,
+   "sent_minute": 75,
+   "sent_factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د75)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
   }
  ],
  "resolved": [
@@ -33513,6 +33522,99 @@
       "rc": 1,
       "sv": 1
      }
+    }
+   ]
+  },
+  {
+   "fid": "1570353",
+   "date": "2026-08-28",
+   "minute": 75,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Alaves",
+   "away": "Villarreal",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 23,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 1,
+      "poss": 77,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "xg_h": 0.0,
+     "xg_a": 0.3239
+    },
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 2,
+      "poss": 28,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 2,
+      "poss": 72,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 0.0982,
+     "xg_a": 0.3239
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 4,
+      "poss": 27,
+      "yc": 1,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 3,
+      "shots": 11,
+      "cor": 5,
+      "poss": 73,
+      "yc": 1,
+      "rc": 0,
+      "sv": 1
+     },
+     "xg_h": 0.6735,
+     "xg_a": 1.1259000000000001
     }
    ]
   }
