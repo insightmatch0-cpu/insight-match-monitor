@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-28T00:06:46.373467+00:00",
+ "updated": "2026-08-28T00:16:37.393179+00:00",
  "live": [
   {
    "fid": "1618994",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3704.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "3-1",
-   "minute": 79,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-08-28T00:06:44.635105+00:00",
+   "seen": "2026-08-28T00:16:34.769922+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -38,7 +38,7 @@
     "top": false,
     "trend": {
      "min": [
-      79
+      89
      ],
      "danger": [
       0
@@ -71,7 +71,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-28T00:06:44.635105+00:00",
+   "seen": "2026-08-28T00:16:34.769922+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 60
@@ -130,7 +130,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-08-28T00:06:44.635105+00:00",
+   "seen": "2026-08-28T00:16:34.769922+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 64
@@ -172,6 +172,65 @@
      ],
      "a_cor": [
       3
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1632422",
+   "home": "Deportivo Cuenca Juniors",
+   "away": "9 de Octubre",
+   "home_en": "Deportivo Cuenca Juniors",
+   "away_en": "9 de Octubre",
+   "league": "Liga Pro Serie B (Ecuador)",
+   "home_logo": "https://media.api-sports.io/football/teams/26031.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10111.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/243.png",
+   "score": "1-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-08-28T00:16:34.769922+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د15)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
      ]
     }
    }
