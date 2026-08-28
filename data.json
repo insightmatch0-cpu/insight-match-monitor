@@ -1,49 +1,47 @@
 {
- "updated": "2026-08-28T11:26:32.069688+00:00",
+ "updated": "2026-08-28T11:36:48.665707+00:00",
  "live": [
   {
-   "fid": "1634823",
-   "home": "GFA",
-   "away": "Yadanarbon",
-   "home_en": "GFA",
-   "away_en": "Yadanarbon",
-   "league": "National League (Myanmar)",
-   "home_logo": "https://media.api-sports.io/football/teams/12533.png",
-   "away_logo": "https://media.api-sports.io/football/teams/8017.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/588.png",
-   "score": "1-2",
-   "minute": 90,
+   "fid": "1517915",
+   "home": "Prospect United",
+   "away": "Hurstville FC",
+   "home_en": "Prospect United",
+   "away_en": "Hurstville FC",
+   "league": "New South Wales NPL 2 (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/27463.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27462.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/835.png",
+   "score": "2-0",
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
+   "seen": "2026-08-28T11:36:44.621683+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
    },
    "pred_v2": {
-    "pick": "away",
-    "confidence": 49
+    "pick": "home",
+    "confidence": 40
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 49,
+    "factors": [],
+    "pick": "home",
+    "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      90
+      69
      ],
      "danger": [
-      15
+      0
      ],
      "h_sog": [
       0
@@ -61,35 +59,94 @@
    }
   },
   {
-   "fid": "1517915",
-   "home": "Prospect United",
-   "away": "Hurstville FC",
-   "home_en": "Prospect United",
-   "away_en": "Hurstville FC",
-   "league": "New South Wales NPL 2 (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/27463.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27462.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/835.png",
-   "score": "1-0",
-   "minute": 59,
+   "fid": "1632450",
+   "home": "Adelaide Olympic",
+   "away": "Modbury Jets",
+   "home_en": "Adelaide Olympic",
+   "away_en": "Modbury Jets",
+   "league": "South Australia State League 1 (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3787.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10010.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/834.png",
+   "score": "0-3",
+   "minute": 51,
    "status": "2H",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
+   "seen": "2026-08-28T11:36:44.621683+00:00",
    "pred_v1": {
-    "pick": "draw",
-    "confidence": 48
+    "pick": "home",
+    "confidence": 52
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 40
+    "confidence": 42
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 45,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 0-3 تُسقط التوقع (د51)"
     ],
     "pick": "home",
-    "confidence": 40,
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      51
+     ],
+     "danger": [
+      45
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1510427",
+   "home": "Ansan Greeners",
+   "away": "Daegu FC",
+   "home_en": "Ansan Greeners",
+   "away_en": "Daegu FC",
+   "league": "K League 2 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2758.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2747.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/293.png",
+   "score": "1-0",
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-08-28T11:36:44.621683+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 44,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د49)"
+    ],
+    "pick": "away",
+    "confidence": 48,
     "drama": {
      "signal": 0,
      "side": "away",
@@ -99,10 +156,69 @@
     "top": false,
     "trend": {
      "min": [
-      59
+      49
      ],
      "danger": [
-      15
+      44
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1510428",
+   "home": "Jeonnam Dragons",
+   "away": "Cheonan City",
+   "home_en": "Jeonnam Dragons",
+   "away_en": "Cheonan City",
+   "league": "K League 2 (South-Korea)",
+   "home_logo": "https://media.api-sports.io/football/teams/2760.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7060.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/293.png",
+   "score": "0-0",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-08-28T11:36:44.621683+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 43,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      47
+     ],
+     "danger": [
+      43
      ],
      "h_sog": [
       0
@@ -132,7 +248,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "1H",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
+   "seen": "2026-08-28T11:36:44.621683+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -179,183 +295,6 @@
    }
   },
   {
-   "fid": "1510427",
-   "home": "Ansan Greeners",
-   "away": "Daegu FC",
-   "home_en": "Ansan Greeners",
-   "away_en": "Daegu FC",
-   "league": "K League 2 (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2758.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2747.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/293.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 48
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
-    ],
-    "pick": "away",
-    "confidence": 48,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45
-     ],
-     "danger": [
-      42
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1510428",
-   "home": "Jeonnam Dragons",
-   "away": "Cheonan City",
-   "home_en": "Jeonnam Dragons",
-   "away_en": "Cheonan City",
-   "league": "K League 2 (South-Korea)",
-   "home_logo": "https://media.api-sports.io/football/teams/2760.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7060.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/293.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
-    ],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45
-     ],
-     "danger": [
-      42
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1632450",
-   "home": "Adelaide Olympic",
-   "away": "Modbury Jets",
-   "home_en": "Adelaide Olympic",
-   "away_en": "Modbury Jets",
-   "league": "South Australia State League 1 (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/3787.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10010.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/834.png",
-   "score": "0-3",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 42
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د45)"
-    ],
-    "pick": "home",
-    "confidence": 42,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45
-     ],
-     "danger": [
-      42
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1581881",
    "home": "Kolos Kovalivka II",
    "away": "SK Poltava",
@@ -366,9 +305,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/17165.png",
    "league_logo": "https://media.api-sports.io/football/leagues/334.png",
    "score": "0-0",
-   "minute": 22,
+   "minute": 33,
    "status": "1H",
-   "seen": "2026-08-28T11:26:29.918835+00:00",
+   "seen": "2026-08-28T11:36:44.621683+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -378,10 +317,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 28,
+    "score": 34,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د22)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د33)"
     ],
     "pick": "away",
     "confidence": 50,
@@ -394,10 +333,10 @@
     "top": false,
     "trend": {
      "min": [
-      22
+      33
      ],
      "danger": [
-      28
+      34
      ],
      "h_sog": [
       0
@@ -3522,6 +3461,34 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-28",
+   "home": "لوكوموتيف كييف",
+   "away": "ياود ماريوبول",
+   "home_en": "Lokomotiv Kyiv",
+   "away_en": "Yarud Mariupol'",
+   "league": "الدوري الأول الأوكراني",
+   "home_logo": "https://media.api-sports.io/football/teams/21954.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14441.png",
+   "pick": "home",
+   "confidence": 62,
+   "kickoff": "2026-08-28T09:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-28",
+   "home": "جي إف إيه",
+   "away": "يادانربون",
+   "home_en": "GFA",
+   "away_en": "Yadanarbon",
+   "league": "الدوري الوطني الميانماري",
+   "home_logo": "https://media.api-sports.io/football/teams/12533.png",
+   "away_logo": "https://media.api-sports.io/football/teams/8017.png",
+   "pick": "draw",
+   "confidence": 48,
+   "kickoff": "2026-08-28T09:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-26",
    "home": "إم تي كي بودابست الثانية",
