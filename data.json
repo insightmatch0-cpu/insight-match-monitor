@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-28T00:16:37.393179+00:00",
+ "updated": "2026-08-28T00:26:38.555102+00:00",
  "live": [
   {
    "fid": "1618994",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3704.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "3-1",
-   "minute": 89,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-08-28T00:16:34.769922+00:00",
+   "seen": "2026-08-28T00:20:24.798306+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -38,7 +38,7 @@
     "top": false,
     "trend": {
      "min": [
-      89
+      90
      ],
      "danger": [
       0
@@ -69,9 +69,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/130.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-28T00:16:34.769922+00:00",
+   "minute": 55,
+   "status": "2H",
+   "seen": "2026-08-28T00:26:35.313870+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 60
@@ -81,10 +81,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 42,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -97,22 +97,22 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      55
      ],
      "danger": [
-      42
+      48
      ],
      "h_sog": [
       1
      ],
      "a_sog": [
-      0
+      2
      ],
      "h_cor": [
       1
      ],
      "a_cor": [
-      1
+      2
      ]
     }
    }
@@ -128,9 +128,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1125.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-28T00:16:34.769922+00:00",
+   "minute": 55,
+   "status": "2H",
+   "seen": "2026-08-28T00:26:35.313870+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 64
@@ -156,16 +156,16 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      55
      ],
      "danger": [
       15
      ],
      "h_sog": [
-      0
+      1
      ],
      "a_sog": [
-      4
+      6
      ],
      "h_cor": [
       1
@@ -187,9 +187,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10111.png",
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "1-0",
-   "minute": 15,
+   "minute": 25,
    "status": "1H",
-   "seen": "2026-08-28T00:16:34.769922+00:00",
+   "seen": "2026-08-28T00:26:35.313870+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -199,13 +199,72 @@
     "confidence": 39
    },
    "radar": {
+    "score": 30,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د25)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      25
+     ],
+     "danger": [
+      30
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1629822",
+   "home": "Nacional AM",
+   "away": "CSA",
+   "home_en": "Nacional AM",
+   "away_en": "CSA",
+   "league": "Serie D (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/7781.png",
+   "away_logo": "https://media.api-sports.io/football/teams/150.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/76.png",
+   "score": "1-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-08-28T00:26:35.313870+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 38
+   },
+   "radar": {
     "score": 24,
     "level": "green",
     "factors": [
      "النتيجة الحالية 1-0 تُسقط التوقع (د15)"
     ],
     "pick": "away",
-    "confidence": 39,
+    "confidence": 38,
     "drama": {
      "signal": 0,
      "side": "away",
@@ -219,6 +278,65 @@
      ],
      "danger": [
       24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1549148",
+   "home": "Platense",
+   "away": "Instituto Cordoba",
+   "home_en": "Platense",
+   "away_en": "Instituto Cordoba",
+   "league": "Copa Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/1064.png",
+   "away_logo": "https://media.api-sports.io/football/teams/478.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/130.png",
+   "score": "0-0",
+   "minute": 8,
+   "status": "1H",
+   "seen": "2026-08-28T00:26:35.313870+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 36
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
+    ],
+    "pick": "home",
+    "confidence": 36,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      8
+     ],
+     "danger": [
+      19
      ],
      "h_sog": [
       0
