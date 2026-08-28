@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-28T13:26:43.227645+00:00",
+ "updated": "2026-08-28T13:36:39.349336+00:00",
  "live": [
   {
    "fid": "1523251",
@@ -14,7 +14,7 @@
    "score": "1-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:33:32.120852+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -73,7 +73,7 @@
    "score": "2-3",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:35:04.516215+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -83,18 +83,19 @@
     "confidence": 48
    },
    "radar": {
-    "score": 81,
+    "score": 87,
     "level": "red",
     "factors": [
      "النتيجة الحالية 2-3 تُسقط التوقع (د90)",
-     "موجة تسديد على المرمى من الضيف"
+     "موجة تسديد على المرمى من الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 48,
     "drama": {
-     "signal": 0,
+     "signal": 85,
      "side": "home",
-     "ready": false
+     "ready": true
     },
     "alerted": null,
     "top": false,
@@ -105,11 +106,11 @@
      ],
      "danger": [
       15,
-      81
+      87
      ],
      "h_sog": [
       3,
-      4
+      7
      ],
      "a_sog": [
       3,
@@ -117,74 +118,11 @@
      ],
      "h_cor": [
       6,
-      6
+      8
      ],
      "a_cor": [
       5,
-      5
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1601122",
-   "home": "Sabah FA",
-   "away": "Penang",
-   "home_en": "Sabah FA",
-   "away_en": "Penang",
-   "league": "Super League (Malaysia)",
-   "home_logo": "https://media.api-sports.io/football/teams/2505.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2504.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/278.png",
-   "score": "2-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-08-28T13:23:31.520398+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 55,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      80,
-      90
-     ],
-     "danger": [
-      0,
-      0
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
+      6
      ]
     }
    }
@@ -200,9 +138,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/836.png",
    "league_logo": "https://media.api-sports.io/football/leagues/169.png",
    "score": "0-0",
-   "minute": 68,
+   "minute": 78,
    "status": "2H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 60
@@ -212,10 +150,10 @@
     "confidence": 65
    },
    "radar": {
-    "score": 55,
+    "score": 61,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د68)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د78)"
     ],
     "pick": "away",
     "confidence": 65,
@@ -228,10 +166,10 @@
     "top": false,
     "trend": {
      "min": [
-      68
+      78
      ],
      "danger": [
-      55
+      61
      ],
      "h_sog": [
       4
@@ -240,7 +178,7 @@
       3
      ],
      "h_cor": [
-      1
+      2
      ],
      "a_cor": [
       0
@@ -259,9 +197,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/23394.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1075.png",
    "score": "1-0",
-   "minute": 61,
+   "minute": 71,
    "status": "2H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -289,9 +227,11 @@
      "min": [
       7,
       45,
-      55
+      55,
+      65
      ],
      "danger": [
+      15,
       15,
       15,
       15
@@ -299,9 +239,11 @@
      "h_sog": [
       0,
       0,
+      0,
       0
      ],
      "a_sog": [
+      0,
       0,
       0,
       0
@@ -309,9 +251,11 @@
      "h_cor": [
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -330,9 +274,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3630.png",
    "league_logo": "https://media.api-sports.io/football/leagues/333.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "minute": 46,
+   "status": "2H",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -345,7 +289,7 @@
     "score": 42,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د46)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -358,10 +302,187 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      46
      ],
      "danger": [
       42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1601123",
+   "home": "Terengganu",
+   "away": "Selangor",
+   "home_en": "Terengganu",
+   "away_en": "Selangor",
+   "league": "Super League (Malaysia)",
+   "home_logo": "https://media.api-sports.io/football/teams/2518.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2526.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/278.png",
+   "score": "0-0",
+   "minute": 36,
+   "status": "1H",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 36,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      36
+     ],
+     "danger": [
+      36
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534840",
+   "home": "Taraz",
+   "away": "Tobol 2",
+   "home_en": "Taraz",
+   "away_en": "Tobol 2",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4559.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27634.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-0",
+   "minute": 35,
+   "status": "1H",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 60
+   },
+   "radar": {
+    "score": 36,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د35)"
+    ],
+    "pick": "home",
+    "confidence": 60,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      35
+     ],
+     "danger": [
+      36
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1556431",
+   "home": "Tauras",
+   "away": "BFA",
+   "home_en": "Tauras",
+   "away_en": "BFA",
+   "league": "1 Lyga (Lithuania)",
+   "home_logo": "https://media.api-sports.io/football/teams/11885.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3857.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/361.png",
+   "score": "0-0",
+   "minute": 35,
+   "status": "1H",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 43
+   },
+   "radar": {
+    "score": 36,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د35)"
+    ],
+    "pick": "away",
+    "confidence": 43,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      35
+     ],
+     "danger": [
+      36
      ],
      "h_sog": [
       0
@@ -391,7 +512,7 @@
    "score": "0-0",
    "minute": 34,
    "status": "1H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -444,183 +565,6 @@
    }
   },
   {
-   "fid": "1601123",
-   "home": "Terengganu",
-   "away": "Selangor",
-   "home_en": "Terengganu",
-   "away_en": "Selangor",
-   "league": "Super League (Malaysia)",
-   "home_logo": "https://media.api-sports.io/football/teams/2518.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2526.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/278.png",
-   "score": "0-0",
-   "minute": 26,
-   "status": "1H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 30,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
-    ],
-    "pick": "home",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      26
-     ],
-     "danger": [
-      30
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1534840",
-   "home": "Taraz",
-   "away": "Tobol 2",
-   "home_en": "Taraz",
-   "away_en": "Tobol 2",
-   "league": "1. Division (Kazakhstan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4559.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27634.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "score": "0-0",
-   "minute": 25,
-   "status": "1H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 60
-   },
-   "radar": {
-    "score": 30,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
-    ],
-    "pick": "home",
-    "confidence": 60,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      25
-     ],
-     "danger": [
-      30
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1556431",
-   "home": "Tauras",
-   "away": "BFA",
-   "home_en": "Tauras",
-   "away_en": "BFA",
-   "league": "1 Lyga (Lithuania)",
-   "home_logo": "https://media.api-sports.io/football/teams/11885.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3857.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/361.png",
-   "score": "0-0",
-   "minute": 25,
-   "status": "1H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 43
-   },
-   "radar": {
-    "score": 30,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
-    ],
-    "pick": "away",
-    "confidence": 43,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      25
-     ],
-     "danger": [
-      30
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1534835",
    "home": "Aktobe Jas",
    "away": "Jaiyq",
@@ -631,9 +575,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27561.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "0-0",
-   "minute": 24,
+   "minute": 34,
    "status": "1H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -643,10 +587,10 @@
     "confidence": 49
    },
    "radar": {
-    "score": 25,
+    "score": 31,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د18)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د28)"
     ],
     "pick": "away",
     "confidence": 49,
@@ -659,21 +603,27 @@
     "top": false,
     "trend": {
      "min": [
-      18
+      18,
+      28
      ],
      "danger": [
-      25
+      25,
+      31
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -690,9 +640,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21956.png",
    "league_logo": "https://media.api-sports.io/football/leagues/336.png",
    "score": "0-1",
-   "minute": 24,
+   "minute": 34,
    "status": "1H",
-   "seen": "2026-08-28T13:26:39.806332+00:00",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -702,10 +652,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 25,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "away",
     "confidence": 46,
@@ -718,21 +668,90 @@
     "top": false,
     "trend": {
      "min": [
-      17
+      17,
+      28
      ],
      "danger": [
-      25
+      25,
+      15
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1601122",
+   "home": "Sabah FA",
+   "away": "Penang",
+   "home_en": "Sabah FA",
+   "away_en": "Penang",
+   "league": "Super League (Malaysia)",
+   "home_logo": "https://media.api-sports.io/football/teams/2505.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2504.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/278.png",
+   "score": "0-0",
+   "minute": 8,
+   "status": "1H",
+   "seen": "2026-08-28T13:36:36.888606+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "home",
+    "confidence": 55,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      80,
+      90
+     ],
+     "danger": [
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0
      ]
     }
@@ -1011,54 +1030,6 @@
    "pick": "home",
    "confidence": 69,
    "reason": "بوكا من أكبر أندية الأرجنتين، تاريخ وإمكانيات أفضل من لانوس"
-  },
-  {
-   "fid": "1601122",
-   "kickoff": "2026-08-28T11:30:00+00:00",
-   "home": "صباح إف إيه",
-   "away": "بينانج",
-   "home_en": "Sabah FA",
-   "home_logo": "https://media.api-sports.io/football/teams/2505.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2504.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/278.png",
-   "away_en": "Penang",
-   "league": "الدوري الماليزي الممتاز",
-   "top": false,
-   "pick": "home",
-   "confidence": 52,
-   "reason": "ميزة الأرض لصباح، لكن المعلومات المتاحة محدودة عن مستوى الفريقين الحالي"
-  },
-  {
-   "fid": "1523251",
-   "kickoff": "2026-08-28T11:35:00+00:00",
-   "home": "داليان تشيكسينج",
-   "away": "بكين جوان",
-   "home_en": "Dalian Zhixing",
-   "home_logo": "https://media.api-sports.io/football/teams/21263.png",
-   "away_logo": "https://media.api-sports.io/football/teams/830.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-   "away_en": "Beijing Guoan",
-   "league": "الدوري الصيني الممتاز",
-   "top": false,
-   "pick": "away",
-   "confidence": 58,
-   "reason": "بكين جوان عادة ما يكون أقوى من داليان تشيكسينج في الدوري الصيني"
-  },
-  {
-   "fid": "1523256",
-   "kickoff": "2026-08-28T11:35:00+00:00",
-   "home": "شانغهاي شينهوا",
-   "away": "شاندونج لونينج",
-   "home_en": "Shanghai Shenhua",
-   "home_logo": "https://media.api-sports.io/football/teams/833.png",
-   "away_logo": "https://media.api-sports.io/football/teams/844.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/169.png",
-   "away_en": "Shandong Luneng",
-   "league": "الدوري الصيني الممتاز",
-   "top": false,
-   "pick": "home",
-   "confidence": 56,
-   "reason": "شانغهاي شينهوا يملك إمكانيات أفضل، وميزة الأرض تدعم توقع الفوز"
   },
   {
    "fid": "1523252",
