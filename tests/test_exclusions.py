@@ -12,6 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+ROOT = Path(__file__).resolve().parent.parent
 import monitor
 import predict
 import predict_v2
@@ -44,7 +45,10 @@ class TestListsInSync(unittest.TestCase):
         """المحركان يتوقعان نفس المباريات — سقف التوقع اليومي يجب أن يتطابق
         (وإلا اختلّت مقارنة الدقة). رُفع لتغطية مباريات المساء (المالك 2026-07-18)."""
         self.assertEqual(predict.MAX_PREDICTIONS_24H, predict_v2.MAX_PREDICTIONS_24H)
-        self.assertGreaterEqual(predict_v2.MAX_PREDICTIONS_24H, 150)
+        # 0 = بلا سقف (أمر المالك 2026-08-29 — حالة غلطاسراي): كل مباراة
+        # صالحة تُتوقَّع؛ أي عودة لسقفٍ ما دون إذن المالك انحدار
+        self.assertEqual(predict_v2.MAX_PREDICTIONS_24H, 0,
+                         "السقف أُلغي بأمر المالك — لا يعود إلا بقراره")
 
 
 class TestQualityFilter(unittest.TestCase):
@@ -196,3 +200,23 @@ class TestLeakGuardSeesCountry(unittest.TestCase):
                                    "league": "Premier League (England)"}},
                  "resolved": []}
         self.assertEqual(P.find_data_leaks(store), [])
+
+
+class TestUncappedPredictions(unittest.TestCase):
+    """🔓 إلغاء سقف توقعات الـ24 ساعة (أمر المالك 2026-08-29 بعد حالة
+    غلطاسراي: السبت المزدحم قصّ مباريات المساء غير الصدارة منهجياً)."""
+
+    def test_slice_is_conditional_in_both_engines(self):
+        for fname in ("predict.py", "predict_v2.py"):
+            src = (ROOT / fname).read_text(encoding="utf-8")
+            self.assertIn(
+                "return out[:MAX_PREDICTIONS_24H] if MAX_PREDICTIONS_24H else out",
+                src, f"{fname}: القصّ يجب أن يكون شرطياً — صفر يعني بلا سقف")
+            self.assertNotIn("\n    return out[:MAX_PREDICTIONS_24H]\n", src,
+                             f"{fname}: القصّ غير المشروط ممنوع العودة")
+
+    def test_heavy_cost_caps_survive(self):
+        """إلغاء سقف العدد لا يفتح الكلفة الثقيلة: سقوف الإثراء باقية."""
+        import predict_v2
+        self.assertGreater(predict_v2.MAX_ENRICHED_FIXTURES, 0)
+        self.assertGreater(predict_v2.ENRICH_CALL_BUDGET, 0)
