@@ -1960,10 +1960,10 @@
    "pick": "away",
    "confidence": 36,
    "level": "red",
-   "score": 77,
-   "minute": 67,
+   "score": 83,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د67)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د77)",
     "موجة تسديد على المرمى من المضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
@@ -1983,17 +1983,17 @@
    "pick": "away",
    "confidence": 56,
    "level": "red",
-   "score": 71,
-   "minute": 51,
+   "score": 77,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د51)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د61)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": true,
    "alert_minute": 51,
-   "score_xg": 53,
+   "score_xg": 59,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 71,
@@ -2004,6 +2004,28 @@
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ]
+  },
+  {
+   "fid": "1550101",
+   "date": "2026-08-29",
+   "home": "Juventus",
+   "away": "Parma",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 73,
+   "level": "amber",
+   "score": 43,
+   "minute": 34,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د34)",
+    "موجة ركنيات لصالح الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 35,
+   "level_xg": "green"
   }
  ],
  "resolved": [
@@ -36056,6 +36078,69 @@
      },
      "xg_h": 1.0596999999999999,
      "xg_a": 2.1759
+    }
+   ]
+  },
+  {
+   "fid": "1493097",
+   "date": "2026-08-29",
+   "minute": 77,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Deportivo Riestra",
+   "away": "Velez Sarsfield",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 3,
+      "shots": 3,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 24
+     },
+     "a": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 7,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 76
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "sv": 4,
+      "shots": 5,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 42
+     },
+     "a": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 9,
+      "yc": 1,
+      "cor": 6,
+      "rc": 1,
+      "poss": 58
+     }
     }
    ]
   }
