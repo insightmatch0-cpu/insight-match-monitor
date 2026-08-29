@@ -2037,16 +2037,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 62,
-   "level": "amber",
-   "score": 51,
-   "minute": 60,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د60)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 84,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1552740",
@@ -2059,14 +2065,14 @@
    "pick": "home",
    "confidence": 49,
    "level": "amber",
-   "score": 55,
-   "minute": 67,
+   "score": 61,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د67)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د78)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 72,
+   "score_xg": 79,
    "level_xg": "red"
   },
   {
@@ -2080,15 +2086,15 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 55,
-   "minute": 67,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د67)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د77)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 61,
-   "level_xg": "amber"
+   "score_xg": 67,
+   "level_xg": "red"
   },
   {
    "fid": "1552739",
@@ -2101,10 +2107,55 @@
    "pick": "home",
    "confidence": 37,
    "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د66)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د77)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1552147",
+   "date": "2026-08-29",
+   "home": "PEC Zwolle",
+   "away": "NEC Nijmegen",
+   "league": "Eredivisie (Netherlands)",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 49,
+   "level": "red",
+   "score": 77,
+   "minute": 61,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د61)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1627940",
+   "date": "2026-08-29",
+   "home": "Al Karkh",
+   "away": "Al Kahrabaa",
+   "league": "Iraqi League (Iraq)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 34,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -36224,6 +36275,64 @@
       "cor": 6,
       "rc": 1,
       "poss": 58
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1550101",
+   "date": "2026-08-29",
+   "minute": 76,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Juventus",
+   "away": "Parma",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 4,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 100
+     },
+     "a": {
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 0
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 18,
+      "yc": 2,
+      "cor": 10,
+      "rc": 0,
+      "poss": 63
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 3,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 37
      }
     }
    ]
