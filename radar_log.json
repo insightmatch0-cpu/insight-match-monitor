@@ -1211,14 +1211,14 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 52,
+   "score_xg": 57,
    "level_xg": "amber"
   },
   {
@@ -1232,14 +1232,14 @@
    "pick": "away",
    "confidence": 55,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 3-0 تُسقط التوقع (د61)"
+    "النتيجة الحالية 3-0 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 68,
+   "score_xg": 71,
    "level_xg": "red"
   },
   {
@@ -1359,15 +1359,16 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 48,
-   "minute": 56,
+   "score": 60,
+   "minute": 66,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د56)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د66)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 56,
-   "level_xg": "amber"
+   "score_xg": 65,
+   "level_xg": "red"
   },
   {
    "fid": "1575144",
@@ -1443,6 +1444,30 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1575475",
+   "date": "2026-08-29",
+   "home": "Arouca",
+   "away": "Maritimo",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "amber",
+   "score": 59,
+   "minute": 31,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د31)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 40,
+   "level_xg": "amber"
   }
  ],
  "resolved": [
@@ -35129,7 +35154,70 @@
    "graded_on": "2026-08-29"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1575146",
+   "date": "2026-08-29",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "FSV Mainz 05",
+   "away": "SC Paderborn 07",
+   "league": "Bundesliga (Germany)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 48,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 10,
+      "cor": 4,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 49
+     },
+     "a": {
+      "shots": 6,
+      "cor": 2,
+      "yc": 1,
+      "rc": 0,
+      "sog": 0,
+      "poss": 51
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 17,
+      "cor": 8,
+      "sv": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 48
+     },
+     "a": {
+      "sog": 0,
+      "shots": 6,
+      "cor": 2,
+      "sv": 3,
+      "yc": 2,
+      "rc": 0,
+      "poss": 52
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
