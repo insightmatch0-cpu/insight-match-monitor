@@ -1556,16 +1556,17 @@
    "mine": false,
    "pick": "away",
    "confidence": 46,
-   "level": "amber",
-   "score": 62,
-   "minute": 79,
+   "level": "red",
+   "score": 76,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د79)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د89)",
+    "موجة ركنيات لصالح المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 62,
-   "level_xg": "amber"
+   "score_xg": 68,
+   "level_xg": "red"
   },
   {
    "fid": "1570357",
@@ -1578,17 +1579,17 @@
    "pick": "away",
    "confidence": 46,
    "level": "red",
-   "score": 68,
-   "minute": 45,
+   "score": 72,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د45)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د53)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
    "alert_minute": 42,
-   "score_xg": 43,
+   "score_xg": 46,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 66,
@@ -1632,17 +1633,28 @@
    "mine": true,
    "pick": "away",
    "confidence": 50,
-   "level": "amber",
-   "score": 42,
-   "minute": 36,
+   "level": "red",
+   "score": 71,
+   "minute": 50,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د36)",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د50)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 50,
    "score_xg": 36,
-   "level_xg": "green"
+   "level_xg": "green",
+   "sent_level": "red",
+   "sent_score": 71,
+   "sent_minute": 50,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د50)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ]
   },
   {
    "fid": "1557378",
@@ -1665,6 +1677,27 @@
    "alert_minute": null,
    "score_xg": 69,
    "level_xg": "red"
+  },
+  {
+   "fid": "1627942",
+   "date": "2026-08-29",
+   "home": "Al Quwa Al Jawiya",
+   "away": "Naft Maysan",
+   "league": "Iraqi League (Iraq)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
