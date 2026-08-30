@@ -1488,16 +1488,18 @@
    "mine": false,
    "pick": "home",
    "confidence": 40,
-   "level": "amber",
-   "score": 61,
-   "minute": 68,
+   "level": "red",
+   "score": 87,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د68)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د78)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 76,
+   "score_xg": 80,
    "level_xg": "red"
   },
   {
@@ -1511,10 +1513,10 @@
    "pick": "home",
    "confidence": 62,
    "level": "amber",
-   "score": 55,
-   "minute": 68,
+   "score": 61,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د68)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د78)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1532,10 +1534,10 @@
    "pick": "away",
    "confidence": 60,
    "level": "amber",
-   "score": 47,
-   "minute": 54,
+   "score": 53,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1553,10 +1555,10 @@
    "pick": "home",
    "confidence": 64,
    "level": "amber",
-   "score": 56,
-   "minute": 45,
+   "score": 58,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د49)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -1624,10 +1626,10 @@
    "pick": "home",
    "confidence": 72,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د53)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1645,10 +1647,10 @@
    "pick": "home",
    "confidence": 66,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 44,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د49)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1675,6 +1677,29 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1557384",
+   "date": "2026-08-30",
+   "home": "Manchester United",
+   "away": "Ipswich",
+   "league": "Premier League (England)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
+   "score": 56,
+   "minute": 39,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د39)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 41,
+   "level_xg": "amber"
   }
  ],
  "resolved": [
@@ -38619,6 +38644,97 @@
       "shots": 10,
       "cor": 5,
       "poss": 60,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1575480",
+   "date": "2026-08-30",
+   "minute": 85,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Nacional",
+   "away": "Estrela",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 27,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 41,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 1,
+      "poss": 59,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "xg_h": 0.024,
+     "xg_a": 0.1935
+    },
+    {
+     "minute": 37,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 43,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "poss": 57,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "xg_h": 0.0557,
+     "xg_a": 0.2278
+    },
+    {
+     "minute": 85,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 3,
+      "shots": 8,
+      "cor": 3,
+      "poss": 51,
+      "yc": 2,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 3,
+      "shots": 12,
+      "cor": 3,
+      "poss": 49,
       "yc": 0,
       "rc": 0,
       "sv": 2
