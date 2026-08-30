@@ -1771,10 +1771,10 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 48,
-   "minute": 55,
+   "score": 54,
+   "minute": 65,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د65)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1792,10 +1792,10 @@
    "pick": "away",
    "confidence": 70,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 52,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د52)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1855,10 +1855,10 @@
    "pick": "away",
    "confidence": 66,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 44,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د49)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1876,10 +1876,10 @@
    "pick": "away",
    "confidence": 59,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د51)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1896,18 +1896,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 42,
-   "level": "amber",
-   "score": 45,
-   "minute": 27,
+   "level": "red",
+   "score": 65,
+   "minute": 40,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د27)",
+    "النتيجة الحالية 1-2 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 31,
-   "level_xg": "green"
+   "alerted": true,
+   "alert_minute": 40,
+   "score_xg": 37,
+   "level_xg": "green",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 40,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1593880",
@@ -1966,6 +1976,27 @@
    "minute": 55,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1565459",
+   "date": "2026-08-30",
+   "home": "Zorya Luhansk",
+   "away": "FC Kharkiv",
+   "league": "Premier League (Ukraine)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 41,
+   "minute": 44,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د44)"
    ],
    "alerted": null,
    "alert_minute": null,
