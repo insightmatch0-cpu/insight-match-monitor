@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T04:29:43.269793+00:00",
+ "updated": "2026-08-30T05:15:16.336361+00:00",
  "live": [
   {
    "fid": "1490433",
@@ -210,38 +210,6 @@
   }
  ],
  "upcoming": [
-  {
-   "fid": "1490433",
-   "kickoff": "2026-08-30T02:30:00+00:00",
-   "home": "سان ديييغو",
-   "away": "لوس أنجليس غالاكسي",
-   "home_en": "San Diego",
-   "home_logo": "https://media.api-sports.io/football/teams/25484.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1605.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "away_en": "Los Angeles Galaxy",
-   "league": "دوري كرة القدم الأميركي",
-   "top": true,
-   "pick": "away",
-   "confidence": 60,
-   "reason": "غالاكسي فريق ذو كفاءة عالية وخبرة أكثر، وسان ديييغو أقل استقراراً"
-  },
-  {
-   "fid": "1490434",
-   "kickoff": "2026-08-30T02:30:00+00:00",
-   "home": "بورتلاند تيمبرز",
-   "away": "أوستن",
-   "home_en": "Portland Timbers",
-   "home_logo": "https://media.api-sports.io/football/teams/1617.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "away_en": "Austin",
-   "league": "دوري كرة القدم الأميركي",
-   "top": true,
-   "pick": "draw",
-   "confidence": 51,
-   "reason": "كلا الفريقين متقاربان في المستوى، وبورتلاند ليس بالقوة الساحقة محلياً"
-  },
   {
    "fid": "1552148",
    "kickoff": "2026-08-30T10:15:00+00:00",
@@ -13775,12 +13743,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 979,
-   "hit": 879
+   "fired": 983,
+   "hit": 883
   },
   "amber": {
-   "fired": 691,
-   "hit": 279
+   "fired": 697,
+   "hit": 284
   },
   "alerts": {
    "flip": {
@@ -13806,12 +13774,12 @@
   },
   "season": {
    "red": {
-    "fired": 655,
-    "hit": 589
+    "fired": 659,
+    "hit": 593
    },
    "amber": {
-    "fired": 472,
-    "hit": 198
+    "fired": 478,
+    "hit": 203
    },
    "alerts": {
     "flip": {
@@ -13835,12 +13803,12 @@
   },
   "top_only": {
    "red": {
-    "fired": 196,
-    "hit": 165
+    "fired": 200,
+    "hit": 169
    },
    "amber": {
-    "fired": 97,
-    "hit": 34
+    "fired": 103,
+    "hit": 39
    },
    "alerts": {
     "flip": {
@@ -13862,12 +13830,12 @@
    },
    "season": {
     "red": {
-     "fired": 196,
-     "hit": 165
+     "fired": 200,
+     "hit": 169
     },
     "amber": {
-     "fired": 97,
-     "hit": 34
+     "fired": 103,
+     "hit": 39
     },
     "alerts": {
      "flip": {
@@ -13954,6 +13922,10 @@
     "2026-08-29": {
      "hit": 37,
      "total": 51
+    },
+    "2026-08-30": {
+     "hit": 9,
+     "total": 10
     }
    }
   },
@@ -14170,6 +14142,10 @@
    "2026-08-29": {
     "hit": 104,
     "total": 155
+   },
+   "2026-08-30": {
+    "hit": 9,
+    "total": 10
    }
   },
   "recent": [
@@ -15122,7 +15098,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-29",
     "home": "DC United",
     "away": "Los Angeles FC",
@@ -15131,11 +15106,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 46,
+    "final": "0-0",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-29",
     "home": "Toronto FC",
     "away": "New York City FC",
@@ -15144,11 +15120,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 42,
+    "final": "1-1",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-29",
     "home": "Atlanta United FC",
     "away": "Charlotte",
@@ -15157,6 +15134,8 @@
     "minute": 90,
     "pick": "home",
     "conf": 38,
+    "final": "0-2",
+    "hit": true,
     "top": true
    },
    {
@@ -15189,7 +15168,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-30",
     "home": "Houston Dynamo",
     "away": "San Jose Earthquakes",
@@ -15198,6 +15176,8 @@
     "minute": 90,
     "pick": "home",
     "conf": 42,
+    "final": "0-0",
+    "hit": true,
     "top": true
    }
   ]
