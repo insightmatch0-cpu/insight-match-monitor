@@ -2248,10 +2248,10 @@
    "pick": "home",
    "confidence": 68,
    "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د63)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -2290,10 +2290,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "amber",
-   "score": 45,
-   "minute": 51,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -2353,17 +2353,17 @@
    "pick": "away",
    "confidence": 37,
    "level": "red",
-   "score": 65,
-   "minute": 40,
+   "score": 67,
+   "minute": 44,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د40)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د44)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": true,
    "alert_minute": 40,
-   "score_xg": 51,
+   "score_xg": 54,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 65,
@@ -2374,6 +2374,27 @@
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ]
+  },
+  {
+   "fid": "1622639",
+   "date": "2026-08-30",
+   "home": "Al Jahra",
+   "away": "Al Arabi",
+   "league": "Premier League (Kuwait)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 60,
+   "level": "amber",
+   "score": 58,
+   "minute": 73,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د73)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
@@ -39856,6 +39877,93 @@
       "yc": 7,
       "rc": 1,
       "sv": 2
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1553856",
+   "date": "2026-08-30",
+   "minute": 77,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Zemun",
+   "away": "FK Crvena Zvezda",
+   "league": "Super Liga (Serbia)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 11,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 17,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 83,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 1,
+      "poss": 32,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 1,
+      "poss": 68,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 3,
+      "poss": 34,
+      "yc": 3,
+      "rc": 0,
+      "sv": 9
+     },
+     "a": {
+      "sog": 7,
+      "shots": 21,
+      "cor": 5,
+      "poss": 66,
+      "yc": 2,
+      "rc": 0,
+      "sv": 3
      }
     }
    ]
