@@ -326,10 +326,27 @@ def fire_scan() -> bool:
         return False
 
 
+def english_pair(c: dict) -> str:
+    """أسماء الفريقين بالإنجليزية كما تصل من API-Football — تُعرض بجانب العربية
+    في كل رسائل قائمة التركيز (طلب المالك 2026-08-30: عند «ركز» يريد رؤية الاسم
+    الرسمي الإنجليزي ليتحقق من هوية الفريق المطابَق، فالترجمات العربية قد تلتبس).
+    ترجع "" إذا كان الاسم المعروض إنجليزياً أصلاً — لا داعي للتكرار."""
+    h, a = c.get("home", ""), c.get("away", "")
+    if not (h and a) or h == "?" or a == "?":
+        return ""
+    ar_h = c.get("ar_home") or h
+    ar_a = c.get("ar_away") or a
+    if ar_h == h and ar_a == a:
+        return ""
+    return f"{h} × {a}"
+
+
 def match_label(c: dict) -> str:
     h = c.get("ar_home") or c.get("home", "?")
     a = c.get("ar_away") or c.get("away", "?")
-    return f"{h} 🆚 {a}"
+    label = f"{h} 🆚 {a}"
+    en = english_pair(c)
+    return f"{label} ({en})" if en else label
 
 
 def engines_line(fid: str) -> str:
@@ -408,7 +425,8 @@ def send_pick_buttons(fids: list, candidates: dict) -> None:
             requests.post(
                 f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
                 json={"chat_id": TELEGRAM_CHAT_ID,
-                      "text": f"🎯 توقعك: {h} 🆚 {a}؟",
+                      "text": (f"🎯 توقعك: {h} 🆚 {a}؟"
+                               + (f"\n({en})" if (en := english_pair(c)) else "")),
                       "reply_markup": keyboard},
                 timeout=30,
             )
@@ -503,7 +521,8 @@ def record_user_picks(picks: list, candidates: dict) -> str:
         h = entry["ar_home"] or entry["home"]
         a = entry["ar_away"] or entry["away"]
         label = PICK_AR[p["pick"]].format(h=h, a=a)
-        lines.append(f"• {h} 🆚 {a} — توقعك: {label}")
+        en = english_pair(entry)
+        lines.append(f"• {h} 🆚 {a}" + (f" ({en})" if en else "") + f" — توقعك: {label}")
         eng = engines_line(fid)
         if eng:
             lines.append(eng)
