@@ -3023,13 +3023,12 @@
    "mine": false,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 52,
-   "minute": 33,
+   "level": "red",
+   "score": 66,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د33)",
-    "موجة تسديد على المرمى من الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د72)",
+    "موجة ركنيات لصالح الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -3089,12 +3088,14 @@
    "mine": false,
    "pick": "away",
    "confidence": 46,
-   "level": "amber",
-   "score": 52,
-   "minute": 49,
+   "level": "red",
+   "score": 90,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)",
-    "موجة ركنيات لصالح المضيف"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د69)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -3112,10 +3113,10 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 57,
+   "minute": 70,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د50)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د70)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -3133,10 +3134,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 57,
+   "minute": 70,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د70)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -3161,6 +3162,90 @@
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1493100",
+   "date": "2026-08-30",
+   "home": "Independiente",
+   "away": "Gimnasia M.",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 51,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1517338",
+   "date": "2026-08-30",
+   "home": "Pacific FC",
+   "away": "HFX Wanderers FC",
+   "league": "Canadian Premier League (Canada)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1551673",
+   "date": "2026-08-30",
+   "home": "San Carlos",
+   "away": "Puntarenas FC",
+   "league": "Primera División (Costa-Rica)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1520843",
+   "date": "2026-08-30",
+   "home": "CRB",
+   "away": "Criciuma",
+   "league": "Serie B (Brazil)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -40927,6 +41012,93 @@
       "yc": 1,
       "rc": 0,
       "sv": 1
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1492356",
+   "date": "2026-08-30",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Mirassol",
+   "away": "Palmeiras",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 0,
+      "poss": 45,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 55,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 35,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 3,
+      "cor": 0,
+      "poss": 44,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     },
+     "a": {
+      "sog": 2,
+      "shots": 5,
+      "cor": 1,
+      "poss": 56,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 9,
+      "cor": 3,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 2
+     },
+     "a": {
+      "sog": 2,
+      "shots": 9,
+      "cor": 3,
+      "poss": 50,
+      "yc": 0,
+      "rc": 0,
+      "sv": 4
      }
     }
    ]
