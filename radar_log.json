@@ -897,10 +897,10 @@
    "pick": "away",
    "confidence": 53,
    "level": "red",
-   "score": 80,
-   "minute": 62,
+   "score": 92,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د62)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د82)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
@@ -945,10 +945,10 @@
    "pick": "away",
    "confidence": 77,
    "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د63)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -965,11 +965,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 53,
-   "minute": 64,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د64)"
+    "النتيجة الحالية 1-4 تُسقط التوقع (د84)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -987,10 +987,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1071,10 +1071,10 @@
    "pick": "away",
    "confidence": 52,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د62)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1177,10 +1177,10 @@
    "pick": "home",
    "confidence": 66,
    "level": "amber",
-   "score": 48,
-   "minute": 45,
+   "score": 51,
+   "minute": 50,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د50)",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
@@ -1199,10 +1199,11 @@
    "pick": "home",
    "confidence": 78,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 50,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د49)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -37914,6 +37915,70 @@
       "shots": 11,
       "cor": 7,
       "poss": 62,
+      "yc": 0,
+      "rc": 1,
+      "sv": 2
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1549004",
+   "date": "2026-08-30",
+   "minute": 82,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Silkeborg",
+   "away": "FC Midtjylland",
+   "league": "Superliga (Denmark)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 17,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 1,
+      "poss": 49,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "poss": 51,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 82,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 7,
+      "cor": 2,
+      "poss": 42,
+      "yc": 0,
+      "rc": 0,
+      "sv": 3
+     },
+     "a": {
+      "sog": 4,
+      "shots": 13,
+      "cor": 7,
+      "poss": 58,
       "yc": 0,
       "rc": 1,
       "sv": 2
