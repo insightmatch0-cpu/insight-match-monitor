@@ -29,64 +29,6 @@
    "ar_away": "برومونددال",
    "ar_league": "الدرجة الثالثة النرويجية - المجموعة 6"
   },
-  "1490433": {
-   "fid": "1490433",
-   "kickoff": "2026-08-30T02:30:00+00:00",
-   "date": "2026-08-30",
-   "home": "San Diego",
-   "away": "Los Angeles Galaxy",
-   "home_id": 25484,
-   "away_id": 1605,
-   "home_logo": "https://media.api-sports.io/football/teams/25484.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1605.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "league": "Major League Soccer (USA)",
-   "league_id": 253,
-   "season": 2026,
-   "round": "Regular Season - 22",
-   "venue": "Snapdragon Stadium, San Diego, USA",
-   "top": true,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 55,
-   "prob_home": 55,
-   "prob_draw": 25,
-   "prob_away": 20,
-   "reason": "سان دييغو من الأفضل في الغرب بينما غالاكسي يعيش موسماً كارثياً",
-   "ar_home": "سان دييغو",
-   "ar_away": "لوس أنجلوس غالاكسي",
-   "ar_league": "الدوري الأمريكي"
-  },
-  "1490434": {
-   "fid": "1490434",
-   "kickoff": "2026-08-30T02:30:00+00:00",
-   "date": "2026-08-30",
-   "home": "Portland Timbers",
-   "away": "Austin",
-   "home_id": 1617,
-   "away_id": 16489,
-   "home_logo": "https://media.api-sports.io/football/teams/1617.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-   "league": "Major League Soccer (USA)",
-   "league_id": 253,
-   "season": 2026,
-   "round": "Regular Season - 22",
-   "venue": "Providence Park, Portland, USA",
-   "top": true,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 45,
-   "prob_home": 45,
-   "prob_draw": 28,
-   "prob_away": 27,
-   "reason": "بورتلاند قوي جداً في معقله بروفيدنس بارك وأوستن متواضع خارج أرضه",
-   "ar_home": "بورتلاند تيمبرز",
-   "ar_away": "أوستن",
-   "ar_league": "الدوري الأمريكي"
-  },
   "1579210": {
    "fid": "1579210",
    "kickoff": "2026-08-29T08:30:00+00:00",
@@ -119100,20 +119042,74 @@
    "actual": "away",
    "score": "2-9",
    "correct": true
+  },
+  {
+   "fid": "1490433",
+   "date": "2026-08-30",
+   "home": "San Diego",
+   "away": "Los Angeles Galaxy",
+   "ar_home": "سان دييغو",
+   "ar_away": "لوس أنجلوس غالاكسي",
+   "home_logo": "https://media.api-sports.io/football/teams/25484.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1605.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "league": "Major League Soccer (USA)",
+   "ar_league": "الدوري الأمريكي",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "prob_home": 55,
+   "prob_draw": 25,
+   "prob_away": 20,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "سان دييغو من الأفضل في الغرب بينما غالاكسي يعيش موسماً كارثياً",
+   "actual": "home",
+   "score": "3-1",
+   "correct": true
+  },
+  {
+   "fid": "1490434",
+   "date": "2026-08-30",
+   "home": "Portland Timbers",
+   "away": "Austin",
+   "ar_home": "بورتلاند تيمبرز",
+   "ar_away": "أوستن",
+   "home_logo": "https://media.api-sports.io/football/teams/1617.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
+   "league": "Major League Soccer (USA)",
+   "ar_league": "الدوري الأمريكي",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "prob_home": 45,
+   "prob_draw": 28,
+   "prob_away": 27,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "بورتلاند قوي جداً في معقله بروفيدنس بارك وأوستن متواضع خارج أرضه",
+   "actual": "away",
+   "score": "1-2",
+   "correct": false
   }
  ],
  "meta": {
-  "last_run": "2026-08-30T05:15:10.093670+00:00",
+  "last_run": "2026-08-30T05:22:47.390624+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 1813,
-    "total": 3685
+    "correct": 1814,
+    "total": 3687
    },
    "top_leagues": {
-    "correct": 237,
-    "total": 494
+    "correct": 238,
+    "total": 496
    },
    "other_leagues": {
     "correct": 1576,
@@ -119129,17 +119125,17 @@
      "total": 286
     },
     "50-59": {
-     "correct": 396,
-     "total": 698
+     "correct": 397,
+     "total": 699
     },
     "<50": {
      "correct": 1173,
-     "total": 2661
+     "total": 2662
     }
    },
    "last30": {
-    "correct": 1813,
-    "total": 3685
+    "correct": 1814,
+    "total": 3687
    },
    "daily": {
     "2026-08-01": {
@@ -119259,18 +119255,18 @@
      "total": 153
     },
     "2026-08-30": {
-     "correct": 3,
-     "total": 8
+     "correct": 4,
+     "total": 10
     }
    },
    "season": {
     "overall": {
-     "correct": 1057,
-     "total": 2160
+     "correct": 1058,
+     "total": 2162
     },
     "top_leagues": {
-     "correct": 189,
-     "total": 389
+     "correct": 190,
+     "total": 391
     },
     "other_leagues": {
      "correct": 868,
@@ -119286,24 +119282,24 @@
       "total": 190
      },
      "50-59": {
-      "correct": 231,
-      "total": 439
+      "correct": 232,
+      "total": 440
      },
      "<50": {
       "correct": 662,
-      "total": 1501
+      "total": 1502
      }
     },
     "start": "2026-08-13"
    },
    "top_only": {
     "overall": {
-     "correct": 237,
-     "total": 494
+     "correct": 238,
+     "total": 496
     },
     "top_leagues": {
-     "correct": 237,
-     "total": 494
+     "correct": 238,
+     "total": 496
     },
     "other_leagues": {
      "correct": 0,
@@ -119319,17 +119315,17 @@
       "total": 51
      },
      "50-59": {
-      "correct": 58,
-      "total": 113
+      "correct": 59,
+      "total": 114
      },
      "<50": {
       "correct": 125,
-      "total": 306
+      "total": 307
      }
     },
     "last30": {
-     "correct": 237,
-     "total": 494
+     "correct": 238,
+     "total": 496
     },
     "daily": {
      "2026-08-01": {
@@ -119449,18 +119445,18 @@
       "total": 60
      },
      "2026-08-30": {
-      "correct": 3,
-      "total": 8
+      "correct": 4,
+      "total": 10
      }
     },
     "season": {
      "overall": {
-      "correct": 189,
-      "total": 389
+      "correct": 190,
+      "total": 391
      },
      "top_leagues": {
-      "correct": 189,
-      "total": 389
+      "correct": 190,
+      "total": 391
      },
      "other_leagues": {
       "correct": 0,
@@ -119476,12 +119472,12 @@
        "total": 40
       },
       "50-59": {
-       "correct": 43,
-       "total": 83
+       "correct": 44,
+       "total": 84
       },
       "<50": {
        "correct": 101,
-       "total": 247
+       "total": 248
       }
      },
      "start": "2026-08-13"

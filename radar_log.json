@@ -1,49 +1,5 @@
 {
- "warnings": [
-  {
-   "fid": "1490434",
-   "date": "2026-08-30",
-   "home": "Portland Timbers",
-   "away": "Austin",
-   "league": "Major League Soccer (USA)",
-   "top": true,
-   "mine": false,
-   "pick": "home",
-   "confidence": 45,
-   "level": "amber",
-   "score": 53,
-   "minute": 64,
-   "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د64)"
-   ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": null,
-   "level_xg": null
-  },
-  {
-   "fid": "1490433",
-   "date": "2026-08-30",
-   "home": "San Diego",
-   "away": "Los Angeles Galaxy",
-   "league": "Major League Soccer (USA)",
-   "top": true,
-   "mine": false,
-   "pick": "home",
-   "confidence": 55,
-   "level": "amber",
-   "score": 62,
-   "minute": 63,
-   "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د63)",
-    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
-   ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": null,
-   "level_xg": null
-  }
- ],
+ "warnings": [],
  "resolved": [
   {
    "fid": "1583676",
@@ -36467,50 +36423,58 @@
    "failed": false,
    "final_score": "1-0",
    "graded_on": "2026-08-30"
-  }
- ],
- "alerts": [
+  },
+  {
+   "fid": "1490434",
+   "date": "2026-08-30",
+   "home": "Portland Timbers",
+   "away": "Austin",
+   "league": "Major League Soccer (USA)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 53,
+   "minute": 64,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د64)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null,
+   "failed": true,
+   "final_score": "1-2",
+   "graded_on": "2026-08-30"
+  },
   {
    "fid": "1490433",
    "date": "2026-08-30",
-   "minute": 56,
-   "score_at": "2-1",
-   "side": "away",
-   "key": "red_advantage",
    "home": "San Diego",
    "away": "Los Angeles Galaxy",
    "league": "Major League Soccer (USA)",
    "top": true,
    "mine": false,
-   "silenced": false,
-   "gated": true,
-   "evidence": [
-    {
-     "minute": 56,
-     "gh": 2,
-     "ga": 1,
-     "h": {
-      "sog": 5,
-      "shots": 16,
-      "cor": 6,
-      "poss": 53,
-      "yc": 4,
-      "rc": 1,
-      "sv": 1
-     },
-     "a": {
-      "sog": 1,
-      "shots": 4,
-      "cor": 1,
-      "poss": 47,
-      "yc": 1,
-      "rc": 0,
-      "sv": 2
-     }
-    }
-   ]
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 62,
+   "minute": 63,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د63)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null,
+   "failed": false,
+   "final_score": "3-1",
+   "graded_on": "2026-08-30"
   }
  ],
+ "alerts": [],
  "alerts_resolved": [
   {
    "fid": "1493033",
@@ -43987,6 +43951,49 @@
    "hit": true,
    "final_score": "2-2",
    "graded_on": "2026-08-29"
+  },
+  {
+   "fid": "1490433",
+   "date": "2026-08-30",
+   "minute": 56,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "San Diego",
+   "away": "Los Angeles Galaxy",
+   "league": "Major League Soccer (USA)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 56,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 16,
+      "cor": 6,
+      "poss": 53,
+      "yc": 4,
+      "rc": 1,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "poss": 47,
+      "yc": 1,
+      "rc": 0,
+      "sv": 2
+     }
+    }
+   ],
+   "hit": false,
+   "final_score": "3-1",
+   "graded_on": "2026-08-30"
   }
  ],
  "meta": {
@@ -43996,8 +44003,8 @@
     "hit": 883
    },
    "amber": {
-    "fired": 697,
-    "hit": 284
+    "fired": 699,
+    "hit": 285
    },
    "alerts": {
     "flip": {
@@ -44017,7 +44024,7 @@
      "hit": 15
     },
     "red_advantage": {
-     "fired": 27,
+     "fired": 28,
      "hit": 13
     }
    },
@@ -44027,8 +44034,8 @@
      "hit": 593
     },
     "amber": {
-     "fired": 478,
-     "hit": 203
+     "fired": 480,
+     "hit": 204
     },
     "alerts": {
      "flip": {
@@ -44044,7 +44051,7 @@
       "hit": 9
      },
      "red_advantage": {
-      "fired": 25,
+      "fired": 26,
       "hit": 12
      }
     },
@@ -44056,8 +44063,8 @@
      "hit": 169
     },
     "amber": {
-     "fired": 103,
-     "hit": 39
+     "fired": 105,
+     "hit": 40
     },
     "alerts": {
      "flip": {
@@ -44073,7 +44080,7 @@
       "hit": 7
      },
      "red_advantage": {
-      "fired": 17,
+      "fired": 18,
       "hit": 7
      }
     },
@@ -44083,8 +44090,8 @@
       "hit": 169
      },
      "amber": {
-      "fired": 103,
-      "hit": 39
+      "fired": 105,
+      "hit": 40
      },
      "alerts": {
       "flip": {
@@ -44100,7 +44107,7 @@
        "hit": 7
       },
       "red_advantage": {
-       "fired": 17,
+       "fired": 18,
        "hit": 7
       }
      },
@@ -44191,7 +44198,7 @@
     "start": "2026-08-15"
    }
   },
-  "updated": "2026-08-30T04:31:01.702967+00:00"
+  "updated": "2026-08-30T05:22:46.823345+00:00"
  },
  "silenced": [
   "equalizer",

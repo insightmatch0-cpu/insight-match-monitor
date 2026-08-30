@@ -155,6 +155,44 @@
    "prob_away": 31
   },
   {
+   "date": "2026-08-30",
+   "home": "سان دييغو",
+   "away": "لوس أنجلوس غالاكسي",
+   "home_en": "San Diego",
+   "away_en": "Los Angeles Galaxy",
+   "league": "الدوري الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/25484.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1605.png",
+   "pick": "home",
+   "confidence": 55,
+   "score": "3-1",
+   "actual": "home",
+   "correct": true,
+   "reason": "سان دييغو من الأفضل في الغرب بينما غالاكسي يعيش موسماً كارثياً",
+   "prob_home": 55,
+   "prob_draw": 25,
+   "prob_away": 20
+  },
+  {
+   "date": "2026-08-30",
+   "home": "بورتلاند تيمبرز",
+   "away": "أوستن",
+   "home_en": "Portland Timbers",
+   "away_en": "Austin",
+   "league": "الدوري الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1617.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16489.png",
+   "pick": "home",
+   "confidence": 45,
+   "score": "1-2",
+   "actual": "away",
+   "correct": false,
+   "reason": "بورتلاند قوي جداً في معقله بروفيدنس بارك وأوستن متواضع خارج أرضه",
+   "prob_home": 45,
+   "prob_draw": 28,
+   "prob_away": 27
+  },
+  {
    "date": "2026-08-29",
    "home": "بوكا جونيورز",
    "away": "لانوس",
@@ -913,44 +951,6 @@
    "prob_home": 31,
    "prob_draw": 28,
    "prob_away": 41
-  },
-  {
-   "date": "2026-08-29",
-   "home": "الفتح",
-   "away": "الاتحاد",
-   "home_en": "Al-Fateh",
-   "away_en": "Al-Ittihad FC",
-   "league": "دوري روشن السعودي",
-   "home_logo": "https://media.api-sports.io/football/teams/2931.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2938.png",
-   "pick": "away",
-   "confidence": 56,
-   "score": "0-0",
-   "actual": "draw",
-   "correct": false,
-   "reason": "الفتح بلا فوز وبنقطة يتيمة وراحة يومين فقط، بينما الاتحاد بقيادة كونسيساو في فورمة قوية — فارق الجاهزية والقوة يدعم الضيف فوق تقدير السوق قليلاً",
-   "prob_home": 20,
-   "prob_draw": 24,
-   "prob_away": 56
-  },
-  {
-   "date": "2026-08-29",
-   "home": "الكرخ",
-   "away": "الكهرباء",
-   "home_en": "Al Karkh",
-   "away_en": "Al Kahrabaa",
-   "league": "الدوري العراقي",
-   "home_logo": "https://media.api-sports.io/football/teams/15544.png",
-   "away_logo": "https://media.api-sports.io/football/teams/11064.png",
-   "pick": "home",
-   "confidence": 34,
-   "score": "2-2",
-   "actual": "draw",
-   "correct": false,
-   "reason": "الكرخ بلا أهداف وثلاث هزائم متتالية رغم ترجيح السوق له، والنموذج والمواجهات المتوازنة ترجح التعادل أو الكهرباء",
-   "prob_home": 34,
-   "prob_draw": 32,
-   "prob_away": 34
   }
  ],
  "awaiting": [
@@ -1237,12 +1237,12 @@
  ],
  "accuracy": {
   "overall": {
-   "correct": 1813,
-   "total": 3685
+   "correct": 1814,
+   "total": 3687
   },
   "top_leagues": {
-   "correct": 237,
-   "total": 494
+   "correct": 238,
+   "total": 496
   },
   "other_leagues": {
    "correct": 1576,
@@ -1258,17 +1258,17 @@
     "total": 286
    },
    "50-59": {
-    "correct": 396,
-    "total": 698
+    "correct": 397,
+    "total": 699
    },
    "<50": {
     "correct": 1173,
-    "total": 2661
+    "total": 2662
    }
   },
   "last30": {
-   "correct": 1813,
-   "total": 3685
+   "correct": 1814,
+   "total": 3687
   },
   "daily": {
    "2026-08-01": {
@@ -1388,18 +1388,18 @@
     "total": 153
    },
    "2026-08-30": {
-    "correct": 3,
-    "total": 8
+    "correct": 4,
+    "total": 10
    }
   },
   "season": {
    "overall": {
-    "correct": 1057,
-    "total": 2160
+    "correct": 1058,
+    "total": 2162
    },
    "top_leagues": {
-    "correct": 189,
-    "total": 389
+    "correct": 190,
+    "total": 391
    },
    "other_leagues": {
     "correct": 868,
@@ -1415,24 +1415,24 @@
      "total": 190
     },
     "50-59": {
-     "correct": 231,
-     "total": 439
+     "correct": 232,
+     "total": 440
     },
     "<50": {
      "correct": 662,
-     "total": 1501
+     "total": 1502
     }
    },
    "start": "2026-08-13"
   },
   "top_only": {
    "overall": {
-    "correct": 237,
-    "total": 494
+    "correct": 238,
+    "total": 496
    },
    "top_leagues": {
-    "correct": 237,
-    "total": 494
+    "correct": 238,
+    "total": 496
    },
    "other_leagues": {
     "correct": 0,
@@ -1448,17 +1448,17 @@
      "total": 51
     },
     "50-59": {
-     "correct": 58,
-     "total": 113
+     "correct": 59,
+     "total": 114
     },
     "<50": {
      "correct": 125,
-     "total": 306
+     "total": 307
     }
    },
    "last30": {
-    "correct": 237,
-    "total": 494
+    "correct": 238,
+    "total": 496
    },
    "daily": {
     "2026-08-01": {
@@ -1578,18 +1578,18 @@
      "total": 60
     },
     "2026-08-30": {
-     "correct": 3,
-     "total": 8
+     "correct": 4,
+     "total": 10
     }
    },
    "season": {
     "overall": {
-     "correct": 189,
-     "total": 389
+     "correct": 190,
+     "total": 391
     },
     "top_leagues": {
-     "correct": 189,
-     "total": 389
+     "correct": 190,
+     "total": 391
     },
     "other_leagues": {
      "correct": 0,
@@ -1605,12 +1605,12 @@
       "total": 40
      },
      "50-59": {
-      "correct": 43,
-      "total": 83
+      "correct": 44,
+      "total": 84
      },
      "<50": {
       "correct": 101,
-      "total": 247
+      "total": 248
      }
     },
     "start": "2026-08-13"
@@ -1738,6 +1738,11 @@
  },
  "news": [],
  "lessons": [
+  {
+   "date": "2026-08-30",
+   "match": "Portland Timbers vs Austin",
+   "text": "عندما تكون الاحتمالات متقاربة (أعلى احتمال أقل من 50%) لا تنحز تلقائياً لصاحب الأرض، بل اعتبر المباراة مفتوحة وقلل الثقة أو ادرس فوز الضيف بجدية أكبر"
+  },
   {
    "date": "2026-08-30",
    "match": "Talleres Cordoba vs Central Cordoba de Santiago",
@@ -1882,11 +1887,6 @@
    "date": "2026-08-29",
    "match": "Levante vs Real Betis (تقرير)",
    "text": "عند ترجيح تسجيل الفريق المستضعف يجب توسيع قائمة مسجليه المحتملين بدل حصرها في اسم واحد"
-  },
-  {
-   "date": "2026-08-29",
-   "match": "Levante vs Real Betis (تقرير)",
-   "text": "توقع نطاق ركنيات منخفض بحجة الإيقاع المتحفظ يفشل عندما تشير المؤشرات إلى مباراة مفتوحة كثيفة التسديد"
   }
  ],
  "history": {
@@ -2828,16 +2828,16 @@
     "total": 8
    },
    "v2": {
-    "correct": 3,
-    "total": 8,
+    "correct": 4,
+    "total": 10,
     "buckets": {
      "<50": {
       "correct": 2,
-      "total": 7
+      "total": 8
      },
      "50-59": {
-      "correct": 1,
-      "total": 1
+      "correct": 2,
+      "total": 2
      }
     }
    }
@@ -3614,7 +3614,7 @@
     "name": "🔬 ظل xG (Sportmonks)",
     "day": 18,
     "days_total": 35,
-    "yday_matched": 31,
+    "yday_matched": 0,
     "yday_unmatched": 264,
     "total": 120,
     "form_n": 15,
@@ -3622,6 +3622,6 @@
    }
   ]
  },
- "pred_updated": "2026-08-29T05:07:45.450212+00:00",
- "updated": "2026-08-30T05:21:36.863486+00:00"
+ "pred_updated": "2026-08-30T05:22:47.390624+00:00",
+ "updated": "2026-08-30T05:22:50.091673+00:00"
 }
