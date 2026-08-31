@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2493,
+  "remaining": 2499,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 6
+  "radar_targets": 5
  },
  "api_quota": {
-  "remaining": 6787,
+  "remaining": 6757,
   "limit": 7500,
-  "at": "2026-08-31T02:06:56.837976+00:00"
+  "at": "2026-08-31T02:16:34.363522+00:00"
  },
  "delivery": {
   "at": "2026-08-30T23:38:17.183966+00:00",
@@ -77,14 +77,14 @@
  "1493101": {
   "score": "2-1",
   "status": "2H",
-  "minute": 77,
+  "minute": 87,
   "home": "Independ. Rivadavia",
   "away": "Racing Club",
   "league": "Liga Profesional Argentina (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/473.png",
   "away_logo": "https://media.api-sports.io/football/teams/436.png",
   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-  "seen": "2026-08-31T02:06:53.852257+00:00",
+  "seen": "2026-08-31T02:16:33.701239+00:00",
   "radar": {
    "snaps": [
     {
@@ -109,49 +109,68 @@
      "a": {}
     },
     {
-     "minute": 77,
+     "minute": 87,
      "gh": 2,
      "ga": 1,
-     "h": {},
-     "a": {}
+     "h": {
+      "sog": 7,
+      "sv": 3,
+      "shots": 15,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 45
+     },
+     "a": {
+      "sog": 4,
+      "sv": 5,
+      "shots": 11,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 55
+     }
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 49,
+   "level": "amber",
    "dscores": [
     15,
     21,
     27,
-    15
+    49
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 42,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 85,
     "side": "away",
-    "ready": false
+    "ready": true
    },
-   "alerted": null,
+   "alerted": "equalizer",
    "red_alerted": null,
    "warn_alerted": null
   }
  },
  "1559624": {
-  "score": "1-0",
-  "status": "HT",
-  "minute": 45,
+  "score": "2-0",
+  "status": "2H",
+  "minute": 50,
   "home": "Xelajú",
   "away": "Mixco",
   "league": "Liga Nacional (Guatemala)",
   "home_logo": "https://media.api-sports.io/football/teams/3667.png",
   "away_logo": "https://media.api-sports.io/football/teams/3645.png",
   "league_logo": "https://media.api-sports.io/football/leagues/339.png",
-  "seen": "2026-08-31T02:06:53.852257+00:00",
+  "seen": "2026-08-31T02:16:33.701239+00:00",
   "radar": {
    "snaps": [
     {
@@ -162,22 +181,20 @@
      "a": {}
     },
     {
-     "minute": 45,
-     "gh": 1,
+     "minute": 50,
+     "gh": 2,
      "ga": 0,
      "h": {},
      "a": {}
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
     19,
-    15
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "home",
    "confidence": 44,
    "top": false,
@@ -195,14 +212,14 @@
  "1586112": {
   "score": "0-1",
   "status": "2H",
-  "minute": 49,
+  "minute": 59,
   "home": "UNAN Managua",
   "away": "Managua",
   "league": "Primera Division (Nicaragua)",
   "home_logo": "https://media.api-sports.io/football/teams/4647.png",
   "away_logo": "https://media.api-sports.io/football/teams/4644.png",
   "league_logo": "https://media.api-sports.io/football/leagues/396.png",
-  "seen": "2026-08-31T02:06:53.852257+00:00",
+  "seen": "2026-08-31T02:16:33.701239+00:00",
   "radar": {
    "snaps": [
     {
@@ -220,7 +237,7 @@
      "a": {}
     },
     {
-     "minute": 49,
+     "minute": 59,
      "gh": 0,
      "ga": 1,
      "h": {},
@@ -253,7 +270,7 @@
  },
  "1549755": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Deportivo Cali",
   "away": "Bucaramanga",
@@ -261,7 +278,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/1127.png",
   "away_logo": "https://media.api-sports.io/football/teams/1131.png",
   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-  "seen": "2026-08-31T02:06:53.852257+00:00",
+  "seen": "2026-08-31T02:16:33.701239+00:00",
   "radar": {
    "snaps": [
     {
@@ -297,31 +314,31 @@
  "1513326": {
   "score": "0-0",
   "status": "1H",
-  "minute": 32,
+  "minute": 42,
   "home": "Real Monarchs",
   "away": "Tacoma Defiance",
   "league": "MLS Next Pro (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/4012.png",
   "away_logo": "https://media.api-sports.io/football/teams/4020.png",
   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-  "seen": "2026-08-31T02:06:53.852257+00:00",
+  "seen": "2026-08-31T02:16:33.701239+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 32,
+     "minute": 42,
      "gh": 0,
      "ga": 0,
      "h": {},
      "a": {}
     }
    ],
-   "score": 34,
-   "level": "green",
+   "score": 40,
+   "level": "amber",
    "dscores": [
-    34
+    40
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د32)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
    ],
    "pick": "away",
    "confidence": 48,
@@ -330,55 +347,6 @@
    "drama": {
     "signal": 0,
     "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1600581": {
-  "score": "3-1",
-  "status": "2H",
-  "minute": 90,
-  "home": "FAS",
-  "away": "Firpo",
-  "league": "Primera Division (El-Salvador)",
-  "home_logo": "https://media.api-sports.io/football/teams/4302.png",
-  "away_logo": "https://media.api-sports.io/football/teams/4303.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/370.png",
-  "seen": "2026-08-31T02:00:37.195346+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 77,
-     "gh": 3,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    },
-    {
-     "minute": 90,
-     "gh": 3,
-     "ga": 1,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 0,
-   "level": "green",
-   "dscores": [
-    0,
-    0
-   ],
-   "factors": [],
-   "pick": "home",
-   "confidence": 41,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "away",
     "ready": false
    },
    "alerted": null,

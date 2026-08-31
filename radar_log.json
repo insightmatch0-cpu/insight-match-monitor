@@ -433,10 +433,34 @@
    "pick": "home",
    "confidence": 42,
    "level": "amber",
+   "score": 49,
+   "minute": 80,
+   "factors": [
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549755",
+   "date": "2026-08-31",
+   "home": "Deportivo Cali",
+   "away": "Bucaramanga",
+   "league": "Primera A (Colombia)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 36,
+   "level": "amber",
    "score": 42,
    "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -40521,7 +40545,63 @@
    "graded_on": "2026-08-30"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1493101",
+   "date": "2026-08-31",
+   "minute": 80,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Independ. Rivadavia",
+   "away": "Racing Club",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 11,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 80,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 7,
+      "sv": 3,
+      "shots": 15,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 45
+     },
+     "a": {
+      "sog": 4,
+      "sv": 5,
+      "shots": 11,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 55
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
