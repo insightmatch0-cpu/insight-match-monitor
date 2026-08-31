@@ -1027,16 +1027,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د69)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د85)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 65,
-   "level_xg": "red"
+   "alerted": true,
+   "alert_minute": 85,
+   "score_xg": 71,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 66,
+   "sent_minute": 85,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د85)"
+   ]
   },
   {
    "fid": "1584385",
@@ -1049,17 +1055,17 @@
    "pick": "away",
    "confidence": 55,
    "level": "red",
-   "score": 88,
-   "minute": 79,
+   "score": 94,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د79)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د89)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 96,
+   "score_xg": 100,
    "level_xg": "red"
   },
   {
@@ -1094,10 +1100,10 @@
    "pick": "away",
    "confidence": 48,
    "level": "red",
-   "score": 80,
-   "minute": 66,
+   "score": 86,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د66)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د76)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
@@ -1181,10 +1187,10 @@
    "pick": "away",
    "confidence": 44,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1223,10 +1229,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 43,
+   "minute": 47,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د47)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1265,10 +1271,10 @@
    "pick": "away",
    "confidence": 47,
    "level": "amber",
-   "score": 40,
-   "minute": 42,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1286,10 +1292,10 @@
    "pick": "away",
    "confidence": 39,
    "level": "amber",
-   "score": 43,
-   "minute": 47,
+   "score": 49,
+   "minute": 57,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د57)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1307,10 +1313,52 @@
    "pick": "home",
    "confidence": 38,
    "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1628946",
+   "date": "2026-08-31",
+   "home": "Paraguari AC",
+   "away": "Resistencia",
+   "league": "Division Intermedia (Paraguay)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 38,
+   "level": "amber",
+   "score": 52,
+   "minute": 63,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د63)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1571105",
+   "date": "2026-08-31",
+   "home": "Teruel",
+   "away": "Real Madrid II",
+   "league": "Primera División RFEF - Group 2 (Spain)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 36,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
