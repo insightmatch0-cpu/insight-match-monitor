@@ -1397,10 +1397,10 @@
    "pick": "home",
    "confidence": 51,
    "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1418,10 +1418,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 49,
-   "minute": 57,
+   "score": 55,
+   "minute": 67,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د57)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د67)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1439,10 +1439,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 47,
-   "minute": 54,
+   "score": 53,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1460,10 +1460,10 @@
    "pick": "home",
    "confidence": 44,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1506,6 +1506,28 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549757",
+   "date": "2026-08-31",
+   "home": "Deportivo Pasto",
+   "away": "Deportivo Pereira",
+   "league": "Primera A (Colombia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "amber",
+   "score": 43,
+   "minute": 30,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د30)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -42271,6 +42293,92 @@
       "yc": 1,
       "rc": 0,
       "sv": 0
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1549757",
+   "date": "2026-08-31",
+   "minute": 30,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Deportivo Pasto",
+   "away": "Deportivo Pereira",
+   "league": "Primera A (Colombia)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 11,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "poss": 74,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 1,
+      "cor": 0,
+      "poss": 26,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     }
+    },
+    {
+     "minute": 21,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 3,
+      "cor": 2,
+      "poss": 79,
+      "yc": 0,
+      "rc": 0,
+      "sv": 0
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 0,
+      "poss": 21,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
+     }
+    },
+    {
+     "minute": 30,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 5,
+      "cor": 3,
+      "poss": 72,
+      "yc": 0,
+      "rc": 1,
+      "sv": 1
+     },
+     "a": {
+      "sog": 1,
+      "shots": 3,
+      "cor": 0,
+      "poss": 28,
+      "yc": 0,
+      "rc": 0,
+      "sv": 1
      }
     }
    ]
