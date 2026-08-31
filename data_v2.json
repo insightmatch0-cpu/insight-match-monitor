@@ -2,25 +2,6 @@
  "live": [],
  "upcoming": [
   {
-   "fid": "1550947",
-   "kickoff": "2026-08-31T02:10:00+00:00",
-   "home": "مونتيري",
-   "away": "أتلتيكو سان لويس",
-   "home_en": "Monterrey",
-   "home_logo": "https://media.api-sports.io/football/teams/2282.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2314.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "away_en": "Atletico San Luis",
-   "league": "الدوري المكسيكي",
-   "top": false,
-   "pick": "home",
-   "confidence": 62,
-   "reason": "مونتيري بتشكيلته النجومية شبه لا يُهزم في ملعبه أمام سان لويس المتواضع خارج أرضه",
-   "prob_home": 62,
-   "prob_draw": 22,
-   "prob_away": 16
-  },
-  {
    "fid": "1513325",
    "kickoff": "2026-08-31T02:30:00+00:00",
    "home": "ذا تاون",
@@ -3614,8 +3595,14 @@
   "reports": [
    {
     "fid": "1493101",
-    "score": "",
-    "s1": {},
+    "score": "3-1",
+    "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 61,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -3674,6 +3661,11 @@
     "fid": "1603006",
     "score": "3-1",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 50,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 76,
@@ -3738,6 +3730,11 @@
     "fid": "1552744",
     "score": "3-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 62,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 62,
@@ -3827,6 +3824,11 @@
     "fid": "1570360",
     "score": "4-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 74,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 80,
@@ -3887,6 +3889,11 @@
     "fid": "1552149",
     "score": "2-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 65,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 78,
@@ -3964,6 +3971,11 @@
     "fid": "1552148",
     "score": "1-6",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 62,
+      "correct": true
+     },
      "v2": {
       "pick": "away",
       "confidence": 60,
@@ -4362,5 +4374,5 @@
   ]
  },
  "pred_updated": "2026-08-30T05:22:47.390624+00:00",
- "updated": "2026-08-31T03:56:33.023607+00:00"
+ "updated": "2026-08-31T04:11:37.737354+00:00"
 }
