@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-31T21:57:04.116546+00:00",
+ "updated": "2026-08-31T22:07:18.313447+00:00",
  "live": [
   {
    "fid": "1628947",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/23155.png",
    "away_logo": "https://media.api-sports.io/football/teams/17183.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
-   "score": "0-1",
-   "minute": 27,
+   "score": "0-2",
+   "minute": 37,
    "status": "1H",
-   "seen": "2026-08-31T21:57:02.614678+00:00",
+   "seen": "2026-08-31T22:07:16.163718+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -24,10 +24,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 31,
+    "score": 37,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د27)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د37)"
     ],
     "pick": "home",
     "confidence": 38,
@@ -40,10 +40,69 @@
     "top": false,
     "trend": {
      "min": [
-      27
+      37
      ],
      "danger": [
-      31
+      37
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493098",
+   "home": "Estudiantes L.P.",
+   "away": "Newells Old Boys",
+   "home_en": "Estudiantes L.P.",
+   "away_en": "Newells Old Boys",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/450.png",
+   "away_logo": "https://media.api-sports.io/football/teams/457.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "0-0",
+   "minute": 8,
+   "status": "1H",
+   "seen": "2026-08-31T22:07:16.163718+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "radar": {
+    "score": 19,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د8)"
+    ],
+    "pick": "home",
+    "confidence": 51,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      8
+     ],
+     "danger": [
+      19
      ],
      "h_sog": [
       0
@@ -141,22 +200,6 @@
    "pick": "home",
    "confidence": 52,
    "reason": "تيخري قوي على أرضه، وباراكاس سنترال فريق متذبذب في الضيافة"
-  },
-  {
-   "fid": "1549469",
-   "kickoff": "2026-08-31T20:00:00+00:00",
-   "home": "أتلتيكو غراو",
-   "away": "إف بي سي ميلغار",
-   "home_en": "Atletico Grau",
-   "home_logo": "https://media.api-sports.io/football/teams/2564.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2554.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
-   "away_en": "FBC Melgar",
-   "league": "الدرجة الأولى (بيرو)",
-   "top": false,
-   "pick": "away",
-   "confidence": 56,
-   "reason": "ميلغار فريق تقليدي قوي في بيرو بمستوى أعلى من غراو عادة"
   },
   {
    "fid": "1628947",
@@ -1184,6 +1227,34 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-08-31",
+   "home": "برشلونة",
+   "away": "رايو فاليكانو",
+   "home_en": "Barcelona",
+   "away_en": "Rayo Vallecano",
+   "league": "الدوري الإسباني",
+   "home_logo": "https://media.api-sports.io/football/teams/529.png",
+   "away_logo": "https://media.api-sports.io/football/teams/728.png",
+   "pick": "home",
+   "confidence": 72,
+   "kickoff": "2026-08-31T19:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-08-31",
+   "home": "سيلتا فيغو الثاني",
+   "away": "كاستيليون",
+   "home_en": "Celta de Vigo II",
+   "away_en": "Castellón",
+   "league": "الدرجة الثانية الإسبانية",
+   "home_logo": "https://media.api-sports.io/football/teams/9571.png",
+   "away_logo": "https://media.api-sports.io/football/teams/5254.png",
+   "pick": "away",
+   "confidence": 57,
+   "kickoff": "2026-08-31T19:30:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-08-31",
    "home": "بنفيقا",
