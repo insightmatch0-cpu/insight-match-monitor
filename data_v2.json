@@ -2949,8 +2949,14 @@
   "reports": [
    {
     "fid": "1493105",
-    "score": "",
-    "s1": {},
+    "score": "0-0",
+    "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 52,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -3007,8 +3013,14 @@
    },
    {
     "fid": "1493102",
-    "score": "",
-    "s1": {},
+    "score": "1-0",
+    "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 58,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -3063,6 +3075,11 @@
     "fid": "1570354",
     "score": "5-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 72,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 77,
@@ -3127,6 +3144,11 @@
     "fid": "1575476",
     "score": "2-1",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 70,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 77,
@@ -3191,6 +3213,11 @@
     "fid": "1550098",
     "score": "1-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 65,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 50,
@@ -3261,6 +3288,11 @@
     "fid": "1570358",
     "score": "1-0",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 54,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 44,
@@ -3331,6 +3363,11 @@
     "fid": "1550103",
     "score": "0-4",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 62,
+      "correct": true
+     },
      "v2": {
       "pick": "away",
       "confidence": 64,
@@ -3696,5 +3733,5 @@
   ]
  },
  "pred_updated": "2026-08-31T04:40:56.202274+00:00",
- "updated": "2026-09-01T03:40:29.808677+00:00"
+ "updated": "2026-09-01T04:04:07.107179+00:00"
 }
