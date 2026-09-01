@@ -1,6 +1,165 @@
 {
- "updated": "2026-09-01T00:46:35.081913+00:00",
+ "updated": "2026-09-01T00:46:48.739893+00:00",
  "live": [
+  {
+   "fid": "1520844",
+   "home": "Fortaleza EC",
+   "away": "Operario-PR",
+   "home_en": "Fortaleza EC",
+   "away_en": "Operario-PR",
+   "league": "Serie B (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/154.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1223.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/72.png",
+   "score": "1-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-01T00:30:31.082837+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "radar": {
+    "score": 95,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
+    "pick": "home",
+    "confidence": 52,
+    "drama": {
+     "signal": 85,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      31,
+      29,
+      90
+     ],
+     "danger": [
+      15,
+      32,
+      95
+     ],
+     "h_sog": [
+      1,
+      1,
+      6
+     ],
+     "a_sog": [
+      0,
+      0,
+      4
+     ],
+     "h_cor": [
+      3,
+      3,
+      11
+     ],
+     "a_cor": [
+      1,
+      1,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1632463",
+   "home": "Grêmio Prudente",
+   "away": "Paulista",
+   "home_en": "Grêmio Prudente",
+   "away_en": "Paulista",
+   "league": "Copa Paulista (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/20713.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10038.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/742.png",
+   "score": "4-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-01T00:32:05.465006+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      19,
+      32,
+      47,
+      57,
+      69,
+      77,
+      90
+     ],
+     "danger": [
+      15,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
   {
    "fid": "1549757",
    "home": "Deportivo Pasto",
@@ -5463,12 +5622,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1058,
-   "hit": 949
+   "fired": 1095,
+   "hit": 983
   },
   "amber": {
-   "fired": 791,
-   "hit": 340
+   "fired": 824,
+   "hit": 355
   },
   "alerts": {
    "flip": {
@@ -5476,7 +5635,7 @@
     "hit": 1
    },
    "equalizer": {
-    "fired": 38,
+    "fired": 40,
     "hit": 10
    },
    "goal": {
@@ -5484,7 +5643,7 @@
     "hit": 0
    },
    "next_goal": {
-    "fired": 53,
+    "fired": 54,
     "hit": 18
    },
    "red_advantage": {
@@ -5494,12 +5653,12 @@
   },
   "season": {
    "red": {
-    "fired": 734,
-    "hit": 659
+    "fired": 771,
+    "hit": 693
    },
    "amber": {
-    "fired": 572,
-    "hit": 259
+    "fired": 605,
+    "hit": 274
    },
    "alerts": {
     "flip": {
@@ -5507,11 +5666,11 @@
      "hit": 0
     },
     "equalizer": {
-     "fired": 30,
+     "fired": 32,
      "hit": 9
     },
     "next_goal": {
-     "fired": 34,
+     "fired": 35,
      "hit": 12
     },
     "red_advantage": {
@@ -5523,11 +5682,11 @@
   },
   "top_only": {
    "red": {
-    "fired": 216,
-    "hit": 183
+    "fired": 218,
+    "hit": 184
    },
    "amber": {
-    "fired": 115,
+    "fired": 119,
     "hit": 42
    },
    "alerts": {
@@ -5550,11 +5709,11 @@
    },
    "season": {
     "red": {
-     "fired": 216,
-     "hit": 183
+     "fired": 218,
+     "hit": 184
     },
     "amber": {
-     "fired": 115,
+     "fired": 119,
      "hit": 42
     },
     "alerts": {
@@ -5650,16 +5809,20 @@
     "2026-08-31": {
      "hit": 2,
      "total": 3
+    },
+    "2026-09-01": {
+     "hit": 1,
+     "total": 6
     }
    }
   },
   "mine_only": {
    "red": {
-    "fired": 63,
+    "fired": 64,
     "hit": 54
    },
    "amber": {
-    "fired": 23,
+    "fired": 25,
     "hit": 4
    },
    "alerts": {
@@ -5682,11 +5845,11 @@
    },
    "season": {
     "red": {
-     "fired": 63,
+     "fired": 64,
      "hit": 54
     },
     "amber": {
-     "fired": 23,
+     "fired": 25,
      "hit": 4
     },
     "alerts": {
@@ -5738,31 +5901,35 @@
     "2026-08-30": {
      "hit": 7,
      "total": 12
+    },
+    "2026-09-01": {
+     "hit": 0,
+     "total": 3
     }
    }
   },
   "xg": {
    "xg": {
     "red": {
-     "fired": 74,
-     "hit": 63
+     "fired": 77,
+     "hit": 65
     },
     "amber": {
-     "fired": 29,
+     "fired": 32,
      "hit": 5
     }
    },
    "base": {
     "red": {
-     "fired": 85,
-     "hit": 66
+     "fired": 88,
+     "hit": 68
     },
     "amber": {
-     "fired": 18,
+     "fired": 21,
      "hit": 2
     }
    },
-   "n": 105,
+   "n": 111,
    "start": "2026-08-15"
   },
   "silenced": [
@@ -5878,6 +6045,10 @@
    "2026-08-31": {
     "hit": 19,
     "total": 22
+   },
+   "2026-09-01": {
+    "hit": 49,
+    "total": 70
    }
   },
   "recent": [
@@ -5897,7 +6068,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Teruel",
     "away": "Real Madrid II",
@@ -5906,11 +6076,12 @@
     "minute": 75,
     "pick": "away",
     "conf": 36,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Dijon",
     "away": "Saint Etienne",
@@ -5919,11 +6090,12 @@
     "minute": 76,
     "pick": "away",
     "conf": 48,
+    "final": "2-3",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "SC Braga",
     "away": "Vitória SC",
@@ -5932,11 +6104,12 @@
     "minute": 76,
     "pick": "home",
     "conf": 47,
+    "final": "1-0",
+    "hit": false,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Union La Calera",
     "away": "D. La Serena",
@@ -5945,11 +6118,12 @@
     "minute": 76,
     "pick": "home",
     "conf": 44,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Jong AZ",
     "away": "Jong Utrecht",
@@ -5959,11 +6133,12 @@
     "side": "away",
     "signal": 85,
     "score_at": "2-1",
+    "final": "2-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Union La Calera",
     "away": "D. La Serena",
@@ -5973,11 +6148,12 @@
     "side": "home",
     "signal": 85,
     "score_at": "0-1",
+    "final": "0-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Breidablik",
     "away": "Stjarnan",
@@ -5986,11 +6162,12 @@
     "minute": 77,
     "pick": "home",
     "conf": 52,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Spartak Kostroma",
     "away": "Rotor Volgograd",
@@ -5999,6 +6176,8 @@
     "minute": 79,
     "pick": "home",
     "conf": 44,
+    "final": "1-0",
+    "hit": false,
     "top": false
    },
    {
@@ -6032,7 +6211,6 @@
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-08-31",
     "home": "HNK Gorica",
     "away": "HNK Rijeka",
@@ -6042,11 +6220,12 @@
     "side": "away",
     "signal": 85,
     "score_at": "0-0",
+    "final": "0-0",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Al Qadsia",
     "away": "Al Kuwait",
@@ -6055,11 +6234,12 @@
     "minute": 81,
     "pick": "away",
     "conf": 46,
+    "final": "0-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "VPS",
     "away": "Lahti",
@@ -6068,11 +6248,12 @@
     "minute": 82,
     "pick": "home",
     "conf": 47,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "UD Logroñés",
     "away": "Extremadura 1924",
@@ -6081,11 +6262,12 @@
     "minute": 82,
     "pick": "home",
     "conf": 42,
+    "final": "2-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Al Saqer",
     "away": "Al Okhdood",
@@ -6094,11 +6276,12 @@
     "minute": 83,
     "pick": "away",
     "conf": 43,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Los Andes",
     "away": "Acassuso",
@@ -6107,11 +6290,12 @@
     "minute": 84,
     "pick": "home",
     "conf": 40,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Treviso",
     "away": "Lecco",
@@ -6120,11 +6304,12 @@
     "minute": 86,
     "pick": "away",
     "conf": 44,
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Maidenhead",
     "away": "AFC Totton",
@@ -6133,11 +6318,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 50,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Desenzano Calvina",
     "away": "Trento",
@@ -6146,11 +6332,12 @@
     "minute": 87,
     "pick": "away",
     "conf": 39,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Gainsborough Trinity",
     "away": "Cleethorpes Town",
@@ -6159,11 +6346,12 @@
     "minute": 88,
     "pick": "home",
     "conf": 42,
+    "final": "0-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Bukovyna",
     "away": "Dynamo Kyiv",
@@ -6172,11 +6360,12 @@
     "minute": 89,
     "pick": "away",
     "conf": 62,
+    "final": "3-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Atalanta",
     "away": "Bologna",
@@ -6185,11 +6374,12 @@
     "minute": 89,
     "pick": "home",
     "conf": 50,
+    "final": "1-0",
+    "hit": false,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Skenderbeu Korce",
     "away": "Dinamo Tirana",
@@ -6198,6 +6388,8 @@
     "minute": 89,
     "pick": "home",
     "conf": 38,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
@@ -6216,7 +6408,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Carmarthen Town",
     "away": "Trethomas Bluebirds",
@@ -6225,11 +6416,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 56,
+    "final": "2-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Chester",
     "away": "Morecambe",
@@ -6238,11 +6430,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 55,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Alay",
     "away": "Asiagoal",
@@ -6251,11 +6444,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 55,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "South Shields",
     "away": "Spalding United",
@@ -6264,11 +6458,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 52,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Spennymoor Town",
     "away": "Hednesford Town",
@@ -6277,11 +6472,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 50,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Gloucester City",
     "away": "Evesham United",
@@ -6290,11 +6486,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 50,
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Farnham Town",
     "away": "Torquay",
@@ -6303,11 +6500,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 49,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Stockton Town",
     "away": "Redcar Athletic",
@@ -6316,11 +6514,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 49,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Gagra",
     "away": "FC Iberia 1999",
@@ -6329,11 +6528,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 55,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Torpedo Kutaisi",
     "away": "Meshakhte",
@@ -6342,11 +6542,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 48,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Whitehawk",
     "away": "Burgess Hill Town",
@@ -6355,11 +6556,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 46,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Redditch United",
     "away": "Halesowen Town",
@@ -6368,11 +6570,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 43,
+    "final": "3-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Džiugas Telšiai",
     "away": "Hegelmann Litauen",
@@ -6381,11 +6584,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 48,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Inter Turku",
     "away": "KuPS",
@@ -6394,11 +6598,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 46,
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Mariehamn",
     "away": "FF Jaro",
@@ -6407,11 +6612,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 45,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Dunav Ruse",
     "away": "Lokomotiv Sofia",
@@ -6420,11 +6626,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 45,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Burgos",
     "away": "Real Sociedad II",
@@ -6433,11 +6640,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 45,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Omonia Nicosia",
     "away": "Omonia Aradippou",
@@ -6446,11 +6654,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 68,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Fénix",
     "away": "Central Cordoba",
@@ -6459,11 +6668,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 40,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Amed",
     "away": "Trabzonspor",
@@ -6472,11 +6682,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 55,
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Novara",
     "away": "Folgore Caratese",
@@ -6485,11 +6696,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 48,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "FC WIL 1900",
     "away": "FC Aarau",
@@ -6498,11 +6710,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 42,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Albinoleffe",
     "away": "Ospitaletto",
@@ -6511,11 +6724,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 45,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Paraguari AC",
     "away": "Resistencia",
@@ -6524,11 +6738,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 38,
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Encarnación",
     "away": "Benjamín Aceval",
@@ -6537,11 +6752,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 38,
+    "final": "1-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Estudiantes L.P.",
     "away": "Newells Old Boys",
@@ -6550,6 +6766,8 @@
     "minute": 90,
     "pick": "home",
     "conf": 51,
+    "final": "0-0",
+    "hit": true,
     "top": true
    },
    {
