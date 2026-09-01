@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-01T23:26:47.683138+00:00",
+ "updated": "2026-09-01T23:27:00.592649+00:00",
  "live": [
   {
    "fid": "1631990",
@@ -18,10 +18,6 @@
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 38
    },
    "radar": {
     "score": 69,
@@ -4069,12 +4065,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1098,
-   "hit": 984
+   "fired": 1136,
+   "hit": 1019
   },
   "amber": {
-   "fired": 830,
-   "hit": 358
+   "fired": 854,
+   "hit": 373
   },
   "alerts": {
    "flip": {
@@ -4100,12 +4096,12 @@
   },
   "season": {
    "red": {
-    "fired": 774,
-    "hit": 694
+    "fired": 812,
+    "hit": 729
    },
    "amber": {
-    "fired": 611,
-    "hit": 277
+    "fired": 635,
+    "hit": 292
    },
    "alerts": {
     "flip": {
@@ -4129,11 +4125,11 @@
   },
   "top_only": {
    "red": {
-    "fired": 219,
-    "hit": 184
+    "fired": 224,
+    "hit": 188
    },
    "amber": {
-    "fired": 121,
+    "fired": 122,
     "hit": 43
    },
    "alerts": {
@@ -4156,11 +4152,11 @@
    },
    "season": {
     "red": {
-     "fired": 219,
-     "hit": 184
+     "fired": 224,
+     "hit": 188
     },
     "amber": {
-     "fired": 121,
+     "fired": 122,
      "hit": 43
     },
     "alerts": {
@@ -4258,18 +4254,18 @@
      "total": 3
     },
     "2026-09-01": {
-     "hit": 2,
-     "total": 9
+     "hit": 6,
+     "total": 15
     }
    }
   },
   "mine_only": {
    "red": {
-    "fired": 64,
-    "hit": 54
+    "fired": 69,
+    "hit": 58
    },
    "amber": {
-    "fired": 25,
+    "fired": 26,
     "hit": 4
    },
    "alerts": {
@@ -4292,11 +4288,11 @@
    },
    "season": {
     "red": {
-     "fired": 64,
-     "hit": 54
+     "fired": 69,
+     "hit": 58
     },
     "amber": {
-     "fired": 25,
+     "fired": 26,
      "hit": 4
     },
     "alerts": {
@@ -4350,16 +4346,16 @@
      "total": 12
     },
     "2026-09-01": {
-     "hit": 0,
-     "total": 3
+     "hit": 4,
+     "total": 9
     }
    }
   },
   "xg": {
    "xg": {
     "red": {
-     "fired": 77,
-     "hit": 65
+     "fired": 82,
+     "hit": 69
     },
     "amber": {
      "fired": 32,
@@ -4368,15 +4364,15 @@
    },
    "base": {
     "red": {
-     "fired": 88,
-     "hit": 68
+     "fired": 92,
+     "hit": 72
     },
     "amber": {
-     "fired": 21,
+     "fired": 22,
      "hit": 2
     }
    },
-   "n": 111,
+   "n": 116,
    "start": "2026-08-15"
   },
   "silenced": [
@@ -4494,8 +4490,8 @@
     "total": 22
    },
    "2026-09-01": {
-    "hit": 53,
-    "total": 79
+    "hit": 103,
+    "total": 141
    }
   },
   "recent": [
@@ -5248,7 +5244,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-08-31",
     "home": "Atletico Grau",
     "away": "FBC Melgar",
@@ -5257,6 +5252,8 @@
     "minute": 90,
     "pick": "away",
     "conf": 37,
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
@@ -5320,7 +5317,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Be Quick 1887",
     "away": "AFC Amsterdam",
@@ -5329,11 +5325,12 @@
     "minute": 79,
     "pick": "away",
     "conf": 51,
+    "final": "0-2",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Parma",
     "away": "Cremonese",
@@ -5342,6 +5339,8 @@
     "minute": 82,
     "pick": "home",
     "conf": 40,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
@@ -5360,7 +5359,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Victoria Bardar",
     "away": "Făleşti",
@@ -5369,11 +5367,12 @@
     "minute": 84,
     "pick": "home",
     "conf": 47,
+    "final": "5-3",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Volos NFC",
     "away": "Kalamata",
@@ -5382,11 +5381,12 @@
     "minute": 85,
     "pick": "home",
     "conf": 44,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Colón",
     "away": "Fenix",
@@ -5395,11 +5395,12 @@
     "minute": 86,
     "pick": "away",
     "conf": 51,
+    "final": "3-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Exeter City",
     "away": "Barnet",
@@ -5408,11 +5409,12 @@
     "minute": 86,
     "pick": "home",
     "conf": 45,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "OshMU Aldier",
     "away": "Muras United",
@@ -5421,11 +5423,12 @@
     "minute": 87,
     "pick": "away",
     "conf": 68,
+    "final": "3-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Fakel",
     "away": "FC Krasnodar",
@@ -5434,11 +5437,12 @@
     "minute": 87,
     "pick": "away",
     "conf": 57,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Portsmouth",
     "away": "Derby",
@@ -5447,11 +5451,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 39,
+    "final": "0-2",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Bradford",
     "away": "Cambridge United",
@@ -5460,11 +5465,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 46,
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Al Shamal",
     "away": "Al-Rayyan SC",
@@ -5473,11 +5479,12 @@
     "minute": 88,
     "pick": "away",
     "conf": 58,
+    "final": "3-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Polonia Środa",
     "away": "Sandecja Nowy Sącz",
@@ -5486,11 +5493,12 @@
     "minute": 88,
     "pick": "away",
     "conf": 53,
+    "final": "3-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Sheffield Utd",
     "away": "Bolton",
@@ -5499,11 +5507,12 @@
     "minute": 88,
     "pick": "home",
     "conf": 52,
+    "final": "3-2",
+    "hit": false,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "FC Bocholt",
     "away": "Bonner SC",
@@ -5512,11 +5521,12 @@
     "minute": 89,
     "pick": "home",
     "conf": 55,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Torino",
     "away": "Monza",
@@ -5525,11 +5535,12 @@
     "minute": 89,
     "pick": "home",
     "conf": 56,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Chesterfield",
     "away": "Gillingham",
@@ -5538,11 +5549,12 @@
     "minute": 89,
     "pick": "home",
     "conf": 44,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Salford City",
     "away": "Newport County",
@@ -5551,6 +5563,288 @@
     "minute": 89,
     "pick": "home",
     "conf": 44,
+    "final": "2-1",
+    "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Kelantan Red Warrior FC",
+    "away": "Kuching FA",
+    "league": "FA Cup (Malaysia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 49,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Bandırmaspor",
+    "away": "Antalyaspor",
+    "league": "1. Lig (Turkey)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 38,
+    "final": "0-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Podhale Nowy Targ",
+    "away": "Pogoń Grod. Mazowiecki",
+    "league": "Cup (Poland)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 55,
+    "final": "3-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Siarka Tarnobrzeg",
+    "away": "Zaglebie Lubin",
+    "league": "Cup (Poland)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 57,
+    "final": "3-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Ümraniyespor",
+    "away": "Muğlaspor",
+    "league": "1. Lig (Turkey)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 50,
+    "final": "0-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Minija",
+    "away": "Dainava",
+    "league": "Cup (Lithuania)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 55,
+    "final": "3-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Odra Opole",
+    "away": "Wisla Krakow",
+    "league": "Cup (Poland)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 45,
+    "final": "2-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "SV Lafnitz",
+    "away": "Kalsdorf",
+    "league": "Regionalliga - South (Austria)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 55,
+    "final": "2-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Motor Lublin",
+    "away": "Legia Warszawa",
+    "league": "Cup (Poland)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 59,
+    "final": "3-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Lincoln",
+    "away": "Blackburn",
+    "league": "Championship (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 38,
+    "final": "0-0",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Stoke City",
+    "away": "Norwich",
+    "league": "Championship (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 47,
+    "final": "1-0",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Birmingham",
+    "away": "Southampton",
+    "league": "Championship (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 37,
+    "final": "1-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Bari",
+    "away": "AZ Picerno",
+    "league": "Coppa Italia Serie C (Italy)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 54,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Accrington ST",
+    "away": "Grimsby",
+    "league": "League Two (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 43,
+    "final": "2-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Wycombe",
+    "away": "Sheffield Wednesday",
+    "league": "League One (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 42,
+    "final": "1-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Cheltenham",
+    "away": "York",
+    "league": "League Two (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 39,
+    "final": "3-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Bristol Rovers",
+    "away": "Colchester",
+    "league": "League Two (England)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 37,
+    "final": "2-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Potenza",
+    "away": "SS Monopoli",
+    "league": "Coppa Italia Serie C (Italy)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 37,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Envigado",
+    "away": "Union Magdalena",
+    "league": "Primera B (Colombia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 44,
+    "final": "0-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Wanderers",
+    "away": "Cerro",
+    "league": "Copa Uruguay (Uruguay)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 42,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
@@ -5570,267 +5864,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Kelantan Red Warrior FC",
-    "away": "Kuching FA",
-    "league": "FA Cup (Malaysia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 49,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Bandırmaspor",
-    "away": "Antalyaspor",
-    "league": "1. Lig (Turkey)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 38,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Podhale Nowy Targ",
-    "away": "Pogoń Grod. Mazowiecki",
-    "league": "Cup (Poland)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 55,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Siarka Tarnobrzeg",
-    "away": "Zaglebie Lubin",
-    "league": "Cup (Poland)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 57,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Ümraniyespor",
-    "away": "Muğlaspor",
-    "league": "1. Lig (Turkey)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Minija",
-    "away": "Dainava",
-    "league": "Cup (Lithuania)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 55,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Odra Opole",
-    "away": "Wisla Krakow",
-    "league": "Cup (Poland)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 45,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "SV Lafnitz",
-    "away": "Kalsdorf",
-    "league": "Regionalliga - South (Austria)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 55,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Motor Lublin",
-    "away": "Legia Warszawa",
-    "league": "Cup (Poland)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 59,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Lincoln",
-    "away": "Blackburn",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 38,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Stoke City",
-    "away": "Norwich",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 47,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Birmingham",
-    "away": "Southampton",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 37,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Bari",
-    "away": "AZ Picerno",
-    "league": "Coppa Italia Serie C (Italy)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Accrington ST",
-    "away": "Grimsby",
-    "league": "League Two (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 43,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Wycombe",
-    "away": "Sheffield Wednesday",
-    "league": "League One (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Cheltenham",
-    "away": "York",
-    "league": "League Two (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 39,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Bristol Rovers",
-    "away": "Colchester",
-    "league": "League Two (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 37,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Potenza",
-    "away": "SS Monopoli",
-    "league": "Coppa Italia Serie C (Italy)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 37,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Envigado",
-    "away": "Union Magdalena",
-    "league": "Primera B (Colombia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 44,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Wanderers",
-    "away": "Cerro",
-    "league": "Copa Uruguay (Uruguay)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 42,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "2 de Mayo",
     "away": "Sportivo Luqueno",
@@ -5852,11 +5885,12 @@
     "minute": 99,
     "pick": "away",
     "conf": 46,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-01",
     "home": "Kluczevia Stargard",
     "away": "Pogoń Siedlce",
@@ -5865,6 +5899,8 @@
     "minute": 104,
     "pick": "away",
     "conf": 57,
+    "final": "2-2",
+    "hit": true,
     "top": false
    }
   ]
