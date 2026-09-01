@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-01T21:55:47.868486+00:00",
+ "updated": "2026-09-01T22:02:17.942315+00:00",
  "live": [
   {
    "fid": "1549469",
@@ -14,7 +14,7 @@
    "score": "1-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-01T21:55:45.120348+00:00",
+   "seen": "2026-09-01T22:00:42.614479+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -73,7 +73,7 @@
    "score": "0-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-01T21:55:45.120348+00:00",
+   "seen": "2026-09-01T21:56:04.722777+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -150,7 +150,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-01T21:55:45.120348+00:00",
+   "seen": "2026-09-01T22:02:15.449189+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -207,9 +207,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1183.png",
    "league_logo": "https://media.api-sports.io/football/leagues/252.png",
    "score": "0-1",
-   "minute": 26,
+   "minute": 32,
    "status": "1H",
-   "seen": "2026-09-01T21:55:45.120348+00:00",
+   "seen": "2026-09-01T22:02:15.449189+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -235,21 +235,27 @@
     "top": false,
     "trend": {
      "min": [
-      26
+      17,
+      32
      ],
      "danger": [
+      25,
       15
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -266,9 +272,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1151.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "0-0",
-   "minute": 25,
+   "minute": 32,
    "status": "1H",
-   "seen": "2026-09-01T21:55:45.120348+00:00",
+   "seen": "2026-09-01T22:02:15.449189+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -278,10 +284,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 30,
+    "score": 34,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د25)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د32)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -294,21 +300,27 @@
     "top": false,
     "trend": {
      "min": [
-      25
+      16,
+      32
      ],
      "danger": [
-      30
+      24,
+      34
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -316,22 +328,6 @@
   }
  ],
  "upcoming": [
-  {
-   "fid": "1549582",
-   "kickoff": "2026-09-01T20:00:00+00:00",
-   "home": "إنفيجادو",
-   "away": "يونيون مجدالينا",
-   "home_en": "Envigado",
-   "home_logo": "https://media.api-sports.io/football/teams/1129.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1465.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-   "away_en": "Union Magdalena",
-   "league": "الدرجة الأولى ب كولومبيا",
-   "top": false,
-   "pick": "draw",
-   "confidence": 50,
-   "reason": "كرة قدم كولومبية من الدرجة الثانية والبيانات محدودة جداً"
-  },
   {
    "fid": "1635829",
    "kickoff": "2026-09-01T21:00:00+00:00",
@@ -5019,6 +5015,19 @@
     "conf": 38,
     "final": "1-2",
     "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-08-31",
+    "home": "Atletico Grau",
+    "away": "FBC Melgar",
+    "league": "Primera División (Peru)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 37,
     "top": false
    },
    {
