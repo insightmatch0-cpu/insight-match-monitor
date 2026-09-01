@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-01T12:16:36.745924+00:00",
+ "updated": "2026-09-01T12:26:38.069569+00:00",
  "live": [
   {
    "fid": "1600222",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/833.png",
    "league_logo": "https://media.api-sports.io/football/leagues/171.png",
    "score": "0-0",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-09-01T12:16:34.783829+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-01T12:26:36.235370+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 62
@@ -24,10 +24,10 @@
     "confidence": 65
    },
    "radar": {
-    "score": 40,
+    "score": 42,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 65,
@@ -41,76 +41,11 @@
     "trend": {
      "min": [
       35,
-      42
+      45
      ],
      "danger": [
       36,
-      40
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1600972",
-   "home": "Beijing Guoan",
-   "away": "Rizhao Yuqi",
-   "home_en": "Beijing Guoan",
-   "away_en": "Rizhao Yuqi",
-   "league": "FA Cup (China)",
-   "home_logo": "https://media.api-sports.io/football/teams/830.png",
-   "away_logo": "https://media.api-sports.io/football/teams/21328.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/171.png",
-   "score": "1-0",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-09-01T12:16:34.783829+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 62
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 65
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 65,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      35,
       42
-     ],
-     "danger": [
-      15,
-      15
      ],
      "h_sog": [
       0,
@@ -142,9 +77,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/836.png",
    "league_logo": "https://media.api-sports.io/football/leagues/171.png",
    "score": "0-2",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-09-01T12:16:34.783829+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-01T12:26:36.235370+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -169,11 +104,76 @@
     "trend": {
      "min": [
       34,
-      41
+      45
      ],
      "danger": [
       0,
       0
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1600972",
+   "home": "Beijing Guoan",
+   "away": "Rizhao Yuqi",
+   "home_en": "Beijing Guoan",
+   "away_en": "Rizhao Yuqi",
+   "league": "FA Cup (China)",
+   "home_logo": "https://media.api-sports.io/football/teams/830.png",
+   "away_logo": "https://media.api-sports.io/football/teams/21328.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/171.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-01T12:26:36.235370+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 62
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 65
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 65,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      35,
+      45
+     ],
+     "danger": [
+      15,
+      15
      ],
      "h_sog": [
       0,
