@@ -1,65 +1,6 @@
 {
- "updated": "2026-09-01T02:16:33.386604+00:00",
+ "updated": "2026-09-01T02:26:31.615627+00:00",
  "live": [
-  {
-   "fid": "1493105",
-   "home": "Tigre",
-   "away": "Barracas Central",
-   "home_en": "Tigre",
-   "away_en": "Barracas Central",
-   "league": "Liga Profesional Argentina (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/452.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2432.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "0-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-01T02:10:22.125508+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
-    ],
-    "pick": "home",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      69
-     ],
-     "h_sog": [
-      1
-     ],
-     "a_sog": [
-      2
-     ],
-     "h_cor": [
-      3
-     ],
-     "a_cor": [
-      5
-     ]
-    }
-   }
-  },
   {
    "fid": "1505512",
    "home": "U. Catolica",
@@ -70,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2994.png",
    "away_logo": "https://media.api-sports.io/football/teams/2320.png",
    "league_logo": "https://media.api-sports.io/football/leagues/265.png",
-   "score": "2-1",
-   "minute": 70,
+   "score": "2-2",
+   "minute": 80,
    "status": "2H",
-   "seen": "2026-09-01T02:16:30.418395+00:00",
+   "seen": "2026-09-01T02:26:29.776588+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -83,28 +24,31 @@
     "confidence": 44
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 97,
+    "level": "red",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 2-2 تُسقط التوقع (د80)",
+     "موجة تسديد على المرمى من الضيف",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
-     "signal": 0,
+     "signal": 85,
      "side": "away",
-     "ready": false
+     "ready": true
     },
-    "alerted": null,
+    "alerted": "next_goal",
     "top": false,
     "trend": {
      "min": [
       45,
-      70
+      80
      ],
      "danger": [
       15,
-      15
+      97
      ],
      "h_sog": [
       3,
@@ -112,15 +56,15 @@
      ],
      "a_sog": [
       3,
-      3
+      6
      ],
      "h_cor": [
       4,
-      4
+      5
      ],
      "a_cor": [
       4,
-      5
+      7
      ]
     }
    }
@@ -136,9 +80,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/15620.png",
    "league_logo": "https://media.api-sports.io/football/leagues/304.png",
    "score": "1-0",
-   "minute": 59,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-09-01T02:16:30.418395+00:00",
+   "seen": "2026-09-01T02:26:29.776588+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -165,7 +109,7 @@
     "trend": {
      "min": [
       40,
-      59
+      69
      ],
      "danger": [
       15,
@@ -201,9 +145,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2057.png",
    "league_logo": "https://media.api-sports.io/football/leagues/163.png",
    "score": "1-0",
-   "minute": 55,
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-09-01T02:16:30.418395+00:00",
+   "seen": "2026-09-01T02:26:29.776588+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -230,7 +174,7 @@
     "trend": {
      "min": [
       38,
-      55
+      65
      ],
      "danger": [
       15,
@@ -266,9 +210,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1470.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "1-0",
-   "minute": 53,
+   "minute": 63,
    "status": "2H",
-   "seen": "2026-09-01T02:16:30.418395+00:00",
+   "seen": "2026-09-01T02:26:29.776588+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -295,7 +239,7 @@
     "trend": {
      "min": [
       34,
-      53
+      63
      ],
      "danger": [
       35,
@@ -307,7 +251,7 @@
      ],
      "a_sog": [
       0,
-      0
+      1
      ],
      "h_cor": [
       3,
@@ -6318,6 +6262,20 @@
     "signal": 85,
     "score_at": "2-1",
     "top": true
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-09-01",
+    "home": "U. Catolica",
+    "away": "O'Higgins",
+    "league": "Primera División (Chile)",
+    "minute": 75,
+    "claim": "next_goal",
+    "side": "away",
+    "signal": 85,
+    "score_at": "2-2",
+    "top": false
    },
    {
     "kind": "warning",
