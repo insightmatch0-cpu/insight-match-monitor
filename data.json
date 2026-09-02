@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T11:46:50.673212+00:00",
+ "updated": "2026-09-02T11:56:44.917006+00:00",
  "live": [
   {
    "fid": "1636906",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3767.png",
    "league_logo": "https://media.api-sports.io/football/leagues/192.png",
    "score": "1-1",
-   "minute": 107,
+   "minute": 117,
    "status": "ET",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 50
@@ -27,7 +27,7 @@
     "score": 70,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د107)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د117)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -41,7 +41,7 @@
     "trend": {
      "min": [
       0,
-      107
+      117
      ],
      "danger": [
       15,
@@ -67,26 +67,196 @@
    }
   },
   {
-   "fid": "1556047",
-   "home": "Shimizu S-pulse",
-   "away": "FC Tokyo",
-   "home_en": "Shimizu S-pulse",
-   "away_en": "FC Tokyo",
+   "fid": "1556041",
+   "home": "Avispa Fukuoka",
+   "away": "Urawa",
+   "home_en": "Avispa Fukuoka",
+   "away_en": "Urawa",
    "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/283.png",
-   "away_logo": "https://media.api-sports.io/football/teams/292.png",
+   "home_logo": "https://media.api-sports.io/football/teams/316.png",
+   "away_logo": "https://media.api-sports.io/football/teams/287.png",
    "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "1-1",
-   "minute": 88,
+   "score": "2-3",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "away",
-    "confidence": 57
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 36
+   }
+  },
+  {
+   "fid": "1556042",
+   "home": "Cerezo Osaka",
+   "away": "Kashiwa Reysol",
+   "home_en": "Cerezo Osaka",
+   "away_en": "Kashiwa Reysol",
+   "league": "J1 League (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/291.png",
+   "away_logo": "https://media.api-sports.io/football/teams/281.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "score": "2-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 83,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 2-0 تُسقط التوقع (د90)",
+     "موجة ركنيات لصالح المضيف",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
+    "pick": "away",
+    "confidence": 40,
+    "drama": {
+     "signal": 20,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      48,
+      58,
+      68,
+      90
+     ],
+     "danger": [
+      42,
+      43,
+      49,
+      55,
+      83
+     ],
+     "h_sog": [
+      2,
+      2,
+      2,
+      2,
+      3
+     ],
+     "a_sog": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "h_cor": [
+      4,
+      5,
+      5,
+      5,
+      7
+     ],
+     "a_cor": [
+      2,
+      2,
+      3,
+      5,
+      9
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1556043",
+   "home": "JEF United Chiba",
+   "away": "Fagiano Okayama",
+   "home_en": "JEF United Chiba",
+   "away_en": "Fagiano Okayama",
+   "league": "J1 League (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/301.png",
+   "away_logo": "https://media.api-sports.io/football/teams/310.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "score": "1-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 36
+    "confidence": 40
+   },
+   "radar": {
+    "score": 83,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 35,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      45,
+      55,
+      65,
+      90
+     ],
+     "danger": [
+      42,
+      42,
+      48,
+      54,
+      83
+     ],
+     "h_sog": [
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "a_sog": [
+      2,
+      2,
+      2,
+      2,
+      3
+     ],
+     "h_cor": [
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "a_cor": [
+      1,
+      2,
+      2,
+      2,
+      5
+     ]
+    }
    }
   },
   {
@@ -100,9 +270,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/294.png",
    "league_logo": "https://media.api-sports.io/football/leagues/98.png",
    "score": "2-1",
-   "minute": 87,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:55:07.697725+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -128,22 +298,101 @@
     "top": false,
     "trend": {
      "min": [
-      82
+      82,
+      90
      ],
      "danger": [
+      15,
       15
      ],
      "h_sog": [
+      6,
       6
      ],
      "a_sog": [
+      2,
       2
      ],
      "h_cor": [
-      5
+      5,
+      6
      ],
      "a_cor": [
+      2,
       2
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1556045",
+   "home": "Mito Hollyhock",
+   "away": "Kashima",
+   "home_en": "Mito Hollyhock",
+   "away_en": "Kashima",
+   "league": "J1 League (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/305.png",
+   "away_logo": "https://media.api-sports.io/football/teams/290.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "score": "4-2",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "radar": {
+    "score": 87,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 4-2 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من المضيف",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
+    "pick": "away",
+    "confidence": 56,
+    "drama": {
+     "signal": 30,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      46,
+      90
+     ],
+     "danger": [
+      42,
+      42,
+      87
+     ],
+     "h_sog": [
+      2,
+      2,
+      5
+     ],
+     "a_sog": [
+      1,
+      2,
+      5
+     ],
+     "h_cor": [
+      1,
+      1,
+      2
+     ],
+     "a_cor": [
+      2,
+      3,
+      4
      ]
     }
    }
@@ -158,10 +407,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/282.png",
    "away_logo": "https://media.api-sports.io/football/teams/288.png",
    "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "2-0",
-   "minute": 87,
+   "score": "3-0",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 53
@@ -171,11 +420,9 @@
     "confidence": 50
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 50,
     "drama": {
@@ -188,183 +435,58 @@
     "trend": {
      "min": [
       45,
-      80
+      80,
+      90
      ],
      "danger": [
       42,
-      15
+      15,
+      0
      ],
      "h_sog": [
       2,
-      5
+      5,
+      6
      ],
      "a_sog": [
+      0,
       0,
       0
      ],
      "h_cor": [
       2,
+      2,
       2
      ],
      "a_cor": [
       0,
+      1,
       1
      ]
     }
    }
   },
   {
-   "fid": "1567430",
-   "home": "Kagoshima United",
-   "away": "Consadole Sapporo",
-   "home_en": "Kagoshima United",
-   "away_en": "Consadole Sapporo",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/2236.png",
-   "away_logo": "https://media.api-sports.io/football/teams/279.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "0-0",
-   "minute": 87,
+   "fid": "1556047",
+   "home": "Shimizu S-pulse",
+   "away": "FC Tokyo",
+   "home_en": "Shimizu S-pulse",
+   "away_en": "FC Tokyo",
+   "league": "J1 League (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/283.png",
+   "away_logo": "https://media.api-sports.io/football/teams/292.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "score": "1-1",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "away",
-    "confidence": 55
+    "confidence": 57
    },
    "pred_v2": {
-    "pick": "away",
-    "confidence": 48
-   },
-   "radar": {
-    "score": 67,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د87)"
-    ],
-    "pick": "away",
-    "confidence": 48,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      17,
-      34,
-      87
-     ],
-     "danger": [
-      19,
-      25,
-      35,
-      67
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1567435",
-   "home": "Osaka",
-   "away": "Ventforet Kofu",
-   "home_en": "Osaka",
-   "away_en": "Ventforet Kofu",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/7138.png",
-   "away_logo": "https://media.api-sports.io/football/teams/308.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "3-0",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
     "pick": "home",
-    "confidence": 60
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 46
-   },
-   "radar": {
-    "score": 67,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 3-0 تُسقط التوقع (د87)"
-    ],
-    "pick": "away",
-    "confidence": 46,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      17,
-      61,
-      87
-     ],
-     "danger": [
-      19,
-      25,
-      51,
-      67
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0
-     ]
-    }
+    "confidence": 36
    }
   },
   {
@@ -378,9 +500,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/289.png",
    "league_logo": "https://media.api-sports.io/football/leagues/98.png",
    "score": "0-2",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:55:07.697725+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -409,7 +531,8 @@
       50,
       60,
       70,
-      80
+      80,
+      90
      ],
      "danger": [
       15,
@@ -417,9 +540,11 @@
       15,
       0,
       0,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -433,6 +558,7 @@
       3,
       5,
       5,
+      6,
       6
      ],
      "h_cor": [
@@ -440,6 +566,7 @@
       2,
       2,
       2,
+      3,
       3,
       3
      ],
@@ -449,6 +576,7 @@
       3,
       4,
       4,
+      5,
       5
      ]
     }
@@ -464,10 +592,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/285.png",
    "away_logo": "https://media.api-sports.io/football/teams/293.png",
    "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "2-0",
-   "minute": 86,
+   "score": "2-2",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -477,20 +605,19 @@
     "confidence": 43
    },
    "radar": {
-    "score": 49,
-    "level": "amber",
+    "score": 87,
+    "level": "red",
     "factors": [
-     "تقدم هش بفارق هدف واحد",
+     "النتيجة الحالية 2-2 تُسقط التوقع (د90)",
      "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف",
      "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 43,
     "drama": {
-     "signal": 85,
+     "signal": 45,
      "side": "home",
-     "ready": true
+     "ready": false
     },
     "alerted": "next_goal",
     "top": false,
@@ -498,32 +625,228 @@
      "min": [
       8,
       45,
-      80
+      80,
+      90
      ],
      "danger": [
       19,
       68,
-      49
+      49,
+      87
      ],
      "h_sog": [
       0,
       4,
-      8
+      8,
+      10
      ],
      "a_sog": [
       0,
       2,
-      3
+      3,
+      6
      ],
      "h_cor": [
       1,
       2,
+      5,
       5
      ],
      "a_cor": [
       0,
       2,
-      4
+      4,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1556050",
+   "home": "Yokohama F. Marinos",
+   "away": "Kyoto Sanga",
+   "home_en": "Yokohama F. Marinos",
+   "away_en": "Kyoto Sanga",
+   "league": "J1 League (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/296.png",
+   "away_logo": "https://media.api-sports.io/football/teams/302.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "score": "1-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 75,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 15,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      67,
+      90
+     ],
+     "danger": [
+      15,
+      75
+     ],
+     "h_sog": [
+      1,
+      2
+     ],
+     "a_sog": [
+      6,
+      6
+     ],
+     "h_cor": [
+      2,
+      3
+     ],
+     "a_cor": [
+      3,
+      3
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567426",
+   "home": "Ehime FC",
+   "away": "Blaublitz Akita",
+   "home_en": "Ehime FC",
+   "away_en": "Blaublitz Akita",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/318.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4315.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "1-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 37
+   }
+  },
+  {
+   "fid": "1567427",
+   "home": "Gainare Tottori",
+   "away": "Omiya Ardija",
+   "home_en": "Gainare Tottori",
+   "away_en": "Omiya Ardija",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4319.png",
+   "away_logo": "https://media.api-sports.io/football/teams/313.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "3-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 68,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 3-1 تُسقط التوقع (د89)"
+    ],
+    "pick": "away",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      6,
+      16,
+      32,
+      48,
+      59,
+      69,
+      79,
+      89
+     ],
+     "danger": [
+      18,
+      24,
+      34,
+      43,
+      50,
+      56,
+      62,
+      68
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
      ]
     }
    }
@@ -539,9 +862,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/299.png",
    "league_logo": "https://media.api-sports.io/football/leagues/101.png",
    "score": "0-0",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -551,10 +874,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د86)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 46,
@@ -570,13 +893,13 @@
       7,
       17,
       34,
-      86
+      90
      ],
      "danger": [
       19,
       25,
       35,
-      66
+      69
      ],
      "h_sog": [
       0,
@@ -597,6 +920,285 @@
       0
      ],
      "a_cor": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567429",
+   "home": "Kitakyushu",
+   "away": "Iwaki",
+   "home_en": "Kitakyushu",
+   "away_en": "Iwaki",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/805.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7127.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "1-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 43
+   },
+   "radar": {
+    "score": 67,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د87)"
+    ],
+    "pick": "away",
+    "confidence": 43,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      17,
+      34,
+      47,
+      57,
+      67,
+      77,
+      87
+     ],
+     "danger": [
+      19,
+      25,
+      35,
+      43,
+      49,
+      55,
+      61,
+      67
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567430",
+   "home": "Kagoshima United",
+   "away": "Consadole Sapporo",
+   "home_en": "Kagoshima United",
+   "away_en": "Consadole Sapporo",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/2236.png",
+   "away_logo": "https://media.api-sports.io/football/teams/279.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "0-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 48,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      17,
+      34,
+      90
+     ],
+     "danger": [
+      19,
+      25,
+      35,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567431",
+   "home": "Kanazawa",
+   "away": "Imabari",
+   "home_en": "Kanazawa",
+   "away_en": "Imabari",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/300.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10075.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "2-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 67,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
+    ],
+    "pick": "away",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      17,
+      33,
+      48,
+      58,
+      68,
+      78,
+      88
+     ],
+     "danger": [
+      19,
+      25,
+      34,
+      43,
+      49,
+      55,
+      61,
+      67
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -616,9 +1218,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/298.png",
    "league_logo": "https://media.api-sports.io/football/leagues/101.png",
    "score": "2-0",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:55:07.697725+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -626,6 +1228,107 @@
    "pred_v2": {
     "pick": "home",
     "confidence": 37
+   }
+  },
+  {
+   "fid": "1567433",
+   "home": "Thespakusatsu Gunma",
+   "away": "Albirex Niigata",
+   "home_en": "Thespakusatsu Gunma",
+   "away_en": "Albirex Niigata",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/756.png",
+   "away_logo": "https://media.api-sports.io/football/teams/311.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "1-2",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      17,
+      34,
+      48,
+      58,
+      68,
+      78,
+      88
+     ],
+     "danger": [
+      19,
+      25,
+      35,
+      43,
+      15,
+      15,
+      15,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
    }
   },
   {
@@ -639,9 +1342,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/295.png",
    "league_logo": "https://media.api-sports.io/football/leagues/101.png",
    "score": "1-2",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -673,7 +1376,8 @@
       49,
       59,
       69,
-      79
+      79,
+      89
      ],
      "danger": [
       19,
@@ -682,9 +1386,11 @@
       44,
       50,
       56,
+      15,
       15
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -700,9 +1406,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -715,6 +1423,84 @@
       0,
       0,
       0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567435",
+   "home": "Osaka",
+   "away": "Ventforet Kofu",
+   "home_en": "Osaka",
+   "away_en": "Ventforet Kofu",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/7138.png",
+   "away_logo": "https://media.api-sports.io/football/teams/308.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "3-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:55:07.697725+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 60
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 46
+   },
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 3-0 تُسقط التوقع (د90)"
+    ],
+    "pick": "away",
+    "confidence": 46,
+    "drama": {
+     "signal": 0,
+     "side": null,
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      17,
+      61,
+      90
+     ],
+     "danger": [
+      19,
+      25,
+      51,
+      69
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
       0,
       0,
       0,
@@ -734,9 +1520,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4317.png",
    "league_logo": "https://media.api-sports.io/football/leagues/101.png",
    "score": "0-2",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:55:07.697725+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -746,10 +1532,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 63,
-    "level": "amber",
+    "score": 69,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د80)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -768,7 +1554,8 @@
       50,
       60,
       70,
-      80
+      80,
+      90
      ],
      "danger": [
       19,
@@ -777,9 +1564,11 @@
       45,
       51,
       57,
-      63
+      63,
+      69
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -795,6 +1584,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -804,9 +1594,112 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1567437",
+   "home": "FC Ryukyu",
+   "away": "Yokohama FC",
+   "home_en": "FC Ryukyu",
+   "away_en": "Yokohama FC",
+   "league": "J-League Cup (Japan)",
+   "home_logo": "https://media.api-sports.io/football/teams/2235.png",
+   "away_logo": "https://media.api-sports.io/football/teams/307.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
+   "score": "2-3",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 57
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 53,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      17,
+      34,
+      47,
+      57,
+      67,
+      77,
+      87
+     ],
+     "danger": [
+      15,
+      15,
+      0,
+      15,
+      49,
+      55,
+      61,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0,
       0,
       0,
@@ -829,9 +1722,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4322.png",
    "league_logo": "https://media.api-sports.io/football/leagues/101.png",
    "score": "1-2",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:55:07.697725+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -839,835 +1732,6 @@
    "pred_v2": {
     "pick": "home",
     "confidence": 37
-   }
-  },
-  {
-   "fid": "1567426",
-   "home": "Ehime FC",
-   "away": "Blaublitz Akita",
-   "home_en": "Ehime FC",
-   "away_en": "Blaublitz Akita",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/318.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4315.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "1-0",
-   "minute": 85,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 37
-   }
-  },
-  {
-   "fid": "1567427",
-   "home": "Gainare Tottori",
-   "away": "Omiya Ardija",
-   "home_en": "Gainare Tottori",
-   "away_en": "Omiya Ardija",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/4319.png",
-   "away_logo": "https://media.api-sports.io/football/teams/313.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "3-1",
-   "minute": 85,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 62,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 3-1 تُسقط التوقع (د79)"
-    ],
-    "pick": "away",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      6,
-      16,
-      32,
-      48,
-      59,
-      69,
-      79
-     ],
-     "danger": [
-      18,
-      24,
-      34,
-      43,
-      50,
-      56,
-      62
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1556042",
-   "home": "Cerezo Osaka",
-   "away": "Kashiwa Reysol",
-   "home_en": "Cerezo Osaka",
-   "away_en": "Kashiwa Reysol",
-   "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/291.png",
-   "away_logo": "https://media.api-sports.io/football/teams/281.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "2-0",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 71,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 2-0 تُسقط التوقع (د84)",
-     "ضغط هجومي متصاعد من المضيف"
-    ],
-    "pick": "away",
-    "confidence": 40,
-    "drama": {
-     "signal": 20,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45,
-      48,
-      58,
-      68,
-      84
-     ],
-     "danger": [
-      42,
-      43,
-      49,
-      55,
-      71
-     ],
-     "h_sog": [
-      2,
-      2,
-      2,
-      2,
-      3
-     ],
-     "a_sog": [
-      1,
-      2,
-      3,
-      4,
-      4
-     ],
-     "h_cor": [
-      4,
-      5,
-      5,
-      5,
-      6
-     ],
-     "a_cor": [
-      2,
-      2,
-      3,
-      5,
-      8
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1567431",
-   "home": "Kanazawa",
-   "away": "Imabari",
-   "home_en": "Kanazawa",
-   "away_en": "Imabari",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/300.png",
-   "away_logo": "https://media.api-sports.io/football/teams/10075.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "1-1",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 61,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د78)"
-    ],
-    "pick": "away",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      17,
-      33,
-      48,
-      58,
-      68,
-      78
-     ],
-     "danger": [
-      19,
-      25,
-      34,
-      43,
-      49,
-      55,
-      61
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1567433",
-   "home": "Thespakusatsu Gunma",
-   "away": "Albirex Niigata",
-   "home_en": "Thespakusatsu Gunma",
-   "away_en": "Albirex Niigata",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/756.png",
-   "away_logo": "https://media.api-sports.io/football/teams/311.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "1-2",
-   "minute": 84,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      17,
-      34,
-      48,
-      58,
-      68,
-      78
-     ],
-     "danger": [
-      19,
-      25,
-      35,
-      43,
-      15,
-      15,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1556041",
-   "home": "Avispa Fukuoka",
-   "away": "Urawa",
-   "home_en": "Avispa Fukuoka",
-   "away_en": "Urawa",
-   "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/316.png",
-   "away_logo": "https://media.api-sports.io/football/teams/287.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "2-2",
-   "minute": 83,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 36
-   }
-  },
-  {
-   "fid": "1556045",
-   "home": "Mito Hollyhock",
-   "away": "Kashima",
-   "home_en": "Mito Hollyhock",
-   "away_en": "Kashima",
-   "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/305.png",
-   "away_logo": "https://media.api-sports.io/football/teams/290.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "4-1",
-   "minute": 83,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "radar": {
-    "score": 82,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 4-1 تُسقط التوقع (د83)",
-     "موجة تسديد على المرمى من المضيف",
-     "ضغط هجومي متصاعد من المضيف"
-    ],
-    "pick": "away",
-    "confidence": 56,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45,
-      46,
-      83
-     ],
-     "danger": [
-      42,
-      42,
-      82
-     ],
-     "h_sog": [
-      2,
-      2,
-      5
-     ],
-     "a_sog": [
-      1,
-      2,
-      3
-     ],
-     "h_cor": [
-      1,
-      1,
-      2
-     ],
-     "a_cor": [
-      2,
-      3,
-      4
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1556050",
-   "home": "Yokohama F. Marinos",
-   "away": "Kyoto Sanga",
-   "home_en": "Yokohama F. Marinos",
-   "away_en": "Kyoto Sanga",
-   "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/296.png",
-   "away_logo": "https://media.api-sports.io/football/teams/302.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "1-1",
-   "minute": 83,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 70,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د83)",
-     "ضغط هجومي متصاعد من المضيف"
-    ],
-    "pick": "away",
-    "confidence": 39,
-    "drama": {
-     "signal": 15,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      67,
-      83
-     ],
-     "danger": [
-      15,
-      70
-     ],
-     "h_sog": [
-      1,
-      2
-     ],
-     "a_sog": [
-      6,
-      6
-     ],
-     "h_cor": [
-      2,
-      2
-     ],
-     "a_cor": [
-      3,
-      3
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1567429",
-   "home": "Kitakyushu",
-   "away": "Iwaki",
-   "home_en": "Kitakyushu",
-   "away_en": "Iwaki",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/805.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7127.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "1-0",
-   "minute": 83,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 43
-   },
-   "radar": {
-    "score": 61,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د77)"
-    ],
-    "pick": "away",
-    "confidence": 43,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      17,
-      34,
-      47,
-      57,
-      67,
-      77
-     ],
-     "danger": [
-      19,
-      25,
-      35,
-      43,
-      49,
-      55,
-      61
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1567437",
-   "home": "FC Ryukyu",
-   "away": "Yokohama FC",
-   "home_en": "FC Ryukyu",
-   "away_en": "Yokohama FC",
-   "league": "J-League Cup (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/2235.png",
-   "away_logo": "https://media.api-sports.io/football/teams/307.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-   "score": "2-2",
-   "minute": 83,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 57
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 53
-   },
-   "radar": {
-    "score": 61,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 2-2 تُسقط التوقع (د77)"
-    ],
-    "pick": "away",
-    "confidence": 53,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      17,
-      34,
-      47,
-      57,
-      67,
-      77
-     ],
-     "danger": [
-      15,
-      15,
-      0,
-      15,
-      49,
-      55,
-      61
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1556043",
-   "home": "JEF United Chiba",
-   "away": "Fagiano Okayama",
-   "home_en": "JEF United Chiba",
-   "away_en": "Fagiano Okayama",
-   "league": "J1 League (Japan)",
-   "home_logo": "https://media.api-sports.io/football/teams/301.png",
-   "away_logo": "https://media.api-sports.io/football/teams/310.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "score": "1-1",
-   "minute": 81,
-   "status": "2H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 77,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د81)",
-     "موجة ركنيات لصالح الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 35,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45,
-      45,
-      55,
-      65,
-      81
-     ],
-     "danger": [
-      42,
-      42,
-      48,
-      54,
-      77
-     ],
-     "h_sog": [
-      1,
-      1,
-      1,
-      1,
-      1
-     ],
-     "a_sog": [
-      2,
-      2,
-      2,
-      2,
-      3
-     ],
-     "h_cor": [
-      2,
-      2,
-      3,
-      3,
-      3
-     ],
-     "a_cor": [
-      1,
-      2,
-      2,
-      2,
-      4
-     ]
-    }
    }
   },
   {
@@ -1681,9 +1745,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2526.png",
    "league_logo": "https://media.api-sports.io/football/leagues/500.png",
    "score": "0-0",
-   "minute": 17,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-09-02T11:46:46.351378+00:00",
+   "seen": "2026-09-02T11:56:41.341312+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -1693,10 +1757,10 @@
     "confidence": 43
    },
    "radar": {
-    "score": 21,
+    "score": 27,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
     ],
     "pick": "away",
     "confidence": 43,
@@ -1709,21 +1773,27 @@
     "top": false,
     "trend": {
      "min": [
-      10
+      10,
+      20
      ],
      "danger": [
-      21
+      21,
+      27
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
