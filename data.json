@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T02:26:33.803855+00:00",
+ "updated": "2026-09-02T02:36:49.794486+00:00",
  "live": [
   {
    "fid": "1549758",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1136.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "1-1",
-   "minute": 69,
+   "minute": 78,
    "status": "2H",
-   "seen": "2026-09-02T02:26:32.165654+00:00",
+   "seen": "2026-09-02T02:36:48.129085+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -27,7 +27,7 @@
     "score": 100,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د69)",
+     "النتيجة الحالية 1-1 تُسقط التوقع (د78)",
      "موجة تسديد على المرمى من الضيف",
      "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
@@ -39,13 +39,13 @@
      "side": "away",
      "ready": true
     },
-    "alerted": null,
+    "alerted": "next_goal",
     "top": false,
     "trend": {
      "min": [
       40,
       33,
-      69
+      78
      ],
      "danger": [
       15,
@@ -847,6 +847,34 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-02",
+   "home": "إل دي يو كيتو",
+   "away": "موشوك رونا",
+   "home_en": "LDU de Quito",
+   "away_en": "Mushuc Runa SC",
+   "league": "الدوري الإكوادوري",
+   "home_logo": "https://media.api-sports.io/football/teams/1158.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1162.png",
+   "pick": "home",
+   "confidence": 58,
+   "kickoff": "2026-09-02T00:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-02",
+   "home": "أتليتيكو مينيرو",
+   "away": "كروزيرو",
+   "home_en": "Atletico-MG",
+   "away_en": "Cruzeiro",
+   "league": "كأس البرازيل",
+   "home_logo": "https://media.api-sports.io/football/teams/1062.png",
+   "away_logo": "https://media.api-sports.io/football/teams/135.png",
+   "pick": "home",
+   "confidence": 61,
+   "kickoff": "2026-09-02T00:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-01",
    "home": "إنتر ميامي الثاني",
@@ -4679,6 +4707,20 @@
     "side": "home",
     "signal": null,
     "score_at": "0-1",
+    "top": false
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-09-02",
+    "home": "Fortaleza FC",
+    "away": "Once Caldas",
+    "league": "Primera A (Colombia)",
+    "minute": 76,
+    "claim": "next_goal",
+    "side": "away",
+    "signal": 95,
+    "score_at": "1-1",
     "top": false
    },
    {
