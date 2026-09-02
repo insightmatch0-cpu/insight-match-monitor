@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2495,
+  "remaining": 2494,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 4
+  "radar_targets": 5
  },
  "api_quota": {
-  "remaining": 5679,
+  "remaining": 5649,
   "limit": 7500,
-  "at": "2026-09-02T12:36:42.969574+00:00"
+  "at": "2026-09-02T12:46:41.949611+00:00"
  },
  "delivery": {
   "at": "2026-09-02T10:30:30.857470+00:00",
@@ -76,15 +76,15 @@
  },
  "1567428": {
   "score": "0-0",
-  "status": "ET",
-  "minute": 123,
+  "status": "P",
+  "minute": 0,
   "home": "FC Gifu",
   "away": "Tokushima Vortis",
   "league": "J-League Cup (Japan)",
   "home_logo": "https://media.api-sports.io/football/teams/297.png",
   "away_logo": "https://media.api-sports.io/football/teams/299.png",
   "league_logo": "https://media.api-sports.io/football/leagues/101.png",
-  "seen": "2026-09-02T12:36:42.094172+00:00",
+  "seen": "2026-09-02T12:46:40.302803+00:00",
   "radar": {
    "snaps": [
     {
@@ -109,23 +109,23 @@
      "a": {}
     },
     {
-     "minute": 123,
+     "minute": 0,
      "gh": 0,
      "ga": 0,
      "h": {},
      "a": {}
     }
    ],
-   "score": 70,
-   "level": "red",
+   "score": 15,
+   "level": "green",
    "dscores": [
     19,
     25,
     35,
-    70
+    15
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د123)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د0)"
    ],
    "pick": "away",
    "confidence": 46,
@@ -142,16 +142,16 @@
   }
  },
  "1635848": {
-  "score": "1-1",
-  "status": "HT",
-  "minute": 45,
+  "score": "1-2",
+  "status": "2H",
+  "minute": 53,
   "home": "Sabah FA",
   "away": "Selangor",
   "league": "FA Cup (Malaysia)",
   "home_logo": "https://media.api-sports.io/football/teams/2505.png",
   "away_logo": "https://media.api-sports.io/football/teams/2526.png",
   "league_logo": "https://media.api-sports.io/football/leagues/500.png",
-  "seen": "2026-09-02T12:36:42.094172+00:00",
+  "seen": "2026-09-02T12:46:40.302803+00:00",
   "radar": {
    "snaps": [
     {
@@ -169,22 +169,22 @@
      "a": {}
     },
     {
-     "minute": 45,
+     "minute": 53,
      "gh": 1,
-     "ga": 1,
+     "ga": 2,
      "h": {},
      "a": {}
     }
    ],
-   "score": 42,
-   "level": "amber",
+   "score": 15,
+   "level": "green",
    "dscores": [
     21,
     27,
-    42
+    15
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "تقدم هش بفارق هدف واحد"
    ],
    "pick": "away",
    "confidence": 43,
@@ -203,31 +203,31 @@
  "1600224": {
   "score": "0-0",
   "status": "1H",
-  "minute": 36,
+  "minute": 45,
   "home": "Yunnan Yukun",
   "away": "Chongqing Tongliang Long",
   "league": "FA Cup (China)",
   "home_logo": "https://media.api-sports.io/football/teams/21265.png",
   "away_logo": "https://media.api-sports.io/football/teams/21262.png",
   "league_logo": "https://media.api-sports.io/football/leagues/171.png",
-  "seen": "2026-09-02T12:36:42.094172+00:00",
+  "seen": "2026-09-02T12:46:40.302803+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 36,
+     "minute": 45,
      "gh": 0,
      "ga": 0,
      "h": {},
      "a": {}
     }
    ],
-   "score": 36,
-   "level": "green",
+   "score": 42,
+   "level": "amber",
    "dscores": [
-    36
+    42
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "pick": "home",
    "confidence": 55,
@@ -246,18 +246,18 @@
  "1635849": {
   "score": "0-1",
   "status": "1H",
-  "minute": 36,
+  "minute": 45,
   "home": "Melaka",
   "away": "Penang",
   "league": "FA Cup (Malaysia)",
   "home_logo": "https://media.api-sports.io/football/teams/21038.png",
   "away_logo": "https://media.api-sports.io/football/teams/2504.png",
   "league_logo": "https://media.api-sports.io/football/leagues/500.png",
-  "seen": "2026-09-02T12:36:42.094172+00:00",
+  "seen": "2026-09-02T12:46:40.302803+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 36,
+     "minute": 45,
      "gh": 0,
      "ga": 1,
      "h": {},
@@ -274,6 +274,49 @@
    ],
    "pick": "away",
    "confidence": 48,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1612614": {
+  "score": "0-1",
+  "status": "1H",
+  "minute": 16,
+  "home": "Luzino",
+  "away": "Wisla Plock",
+  "league": "Cup (Poland)",
+  "home_logo": "https://media.api-sports.io/football/teams/19693.png",
+  "away_logo": "https://media.api-sports.io/football/teams/341.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/108.png",
+  "seen": "2026-09-02T12:46:40.302803+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 16,
+     "gh": 0,
+     "ga": 1,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 15,
+   "level": "green",
+   "dscores": [
+    15
+   ],
+   "factors": [
+    "تقدم هش بفارق هدف واحد"
+   ],
+   "pick": "away",
+   "confidence": 65,
    "top": false,
    "mine": false,
    "drama": {
