@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T04:20:29.760687+00:00",
+ "updated": "2026-09-02T04:41:41.719207+00:00",
  "live": [],
  "upcoming": [
   {
@@ -5463,17 +5463,17 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1136,
-   "hit": 1019
+   "fired": 1141,
+   "hit": 1024
   },
   "amber": {
-   "fired": 854,
-   "hit": 373
+   "fired": 859,
+   "hit": 376
   },
   "alerts": {
    "flip": {
-    "fired": 5,
-    "hit": 1
+    "fired": 6,
+    "hit": 2
    },
    "equalizer": {
     "fired": 42,
@@ -5484,39 +5484,39 @@
     "hit": 0
    },
    "next_goal": {
-    "fired": 55,
-    "hit": 18
+    "fired": 56,
+    "hit": 19
    },
    "red_advantage": {
-    "fired": 38,
-    "hit": 16
+    "fired": 40,
+    "hit": 18
    }
   },
   "season": {
    "red": {
-    "fired": 812,
-    "hit": 729
+    "fired": 817,
+    "hit": 734
    },
    "amber": {
-    "fired": 635,
-    "hit": 292
+    "fired": 640,
+    "hit": 295
    },
    "alerts": {
     "flip": {
-     "fired": 2,
-     "hit": 0
+     "fired": 3,
+     "hit": 1
     },
     "equalizer": {
      "fired": 34,
      "hit": 10
     },
     "next_goal": {
-     "fired": 36,
-     "hit": 12
+     "fired": 37,
+     "hit": 13
     },
     "red_advantage": {
-     "fired": 36,
-     "hit": 15
+     "fired": 38,
+     "hit": 17
     }
    },
    "start": "2026-08-13"
@@ -5890,9 +5890,27 @@
    "2026-09-01": {
     "hit": 103,
     "total": 141
+   },
+   "2026-09-02": {
+    "hit": 8,
+    "total": 10
    }
   },
   "recent": [
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Atletico Torque",
+    "away": "Danubio",
+    "league": "Copa Uruguay (Uruguay)",
+    "level": "amber",
+    "minute": 75,
+    "pick": "away",
+    "conf": 36,
+    "final": "2-0",
+    "hit": true,
+    "top": false
+   },
    {
     "kind": "alert",
     "date": "2026-09-01",
@@ -5921,19 +5939,6 @@
     "score_at": "2-2",
     "final": "3-2",
     "hit": false,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Atletico Torque",
-    "away": "Danubio",
-    "league": "Copa Uruguay (Uruguay)",
-    "level": "amber",
-    "minute": 75,
-    "pick": "away",
-    "conf": 36,
     "top": false
    },
    {
@@ -6498,6 +6503,34 @@
     "top": false
    },
    {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Supra du Quebec",
+    "away": "Forge",
+    "league": "Canadian Championship (Canada)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 70,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-01",
+    "home": "Universitario de Vinto",
+    "away": "Aurora",
+    "league": "Copa de la División Profesional (Bolivia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 48,
+    "final": "1-1",
+    "hit": true,
+    "top": false
+   },
+   {
     "kind": "alert",
     "date": "2026-09-01",
     "home": "Deportes Tolima",
@@ -6510,32 +6543,6 @@
     "score_at": "2-1",
     "final": "2-1",
     "hit": false,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Supra du Quebec",
-    "away": "Forge",
-    "league": "Canadian Championship (Canada)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 70,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-01",
-    "home": "Universitario de Vinto",
-    "away": "Aurora",
-    "league": "Copa de la División Profesional (Bolivia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 48,
     "top": false
    },
    {
@@ -6568,7 +6575,6 @@
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Fortaleza FC",
     "away": "Once Caldas",
@@ -6578,11 +6584,12 @@
     "side": "away",
     "signal": null,
     "score_at": "1-1",
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Atletico-MG",
     "away": "Cruzeiro",
@@ -6592,11 +6599,12 @@
     "side": "home",
     "signal": null,
     "score_at": "0-1",
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Fortaleza FC",
     "away": "Once Caldas",
@@ -6606,11 +6614,12 @@
     "side": "away",
     "signal": 95,
     "score_at": "1-1",
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Atletico-MG",
     "away": "Cruzeiro",
@@ -6620,11 +6629,12 @@
     "side": "home",
     "signal": 95,
     "score_at": "0-1",
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Atletico-MG",
     "away": "Cruzeiro",
@@ -6633,11 +6643,12 @@
     "minute": 81,
     "pick": "away",
     "conf": 36,
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "LDU de Quito",
     "away": "Mushuc Runa SC",
@@ -6646,6 +6657,8 @@
     "minute": 89,
     "pick": "home",
     "conf": 66,
+    "final": "0-0",
+    "hit": true,
     "top": false
    }
   ]

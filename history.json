@@ -935,19 +935,19 @@
   "2026-08-30": {
    "v1": {
     "correct": 273,
-    "total": 748
+    "total": 749
    },
    "v2": {
-    "correct": 331,
-    "total": 748,
+    "correct": 334,
+    "total": 754,
     "buckets": {
      "<50": {
-      "correct": 255,
-      "total": 600
+      "correct": 258,
+      "total": 605
      },
      "50-59": {
       "correct": 48,
-      "total": 105
+      "total": 106
      },
      "60-69": {
       "correct": 20,
@@ -963,15 +963,15 @@
   "2026-08-31": {
    "v1": {
     "correct": 81,
-    "total": 223
+    "total": 226
    },
    "v2": {
-    "correct": 113,
-    "total": 223,
+    "correct": 114,
+    "total": 226,
     "buckets": {
      "<50": {
-      "correct": 86,
-      "total": 181
+      "correct": 87,
+      "total": 184
      },
      "60-69": {
       "correct": 8,
@@ -990,19 +990,47 @@
   },
   "2026-09-01": {
    "v1": {
-    "correct": 4,
-    "total": 9
+    "correct": 67,
+    "total": 149
    },
    "v2": {
-    "correct": 6,
-    "total": 9,
+    "correct": 62,
+    "total": 149,
     "buckets": {
      "<50": {
-      "correct": 5,
-      "total": 7
+      "correct": 42,
+      "total": 106
      },
      "50-59": {
+      "correct": 12,
+      "total": 32
+     },
+     "60-69": {
+      "correct": 7,
+      "total": 9
+     },
+     "70+": {
       "correct": 1,
+      "total": 2
+     }
+    }
+   }
+  },
+  "2026-09-02": {
+   "v1": {
+    "correct": 1,
+    "total": 3
+   },
+   "v2": {
+    "correct": 0,
+    "total": 3,
+    "buckets": {
+     "60-69": {
+      "correct": 0,
+      "total": 1
+     },
+     "<50": {
+      "correct": 0,
       "total": 2
      }
     }
@@ -1010,19 +1038,19 @@
   }
  },
  "meta": {
-  "updated": "2026-09-01T04:19:21.059138+00:00",
+  "updated": "2026-09-02T04:41:39.005800+00:00",
   "lessons_stored": 100
  },
  "integrity": {
   "resolved_counts": {
-   "v2": 4659,
-   "v1": 4759,
+   "v2": 4811,
+   "v1": 4906,
    "user": 3,
-   "history_days": 48,
-   "radar_resolved": 1930,
-   "radar_alerts_resolved": 141,
-   "scen_resolved": 234
+   "history_days": 49,
+   "radar_resolved": 2002,
+   "radar_alerts_resolved": 145,
+   "scen_resolved": 238
   },
-  "checked_on": "2026-09-01"
+  "checked_on": "2026-09-02"
  }
 }
