@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2499,
+  "remaining": 2498,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 4
+  "radar_targets": 3
  },
  "api_quota": {
-  "remaining": 7018,
+  "remaining": 6986,
   "limit": 7500,
-  "at": "2026-09-02T01:39:42.571031+00:00"
+  "at": "2026-09-02T01:46:31.402391+00:00"
  },
  "delivery": {
   "at": "2026-09-01T20:43:58.402297+00:00",
@@ -74,58 +74,17 @@
   "days": 2,
   "last": "2026-08-31"
  },
- "1513141": {
-  "score": "4-2",
-  "status": "2H",
-  "minute": 90,
-  "home": "Inter Miami II",
-  "away": "New York City II",
-  "league": "MLS Next Pro (USA)",
-  "home_logo": "https://media.api-sports.io/football/teams/10280.png",
-  "away_logo": "https://media.api-sports.io/football/teams/18815.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-  "seen": "2026-09-02T01:33:29.912304+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 90,
-     "gh": 4,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 0,
-   "level": "green",
-   "dscores": [
-    0
-   ],
-   "factors": [],
-   "pick": "home",
-   "confidence": 44,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "away",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
  "1519475": {
   "score": "0-0",
   "status": "2H",
-  "minute": 78,
+  "minute": 85,
   "home": "LDU de Quito",
   "away": "Mushuc Runa SC",
   "league": "Liga Pro (Ecuador)",
   "home_logo": "https://media.api-sports.io/football/teams/1158.png",
   "away_logo": "https://media.api-sports.io/football/teams/1162.png",
   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-  "seen": "2026-09-02T01:39:41.542023+00:00",
+  "seen": "2026-09-02T01:46:31.009573+00:00",
   "radar": {
    "snaps": [
     {
@@ -136,27 +95,46 @@
      "a": {}
     },
     {
-     "minute": 72,
+     "minute": 85,
      "gh": 0,
      "ga": 0,
-     "h": {},
-     "a": {}
+     "h": {
+      "sv": 1,
+      "shots": 6,
+      "yc": 3,
+      "cor": 3,
+      "sog": 0,
+      "rc": 0,
+      "poss": 59
+     },
+     "a": {
+      "sv": 0,
+      "shots": 7,
+      "yc": 2,
+      "cor": 7,
+      "sog": 1,
+      "rc": 0,
+      "poss": 41
+     }
     }
    ],
-   "score": 61,
-   "level": "amber",
+   "score": 80,
+   "level": "red",
    "dscores": [
-    61
+    61,
+    80
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د78)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د85)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 66,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 35,
     "side": "home",
     "ready": false
    },
@@ -168,14 +146,14 @@
  "1623073": {
   "score": "0-1",
   "status": "2H",
-  "minute": 70,
+  "minute": 77,
   "home": "Atletico-MG",
   "away": "Cruzeiro",
   "league": "Copa Do Brasil (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/1062.png",
   "away_logo": "https://media.api-sports.io/football/teams/135.png",
   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
-  "seen": "2026-09-02T01:39:41.542023+00:00",
+  "seen": "2026-09-02T01:46:31.009573+00:00",
   "radar": {
    "snaps": [
     {
@@ -191,42 +169,69 @@
      "ga": 1,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 77,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "sv": 3,
+      "shots": 18,
+      "yc": 1,
+      "cor": 6,
+      "rc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 4,
+      "sv": 3,
+      "shots": 12,
+      "yc": 3,
+      "cor": 2,
+      "rc": 1,
+      "poss": 42
+     }
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 59,
+   "level": "amber",
    "dscores": [
     15,
-    15
+    15,
+    59
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "pick": "away",
    "confidence": 36,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 95,
     "side": "home",
-    "ready": false
+    "ready": true
    },
-   "alerted": null,
-   "red_alerted": null,
+   "alerted": "flip",
+   "red_alerted": true,
    "warn_alerted": null
   }
  },
  "1549758": {
-  "score": "1-0",
+  "score": "1-1",
   "status": "1H",
-  "minute": 40,
+  "minute": 45,
   "home": "Fortaleza FC",
   "away": "Once Caldas",
   "league": "Primera A (Colombia)",
   "home_logo": "https://media.api-sports.io/football/teams/1147.png",
   "away_logo": "https://media.api-sports.io/football/teams/1136.png",
   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-  "seen": "2026-09-02T01:39:41.542023+00:00",
+  "seen": "2026-09-02T01:46:31.009573+00:00",
   "radar": {
    "snaps": [
     {
@@ -242,24 +247,52 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "sv": 3,
+      "shots": 4,
+      "cor": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 45
+     },
+     "a": {
+      "sog": 4,
+      "sv": 0,
+      "shots": 9,
+      "cor": 3,
+      "yc": 0,
+      "rc": 0,
+      "poss": 55
+     }
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 76,
+   "level": "red",
    "dscores": [
-    15
+    15,
+    15,
+    76
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 36,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 85,
     "side": "away",
-    "ready": false
+    "ready": true
    },
    "alerted": null,
    "red_alerted": null,

@@ -1,63 +1,6 @@
 {
- "updated": "2026-09-02T01:39:44.070437+00:00",
+ "updated": "2026-09-02T01:46:32.729011+00:00",
  "live": [
-  {
-   "fid": "1513141",
-   "home": "Inter Miami II",
-   "away": "New York City II",
-   "home_en": "Inter Miami II",
-   "away_en": "New York City II",
-   "league": "MLS Next Pro (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/10280.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18815.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "4-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-02T01:33:29.912304+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 44
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "home",
-    "confidence": 44,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      0
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
   {
    "fid": "1519475",
    "home": "LDU de Quito",
@@ -69,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1162.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "0-0",
-   "minute": 78,
+   "minute": 85,
    "status": "2H",
-   "seen": "2026-09-02T01:39:41.542023+00:00",
+   "seen": "2026-09-02T01:46:31.009573+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -81,15 +24,17 @@
     "confidence": 66
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 80,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د78)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د85)",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 66,
     "drama": {
-     "signal": 0,
+     "signal": 35,
      "side": "home",
      "ready": false
     },
@@ -97,10 +42,12 @@
     "top": false,
     "trend": {
      "min": [
-      78
+      78,
+      85
      ],
      "danger": [
-      61
+      61,
+      80
      ],
      "h_sog": [
       0,
@@ -108,15 +55,15 @@
      ],
      "a_sog": [
       0,
-      0
+      1
      ],
      "h_cor": [
       0,
-      0
+      3
      ],
      "a_cor": [
       0,
-      0
+      7
      ]
     }
    }
@@ -132,9 +79,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/135.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-1",
-   "minute": 70,
+   "minute": 77,
    "status": "2H",
-   "seen": "2026-09-02T01:39:41.542023+00:00",
+   "seen": "2026-09-02T01:46:31.009573+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -144,43 +91,53 @@
     "confidence": 36
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 59,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "تقدم هش بفارق هدف واحد",
+     "موجة تسديد على المرمى من المضيف",
+     "موجة ركنيات لصالح المضيف",
+     "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "away",
     "confidence": 36,
     "drama": {
-     "signal": 0,
+     "signal": 95,
      "side": "home",
-     "ready": false
+     "ready": true
     },
-    "alerted": null,
+    "alerted": "flip",
     "top": false,
     "trend": {
      "min": [
-      70
+      70,
+      63,
+      77
      ],
      "danger": [
       15,
-      15
+      15,
+      59
      ],
      "h_sog": [
       0,
-      0
+      0,
+      4
      ],
      "a_sog": [
       0,
-      0
+      0,
+      4
      ],
      "h_cor": [
       0,
-      0
+      0,
+      6
      ],
      "a_cor": [
       0,
-      0
+      0,
+      2
      ]
     }
    }
@@ -195,10 +152,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1147.png",
    "away_logo": "https://media.api-sports.io/football/teams/1136.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "score": "1-0",
-   "minute": 40,
+   "score": "1-1",
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-02T01:39:41.542023+00:00",
+   "seen": "2026-09-02T01:46:31.009573+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -208,42 +165,53 @@
     "confidence": 36
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 76,
+    "level": "red",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
+     "موجة تسديد على المرمى من الضيف",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 36,
     "drama": {
-     "signal": 0,
+     "signal": 85,
      "side": "away",
-     "ready": false
+     "ready": true
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      40
+      40,
+      33,
+      45
      ],
      "danger": [
-      15
+      15,
+      15,
+      76
      ],
      "h_sog": [
       0,
-      0
+      0,
+      1
      ],
      "a_sog": [
       0,
-      0
+      0,
+      4
      ],
      "h_cor": [
+      0,
       0,
       0
      ],
      "a_cor": [
       0,
-      0
+      0,
+      3
      ]
     }
    }
@@ -1052,6 +1020,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-01",
+   "home": "أتليتيكو توركي",
+   "away": "دانوبيو",
+   "home_en": "Atletico Torque",
+   "away_en": "Danubio",
+   "league": "كأس أوروغواي",
+   "home_logo": "https://media.api-sports.io/football/teams/2365.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2352.png",
+   "pick": "draw",
+   "confidence": 51,
+   "kickoff": "2026-09-01T23:15:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-01",
    "home": "أونيفرسيتاريو دي فينتو",
@@ -4828,6 +4810,34 @@
     "conf": 57,
     "final": "2-2",
     "hit": true,
+    "top": false
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-09-02",
+    "home": "Atletico-MG",
+    "away": "Cruzeiro",
+    "league": "Copa Do Brasil (Brazil)",
+    "minute": 74,
+    "claim": "red_advantage",
+    "side": "home",
+    "signal": null,
+    "score_at": "0-1",
+    "top": false
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-09-02",
+    "home": "Atletico-MG",
+    "away": "Cruzeiro",
+    "league": "Copa Do Brasil (Brazil)",
+    "minute": 77,
+    "claim": "flip",
+    "side": "home",
+    "signal": 95,
+    "score_at": "0-1",
     "top": false
    }
   ]
