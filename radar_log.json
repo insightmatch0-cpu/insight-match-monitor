@@ -1022,11 +1022,13 @@
    "mine": false,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "level": "red",
+   "score": 78,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د63)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د76)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1067,6 +1069,27 @@
    "mine": false,
    "pick": "away",
    "confidence": 52,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1631577",
+   "date": "2026-09-02",
+   "home": "Sanat Naft",
+   "away": "Sepahan FC",
+   "league": "Persian Gulf Pro League (Iran)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 50,
    "level": "amber",
    "score": 42,
    "minute": 45,
@@ -45454,6 +45477,89 @@
       "cor": 3,
       "rc": 0,
       "poss": 52
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1561916",
+   "date": "2026-09-02",
+   "minute": 80,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Austria Vienna",
+   "away": "WSG Wattens",
+   "league": "Bundesliga (Austria)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "cor": 1,
+      "shots": 0,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 58
+     },
+     "a": {
+      "cor": 0,
+      "shots": 1,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 31,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "cor": 1,
+      "shots": 0,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 51
+     },
+     "a": {
+      "cor": 1,
+      "shots": 3,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 49
+     }
+    },
+    {
+     "minute": 80,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "sv": 1,
+      "shots": 5,
+      "yc": 1,
+      "cor": 6,
+      "rc": 0,
+      "poss": 45
+     },
+     "a": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 9,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 55
      }
     }
    ]
