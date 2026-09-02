@@ -1409,10 +1409,10 @@
    "pick": "home",
    "confidence": 62,
    "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 0-3 تُسقط التوقع (د71)"
+    "النتيجة الحالية 0-3 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1451,10 +1451,10 @@
    "pick": "home",
    "confidence": 64,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1493,10 +1493,10 @@
    "pick": "away",
    "confidence": 48,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د70)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1513,16 +1513,22 @@
    "mine": true,
    "pick": "away",
    "confidence": 44,
-   "level": "amber",
-   "score": 55,
-   "minute": 68,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د68)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 55,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 84,
+   "score_xg": 61,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1564274",
@@ -1556,10 +1562,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "red",
-   "score": 65,
-   "minute": 67,
+   "score": 71,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د67)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د77)",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
@@ -1578,10 +1584,74 @@
    "pick": "home",
    "confidence": 42,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د55)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635907",
+   "date": "2026-09-02",
+   "home": "Atletico el Vigia FC",
+   "away": "Club Atletico Barinas",
+   "league": "Segunda División (Venezuela)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 48,
+   "minute": 56,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د56)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1628958",
+   "date": "2026-09-02",
+   "home": "Team Altamura",
+   "away": "Sambenedettese",
+   "league": "Coppa Italia Serie C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 36,
+   "level": "amber",
+   "score": 62,
+   "minute": 79,
+   "factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د79)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1631991",
+   "date": "2026-09-02",
+   "home": "Sportivo Ameliano",
+   "away": "Sportivo Trinidense",
+   "league": "Division Profesional - Clausura (Paraguay)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 36,
+   "level": "red",
+   "score": 74,
+   "minute": 82,
+   "factors": [
+    "النتيجة الحالية 0-3 تُسقط التوقع (د82)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
    "alert_minute": null,
