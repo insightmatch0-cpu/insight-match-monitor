@@ -1215,10 +1215,10 @@
    "pick": "away",
    "confidence": 64,
    "level": "red",
-   "score": 65,
-   "minute": 84,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د84)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1298,11 +1298,13 @@
    "mine": false,
    "pick": "home",
    "confidence": 57,
-   "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "level": "red",
+   "score": 76,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د62)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د72)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1320,10 +1322,10 @@
    "pick": "home",
    "confidence": 46,
    "level": "amber",
-   "score": 43,
-   "minute": 47,
+   "score": 49,
+   "minute": 57,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د57)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1341,14 +1343,14 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 42,
+   "score_xg": 53,
    "level_xg": "amber"
   },
   {
@@ -1429,6 +1431,69 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635493",
+   "date": "2026-09-02",
+   "home": "PAOK",
+   "away": "OFI",
+   "league": "Cup (Greece)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 64,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1555378",
+   "date": "2026-09-02",
+   "home": "Grasshoppers",
+   "away": "FC ST. Gallen",
+   "league": "Super League (Switzerland)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 49,
+   "level": "amber",
+   "score": 60,
+   "minute": 75,
+   "factors": [
+    "النتيجة الحالية 2-0 تُسقط التوقع (د75)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1631992",
+   "date": "2026-09-02",
+   "home": "Nacional Asuncion",
+   "away": "Libertad Asuncion",
+   "league": "Division Profesional - Clausura (Paraguay)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 48,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -45894,6 +45959,93 @@
       "cor": 2,
       "rc": 0,
       "poss": 55
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1555379",
+   "date": "2026-09-02",
+   "minute": 76,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "FC Luzern",
+   "away": "FC Vaduz",
+   "league": "Super League (Switzerland)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "yc": 1,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "poss": 52
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "yc": 0,
+      "cor": 2,
+      "sv": 1,
+      "rc": 0,
+      "poss": 48
+     }
+    },
+    {
+     "minute": 31,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 5,
+      "yc": 1,
+      "cor": 1,
+      "rc": 0,
+      "poss": 48
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 3,
+      "yc": 0,
+      "cor": 3,
+      "rc": 0,
+      "poss": 52
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 15,
+      "yc": 3,
+      "cor": 3,
+      "rc": 0,
+      "poss": 43
+     },
+     "a": {
+      "sog": 3,
+      "sv": 3,
+      "shots": 6,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 57
      }
     }
    ]
