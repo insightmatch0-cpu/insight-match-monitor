@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T01:46:32.729011+00:00",
+ "updated": "2026-09-02T01:56:32.452146+00:00",
  "live": [
   {
    "fid": "1519475",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1162.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "0-0",
-   "minute": 85,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T01:46:31.009573+00:00",
+   "seen": "2026-09-02T01:56:30.810146+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -24,10 +24,10 @@
     "confidence": 66
    },
    "radar": {
-    "score": 80,
+    "score": 83,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د85)",
+     "النتيجة الحالية 0-0 تُسقط التوقع (د90)",
      "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
@@ -43,11 +43,11 @@
     "trend": {
      "min": [
       78,
-      85
+      90
      ],
      "danger": [
       61,
-      80
+      83
      ],
      "h_sog": [
       0,
@@ -78,10 +78,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1062.png",
    "away_logo": "https://media.api-sports.io/football/teams/135.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
-   "score": "0-1",
-   "minute": 77,
+   "score": "1-1",
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-09-02T01:46:31.009573+00:00",
+   "seen": "2026-09-02T01:56:30.810146+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -91,10 +91,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 59,
-    "level": "amber",
+    "score": 100,
+    "level": "red",
     "factors": [
-     "تقدم هش بفارق هدف واحد",
+     "النتيجة الحالية 1-1 تُسقط التوقع (د87)",
      "موجة تسديد على المرمى من المضيف",
      "موجة ركنيات لصالح المضيف",
      "ضغط هجومي متصاعد من المضيف"
@@ -112,12 +112,12 @@
      "min": [
       70,
       63,
-      77
+      87
      ],
      "danger": [
       15,
       15,
-      59
+      100
      ],
      "h_sog": [
       0,
@@ -154,8 +154,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-02T01:46:31.009573+00:00",
+   "status": "HT",
+   "seen": "2026-09-02T01:56:30.810146+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -4838,6 +4838,32 @@
     "side": "home",
     "signal": 95,
     "score_at": "0-1",
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-02",
+    "home": "Atletico-MG",
+    "away": "Cruzeiro",
+    "league": "Copa Do Brasil (Brazil)",
+    "level": "red",
+    "minute": 81,
+    "pick": "away",
+    "conf": 36,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-02",
+    "home": "LDU de Quito",
+    "away": "Mushuc Runa SC",
+    "league": "Liga Pro (Ecuador)",
+    "level": "red",
+    "minute": 89,
+    "pick": "home",
+    "conf": 66,
     "top": false
    }
   ]
