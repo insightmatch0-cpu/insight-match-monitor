@@ -1,6 +1,61 @@
 {
- "updated": "2026-09-02T23:26:39.929641+00:00",
+ "updated": "2026-09-02T23:26:54.047033+00:00",
  "live": [
+  {
+   "fid": "1631993",
+   "home": "Olimpia",
+   "away": "Club Guarani",
+   "home_en": "Olimpia",
+   "away_en": "Club Guarani",
+   "league": "Division Profesional - Clausura (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/1182.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1174.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/252.png",
+   "score": "1-1",
+   "minute": 89,
+   "status": "2H",
+   "seen": "2026-09-02T23:16:46.391327+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 68,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د89)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      89
+     ],
+     "danger": [
+      68
+     ],
+     "h_sog": [
+      4
+     ],
+     "a_sog": [
+      3
+     ],
+     "h_cor": [
+      6
+     ],
+     "a_cor": [
+      1
+     ]
+    }
+   }
+  },
   {
    "fid": "1519474",
    "home": "Deportivo Cuenca",
@@ -5664,12 +5719,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1141,
-   "hit": 1024
+   "fired": 1175,
+   "hit": 1054
   },
   "amber": {
-   "fired": 859,
-   "hit": 376
+   "fired": 904,
+   "hit": 399
   },
   "alerts": {
    "flip": {
@@ -5677,7 +5732,7 @@
     "hit": 2
    },
    "equalizer": {
-    "fired": 42,
+    "fired": 43,
     "hit": 11
    },
    "goal": {
@@ -5685,22 +5740,22 @@
     "hit": 0
    },
    "next_goal": {
-    "fired": 56,
-    "hit": 19
+    "fired": 59,
+    "hit": 21
    },
    "red_advantage": {
-    "fired": 40,
-    "hit": 18
+    "fired": 41,
+    "hit": 19
    }
   },
   "season": {
    "red": {
-    "fired": 817,
-    "hit": 734
+    "fired": 851,
+    "hit": 764
    },
    "amber": {
-    "fired": 640,
-    "hit": 295
+    "fired": 685,
+    "hit": 318
    },
    "alerts": {
     "flip": {
@@ -5708,24 +5763,24 @@
      "hit": 1
     },
     "equalizer": {
-     "fired": 34,
+     "fired": 35,
      "hit": 10
     },
     "next_goal": {
-     "fired": 37,
-     "hit": 13
+     "fired": 40,
+     "hit": 15
     },
     "red_advantage": {
-     "fired": 38,
-     "hit": 17
+     "fired": 39,
+     "hit": 18
     }
    },
    "start": "2026-08-13"
   },
   "top_only": {
    "red": {
-    "fired": 224,
-    "hit": 188
+    "fired": 229,
+    "hit": 192
    },
    "amber": {
     "fired": 122,
@@ -5751,8 +5806,8 @@
    },
    "season": {
     "red": {
-     "fired": 224,
-     "hit": 188
+     "fired": 229,
+     "hit": 192
     },
     "amber": {
      "fired": 122,
@@ -5855,13 +5910,17 @@
     "2026-09-01": {
      "hit": 6,
      "total": 15
+    },
+    "2026-09-02": {
+     "hit": 4,
+     "total": 5
     }
    }
   },
   "mine_only": {
    "red": {
-    "fired": 69,
-    "hit": 58
+    "fired": 74,
+    "hit": 62
    },
    "amber": {
     "fired": 26,
@@ -5887,8 +5946,8 @@
    },
    "season": {
     "red": {
-     "fired": 69,
-     "hit": 58
+     "fired": 74,
+     "hit": 62
     },
     "amber": {
      "fired": 26,
@@ -5947,14 +6006,18 @@
     "2026-09-01": {
      "hit": 4,
      "total": 9
+    },
+    "2026-09-02": {
+     "hit": 4,
+     "total": 5
     }
    }
   },
   "xg": {
    "xg": {
     "red": {
-     "fired": 82,
-     "hit": 69
+     "fired": 84,
+     "hit": 71
     },
     "amber": {
      "fired": 32,
@@ -5963,15 +6026,15 @@
    },
    "base": {
     "red": {
-     "fired": 92,
-     "hit": 72
+     "fired": 94,
+     "hit": 74
     },
     "amber": {
      "fired": 22,
      "hit": 2
     }
    },
-   "n": 116,
+   "n": 118,
    "start": "2026-08-15"
   },
   "silenced": [
@@ -6093,8 +6156,8 @@
     "total": 141
    },
    "2026-09-02": {
-    "hit": 8,
-    "total": 10
+    "hit": 61,
+    "total": 89
    }
   },
   "recent": [
@@ -6791,7 +6854,6 @@
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Macara",
     "away": "Manta FC",
@@ -6801,6 +6863,8 @@
     "side": "away",
     "signal": null,
     "score_at": "2-2",
+    "final": "4-3",
+    "hit": true,
     "top": false
    },
    {
@@ -6820,7 +6884,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "JEF United Chiba",
     "away": "Fagiano Okayama",
@@ -6829,11 +6892,12 @@
     "minute": 75,
     "pick": "home",
     "conf": 40,
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Falkirk",
     "away": "Rangers",
@@ -6843,6 +6907,22 @@
     "side": "home",
     "signal": 85,
     "score_at": "1-1",
+    "final": "1-2",
+    "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-02",
+    "home": "Mito Hollyhock",
+    "away": "Kashima",
+    "league": "J1 League (Japan)",
+    "level": "red",
+    "minute": 76,
+    "pick": "away",
+    "conf": 56,
+    "final": "4-2",
+    "hit": true,
     "top": false
    },
    {
@@ -6861,21 +6941,7 @@
     "top": false
    },
    {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-02",
-    "home": "Mito Hollyhock",
-    "away": "Kashima",
-    "league": "J1 League (Japan)",
-    "level": "red",
-    "minute": 76,
-    "pick": "away",
-    "conf": 56,
-    "top": false
-   },
-   {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "V-varen Nagasaki",
     "away": "Gamba Osaka",
@@ -6885,11 +6951,12 @@
     "side": "home",
     "signal": 85,
     "score_at": "0-0",
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "FC Luzern",
     "away": "FC Vaduz",
@@ -6899,6 +6966,50 @@
     "side": "home",
     "signal": 85,
     "score_at": "1-1",
+    "final": "2-1",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-02",
+    "home": "Kitakyushu",
+    "away": "Iwaki",
+    "league": "J-League Cup (Japan)",
+    "level": "amber",
+    "minute": 77,
+    "pick": "away",
+    "conf": 43,
+    "final": "1-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-02",
+    "home": "FC Ryukyu",
+    "away": "Yokohama FC",
+    "league": "J-League Cup (Japan)",
+    "level": "amber",
+    "minute": 77,
+    "pick": "away",
+    "conf": 53,
+    "final": "2-3",
+    "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-02",
+    "home": "Yokohama F. Marinos",
+    "away": "Kyoto Sanga",
+    "league": "J1 League (Japan)",
+    "level": "red",
+    "minute": 77,
+    "pick": "away",
+    "conf": 39,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
@@ -6918,46 +7029,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
-    "date": "2026-09-02",
-    "home": "Kitakyushu",
-    "away": "Iwaki",
-    "league": "J-League Cup (Japan)",
-    "level": "amber",
-    "minute": 77,
-    "pick": "away",
-    "conf": 43,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-02",
-    "home": "FC Ryukyu",
-    "away": "Yokohama FC",
-    "league": "J-League Cup (Japan)",
-    "level": "amber",
-    "minute": 77,
-    "pick": "away",
-    "conf": 53,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-02",
-    "home": "Yokohama F. Marinos",
-    "away": "Kyoto Sanga",
-    "league": "J1 League (Japan)",
-    "level": "red",
-    "minute": 77,
-    "pick": "away",
-    "conf": 39,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Cerezo Osaka",
     "away": "Kashiwa Reysol",
@@ -6966,11 +7037,12 @@
     "minute": 78,
     "pick": "away",
     "conf": 40,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Kanazawa",
     "away": "Imabari",
@@ -6979,11 +7051,12 @@
     "minute": 78,
     "pick": "away",
     "conf": 40,
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Gainare Tottori",
     "away": "Omiya Ardija",
@@ -6992,11 +7065,12 @@
     "minute": 79,
     "pick": "away",
     "conf": 50,
+    "final": "3-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Renofa Yamaguchi",
     "away": "Fujieda MYFC",
@@ -7005,11 +7079,12 @@
     "minute": 80,
     "pick": "home",
     "conf": 40,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Austria Vienna",
     "away": "WSG Wattens",
@@ -7019,6 +7094,8 @@
     "side": "home",
     "signal": 85,
     "score_at": "0-1",
+    "final": "0-1",
+    "hit": false,
     "top": false
    },
    {
@@ -7037,7 +7114,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Kagoshima United",
     "away": "Consadole Sapporo",
@@ -7046,11 +7122,12 @@
     "minute": 81,
     "pick": "away",
     "conf": 48,
+    "final": "0-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Osaka",
     "away": "Ventforet Kofu",
@@ -7059,11 +7136,12 @@
     "minute": 81,
     "pick": "away",
     "conf": 46,
+    "final": "3-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Machida Zelvia",
     "away": "Kawasaki Frontale",
@@ -7072,11 +7150,12 @@
     "minute": 81,
     "pick": "home",
     "conf": 38,
+    "final": "2-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "FC Luzern",
     "away": "FC Vaduz",
@@ -7085,11 +7164,12 @@
     "minute": 82,
     "pick": "home",
     "conf": 57,
+    "final": "2-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Austria Vienna",
     "away": "WSG Wattens",
@@ -7098,11 +7178,12 @@
     "minute": 83,
     "pick": "home",
     "conf": 54,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Malkiya",
     "away": "Al Najma",
@@ -7111,11 +7192,12 @@
     "minute": 84,
     "pick": "away",
     "conf": 47,
+    "final": "0-1",
+    "hit": false,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Grasshoppers",
     "away": "FC ST. Gallen",
@@ -7124,11 +7206,12 @@
     "minute": 85,
     "pick": "away",
     "conf": 49,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Millwall",
     "away": "Wrexham",
@@ -7137,11 +7220,12 @@
     "minute": 86,
     "pick": "home",
     "conf": 45,
+    "final": "0-3",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "West Brom",
     "away": "Charlton",
@@ -7150,11 +7234,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 46,
+    "final": "1-1",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Burton Albion",
     "away": "AFC Wimbledon",
@@ -7163,11 +7248,12 @@
     "minute": 87,
     "pick": "away",
     "conf": 43,
+    "final": "4-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Macara",
     "away": "Manta FC",
@@ -7176,11 +7262,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 42,
+    "final": "4-3",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "East Riffa",
     "away": "Sitra",
@@ -7189,11 +7276,12 @@
     "minute": 88,
     "pick": "away",
     "conf": 56,
+    "final": "0-0",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Burnley",
     "away": "Middlesbrough",
@@ -7202,6 +7290,8 @@
     "minute": 88,
     "pick": "away",
     "conf": 44,
+    "final": "1-1",
+    "hit": true,
     "top": true
    },
    {
@@ -7220,7 +7310,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Samtredia",
     "away": "FC Iberia 1999",
@@ -7229,11 +7318,12 @@
     "minute": 89,
     "pick": "away",
     "conf": 50,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Marconi Stallions",
     "away": "NWS Spirit",
@@ -7242,11 +7332,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 48,
+    "final": "1-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Vanraure Hachinohe",
     "away": "Tochigi City",
@@ -7255,11 +7346,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 40,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Sassuolo",
     "away": "Frosinone",
@@ -7268,11 +7360,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 57,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Kelantan City",
     "away": "Negeri Sembilan",
@@ -7281,11 +7374,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 50,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Piešťany",
     "away": "Beluša",
@@ -7294,11 +7388,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 56,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Velež",
     "away": "Radnik Bijeljina",
@@ -7307,11 +7402,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 54,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Sportfreunde Lotte",
     "away": "Bergisch Gladbach",
@@ -7320,11 +7416,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 54,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Catania",
     "away": "Savoia",
@@ -7333,11 +7430,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 62,
+    "final": "0-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Nacional Asuncion",
     "away": "Libertad Asuncion",
@@ -7346,11 +7444,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 48,
+    "final": "3-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Team Altamura",
     "away": "Sambenedettese",
@@ -7359,11 +7458,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 36,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Sportivo Ameliano",
     "away": "Sportivo Trinidense",
@@ -7372,11 +7472,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 36,
+    "final": "0-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Liverpool Montevideo",
     "away": "Boston River",
@@ -7385,11 +7486,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 48,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "H&H Export",
     "away": "Walter Ferretti",
@@ -7398,11 +7500,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 43,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Olimpia",
     "away": "Club Guarani",
@@ -7424,11 +7527,12 @@
     "minute": 96,
     "pick": "home",
     "conf": 42,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Znicz Pruszków",
     "away": "Cracovia Krakow",
@@ -7437,11 +7541,12 @@
     "minute": 96,
     "pick": "away",
     "conf": 56,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "TOGB",
     "away": "Katwijk",
@@ -7450,11 +7555,12 @@
     "minute": 98,
     "pick": "away",
     "conf": 64,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "FC Gifu",
     "away": "Tokushima Vortis",
@@ -7463,6 +7569,8 @@
     "minute": 106,
     "pick": "away",
     "conf": 46,
+    "final": "0-0",
+    "hit": true,
     "top": false
    }
   ]
