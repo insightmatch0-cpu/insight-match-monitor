@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T01:26:44.816541+00:00",
+ "updated": "2026-09-02T01:33:12.486894+00:00",
  "live": [
   {
    "fid": "1513141",
@@ -14,7 +14,7 @@
    "score": "4-2",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T01:26:42.450739+00:00",
+   "seen": "2026-09-02T01:33:10.210500+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -69,9 +69,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1162.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "0-0",
-   "minute": 65,
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-09-02T01:26:42.450739+00:00",
+   "seen": "2026-09-02T01:33:10.210500+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -81,10 +81,10 @@
     "confidence": 66
    },
    "radar": {
-    "score": 54,
+    "score": 58,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د65)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د72)"
     ],
     "pick": "home",
     "confidence": 66,
@@ -97,21 +97,27 @@
     "top": false,
     "trend": {
      "min": [
-      65
+      55,
+      72
      ],
      "danger": [
-      54
+      48,
+      58
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -128,9 +134,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/135.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-1",
-   "minute": 57,
+   "minute": 63,
    "status": "2H",
-   "seen": "2026-09-02T01:26:42.450739+00:00",
+   "seen": "2026-09-02T01:33:10.210500+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -156,21 +162,27 @@
     "top": false,
     "trend": {
      "min": [
-      57
+      47,
+      63
      ],
      "danger": [
+      15,
       15
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -186,10 +198,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1147.png",
    "away_logo": "https://media.api-sports.io/football/teams/1136.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "score": "0-0",
-   "minute": 27,
+   "score": "1-0",
+   "minute": 33,
    "status": "1H",
-   "seen": "2026-09-02T01:26:42.450739+00:00",
+   "seen": "2026-09-02T01:33:10.210500+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -199,37 +211,43 @@
     "confidence": 36
    },
    "radar": {
-    "score": 31,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د27)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 36,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      27
+      17,
+      33
      ],
      "danger": [
-      31
+      25,
+      15
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -237,22 +255,6 @@
   }
  ],
  "upcoming": [
-  {
-   "fid": "1513141",
-   "kickoff": "2026-09-01T23:30:00+00:00",
-   "home": "إنتر ميامي الثاني",
-   "away": "نيويورك سيتي الثاني",
-   "home_en": "Inter Miami II",
-   "home_logo": "https://media.api-sports.io/football/teams/10280.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18815.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "away_en": "New York City II",
-   "league": "إم إل إس نكست برو",
-   "top": false,
-   "pick": "home",
-   "confidence": 54,
-   "reason": "ميامي الثاني بالأرض لكن الفريقان احتياطيان"
-  },
   {
    "fid": "1519475",
    "kickoff": "2026-09-02T00:00:00+00:00",
@@ -1055,6 +1057,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-01",
+   "home": "أونيفرسيتاريو دي فينتو",
+   "away": "أورورا",
+   "home_en": "Universitario de Vinto",
+   "away_en": "Aurora",
+   "league": "كأس الدرجة الأولى البوليفية",
+   "home_logo": "https://media.api-sports.io/football/teams/17762.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3637.png",
+   "pick": "home",
+   "confidence": 52,
+   "kickoff": "2026-09-01T23:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-01",
    "home": "لندرينا",
