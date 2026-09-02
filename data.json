@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T00:46:36.905523+00:00",
+ "updated": "2026-09-02T00:56:41.634886+00:00",
  "live": [
   {
    "fid": "1619667",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3637.png",
    "league_logo": "https://media.api-sports.io/football/leagues/964.png",
    "score": "1-1",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-02T00:46:34.926395+00:00",
+   "seen": "2026-09-02T00:55:06.440535+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -24,10 +24,10 @@
     "confidence": 48
    },
    "radar": {
-    "score": 67,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 48,
@@ -41,11 +41,11 @@
     "trend": {
      "min": [
       19,
-      88
+      90
      ],
      "danger": [
       15,
-      67
+      69
      ],
      "h_sog": [
       0,
@@ -76,10 +76,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2365.png",
    "away_logo": "https://media.api-sports.io/football/teams/2352.png",
    "league_logo": "https://media.api-sports.io/football/leagues/930.png",
-   "score": "0-0",
-   "minute": 71,
+   "score": "1-0",
+   "minute": 81,
    "status": "2H",
-   "seen": "2026-09-02T00:46:34.926395+00:00",
+   "seen": "2026-09-02T00:56:38.960584+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -89,16 +89,16 @@
     "confidence": 36
    },
    "radar": {
-    "score": 57,
+    "score": 63,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د81)"
     ],
     "pick": "away",
     "confidence": 36,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
@@ -106,11 +106,11 @@
     "trend": {
      "min": [
       33,
-      71
+      81
      ],
      "danger": [
       34,
-      57
+      63
      ],
      "h_sog": [
       0,
@@ -142,9 +142,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18815.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "3-1",
-   "minute": 53,
+   "minute": 63,
    "status": "2H",
-   "seen": "2026-09-02T00:46:34.926395+00:00",
+   "seen": "2026-09-02T00:56:38.960584+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -168,7 +168,7 @@
     "top": false,
     "trend": {
      "min": [
-      53
+      63
      ],
      "danger": [
       0
@@ -200,8 +200,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-02T00:46:34.926395+00:00",
+   "status": "HT",
+   "seen": "2026-09-02T00:56:38.960584+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -258,9 +258,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/135.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-1",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-09-02T00:46:34.926395+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-02T00:56:38.960584+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 61
@@ -286,7 +286,7 @@
     "top": false,
     "trend": {
      "min": [
-      42
+      45
      ],
      "danger": [
       15
@@ -4239,6 +4239,19 @@
    },
    {
     "kind": "warning",
+    "pending": true,
+    "date": "2026-09-01",
+    "home": "Atletico Torque",
+    "away": "Danubio",
+    "league": "Copa Uruguay (Uruguay)",
+    "level": "amber",
+    "minute": 75,
+    "pick": "away",
+    "conf": 36,
+    "top": false
+   },
+   {
+    "kind": "warning",
     "date": "2026-09-01",
     "home": "Tigre",
     "away": "Barracas Central",
@@ -4824,6 +4837,19 @@
     "minute": 90,
     "pick": "away",
     "conf": 70,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-01",
+    "home": "Universitario de Vinto",
+    "away": "Aurora",
+    "league": "Copa de la División Profesional (Bolivia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 48,
     "top": false
    },
    {
