@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T22:53:31.090856+00:00",
+ "updated": "2026-09-03T23:00:04.354676+00:00",
  "live": [
   {
    "fid": "1549763",
@@ -14,7 +14,7 @@
    "score": "3-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-03T22:53:27.397676+00:00",
+   "seen": "2026-09-03T22:53:49.381106+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 62
@@ -38,7 +38,6 @@
     "top": false,
     "trend": {
      "min": [
-      75,
       90
      ],
      "danger": [
@@ -75,9 +74,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1176.png",
    "league_logo": "https://media.api-sports.io/football/leagues/252.png",
    "score": "1-3",
-   "minute": 65,
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-09-03T22:53:27.397676+00:00",
+   "seen": "2026-09-03T23:00:01.053549+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -101,8 +100,7 @@
     "top": false,
     "trend": {
      "min": [
-      49,
-      65
+      72
      ],
      "danger": [
       0,
@@ -137,10 +135,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/19034.png",
    "away_logo": "https://media.api-sports.io/football/teams/1992.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "score": "0-0",
-   "minute": 59,
+   "score": "1-0",
+   "minute": 66,
    "status": "2H",
-   "seen": "2026-09-03T22:53:27.397676+00:00",
+   "seen": "2026-09-03T23:00:01.053549+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -150,42 +148,35 @@
     "confidence": 38
    },
    "radar": {
-    "score": 84,
-    "level": "red",
+    "score": 54,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د59)",
-     "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف",
-     "ضغط هجومي متصاعد من المضيف"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د66)"
     ],
     "pick": "away",
     "confidence": 38,
     "drama": {
-     "signal": 85,
-     "side": "home",
-     "ready": true
+     "signal": 0,
+     "side": "away",
+     "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      45,
-      59
+      66
      ],
      "danger": [
-      42,
-      84
+      54
      ],
      "h_sog": [
-      4,
-      6
+      7
      ],
      "a_sog": [
       0,
       0
      ],
      "h_cor": [
-      2,
       4
      ],
      "a_cor": [
@@ -208,7 +199,7 @@
    "score": "0-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-03T22:53:27.397676+00:00",
+   "seen": "2026-09-03T23:00:01.053549+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -273,7 +264,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-03T22:53:27.397676+00:00",
+   "seen": "2026-09-03T23:00:01.053549+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -327,22 +318,6 @@
   }
  ],
  "upcoming": [
-  {
-   "fid": "1549763",
-   "kickoff": "2026-09-03T21:00:00+00:00",
-   "home": "أمريكا دي كالي",
-   "away": "تحالف فاييدوبار",
-   "home_en": "America de Cali",
-   "home_logo": "https://media.api-sports.io/football/teams/1138.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1141.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "away_en": "Alianza Valledupar",
-   "league": "الدرجة الأولى الكولومبية",
-   "top": false,
-   "pick": "home",
-   "confidence": 62,
-   "reason": "أمريكا كالي فريق كبير كولومبي بتاريخ عريق، تقدم منزلي واضح"
-  },
   {
    "fid": "1519476",
    "kickoff": "2026-09-03T21:30:00+00:00",
@@ -1385,6 +1360,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-03",
+   "home": "كونيبورو",
+   "away": "سان أنطونيو",
+   "home_en": "Cuniburo",
+   "away_en": "San Antonio",
+   "league": "الدرجة الثانية الإكوادورية",
+   "home_logo": "https://media.api-sports.io/football/teams/21103.png",
+   "away_logo": "https://media.api-sports.io/football/teams/23310.png",
+   "pick": "home",
+   "confidence": 50,
+   "kickoff": "2026-09-03T20:30:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-03",
    "home": "أنزواتيغي إف سي",
