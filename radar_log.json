@@ -220,11 +220,13 @@
    "mine": false,
    "pick": "away",
    "confidence": 44,
-   "level": "amber",
-   "score": 48,
-   "minute": 45,
+   "level": "red",
+   "score": 90,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 2-0 تُسقط التوقع (د82)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
@@ -243,10 +245,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "red",
-   "score": 76,
-   "minute": 45,
+   "score": 94,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د76)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -267,10 +269,10 @@
    "pick": "away",
    "confidence": 43,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 4-1 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -288,10 +290,10 @@
    "pick": "away",
    "confidence": 41,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 4-1 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -309,10 +311,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -47092,6 +47094,66 @@
       "rc": 1,
       "yc": 0,
       "poss": 40
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1597920",
+   "date": "2026-09-03",
+   "minute": 76,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Al Ahli Doha",
+   "away": "Qatar SC",
+   "league": "Stars League (Qatar)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 17,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 63
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "rc": 1,
+      "yc": 0,
+      "poss": 37
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 6,
+      "sv": 2,
+      "shots": 15,
+      "cor": 7,
+      "rc": 0,
+      "yc": 0,
+      "poss": 77
+     },
+     "a": {
+      "sog": 2,
+      "sv": 6,
+      "shots": 9,
+      "cor": 3,
+      "rc": 1,
+      "yc": 1,
+      "poss": 23
      }
     }
    ]
