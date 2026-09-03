@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T13:16:39.989279+00:00",
+ "updated": "2026-09-03T13:26:52.391164+00:00",
  "live": [
   {
    "fid": "1534846",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18805.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "3-0",
-   "minute": 55,
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -31,17 +31,82 @@
     "confidence": 42,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": null,
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      48
+      48,
+      58
      ],
      "danger": [
+      0,
       0
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534843",
+   "home": "Arys",
+   "away": "Ekibastuz",
+   "home_en": "Arys",
+   "away_en": "Ekibastuz",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/10414.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4551.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-1",
+   "minute": 59,
+   "status": "2H",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      59
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
@@ -59,35 +124,153 @@
    }
   },
   {
-   "fid": "1534843",
-   "home": "Arys",
-   "away": "Ekibastuz",
-   "home_en": "Arys",
-   "away_en": "Ekibastuz",
-   "league": "1. Division (Kazakhstan)",
-   "home_logo": "https://media.api-sports.io/football/teams/10414.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4551.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "score": "0-0",
-   "minute": 49,
-   "status": "2H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "fid": "1507428",
+   "home": "FC Iberia 1999 II",
+   "away": "Dinamo Tbilisi II",
+   "home_en": "FC Iberia 1999 II",
+   "away_en": "Dinamo Tbilisi II",
+   "league": "Liga 3 (Georgia)",
+   "home_logo": "https://media.api-sports.io/football/teams/14863.png",
+   "away_logo": "https://media.api-sports.io/football/teams/13865.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
+    "pick": "away",
+    "confidence": 54
    },
    "pred_v2": {
     "pick": "away",
-    "confidence": 42
+    "confidence": 40
    },
    "radar": {
-    "score": 44,
+    "score": 42,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
-    "confidence": 42,
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45
+     ],
+     "danger": [
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507429",
+   "home": "Iberia 2010",
+   "away": "Irao",
+   "home_en": "Iberia 2010",
+   "away_en": "Irao",
+   "league": "Liga 3 (Georgia)",
+   "home_logo": "https://media.api-sports.io/football/teams/16505.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16507.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
+   "score": "2-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 48
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507431",
+   "home": "Kolkheti Khobi",
+   "away": "Didube 2014",
+   "home_en": "Kolkheti Khobi",
+   "away_en": "Didube 2014",
+   "league": "Liga 3 (Georgia)",
+   "home_logo": "https://media.api-sports.io/football/teams/13853.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14857.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
+   "score": "1-1",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 41
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 41,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -97,10 +280,69 @@
     "top": false,
     "trend": {
      "min": [
-      49
+      45
      ],
      "danger": [
-      44
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1507433",
+   "home": "Margveti 2006",
+   "away": "Merani Tbilisi",
+   "home_en": "Margveti 2006",
+   "away_en": "Merani Tbilisi",
+   "league": "Liga 3 (Georgia)",
+   "home_logo": "https://media.api-sports.io/football/teams/16511.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3508.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 36
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 36,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45
+     ],
+     "danger": [
+      42
      ],
      "h_sog": [
       0
@@ -130,7 +372,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -177,242 +419,6 @@
    }
   },
   {
-   "fid": "1507428",
-   "home": "FC Iberia 1999 II",
-   "away": "Dinamo Tbilisi II",
-   "home_en": "FC Iberia 1999 II",
-   "away_en": "Dinamo Tbilisi II",
-   "league": "Liga 3 (Georgia)",
-   "home_logo": "https://media.api-sports.io/football/teams/14863.png",
-   "away_logo": "https://media.api-sports.io/football/teams/13865.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
-   "score": "1-0",
-   "minute": 44,
-   "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 41,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د44)"
-    ],
-    "pick": "away",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      44
-     ],
-     "danger": [
-      41
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1507431",
-   "home": "Kolkheti Khobi",
-   "away": "Didube 2014",
-   "home_en": "Kolkheti Khobi",
-   "away_en": "Didube 2014",
-   "league": "Liga 3 (Georgia)",
-   "home_logo": "https://media.api-sports.io/football/teams/13853.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14857.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
-   "score": "1-1",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 41
-   },
-   "radar": {
-    "score": 40,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د43)"
-    ],
-    "pick": "home",
-    "confidence": 41,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      43
-     ],
-     "danger": [
-      40
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1507433",
-   "home": "Margveti 2006",
-   "away": "Merani Tbilisi",
-   "home_en": "Margveti 2006",
-   "away_en": "Merani Tbilisi",
-   "league": "Liga 3 (Georgia)",
-   "home_logo": "https://media.api-sports.io/football/teams/16511.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3508.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
-   "score": "0-0",
-   "minute": 43,
-   "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 36
-   },
-   "radar": {
-    "score": 40,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
-    ],
-    "pick": "home",
-    "confidence": 36,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      43
-     ],
-     "danger": [
-      40
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1507429",
-   "home": "Iberia 2010",
-   "away": "Irao",
-   "home_en": "Iberia 2010",
-   "away_en": "Irao",
-   "league": "Liga 3 (Georgia)",
-   "home_logo": "https://media.api-sports.io/football/teams/16505.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16507.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1104.png",
-   "score": "2-1",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 48
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      41
-     ],
-     "danger": [
-      15
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1612390",
    "home": "Xankəndi FK",
    "away": "Səbail",
@@ -423,9 +429,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4199.png",
    "league_logo": "https://media.api-sports.io/football/leagues/418.png",
    "score": "0-1",
-   "minute": 19,
+   "minute": 29,
    "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -451,21 +457,27 @@
     "top": false,
     "trend": {
      "min": [
-      14
+      14,
+      22
      ],
      "danger": [
+      15,
       15
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -481,10 +493,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4548.png",
    "away_logo": "https://media.api-sports.io/football/teams/4559.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "score": "0-0",
-   "minute": 17,
+   "score": "1-0",
+   "minute": 27,
    "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 57
@@ -494,26 +506,26 @@
     "confidence": 52
    },
    "radar": {
-    "score": 25,
+    "score": 31,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د27)"
     ],
     "pick": "away",
     "confidence": 52,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      17
+      27
      ],
      "danger": [
-      25
+      31
      ],
      "h_sog": [
       0
@@ -541,9 +553,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/5576.png",
    "league_logo": "https://media.api-sports.io/football/leagues/418.png",
    "score": "0-1",
-   "minute": 17,
+   "minute": 27,
    "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -570,7 +582,7 @@
     "trend": {
      "min": [
       1,
-      15
+      20
      ],
      "danger": [
       15,
@@ -606,9 +618,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/11239.png",
    "league_logo": "https://media.api-sports.io/football/leagues/418.png",
    "score": "0-1",
-   "minute": 13,
+   "minute": 23,
    "status": "1H",
-   "seen": "2026-09-03T13:16:37.324980+00:00",
+   "seen": "2026-09-03T13:26:48.848568+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -618,10 +630,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 22,
+    "score": 28,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د13)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د23)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -634,10 +646,10 @@
     "top": false,
     "trend": {
      "min": [
-      13
+      23
      ],
      "danger": [
-      22
+      28
      ],
      "h_sog": [
       0
