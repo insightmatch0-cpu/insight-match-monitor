@@ -1,6 +1,154 @@
 {
- "updated": "2026-09-03T02:16:48.747193+00:00",
+ "updated": "2026-09-03T02:26:40.133556+00:00",
  "live": [
+  {
+   "fid": "1505479",
+   "home": "Deportes Limache",
+   "away": "Nublense",
+   "home_en": "Deportes Limache",
+   "away_en": "Nublense",
+   "league": "Primera División (Chile)",
+   "home_logo": "https://media.api-sports.io/football/teams/16730.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2337.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/265.png",
+   "score": "2-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 95,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 2-0 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من المضيف",
+     "ضغط هجومي متصاعد من المضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 20,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      25,
+      39,
+      90
+     ],
+     "danger": [
+      30,
+      38,
+      95
+     ],
+     "h_sog": [
+      4,
+      4,
+      8
+     ],
+     "a_sog": [
+      0,
+      3,
+      4
+     ],
+     "h_cor": [
+      3,
+      4,
+      4
+     ],
+     "a_cor": [
+      0,
+      0,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1623075",
+   "home": "Santos",
+   "away": "Palmeiras",
+   "home_en": "Santos",
+   "away_en": "Palmeiras",
+   "league": "Copa Do Brasil (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/128.png",
+   "away_logo": "https://media.api-sports.io/football/teams/121.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
+   "score": "0-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 61
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 100,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من المضيف",
+     "موجة ركنيات لصالح المضيف",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
+    "pick": "away",
+    "confidence": 50,
+    "drama": {
+     "signal": 85,
+     "side": "home",
+     "ready": true
+    },
+    "alerted": "next_goal",
+    "top": false,
+    "trend": {
+     "min": [
+      16,
+      36,
+      90
+     ],
+     "danger": [
+      24,
+      42,
+      100
+     ],
+     "h_sog": [
+      1,
+      2,
+      4
+     ],
+     "a_sog": [
+      0,
+      1,
+      1
+     ],
+     "h_cor": [
+      1,
+      1,
+      5
+     ],
+     "a_cor": [
+      0,
+      0,
+      1
+     ]
+    }
+   }
+  },
   {
    "fid": "1623076",
    "home": "Vitoria",
@@ -12,9 +160,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/133.png",
    "league_logo": "https://media.api-sports.io/football/leagues/73.png",
    "score": "0-1",
-   "minute": 84,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -24,13 +172,13 @@
     "confidence": 36
    },
    "radar": {
-    "score": 91,
+    "score": 100,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د84)",
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)",
      "موجة تسديد على المرمى من الضيف",
-     "ضغط هجومي متصاعد من الضيف",
-     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 36,
@@ -45,12 +193,12 @@
      "min": [
       26,
       40,
-      84
+      90
      ],
      "danger": [
       30,
       39,
-      91
+      100
      ],
      "h_sog": [
       1,
@@ -70,155 +218,7 @@
      "a_cor": [
       1,
       1,
-      2
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1505479",
-   "home": "Deportes Limache",
-   "away": "Nublense",
-   "home_en": "Deportes Limache",
-   "away_en": "Nublense",
-   "league": "Primera División (Chile)",
-   "home_logo": "https://media.api-sports.io/football/teams/16730.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2337.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/265.png",
-   "score": "1-0",
-   "minute": 83,
-   "status": "2H",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 90,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د83)",
-     "موجة تسديد على المرمى من المضيف",
-     "ضغط هجومي متصاعد من المضيف",
-     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
-    ],
-    "pick": "away",
-    "confidence": 39,
-    "drama": {
-     "signal": 35,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      25,
-      39,
-      83
-     ],
-     "danger": [
-      30,
-      38,
-      90
-     ],
-     "h_sog": [
-      4,
-      4,
-      8
-     ],
-     "a_sog": [
-      0,
-      3,
       3
-     ],
-     "h_cor": [
-      3,
-      4,
-      4
-     ],
-     "a_cor": [
-      0,
-      0,
-      4
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1623075",
-   "home": "Santos",
-   "away": "Palmeiras",
-   "home_en": "Santos",
-   "away_en": "Palmeiras",
-   "league": "Copa Do Brasil (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/128.png",
-   "away_logo": "https://media.api-sports.io/football/teams/121.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/73.png",
-   "score": "0-0",
-   "minute": 82,
-   "status": "2H",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 61
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 98,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د82)",
-     "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف",
-     "ضغط هجومي متصاعد من المضيف"
-    ],
-    "pick": "away",
-    "confidence": 50,
-    "drama": {
-     "signal": 85,
-     "side": "home",
-     "ready": true
-    },
-    "alerted": "next_goal",
-    "top": false,
-    "trend": {
-     "min": [
-      16,
-      36,
-      82
-     ],
-     "danger": [
-      24,
-      42,
-      98
-     ],
-     "h_sog": [
-      1,
-      2,
-      4
-     ],
-     "a_sog": [
-      0,
-      1,
-      1
-     ],
-     "h_cor": [
-      1,
-      1,
-      4
-     ],
-     "a_cor": [
-      0,
-      0,
-      1
      ]
     }
    }
@@ -234,9 +234,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/23311.png",
    "league_logo": "https://media.api-sports.io/football/leagues/396.png",
    "score": "2-0",
-   "minute": 58,
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -263,7 +263,7 @@
       5,
       21,
       31,
-      58
+      68
      ],
      "danger": [
       18,
@@ -309,9 +309,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2289.png",
    "league_logo": "https://media.api-sports.io/football/leagues/772.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
+   "minute": 54,
+   "status": "2H",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -338,7 +338,7 @@
     "trend": {
      "min": [
       9,
-      45
+      54
      ],
      "danger": [
       20,
@@ -376,7 +376,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 57
@@ -429,6 +429,65 @@
    }
   },
   {
+   "fid": "1589401",
+   "home": "Vancouver Whitecaps",
+   "away": "CF Montreal",
+   "home_en": "Vancouver Whitecaps",
+   "away_en": "CF Montreal",
+   "league": "Canadian Championship (Canada)",
+   "home_logo": "https://media.api-sports.io/football/teams/1603.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1614.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/259.png",
+   "score": "0-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-09-03T02:26:37.478107+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+    ],
+    "pick": "home",
+    "confidence": 58,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1593679",
    "home": "Velez Sarsfield",
    "away": "Boca Juniors",
@@ -441,7 +500,7 @@
    "score": "0-0",
    "minute": 0,
    "status": "P",
-   "seen": "2026-09-03T02:16:45.503257+00:00",
+   "seen": "2026-09-03T02:23:32.174097+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 60
