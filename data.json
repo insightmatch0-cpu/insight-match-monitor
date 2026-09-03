@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T03:46:32.925678+00:00",
+ "updated": "2026-09-03T03:56:36.505681+00:00",
  "live": [
   {
    "fid": "1589401",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1614.png",
    "league_logo": "https://media.api-sports.io/football/leagues/259.png",
    "score": "1-1",
-   "minute": 78,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-09-03T03:46:31.438555+00:00",
+   "seen": "2026-09-03T03:56:34.539942+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 53
@@ -24,10 +24,10 @@
     "confidence": 58
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د78)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
     ],
     "pick": "home",
     "confidence": 58,
@@ -40,10 +40,69 @@
     "top": false,
     "trend": {
      "min": [
-      78
+      88
      ],
      "danger": [
-      61
+      67
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1635864",
+   "home": "Club America",
+   "away": "Monterrey",
+   "home_en": "Club America",
+   "away_en": "Monterrey",
+   "league": "Leagues Cup (World)",
+   "home_logo": "https://media.api-sports.io/football/teams/2287.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2282.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/772.png",
+   "score": "0-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-09-03T03:56:34.539942+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 42
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+    ],
+    "pick": "home",
+    "confidence": 42,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      16
+     ],
+     "danger": [
+      24
      ],
      "h_sog": [
       0
@@ -848,6 +907,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-03",
+   "home": "سانتا فيه",
+   "away": "ميلونيريوس",
+   "home_en": "Santa Fe",
+   "away_en": "Millonarios",
+   "league": "الدوري الأول الكولومبي",
+   "home_logo": "https://media.api-sports.io/football/teams/1139.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1125.png",
+   "pick": "away",
+   "confidence": 57,
+   "kickoff": "2026-09-03T01:25:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-03",
    "home": "تولوكا",
