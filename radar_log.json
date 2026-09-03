@@ -178,11 +178,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 55,
-   "level": "amber",
-   "score": 60,
-   "minute": 76,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د76)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د85)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -242,10 +242,10 @@
    "pick": "away",
    "confidence": 42,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -283,11 +283,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 38,
-   "level": "amber",
-   "score": 60,
-   "minute": 76,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د76)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د85)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -326,10 +326,10 @@
    "pick": "away",
    "confidence": 37,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د50)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -347,10 +347,52 @@
    "pick": "home",
    "confidence": 36,
    "level": "amber",
-   "score": 40,
-   "minute": 42,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1623075",
+   "date": "2026-09-03",
+   "home": "Santos",
+   "away": "Palmeiras",
+   "league": "Copa Do Brasil (Brazil)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 50,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1505479",
+   "date": "2026-09-03",
+   "home": "Deportes Limache",
+   "away": "Nublense",
+   "league": "Primera División (Chile)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 39,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -46590,7 +46632,48 @@
    "graded_on": "2026-09-02"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1519472",
+   "date": "2026-09-03",
+   "minute": 60,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Barcelona SC",
+   "away": "Independiente del Valle",
+   "league": "Liga Pro (Ecuador)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 60,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 7,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 54
+     },
+     "a": {
+      "sog": 3,
+      "sv": 3,
+      "shots": 5,
+      "yc": 1,
+      "cor": 2,
+      "rc": 1,
+      "poss": 46
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
