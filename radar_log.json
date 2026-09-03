@@ -804,10 +804,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -825,10 +825,10 @@
    "pick": "home",
    "confidence": 65,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 49,
+   "minute": 58,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د58)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -846,10 +846,10 @@
    "pick": "away",
    "confidence": 42,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 53,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -866,18 +866,28 @@
    "mine": true,
    "pick": "away",
    "confidence": 49,
-   "level": "amber",
-   "score": 40,
-   "minute": 16,
+   "level": "red",
+   "score": 65,
+   "minute": 40,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د16)",
-    "موجة ركنيات لصالح المضيف",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 32,
-   "level_xg": "green"
+   "alerted": true,
+   "alert_minute": 40,
+   "score_xg": 36,
+   "level_xg": "green",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 40,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د40)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ]
   },
   {
    "fid": "1555381",
@@ -911,6 +921,69 @@
    "mine": false,
    "pick": "home",
    "confidence": 40,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1558603",
+   "date": "2026-09-03",
+   "home": "Gent",
+   "away": "OH Leuven",
+   "league": "Jupiler Pro League (Belgium)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 51,
+   "level": "amber",
+   "score": 41,
+   "minute": 44,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د44)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1553140",
+   "date": "2026-09-03",
+   "home": "Lech Poznan",
+   "away": "Jagiellonia",
+   "league": "Ekstraklasa (Poland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 44,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1555382",
+   "date": "2026-09-03",
+   "home": "FC Lugano",
+   "away": "Servette FC",
+   "league": "Super League (Switzerland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 41,
    "level": "amber",
    "score": 42,
    "minute": 45,
