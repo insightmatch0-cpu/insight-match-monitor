@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T04:26:41.347011+00:00",
+ "updated": "2026-09-03T04:37:52.584144+00:00",
  "live": [
   {
    "fid": "1635864",
@@ -3165,12 +3165,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1175,
-   "hit": 1054
+   "fired": 1186,
+   "hit": 1064
   },
   "amber": {
-   "fired": 904,
-   "hit": 399
+   "fired": 912,
+   "hit": 403
   },
   "alerts": {
    "flip": {
@@ -3186,22 +3186,22 @@
     "hit": 0
    },
    "next_goal": {
-    "fired": 59,
+    "fired": 60,
     "hit": 21
    },
    "red_advantage": {
-    "fired": 41,
-    "hit": 19
+    "fired": 42,
+    "hit": 20
    }
   },
   "season": {
    "red": {
-    "fired": 851,
-    "hit": 764
+    "fired": 862,
+    "hit": 774
    },
    "amber": {
-    "fired": 685,
-    "hit": 318
+    "fired": 693,
+    "hit": 322
    },
    "alerts": {
     "flip": {
@@ -3213,12 +3213,12 @@
      "hit": 10
     },
     "next_goal": {
-     "fired": 40,
+     "fired": 41,
      "hit": 15
     },
     "red_advantage": {
-     "fired": 39,
-     "hit": 18
+     "fired": 40,
+     "hit": 19
     }
    },
    "start": "2026-08-13"
@@ -3604,6 +3604,10 @@
    "2026-09-02": {
     "hit": 61,
     "total": 89
+   },
+   "2026-09-03": {
+    "hit": 14,
+    "total": 19
    }
   },
   "recent": [
@@ -3982,7 +3986,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "NY Cosmos",
     "away": "Sarasota Paradise",
@@ -3991,11 +3994,12 @@
     "minute": 85,
     "pick": "home",
     "conf": 55,
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Charlotte Independence",
     "away": "Portland Hearts of Pine",
@@ -4004,6 +4008,8 @@
     "minute": 85,
     "pick": "home",
     "conf": 38,
+    "final": "3-2",
+    "hit": false,
     "top": false
    },
    {
@@ -4064,7 +4070,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Goiatuba EC",
     "away": "Sao Jose",
@@ -4073,6 +4078,8 @@
     "minute": 87,
     "pick": "home",
     "conf": 40,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
@@ -4133,7 +4140,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Westchester SC",
     "away": "Chattanooga Red Wolves",
@@ -4142,6 +4148,8 @@
     "minute": 89,
     "pick": "home",
     "conf": 40,
+    "final": "0-1",
+    "hit": true,
     "top": false
    },
    {
@@ -4328,7 +4336,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Quindio",
     "away": "Llaneros",
@@ -4337,11 +4344,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 38,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Jalapa",
     "away": "Rancho Santana",
@@ -4350,11 +4358,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 44,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Atenas",
     "away": "Penarol",
@@ -4363,11 +4372,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 65,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-02",
     "home": "Charleston Battery",
     "away": "Hartford Athletic",
@@ -4376,6 +4386,8 @@
     "minute": 90,
     "pick": "home",
     "conf": 55,
+    "final": "1-2",
+    "hit": true,
     "top": false
    },
    {
@@ -4436,7 +4448,6 @@
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Barcelona SC",
     "away": "Independiente del Valle",
@@ -4446,11 +4457,12 @@
     "side": "home",
     "signal": null,
     "score_at": "1-1",
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Santos",
     "away": "Palmeiras",
@@ -4459,11 +4471,12 @@
     "minute": 76,
     "pick": "away",
     "conf": 50,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Santos",
     "away": "Palmeiras",
@@ -4473,11 +4486,12 @@
     "side": "home",
     "signal": 85,
     "score_at": "0-0",
+    "final": "0-0",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Deportes Limache",
     "away": "Nublense",
@@ -4486,11 +4500,12 @@
     "minute": 77,
     "pick": "away",
     "conf": 39,
+    "final": "2-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Vitoria",
     "away": "Vasco DA Gama",
@@ -4499,6 +4514,8 @@
     "minute": 78,
     "pick": "home",
     "conf": 36,
+    "final": "0-2",
+    "hit": true,
     "top": false
    }
   ]
