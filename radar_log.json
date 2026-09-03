@@ -73,11 +73,11 @@
    "mine": false,
    "pick": "away",
    "confidence": 61,
-   "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "level": "red",
+   "score": 68,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د63)"
+    "النتيجة الحالية 3-1 تُسقط التوقع (د89)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -94,11 +94,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 41,
-   "level": "amber",
-   "score": 49,
-   "minute": 58,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د58)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -115,11 +115,11 @@
    "mine": false,
    "pick": "away",
    "confidence": 40,
-   "level": "amber",
-   "score": 51,
-   "minute": 60,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د60)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د86)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -136,11 +136,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 36,
-   "level": "amber",
-   "score": 49,
-   "minute": 58,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د58)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -158,10 +158,10 @@
    "pick": "away",
    "confidence": 45,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 51,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د61)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -179,10 +179,10 @@
    "pick": "away",
    "confidence": 52,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 51,
+   "minute": 60,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د60)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -200,10 +200,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د55)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -46908,7 +46908,44 @@
    "graded_on": "2026-09-03"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1597920",
+   "date": "2026-09-03",
+   "minute": 17,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Al Ahli Doha",
+   "away": "Qatar SC",
+   "league": "Stars League (Qatar)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 17,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 63
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "rc": 1,
+      "yc": 0,
+      "poss": 37
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
