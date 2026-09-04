@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T22:56:46.482129+00:00",
+ "updated": "2026-09-04T23:06:58.205850+00:00",
  "live": [
   {
    "fid": "1618997",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/17743.png",
    "away_logo": "https://media.api-sports.io/football/teams/17762.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "1-0",
-   "minute": 84,
+   "score": "2-0",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -24,35 +24,35 @@
     "confidence": 44
    },
    "radar": {
-    "score": 49,
-    "level": "amber",
+    "score": 34,
+    "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد",
      "موجة تسديد على المرمى من الضيف",
      "موجة ركنيات لصالح الضيف",
-     "ضغط هجومي متصاعد من الضيف"
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
-     "signal": 85,
+     "signal": 70,
      "side": "away",
-     "ready": true
+     "ready": false
     },
     "alerted": "equalizer",
     "top": false,
     "trend": {
      "min": [
       31,
-      84
+      90
      ],
      "danger": [
       15,
-      49
+      34
      ],
      "h_sog": [
       1,
-      1
+      2
      ],
      "a_sog": [
       0,
@@ -64,7 +64,7 @@
      ],
      "a_cor": [
       2,
-      4
+      5
      ]
     }
    }
@@ -80,9 +80,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/28302.png",
    "league_logo": "https://media.api-sports.io/football/leagues/872.png",
    "score": "0-2",
-   "minute": 65,
+   "minute": 75,
    "status": "2H",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -92,10 +92,10 @@
     "confidence": 47
    },
    "radar": {
-    "score": 54,
+    "score": 60,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د65)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د75)"
     ],
     "pick": "home",
     "confidence": 47,
@@ -109,11 +109,11 @@
     "trend": {
      "min": [
       14,
-      65
+      75
      ],
      "danger": [
       23,
-      54
+      60
      ],
      "h_sog": [
       0,
@@ -145,9 +145,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4040.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "2-0",
-   "minute": 62,
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -174,15 +174,18 @@
       13,
       37,
       45,
-      55
+      55,
+      66
      ],
      "danger": [
       22,
       15,
       0,
+      0,
       0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -192,9 +195,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -203,76 +208,6 @@
      "a_cor": [
       0,
       0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1511677",
-   "home": "Rangers de Talca",
-   "away": "Deportes Temuco",
-   "home_en": "Rangers de Talca",
-   "away_en": "Deportes Temuco",
-   "league": "Primera B (Chile)",
-   "home_logo": "https://media.api-sports.io/football/teams/2344.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2317.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 43
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 43,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      20,
-      45
-     ],
-     "danger": [
-      19,
-      15,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
       0,
       0,
       0
@@ -291,9 +226,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/27411.png",
    "league_logo": "https://media.api-sports.io/football/leagues/240.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -303,10 +238,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 42,
+    "score": 44,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د49)"
     ],
     "pick": "home",
     "confidence": 46,
@@ -319,10 +254,10 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      49
      ],
      "danger": [
-      42
+      44
      ],
      "h_sog": [
       0
@@ -350,9 +285,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2138.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
    "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -362,10 +297,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 42,
+    "score": 44,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د49)"
     ],
     "pick": "away",
     "confidence": 36,
@@ -381,13 +316,13 @@
       1,
       20,
       30,
-      45
+      49
      ],
      "danger": [
       15,
       15,
       15,
-      42
+      44
      ],
      "h_sog": [
       0,
@@ -427,9 +362,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18309.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1134.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "minute": 48,
+   "status": "2H",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -494,6 +429,203 @@
    }
   },
   {
+   "fid": "1635547",
+   "home": "Atletico Torque",
+   "away": "Cerro Largo",
+   "home_en": "Atletico Torque",
+   "away_en": "Cerro Largo",
+   "league": "Primera División (Uruguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/2365.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2369.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
+   "score": "0-1",
+   "minute": 48,
+   "status": "2H",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 43,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د48)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      48
+     ],
+     "danger": [
+      43
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493115",
+   "home": "Platense",
+   "away": "Deportivo Riestra",
+   "home_en": "Platense",
+   "away_en": "Deportivo Riestra",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/1064.png",
+   "away_logo": "https://media.api-sports.io/football/teams/476.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "1-0",
+   "minute": 46,
+   "status": "2H",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "draw",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 62,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-0 تُسقط التوقع (د46)",
+     "موجة تسديد على المرمى من المضيف",
+     "موجة ركنيات لصالح المضيف"
+    ],
+    "pick": "draw",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      10,
+      46
+     ],
+     "danger": [
+      0,
+      62
+     ],
+     "h_sog": [
+      1,
+      3
+     ],
+     "a_sog": [
+      1,
+      2
+     ],
+     "h_cor": [
+      0,
+      3
+     ],
+     "a_cor": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1511677",
+   "home": "Rangers de Talca",
+   "away": "Deportes Temuco",
+   "home_en": "Rangers de Talca",
+   "away_en": "Deportes Temuco",
+   "league": "Primera B (Chile)",
+   "home_logo": "https://media.api-sports.io/football/teams/2344.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2317.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/266.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 43
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 43,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      20,
+      45
+     ],
+     "danger": [
+      19,
+      15,
+      15
+     ],
+     "h_sog": [
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1493109",
    "home": "Belgrano Cordoba",
    "away": "Huracan",
@@ -506,7 +638,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -553,73 +685,6 @@
    }
   },
   {
-   "fid": "1493115",
-   "home": "Platense",
-   "away": "Deportivo Riestra",
-   "home_en": "Platense",
-   "away_en": "Deportivo Riestra",
-   "league": "Liga Profesional Argentina (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/1064.png",
-   "away_logo": "https://media.api-sports.io/football/teams/476.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "draw",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 62,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د45)",
-     "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف"
-    ],
-    "pick": "draw",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      10,
-      45
-     ],
-     "danger": [
-      0,
-      62
-     ],
-     "h_sog": [
-      1,
-      3
-     ],
-     "a_sog": [
-      1,
-      2
-     ],
-     "h_cor": [
-      0,
-      3
-     ],
-     "a_cor": [
-      1,
-      2
-     ]
-    }
-   }
-  },
-  {
    "fid": "1500094",
    "home": "Mercedes",
    "away": "Defensores de Cambaceres",
@@ -632,7 +697,7 @@
    "score": "0-2",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -685,65 +750,6 @@
    }
   },
   {
-   "fid": "1635547",
-   "home": "Atletico Torque",
-   "away": "Cerro Largo",
-   "home_en": "Atletico Torque",
-   "away_en": "Cerro Largo",
-   "league": "Primera División (Uruguay)",
-   "home_logo": "https://media.api-sports.io/football/teams/2365.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2369.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
-   "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
-    ],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      45
-     ],
-     "danger": [
-      42
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1520853",
    "home": "Criciuma",
    "away": "Cuiaba",
@@ -754,9 +760,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1193.png",
    "league_logo": "https://media.api-sports.io/football/leagues/72.png",
    "score": "1-0",
-   "minute": 24,
+   "minute": 34,
    "status": "1H",
-   "seen": "2026-09-04T22:56:43.317878+00:00",
+   "seen": "2026-09-04T23:06:54.750346+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -766,37 +772,43 @@
     "confidence": 44
    },
    "radar": {
-    "score": 25,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د17)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      17
+      17,
+      28
      ],
      "danger": [
-      25
+      25,
+      15
      ],
      "h_sog": [
-      0
+      0,
+      1
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
-      0
+      0,
+      1
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -2310,6 +2322,48 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-04",
+   "home": "ليونس",
+   "away": "ديبور",
+   "home_en": "Leones FC",
+   "away_en": "Depor FC",
+   "league": "الدرجة الأولى ب (كولومبيا)",
+   "home_logo": "https://media.api-sports.io/football/teams/1143.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1468.png",
+   "pick": "draw",
+   "confidence": 49,
+   "kickoff": "2026-09-04T20:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-04",
+   "home": "22 دي خوليو",
+   "away": "غوالاسيو",
+   "home_en": "22 de Julio",
+   "away_en": "Gualaceo SC",
+   "league": "دوري الدرجة الثانية الإكوادوري",
+   "home_logo": "https://media.api-sports.io/football/teams/25736.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1986.png",
+   "pick": "home",
+   "confidence": 52,
+   "kickoff": "2026-09-04T20:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-04",
+   "home": "أتليتيكو إف سي",
+   "away": "9 أوكتوبر",
+   "home_en": "Atletico FC",
+   "away_en": "9 de Octubre",
+   "league": "دوري الدرجة الثانية الإكوادوري",
+   "home_logo": "https://media.api-sports.io/football/teams/27548.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10111.png",
+   "pick": "draw",
+   "confidence": 48,
+   "kickoff": "2026-09-04T20:30:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-04",
    "home": "اتحاد أتليتيكو",
