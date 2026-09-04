@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T04:20:29.132348+00:00",
+ "updated": "2026-09-04T04:50:13.646755+00:00",
  "live": [],
  "upcoming": [
   {
@@ -7087,12 +7087,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1225,
-   "hit": 1097
+   "fired": 1233,
+   "hit": 1104
   },
   "amber": {
-   "fired": 929,
-   "hit": 411
+   "fired": 935,
+   "hit": 414
   },
   "alerts": {
    "flip": {
@@ -7108,7 +7108,7 @@
     "hit": 0
    },
    "next_goal": {
-    "fired": 62,
+    "fired": 63,
     "hit": 22
    },
    "red_advantage": {
@@ -7118,12 +7118,12 @@
   },
   "season": {
    "red": {
-    "fired": 901,
-    "hit": 807
+    "fired": 909,
+    "hit": 814
    },
    "amber": {
-    "fired": 710,
-    "hit": 330
+    "fired": 716,
+    "hit": 333
    },
    "alerts": {
     "flip": {
@@ -7135,7 +7135,7 @@
      "hit": 10
     },
     "next_goal": {
-     "fired": 43,
+     "fired": 44,
      "hit": 16
     },
     "red_advantage": {
@@ -7421,10 +7421,6 @@
    "red_advantage"
   ],
   "daily_warnings": {
-   "2026-08-05": {
-    "hit": 21,
-    "total": 29
-   },
    "2026-08-06": {
     "hit": 51,
     "total": 79
@@ -7540,6 +7536,10 @@
    "2026-09-03": {
     "hit": 55,
     "total": 75
+   },
+   "2026-09-04": {
+    "hit": 10,
+    "total": 14
    }
   },
   "recent": [
@@ -7804,7 +7804,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "CSA",
     "away": "Nacional AM",
@@ -7813,6 +7812,8 @@
     "minute": 83,
     "pick": "home",
     "conf": 54,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
@@ -8251,7 +8252,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "SOL DE America",
     "away": "General Caballero",
@@ -8260,11 +8260,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 44,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Estudiantes de Merida FC",
     "away": "UCV",
@@ -8273,11 +8274,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 42,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Oriental",
     "away": "Racing Montevideo",
@@ -8286,11 +8288,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 52,
+    "final": "1-2",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Puerto Cabello",
     "away": "Deportivo La Guaira",
@@ -8299,11 +8302,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 45,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Managua",
     "away": "Diriangén",
@@ -8312,11 +8316,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 43,
+    "final": "3-3",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-03",
     "home": "Internacional Palmira",
     "away": "Real Cundinamarca",
@@ -8325,11 +8330,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 38,
+    "final": "0-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-04",
     "home": "Libertad",
     "away": "Emelec",
@@ -8339,11 +8345,12 @@
     "side": "home",
     "signal": 85,
     "score_at": "1-1",
+    "final": "1-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-04",
     "home": "Santo Domingo",
     "away": "Cumbayá",
@@ -8352,11 +8359,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 39,
+    "final": "2-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-04",
     "home": "Libertad",
     "away": "Emelec",
@@ -8365,6 +8373,8 @@
     "minute": 90,
     "pick": "home",
     "conf": 40,
+    "final": "1-1",
+    "hit": true,
     "top": false
    }
   ]
