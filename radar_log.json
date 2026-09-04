@@ -1999,10 +1999,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د49)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -2020,11 +2020,117 @@
    "pick": "draw",
    "confidence": 38,
    "level": "amber",
-   "score": 47,
-   "minute": 40,
+   "score": 62,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د40)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1493109",
+   "date": "2026-09-04",
+   "home": "Belgrano Cordoba",
+   "away": "Huracan",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549620",
+   "date": "2026-09-04",
+   "home": "Bogota FC",
+   "away": "Ind. Yumbo",
+   "league": "Primera B (Colombia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 46,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635547",
+   "date": "2026-09-04",
+   "home": "Atletico Torque",
+   "away": "Cerro Largo",
+   "league": "Primera División (Uruguay)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1500094",
+   "date": "2026-09-04",
+   "home": "Mercedes",
+   "away": "Defensores de Cambaceres",
+   "league": "Primera C (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1636634",
+   "date": "2026-09-04",
+   "home": "Resistencia",
+   "away": "Guairena FC",
+   "league": "Division Intermedia (Paraguay)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 36,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -51129,6 +51235,68 @@
       "sv": 4,
       "rc": 0,
       "poss": 48
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1618997",
+   "date": "2026-09-04",
+   "minute": 79,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "ABB",
+   "away": "Universitario de Vinto",
+   "league": "Primera División (Bolivia)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 31,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "yc": 0,
+      "cor": 0,
+      "rc": 0,
+      "poss": 54
+     },
+     "a": {
+      "sog": 0,
+      "shots": 4,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 46
+     }
+    },
+    {
+     "minute": 79,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 7,
+      "yc": 1,
+      "cor": 0,
+      "rc": 0,
+      "poss": 49
+     },
+     "a": {
+      "sog": 2,
+      "sv": 0,
+      "shots": 11,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 51
      }
     }
    ]
