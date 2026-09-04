@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T01:46:45.610855+00:00",
+ "updated": "2026-09-04T01:56:44.935796+00:00",
  "live": [
   {
    "fid": "1519477",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1148.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
    "score": "1-1",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-04T01:46:43.176152+00:00",
+   "seen": "2026-09-04T01:55:08.330992+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -24,13 +24,13 @@
     "confidence": 40
    },
    "radar": {
-    "score": 92,
+    "score": 100,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د86)",
+     "النتيجة الحالية 1-1 تُسقط التوقع (د90)",
      "موجة تسديد على المرمى من الضيف",
-     "ضغط هجومي متصاعد من الضيف",
-     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 40,
@@ -45,22 +45,22 @@
      "min": [
       40,
       33,
-      86
+      90
      ],
      "danger": [
       39,
       34,
-      92
+      100
      ],
      "h_sog": [
       1,
       1,
-      6
+      8
      ],
      "a_sog": [
       1,
       1,
-      3
+      4
      ],
      "h_cor": [
       2,
@@ -70,7 +70,7 @@
      "a_cor": [
       2,
       2,
-      3
+      5
      ]
     }
    }
@@ -86,9 +86,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/16476.png",
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "2-0",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-04T01:46:43.176152+00:00",
+   "seen": "2026-09-04T01:53:35.709895+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 50
@@ -98,10 +98,10 @@
     "confidence": 39
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 2-0 تُسقط التوقع (د86)"
+     "النتيجة الحالية 2-0 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 39,
@@ -115,11 +115,11 @@
     "trend": {
      "min": [
       39,
-      86
+      90
      ],
      "danger": [
       38,
-      66
+      69
      ],
      "h_sog": [
       0,
@@ -152,8 +152,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-04T01:46:43.176152+00:00",
+   "status": "HT",
+   "seen": "2026-09-04T01:56:40.913221+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -211,8 +211,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/234.png",
    "score": "2-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-04T01:46:43.176152+00:00",
+   "status": "HT",
+   "seen": "2026-09-04T01:56:40.913221+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -268,10 +268,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/14279.png",
    "away_logo": "https://media.api-sports.io/football/teams/2297.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "score": "0-2",
-   "minute": 42,
+   "score": "1-3",
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-04T01:46:43.176152+00:00",
+   "seen": "2026-09-04T01:56:40.913221+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -281,10 +281,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 40,
+    "score": 42,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د42)"
+     "النتيجة الحالية 1-3 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -297,10 +297,69 @@
     "top": false,
     "trend": {
      "min": [
-      42
+      45
      ],
      "danger": [
-      40
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1636629",
+   "home": "Matagalpa",
+   "away": "UNAN Managua",
+   "home_en": "Matagalpa",
+   "away_en": "UNAN Managua",
+   "league": "Primera Division (Nicaragua)",
+   "home_logo": "https://media.api-sports.io/football/teams/19159.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4647.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/396.png",
+   "score": "0-0",
+   "minute": 20,
+   "status": "1H",
+   "seen": "2026-09-04T01:56:40.913221+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      20
+     ],
+     "danger": [
+      27
      ],
      "h_sog": [
       0
@@ -3122,6 +3181,42 @@
  },
  "news": [
   {
+   "title": "Kyrgios accepts one-month suspension after positive cocaine test",
+   "link": "https://www.skysports.com/tennis/news/12040/13581087/nick-kyrgios-former-wimbledon-finalist-accepts-one-month-suspension-from-international-tennis-integrity-association-for-testing-positive-for-cocaine",
+   "source": "Sky Sports",
+   "time": "2026-09-04T02:03:00+00:00"
+  },
+  {
+   "title": "خبراء يرجّحون إصابة حفل زفاف بذخيرة أمريكية، ونتنياهو يلوّح بإسقاط النظام في إيران",
+   "link": "https://www.bbc.com/arabic/articles/cvgy1gnpky3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-09-04T00:19:43+00:00"
+  },
+  {
+   "title": "ترامب يلمح إلى التخلي عن دعم بريطانيا في نزاع جزر فوكلاند إثر موقفها من حرب إيران",
+   "link": "https://www.bbc.com/arabic/articles/clyj137v6ppo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC عربي",
+   "time": "2026-09-04T00:13:05+00:00"
+  },
+  {
+   "title": "Is Hearts' McPake poised to gatecrash Pocognoli's Scotland squad?",
+   "link": "https://www.bbc.co.uk/sport/football/articles/c70l5nrrj02o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-09-03T23:40:13+00:00"
+  },
+  {
+   "title": "Premier League: 10 things to look out for this weekend",
+   "link": "https://www.theguardian.com/football/2026/sep/04/premier-league-10-things-to-look-out-for-this-weekend",
+   "source": "The Guardian",
+   "time": "2026-09-03T23:01:51+00:00"
+  },
+  {
+   "title": "Women’s Super League 2026-27 preview No 14: West Ham",
+   "link": "https://www.theguardian.com/football/2026/sep/04/womens-super-league-2026-27-preview-no-14-west-ham",
+   "source": "The Guardian",
+   "time": "2026-09-03T23:01:51+00:00"
+  },
+  {
    "title": "WSL window winners & losers: Ecstatic Arsenal but have Man City & Chelsea done enough?",
    "link": "https://www.skysports.com/football/news/12040/13581035/wsl-2026-27-transfer-window-winners-and-losers-ecstatic-arsenal-but-have-man-city-and-chelsea-done-enough",
    "source": "Sky Sports",
@@ -3132,6 +3227,12 @@
    "link": "https://www.skysports.com/football/live-blog/12691/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
    "source": "Sky News",
    "time": "2026-09-03T23:00:00+00:00"
+  },
+  {
+   "title": "Football Daily",
+   "link": "https://www.bbc.co.uk/sounds/play/p0p7x2v4?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-09-03T22:52:00+00:00"
   },
   {
    "title": "PL Predictions: More Iraola issues? Liverpool to slip at Ipswich",
@@ -3168,48 +3269,6 @@
    "link": "https://www.skysports.com/rugby-league/news/12040/13581063/super-league-bradford-bulls-produce-five-try-first-half-to-snap-seven-match-losing-streak-with-win-over-castleford-tigers",
    "source": "Sky Sports",
    "time": "2026-09-03T22:13:00+00:00"
-  },
-  {
-   "title": "Palace latest: Sarr included in Europa League squad as Guessand misses out",
-   "link": "https://www.skysports.com/football/live-blog/12691/13279298/crystal-palace-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-   "source": "Sky News",
-   "time": "2026-09-03T22:10:00+00:00"
-  },
-  {
-   "title": "Kretinsky agrees to become largest West Ham shareholder",
-   "link": "https://www.bbc.co.uk/sport/football/articles/cly45z47543o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-09-03T21:52:23+00:00"
-  },
-  {
-   "title": "Is Hearts' derby hero McPake ready for Scotland?",
-   "link": "https://www.bbc.co.uk/sounds/play/p0p7ww7y?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Sport",
-   "time": "2026-09-03T21:32:00+00:00"
-  },
-  {
-   "title": "Andoni Iraola defends Liverpool opting against throwing ‘crazy money’ at short-term fixes",
-   "link": "https://www.theguardian.com/football/2026/sep/03/andoni-iraola-defends-liverpool-transfer-strategy-turned-down-options",
-   "source": "The Guardian",
-   "time": "2026-09-03T21:30:10+00:00"
-  },
-  {
-   "title": "What must change as clubs prepare for key Scottish FA summit?",
-   "link": "https://www.skysports.com/watch/video/13581041/scottish-fa-summit-what-needs-to-change-for-the-future-of-the-game-ahead-of-st-andrews-meeting",
-   "source": "Sky Sports",
-   "time": "2026-09-03T21:28:00+00:00"
-  },
-  {
-   "title": "Scottish Premiership: McPake’s solo pearler seals Hearts’ cruise past 10-man Hibs",
-   "link": "https://www.theguardian.com/football/2026/sep/02/scottish-premiership-celtic-aberdeen-kenny-dalglish-rangers-falkirk",
-   "source": "The Guardian",
-   "time": "2026-09-03T21:13:18+00:00"
-  },
-  {
-   "title": "نتنياهو يقول إن إسقاط النظام الإيراني \"في المتناول\" وواشنطن تحقق في ضربة حفل الزفاف",
-   "link": "https://www.bbc.com/arabic/articles/cvgy1gnpky3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-09-03T21:03:28+00:00"
   }
  ],
  "radar_acc": {
@@ -4466,6 +4525,32 @@
     "side": "home",
     "signal": 85,
     "score_at": "1-1",
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-04",
+    "home": "Santo Domingo",
+    "away": "Cumbayá",
+    "league": "Liga Pro Serie B (Ecuador)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 39,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-04",
+    "home": "Libertad",
+    "away": "Emelec",
+    "league": "Liga Pro (Ecuador)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 40,
     "top": false
    }
   ]
