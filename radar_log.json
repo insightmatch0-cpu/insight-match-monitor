@@ -1214,11 +1214,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 66,
-   "level": "amber",
-   "score": 64,
-   "minute": 83,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د83)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1302,16 +1302,22 @@
    "mine": true,
    "pick": "away",
    "confidence": 39,
-   "level": "amber",
-   "score": 60,
-   "minute": 76,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د76)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 84,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1627957",
@@ -1323,16 +1329,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 34,
-   "level": "amber",
-   "score": 58,
-   "minute": 73,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د73)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 84,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1632291",
@@ -1344,11 +1356,11 @@
    "mine": false,
    "pick": "away",
    "confidence": 54,
-   "level": "amber",
-   "score": 63,
-   "minute": 80,
+   "level": "red",
+   "score": 67,
+   "minute": 88,
    "factors": [
-    "النتيجة الحالية 6-0 تُسقط التوقع (د80)"
+    "النتيجة الحالية 7-0 تُسقط التوقع (د88)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1366,11 +1378,13 @@
    "pick": "home",
    "confidence": 56,
    "level": "amber",
-   "score": 40,
-   "minute": 29,
+   "score": 41,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د29)",
-    "موجة ركنيات لصالح الضيف"
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1409,54 +1423,10 @@
    "pick": "home",
    "confidence": 63,
    "level": "amber",
-   "score": 43,
-   "minute": 48,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د48)"
-   ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": null,
-   "level_xg": null
-  },
-  {
-   "fid": "1570365",
-   "date": "2026-09-04",
-   "home": "Real Betis",
-   "away": "Real Madrid",
-   "league": "La Liga (Spain)",
-   "top": true,
-   "mine": true,
-   "pick": "away",
-   "confidence": 64,
-   "level": "amber",
-   "score": 44,
-   "minute": 35,
-   "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د35)",
-    "موجة ركنيات لصالح المضيف"
-   ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 36,
-   "level_xg": "green"
-  },
-  {
-   "fid": "1492754",
-   "date": "2026-09-04",
-   "home": "Shamrock Rovers",
-   "away": "Shelbourne",
-   "league": "Premier Division (Ireland)",
-   "top": false,
-   "mine": false,
-   "pick": "home",
-   "confidence": 54,
-   "level": "amber",
-   "score": 42,
-   "minute": 36,
-   "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د36)",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1490,6 +1460,48 @@
    "home": "Caernarfon Town",
    "away": "Flint Town United",
    "league": "Premier League (Wales)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
+   "score": 41,
+   "minute": 44,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د44)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1570365",
+   "date": "2026-09-04",
+   "home": "Real Betis",
+   "away": "Real Madrid",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 64,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 40,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1492754",
+   "date": "2026-09-04",
+   "home": "Shamrock Rovers",
+   "away": "Shelbourne",
+   "league": "Premier Division (Ireland)",
    "top": false,
    "mine": false,
    "pick": "home",
