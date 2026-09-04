@@ -1330,10 +1330,10 @@
    "pick": "home",
    "confidence": 34,
    "level": "red",
-   "score": 67,
-   "minute": 87,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د87)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د90)"
    ],
    "alerted": true,
    "alert_minute": 84,
@@ -1423,10 +1423,10 @@
    "pick": "home",
    "confidence": 63,
    "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1555,6 +1555,91 @@
    "minute": 44,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د44)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1575485",
+   "date": "2026-09-04",
+   "home": "FC Porto",
+   "away": "Moreirense",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 78,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د43)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 40,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1575935",
+   "date": "2026-09-04",
+   "home": "GAP Connah S Quay FC",
+   "away": "Haverfordwest County AFC",
+   "league": "Premier League (Wales)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 53,
+   "level": "amber",
+   "score": 48,
+   "minute": 56,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د56)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1494754",
+   "date": "2026-09-04",
+   "home": "Sandefjord",
+   "away": "Viking",
+   "league": "Eliteserien (Norway)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 52,
+   "level": "amber",
+   "score": 48,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1492965",
+   "date": "2026-09-04",
+   "home": "Bray Wanderers",
+   "away": "Cork City",
+   "league": "First Division (Ireland)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 50,
+   "level": "amber",
+   "score": 50,
+   "minute": 59,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -50424,6 +50509,65 @@
       "yc": 1,
       "rc": 0,
       "poss": 45
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1494754",
+   "date": "2026-09-04",
+   "minute": 49,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Sandefjord",
+   "away": "Viking",
+   "league": "Eliteserien (Norway)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 31
+     },
+     "a": {
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 69
+     }
+    },
+    {
+     "minute": 49,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sv": 1,
+      "shots": 4,
+      "yc": 1,
+      "cor": 1,
+      "sog": 0,
+      "rc": 0,
+      "poss": 48
+     },
+     "a": {
+      "sv": 0,
+      "shots": 9,
+      "yc": 0,
+      "cor": 3,
+      "sog": 1,
+      "rc": 1,
+      "poss": 52
      }
     }
    ]
