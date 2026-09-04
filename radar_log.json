@@ -812,10 +812,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "score": 60,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د66)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د76)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -856,10 +856,10 @@
    "pick": "home",
    "confidence": 72,
    "level": "amber",
-   "score": 49,
-   "minute": 57,
+   "score": 55,
+   "minute": 68,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د57)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د68)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -877,10 +877,10 @@
    "pick": "away",
    "confidence": 52,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د61)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -897,16 +897,24 @@
    "mine": true,
    "pick": "away",
    "confidence": 47,
-   "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "level": "red",
+   "score": 66,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د75)",
+    "ضغط هجومي متصاعد من المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 52,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 75,
+   "score_xg": 58,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 66,
+   "sent_minute": 75,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د75)",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
   },
   {
    "fid": "1581518",
@@ -919,10 +927,10 @@
    "pick": "home",
    "confidence": 72,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د61)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1003,16 +1011,22 @@
    "mine": true,
    "pick": "draw",
    "confidence": 36,
-   "level": "amber",
-   "score": 60,
-   "minute": 75,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د75)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د85)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 85,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 66,
+   "sent_minute": 85,
+   "sent_factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د85)"
+   ]
   },
   {
    "fid": "1607218",
