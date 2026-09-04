@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T23:25:48.340374+00:00",
+ "updated": "2026-09-04T23:32:30.815852+00:00",
  "live": [
   {
    "fid": "1513333",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/21139.png",
    "away_logo": "https://media.api-sports.io/football/teams/4040.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "2-0",
+   "score": "4-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -44,7 +44,7 @@
       55,
       66,
       75,
-      84
+      90
      ],
      "danger": [
       22,
@@ -107,7 +107,7 @@
    "score": "0-2",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:26:06.294838+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -160,65 +160,6 @@
    }
   },
   {
-   "fid": "1549620",
-   "home": "Bogota FC",
-   "away": "Ind. Yumbo",
-   "home_en": "Bogota FC",
-   "away_en": "Ind. Yumbo",
-   "league": "Primera B (Colombia)",
-   "home_logo": "https://media.api-sports.io/football/teams/1458.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27411.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-   "score": "0-1",
-   "minute": 68,
-   "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 46
-   },
-   "radar": {
-    "score": 55,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د68)"
-    ],
-    "pick": "home",
-    "confidence": 46,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      68
-     ],
-     "danger": [
-      55
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1636634",
    "home": "Resistencia",
    "away": "Guairena FC",
@@ -229,9 +170,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2138.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
    "score": "1-1",
-   "minute": 68,
+   "minute": 75,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -241,10 +182,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 55,
+    "score": 60,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د68)"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د75)"
     ],
     "pick": "away",
     "confidence": 36,
@@ -260,15 +201,18 @@
       1,
       20,
       30,
-      68
+      59,
+      75
      ],
      "danger": [
       15,
       15,
       15,
-      55
+      50,
+      60
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -278,9 +222,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
+      0,
       0,
       0,
       0,
@@ -289,6 +235,72 @@
      "a_cor": [
       0,
       0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1549620",
+   "home": "Bogota FC",
+   "away": "Ind. Yumbo",
+   "home_en": "Bogota FC",
+   "away_en": "Ind. Yumbo",
+   "league": "Primera B (Colombia)",
+   "home_logo": "https://media.api-sports.io/football/teams/1458.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27411.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/240.png",
+   "score": "0-2",
+   "minute": 74,
+   "status": "2H",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 46
+   },
+   "radar": {
+    "score": 59,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-2 تُسقط التوقع (د74)"
+    ],
+    "pick": "home",
+    "confidence": 46,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      59,
+      74
+     ],
+     "danger": [
+      50,
+      59
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
       0,
       0
      ]
@@ -306,9 +318,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/18309.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1134.png",
    "score": "1-1",
-   "minute": 67,
+   "minute": 74,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -318,16 +330,16 @@
     "confidence": 40
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 59,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د74)"
     ],
     "pick": "home",
     "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -338,14 +350,14 @@
       20,
       30,
       52,
-      61
+      74
      ],
      "danger": [
       15,
       15,
       15,
       15,
-      15
+      59
      ],
      "h_sog": [
       0,
@@ -389,9 +401,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2369.png",
    "league_logo": "https://media.api-sports.io/football/leagues/268.png",
    "score": "0-1",
-   "minute": 67,
+   "minute": 74,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -401,10 +413,10 @@
     "confidence": 45
    },
    "radar": {
-    "score": 55,
+    "score": 59,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د67)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د74)"
     ],
     "pick": "home",
     "confidence": 45,
@@ -417,21 +429,27 @@
     "top": false,
     "trend": {
      "min": [
-      67
+      58,
+      74
      ],
      "danger": [
-      55
+      49,
+      59
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -447,10 +465,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1064.png",
    "away_logo": "https://media.api-sports.io/football/teams/476.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "1-0",
-   "minute": 65,
+   "score": "1-1",
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -460,46 +478,50 @@
     "confidence": 38
    },
    "radar": {
-    "score": 80,
-    "level": "red",
+    "score": 16,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د65)",
-     "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف",
+     "التعادل صامد لكن أي هدف يقلبه",
      "ضغط هجومي متصاعد من المضيف"
     ],
     "pick": "draw",
     "confidence": 38,
     "drama": {
-     "signal": 85,
-     "side": "away",
-     "ready": true
+     "signal": 15,
+     "side": "home",
+     "ready": false
     },
     "alerted": null,
     "top": true,
     "trend": {
      "min": [
       10,
-      65
+      56,
+      72
      ],
      "danger": [
       0,
-      80
+      74,
+      16
      ],
      "h_sog": [
       1,
+      3,
       3
      ],
      "a_sog": [
       1,
+      2,
       3
      ],
      "h_cor": [
       0,
+      3,
       3
      ],
      "a_cor": [
       1,
+      3,
       3
      ]
     }
@@ -516,9 +538,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2317.png",
    "league_logo": "https://media.api-sports.io/football/leagues/266.png",
    "score": "1-0",
-   "minute": 63,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -547,7 +569,7 @@
       7,
       20,
       47,
-      56
+      63
      ],
      "danger": [
       19,
@@ -593,9 +615,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/8392.png",
    "league_logo": "https://media.api-sports.io/football/leagues/132.png",
    "score": "0-2",
-   "minute": 62,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -605,10 +627,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 52,
+    "score": 56,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-2 تُسقط التوقع (د62)"
+     "النتيجة الحالية 0-2 تُسقط التوقع (د69)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -622,25 +644,31 @@
     "trend": {
      "min": [
       6,
-      62
+      53,
+      69
      ],
      "danger": [
       18,
-      52
+      46,
+      56
      ],
      "h_sog": [
+      0,
       0,
       0
      ],
      "a_sog": [
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0
      ]
@@ -657,10 +685,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/440.png",
    "away_logo": "https://media.api-sports.io/football/teams/445.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "0-0",
-   "minute": 61,
+   "score": "1-0",
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -670,37 +698,43 @@
     "confidence": 45
    },
    "radar": {
-    "score": 51,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 45,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": true,
     "trend": {
      "min": [
-      61
+      52,
+      63
      ],
      "danger": [
-      51
+      46,
+      15
      ],
      "h_sog": [
-      4
+      4,
+      5
      ],
      "a_sog": [
+      1,
       2
      ],
      "h_cor": [
+      2,
       4
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -719,7 +753,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -784,136 +818,6 @@
    }
   },
   {
-   "fid": "1513336",
-   "home": "Philadelphia Union II",
-   "away": "Columbus Crew II",
-   "home_en": "Philadelphia Union II",
-   "away_en": "Columbus Crew II",
-   "league": "MLS Next Pro (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/3988.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18811.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "0-0",
-   "minute": 23,
-   "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 49
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 48
-   },
-   "radar": {
-    "score": 24,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
-    ],
-    "pick": "home",
-    "confidence": 48,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      16
-     ],
-     "danger": [
-      19,
-      24
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1513337",
-   "home": "Toronto II",
-   "away": "FC Cincinnati II",
-   "home_en": "Toronto II",
-   "away_en": "FC Cincinnati II",
-   "league": "MLS Next Pro (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/4025.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18812.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "1-1",
-   "minute": 23,
-   "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "away",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      16
-     ],
-     "danger": [
-      19,
-      15
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
    "fid": "1635074",
    "home": "Bandeirante SP",
    "away": "União São João",
@@ -924,9 +828,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/22852.png",
    "league_logo": "https://media.api-sports.io/football/leagues/742.png",
    "score": "2-0",
-   "minute": 23,
+   "minute": 30,
    "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -951,7 +855,7 @@
     "trend": {
      "min": [
       8,
-      17
+      24
      ],
      "danger": [
       15,
@@ -986,10 +890,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/10280.png",
    "away_logo": "https://media.api-sports.io/football/teams/4026.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "score": "1-1",
-   "minute": 22,
+   "score": "1-2",
+   "minute": 29,
    "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -999,37 +903,173 @@
     "confidence": 40
    },
    "radar": {
-    "score": 15,
+    "score": 28,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د23)"
     ],
     "pick": "home",
     "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      16
+      13,
+      23
      ],
      "danger": [
-      15
+      22,
+      28
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1513336",
+   "home": "Philadelphia Union II",
+   "away": "Columbus Crew II",
+   "home_en": "Philadelphia Union II",
+   "away_en": "Columbus Crew II",
+   "league": "MLS Next Pro (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/3988.png",
+   "away_logo": "https://media.api-sports.io/football/teams/18811.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
+   "score": "0-0",
+   "minute": 29,
+   "status": "1H",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 49
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 48
+   },
+   "radar": {
+    "score": 28,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د23)"
+    ],
+    "pick": "home",
+    "confidence": 48,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      23
+     ],
+     "danger": [
+      19,
+      28
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1513337",
+   "home": "Toronto II",
+   "away": "FC Cincinnati II",
+   "home_en": "Toronto II",
+   "away_en": "FC Cincinnati II",
+   "league": "MLS Next Pro (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/4025.png",
+   "away_logo": "https://media.api-sports.io/football/teams/18812.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
+   "score": "1-1",
+   "minute": 29,
+   "status": "1H",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 28,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د23)"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      23
+     ],
+     "danger": [
+      19,
+      28
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
       0
      ]
     }
@@ -1046,9 +1086,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21138.png",
    "league_logo": "https://media.api-sports.io/football/leagues/909.png",
    "score": "0-1",
-   "minute": 21,
+   "minute": 28,
    "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -1058,10 +1098,10 @@
     "confidence": 42
    },
    "radar": {
-    "score": 27,
+    "score": 31,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د21)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د28)"
     ],
     "pick": "home",
     "confidence": 42,
@@ -1075,76 +1115,11 @@
     "trend": {
      "min": [
       6,
-      21
+      28
      ],
      "danger": [
       18,
-      27
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1498786",
-   "home": "Ferro Carril Oeste",
-   "away": "Atletico Mitre",
-   "home_en": "Ferro Carril Oeste",
-   "away_en": "Atletico Mitre",
-   "league": "Primera Nacional (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/470.png",
-   "away_logo": "https://media.api-sports.io/football/teams/466.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
-   "score": "0-0",
-   "minute": 20,
-   "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 22,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د13)"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      4,
-      13
-     ],
-     "danger": [
-      17,
-      22
+      31
      ],
      "h_sog": [
       0,
@@ -1176,9 +1151,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3992.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "0-1",
-   "minute": 19,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-09-04T23:25:45.724254+00:00",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -1188,10 +1163,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 22,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د13)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "away",
     "confidence": 44,
@@ -1205,11 +1180,76 @@
     "trend": {
      "min": [
       3,
-      13
+      19
      ],
      "danger": [
       16,
-      22
+      15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1498786",
+   "home": "Ferro Carril Oeste",
+   "away": "Atletico Mitre",
+   "home_en": "Ferro Carril Oeste",
+   "away_en": "Atletico Mitre",
+   "league": "Primera Nacional (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/470.png",
+   "away_logo": "https://media.api-sports.io/football/teams/466.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
+   "score": "0-0",
+   "minute": 26,
+   "status": "1H",
+   "seen": "2026-09-04T23:32:24.754978+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 27,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      4,
+      20
+     ],
+     "danger": [
+      17,
+      27
      ],
      "h_sog": [
       0,
@@ -1279,38 +1319,6 @@
    "pick": "draw",
    "confidence": 51,
    "reason": "فريقان متقاربا المستوى في الدوري الأمريكي، احتمال تعادل واقعي جداً"
-  },
-  {
-   "fid": "1513333",
-   "kickoff": "2026-09-04T21:30:00+00:00",
-   "home": "كراون ليجاسي",
-   "away": "تشيكاغو فاير الثاني",
-   "home_en": "Crown Legacy",
-   "home_logo": "https://media.api-sports.io/football/teams/21139.png",
-   "away_logo": "https://media.api-sports.io/football/teams/4040.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-   "away_en": "Chicago Fire II",
-   "league": "دوري إم إل إس نيكست برو",
-   "top": false,
-   "pick": "away",
-   "confidence": 51,
-   "reason": "تشيكاغو فاير الثاني فريق احترافي منظم أقوى من كراون ليجاسي"
-  },
-  {
-   "fid": "1631611",
-   "kickoff": "2026-09-04T21:30:00+00:00",
-   "home": "هوراكانز إسكالي",
-   "away": "ريسينغ فيراكروز الثاني",
-   "home_en": "Huracanes Izcalli",
-   "home_logo": "https://media.api-sports.io/football/teams/17806.png",
-   "away_logo": "https://media.api-sports.io/football/teams/28302.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/872.png",
-   "away_en": "Racing de Veracruz 2",
-   "league": "دوري البريمير الدرجة الثانية المكسيكي",
-   "top": false,
-   "pick": "home",
-   "confidence": 52,
-   "reason": "فريق البيت يملك ميزة الملعب في الدرجة الثانية المكسيكية"
   },
   {
    "fid": "1500094",
@@ -7587,94 +7595,94 @@
  },
  "news": [
   {
-   "title": "Star-studded London City cruise to win over Man Utd",
-   "link": "https://www.skysports.com/football/london-city-lionesses-vs-manchester-united-women/report/575755",
-   "source": "Sky Sports",
-   "time": "2026-09-04T21:00:00+00:00"
+   "title": "Palace latest: Rak-Sakyi exit confirmed",
+   "link": "https://www.skysports.com/football/live-blog/12691/13279298/crystal-palace-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
+   "source": "Sky News",
+   "time": "2026-09-04T22:59:00+00:00"
   },
   {
-   "title": "Greaves makes more history with win at Czech Darts Open",
-   "link": "https://www.skysports.com/darts/news/12040/13581507/beau-greaves-becomes-first-woman-to-win-a-match-on-pdc-european-tour-plays-luke-humphries-next-at-czech-darts-open",
-   "source": "Sky Sports",
-   "time": "2026-09-04T20:55:00+00:00"
+   "title": "Isak finally arrives as Gakpo proves value to Liverpool",
+   "link": "https://www.bbc.co.uk/sport/football/articles/c209xvxe558o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-09-04T22:37:16+00:00"
   },
   {
-   "title": "How influencers at US Open are testing boundaries of tennis etiquette",
-   "link": "https://www.skysports.com/tennis/news/12040/13581380/us-open-how-influencers-have-sparked-debate-at-flushing-meadows-as-naomi-osaka-coco-gauff-and-jessica-pegula-have-their-say",
-   "source": "Sky Sports",
-   "time": "2026-09-04T20:35:00+00:00"
+   "title": "Richarlison omission not my decision - De Zerbi",
+   "link": "https://www.bbc.co.uk/sport/football/articles/c79038z3q4yo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-09-04T22:33:13+00:00"
   },
   {
-   "title": "Lawrence leads at halfway stage in Switzerland as he aims to emulate Ballesteros",
-   "link": "https://www.skysports.com/golf/news/12040/13581485/dp-world-tour-golf-thriston-lawrence-leads-at-halfway-stage-of-omega-european-masters-as-he-aims-to-emulate-seve-ballesteros",
+   "title": "'Recruitment's been SHOCKING!' - Wilkin and Jones-Buchanan on Saints' woes",
+   "link": "https://www.skysports.com/watch/video/13581567/leigh-leopards-v-st-helens-jon-wilkin-and-jamie-jones-buchanan-assess-saints-after-missing-play-offs",
    "source": "Sky Sports",
-   "time": "2026-09-04T20:30:00+00:00"
+   "time": "2026-09-04T22:24:00+00:00"
   },
   {
-   "title": "Ipswich Town v Liverpool: Premier League – live",
-   "link": "https://www.theguardian.com/football/live/2026/sep/04/ipswich-town-v-liverpool-premier-league-live-updates",
+   "title": "Hunt runs season's best to take third in Diamond League 200m",
+   "link": "https://www.skysports.com/athletics/news/12040/13581562/amy-hunt-british-sprinter-runs-seasons-best-200m-time-to-take-third-in-diamond-league-athletics-meet-in-brussels",
+   "source": "Sky Sports",
+   "time": "2026-09-04T22:20:00+00:00"
+  },
+  {
+   "title": "Papers: Chelsea offered chance to sign Bissouma as Fernandez replacement",
+   "link": "https://www.skysports.com/football/news/12040/13581538/chelsea-transfer-news-blues-offered-chance-to-sign-former-tottenham-midfielder-yves-bissouma-paper-talk",
+   "source": "Sky Sports",
+   "time": "2026-09-04T22:18:00+00:00"
+  },
+  {
+   "title": "Papers: Chelsea offered chance to sign Bissouma as Fernandez replacement",
+   "link": "https://www.skysports.com/football/news/12691/13581538/chelsea-transfer-news-blues-offered-chance-to-sign-former-tottenham-midfielder-yves-bissouma-paper-talk",
+   "source": "Sky News",
+   "time": "2026-09-04T22:18:00+00:00"
+  },
+  {
+   "title": "José Mourinho sick as a Parrott as Real Madrid sunk by Real Betis and Irish supersub",
+   "link": "https://www.theguardian.com/football/2026/sep/04/jose-mourinho-sick-as-a-parrott-as-real-madrid-sunk-by-real-betis-and-irish-supersub",
    "source": "The Guardian",
-   "time": "2026-09-04T20:18:38+00:00"
+   "time": "2026-09-04T22:11:10+00:00"
   },
   {
-   "title": "'Let's go one more time' - Taylor bows out from boxing at 'dream' venue",
-   "link": "https://www.skysports.com/boxing/news/12040/13581455/katie-taylor-ready-to-go-one-more-time-as-glittering-career-ends-at-croke-park-with-dreams-of-being-undisputed-again",
-   "source": "Sky Sports",
-   "time": "2026-09-04T19:45:00+00:00"
-  },
-  {
-   "title": "Luis Enrique signs new deal to extend PSG stay",
-   "link": "https://www.bbc.co.uk/sport/football/articles/c36l79n02r8o?at_medium=RSS&at_campaign=rss",
+   "title": "Parrott fires Real Betis to win over Real Madrid",
+   "link": "https://www.bbc.co.uk/sport/football/videos/c9v9ewe7kygo?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-09-04T19:43:26+00:00"
+   "time": "2026-09-04T22:07:56+00:00"
   },
   {
-   "title": "ترامب يصف الحرب مع إيران بأنها \"صراع عسكري تافه\"، وواشنطن تفرض عقوبات على بنك تركي بسبب صلته بالحرس الثوري",
-   "link": "https://www.bbc.com/arabic/articles/cn4kwd8wgn4o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-09-04T19:41:50+00:00"
-  },
-  {
-   "title": "Guendouzi and Greenwood banned  after brawl",
-   "link": "https://www.bbc.co.uk/sport/football/articles/cly7874vxzlo?at_medium=RSS&at_campaign=rss",
+   "title": "How London City proved they can live up to the hype",
+   "link": "https://www.bbc.co.uk/sport/football/articles/czxz1vnwgz6o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-09-04T19:24:48+00:00"
+   "time": "2026-09-04T22:02:34+00:00"
   },
   {
-   "title": "St Helens behind against Leigh,  Hull KR lead Huddersfield",
-   "link": "https://www.skysports.com/rugby-league/live-blog/12040/13580338/super-league-live-updates-videos-scores-commentary-analysis-as-leigh-leopards-host-st-helens-hull-kr-face-huddersfield-giants",
-   "source": "Sky Sports",
-   "time": "2026-09-04T19:15:00+00:00"
-  },
-  {
-   "title": "Chelsea hit bullseye with Morgan Rogers as Arsenal rue what might have been",
-   "link": "https://www.theguardian.com/football/blog/2026/sep/04/chelsea-morgan-rogers-arsenal-xabi-alonso-mikel-arteta",
-   "source": "The Guardian",
-   "time": "2026-09-04T19:00:14+00:00"
-  },
-  {
-   "title": "كيف يمكن إنهاء الصراع الأمريكي الإيراني؟ ثلاثة خبراء يعرضون وجهات نظرهم",
-   "link": "https://www.bbc.com/arabic/articles/cj3dxpgv1lyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC عربي",
-   "time": "2026-09-04T18:46:49+00:00"
-  },
-  {
-   "title": "Dean says he always applied laws - but which matches did he play games in?",
-   "link": "https://www.bbc.co.uk/sport/football/articles/czjzn84wn9wo?at_medium=RSS&at_campaign=rss",
+   "title": "How London City proved they can live up to the hype",
+   "link": "https://www.bbc.co.uk/sport/football/articles/czxz1vnwgz6o?at_medium=RSS&at_campaign=rss",
    "source": "BBC Sport",
-   "time": "2026-09-04T18:33:30+00:00"
+   "time": "2026-09-04T22:02:34+00:00"
   },
   {
-   "title": "Liverpool still lead at Ipswich through Isak double LIVE on Sky!",
-   "link": "https://www.skysports.com/football/ipswich-town-vs-liverpool/live/559470",
+   "title": "Leigh seal play-off spot as Saints miss out for first time",
+   "link": "https://www.skysports.com/watch/video/13581546/hull-kr-v-huddersfield-giants-super-league-highlights-as-robins-win-36-6-to-seal-play-off-spot",
    "source": "Sky Sports",
-   "time": "2026-09-04T18:00:00+00:00"
+   "time": "2026-09-04T21:58:00+00:00"
   },
   {
-   "title": "'It's going to be tight' - Hamilton eyes 'dream' Monza pole",
-   "link": "https://www.skysports.com/f1/news/12040/13581165/lewis-hamilton-eyes-dream-italian-gp-pole-position-for-ferrari-after-predicting-very-close-monza-qualifying-battle",
+   "title": "Iraola up and running at Liverpool as Isak nets double at Ipswich",
+   "link": "https://www.skysports.com/football/ipswich-town-vs-liverpool/report/559470",
    "source": "Sky Sports",
-   "time": "2026-09-04T18:00:00+00:00"
+   "time": "2026-09-04T21:49:00+00:00"
+  },
+  {
+   "title": "First win as Liverpool boss 'feels good' - Iraola",
+   "link": "https://www.bbc.co.uk/sport/football/videos/c93enddzn5eo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-09-04T21:48:52+00:00"
+  },
+  {
+   "title": "'I thought we were excellent' - O'Neil on Liverpool defeat",
+   "link": "https://www.bbc.co.uk/sport/football/videos/c5y4rpj0lx4o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC Sport",
+   "time": "2026-09-04T21:47:02+00:00"
   }
  ],
  "radar_acc": {
@@ -9809,6 +9817,19 @@
     "conf": 45,
     "final": "0-3",
     "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-04",
+    "home": "Huracanes Izcalli",
+    "away": "Racing de Veracruz 2",
+    "league": "Liga Premier Serie B (Mexico)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 47,
     "top": false
    },
    {
