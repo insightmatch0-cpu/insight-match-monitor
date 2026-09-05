@@ -597,6 +597,12 @@ def claude_request(system_prompt: str, user_text: str, max_tokens: int = 2000) -
         return ""
 
 
+# 💳 عدّاد رفض عائلة الرصيد خلال التشغيلة (يقرؤه main لتحمير التشغيلة):
+# 79 دفعة رُفضت صبيحة 2026-09-05 وخرجت التشغيلة خضراء لأن الرفض الجزئي
+# (372 من 1318) لم يكن يعبر حارس «صفر توقعات». الفشل الجزئي يصرخ أيضاً.
+CLAUDE_REFUSED = {"credit": 0}
+
+
 def claude_refusal_alert(detail: str, engine: str) -> None:
     """💳 رفض عائلة موت الحساب من Anthropic (رصيد/فوترة/مفتاح) — إنذار فوري
     للمالك من أول فشل بتهدئة 6 ساعات (درس 14 أغسطس: عتبة تحتاج N فشلاً
@@ -606,6 +612,7 @@ def claude_refusal_alert(detail: str, engine: str) -> None:
     low = (detail or "").lower()
     if ("credit balance" in low or "billing" in low
             or "authentication" in low or "invalid x-api-key" in low):
+        CLAUDE_REFUSED["credit"] += 1
         api_guard.alert_once(
             "claude_credit",
             f"💳 {engine} متوقف: Anthropic يرفض النداءات (رصيد/فوترة/مفتاح).\n"
@@ -1629,6 +1636,9 @@ def claude_predict_batch(batch: list, stats: dict, enriched: bool) -> dict:
             try: detail = " — " + resp.text[:300]
             except Exception: pass
         print(f"Claude error: {e}{detail}")
+        # 💳 نفس إنذار claude_request — كان غائباً هنا فمرّت 79 دفعة مرفوضة
+        # بصمت صبيحة 2026-09-05 (النسخة المكررة انحرفت — درس القوائم الأربع)
+        claude_refusal_alert(detail or str(e), "المحرك 2")
         return {}
 
 
@@ -2516,6 +2526,16 @@ def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
 
 
 # ================== المنطق الرئيسي ==================
+def exit_if_claude_refused(saved: int, candidates: int) -> None:
+    """يُحمّر التشغيلة إن رُفضت أي دفعة برفض من عائلة الرصيد — يُنادى بعد حفظ
+    كل شيء (الذاكرة، الأرشيف، النشرة) فلا يضيع ما نجح. الأخضر الصامت هو العدو."""
+    n = CLAUDE_REFUSED["credit"]
+    if n:
+        raise SystemExit(
+            f"⛔ رصيد Anthropic رفض {n} دفعة خلال التوقعات — حُفظ {saved} من "
+            f"{candidates} مرشحاً. عبّئ الرصيد وشغّل التشغيلة يدوياً لإكمال الباقي.")
+
+
 def main() -> None:
     missing = [
         name
@@ -2646,6 +2666,10 @@ def main() -> None:
     # 5) ملخص تيليجرام (مقارنة المحرك 1 + سباق الدقة الثلاثي مع المالك)
     if SEND_TELEGRAM_DIGEST and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and new_preds:
         digest = build_digest(new_preds, stats, v1_pending(), new_lessons, user_stats)
+        if CLAUDE_REFUSED["credit"]:
+            digest += (f"\n⚠️ الرصيد نفد أثناء التوقع: حُفظ {len(new_preds)} من "
+                       f"{len(upcoming)} مرشحاً ({CLAUDE_REFUSED['credit']} دفعة مرفوضة) — "
+                       "عبّئ رصيد Anthropic ثم شغّل «Daily Predictions V2» يدوياً لإكمال الباقي.")
         drama = drama_scoreboard_line()
         if drama:
             digest += "\n" + drama
@@ -2681,6 +2705,10 @@ def main() -> None:
         if due_lines:
             digest += "\n" + due_lines
         send_telegram_long(digest)
+
+    # ⛔ رفض جزئي من عائلة الرصيد خلال التوقعات = تشغيلة حمراء (بعد الحفظ
+    # والأرشيف والنشرة كلها) — 372 من 1318 صبيحة 2026-09-05 مرّت خضراء.
+    exit_if_claude_refused(len(new_preds), len(upcoming))
 
     # 🚨 آخر شيء في التشغيلة: لو فشل تسليم رسالة إلى المالك نفسه فلا قناة
     # تبليغ بديلة — نخرج بحالة فشل لتظهر التشغيلة حمراء. بعد حفظ كل شيء.
