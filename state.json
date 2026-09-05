@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2498,
+  "remaining": 2497,
   "note": "",
-  "matches": 7,
-  "radar_hits": 3,
-  "radar_targets": 6
+  "matches": 5,
+  "radar_hits": 1,
+  "radar_targets": 3
  },
  "api_quota": {
-  "remaining": 1185,
+  "remaining": 1164,
   "limit": 7500,
-  "at": "2026-09-05T20:58:08.976580+00:00"
+  "at": "2026-09-05T21:06:41.447755+00:00"
  },
  "delivery": {
   "at": "2026-09-05T20:58:08.741779+00:00",
@@ -85,14 +85,14 @@
  "1492361": {
   "score": "2-3",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "RB Bragantino",
   "away": "Bahia",
   "league": "Serie A (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/794.png",
   "away_logo": "https://media.api-sports.io/football/teams/118.png",
   "league_logo": "https://media.api-sports.io/football/leagues/71.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00",
+  "seen": "2026-09-05T21:05:08.830671+00:00",
   "radar": {
    "snaps": [
     {
@@ -188,13 +188,13 @@
      }
     },
     {
-     "minute": 87,
+     "minute": 90,
      "gh": 2,
      "ga": 3,
      "h": {
       "sog": 10,
       "sv": 2,
-      "shots": 21,
+      "shots": 24,
       "yc": 1,
       "cor": 10,
       "rc": 0,
@@ -211,24 +211,25 @@
      }
     }
    ],
-   "score": 15,
+   "score": 21,
    "level": "green",
    "dscores": [
     43,
     15,
     15,
     49,
-    15
+    21
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "تقدم هش بفارق هدف واحد",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "pick": "away",
    "confidence": 36,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 15,
     "side": "home",
     "ready": false
    },
@@ -240,14 +241,14 @@
  "1493113": {
   "score": "1-2",
   "status": "2H",
-  "minute": 64,
+  "minute": 78,
   "home": "Gimnasia M.",
   "away": "Boca Juniors",
   "league": "Liga Profesional Argentina (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/1066.png",
   "away_logo": "https://media.api-sports.io/football/teams/451.png",
   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00",
+  "seen": "2026-09-05T21:06:40.825316+00:00",
   "radar": {
    "snaps": [
     {
@@ -383,27 +384,54 @@
       "rc": 0,
       "poss": 45
      }
+    },
+    {
+     "minute": 78,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 6,
+      "sv": 4,
+      "shots": 15,
+      "yc": 1,
+      "cor": 5,
+      "rc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 6,
+      "sv": 5,
+      "shots": 11,
+      "yc": 4,
+      "cor": 4,
+      "rc": 0,
+      "poss": 42
+     }
     }
    ],
-   "score": 15,
-   "level": "green",
+   "score": 43,
+   "level": "amber",
    "dscores": [
     24,
     28,
     41,
     21,
     15,
-    15
+    15,
+    43
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "pick": "away",
    "confidence": 35,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 70,
     "side": "home",
     "ready": false
    },
@@ -412,613 +440,41 @@
    "warn_alerted": null
   }
  },
- "1511674": {
-  "score": "1-1",
-  "status": "2H",
-  "minute": 90,
-  "home": "Deportes Santa Cruz",
-  "away": "Union Espanola",
-  "league": "Primera B (Chile)",
-  "home_logo": "https://media.api-sports.io/football/teams/2346.png",
-  "away_logo": "https://media.api-sports.io/football/teams/2321.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/266.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1520854": {
-  "score": "0-1",
-  "status": "2H",
-  "minute": 86,
-  "home": "Goias",
-  "away": "Fortaleza EC",
-  "league": "Serie B (Brazil)",
-  "home_logo": "https://media.api-sports.io/football/teams/151.png",
-  "away_logo": "https://media.api-sports.io/football/teams/154.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/72.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
  "1520858": {
   "score": "3-1",
   "status": "2H",
-  "minute": 84,
+  "minute": 90,
   "home": "Novorizontino",
   "away": "Avai",
   "league": "Serie B (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/7834.png",
   "away_logo": "https://media.api-sports.io/football/teams/145.png",
   "league_logo": "https://media.api-sports.io/football/leagues/72.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1548523": {
-  "score": "4-1",
-  "status": "2H",
-  "minute": 90,
-  "home": "HNK Rijeka",
-  "away": "NK Osijek",
-  "league": "HNL (Croatia)",
-  "home_logo": "https://media.api-sports.io/football/teams/561.png",
-  "away_logo": "https://media.api-sports.io/football/teams/616.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/210.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1552157": {
-  "score": "0-3",
-  "status": "2H",
-  "minute": 90,
-  "home": "Willem II",
-  "away": "Excelsior",
-  "league": "Eredivisie (Netherlands)",
-  "home_logo": "https://media.api-sports.io/football/teams/195.png",
-  "away_logo": "https://media.api-sports.io/football/teams/196.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/88.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 45,
-     "gh": 0,
-     "ga": 2,
-     "h": {
-      "sv": 2,
-      "shots": 2,
-      "cor": 2,
-      "sog": 0,
-      "rc": 0,
-      "yc": 0,
-      "poss": 49
-     },
-     "a": {
-      "sv": 0,
-      "shots": 8,
-      "cor": 6,
-      "sog": 4,
-      "rc": 0,
-      "yc": 0,
-      "poss": 51
-     }
-    },
-    {
-     "minute": 53,
-     "gh": 0,
-     "ga": 2,
-     "h": {
-      "sv": 2,
-      "shots": 2,
-      "cor": 2,
-      "yc": 1,
-      "sog": 0,
-      "rc": 0,
-      "poss": 52
-     },
-     "a": {
-      "sv": 0,
-      "shots": 8,
-      "cor": 6,
-      "yc": 0,
-      "sog": 4,
-      "rc": 0,
-      "poss": 48
-     }
-    },
-    {
-     "minute": 63,
-     "gh": 0,
-     "ga": 2,
-     "h": {
-      "sv": 2,
-      "shots": 5,
-      "yc": 1,
-      "cor": 3,
-      "sog": 0,
-      "rc": 0,
-      "poss": 53
-     },
-     "a": {
-      "sv": 0,
-      "shots": 9,
-      "yc": 0,
-      "cor": 6,
-      "sog": 4,
-      "rc": 0,
-      "poss": 47
-     }
-    },
-    {
-     "minute": 73,
-     "gh": 0,
-     "ga": 2,
-     "h": {
-      "sv": 2,
-      "shots": 11,
-      "yc": 1,
-      "cor": 4,
-      "sog": 0,
-      "rc": 0,
-      "poss": 54
-     },
-     "a": {
-      "sv": 0,
-      "shots": 10,
-      "yc": 0,
-      "cor": 6,
-      "sog": 4,
-      "rc": 0,
-      "poss": 46
-     }
-    },
-    {
-     "minute": 90,
-     "gh": 0,
-     "ga": 3,
-     "h": {
-      "sog": 2,
-      "sv": 3,
-      "shots": 16,
-      "yc": 2,
-      "cor": 6,
-      "rc": 0,
-      "poss": 58
-     },
-     "a": {
-      "sog": 6,
-      "sv": 2,
-      "shots": 12,
-      "yc": 1,
-      "cor": 6,
-      "rc": 0,
-      "poss": 42
-     }
-    }
-   ],
-   "score": 34,
-   "level": "green",
-   "dscores": [
-    0,
-    0,
-    6,
-    6,
-    34
-   ],
-   "factors": [
-    "موجة تسديد على المرمى من المضيف",
-    "موجة ركنيات لصالح المضيف",
-    "ضغط هجومي متصاعد من المضيف",
-    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
-   ],
-   "pick": "away",
-   "confidence": 48,
-   "top": true,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": null,
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1556663": {
-  "score": "1-2",
-  "status": "2H",
-  "minute": 90,
-  "home": "ST Mirren",
-  "away": "Celtic",
-  "league": "Premiership (Scotland)",
-  "home_logo": "https://media.api-sports.io/football/teams/251.png",
-  "away_logo": "https://media.api-sports.io/football/teams/247.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/179.png",
-  "seen": "2026-09-05T20:57:44.473395+00:00",
-  "ar": {
-   "home": "سانت ميرين",
-   "away": "سيلتيك",
-   "league": "الدوري الاسكتلندي الممتاز (اسكتلندا)"
-  },
-  "pulse": "سيلتيك مسيطر بالفعل لا بالأرقام فقط: 20 تسديدة من داخل المنطقة و10 ركنيات مع 60% استحواذ، وهدفا ليام سكيلز (51') ويانغ هيون-جون (68') ترجما هذه الأفضلية. سانت ميرين خطير من بعيد (11 تسديدة من خارج المنطقة) لكن حارس سيلتيك سينيسالو صامد بـ5 تصديات. هدف الدقيقة 90 من شوميرا مويكا يخضع لمراجعة VAR — وسيلتيك سبق أن أُلغي له هدف لكاميلو دوران في الدقيقة 31، لكن حتى دون احتسابه فالنتيجة 2-1 لسيلتيك والوقت شبه منتهٍ.\nالسيناريو: 1) هدف قادم لسيلتيك في الوقت المحتسب يغلق المباراة — مويكا أو دوران على المرتدات مع اندفاع سانت ميرين (55%). 2) كلا الفريقين سجّلا بالفعل، ومسار المباراة مفتوح؛ فرصة أخيرة لسانت ميرين من كرة ثابتة أو ركنية (سجل 6 ركنيات) عبر أغرافيوتيس لإدراك التعادل (20%). 3) بطاقة صفراء إضافية في الوقت بدل الضائع مع تصاعد التوتر — سيلتيك ارتكب 15 خطأ، ومكغريغور أو ترستي مرشحان (35%).\nالتوقع: سيلتيك — ثقة 92%",
-  "sig": {
-   "251:Shots on Goal": 6,
-   "251:Goalkeeper Saves": 5,
-   "251:Total Shots": 19,
-   "251:Yellow Cards": 1,
-   "251:Corner Kicks": 6,
-   "251:Red Cards": 0,
-   "247:Shots on Goal": 9,
-   "247:Goalkeeper Saves": 5,
-   "247:Total Shots": 23,
-   "247:Yellow Cards": 1,
-   "247:Corner Kicks": 10,
-   "247:Red Cards": 0
-  }
- },
- "1563140": {
-  "score": "0-0",
-  "status": "2H",
-  "minute": 90,
-  "home": "Swansea",
-  "away": "Wrexham",
-  "league": "Championship (England)",
-  "home_logo": "https://media.api-sports.io/football/teams/76.png",
-  "away_logo": "https://media.api-sports.io/football/teams/1837.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/40.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 45,
-     "gh": 0,
-     "ga": 0,
-     "h": {
-      "shots": 2,
-      "cor": 2,
-      "rc": 0,
-      "yc": 0,
-      "sog": 0,
-      "poss": 62
-     },
-     "a": {
-      "shots": 1,
-      "cor": 0,
-      "rc": 0,
-      "yc": 0,
-      "sog": 0,
-      "poss": 38
-     },
-     "xg_h": 0.5182,
-     "xg_a": 0.193
-    },
-    {
-     "minute": 53,
-     "gh": 0,
-     "ga": 0,
-     "h": {
-      "shots": 3,
-      "cor": 2,
-      "yc": 0,
-      "rc": 0,
-      "sog": 0,
-      "poss": 61
-     },
-     "a": {
-      "shots": 3,
-      "cor": 1,
-      "yc": 0,
-      "rc": 0,
-      "sog": 0,
-      "poss": 39
-     },
-     "xg_h": 0.5391,
-     "xg_a": 0.3286
-    },
-    {
-     "minute": 63,
-     "gh": 0,
-     "ga": 0,
-     "h": {
-      "shots": 3,
-      "cor": 3,
-      "yc": 0,
-      "rc": 0,
-      "sog": 0,
-      "poss": 62
-     },
-     "a": {
-      "shots": 5,
-      "cor": 2,
-      "yc": 0,
-      "rc": 0,
-      "sog": 0,
-      "poss": 38
-     },
-     "xg_h": 0.5391,
-     "xg_a": 0.8150999999999999
-    },
-    {
-     "minute": 73,
-     "gh": 0,
-     "ga": 0,
-     "h": {
-      "shots": 3,
-      "yc": 1,
-      "cor": 3,
-      "rc": 0,
-      "sog": 0,
-      "poss": 63
-     },
-     "a": {
-      "shots": 6,
-      "yc": 0,
-      "cor": 2,
-      "rc": 0,
-      "sog": 0,
-      "poss": 37
-     },
-     "xg_h": 0.5391,
-     "xg_a": 1.0156
-    },
-    {
-     "minute": 90,
-     "gh": 0,
-     "ga": 0,
-     "h": {
-      "sog": 1,
-      "shots": 4,
-      "yc": 3,
-      "cor": 5,
-      "sv": 0,
-      "rc": 0,
-      "poss": 61
-     },
-     "a": {
-      "sog": 0,
-      "shots": 7,
-      "yc": 0,
-      "cor": 2,
-      "sv": 1,
-      "rc": 0,
-      "poss": 39
-     },
-     "xg_h": 0.8401000000000001,
-     "xg_a": 0.89
-    }
-   ],
-   "score": 69,
-   "level": "red",
-   "dscores": [
-    42,
-    46,
-    52,
-    58,
-    69
-   ],
-   "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
-   ],
-   "pick": "home",
-   "confidence": 48,
-   "top": true,
-   "mine": true,
-   "drama": {
-    "signal": 20,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1569908": {
-  "score": "0-0",
-  "status": "2H",
-  "minute": 90,
-  "home": "Eldense",
-  "away": "Mallorca",
-  "league": "Segunda División (Spain)",
-  "home_logo": "https://media.api-sports.io/football/teams/9692.png",
-  "away_logo": "https://media.api-sports.io/football/teams/798.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/141.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1570372": {
-  "score": "2-3",
-  "status": "2H",
-  "minute": 90,
-  "home": "Villarreal",
-  "away": "Deportivo La Coruna",
-  "league": "La Liga (Spain)",
-  "home_logo": "https://media.api-sports.io/football/teams/533.png",
-  "away_logo": "https://media.api-sports.io/football/teams/544.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/140.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 51,
-     "gh": 1,
-     "ga": 1,
-     "h": {
-      "sog": 4,
-      "shots": 7,
-      "cor": 5,
-      "sv": 0,
-      "yc": 0,
-      "rc": 0,
-      "poss": 60
-     },
-     "a": {
-      "sog": 1,
-      "shots": 5,
-      "cor": 1,
-      "sv": 3,
-      "yc": 0,
-      "rc": 0,
-      "poss": 40
-     },
-     "xg_h": 0.8518,
-     "xg_a": 0.4719
-    },
-    {
-     "minute": 61,
-     "gh": 1,
-     "ga": 1,
-     "h": {
-      "sog": 5,
-      "shots": 10,
-      "cor": 5,
-      "sv": 0,
-      "yc": 0,
-      "rc": 0,
-      "poss": 60
-     },
-     "a": {
-      "sog": 1,
-      "shots": 5,
-      "cor": 1,
-      "sv": 4,
-      "yc": 0,
-      "rc": 0,
-      "poss": 40
-     },
-     "xg_h": 1.0838,
-     "xg_a": 0.4719
-    },
-    {
-     "minute": 71,
-     "gh": 1,
-     "ga": 1,
-     "h": {
-      "sog": 5,
-      "shots": 12,
-      "cor": 7,
-      "sv": 0,
-      "yc": 0,
-      "rc": 0,
-      "poss": 62
-     },
-     "a": {
-      "sog": 1,
-      "shots": 5,
-      "cor": 1,
-      "sv": 4,
-      "yc": 0,
-      "rc": 0,
-      "poss": 38
-     },
-     "xg_h": 1.4597,
-     "xg_a": 0.4719
-    },
-    {
-     "minute": 81,
-     "gh": 2,
-     "ga": 2,
-     "h": {
-      "sog": 5,
-      "shots": 14,
-      "cor": 7,
-      "sv": 0,
-      "yc": 0,
-      "rc": 0,
-      "poss": 62
-     },
-     "a": {
-      "sog": 2,
-      "shots": 6,
-      "cor": 1,
-      "sv": 4,
-      "yc": 0,
-      "rc": 0,
-      "poss": 38
-     },
-     "xg_h": 1.5263,
-     "xg_a": 0.5984
-    },
-    {
-     "minute": 90,
-     "gh": 2,
-     "ga": 3,
-     "h": {
-      "sog": 5,
-      "shots": 16,
-      "yc": 2,
-      "cor": 7,
-      "sv": 0,
-      "rc": 0,
-      "poss": 62
-     },
-     "a": {
-      "sog": 3,
-      "shots": 8,
-      "yc": 1,
-      "cor": 1,
-      "sv": 4,
-      "rc": 0,
-      "poss": 38
-     },
-     "xg_h": 1.6099,
-     "xg_a": 0.8698
-    }
-   ],
-   "score": 69,
-   "level": "red",
-   "dscores": [
-    45,
-    51,
-    57,
-    63,
-    69
-   ],
-   "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د90)"
-   ],
-   "pick": "home",
-   "confidence": 54,
-   "top": true,
-   "mine": true,
-   "drama": {
-    "signal": 0,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
+  "seen": "2026-09-05T21:00:33.670338+00:00"
  },
  "1571115": {
-  "score": "0-0",
+  "score": "1-0",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "Zaragoza",
   "away": "Antequera",
   "league": "Primera División RFEF - Group 2 (Spain)",
   "home_logo": "https://media.api-sports.io/football/teams/732.png",
   "away_logo": "https://media.api-sports.io/football/teams/9742.png",
   "league_logo": "https://media.api-sports.io/football/leagues/436.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1572952": {
-  "score": "0-0",
-  "status": "2H",
-  "minute": 90,
-  "home": "Estepona",
-  "away": "Xerez",
-  "league": "Segunda División RFEF - Group 4 (Spain)",
-  "home_logo": "https://media.api-sports.io/football/teams/15358.png",
-  "away_logo": "https://media.api-sports.io/football/teams/9770.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/878.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:00:33.670338+00:00"
  },
  "1575489": {
   "score": "2-0",
   "status": "2H",
-  "minute": 59,
+  "minute": 75,
   "home": "Sporting CP",
   "away": "Nacional",
   "league": "Primeira Liga (Portugal)",
   "home_logo": "https://media.api-sports.io/football/teams/228.png",
   "away_logo": "https://media.api-sports.io/football/teams/225.png",
   "league_logo": "https://media.api-sports.io/football/leagues/94.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00",
+  "seen": "2026-09-05T21:06:40.825316+00:00",
   "radar": {
    "snaps": [
     {
@@ -1141,6 +597,29 @@
      },
      "xg_h": 1.3677000000000001,
      "xg_a": 0.054
+    },
+    {
+     "minute": 75,
+     "gh": 2,
+     "ga": 0,
+     "h": {
+      "sog": 5,
+      "sv": 1,
+      "shots": 11,
+      "yc": 2,
+      "cor": 10,
+      "rc": 0,
+      "poss": 71
+     },
+     "a": {
+      "sog": 1,
+      "sv": 3,
+      "shots": 2,
+      "yc": 1,
+      "cor": 0,
+      "rc": 0,
+      "poss": 29
+     }
     }
    ],
    "score": 0,
@@ -1150,6 +629,7 @@
     27,
     31,
     15,
+    0,
     0
    ],
    "factors": [],
@@ -1170,162 +650,90 @@
  "1600712": {
   "score": "2-0",
   "status": "2H",
-  "minute": 60,
+  "minute": 75,
   "home": "Santiago City",
   "away": "Concón National",
   "league": "Segunda División (Chile)",
   "home_logo": "https://media.api-sports.io/football/teams/21117.png",
   "away_logo": "https://media.api-sports.io/football/teams/21114.png",
   "league_logo": "https://media.api-sports.io/football/leagues/711.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1606489": {
-  "score": "0-0",
+  "score": "1-0",
   "status": "2H",
-  "minute": 86,
+  "minute": 90,
   "home": "Sarmiento Resistencia",
   "away": "Tucuman Central",
   "league": "Torneo Federal A (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/1953.png",
   "away_logo": "https://media.api-sports.io/football/teams/27573.png",
   "league_logo": "https://media.api-sports.io/football/leagues/134.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1608640": {
-  "score": "1-2",
-  "status": "2H",
-  "minute": 90,
-  "home": "Vis Pesaro",
-  "away": "Ostia Mare",
-  "league": "Serie C - Girone B (Italy)",
-  "home_logo": "https://media.api-sports.io/football/teams/1708.png",
-  "away_logo": "https://media.api-sports.io/football/teams/9530.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/942.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1609012": {
-  "score": "1-0",
-  "status": "2H",
-  "minute": 89,
-  "home": "Bari",
-  "away": "Casarano",
-  "league": "Serie C - Girone C (Italy)",
-  "home_logo": "https://media.api-sports.io/football/teams/508.png",
-  "away_logo": "https://media.api-sports.io/football/teams/9542.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/943.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:03:36.979654+00:00"
  },
  "1609017": {
   "score": "0-2",
   "status": "2H",
-  "minute": 78,
+  "minute": 90,
   "home": "Giugliano",
   "away": "Sorrento",
   "league": "Serie C - Girone C (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/9556.png",
   "away_logo": "https://media.api-sports.io/football/teams/9537.png",
   "league_logo": "https://media.api-sports.io/football/leagues/943.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1609019": {
-  "score": "1-0",
-  "status": "2H",
-  "minute": 89,
-  "home": "Potenza",
-  "away": "SS Monopoli",
-  "league": "Serie C - Girone C (Italy)",
-  "home_logo": "https://media.api-sports.io/football/teams/1710.png",
-  "away_logo": "https://media.api-sports.io/football/teams/10138.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/943.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1618998": {
-  "score": "1-1",
-  "status": "2H",
-  "minute": 90,
-  "home": "Guabirá",
-  "away": "Real Potosí",
-  "league": "Primera División (Bolivia)",
-  "home_logo": "https://media.api-sports.io/football/teams/3704.png",
-  "away_logo": "https://media.api-sports.io/football/teams/3708.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1632378": {
   "score": "1-2",
   "status": "2H",
-  "minute": 80,
+  "minute": 90,
   "home": "Esporte Limoeiro",
   "away": "Acopiara",
   "league": "Cearense - 3 (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/13088.png",
   "away_logo": "https://media.api-sports.io/football/teams/28315.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1124.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1632379": {
   "score": "2-1",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "Pacatuba",
   "away": "Calouros do Ar",
   "league": "Cearense - 3 (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/15507.png",
   "away_logo": "https://media.api-sports.io/football/teams/28316.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1124.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:00:33.670338+00:00"
  },
  "1635917": {
   "score": "2-1",
   "status": "2H",
-  "minute": 62,
+  "minute": 77,
   "home": "Monagas II",
   "away": "Aragua FC",
   "league": "Segunda División (Venezuela)",
   "home_logo": "https://media.api-sports.io/football/teams/11371.png",
   "away_logo": "https://media.api-sports.io/football/teams/2817.png",
   "league_logo": "https://media.api-sports.io/football/leagues/300.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1638344": {
-  "score": "2-1",
-  "status": "2H",
-  "minute": 90,
-  "home": "Atletico Sucre",
-  "away": "Deportivo FATIC",
-  "league": "Nacional B (Bolivia)",
-  "home_logo": "https://media.api-sports.io/football/teams/28290.png",
-  "away_logo": "https://media.api-sports.io/football/teams/15695.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/710.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
- },
- "1638347": {
-  "score": "0-1",
-  "status": "2H",
-  "minute": 90,
-  "home": "Wilstermann Cooperativa",
-  "away": "Independiente CBBA",
-  "league": "Nacional B (Bolivia)",
-  "home_logo": "https://media.api-sports.io/football/teams/17763.png",
-  "away_logo": "https://media.api-sports.io/football/teams/28292.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/710.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1638348": {
   "score": "0-1",
   "status": "2H",
-  "minute": 61,
+  "minute": 77,
   "home": "Unión Tarija",
   "away": "Ciudad Nueva Santa Cruz",
   "league": "Nacional B (Bolivia)",
   "home_logo": "https://media.api-sports.io/football/teams/26486.png",
   "away_logo": "https://media.api-sports.io/football/teams/17745.png",
   "league_logo": "https://media.api-sports.io/football/leagues/710.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1498782": {
-  "score": "0-1",
-  "status": "1H",
+  "score": "0-2",
+  "status": "HT",
   "minute": 45,
   "home": "Colon Santa Fe",
   "away": "Deportivo Moron",
@@ -1333,11 +741,11 @@
   "home_logo": "https://media.api-sports.io/football/teams/448.png",
   "away_logo": "https://media.api-sports.io/football/teams/469.png",
   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1549479": {
   "score": "1-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Sport Huancayo",
   "away": "Sport Boys",
@@ -1345,7 +753,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2555.png",
   "away_logo": "https://media.api-sports.io/football/teams/2544.png",
   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1600711": {
   "score": "0-0",
@@ -1357,19 +765,19 @@
   "home_logo": "https://media.api-sports.io/football/teams/15717.png",
   "away_logo": "https://media.api-sports.io/football/teams/5633.png",
   "league_logo": "https://media.api-sports.io/football/leagues/711.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1601427": {
   "score": "1-0",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 46,
   "home": "Futbol Consultants Moravia",
   "away": "Santa Ana",
   "league": "Liga de Ascenso (Costa-Rica)",
   "home_logo": "https://media.api-sports.io/football/teams/2054.png",
   "away_logo": "https://media.api-sports.io/football/teams/2057.png",
   "league_logo": "https://media.api-sports.io/football/leagues/163.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1606296": {
   "score": "0-0",
@@ -1381,7 +789,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/23307.png",
   "away_logo": "https://media.api-sports.io/football/teams/10674.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1634893": {
   "score": "0-1",
@@ -1393,54 +801,66 @@
   "home_logo": "https://media.api-sports.io/football/teams/16139.png",
   "away_logo": "https://media.api-sports.io/football/teams/16141.png",
   "league_logo": "https://media.api-sports.io/football/leagues/759.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1635076": {
   "score": "3-0",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 46,
   "home": "Primavera SP",
   "away": "São Caetano",
   "league": "Copa Paulista (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/10039.png",
   "away_logo": "https://media.api-sports.io/football/teams/7786.png",
   "league_logo": "https://media.api-sports.io/football/leagues/742.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1637832": {
   "score": "1-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 46,
   "home": "Inter De Limeira",
   "away": "Ferroviária",
   "league": "Serie C (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/1201.png",
   "away_logo": "https://media.api-sports.io/football/teams/7826.png",
   "league_logo": "https://media.api-sports.io/football/leagues/75.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1517339": {
   "score": "0-0",
-  "status": "1H",
-  "minute": 41,
+  "status": "HT",
+  "minute": 45,
   "home": "Atlético Ottawa",
   "away": "Pacific FC",
   "league": "Canadian Premier League (Canada)",
   "home_logo": "https://media.api-sports.io/football/teams/10169.png",
   "away_logo": "https://media.api-sports.io/football/teams/2622.png",
   "league_logo": "https://media.api-sports.io/football/leagues/479.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  },
  "1635911": {
-  "score": "1-0",
+  "score": "3-0",
   "status": "1H",
-  "minute": 19,
+  "minute": 34,
   "home": "Fundación Lara Deportiva",
   "away": "Real Frontera",
   "league": "Segunda División (Venezuela)",
   "home_logo": "https://media.api-sports.io/football/teams/10091.png",
   "away_logo": "https://media.api-sports.io/football/teams/2847.png",
   "league_logo": "https://media.api-sports.io/football/leagues/300.png",
-  "seen": "2026-09-05T20:51:16.253769+00:00"
+  "seen": "2026-09-05T21:06:40.825316+00:00"
+ },
+ "1606298": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 7,
+  "home": "Morrinhos",
+  "away": "Goianésia",
+  "league": "Goiano - 2 (Brazil)",
+  "home_logo": "https://media.api-sports.io/football/teams/18297.png",
+  "away_logo": "https://media.api-sports.io/football/teams/7873.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/1030.png",
+  "seen": "2026-09-05T21:06:40.825316+00:00"
  }
 }
