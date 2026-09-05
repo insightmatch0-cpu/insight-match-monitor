@@ -696,8 +696,8 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 64,
-   "level_xg": "amber"
+   "score_xg": 67,
+   "level_xg": "red"
   },
   {
    "fid": "1610629",
@@ -710,10 +710,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "red",
-   "score": 68,
-   "minute": 89,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د89)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -752,16 +752,15 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 53,
-   "minute": 51,
+   "score": 54,
+   "minute": 66,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د51)",
-    "موجة ركنيات لصالح المضيف"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د66)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 59,
-   "level_xg": "amber"
+   "score_xg": 67,
+   "level_xg": "red"
   },
   {
    "fid": "1583854",
@@ -795,12 +794,11 @@
    "pick": "home",
    "confidence": 56,
    "level": "red",
-   "score": 74,
-   "minute": 69,
+   "score": 79,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 3-3 تُسقط التوقع (د69)",
-    "موجة تسديد على المرمى من الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 4-4 تُسقط التوقع (د90)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -817,11 +815,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 57,
-   "level": "amber",
-   "score": 64,
-   "minute": 82,
+   "level": "red",
+   "score": 68,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-3 تُسقط التوقع (د82)"
+    "النتيجة الحالية 1-3 تُسقط التوقع (د89)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -839,10 +837,10 @@
    "pick": "away",
    "confidence": 58,
    "level": "red",
-   "score": 66,
-   "minute": 86,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د86)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -860,10 +858,10 @@
    "pick": "away",
    "confidence": 57,
    "level": "amber",
-   "score": 41,
-   "minute": 44,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د44)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -927,6 +925,27 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1601131",
+   "date": "2026-09-05",
+   "home": "Sabah FA",
+   "away": "Kuching FA",
+   "league": "Super League (Malaysia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 52,
+   "level": "amber",
+   "score": 52,
+   "minute": 63,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د63)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -52573,6 +52592,92 @@
       "cor": 1,
       "yc": 0,
       "poss": 45
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1576169",
+   "date": "2026-09-05",
+   "minute": 90,
+   "score_at": "4-4",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "VfL Wolfsburg",
+   "away": "Energie Cottbus",
+   "league": "2. Bundesliga (Germany)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 69,
+     "gh": 3,
+     "ga": 3,
+     "h": {
+      "sog": 4,
+      "sv": 4,
+      "shots": 10,
+      "yc": 1,
+      "cor": 1,
+      "rc": 0,
+      "poss": 49
+     },
+     "a": {
+      "sog": 7,
+      "sv": 1,
+      "shots": 19,
+      "yc": 1,
+      "cor": 7,
+      "rc": 0,
+      "poss": 51
+     }
+    },
+    {
+     "minute": 79,
+     "gh": 3,
+     "ga": 3,
+     "h": {
+      "sog": 5,
+      "sv": 4,
+      "shots": 14,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 46
+     },
+     "a": {
+      "sog": 7,
+      "sv": 2,
+      "shots": 20,
+      "yc": 1,
+      "cor": 7,
+      "rc": 0,
+      "poss": 54
+     }
+    },
+    {
+     "minute": 90,
+     "gh": 4,
+     "ga": 4,
+     "h": {
+      "sog": 7,
+      "sv": 5,
+      "rc": 1,
+      "shots": 20,
+      "yc": 1,
+      "cor": 4,
+      "poss": 47
+     },
+     "a": {
+      "sog": 8,
+      "sv": 3,
+      "rc": 0,
+      "shots": 20,
+      "yc": 2,
+      "cor": 8,
+      "poss": 53
      }
     }
    ]
