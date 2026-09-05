@@ -1040,8 +1040,8 @@
    ],
    "alerted": true,
    "alert_minute": 76,
-   "score_xg": 60,
-   "level_xg": "amber",
+   "score_xg": 66,
+   "level_xg": "red",
    "sent_level": "red",
    "sent_score": 72,
    "sent_minute": 76,
@@ -1347,14 +1347,15 @@
    "pick": "away",
    "confidence": 53,
    "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "score": 56,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د49)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د59)",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 44,
+   "score_xg": 50,
    "level_xg": "amber"
   },
   {
@@ -1377,7 +1378,7 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 65,
+   "score_xg": 68,
    "level_xg": "red"
   },
   {
@@ -1391,12 +1392,11 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 41,
-   "minute": 21,
+   "score": 54,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د21)",
-    "موجة ركنيات لصالح الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1436,15 +1436,60 @@
    "mine": true,
    "pick": "home",
    "confidence": 55,
-   "level": "green",
-   "score": 39,
-   "minute": 40,
+   "level": "amber",
+   "score": 54,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 46,
+   "score_xg": 49,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1557396",
+   "date": "2026-09-05",
+   "home": "Nottingham Forest",
+   "away": "Tottenham",
+   "league": "Premier League (England)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1563132",
+   "date": "2026-09-05",
+   "home": "Burnley",
+   "away": "Bristol City",
+   "league": "Championship (England)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 38,
+   "level": "amber",
+   "score": 56,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
    "level_xg": "amber"
   }
  ],
