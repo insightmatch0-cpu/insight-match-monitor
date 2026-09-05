@@ -33,6 +33,9 @@ from api_guard import ApiRefused        # noqa: F401 — يُعاد تصديره
 # ================== المفاتيح (تُقرأ من GitHub Secrets) ==================
 API_FOOTBALL_KEY  = os.environ.get("API_FOOTBALL_KEY", "").strip()
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+# 💳 HOLD-013 (3) — مفتاح Admin API اختياري (Secret منفصل ANTHROPIC_ADMIN_KEY):
+# يكشف كلفة Claude اليومية في النشرة. غيابه = لا سطر، صفر أثر (يوضعه المالك).
+ANTHROPIC_ADMIN_KEY = os.environ.get("ANTHROPIC_ADMIN_KEY", "").strip()
 TELEGRAM_TOKEN    = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TELEGRAM_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 # بث اختياري لأجهزة/أشخاص إضافيين — انظر شرح الفصل في monitor.py
@@ -189,6 +192,11 @@ SEND_TELEGRAM_DIGEST = True
 # وعدد دفعات Claude المتوقعة، بنداء API-Football واحد من الرصيد المدفوع — إنذار
 # 24 ساعة قبل كل سبت ضخم (RND-022: السبت 72-120 دفعة مقابل ~16 يومياً).
 DIGEST_TOMORROW_LINE = True
+# 💳 سطر كلفة Claude اليومي (HOLD-013-3): «اجعل المورد مرئياً كل يوم» — قاعدة
+# 14 أغسطس نفسها التي أعطت سطر رصيد API-Football. مصدره Usage & Cost Admin API
+# (نداء واحد، لا يُحسب على رصيد الرسائل). يعمل فقط مع ANTHROPIC_ADMIN_KEY.
+CLAUDE_COST_LINE = True
+COST_LOOKBACK_DAYS = 7
 FORECAST_PEAK_BATCHES = 60    # فوق هذا الحد يحمل السطر تحذير «يوم ذروة»
 DIGEST_TOP_ONLY      = True
 # ⭐/⚡ قسما النشرة البارزان (طلب المالك 2026-08-21: «كل شيء مخلوط») — نفس
@@ -2518,6 +2526,63 @@ def tomorrow_forecast_line(fetch=None, now: datetime = None) -> str:
         return ""
 
 
+def _admin_cost_report(starting_at: str, ending_at: str) -> dict:
+    """GET /v1/organizations/cost_report بمفتاح الإدارة — يرجع JSON الرد الخام."""
+    r = requests.get(
+        "https://api.anthropic.com/v1/organizations/cost_report",
+        params={"starting_at": starting_at, "ending_at": ending_at, "bucket_width": "1d"},
+        headers={"x-api-key": ANTHROPIC_ADMIN_KEY, "anthropic-version": "2023-06-01",
+                 "User-Agent": "InsightMatch/1.0 (github.com/insightmatch0-cpu/insight-match-monitor)"},
+        timeout=60,
+    )
+    r.raise_for_status()
+    return r.json()
+
+
+def summarize_cost_report(report: dict) -> dict:
+    """(نقي) يحوّل رد cost_report إلى {يوم: دولارات}: المبالغ تصل كنصوص عشرية
+    بأصغر وحدة (سنتات) فتُقسم على 100. يتجاهل الحقول الناقصة بصمت."""
+    days = {}
+    for bucket in (report or {}).get("data") or []:
+        day = str(bucket.get("starting_at") or "")[:10]
+        if not day:
+            continue
+        cents = 0.0
+        for res in bucket.get("results") or []:
+            try:
+                cents += float(res.get("amount") or 0)
+            except (TypeError, ValueError):
+                pass
+        days[day] = days.get(day, 0.0) + cents / 100.0
+    return days
+
+
+def claude_cost_line(fetch=None, now: datetime = None) -> str:
+    """💳 «كلفة Claude أمس: $X · آخر 7 أيام: $Y» — بلا مفتاح إداري = بلا سطر؛
+    صامت عند أي فشل (المورد يُرى ولا يُعطّل شيئاً)."""
+    if not (CLAUDE_COST_LINE and ANTHROPIC_ADMIN_KEY):
+        return ""
+    try:
+        now = now or now_utc()
+        today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        start = today - timedelta(days=COST_LOOKBACK_DAYS)
+        fetch = fetch or _admin_cost_report
+        days = summarize_cost_report(fetch(start.strftime("%Y-%m-%dT00:00:00Z"),
+                                           today.strftime("%Y-%m-%dT00:00:00Z")))
+        if not days:
+            return ""
+        yday = (today - timedelta(days=1)).strftime("%Y-%m-%d")
+        total = sum(days.values())
+        line = f"💳 كلفة Claude أمس: ${days.get(yday, 0.0):.2f} · آخر {COST_LOOKBACK_DAYS} أيام: ${total:.2f}"
+        peak = max(days, key=days.get)
+        if days[peak] > 0 and peak != yday:
+            line += f" (الذروة {peak}: ${days[peak]:.2f})"
+        return line
+    except Exception as e:
+        print("تعذر جلب كلفة Claude:", type(e).__name__)
+        return ""
+
+
 def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
                  new_lessons: int = 0, user_stats: dict = None) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
@@ -2755,6 +2820,10 @@ def main() -> None:
         forecast = tomorrow_forecast_line()
         if forecast:
             digest += "\n" + forecast
+        # 💳 كلفة Claude اليومية — المورد الذي قتل التشغيلة 4 مرات يصير مرئياً
+        cost = claude_cost_line()
+        if cost:
+            digest += "\n" + cost
         shed = load_shed_line()
         if shed:
             digest += "\n" + shed
