@@ -1870,16 +1870,16 @@
    "mine": true,
    "pick": "away",
    "confidence": 78,
-   "level": "amber",
-   "score": 64,
-   "minute": 83,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 64,
-   "level_xg": "amber"
+   "score_xg": 69,
+   "level_xg": "red"
   },
   {
    "fid": "1557392",
@@ -1902,7 +1902,7 @@
    ],
    "alerted": true,
    "alert_minute": 40,
-   "score_xg": 65,
+   "score_xg": 69,
    "level_xg": "red",
    "sent_level": "red",
    "sent_score": 65,
@@ -1925,15 +1925,38 @@
    "pick": "away",
    "confidence": 54,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 47,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د54)"
    ],
    "alerted": null,
    "alert_minute": null,
    "score_xg": 47,
    "level_xg": "amber"
+  },
+  {
+   "fid": "1493112",
+   "date": "2026-09-05",
+   "home": "Gimnasia L.P.",
+   "away": "Tigre",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "mine": false,
+   "pick": "draw",
+   "confidence": 36,
+   "level": "amber",
+   "score": 60,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
@@ -54021,6 +54044,98 @@
       "sog": 2,
       "poss": 38
      }
+    }
+   ]
+  },
+  {
+   "fid": "1570370",
+   "date": "2026-09-05",
+   "minute": 88,
+   "score_at": "3-2",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Rayo Vallecano",
+   "away": "Racing Santander",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 68,
+     "gh": 3,
+     "ga": 2,
+     "h": {
+      "sog": 10,
+      "sv": 2,
+      "shots": 14,
+      "yc": 3,
+      "cor": 6,
+      "rc": 0,
+      "poss": 57
+     },
+     "a": {
+      "sog": 4,
+      "sv": 6,
+      "shots": 7,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 43
+     },
+     "xg_h": 1.2494,
+     "xg_a": 0.4111
+    },
+    {
+     "minute": 79,
+     "gh": 3,
+     "ga": 3,
+     "h": {
+      "sog": 10,
+      "sv": 2,
+      "shots": 14,
+      "yc": 3,
+      "cor": 7,
+      "rc": 0,
+      "poss": 54
+     },
+     "a": {
+      "sog": 4,
+      "sv": 6,
+      "shots": 8,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 46
+     },
+     "xg_h": 1.2494,
+     "xg_a": 0.4441
+    },
+    {
+     "minute": 88,
+     "gh": 3,
+     "ga": 2,
+     "h": {
+      "sog": 10,
+      "sv": 2,
+      "rc": 1,
+      "shots": 16,
+      "yc": 3,
+      "cor": 9,
+      "poss": 52
+     },
+     "a": {
+      "sog": 4,
+      "sv": 6,
+      "rc": 0,
+      "shots": 9,
+      "yc": 2,
+      "cor": 5,
+      "poss": 48
+     },
+     "xg_h": 1.3522,
+     "xg_a": 0.4996
     }
    ]
   }
