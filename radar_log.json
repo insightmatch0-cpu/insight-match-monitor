@@ -858,10 +858,10 @@
    "pick": "away",
    "confidence": 57,
    "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د69)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -879,10 +879,10 @@
    "pick": "home",
    "confidence": 56,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د70)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -900,10 +900,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د70)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -963,10 +963,10 @@
    "pick": "away",
    "confidence": 51,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1007,11 +1007,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 70,
-   "level": "amber",
-   "score": 51,
-   "minute": 58,
+   "level": "red",
+   "score": 97,
+   "minute": 78,
    "factors": [
-    "تقدم هش بفارق هدف واحد",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د78)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
@@ -1079,6 +1079,27 @@
    "minute": 73,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د73)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1587459",
+   "date": "2026-09-05",
+   "home": "SV Rodinghausen",
+   "away": "Wiedenbrück",
+   "league": "Regionalliga - West (Germany)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
+   "score": 63,
+   "minute": 80,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -52811,6 +52832,93 @@
       "rc": 1,
       "yc": 2,
       "poss": 48
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1523262",
+   "date": "2026-09-05",
+   "minute": 78,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Shandong Luneng",
+   "away": "Sichuan Jiuniu",
+   "league": "Super League (China)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 58,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 5,
+      "rc": 1,
+      "shots": 5,
+      "cor": 2,
+      "yc": 0,
+      "poss": 45
+     },
+     "a": {
+      "sog": 5,
+      "sv": 0,
+      "rc": 0,
+      "shots": 17,
+      "cor": 1,
+      "yc": 1,
+      "poss": 55
+     }
+    },
+    {
+     "minute": 68,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 5,
+      "rc": 1,
+      "shots": 6,
+      "cor": 2,
+      "yc": 0,
+      "poss": 42
+     },
+     "a": {
+      "sog": 5,
+      "sv": 0,
+      "rc": 0,
+      "shots": 20,
+      "cor": 1,
+      "yc": 2,
+      "poss": 58
+     }
+    },
+    {
+     "minute": 78,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "sv": 7,
+      "rc": 1,
+      "shots": 6,
+      "cor": 2,
+      "yc": 0,
+      "poss": 41
+     },
+     "a": {
+      "sog": 8,
+      "sv": 0,
+      "rc": 0,
+      "shots": 25,
+      "cor": 2,
+      "yc": 3,
+      "poss": 59
      }
     }
    ]
