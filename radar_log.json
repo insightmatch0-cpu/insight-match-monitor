@@ -1346,17 +1346,24 @@
    "mine": true,
    "pick": "away",
    "confidence": 53,
-   "level": "amber",
-   "score": 56,
-   "minute": 59,
+   "level": "red",
+   "score": 68,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د59)",
+    "النتيجة الحالية 2-0 تُسقط التوقع (د79)",
     "ضغط هجومي متصاعد من المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 56,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 79,
+   "score_xg": 62,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 68,
+   "sent_minute": 79,
+   "sent_factors": [
+    "النتيجة الحالية 2-0 تُسقط التوقع (د79)",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
   },
   {
    "fid": "1557389",
@@ -1378,7 +1385,7 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 68,
+   "score_xg": 72,
    "level_xg": "red"
   },
   {
@@ -1391,17 +1398,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 40,
-   "level": "amber",
-   "score": 54,
-   "minute": 45,
+   "level": "red",
+   "score": 71,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د45)",
-    "موجة تسديد على المرمى من الضيف"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د51)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 51,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 71,
+   "sent_minute": 51,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د51)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ]
   },
   {
    "fid": "1563134",
@@ -1460,14 +1478,14 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 42,
+   "score_xg": 46,
    "level_xg": "amber"
   },
   {
@@ -1481,16 +1499,16 @@
    "pick": "away",
    "confidence": 38,
    "level": "amber",
-   "score": 56,
-   "minute": 45,
+   "score": 59,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د51)",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 42,
+   "score_xg": 45,
    "level_xg": "amber"
   },
   {
@@ -1504,14 +1522,14 @@
    "pick": "away",
    "confidence": 43,
    "level": "amber",
-   "score": 40,
-   "minute": 43,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 41,
+   "score_xg": 42,
    "level_xg": "amber"
   },
   {
@@ -1525,15 +1543,39 @@
    "pick": "away",
    "confidence": 36,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د53)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 49,
+   "score_xg": 50,
    "level_xg": "amber"
+  },
+  {
+   "fid": "1563137",
+   "date": "2026-09-05",
+   "home": "QPR",
+   "away": "Middlesbrough",
+   "league": "Championship (England)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 43,
+   "level": "amber",
+   "score": 49,
+   "minute": 49,
+   "factors": [
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
