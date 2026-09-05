@@ -17,6 +17,7 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from datetime import timedelta
 from pathlib import Path
 
@@ -509,3 +510,66 @@ class TestClaudeCreditGuard(unittest.TestCase):
             src = (root / f).read_text(encoding="utf-8")
             with self.subTest(engine=f):
                 self.assertIn("claude_refusal_alert(", src)
+
+
+class TestPartialCreditRefusalIsLoud(unittest.TestCase):
+    """💳 صبيحة 2026-09-05: 1318 مرشحاً، 372 حُفظت، ثم رفض الرصيد 79 دفعة —
+    والتشغيلة خرجت خضراء بلا إنذار: مسار الدفعات كانت له نسخة معالجة
+    أخطاء خاصة لا تنادي الإنذار، وحارس «صفر توقعات» لا يرى الفشل الجزئي.
+    ثلاث قواعد: الدفعة المرفوضة تنادي الإنذار، الرفض الجزئي يُحمّر
+    التشغيلة بعد الحفظ، والفحص البنيوي يقرأ داخل كل دالة لا الملف كله."""
+
+    def _credit_error(self):
+        import requests
+        resp = mock.Mock()
+        resp.text = ('{"type":"error","error":{"type":"invalid_request_error",'
+                     '"message":"Your credit balance is too low to access the Anthropic API."}}')
+        err = requests.HTTPError("400 Client Error")
+        err.response = resp
+        return err
+
+    def test_batch_credit_refusal_alerts_and_counts(self):
+        import predict_v2 as P2
+        calls = []
+        with mock.patch.object(P2.api_guard, "alert_once",
+                               side_effect=lambda kind, text, **k: calls.append(kind) or True), \
+             mock.patch.object(P2.requests, "post", side_effect=self._credit_error()):
+            P2.CLAUDE_REFUSED["credit"] = 0
+            out = P2.claude_predict_batch(
+                [{"fid": "1", "home": "A", "away": "B", "league": "L",
+                  "kickoff": "2099-01-01T20:00:00+00:00"}],
+                {"overall": {"correct": 0, "total": 0}}, enriched=False)
+        self.assertEqual(out, {})
+        self.assertEqual(calls, ["claude_credit"])
+        self.assertEqual(P2.CLAUDE_REFUSED["credit"], 1)
+
+    def test_partial_refusal_turns_run_red_after_saving(self):
+        import predict_v2 as P2
+        P2.CLAUDE_REFUSED["credit"] = 3
+        with self.assertRaises(SystemExit) as cm:
+            P2.exit_if_claude_refused(372, 1318)
+        self.assertIn("372", str(cm.exception))
+        P2.CLAUDE_REFUSED["credit"] = 0
+        P2.exit_if_claude_refused(10, 10)   # لا رفض → لا خروج
+
+    def test_alert_is_called_inside_every_claude_path(self):
+        """بنيوي محكم: الفحص القديم بحث في الملف كله فمرّ الانحراف — هنا يُقرأ
+        نص كل دالة نداء على حدة في المحركين."""
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        for f, funcs in (("predict_v2.py", ("claude_request", "claude_predict_batch")),
+                         ("predict.py", ("claude_predict_batch",))):
+            src = (root / f).read_text(encoding="utf-8")
+            for fn in funcs:
+                with self.subTest(engine=f, func=fn):
+                    i = src.index(f"def {fn}(")
+                    j = src.find("\ndef ", i + 1)
+                    self.assertIn("claude_refusal_alert(", src[i:j])
+
+    def test_main_exits_red_before_owner_check(self):
+        from pathlib import Path
+        src = (Path(__file__).resolve().parent.parent / "predict_v2.py").read_text(encoding="utf-8")
+        i = src.index("def main(")
+        body = src[i:]
+        self.assertLess(body.index("exit_if_claude_refused("),
+                        body.index("api_guard.exit_if_owner_unreachable()"))
