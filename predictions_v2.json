@@ -203,93 +203,6 @@
    "ar_away": "إتش2أو بوريبيتشاس",
    "ar_league": "بريميرا بريمير المكسيكي"
   },
-  "1550949": {
-   "fid": "1550949",
-   "kickoff": "2026-09-05T03:00:00+00:00",
-   "date": "2026-09-05",
-   "home": "FC Juarez",
-   "away": "CF Pachuca",
-   "home_id": 2298,
-   "away_id": 2292,
-   "home_logo": "https://media.api-sports.io/football/teams/2298.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "league": "Liga MX (Mexico)",
-   "league_id": 262,
-   "season": 2026,
-   "round": "Apertura - 7",
-   "venue": "Mexico",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "away",
-   "confidence": 40,
-   "prob_home": 31,
-   "prob_draw": 29,
-   "prob_away": 40,
-   "reason": "باتشوكا أفضل جودة وفورمة لكن خواريس صعب على ملعبه فالفارق ليس حاسماً",
-   "ar_home": "خواريس",
-   "ar_away": "باتشوكا",
-   "ar_league": "الدوري المكسيكي الممتاز"
-  },
-  "1581413": {
-   "fid": "1581413",
-   "kickoff": "2026-09-05T03:00:00+00:00",
-   "date": "2026-09-05",
-   "home": "CA La Paz",
-   "away": "Mineros de Zacatecas",
-   "home_id": 19024,
-   "away_id": 2299,
-   "home_logo": "https://media.api-sports.io/football/teams/19024.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2299.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "league": "Liga de Expansión MX (Mexico)",
-   "league_id": 263,
-   "season": 2026,
-   "round": "Apertura - 7",
-   "venue": "Estadio Guaycura, La Paz, Mexico",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "away",
-   "confidence": 36,
-   "prob_home": 33,
-   "prob_draw": 31,
-   "prob_away": 36,
-   "reason": "مينيروس أقوى بقليل لكن الأرض عامل مؤثر في الدرجة الثانية فالتعادل وارد بقوة",
-   "ar_home": "لا باس",
-   "ar_away": "مينيروس دي ساكاتيكاس",
-   "ar_league": "دوري إكسبانسيون المكسيكي"
-  },
-  "1636821": {
-   "fid": "1636821",
-   "kickoff": "2026-09-05T03:00:00+00:00",
-   "date": "2026-09-05",
-   "home": "South Hobart",
-   "away": "Devonport City",
-   "home_id": 14106,
-   "away_id": 14100,
-   "home_logo": "https://media.api-sports.io/football/teams/14106.png",
-   "away_logo": "https://media.api-sports.io/football/teams/14100.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/648.png",
-   "league": "Tasmania NPL (Australia)",
-   "league_id": 648,
-   "season": 2026,
-   "round": "Final",
-   "venue": "Darcy Street, Australia",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 52,
-   "prob_home": 52,
-   "prob_draw": 23,
-   "prob_away": 25,
-   "reason": "ساوث هوبارت القوة التقليدية المهيمنة في تسمانيا وعلى أرضه",
-   "ar_home": "ساوث هوبارت",
-   "ar_away": "ديفونبورت سيتي",
-   "ar_league": "دوري تسمانيا الأسترالي"
-  },
   "1629366": {
    "fid": "1629366",
    "kickoff": "2026-09-05T04:00:00+00:00",
@@ -157721,24 +157634,105 @@
    "actual": "away",
    "score": "0-2",
    "correct": true
+  },
+  {
+   "fid": "1550949",
+   "date": "2026-09-05",
+   "home": "FC Juarez",
+   "away": "CF Pachuca",
+   "ar_home": "خواريس",
+   "ar_away": "باتشوكا",
+   "home_logo": "https://media.api-sports.io/football/teams/2298.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+   "league": "Liga MX (Mexico)",
+   "ar_league": "الدوري المكسيكي الممتاز",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 40,
+   "prob_home": 31,
+   "prob_draw": 29,
+   "prob_away": 40,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "باتشوكا أفضل جودة وفورمة لكن خواريس صعب على ملعبه فالفارق ليس حاسماً",
+   "actual": "away",
+   "score": "0-2",
+   "correct": true
+  },
+  {
+   "fid": "1581413",
+   "date": "2026-09-05",
+   "home": "CA La Paz",
+   "away": "Mineros de Zacatecas",
+   "ar_home": "لا باس",
+   "ar_away": "مينيروس دي ساكاتيكاس",
+   "home_logo": "https://media.api-sports.io/football/teams/19024.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2299.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
+   "league": "Liga de Expansión MX (Mexico)",
+   "ar_league": "دوري إكسبانسيون المكسيكي",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 36,
+   "prob_home": 33,
+   "prob_draw": 31,
+   "prob_away": 36,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "مينيروس أقوى بقليل لكن الأرض عامل مؤثر في الدرجة الثانية فالتعادل وارد بقوة",
+   "actual": "home",
+   "score": "3-0",
+   "correct": false
+  },
+  {
+   "fid": "1636821",
+   "date": "2026-09-05",
+   "home": "South Hobart",
+   "away": "Devonport City",
+   "ar_home": "ساوث هوبارت",
+   "ar_away": "ديفونبورت سيتي",
+   "home_logo": "https://media.api-sports.io/football/teams/14106.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14100.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/648.png",
+   "league": "Tasmania NPL (Australia)",
+   "ar_league": "دوري تسمانيا الأسترالي",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 52,
+   "prob_home": 52,
+   "prob_draw": 23,
+   "prob_away": 25,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "ساوث هوبارت القوة التقليدية المهيمنة في تسمانيا وعلى أرضه",
+   "actual": "home",
+   "score": "5-1",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-09-05T05:22:18.998370+00:00",
+  "last_run": "2026-09-05T05:29:25.168678+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 2669,
-    "total": 5521
+    "correct": 2671,
+    "total": 5524
    },
    "top_leagues": {
     "correct": 299,
     "total": 597
    },
    "other_leagues": {
-    "correct": 2370,
-    "total": 4924
+    "correct": 2372,
+    "total": 4927
    },
    "by_confidence": {
     "70+": {
@@ -157750,17 +157744,17 @@
      "total": 400
     },
     "50-59": {
-     "correct": 563,
-     "total": 1021
+     "correct": 564,
+     "total": 1022
     },
     "<50": {
-     "correct": 1754,
-     "total": 4030
+     "correct": 1755,
+     "total": 4032
     }
    },
    "last30": {
-    "correct": 2378,
-    "total": 4933
+    "correct": 2380,
+    "total": 4936
    },
    "daily": {
     "2026-08-07": {
@@ -157880,22 +157874,22 @@
      "total": 334
     },
     "2026-09-05": {
-     "correct": 9,
-     "total": 14
+     "correct": 11,
+     "total": 17
     }
    },
    "season": {
     "overall": {
-     "correct": 1913,
-     "total": 3996
+     "correct": 1915,
+     "total": 3999
     },
     "top_leagues": {
      "correct": 251,
      "total": 492
     },
     "other_leagues": {
-     "correct": 1662,
-     "total": 3504
+     "correct": 1664,
+     "total": 3507
     },
     "by_confidence": {
      "70+": {
@@ -157907,12 +157901,12 @@
       "total": 304
      },
      "50-59": {
-      "correct": 398,
-      "total": 762
+      "correct": 399,
+      "total": 763
      },
      "<50": {
-      "correct": 1243,
-      "total": 2870
+      "correct": 1244,
+      "total": 2872
      }
     },
     "start": "2026-08-13"

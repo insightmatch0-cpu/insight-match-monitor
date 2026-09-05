@@ -6084,6 +6084,63 @@
    "prob_away": 38
   },
   {
+   "date": "2026-09-05",
+   "home": "خواريس",
+   "away": "باتشوكا",
+   "home_en": "FC Juarez",
+   "away_en": "CF Pachuca",
+   "league": "الدوري المكسيكي الممتاز",
+   "home_logo": "https://media.api-sports.io/football/teams/2298.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
+   "pick": "away",
+   "confidence": 40,
+   "score": "0-2",
+   "actual": "away",
+   "correct": true,
+   "reason": "باتشوكا أفضل جودة وفورمة لكن خواريس صعب على ملعبه فالفارق ليس حاسماً",
+   "prob_home": 31,
+   "prob_draw": 29,
+   "prob_away": 40
+  },
+  {
+   "date": "2026-09-05",
+   "home": "لا باس",
+   "away": "مينيروس دي ساكاتيكاس",
+   "home_en": "CA La Paz",
+   "away_en": "Mineros de Zacatecas",
+   "league": "دوري إكسبانسيون المكسيكي",
+   "home_logo": "https://media.api-sports.io/football/teams/19024.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2299.png",
+   "pick": "away",
+   "confidence": 36,
+   "score": "3-0",
+   "actual": "home",
+   "correct": false,
+   "reason": "مينيروس أقوى بقليل لكن الأرض عامل مؤثر في الدرجة الثانية فالتعادل وارد بقوة",
+   "prob_home": 33,
+   "prob_draw": 31,
+   "prob_away": 36
+  },
+  {
+   "date": "2026-09-05",
+   "home": "ساوث هوبارت",
+   "away": "ديفونبورت سيتي",
+   "home_en": "South Hobart",
+   "away_en": "Devonport City",
+   "league": "دوري تسمانيا الأسترالي",
+   "home_logo": "https://media.api-sports.io/football/teams/14106.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14100.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "5-1",
+   "actual": "home",
+   "correct": true,
+   "reason": "ساوث هوبارت القوة التقليدية المهيمنة في تسمانيا وعلى أرضه",
+   "prob_home": 52,
+   "prob_draw": 23,
+   "prob_away": 25
+  },
+  {
    "date": "2026-09-04",
    "home": "بلجرانو كوردوبا",
    "away": "هوراكان",
@@ -6139,63 +6196,6 @@
    "prob_home": 28,
    "prob_draw": 26,
    "prob_away": 46
-  },
-  {
-   "date": "2026-09-04",
-   "home": "أوتاراديت",
-   "away": "موانجتونج يونايتد",
-   "home_en": "Uttaradit",
-   "away_en": "Muangthong United",
-   "league": "الدوري التايلاندي الدرجة الثانية",
-   "home_logo": "https://media.api-sports.io/football/teams/6610.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2786.png",
-   "pick": "away",
-   "confidence": 54,
-   "score": "0-0",
-   "actual": "draw",
-   "correct": false,
-   "reason": "موانجتونج نادٍ كبير تقليدياً بجودة أعلى بوضوح رغم عامل الأرض في الدرجة الثانية",
-   "prob_home": 20,
-   "prob_draw": 26,
-   "prob_away": 54
-  },
-  {
-   "date": "2026-09-04",
-   "home": "بالي يونايتد",
-   "away": "بي إس إس سليمان",
-   "home_en": "Bali United",
-   "away_en": "PSS Sleman",
-   "league": "الدوري الإندونيسي الممتاز",
-   "home_logo": "https://media.api-sports.io/football/teams/2448.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3882.png",
-   "pick": "home",
-   "confidence": 54,
-   "score": "2-1",
-   "actual": "home",
-   "correct": true,
-   "reason": "بالي يونايتد أقوى تشكيلاً وقوي على أرضه أمام سليمان المتواضع",
-   "prob_home": 54,
-   "prob_draw": 26,
-   "prob_away": 20
-  },
-  {
-   "date": "2026-09-04",
-   "home": "نيفا فينيتسيا",
-   "away": "نيفا تيرنوبل الثاني",
-   "home_en": "Nyva Vinnytsya",
-   "away_en": "Nyva Ternopil II",
-   "league": "الدوري الأوكراني الدرجة الثالثة",
-   "home_logo": "https://media.api-sports.io/football/teams/6494.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24587.png",
-   "pick": "home",
-   "confidence": 58,
-   "score": "4-1",
-   "actual": "home",
-   "correct": true,
-   "reason": "الفريق الأول على أرضه أمام فريق رديف أقل خبرة واستقراراً",
-   "prob_home": 58,
-   "prob_draw": 24,
-   "prob_away": 18
   },
   {
    "date": "2026-09-04",
@@ -6870,16 +6870,16 @@
  ],
  "accuracy": {
   "overall": {
-   "correct": 2669,
-   "total": 5521
+   "correct": 2671,
+   "total": 5524
   },
   "top_leagues": {
    "correct": 299,
    "total": 597
   },
   "other_leagues": {
-   "correct": 2370,
-   "total": 4924
+   "correct": 2372,
+   "total": 4927
   },
   "by_confidence": {
    "70+": {
@@ -6891,17 +6891,17 @@
     "total": 400
    },
    "50-59": {
-    "correct": 563,
-    "total": 1021
+    "correct": 564,
+    "total": 1022
    },
    "<50": {
-    "correct": 1754,
-    "total": 4030
+    "correct": 1755,
+    "total": 4032
    }
   },
   "last30": {
-   "correct": 2378,
-   "total": 4933
+   "correct": 2380,
+   "total": 4936
   },
   "daily": {
    "2026-08-07": {
@@ -7021,22 +7021,22 @@
     "total": 334
    },
    "2026-09-05": {
-    "correct": 9,
-    "total": 14
+    "correct": 11,
+    "total": 17
    }
   },
   "season": {
    "overall": {
-    "correct": 1913,
-    "total": 3996
+    "correct": 1915,
+    "total": 3999
    },
    "top_leagues": {
     "correct": 251,
     "total": 492
    },
    "other_leagues": {
-    "correct": 1662,
-    "total": 3504
+    "correct": 1664,
+    "total": 3507
    },
    "by_confidence": {
     "70+": {
@@ -7048,12 +7048,12 @@
      "total": 304
     },
     "50-59": {
-     "correct": 398,
-     "total": 762
+     "correct": 399,
+     "total": 763
     },
     "<50": {
-     "correct": 1243,
-     "total": 2870
+     "correct": 1244,
+     "total": 2872
     }
    },
    "start": "2026-08-13"
@@ -9384,6 +9384,6 @@
    }
   ]
  },
- "pred_updated": "2026-09-04T04:50:09.827572+00:00",
- "updated": "2026-09-05T05:28:58.932157+00:00"
+ "pred_updated": "2026-09-05T05:29:25.168678+00:00",
+ "updated": "2026-09-05T05:29:25.842107+00:00"
 }
