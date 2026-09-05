@@ -76,44 +76,6 @@
    "ar_away": "لوكوموتيف بلوفديف 2",
    "ar_league": "الدرجة الثالثة - جنوب شرق (بلغاريا)"
   },
-  "1581092": {
-   "fid": "1581092",
-   "kickoff": "2026-09-04T18:00:00+00:00",
-   "date": "2026-09-04",
-   "home": "Hünfelder SV",
-   "away": "Rot-Weiß Walldorf",
-   "home_logo": "https://media.api-sports.io/football/teams/16100.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16102.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/750.png",
-   "league": "Oberliga - Hessen (Germany)",
-   "league_id": 750,
-   "top": false,
-   "pick": "draw",
-   "confidence": 51,
-   "reason": "فريقان من الدرجة الإقليمية متقاربان في الجودة، التعادل احتمالي جداً",
-   "ar_home": "هونفيلدر شفايه فيه",
-   "ar_away": "روت-فايس والدورف",
-   "ar_league": "أوبرليجا - هيسن (ألمانيا)"
-  },
-  "1632418": {
-   "fid": "1632418",
-   "kickoff": "2026-09-04T20:30:00+00:00",
-   "date": "2026-09-04",
-   "home": "22 de Julio",
-   "away": "Gualaceo SC",
-   "home_logo": "https://media.api-sports.io/football/teams/25736.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1986.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/243.png",
-   "league": "Liga Pro Serie B (Ecuador)",
-   "league_id": 243,
-   "top": false,
-   "pick": "home",
-   "confidence": 52,
-   "reason": "فريق البيت لديه ميزة الملعب في دوري الدرجة الثانية، لكن المعلومات محدودة",
-   "ar_home": "22 دي خوليو",
-   "ar_away": "غوالاسيو",
-   "ar_league": "دوري الدرجة الثانية الإكوادوري"
-  },
   "1631705": {
    "fid": "1631705",
    "kickoff": "2026-09-05T00:00:00+00:00",
@@ -131918,26 +131880,45 @@
    "actual": "away",
    "score": "0-2",
    "correct": false
+  },
+  {
+   "fid": "1581092",
+   "date": "2026-09-04",
+   "home": "Hünfelder SV",
+   "away": "Rot-Weiß Walldorf",
+   "ar_home": "هونفيلدر شفايه فيه",
+   "ar_away": "روت-فايس والدورف",
+   "home_logo": "https://media.api-sports.io/football/teams/16100.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16102.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/750.png",
+   "league": "Oberliga - Hessen (Germany)",
+   "ar_league": "أوبرليجا - هيسن (ألمانيا)",
+   "top": false,
+   "pick": "draw",
+   "confidence": 51,
+   "actual": "draw",
+   "score": "0-0",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-09-05T04:35:02.730864+00:00",
+  "last_run": "2026-09-05T04:41:55.430356+00:00",
   "stats": {
    "overall": {
-    "correct": 2290,
-    "total": 5608
+    "correct": 2291,
+    "total": 5609
    },
    "last30": {
-    "correct": 2051,
-    "total": 5014
+    "correct": 2052,
+    "total": 5015
    },
    "top_leagues": {
     "correct": 248,
     "total": 598
    },
    "other_leagues": {
-    "correct": 2042,
-    "total": 5010
+    "correct": 2043,
+    "total": 5011
    },
    "by_confidence": {
     "70+": {
@@ -131949,8 +131930,8 @@
      "total": 561
     },
     "50-59": {
-     "correct": 1753,
-     "total": 4306
+     "correct": 1754,
+     "total": 4307
     },
     "<50": {
      "correct": 150,
@@ -132071,8 +132052,8 @@
      "total": 112
     },
     "2026-09-04": {
-     "correct": 141,
-     "total": 333
+     "correct": 142,
+     "total": 334
     },
     "2026-09-05": {
      "correct": 5,
@@ -132081,16 +132062,16 @@
    },
    "season": {
     "overall": {
-     "correct": 1662,
-     "total": 4083
+     "correct": 1663,
+     "total": 4084
     },
     "top_leagues": {
      "correct": 209,
      "total": 495
     },
     "other_leagues": {
-     "correct": 1453,
-     "total": 3588
+     "correct": 1454,
+     "total": 3589
     },
     "by_confidence": {
      "70+": {
@@ -132102,8 +132083,8 @@
       "total": 417
      },
      "50-59": {
-      "correct": 1259,
-      "total": 3126
+      "correct": 1260,
+      "total": 3127
      },
      "<50": {
       "correct": 108,
