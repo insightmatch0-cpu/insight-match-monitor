@@ -1701,10 +1701,10 @@
    "pick": "away",
    "confidence": 38,
    "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1754,17 +1754,24 @@
    "mine": true,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 54,
-   "minute": 52,
+   "level": "red",
+   "score": 68,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د52)",
-    "موجة ركنيات لصالح الضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د72)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 72,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 68,
+   "sent_minute": 72,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د72)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+   ]
   },
   {
    "fid": "1603014",
@@ -1777,14 +1784,14 @@
    "pick": "away",
    "confidence": 45,
    "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "score": 64,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د72)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د82)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 58,
+   "score_xg": 64,
    "level_xg": "amber"
   },
   {
@@ -1798,10 +1805,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "score": 56,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د69)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -53911,6 +53918,92 @@
      },
      "xg_h": 1.0756,
      "xg_a": 0.8798999999999999
+    }
+   ]
+  },
+  {
+   "fid": "1603015",
+   "date": "2026-09-05",
+   "minute": 72,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Al Taawon",
+   "away": "Al-Fateh",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 52,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sv": 1,
+      "shots": 8,
+      "cor": 5,
+      "sog": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 62
+     },
+     "a": {
+      "sv": 0,
+      "shots": 3,
+      "cor": 4,
+      "sog": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 38
+     }
+    },
+    {
+     "minute": 62,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sv": 2,
+      "shots": 10,
+      "cor": 9,
+      "sog": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 65
+     },
+     "a": {
+      "sv": 0,
+      "shots": 5,
+      "cor": 4,
+      "sog": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 35
+     }
+    },
+    {
+     "minute": 72,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sv": 2,
+      "rc": 1,
+      "shots": 11,
+      "cor": 9,
+      "yc": 0,
+      "sog": 0,
+      "poss": 62
+     },
+     "a": {
+      "sv": 0,
+      "rc": 0,
+      "shots": 5,
+      "cor": 4,
+      "yc": 0,
+      "sog": 2,
+      "poss": 38
+     }
     }
    ]
   }
