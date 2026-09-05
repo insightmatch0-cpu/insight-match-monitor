@@ -1074,39 +1074,67 @@
   },
   "2026-09-04": {
    "v1": {
-    "correct": 5,
-    "total": 6
+    "correct": 142,
+    "total": 334
    },
    "v2": {
-    "correct": 3,
-    "total": 6,
+    "correct": 160,
+    "total": 334,
     "buckets": {
      "<50": {
-      "correct": 2,
-      "total": 5
+      "correct": 103,
+      "total": 240
      },
      "60-69": {
-      "correct": 1,
-      "total": 1
+      "correct": 15,
+      "total": 21
+     },
+     "50-59": {
+      "correct": 34,
+      "total": 64
+     },
+     "70+": {
+      "correct": 8,
+      "total": 9
+     }
+    }
+   }
+  },
+  "2026-09-05": {
+   "v1": {
+    "correct": 5,
+    "total": 14
+   },
+   "v2": {
+    "correct": 9,
+    "total": 14,
+    "buckets": {
+     "50-59": {
+      "correct": 4,
+      "total": 5
+     },
+     "<50": {
+      "correct": 5,
+      "total": 9
      }
     }
    }
   }
  },
  "meta": {
-  "updated": "2026-09-04T04:50:09.963380+00:00",
+  "updated": "2026-09-05T05:22:19.147288+00:00",
   "lessons_stored": 100
  },
  "integrity": {
   "resolved_counts": {
-   "v2": 5179,
-   "v1": 5267,
+   "v2": 5521,
+   "v1": 5609,
    "user": 3,
-   "history_days": 51,
-   "radar_resolved": 2170,
-   "radar_alerts_resolved": 158,
-   "scen_resolved": 251
+   "history_days": 52,
+   "radar_resolved": 2285,
+   "radar_alerts_resolved": 167,
+   "scen_resolved": 259
   },
-  "checked_on": "2026-09-04"
+  "checked_on": "2026-09-05"
  }
 }
