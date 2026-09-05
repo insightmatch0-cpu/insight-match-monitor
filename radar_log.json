@@ -696,7 +696,7 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 67,
+   "score_xg": 71,
    "level_xg": "red"
   },
   {
@@ -752,14 +752,14 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د66)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د72)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 67,
+   "score_xg": 70,
    "level_xg": "red"
   },
   {
@@ -816,10 +816,10 @@
    "pick": "home",
    "confidence": 57,
    "level": "red",
-   "score": 68,
-   "minute": 89,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-3 تُسقط التوقع (د89)"
+    "النتيجة الحالية 1-4 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -942,10 +942,55 @@
    "pick": "home",
    "confidence": 52,
    "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "score": 56,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د63)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د69)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1587461",
+   "date": "2026-09-05",
+   "home": "Westfalia Rhynern",
+   "away": "Sportfreunde Lotte",
+   "league": "Regionalliga - West (Germany)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 51,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1523259",
+   "date": "2026-09-05",
+   "home": "Wuhan Three Towns",
+   "away": "Qingdao Youth Island",
+   "league": "Super League (China)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 50,
+   "level": "red",
+   "score": 100,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -52597,87 +52642,87 @@
    ]
   },
   {
-   "fid": "1576169",
+   "fid": "1523259",
    "date": "2026-09-05",
    "minute": 90,
-   "score_at": "4-4",
-   "side": "away",
+   "score_at": "2-2",
+   "side": "home",
    "key": "red_advantage",
-   "home": "VfL Wolfsburg",
-   "away": "Energie Cottbus",
-   "league": "2. Bundesliga (Germany)",
+   "home": "Wuhan Three Towns",
+   "away": "Qingdao Youth Island",
+   "league": "Super League (China)",
    "top": false,
    "mine": false,
    "silenced": false,
    "gated": true,
    "evidence": [
     {
-     "minute": 69,
-     "gh": 3,
-     "ga": 3,
+     "minute": 30,
+     "gh": 2,
+     "ga": 1,
      "h": {
-      "sog": 4,
-      "sv": 4,
-      "shots": 10,
-      "yc": 1,
-      "cor": 1,
-      "rc": 0,
-      "poss": 49
-     },
-     "a": {
-      "sog": 7,
+      "sog": 5,
       "sv": 1,
-      "shots": 19,
-      "yc": 1,
-      "cor": 7,
+      "shots": 8,
+      "cor": 2,
+      "yc": 0,
       "rc": 0,
       "poss": 51
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 6,
+      "cor": 2,
+      "yc": 1,
+      "rc": 0,
+      "poss": 49
      }
     },
     {
-     "minute": 79,
-     "gh": 3,
-     "ga": 3,
+     "minute": 45,
+     "gh": 2,
+     "ga": 1,
      "h": {
       "sog": 5,
-      "sv": 4,
-      "shots": 14,
-      "yc": 2,
-      "cor": 2,
+      "shots": 9,
+      "cor": 3,
+      "sv": 0,
+      "yc": 0,
       "rc": 0,
-      "poss": 46
+      "poss": 48
      },
      "a": {
-      "sog": 7,
-      "sv": 2,
-      "shots": 20,
-      "yc": 1,
-      "cor": 7,
+      "sog": 1,
+      "shots": 9,
+      "cor": 2,
+      "sv": 3,
+      "yc": 2,
       "rc": 0,
-      "poss": 54
+      "poss": 52
      }
     },
     {
      "minute": 90,
-     "gh": 4,
-     "ga": 4,
+     "gh": 2,
+     "ga": 2,
      "h": {
       "sog": 7,
-      "sv": 5,
-      "rc": 1,
-      "shots": 20,
-      "yc": 1,
-      "cor": 4,
-      "poss": 47
+      "sv": 2,
+      "shots": 17,
+      "cor": 5,
+      "rc": 0,
+      "yc": 0,
+      "poss": 52
      },
      "a": {
-      "sog": 8,
-      "sv": 3,
-      "rc": 0,
-      "shots": 20,
+      "sog": 4,
+      "sv": 5,
+      "shots": 16,
+      "cor": 4,
+      "rc": 1,
       "yc": 2,
-      "cor": 8,
-      "poss": 53
+      "poss": 48
      }
     }
    ]
