@@ -1303,17 +1303,17 @@
    "mine": true,
    "pick": "home",
    "confidence": 41,
-   "level": "amber",
-   "score": 50,
-   "minute": 39,
+   "level": "red",
+   "score": 81,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د39)",
+    "النتيجة الحالية 3-3 تُسقط التوقع (د90)",
     "موجة تسديد على المرمى من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 38,
-   "level_xg": "green"
+   "score_xg": 69,
+   "level_xg": "red"
   },
   {
    "fid": "1496684",
@@ -1347,16 +1347,17 @@
    "pick": "away",
    "confidence": 53,
    "level": "red",
-   "score": 68,
-   "minute": 79,
+   "score": 86,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د79)",
+    "النتيجة الحالية 3-0 تُسقط التوقع (د89)",
+    "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
    "alert_minute": 79,
-   "score_xg": 62,
-   "level_xg": "amber",
+   "score_xg": 68,
+   "level_xg": "red",
    "sent_level": "red",
    "sent_score": 68,
    "sent_minute": 79,
@@ -1376,16 +1377,14 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 47,
-   "minute": 20,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د20)",
-    "موجة تسديد على المرمى من الضيف",
-    "موجة ركنيات لصالح الضيف"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د62)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 72,
+   "score_xg": 78,
    "level_xg": "red"
   },
   {
@@ -1477,16 +1476,26 @@
    "mine": true,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 46,
-   "minute": 53,
+   "level": "red",
+   "score": 66,
+   "minute": 63,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د63)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 46,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 63,
+   "score_xg": 64,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 66,
+   "sent_minute": 63,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د63)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1563132",
@@ -1499,16 +1508,15 @@
    "pick": "away",
    "confidence": 38,
    "level": "amber",
-   "score": 59,
-   "minute": 51,
+   "score": 63,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د51)",
-    "موجة ركنيات لصالح المضيف",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د61)",
+    "موجة تسديد على المرمى من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 45,
+   "score_xg": 51,
    "level_xg": "amber"
   },
   {
@@ -1576,6 +1584,70 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1557391",
+   "date": "2026-09-05",
+   "home": "Fulham",
+   "away": "Crystal Palace",
+   "league": "Premier League (England)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 41,
+   "level": "amber",
+   "score": 57,
+   "minute": 60,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د60)",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 51,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1552154",
+   "date": "2026-09-05",
+   "home": "NEC Nijmegen",
+   "away": "Feyenoord",
+   "league": "Eredivisie (Netherlands)",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 40,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1575484",
+   "date": "2026-09-05",
+   "home": "Estrela",
+   "away": "Famalicao",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
+   "level_xg": "amber"
   }
  ],
  "resolved": [
