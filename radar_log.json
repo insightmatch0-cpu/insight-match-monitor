@@ -55,21 +55,21 @@
    "pick": "away",
    "confidence": 56,
    "level": "red",
-   "score": 67,
-   "minute": 78,
+   "score": 72,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د78)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د85)",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
-   "alert_minute": 78,
-   "score_xg": 65,
+   "alert_minute": 85,
+   "score_xg": 71,
    "level_xg": "red",
    "sent_level": "red",
-   "sent_score": 67,
-   "sent_minute": 78,
+   "sent_score": 72,
+   "sent_minute": 85,
    "sent_factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د78)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د85)",
     "ضغط هجومي متصاعد من المضيف"
    ]
   },
@@ -97,6 +97,27 @@
    "level_xg": null
   },
   {
+   "fid": "1570372",
+   "date": "2026-09-05",
+   "home": "Villarreal",
+   "away": "Deportivo La Coruna",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
+   "level_xg": "amber"
+  },
+  {
    "fid": "1550107",
    "date": "2026-09-05",
    "home": "AS Roma",
@@ -106,6 +127,27 @@
    "mine": true,
    "pick": "home",
    "confidence": 50,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1563140",
+   "date": "2026-09-05",
+   "home": "Swansea",
+   "away": "Wrexham",
+   "league": "Championship (England)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 48,
    "level": "amber",
    "score": 42,
    "minute": 45,
@@ -149,10 +191,10 @@
    "pick": "home",
    "confidence": 39,
    "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 0-3 تُسقط التوقع (د72)"
+    "النتيجة الحالية 0-3 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -53781,7 +53823,99 @@
    ]
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1603016",
+   "date": "2026-09-05",
+   "minute": 85,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Al-Ittihad FC",
+   "away": "Al-Nassr",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "silenced": true,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 12,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "sv": 1,
+      "shots": 4,
+      "cor": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 56
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 1,
+      "cor": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 44
+     },
+     "xg_h": 0.336,
+     "xg_a": 0.0585
+    },
+    {
+     "minute": 45,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 8,
+      "cor": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 56
+     },
+     "a": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 3,
+      "cor": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 44
+     }
+    },
+    {
+     "minute": 85,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "sv": 5,
+      "shots": 15,
+      "yc": 1,
+      "cor": 3,
+      "rc": 0,
+      "poss": 59
+     },
+     "a": {
+      "sog": 6,
+      "sv": 1,
+      "shots": 11,
+      "yc": 3,
+      "cor": 12,
+      "rc": 0,
+      "poss": 41
+     },
+     "xg_h": 1.5476,
+     "xg_a": 1.2592999999999999
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
