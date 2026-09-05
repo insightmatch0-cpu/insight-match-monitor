@@ -1,59 +1,6 @@
 {
- "updated": "2026-09-05T04:35:06.060597+00:00",
+ "updated": "2026-09-05T04:41:37.412543+00:00",
  "live": [
-  {
-   "fid": "1598812",
-   "home": "Escorpiones Belén",
-   "away": "Inter San Carlos",
-   "home_en": "Escorpiones Belén",
-   "away_en": "Inter San Carlos",
-   "league": "Primera División (Costa-Rica)",
-   "home_logo": "https://media.api-sports.io/football/teams/17377.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24391.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/162.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-05T03:56:37.751461+00:00",
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 38
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 38,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      0
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
   {
    "fid": "1636821",
    "home": "South Hobart",
@@ -64,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/14106.png",
    "away_logo": "https://media.api-sports.io/football/teams/14100.png",
    "league_logo": "https://media.api-sports.io/football/leagues/648.png",
-   "score": "1-1",
-   "minute": 46,
+   "score": "4-1",
+   "minute": 81,
    "status": "2H",
-   "seen": "2026-09-05T04:06:46.740541+00:00",
+   "seen": "2026-09-05T04:41:34.902322+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -77,37 +24,41 @@
     "confidence": 52
    },
    "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د46)"
-    ],
+    "score": 0,
+    "level": "green",
+    "factors": [],
     "pick": "home",
     "confidence": 52,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": null,
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      46
+      46,
+      81
      ],
      "danger": [
-      42
+      42,
+      0
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -124,9 +75,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2299.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
    "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-05T04:06:46.740541+00:00",
+   "minute": 78,
+   "status": "2H",
+   "seen": "2026-09-05T04:41:34.902322+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -136,10 +87,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 42,
+    "score": 61,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 1-0 تُسقط التوقع (د78)"
     ],
     "pick": "away",
     "confidence": 36,
@@ -152,10 +103,141 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      45,
+      78
      ],
      "danger": [
-      42
+      42,
+      61
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1550949",
+   "home": "FC Juarez",
+   "away": "CF Pachuca",
+   "home_en": "FC Juarez",
+   "away_en": "CF Pachuca",
+   "league": "Liga MX (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/2298.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+   "score": "0-1",
+   "minute": 78,
+   "status": "2H",
+   "seen": "2026-09-05T04:41:34.902322+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 21,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
+    "pick": "away",
+    "confidence": 40,
+    "drama": {
+     "signal": 15,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      78
+     ],
+     "danger": [
+      42,
+      21
+     ],
+     "h_sog": [
+      0,
+      1
+     ],
+     "a_sog": [
+      1,
+      3
+     ],
+     "h_cor": [
+      0,
+      1
+     ],
+     "a_cor": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1629366",
+   "home": "Cashmere Technical",
+   "away": "Fencibles United",
+   "home_en": "Cashmere Technical",
+   "away_en": "Fencibles United",
+   "league": "Chatham Cup (New-Zealand)",
+   "home_logo": "https://media.api-sports.io/football/teams/20651.png",
+   "away_logo": "https://media.api-sports.io/football/teams/24253.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1127.png",
+   "score": "0-1",
+   "minute": 40,
+   "status": "1H",
+   "seen": "2026-09-05T04:41:34.902322+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 47
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "radar": {
+    "score": 39,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د40)"
+    ],
+    "pick": "home",
+    "confidence": 54,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      40
+     ],
+     "danger": [
+      39
      ],
      "h_sog": [
       0
@@ -173,60 +255,117 @@
    }
   },
   {
-   "fid": "1550949",
-   "home": "FC Juarez",
-   "away": "CF Pachuca",
-   "home_en": "FC Juarez",
-   "away_en": "CF Pachuca",
-   "league": "Liga MX (Mexico)",
-   "home_logo": "https://media.api-sports.io/football/teams/2298.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-05T04:06:46.740541+00:00",
+   "fid": "1636741",
+   "home": "Avondale",
+   "away": "Preston Lions",
+   "home_en": "Avondale",
+   "away_en": "Preston Lions",
+   "league": "Victoria NPL (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3798.png",
+   "away_logo": "https://media.api-sports.io/football/teams/19705.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/195.png",
+   "score": "2-0",
+   "minute": 40,
+   "status": "1H",
+   "seen": "2026-09-05T04:41:34.902322+00:00",
    "pred_v1": {
-    "pick": "away",
-    "confidence": 58
+    "pick": "home",
+    "confidence": 52
    },
    "pred_v2": {
-    "pick": "away",
-    "confidence": 40
+    "pick": "home",
+    "confidence": 50
    },
    "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
-    ],
-    "pick": "away",
-    "confidence": 40,
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "home",
+    "confidence": 50,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      45
+      40
      ],
      "danger": [
-      42
+      0
      ],
      "h_sog": [
       0
      ],
      "a_sog": [
-      1
+      0
      ],
      "h_cor": [
       0
      ],
      "a_cor": [
-      1
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1637266",
+   "home": "Kahibah",
+   "away": "Newcastle Croatia FC",
+   "home_en": "Kahibah",
+   "away_en": "Newcastle Croatia FC",
+   "league": "Northern NSW NPL (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/23502.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27618.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/481.png",
+   "score": "2-1",
+   "minute": 39,
+   "status": "1H",
+   "seen": "2026-09-05T04:41:34.902322+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      39
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
      ]
     }
    }
@@ -22203,6 +22342,20 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-05",
+   "home": "إسكوربيونس بيلين",
+   "away": "إنتر سان كارلوس",
+   "home_en": "Escorpiones Belén",
+   "away_en": "Inter San Carlos",
+   "league": "الدرجة الأولى الكوستاريكية",
+   "home_logo": "https://media.api-sports.io/football/teams/17377.png",
+   "away_logo": "https://media.api-sports.io/football/teams/24391.png",
+   "pick": "draw",
+   "confidence": 48,
+   "kickoff": "2026-09-05T02:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-05",
    "home": "ديبورتيفو العربي",
