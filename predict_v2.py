@@ -2643,6 +2643,11 @@ def main() -> None:
         "engine": "v2",
         "model": CLAUDE_MODEL,
         "stats": stats,
+        # 🔁 HOLD-013 (1) — علامة التعافي الذاتي: عدد دفعات الرصيد المرفوضة في
+        # هذه التشغيلة؛ watchdog.py يقرأها ويعيد الإطلاق كل ساعتين حتى تُكمَل
+        # الفجوة. تشغيلة كاملة بلا رفض تصفّرها (حادثة 2026-09-05: 5 ساعات يدوية).
+        "claude_refused": CLAUDE_REFUSED["credit"],
+        "claude_refused_at": now_utc().isoformat() if CLAUDE_REFUSED["credit"] else "",
     }
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
