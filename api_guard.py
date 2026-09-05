@@ -62,7 +62,7 @@ REFUSAL_KEYWORDS = ("requests", "plan", "limit", "subscription")
 
 # أسماء متغيرات البيئة التي تحمل أسراراً — تُمسح من أي نص يُرسل
 SECRET_ENV_NAMES = (
-    "API_FOOTBALL_KEY", "ANTHROPIC_API_KEY", "TELEGRAM_TOKEN",
+    "API_FOOTBALL_KEY", "ANTHROPIC_API_KEY", "ANTHROPIC_ADMIN_KEY", "TELEGRAM_TOKEN",
     "SPORTMONKS_KEY", "GH_TOKEN", "GITHUB_TOKEN",
     # TELEGRAM_CHAT_ID سرّ أيضاً (2026-08-15): المستودع عام وسجل Actions
     # يقرؤه الجميع. المعرّفات تخرج مقنَّعة عبر mask_id، وهذا السطر دفاع ثانٍ
