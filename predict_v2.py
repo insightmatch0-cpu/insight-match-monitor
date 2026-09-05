@@ -185,6 +185,11 @@ LIVE_GRADE_MIN_MINUTES = 150   # لا محاولة قبل ~ساعتين ونصف
 LIVE_GRADES_PER_CYCLE  = 2     # سقف تقييمات لكل دورة مراقب — توزيع التكلفة
 
 SEND_TELEGRAM_DIGEST = True
+# 🔮 HOLD-013 (2) — سطر «غداً» في النشرة (قرار المالك 2026-09-05): حجم جدول الغد
+# وعدد دفعات Claude المتوقعة، بنداء API-Football واحد من الرصيد المدفوع — إنذار
+# 24 ساعة قبل كل سبت ضخم (RND-022: السبت 72-120 دفعة مقابل ~16 يومياً).
+DIGEST_TOMORROW_LINE = True
+FORECAST_PEAK_BATCHES = 60    # فوق هذا الحد يحمل السطر تحذير «يوم ذروة»
 DIGEST_TOP_ONLY      = True
 # ⭐/⚡ قسما النشرة البارزان (طلب المالك 2026-08-21: «كل شيء مخلوط») — نفس
 # مصطلحات البوابة حرفياً حتى يتطابق الهاتف مع الشاشة. عرض فقط، صفر نداءات
@@ -2462,6 +2467,57 @@ def load_shed_line(state: dict = None) -> str:
         return ""
 
 
+def forecast_tomorrow(fixtures: list) -> dict:
+    """يحسب (نقي) حجم جدول الغد المؤهل وعدد دفعات Claude المتوقعة من قائمة
+    مباريات API-Football الخام: نفس مرشحات التوقع (لم تبدأ، غير مستثناة، لا
+    سيدات/شباب) ونفس هندسة الدفعات (غنية/4 للصدارة حتى السقف، خفيفة/12 للبقية)."""
+    import math
+    total = top = 0
+    seen = set()
+    for fx in fixtures or []:
+        fixture = fx.get("fixture") or {}
+        league = fx.get("league") or {}
+        teams = fx.get("teams") or {}
+        fid = str(fixture.get("id"))
+        if fid in seen:
+            continue
+        seen.add(fid)
+        if (((fixture.get("status") or {}).get("short")) or "") != "NS":
+            continue
+        if is_excluded(league):
+            continue
+        hn = (teams.get("home") or {}).get("name")
+        an = (teams.get("away") or {}).get("name")
+        if is_womens_match(hn, an) or is_youth_match(hn, an):
+            continue
+        total += 1
+        if league.get("id") in TOP_LEAGUE_IDS:
+            top += 1
+    enriched = min(top, MAX_ENRICHED_FIXTURES)
+    batches = math.ceil(enriched / ENRICHED_BATCH_SIZE) + math.ceil((total - enriched) / BASIC_BATCH_SIZE)
+    return {"total": total, "top": top, "batches": batches}
+
+
+def tomorrow_forecast_line(fetch=None, now: datetime = None) -> str:
+    """🔮 سطر النشرة: «غداً N مباراة ≈ M دفعة Claude» — نداء واحد، صامت عند أي فشل."""
+    if not DIGEST_TOMORROW_LINE:
+        return ""
+    try:
+        fetch = fetch or api_football
+        day = ((now or now_utc()) + timedelta(days=1)).strftime("%Y-%m-%d")
+        f = forecast_tomorrow(fetch(f"fixtures?date={day}"))
+        if not f["total"]:
+            return ""
+        line = (f"🔮 غداً ({day}): {f['total']} مباراة مؤهلة (منها {f['top']} صدارة) "
+                f"≈ {f['batches']} دفعة Claude")
+        if f["batches"] >= FORECAST_PEAK_BATCHES:
+            line += " — ⚠️ يوم ذروة: تأكد أن رصيد Anthropic يغطيه قبل الصباح"
+        return line
+    except Exception as e:
+        print("تعذر تنبؤ الغد:", type(e).__name__)
+        return ""
+
+
 def build_digest(new_preds: list, stats: dict, v1_preds: dict = None,
                  new_lessons: int = 0, user_stats: dict = None) -> str:
     lines = ["🤖 المحرك 2 — توقعات الـ 24 ساعة القادمة"]
@@ -2695,6 +2751,10 @@ def main() -> None:
         quota = api_guard.quota_line()
         if quota:
             digest += "\n" + quota
+        # 🔮 غداً: حجم الجدول ودفعات Claude — الإنذار قبل الجدار لا بعده
+        forecast = tomorrow_forecast_line()
+        if forecast:
+            digest += "\n" + forecast
         shed = load_shed_line()
         if shed:
             digest += "\n" + shed
