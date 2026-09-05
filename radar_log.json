@@ -106,14 +106,14 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د71)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 57,
+   "score_xg": 63,
    "level_xg": "amber"
   },
   {
@@ -148,10 +148,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 58,
-   "minute": 73,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د73)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -253,10 +253,13 @@
    "pick": "away",
    "confidence": 36,
    "level": "amber",
-   "score": 43,
-   "minute": 47,
+   "score": 49,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د47)"
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -53997,6 +54000,93 @@
      },
      "xg_h": 1.5476,
      "xg_a": 1.2592999999999999
+    }
+   ]
+  },
+  {
+   "fid": "1492361",
+   "date": "2026-09-05",
+   "minute": 77,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "RB Bragantino",
+   "away": "Bahia",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 57,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 11,
+      "yc": 1,
+      "cor": 5,
+      "rc": 0,
+      "poss": 43
+     },
+     "a": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 8,
+      "yc": 1,
+      "cor": 7,
+      "rc": 0,
+      "poss": 57
+     }
+    },
+    {
+     "minute": 67,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 13,
+      "yc": 1,
+      "cor": 6,
+      "rc": 0,
+      "poss": 46
+     },
+     "a": {
+      "sog": 5,
+      "sv": 3,
+      "shots": 11,
+      "yc": 2,
+      "cor": 8,
+      "rc": 0,
+      "poss": 54
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 9,
+      "sv": 2,
+      "shots": 19,
+      "yc": 1,
+      "cor": 9,
+      "rc": 0,
+      "poss": 47
+     },
+     "a": {
+      "sog": 5,
+      "sv": 8,
+      "shots": 11,
+      "yc": 2,
+      "cor": 8,
+      "rc": 0,
+      "poss": 53
+     }
     }
    ]
   }
