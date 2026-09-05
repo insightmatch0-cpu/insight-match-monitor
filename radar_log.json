@@ -710,10 +710,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د61)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -731,10 +731,10 @@
    "pick": "home",
    "confidence": 53,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د72)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -794,13 +794,12 @@
    "mine": false,
    "pick": "home",
    "confidence": 56,
-   "level": "amber",
-   "score": 49,
-   "minute": 49,
+   "level": "red",
+   "score": 74,
+   "minute": 69,
    "factors": [
-    "تقدم هش بفارق هدف واحد",
+    "النتيجة الحالية 3-3 تُسقط التوقع (د69)",
     "موجة تسديد على المرمى من الضيف",
-    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
@@ -819,10 +818,10 @@
    "pick": "home",
    "confidence": 57,
    "level": "amber",
-   "score": 47,
-   "minute": 54,
+   "score": 53,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د54)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -52383,6 +52382,92 @@
       "sog": 0,
       "rc": 1,
       "shots": 3
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1523262",
+   "date": "2026-09-05",
+   "minute": 31,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Shandong Luneng",
+   "away": "Sichuan Jiuniu",
+   "league": "Super League (China)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 11,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 1,
+      "cor": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 48
+     },
+     "a": {
+      "sog": 1,
+      "sv": 0,
+      "shots": 2,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 52
+     }
+    },
+    {
+     "minute": 21,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 3,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 61
+     },
+     "a": {
+      "sog": 2,
+      "sv": 0,
+      "shots": 3,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 39
+     }
+    },
+    {
+     "minute": 31,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 2,
+      "rc": 1,
+      "shots": 4,
+      "cor": 1,
+      "yc": 1,
+      "poss": 55
+     },
+     "a": {
+      "sog": 2,
+      "sv": 0,
+      "rc": 0,
+      "shots": 6,
+      "cor": 1,
+      "yc": 0,
+      "poss": 45
      }
     }
    ]
