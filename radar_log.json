@@ -410,10 +410,10 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 53,
+   "minute": 64,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د64)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -431,10 +431,10 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 52,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د52)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -452,10 +452,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 50,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د50)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -51841,7 +51841,46 @@
    "graded_on": "2026-09-05"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1507055",
+   "date": "2026-09-05",
+   "minute": 10,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "FC Seoul",
+   "away": "Incheon United",
+   "league": "K League 1 (South-Korea)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "yc": 0,
+      "cor": 1,
+      "sog": 0,
+      "rc": 0,
+      "poss": 67,
+      "shots": 1
+     },
+     "a": {
+      "yc": 0,
+      "cor": 1,
+      "sog": 0,
+      "rc": 1,
+      "poss": 33,
+      "shots": 2
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
