@@ -2103,14 +2103,14 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "score": 57,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د61)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د71)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 51,
+   "score_xg": 57,
    "level_xg": "amber"
   },
   {
@@ -2249,11 +2249,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 61,
-   "minute": 77,
+   "level": "red",
+   "score": 67,
+   "minute": 87,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د77)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د87)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -2275,6 +2275,111 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1638137",
+   "date": "2026-09-06",
+   "home": "Monagas SC",
+   "away": "Metropolitanos FC",
+   "league": "Primera División (Venezuela)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1634895",
+   "date": "2026-09-06",
+   "home": "Atlántico",
+   "away": "Salcedo",
+   "league": "Liga Mayor (Dominican-Republic)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 44,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-3 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1606409",
+   "date": "2026-09-06",
+   "home": "Sarmiento de La Banda",
+   "away": "9 de Julio Rafaela",
+   "league": "Torneo Federal A (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 1-4 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1609013",
+   "date": "2026-09-06",
+   "home": "Casertana",
+   "away": "Scafatese",
+   "league": "Serie C - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1636907",
+   "date": "2026-09-06",
+   "home": "ASA",
+   "away": "Uberlandia",
+   "league": "Serie D (Brazil)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -57998,6 +58103,93 @@
       "cor": 2,
       "rc": 0,
       "poss": 37
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1575486",
+   "date": "2026-09-06",
+   "minute": 76,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "GIL Vicente",
+   "away": "Academico Viseu",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "shots": 2,
+      "sog": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 63
+     },
+     "a": {
+      "shots": 2,
+      "sog": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 37
+     },
+     "xg_h": 0.1405,
+     "xg_a": 0.0858
+    },
+    {
+     "minute": 30,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "shots": 6,
+      "cor": 2,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 53
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 1,
+      "sv": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 47
+     },
+     "xg_h": 0.5104,
+     "xg_a": 0.0858
+    },
+    {
+     "minute": 76,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 7,
+      "shots": 26,
+      "cor": 7,
+      "sv": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 60
+     },
+     "a": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "sv": 7,
+      "yc": 1,
+      "rc": 0,
+      "poss": 40
      }
     }
    ]
