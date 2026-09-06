@@ -442,10 +442,10 @@
    "pick": "away",
    "confidence": 41,
    "level": "red",
-   "score": 95,
-   "minute": 77,
+   "score": 100,
+   "minute": 87,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د77)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د87)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
@@ -495,11 +495,11 @@
    "mine": false,
    "pick": "away",
    "confidence": 55,
-   "level": "amber",
-   "score": 63,
-   "minute": 81,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 3-3 تُسقط التوقع (د81)"
+    "النتيجة الحالية 3-3 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -516,11 +516,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 53,
-   "level": "amber",
-   "score": 64,
-   "minute": 83,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -538,10 +538,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "red",
-   "score": 66,
-   "minute": 85,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د85)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -622,10 +622,10 @@
    "pick": "away",
    "confidence": 55,
    "level": "amber",
-   "score": 46,
-   "minute": 53,
+   "score": 52,
+   "minute": 63,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د63)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -643,11 +643,53 @@
    "pick": "away",
    "confidence": 52,
    "level": "amber",
-   "score": 41,
-   "minute": 30,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د30)",
-    "موجة ركنيات لصالح المضيف"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1525968",
+   "date": "2026-09-06",
+   "home": "Belshina",
+   "away": "Neman",
+   "league": "Premier League (Belarus)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 55,
+   "level": "amber",
+   "score": 52,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1621312",
+   "date": "2026-09-06",
+   "home": "Persib Bandung",
+   "away": "PSM Makassar",
+   "league": "Liga 1 (Indonesia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -55482,6 +55524,86 @@
       "cor": 4,
       "rc": 0,
       "poss": 48
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1525968",
+   "date": "2026-09-06",
+   "minute": 45,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Belshina",
+   "away": "Neman",
+   "league": "Premier League (Belarus)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 0,
+      "sog": 1,
+      "cor": 1,
+      "poss": 41,
+      "yc": 0,
+      "shots": 1
+     },
+     "a": {
+      "rc": 0,
+      "sog": 0,
+      "cor": 1,
+      "poss": 59,
+      "yc": 0,
+      "shots": 2
+     }
+    },
+    {
+     "minute": 30,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 0,
+      "sog": 2,
+      "yc": 0,
+      "poss": 38,
+      "cor": 1,
+      "shots": 2
+     },
+     "a": {
+      "rc": 0,
+      "sog": 0,
+      "yc": 0,
+      "poss": 62,
+      "cor": 1,
+      "shots": 3
+     }
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "cor": 1,
+      "sog": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 40,
+      "shots": 2
+     },
+     "a": {
+      "cor": 3,
+      "sog": 0,
+      "rc": 1,
+      "yc": 1,
+      "poss": 60,
+      "shots": 4
      }
     }
    ]
