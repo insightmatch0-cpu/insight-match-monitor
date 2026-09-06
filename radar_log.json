@@ -1045,10 +1045,10 @@
    "pick": "home",
    "confidence": 58,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1066,10 +1066,10 @@
    "pick": "home",
    "confidence": 58,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-3 تُسقط التوقع (د80)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -56259,6 +56259,87 @@
       "cor": 1,
       "rc": 0,
       "poss": 62
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1492363",
+   "date": "2026-09-06",
+   "minute": 76,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Coritiba",
+   "away": "Mirassol",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 8,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 80
+     },
+     "a": {
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 20
+     }
+    },
+    {
+     "minute": 18,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 1,
+      "cor": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 49
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 3,
+      "cor": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 51
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "sv": 3,
+      "shots": 13,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 44
+     },
+     "a": {
+      "sog": 5,
+      "sv": 3,
+      "shots": 15,
+      "yc": 3,
+      "cor": 6,
+      "rc": 0,
+      "poss": 56
      }
     }
    ]
