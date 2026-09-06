@@ -1463,7 +1463,7 @@
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 55,
+   "score_xg": 61,
    "level_xg": "amber"
   },
   {
@@ -1477,10 +1477,10 @@
    "pick": "away",
    "confidence": 53,
    "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1629,6 +1629,29 @@
    "minute": 44,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د44)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1560238",
+   "date": "2026-09-06",
+   "home": "Gyori ETO FC",
+   "away": "Budapest Honved",
+   "league": "NB I (Hungary)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 52,
+   "level": "amber",
+   "score": 51,
+   "minute": 38,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د38)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -56938,6 +56961,95 @@
       "rc": 1,
       "poss": 34
      }
+    }
+   ]
+  },
+  {
+   "fid": "1575490",
+   "date": "2026-09-06",
+   "minute": 77,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Vitória SC",
+   "away": "Casa Pia",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 66,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 5,
+      "sv": 3,
+      "shots": 19,
+      "yc": 1,
+      "cor": 10,
+      "rc": 0,
+      "poss": 74
+     },
+     "a": {
+      "sog": 3,
+      "sv": 5,
+      "shots": 5,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 26
+     }
+    },
+    {
+     "minute": 59,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 17,
+      "cor": 9,
+      "yc": 0,
+      "rc": 0,
+      "poss": 73
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 4,
+      "cor": 4,
+      "yc": 0,
+      "rc": 0,
+      "poss": 27
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 6,
+      "sv": 3,
+      "shots": 20,
+      "yc": 1,
+      "cor": 13,
+      "rc": 0,
+      "poss": 74
+     },
+     "a": {
+      "sog": 3,
+      "sv": 6,
+      "shots": 5,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 26
+     },
+     "xg_h": 1.1261999999999999,
+     "xg_a": 0.21159999999999998
     }
    ]
   }
