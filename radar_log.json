@@ -1107,11 +1107,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 55,
-   "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1128,6 +1128,69 @@
    "mine": false,
    "pick": "away",
    "confidence": 64,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1624951",
+   "date": "2026-09-06",
+   "home": "Trapani 1905",
+   "away": "Vibonese",
+   "league": "Serie D - Girone I (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-3 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1601522",
+   "date": "2026-09-06",
+   "home": "Hellas Verona",
+   "away": "Arezzo",
+   "league": "Serie B (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1624033",
+   "date": "2026-09-06",
+   "home": "Sestri Levante",
+   "away": "Asti",
+   "league": "Serie D - Girone A (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
    "level": "amber",
    "score": 42,
    "minute": 45,
@@ -56361,6 +56424,86 @@
       "cor": 6,
       "rc": 0,
       "poss": 56
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1556660",
+   "date": "2026-09-06",
+   "minute": 90,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Heart Of Midlothian",
+   "away": "Dundee",
+   "league": "Premiership (Scotland)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 90,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "shots": 24,
+      "yc": 1,
+      "cor": 10,
+      "sv": 0,
+      "rc": 0,
+      "poss": 47
+     },
+     "a": {
+      "sog": 1,
+      "shots": 4,
+      "yc": 3,
+      "cor": 2,
+      "sv": 4,
+      "rc": 1,
+      "poss": 53
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1601522",
+   "date": "2026-09-06",
+   "minute": 43,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Hellas Verona",
+   "away": "Arezzo",
+   "league": "Serie B (Italy)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 43,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 4,
+      "yc": 2,
+      "cor": 2,
+      "sv": 0,
+      "rc": 0,
+      "poss": 66
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "yc": 0,
+      "cor": 0,
+      "sv": 2,
+      "rc": 1,
+      "poss": 34
      }
     }
    ]
