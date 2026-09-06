@@ -755,17 +755,17 @@
    "pick": "home",
    "confidence": 37,
    "level": "red",
-   "score": 84,
-   "minute": 72,
+   "score": 89,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د72)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د81)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": true,
    "alert_minute": 41,
-   "score_xg": 68,
+   "score_xg": 75,
    "level_xg": "red",
    "sent_level": "red",
    "sent_score": 65,
@@ -810,17 +810,17 @@
    "pick": "home",
    "confidence": 38,
    "level": "red",
-   "score": 82,
-   "minute": 69,
+   "score": 87,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 1-3 تُسقط التوقع (د69)",
+    "النتيجة الحالية 1-3 تُسقط التوقع (د78)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": true,
    "alert_minute": 45,
-   "score_xg": 81,
+   "score_xg": 88,
    "level_xg": "red",
    "sent_level": "red",
    "sent_score": 68,
@@ -843,10 +843,10 @@
    "pick": "home",
    "confidence": 62,
    "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د72)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -864,10 +864,10 @@
    "pick": "away",
    "confidence": 61,
    "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "score": 61,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د69)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د78)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -885,10 +885,10 @@
    "pick": "away",
    "confidence": 60,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د70)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -957,6 +957,61 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1492363",
+   "date": "2026-09-06",
+   "home": "Coritiba",
+   "away": "Mirassol",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 48,
+   "level": "amber",
+   "score": 59,
+   "minute": 38,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د38)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1550111",
+   "date": "2026-09-06",
+   "home": "Frosinone",
+   "away": "Venezia",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 44,
+   "level": "red",
+   "score": 79,
+   "minute": 77,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د77)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": true,
+   "alert_minute": 77,
+   "score_xg": 82,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 79,
+   "sent_minute": 77,
+   "sent_factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د77)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   }
  ],
  "resolved": [
@@ -56008,6 +56063,97 @@
       "sv": 3,
       "rc": 0,
       "poss": 43
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1550111",
+   "date": "2026-09-06",
+   "minute": 83,
+   "score_at": "2-2",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Frosinone",
+   "away": "Venezia",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 46,
+     "gh": 2,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 5,
+      "yc": 1,
+      "cor": 2,
+      "sv": 0,
+      "rc": 0,
+      "poss": 42
+     },
+     "a": {
+      "sog": 0,
+      "shots": 6,
+      "yc": 3,
+      "cor": 1,
+      "sv": 1,
+      "rc": 0,
+      "poss": 58
+     },
+     "xg_h": 0.8247,
+     "xg_a": 0.746
+    },
+    {
+     "minute": 57,
+     "gh": 2,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 5,
+      "yc": 1,
+      "cor": 2,
+      "sv": 1,
+      "rc": 0,
+      "poss": 42
+     },
+     "a": {
+      "sog": 1,
+      "shots": 10,
+      "yc": 3,
+      "cor": 1,
+      "sv": 1,
+      "rc": 0,
+      "poss": 58
+     },
+     "xg_h": 0.8247,
+     "xg_a": 1.0229
+    },
+    {
+     "minute": 83,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 5,
+      "sv": 2,
+      "shots": 8,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 38
+     },
+     "a": {
+      "sog": 4,
+      "sv": 4,
+      "shots": 14,
+      "yc": 3,
+      "cor": 1,
+      "rc": 0,
+      "poss": 62
      }
     }
    ]
