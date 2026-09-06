@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-06T07:17:28.660963+00:00",
+ "updated": "2026-09-06T07:26:40.018631+00:00",
  "live": [
   {
    "fid": "1638071",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/3764.png",
    "away_logo": "https://media.api-sports.io/football/teams/16775.png",
    "league_logo": "https://media.api-sports.io/football/leagues/192.png",
-   "score": "0-0",
-   "minute": 51,
+   "score": "1-0",
+   "minute": 62,
    "status": "2H",
-   "seen": "2026-09-06T07:15:38.413476+00:00",
+   "seen": "2026-09-06T07:26:37.882320+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -31,12 +31,52 @@
    "away_logo": "https://media.api-sports.io/football/teams/22754.png",
    "league_logo": "https://media.api-sports.io/football/leagues/765.png",
    "score": "0-1",
-   "minute": 15,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-09-06T07:15:38.413476+00:00",
+   "seen": "2026-09-06T07:26:37.882320+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 45
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      26
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
    }
   },
   {
@@ -49,35 +89,39 @@
    "home_logo": "https://media.api-sports.io/football/teams/3811.png",
    "away_logo": "https://media.api-sports.io/football/teams/3803.png",
    "league_logo": "https://media.api-sports.io/football/leagues/195.png",
-   "score": "1-0",
-   "minute": 13,
+   "score": "2-1",
+   "minute": 24,
    "status": "1H",
-   "seen": "2026-09-06T07:15:38.413476+00:00",
+   "seen": "2026-09-06T07:26:37.882320+00:00",
    "pred_v1": {
     "pick": "home",
-    "confidence": 53
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
    },
    "radar": {
-    "score": 42,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د46)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
-    "confidence": 41,
+    "confidence": 38,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      46
+      24
      ],
      "danger": [
-      42
+      15
      ],
      "h_sog": [
       0
@@ -15949,6 +15993,20 @@
    "away_logo": "https://media.api-sports.io/football/teams/7145.png",
    "pick": "home",
    "confidence": 54,
+   "kickoff": "2026-09-06T04:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-06",
+   "home": "سيدني يونايتيد",
+   "away": "مانلي يونايتيد",
+   "home_en": "Sydney United",
+   "away_en": "Manly United",
+   "league": "دوري نيو ساوث ويلز (أستراليا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3776.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3767.png",
+   "pick": "draw",
+   "confidence": 50,
    "kickoff": "2026-09-06T04:00:00+00:00",
    "awaiting": true
   },
