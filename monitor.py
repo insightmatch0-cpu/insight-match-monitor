@@ -491,6 +491,51 @@ def get_live_fixtures() -> list:
     return api_football("fixtures?live=all")
 
 
+# 🎯 دمج مباريات قائمة التركيز في التمرير العادي (حادثة 2026-09-05: أول سبت
+# توقف دولي — 129 مباراة حية، التمرير العادي التهم ميزانية الدقائق السبع
+# كاملة، فلم يعمل الرصد السريع ولا مرة (نشرات سريعة: 0)، وهو الوحيد الذي
+# يستطلع مباريات القائمة بمعرّفاتها. بث live=all لا يحمل المباراة المنتهية،
+# فصافرة النهاية لأربع من خمس مفضلات لم تُرَ قط: لا تنبيه نهاية، لا نتيجة،
+# لا حصاد ادعاءات، لا ملخص اليوم). العلاج: نداء واحد fixtures?ids= لما غاب
+# من القائمة عن البث، وتقديم القائمة إلى رأس الحلقة قبل نفاد الميزانية.
+FOCUS_IDS_MERGE = True
+
+
+def merge_focus_fixtures(fixtures: list, watch: set, state: dict, fetch=None) -> list:
+    """يعيد قائمة المباريات الحية وقد ضُمّت إليها مباريات القائمة الغائبة عن
+    البث (حية أو انتهت للتو وما زالت متتبَّعة)، ومباريات القائمة في المقدمة.
+    - منتهية غير متتبَّعة (أُضيفت بعد نهايتها) لا تُضم: لا تنبيهات وهمية.
+    - منتهية وحالتها في الذاكرة نهائية أصلاً لا تُضم: لا تكرار ولا بقاء أبدي.
+    فشل النداء = القائمة الأصلية كما هي (لا يوقف التمرير)."""
+    if not (FOCUS_IDS_MERGE and watch):
+        return fixtures
+
+    def _fid(fx):
+        return str(((fx or {}).get("fixture") or {}).get("id"))
+
+    present = {_fid(fx) for fx in fixtures}
+    missing = sorted(f for f in watch if f not in present)
+    extra = []
+    if missing:
+        try:
+            fetched = (fetch or api_football)(f"fixtures?ids={'-'.join(missing)}")
+        except Exception as e:
+            print("دمج قائمة التركيز: فشل السحب:", e)
+            fetched = []
+        for fx in fetched or []:
+            fid = _fid(fx)
+            st = ((((fx.get("fixture") or {}).get("status")) or {}).get("short")) or ""
+            tracked = state.get(fid) if isinstance(state, dict) else None
+            if st in LIVE_STATUSES:
+                extra.append(fx)
+            elif (st in FINAL_STATUSES and isinstance(tracked, dict)
+                    and tracked.get("status") not in FINAL_STATUSES):
+                extra.append(fx)
+    wl_first = [fx for fx in fixtures if _fid(fx) in watch]
+    rest = [fx for fx in fixtures if _fid(fx) not in watch]
+    return extra + wl_first + rest
+
+
 # إحصائيات مهمة تُلخص لتحليل المحرك 2 المباشر
 KEY_LIVE_STATS = {
     "Shots on Goal", "Shots off Goal", "Total Shots", "Blocked Shots",
@@ -2701,6 +2746,8 @@ def main() -> None:
     except Exception as e:
         print("فشل سحب المباريات:", e)
         sys.exit(0)  # لا نفشّل التشغيلة، نحاول في الجولة القادمة
+    # 🎯 مباريات القائمة أولاً، والغائبة عن البث تُضم بنداء معرّفات واحد
+    fixtures = merge_focus_fixtures(fixtures, watch, state)
     # طابع لحظة الرصد: اللوحة تُقدّم الدقيقة بما مضى منذها — لا شاشة متجمدة
     # (بلاغ المالك 2026-08-02: اللوحة 65 والواقع 84)
     seen_now = datetime.now(timezone.utc).isoformat()
