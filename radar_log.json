@@ -1644,10 +1644,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "red",
-   "score": 84,
-   "minute": 59,
+   "score": 90,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د59)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د69)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -1710,10 +1710,10 @@
    "pick": "home",
    "confidence": 55,
    "level": "amber",
-   "score": 48,
-   "minute": 55,
+   "score": 54,
+   "minute": 65,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د65)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1731,10 +1731,10 @@
    "pick": "away",
    "confidence": 65,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 55,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د55)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1773,10 +1773,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 47,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د54)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1856,17 +1856,92 @@
    "mine": true,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 44,
-   "minute": 36,
+   "level": "red",
+   "score": 76,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د36)",
-    "موجة ركنيات لصالح الضيف"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": true,
+   "alert_minute": 45,
+   "score_xg": 42,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 76,
+   "sent_minute": 45,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
+  },
+  {
+   "fid": "1492366",
+   "date": "2026-09-06",
+   "home": "Internacional",
+   "away": "Santos",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 43,
+   "minute": 30,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د30)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 36,
-   "level_xg": "green"
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1550114",
+   "date": "2026-09-06",
+   "home": "Juventus",
+   "away": "AC Milan",
+   "league": "Serie A (Italy)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 38,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1582266",
+   "date": "2026-09-06",
+   "home": "Zabbar St. Patrick",
+   "away": "Hamrun Spartans",
+   "league": "Premier League (Malta)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 62,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
@@ -57260,6 +57335,70 @@
      },
      "xg_h": 1.1261999999999999,
      "xg_a": 0.21159999999999998
+    }
+   ]
+  },
+  {
+   "fid": "1560238",
+   "date": "2026-09-06",
+   "minute": 76,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Gyori ETO FC",
+   "away": "Budapest Honved",
+   "league": "NB I (Hungary)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sv": 1,
+      "shots": 5,
+      "cor": 1,
+      "sog": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 47
+     },
+     "a": {
+      "sv": 0,
+      "shots": 2,
+      "cor": 1,
+      "sog": 1,
+      "yc": 1,
+      "rc": 0,
+      "poss": 53
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 6,
+      "shots": 11,
+      "yc": 1,
+      "cor": 3,
+      "rc": 0,
+      "poss": 53
+     },
+     "a": {
+      "sog": 6,
+      "sv": 2,
+      "shots": 15,
+      "yc": 2,
+      "cor": 5,
+      "rc": 0,
+      "poss": 47
+     }
     }
    ]
   }
