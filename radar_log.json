@@ -706,11 +706,13 @@
    "mine": false,
    "pick": "home",
    "confidence": 55,
-   "level": "amber",
-   "score": 55,
-   "minute": 51,
+   "level": "red",
+   "score": 79,
+   "minute": 61,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د51)",
+    "النتيجة الحالية 0-2 تُسقط التوقع (د61)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
@@ -729,10 +731,10 @@
    "pick": "away",
    "confidence": 54,
    "level": "red",
-   "score": 72,
-   "minute": 53,
+   "score": 78,
+   "minute": 63,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د53)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د63)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
@@ -753,17 +755,17 @@
    "pick": "home",
    "confidence": 37,
    "level": "red",
-   "score": 65,
-   "minute": 41,
+   "score": 68,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د41)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": true,
    "alert_minute": 41,
-   "score_xg": 49,
+   "score_xg": 55,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 65,
@@ -774,6 +776,145 @@
     "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ]
+  },
+  {
+   "fid": "1557390",
+   "date": "2026-09-06",
+   "home": "Everton",
+   "away": "Manchester United",
+   "league": "Premier League (England)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 40,
+   "level": "amber",
+   "score": 48,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": 42,
+   "level_xg": "amber"
+  },
+  {
+   "fid": "1552755",
+   "date": "2026-09-06",
+   "home": "Estac Troyes",
+   "away": "Strasbourg",
+   "league": "Ligue 1 (France)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 38,
+   "level": "red",
+   "score": 68,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ],
+   "alerted": true,
+   "alert_minute": 45,
+   "score_xg": 65,
+   "level_xg": "red",
+   "sent_level": "red",
+   "sent_score": 68,
+   "sent_minute": 45,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ]
+  },
+  {
+   "fid": "1619840",
+   "date": "2026-09-06",
+   "home": "La Fiorita",
+   "away": "San Marino Academy",
+   "league": "Campionato (San-Marino)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 62,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1624640",
+   "date": "2026-09-06",
+   "home": "Altavilla",
+   "away": "Triestina",
+   "league": "Serie D - Girone C (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 61,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1624339",
+   "date": "2026-09-06",
+   "home": "Tritium",
+   "away": "Piacenza",
+   "league": "Serie D - Girone B (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 60,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1626177",
+   "date": "2026-09-06",
+   "home": "Recanatese",
+   "away": "Pietralunga",
+   "league": "Serie D - Girone F (Italy)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
