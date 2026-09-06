@@ -1286,16 +1286,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 43,
-   "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د71)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 63,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 84,
+   "score_xg": 64,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1570369",
@@ -1308,17 +1314,17 @@
    "pick": "away",
    "confidence": 39,
    "level": "red",
-   "score": 76,
-   "minute": 45,
+   "score": 79,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د51)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": true,
    "alert_minute": 40,
-   "score_xg": 67,
+   "score_xg": 73,
    "level_xg": "red",
    "sent_level": "red",
    "sent_score": 73,
@@ -1341,10 +1347,10 @@
    "pick": "home",
    "confidence": 66,
    "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-2 تُسقط التوقع (د72)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1385,10 +1391,10 @@
    "pick": "home",
    "confidence": 55,
    "level": "amber",
-   "score": 55,
-   "minute": 67,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د67)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د77)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1406,10 +1412,31 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د69)"
+    "النتيجة الحالية 0-3 تُسقط التوقع (د79)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1560009",
+   "date": "2026-09-06",
+   "home": "Hradec Králové",
+   "away": "Sparta Praha",
+   "league": "Czech Liga (Czech-Republic)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 52,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
+   "factors": [
+    "النتيجة الحالية 2-1 تُسقط التوقع (د84)"
    ],
    "alerted": null,
    "alert_minute": null,
