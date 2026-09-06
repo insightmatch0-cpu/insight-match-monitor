@@ -192,6 +192,8 @@ SEND_TELEGRAM_DIGEST = True
 # وعدد دفعات Claude المتوقعة، بنداء API-Football واحد من الرصيد المدفوع — إنذار
 # 24 ساعة قبل كل سبت ضخم (RND-022: السبت 72-120 دفعة مقابل ~16 يومياً).
 DIGEST_TOMORROW_LINE = True
+# 💾 حفظ التوقعات على القرص بعد كل دفعة ناجحة — التشغيلة المقطوعة تحتفظ بعملها
+CHECKPOINT_EVERY_BATCH = True
 # 💳 سطر كلفة Claude اليومي (HOLD-013-3): «اجعل المورد مرئياً كل يوم» — قاعدة
 # 14 أغسطس نفسها التي أعطت سطر رصيد API-Football. مصدره Usage & Cost Admin API
 # (نداء واحد، لا يُحسب على رصيد الرسائل). يعمل فقط مع ANTHROPIC_ADMIN_KEY.
@@ -2758,6 +2760,12 @@ def main() -> None:
                 apply_cup_guardrail(entry)   # سقف ثقة الكأس/الإقصاء
                 store["pending"][m["fid"]] = entry
                 new_preds.append(entry)
+            # 💾 نقطة حفظ بعد كل دفعة (حادثة 2026-09-06: تشغيلتان متتاليتان أُلغيتا
+            # عند الدقيقة 50 — كل دفعاتهما المدفوعة ضاعت لأن الحفظ كان في نهاية
+            # الحلقة فقط). الآن كل دفعة ناجحة تصل القرص فوراً؛ خطوة الحفظ في
+            # الورك فلو (if: always) تلتقطها، وإعادة الإطلاق تتخطى المعلّق أصلاً.
+            if CHECKPOINT_EVERY_BATCH and results:
+                save_json(PREDICTIONS_FILE, store)
 
     store["meta"] = {
         "last_run": now_utc().isoformat(),
