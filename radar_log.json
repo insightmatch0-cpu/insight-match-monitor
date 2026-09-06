@@ -695,6 +695,138 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1552160",
+   "date": "2026-09-06",
+   "home": "Telstar",
+   "away": "Cambuur",
+   "league": "Eredivisie (Netherlands)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 43,
+   "minute": 30,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د30)",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1552159",
+   "date": "2026-09-06",
+   "home": "Heerenveen",
+   "away": "AZ Alkmaar",
+   "league": "Eredivisie (Netherlands)",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 54,
+   "level": "amber",
+   "score": 47,
+   "minute": 30,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د30)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1586544",
+   "date": "2026-09-06",
+   "home": "Schöningen",
+   "away": "VfB Oldenburg",
+   "league": "Regionalliga - Nord (Germany)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 48,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1587137",
+   "date": "2026-09-06",
+   "home": "VfR Mannheim",
+   "away": "FC 08 Homburg",
+   "league": "Regionalliga - SudWest (Germany)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 48,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1523264",
+   "date": "2026-09-06",
+   "home": "Henan Jianye",
+   "away": "Chengdu Better City",
+   "league": "Super League (China)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 47,
+   "level": "red",
+   "score": 88,
+   "minute": 66,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د66)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1528706",
+   "date": "2026-09-06",
+   "home": "Guangxi Hengchen",
+   "away": "Hebei Kungfu",
+   "league": "League One (China)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 47,
+   "level": "amber",
+   "score": 56,
+   "minute": 69,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د69)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
@@ -55604,6 +55736,86 @@
       "yc": 1,
       "poss": 60,
       "shots": 4
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1552160",
+   "date": "2026-09-06",
+   "minute": 30,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Telstar",
+   "away": "Cambuur",
+   "league": "Eredivisie (Netherlands)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 0,
+      "cor": 0,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 28
+     },
+     "a": {
+      "shots": 1,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 72
+     }
+    },
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "cor": 1,
+      "shots": 0,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 47
+     },
+     "a": {
+      "cor": 1,
+      "shots": 1,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 53
+     }
+    },
+    {
+     "minute": 30,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 1,
+      "shots": 1,
+      "yc": 1,
+      "cor": 2,
+      "sog": 0,
+      "poss": 49
+     },
+     "a": {
+      "rc": 0,
+      "shots": 1,
+      "yc": 1,
+      "cor": 1,
+      "sog": 0,
+      "poss": 51
      }
     }
    ]
