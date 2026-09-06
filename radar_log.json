@@ -362,11 +362,14 @@
    "mine": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 51,
-   "minute": 61,
+   "level": "red",
+   "score": 89,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د61)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د78)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -405,10 +408,10 @@
    "pick": "away",
    "confidence": 39,
    "level": "amber",
-   "score": 52,
-   "minute": 62,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د62)"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -492,12 +495,11 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 42,
-   "minute": 23,
+   "score": 47,
+   "minute": 40,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د23)",
-    "موجة ركنيات لصالح الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د40)",
+    "موجة ركنيات لصالح الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -54427,6 +54429,93 @@
       "cor": 3,
       "rc": 0,
       "poss": 60
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1490443",
+   "date": "2026-09-06",
+   "minute": 78,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 80,
+   "home": "Charlotte",
+   "away": "Houston Dynamo",
+   "league": "Major League Soccer (USA)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 67,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 9,
+      "yc": 2,
+      "cor": 8,
+      "rc": 0,
+      "poss": 40
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 9,
+      "yc": 1,
+      "cor": 3,
+      "rc": 0,
+      "poss": 60
+     }
+    },
+    {
+     "minute": 61,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 9,
+      "yc": 2,
+      "cor": 8,
+      "rc": 0,
+      "poss": 42
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 9,
+      "yc": 1,
+      "cor": 3,
+      "rc": 0,
+      "poss": 58
+     }
+    },
+    {
+     "minute": 78,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 3,
+      "rc": 1,
+      "shots": 9,
+      "yc": 2,
+      "cor": 8,
+      "poss": 39
+     },
+     "a": {
+      "sog": 4,
+      "sv": 3,
+      "rc": 0,
+      "shots": 12,
+      "yc": 2,
+      "cor": 3,
+      "poss": 61
      }
     }
    ]
