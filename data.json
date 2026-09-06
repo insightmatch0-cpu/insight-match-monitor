@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-06T07:15:40.383709+00:00",
+ "updated": "2026-09-06T07:17:28.660963+00:00",
  "live": [
   {
    "fid": "1638071",
@@ -55,7 +55,43 @@
    "seen": "2026-09-06T07:15:38.413476+00:00",
    "pred_v1": {
     "pick": "home",
-    "confidence": 52
+    "confidence": 53
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د46)"
+    ],
+    "pick": "home",
+    "confidence": 41,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      46
+     ],
+     "danger": [
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
    }
   }
  ],
@@ -15918,20 +15954,6 @@
   },
   {
    "date": "2026-09-06",
-   "home": "سيدني يونايتيد",
-   "away": "مانلي يونايتيد",
-   "home_en": "Sydney United",
-   "away_en": "Manly United",
-   "league": "دوري نيو ساوث ويلز (أستراليا)",
-   "home_logo": "https://media.api-sports.io/football/teams/3776.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3767.png",
-   "pick": "draw",
-   "confidence": 50,
-   "kickoff": "2026-09-06T04:00:00+00:00",
-   "awaiting": true
-  },
-  {
-   "date": "2026-09-06",
    "home": "أطلس",
    "away": "أتلانتي إف سي",
    "home_en": "Atlas",
@@ -17111,8 +17133,8 @@
    "hit": 1203
   },
   "amber": {
-   "fired": 1051,
-   "hit": 471
+   "fired": 1052,
+   "hit": 472
   },
   "alerts": {
    "flip": {
@@ -17142,8 +17164,8 @@
     "hit": 913
    },
    "amber": {
-    "fired": 832,
-    "hit": 390
+    "fired": 833,
+    "hit": 391
    },
    "alerts": {
     "flip": {
@@ -17582,8 +17604,8 @@
     "total": 110
    },
    "2026-09-06": {
-    "hit": 19,
-    "total": 27
+    "hit": 20,
+    "total": 28
    }
   },
   "recent": [
