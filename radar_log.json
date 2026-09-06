@@ -1774,10 +1774,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "red",
-   "score": 65,
-   "minute": 84,
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د84)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1858,18 +1858,18 @@
    "pick": "home",
    "confidence": 54,
    "level": "red",
-   "score": 83,
-   "minute": 57,
+   "score": 89,
+   "minute": 67,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د57)",
+    "النتيجة الحالية 2-2 تُسقط التوقع (د67)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 45,
-   "score_xg": 59,
-   "level_xg": "amber",
+   "score_xg": 67,
+   "level_xg": "red",
    "sent_level": "red",
    "sent_score": 76,
    "sent_minute": 45,
@@ -1891,10 +1891,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 52,
-   "minute": 45,
+   "score": 53,
+   "minute": 48,
    "factors": [
-    "النتيجة الحالية 0-3 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-3 تُسقط التوقع (د48)",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
    ],
    "alerted": null,
@@ -1913,14 +1913,14 @@
    "pick": "home",
    "confidence": 38,
    "level": "amber",
-   "score": 48,
-   "minute": 55,
+   "score": 54,
+   "minute": 65,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د65)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 48,
+   "score_xg": 54,
    "level_xg": "amber"
   },
   {
@@ -1934,10 +1934,10 @@
    "pick": "away",
    "confidence": 62,
    "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "score": 56,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د59)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د69)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -2023,14 +2023,15 @@
    "pick": "home",
    "confidence": 37,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 53,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د51)",
+    "موجة ركنيات لصالح الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 42,
+   "score_xg": 45,
    "level_xg": "amber"
   },
   {
@@ -2048,6 +2049,30 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1553156",
+   "date": "2026-09-06",
+   "home": "Jagiellonia",
+   "away": "Slask Wroclaw",
+   "league": "Ekstraklasa (Poland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
+   "score": 41,
+   "minute": 90,
+   "factors": [
+    "تقدم هش بفارق هدف واحد",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -57509,6 +57534,92 @@
       "cor": 5,
       "rc": 0,
       "poss": 47
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570367",
+   "date": "2026-09-06",
+   "minute": 57,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Espanyol",
+   "away": "Sevilla",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 19,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 2,
+      "yc": 1,
+      "sv": 0,
+      "rc": 0,
+      "poss": 43
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "yc": 1,
+      "sv": 1,
+      "rc": 0,
+      "poss": 57
+     },
+     "xg_h": 0.2649,
+     "xg_a": 0.0
+    },
+    {
+     "minute": 29,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 3,
+      "yc": 1,
+      "sv": 0,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "yc": 1,
+      "sv": 1,
+      "rc": 0,
+      "poss": 45
+     },
+     "xg_h": 0.2791,
+     "xg_a": 0.0
+    },
+    {
+     "minute": 57,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 5,
+      "yc": 2,
+      "sv": 0,
+      "cor": 0,
+      "rc": 0,
+      "poss": 46
+     },
+     "a": {
+      "sog": 1,
+      "shots": 2,
+      "yc": 3,
+      "sv": 1,
+      "cor": 2,
+      "rc": 1,
+      "poss": 54
      }
     }
    ]
