@@ -95,11 +95,13 @@
    "mine": false,
    "pick": "away",
    "confidence": 49,
-   "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "level": "red",
+   "score": 75,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د78)",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -57404,7 +57406,95 @@
    "graded_on": "2026-09-06"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1492360",
+   "date": "2026-09-06",
+   "minute": 78,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Botafogo",
+   "away": "Palmeiras",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "sv": 1,
+      "shots": 4,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 32
+     },
+     "a": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 1,
+      "cor": 1,
+      "yc": 1,
+      "rc": 0,
+      "poss": 68
+     }
+    },
+    {
+     "minute": 30,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "sv": 1,
+      "shots": 6,
+      "yc": 2,
+      "cor": 1,
+      "rc": 0,
+      "poss": 29
+     },
+     "a": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 2,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 71
+     }
+    },
+    {
+     "minute": 78,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 5,
+      "shots": 12,
+      "yc": 3,
+      "cor": 4,
+      "rc": 0,
+      "poss": 33
+     },
+     "a": {
+      "sog": 5,
+      "sv": 3,
+      "shots": 17,
+      "yc": 2,
+      "cor": 9,
+      "rc": 0,
+      "poss": 67
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
