@@ -1,15 +1,15 @@
 {
  "xg_live": {
-  "remaining": 2496,
+  "remaining": 2495,
   "note": "",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 4
+  "radar_targets": 2
  },
  "api_quota": {
-  "remaining": 6745,
+  "remaining": 6730,
   "limit": 7500,
-  "at": "2026-09-07T03:07:06.462045+00:00"
+  "at": "2026-09-07T03:16:29.724733+00:00"
  },
  "delivery": {
   "at": "2026-09-07T00:12:33.767164+00:00",
@@ -86,120 +86,34 @@
   "days": 5,
   "last": "2026-09-06"
  },
- "1551681": {
-  "score": "1-0",
-  "status": "2H",
-  "minute": 90,
-  "home": "San Carlos",
-  "away": "Sporting San Jose",
-  "league": "Primera División (Costa-Rica)",
-  "home_logo": "https://media.api-sports.io/football/teams/823.png",
-  "away_logo": "https://media.api-sports.io/football/teams/2047.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/162.png",
-  "seen": "2026-09-07T03:00:58.101229+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 90,
-     "gh": 1,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 15,
-   "level": "green",
-   "dscores": [
-    15
-   ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
-   "pick": "home",
-   "confidence": 37,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "away",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1549624": {
-  "score": "1-0",
-  "status": "2H",
-  "minute": 90,
-  "home": "Patriotas",
-  "away": "Tigres FC",
-  "league": "Primera B (Colombia)",
-  "home_logo": "https://media.api-sports.io/football/teams/1140.png",
-  "away_logo": "https://media.api-sports.io/football/teams/1145.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/240.png",
-  "seen": "2026-09-07T03:07:05.744432+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 90,
-     "gh": 1,
-     "ga": 0,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 15,
-   "level": "green",
-   "dscores": [
-    15
-   ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
-   "pick": "home",
-   "confidence": 44,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "away",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
  "1636802": {
-  "score": "0-2",
+  "score": "0-3",
   "status": "2H",
-  "minute": 78,
+  "minute": 87,
   "home": "Juticalpa",
   "away": "Génesis",
   "league": "Liga Nacional (Honduras)",
   "home_logo": "https://media.api-sports.io/football/teams/1053.png",
   "away_logo": "https://media.api-sports.io/football/teams/21858.png",
   "league_logo": "https://media.api-sports.io/football/leagues/234.png",
-  "seen": "2026-09-07T03:07:05.744432+00:00",
+  "seen": "2026-09-07T03:16:29.357770+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 78,
+     "minute": 87,
      "gh": 0,
-     "ga": 2,
+     "ga": 3,
      "h": {},
      "a": {}
     }
    ],
-   "score": 61,
-   "level": "amber",
+   "score": 67,
+   "level": "red",
    "dscores": [
-    61
+    67
    ],
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د78)"
+    "النتيجة الحالية 0-3 تُسقط التوقع (د87)"
    ],
    "pick": "home",
    "confidence": 39,
@@ -207,7 +121,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "home",
+    "side": null,
     "ready": false
    },
    "alerted": null,
@@ -216,16 +130,16 @@
   }
  },
  "1638066": {
-  "score": "1-0",
+  "score": "2-0",
   "status": "2H",
-  "minute": 67,
+  "minute": 77,
   "home": "Toluca",
   "away": "Monterrey",
   "league": "Leagues Cup (World)",
   "home_logo": "https://media.api-sports.io/football/teams/2281.png",
   "away_logo": "https://media.api-sports.io/football/teams/2282.png",
   "league_logo": "https://media.api-sports.io/football/leagues/772.png",
-  "seen": "2026-09-07T03:07:05.744432+00:00",
+  "seen": "2026-09-07T03:16:29.357770+00:00",
   "radar": {
    "snaps": [
     {
@@ -269,38 +183,37 @@
      }
     },
     {
-     "minute": 67,
-     "gh": 1,
+     "minute": 77,
+     "gh": 2,
      "ga": 0,
      "h": {
-      "sog": 3,
+      "sog": 5,
       "sv": 2,
-      "shots": 5,
+      "shots": 8,
       "yc": 2,
       "cor": 2,
       "rc": 0,
-      "poss": 56
+      "poss": 51
      },
      "a": {
       "sog": 2,
-      "sv": 2,
+      "sv": 3,
       "shots": 10,
       "yc": 1,
       "cor": 10,
       "rc": 0,
-      "poss": 44
+      "poss": 49
      }
     }
    ],
-   "score": 29,
+   "score": 14,
    "level": "green",
    "dscores": [
     15,
     15,
-    29
+    14
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -309,7 +222,7 @@
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 35,
+    "signal": 20,
     "side": "away",
     "ready": false
    },
