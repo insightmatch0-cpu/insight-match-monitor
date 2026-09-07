@@ -245,10 +245,10 @@
    "pick": "home",
    "confidence": 46,
    "level": "red",
-   "score": 77,
-   "minute": 80,
+   "score": 83,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د80)",
+    "النتيجة الحالية 0-2 تُسقط التوقع (د90)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -267,11 +267,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 45,
-   "level": "amber",
-   "score": 54,
-   "minute": 65,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د65)"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -310,10 +310,10 @@
    "pick": "home",
    "confidence": 62,
    "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "score": 56,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د59)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د69)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -330,17 +330,26 @@
    "mine": true,
    "pick": "home",
    "confidence": 37,
-   "level": "amber",
-   "score": 53,
-   "minute": 50,
+   "level": "red",
+   "score": 68,
+   "minute": 65,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د50)",
-    "موجة ركنيات لصالح الضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د65)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 45,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 65,
+   "score_xg": 51,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 68,
+   "sent_minute": 65,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د65)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1603991",
@@ -357,6 +366,195 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1515917",
+   "date": "2026-09-07",
+   "home": "Riga",
+   "away": "BFC Daugavpils",
+   "league": "Virsliga (Latvia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 66,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1603556",
+   "date": "2026-09-07",
+   "home": "Pafos",
+   "away": "Olympiakos",
+   "league": "1. Division (Cyprus)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 64,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1515918",
+   "date": "2026-09-07",
+   "home": "Rīgas FS",
+   "away": "FK Liepaja",
+   "league": "Virsliga (Latvia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1504301",
+   "date": "2026-09-07",
+   "home": "Klubi-04",
+   "away": "KäPa",
+   "league": "Ykkösliiga (Finland)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 46,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1571552",
+   "date": "2026-09-07",
+   "home": "Pirin Blagoevgrad",
+   "away": "Ludogorets II",
+   "league": "Second League (Bulgaria)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 46,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1496683",
+   "date": "2026-09-07",
+   "home": "Molde II",
+   "away": "Aalesund II",
+   "league": "3. Division - Girone 2 (Norway)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 45,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1507213",
+   "date": "2026-09-07",
+   "home": "Telavi",
+   "away": "Samtredia",
+   "league": "Erovnuli Liga 2 (Georgia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 44,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1603992",
+   "date": "2026-09-07",
+   "home": "Al Jabalain",
+   "away": "Al Wehda Club",
+   "league": "Division 1 (Saudi-Arabia)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 44,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635442",
+   "date": "2026-09-07",
+   "home": "Ilves II",
+   "away": "P-Iirot",
+   "league": "Kakkonen - Lohko B (Finland)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 44,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
