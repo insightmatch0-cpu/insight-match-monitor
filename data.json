@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-07T03:16:31.391104+00:00",
+ "updated": "2026-09-07T03:22:55.491030+00:00",
  "live": [
   {
    "fid": "1636802",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/21858.png",
    "league_logo": "https://media.api-sports.io/football/leagues/234.png",
    "score": "0-3",
-   "minute": 87,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-07T03:16:29.357770+00:00",
+   "seen": "2026-09-07T03:22:53.440141+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 47
@@ -24,10 +24,10 @@
     "confidence": 39
    },
    "radar": {
-    "score": 67,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د87)"
+     "النتيجة الحالية 0-3 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 39,
@@ -40,21 +40,27 @@
     "top": false,
     "trend": {
      "min": [
-      87
+      78,
+      90
      ],
      "danger": [
-      67
+      61,
+      69
      ],
      "h_sog": [
+      0,
       0
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
+      0,
       0
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -71,9 +77,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2282.png",
    "league_logo": "https://media.api-sports.io/football/leagues/772.png",
    "score": "2-0",
-   "minute": 77,
+   "minute": 83,
    "status": "2H",
-   "seen": "2026-09-07T03:16:29.357770+00:00",
+   "seen": "2026-09-07T03:22:53.440141+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -83,16 +89,13 @@
     "confidence": 41
    },
    "radar": {
-    "score": 14,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "موجة ركنيات لصالح الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 41,
     "drama": {
-     "signal": 20,
+     "signal": 0,
      "side": "away",
      "ready": false
     },
@@ -102,31 +105,37 @@
      "min": [
       5,
       15,
-      77
+      67,
+      83
      ],
      "danger": [
       15,
       15,
-      14
+      29,
+      0
      ],
      "h_sog": [
       0,
+      3,
       3,
       5
      ],
      "a_sog": [
       0,
       1,
+      2,
       2
      ],
      "h_cor": [
       0,
       0,
+      2,
       2
      ],
      "a_cor": [
       0,
       0,
+      10,
       10
      ]
     }
