@@ -1,69 +1,6 @@
 {
- "updated": "2026-09-07T03:29:23.006871+00:00",
+ "updated": "2026-09-07T03:36:33.207712+00:00",
  "live": [
-  {
-   "fid": "1636802",
-   "home": "Juticalpa",
-   "away": "Génesis",
-   "home_en": "Juticalpa",
-   "away_en": "Génesis",
-   "league": "Liga Nacional (Honduras)",
-   "home_logo": "https://media.api-sports.io/football/teams/1053.png",
-   "away_logo": "https://media.api-sports.io/football/teams/21858.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/234.png",
-   "score": "0-3",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-07T03:23:14.295370+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 47
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 39
-   },
-   "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 0-3 تُسقط التوقع (د90)"
-    ],
-    "pick": "home",
-    "confidence": 39,
-    "drama": {
-     "signal": 0,
-     "side": null,
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      69
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
-     ]
-    }
-   }
-  },
   {
    "fid": "1638066",
    "home": "Toluca",
@@ -77,7 +14,7 @@
    "score": "2-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-07T03:29:21.087847+00:00",
+   "seen": "2026-09-07T03:36:31.870970+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -87,13 +24,15 @@
     "confidence": 41
    },
    "radar": {
-    "score": 0,
+    "score": 8,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "موجة ركنيات لصالح الضيف"
+    ],
     "pick": "home",
     "confidence": 41,
     "drama": {
-     "signal": 0,
+     "signal": 5,
      "side": "away",
      "ready": false
     },
@@ -103,18 +42,19 @@
      "min": [
       5,
       15,
+      90,
       90
      ],
      "danger": [
       15,
       15,
-      29,
-      0
+      14,
+      8
      ],
      "h_sog": [
       0,
       3,
-      3,
+      5,
       5
      ],
      "a_sog": [
@@ -132,30 +72,14 @@
      "a_cor": [
       0,
       0,
-      13
+      13,
+      15
      ]
     }
    }
   }
  ],
- "upcoming": [
-  {
-   "fid": "1636802",
-   "kickoff": "2026-09-07T01:30:00+00:00",
-   "home": "خوتيكالبا",
-   "away": "خينيسيس",
-   "home_en": "Juticalpa",
-   "home_logo": "https://media.api-sports.io/football/teams/1053.png",
-   "away_logo": "https://media.api-sports.io/football/teams/21858.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/234.png",
-   "away_en": "Génesis",
-   "league": "الدوري الهندوراسي",
-   "top": false,
-   "pick": "draw",
-   "confidence": 47,
-   "reason": "دوري ضعيف التنافسية والفريقان متقاربان، الرمادية هي الخيار"
-  }
- ],
+ "upcoming": [],
  "recent_results": [
   {
    "date": "2026-09-06",
@@ -909,6 +833,34 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-07",
+   "home": "سان كارلوس",
+   "away": "سبورتينج سان خوسيه",
+   "home_en": "San Carlos",
+   "away_en": "Sporting San Jose",
+   "league": "الدوري الكوستاريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/823.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2047.png",
+   "pick": "away",
+   "confidence": 50,
+   "kickoff": "2026-09-07T01:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-07",
+   "home": "ماتاجالبا",
+   "away": "ديريانجيه",
+   "home_en": "Matagalpa",
+   "away_en": "Diriangén",
+   "league": "الدوري النيكاراغوي",
+   "home_logo": "https://media.api-sports.io/football/teams/19159.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4641.png",
+   "pick": "draw",
+   "confidence": 46,
+   "kickoff": "2026-09-07T01:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-07",
    "home": "راسينغ كلوب",
