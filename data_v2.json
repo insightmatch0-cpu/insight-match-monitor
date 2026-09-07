@@ -3859,8 +3859,14 @@
   "reports": [
    {
     "fid": "1493116",
-    "score": "",
-    "s1": {},
+    "score": "1-2",
+    "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 65,
+      "correct": false
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -3919,6 +3925,11 @@
     "fid": "1552747",
     "score": "1-2",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 52,
+      "correct": false
+     },
      "v2": {
       "pick": "away",
       "confidence": 49,
@@ -3983,6 +3994,11 @@
     "fid": "1570371",
     "score": "0-5",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 68,
+      "correct": true
+     },
      "v2": {
       "pick": "away",
       "confidence": 72,
@@ -4051,6 +4067,11 @@
     "fid": "1563131",
     "score": "2-2",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 62,
+      "correct": false
+     },
      "v2": {
       "pick": "away",
       "confidence": 41,
@@ -4128,6 +4149,11 @@
     "fid": "1552158",
     "score": "2-2",
     "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 58,
+      "correct": false
+     },
      "v2": {
       "pick": "away",
       "confidence": 45,
@@ -4613,5 +4639,5 @@
   ]
  },
  "pred_updated": "2026-09-06T07:17:24.712947+00:00",
- "updated": "2026-09-07T04:02:07.155493+00:00"
+ "updated": "2026-09-07T04:05:38.877122+00:00"
 }
