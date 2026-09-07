@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-06T23:56:35.436551+00:00",
+ "updated": "2026-09-07T00:05:09.542292+00:00",
  "live": [
   {
    "fid": "1493984",
@@ -14,7 +14,7 @@
    "score": "2-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:03:33.245963+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -73,142 +73,69 @@
    }
   },
   {
-   "fid": "1551680",
-   "home": "Puntarenas FC",
-   "away": "CS Cartagines",
-   "home_en": "Puntarenas FC",
-   "away_en": "CS Cartagines",
-   "league": "Primera División (Costa-Rica)",
-   "home_logo": "https://media.api-sports.io/football/teams/2045.png",
-   "away_logo": "https://media.api-sports.io/football/teams/820.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/162.png",
-   "score": "1-3",
+   "fid": "1517341",
+   "home": "Vancouver FC",
+   "away": "Supra du Quebec",
+   "home_en": "Vancouver FC",
+   "away_en": "Supra du Quebec",
+   "league": "Canadian Premier League (Canada)",
+   "home_logo": "https://media.api-sports.io/football/teams/20881.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27461.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/479.png",
+   "score": "3-2",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-06T23:54:59.992214+00:00",
+   "seen": "2026-09-07T00:03:33.245963+00:00",
    "pred_v1": {
-    "pick": "away",
-    "confidence": 53
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 41
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 41,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      15,
-      22,
-      73
-     ],
-     "danger": [
-      15,
-      15,
-      0
-     ],
-     "h_sog": [
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1606410",
-   "home": "Sol de América",
-   "away": "Sportivo Belgrano",
-   "home_en": "Sol de América",
-   "away_en": "Sportivo Belgrano",
-   "league": "Torneo Federal A (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/3982.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1966.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/134.png",
-   "score": "2-0",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-06T23:54:59.992214+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 51
+    "pick": "home",
+    "confidence": 56
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 44
+    "confidence": 36
    },
    "radar": {
-    "score": 14,
-    "level": "green",
+    "score": 49,
+    "level": "amber",
     "factors": [
+     "تقدم هش بفارق هدف واحد",
+     "موجة تسديد على المرمى من الضيف",
      "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
-    "confidence": 44,
+    "confidence": 36,
     "drama": {
-     "signal": 20,
+     "signal": 85,
      "side": "away",
-     "ready": false
+     "ready": true
     },
-    "alerted": null,
+    "alerted": "equalizer",
     "top": false,
     "trend": {
      "min": [
-      16,
-      23,
+      13,
       90
      ],
      "danger": [
-      24,
-      15,
-      14
+      22,
+      49
      ],
      "h_sog": [
       0,
+      2
+     ],
+     "a_sog": [
       1,
       4
      ],
-     "a_sog": [
-      0,
-      0,
-      1
-     ],
      "h_cor": [
-      0,
-      2,
-      4
+      1,
+      2
      ],
      "a_cor": [
       1,
-      1,
-      4
+      7
      ]
     }
    }
@@ -226,7 +153,7 @@
    "score": "3-1",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-06T23:58:56.631490+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 59
@@ -236,13 +163,17 @@
     "confidence": 68
    },
    "radar": {
-    "score": 0,
+    "score": 26,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "موجة تسديد على المرمى من الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    ],
     "pick": "home",
     "confidence": 68,
     "drama": {
-     "signal": 0,
+     "signal": 50,
      "side": "away",
      "ready": false
     },
@@ -252,29 +183,112 @@
      "min": [
       17,
       23,
-      45
+      45,
+      90
      ],
      "danger": [
       25,
       28,
-      0
+      0,
+      26
      ],
      "h_sog": [
       1,
       2,
-      4
+      4,
+      7
      ],
      "a_sog": [
+      0,
+      0,
+      0,
+      6
+     ],
+     "h_cor": [
+      3,
+      4,
+      3,
+      10
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1631713",
+   "home": "Guerreros",
+   "away": "Vaqueros Reynosa",
+   "home_en": "Guerreros",
+   "away_en": "Vaqueros Reynosa",
+   "league": "Liga Premier Serie A (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/26426.png",
+   "away_logo": "https://media.api-sports.io/football/teams/28308.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/722.png",
+   "score": "3-4",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-07T00:03:33.245963+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 37
+   },
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 3-4 تُسقط التوقع (د90)"
+    ],
+    "pick": "home",
+    "confidence": 37,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      7,
+      16,
+      45,
+      90
+     ],
+     "danger": [
+      19,
+      24,
+      15,
+      69
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
       0,
       0,
       0
      ],
      "h_cor": [
-      3,
-      4,
-      3
+      0,
+      0,
+      0,
+      0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0
@@ -295,7 +309,7 @@
    "score": "1-2",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:03:33.245963+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -348,151 +362,6 @@
    }
   },
   {
-   "fid": "1631713",
-   "home": "Guerreros",
-   "away": "Vaqueros Reynosa",
-   "home_en": "Guerreros",
-   "away_en": "Vaqueros Reynosa",
-   "league": "Liga Premier Serie A (Mexico)",
-   "home_logo": "https://media.api-sports.io/football/teams/26426.png",
-   "away_logo": "https://media.api-sports.io/football/teams/28308.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/722.png",
-   "score": "3-2",
-   "minute": 88,
-   "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 37
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 37,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      7,
-      16,
-      45,
-      88
-     ],
-     "danger": [
-      19,
-      24,
-      15,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1517341",
-   "home": "Vancouver FC",
-   "away": "Supra du Quebec",
-   "home_en": "Vancouver FC",
-   "away_en": "Supra du Quebec",
-   "league": "Canadian Premier League (Canada)",
-   "home_logo": "https://media.api-sports.io/football/teams/20881.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27461.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/479.png",
-   "score": "3-2",
-   "minute": 87,
-   "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 36
-   },
-   "radar": {
-    "score": 49,
-    "level": "amber",
-    "factors": [
-     "تقدم هش بفارق هدف واحد",
-     "موجة تسديد على المرمى من الضيف",
-     "موجة ركنيات لصالح الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 36,
-    "drama": {
-     "signal": 85,
-     "side": "away",
-     "ready": true
-    },
-    "alerted": "equalizer",
-    "top": false,
-    "trend": {
-     "min": [
-      13,
-      87
-     ],
-     "danger": [
-      22,
-      49
-     ],
-     "h_sog": [
-      0,
-      2
-     ],
-     "a_sog": [
-      1,
-      4
-     ],
-     "h_cor": [
-      1,
-      2
-     ],
-     "a_cor": [
-      1,
-      7
-     ]
-    }
-   }
-  },
-  {
    "fid": "1638067",
    "home": "Leon",
    "away": "Club America",
@@ -503,9 +372,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2287.png",
    "league_logo": "https://media.api-sports.io/football/leagues/772.png",
    "score": "1-0",
-   "minute": 85,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -515,10 +384,10 @@
     "confidence": 47
    },
    "radar": {
-    "score": 92,
+    "score": 95,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-0 تُسقط التوقع (د85)",
+     "النتيجة الحالية 1-0 تُسقط التوقع (د90)",
      "موجة تسديد على المرمى من المضيف",
      "موجة ركنيات لصالح المضيف",
      "ضغط هجومي متصاعد من المضيف"
@@ -535,11 +404,11 @@
     "trend": {
      "min": [
       12,
-      85
+      90
      ],
      "danger": [
       22,
-      92
+      95
      ],
      "h_sog": [
       1,
@@ -555,7 +424,7 @@
      ],
      "a_cor": [
       1,
-      7
+      8
      ]
     }
    }
@@ -571,9 +440,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/473.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "3-1",
-   "minute": 81,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 66
@@ -604,7 +473,7 @@
       15,
       35,
       55,
-      81
+      89
      ],
      "danger": [
       24,
@@ -622,7 +491,7 @@
       0,
       0,
       1,
-      4
+      5
      ],
      "h_cor": [
       0,
@@ -649,10 +518,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2358.png",
    "away_logo": "https://media.api-sports.io/football/teams/2361.png",
    "league_logo": "https://media.api-sports.io/football/leagues/268.png",
-   "score": "0-0",
-   "minute": 69,
+   "score": "1-0",
+   "minute": 78,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -672,10 +541,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2318.png",
    "away_logo": "https://media.api-sports.io/football/teams/2324.png",
    "league_logo": "https://media.api-sports.io/football/leagues/265.png",
-   "score": "0-1",
-   "minute": 63,
+   "score": "1-1",
+   "minute": 72,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -696,9 +565,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/132.png",
    "league_logo": "https://media.api-sports.io/football/leagues/71.png",
    "score": "1-1",
-   "minute": 62,
+   "minute": 70,
    "status": "2H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 59
@@ -708,10 +577,10 @@
     "confidence": 60
    },
    "radar": {
-    "score": 86,
+    "score": 91,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د62)",
+     "النتيجة الحالية 1-1 تُسقط التوقع (د70)",
      "موجة تسديد على المرمى من الضيف",
      "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
@@ -729,17 +598,17 @@
      "min": [
       10,
       20,
-      62
+      70
      ],
      "danger": [
       15,
       15,
-      86
+      91
      ],
      "h_sog": [
       1,
       1,
-      4
+      5
      ],
      "a_sog": [
       0,
@@ -749,7 +618,7 @@
      "h_cor": [
       0,
       1,
-      3
+      4
      ],
      "a_cor": [
       0,
@@ -757,6 +626,29 @@
       2
      ]
     }
+   }
+  },
+  {
+   "fid": "1638140",
+   "home": "Deportivo La Guaira",
+   "away": "Anzoátegui FC",
+   "home_en": "Deportivo La Guaira",
+   "away_en": "Anzoátegui FC",
+   "league": "Primera División (Venezuela)",
+   "home_logo": "https://media.api-sports.io/football/teams/2813.png",
+   "away_logo": "https://media.api-sports.io/football/teams/18806.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/299.png",
+   "score": "1-0",
+   "minute": 47,
+   "status": "2H",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 52
    }
   },
   {
@@ -772,7 +664,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -795,7 +687,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -818,7 +710,7 @@
    "score": "2-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -826,29 +718,6 @@
    "pred_v2": {
     "pick": "away",
     "confidence": 43
-   }
-  },
-  {
-   "fid": "1638140",
-   "home": "Deportivo La Guaira",
-   "away": "Anzoátegui FC",
-   "home_en": "Deportivo La Guaira",
-   "away_en": "Anzoátegui FC",
-   "league": "Primera División (Venezuela)",
-   "home_logo": "https://media.api-sports.io/football/teams/2813.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18806.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/299.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 52
    }
   },
   {
@@ -863,14 +732,37 @@
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "status": "HT",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 59
    },
    "pred_v2": {
     "pick": "away",
+    "confidence": 40
+   }
+  },
+  {
+   "fid": "1583757",
+   "home": "Alianza FC",
+   "away": "San Francisco FC",
+   "home_en": "Alianza FC",
+   "away_en": "San Francisco FC",
+   "league": "Liga Panameña de Fútbol (Panama)",
+   "home_logo": "https://media.api-sports.io/football/teams/2881.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2887.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/304.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
     "confidence": 40
    }
   },
@@ -887,7 +779,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -895,29 +787,6 @@
    "pred_v2": {
     "pick": "home",
     "confidence": 36
-   }
-  },
-  {
-   "fid": "1583757",
-   "home": "Alianza FC",
-   "away": "San Francisco FC",
-   "home_en": "Alianza FC",
-   "away_en": "San Francisco FC",
-   "league": "Liga Panameña de Fútbol (Panama)",
-   "home_logo": "https://media.api-sports.io/football/teams/2881.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2887.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/304.png",
-   "score": "0-0",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 51
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
    }
   },
   {
@@ -931,9 +800,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1059.png",
    "league_logo": "https://media.api-sports.io/football/leagues/234.png",
    "score": "2-0",
-   "minute": 40,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -954,9 +823,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10492.png",
    "league_logo": "https://media.api-sports.io/football/leagues/281.png",
    "score": "0-0",
-   "minute": 25,
+   "minute": 34,
    "status": "1H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -976,10 +845,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4303.png",
    "away_logo": "https://media.api-sports.io/football/teams/26154.png",
    "league_logo": "https://media.api-sports.io/football/leagues/370.png",
-   "score": "0-0",
-   "minute": 21,
+   "score": "1-0",
+   "minute": 29,
    "status": "1H",
-   "seen": "2026-09-06T23:56:32.938132+00:00",
+   "seen": "2026-09-07T00:05:06.082958+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -1038,150 +907,6 @@
    "pick": "home",
    "confidence": 65,
    "reason": "راسينغ كلوب من أقوى فرق الأرجنتين؛ تاكومان فريق أضعف والفارق واضح"
-  },
-  {
-   "fid": "1493984",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "بورتلاند هارتس أوف باين",
-   "away": "ويستتشستر إس سي",
-   "home_en": "Portland Hearts of Pine",
-   "home_logo": "https://media.api-sports.io/football/teams/25486.png",
-   "away_logo": "https://media.api-sports.io/football/teams/25488.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-   "away_en": "Westchester SC",
-   "league": "يو إس إل ليج ون (أمريكا)",
-   "top": false,
-   "pick": "draw",
-   "confidence": 52,
-   "reason": "فريقان متوسطا القوة في دوري تنافسي، النتيجة المتساوية محتملة"
-  },
-  {
-   "fid": "1517341",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "فانكوفر إف سي",
-   "away": "سوبرا كويبيك",
-   "home_en": "Vancouver FC",
-   "home_logo": "https://media.api-sports.io/football/teams/20881.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27461.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/479.png",
-   "away_en": "Supra du Quebec",
-   "league": "الدوري الكندي الممتاز",
-   "top": false,
-   "pick": "home",
-   "confidence": 56,
-   "reason": "فانكوفر من الفرق القوية، وعامل الأرض يساهم في الفوز المتوقع"
-  },
-  {
-   "fid": "1551680",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "بونتاريناس",
-   "away": "كارتاجينيس",
-   "home_en": "Puntarenas FC",
-   "home_logo": "https://media.api-sports.io/football/teams/2045.png",
-   "away_logo": "https://media.api-sports.io/football/teams/820.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/162.png",
-   "away_en": "CS Cartagines",
-   "league": "الدرجة الأولى (كوستاريكا)",
-   "top": false,
-   "pick": "away",
-   "confidence": 53,
-   "reason": "كارتاجينيس فريق منافس قوي، الضيوف قد يحققون نتيجة إيجابية"
-  },
-  {
-   "fid": "1606410",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "سول دي أمريكا",
-   "away": "سبورتيفو بيلجرانو",
-   "home_en": "Sol de América",
-   "home_logo": "https://media.api-sports.io/football/teams/3982.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1966.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/134.png",
-   "away_en": "Sportivo Belgrano",
-   "league": "تورنيو فيديرال إيه (الأرجنتين)",
-   "top": false,
-   "pick": "draw",
-   "confidence": 51,
-   "reason": "دوري تنافسي جداً، فريقان بقوة متقاربة والتعادل وارد جداً"
-  },
-  {
-   "fid": "1619002",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "ذا سترونجست",
-   "away": "ريال تومايابو",
-   "home_en": "The Strongest",
-   "home_logo": "https://media.api-sports.io/football/teams/3711.png",
-   "away_logo": "https://media.api-sports.io/football/teams/15708.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "away_en": "Real Tomayapo",
-   "league": "الدرجة الأولى (بوليفيا)",
-   "top": false,
-   "pick": "home",
-   "confidence": 59,
-   "reason": "ذا سترونجست من أقوى الفرق، التفوق النسبي واضح والأرض تساعد"
-  },
-  {
-   "fid": "1631712",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "دلفينس كوتزاكوالكوس",
-   "away": "أكامبارو",
-   "home_en": "Delfines Coatzacoalcos",
-   "home_logo": "https://media.api-sports.io/football/teams/28303.png",
-   "away_logo": "https://media.api-sports.io/football/teams/22051.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/722.png",
-   "away_en": "Acambaro",
-   "league": "ليجا بريمير سيري إيه (المكسيك)",
-   "top": false,
-   "pick": "draw",
-   "confidence": 50,
-   "reason": "فريقان متوسطا القوة، التنافسية عالية والنتيجة غير محددة مسبقاً"
-  },
-  {
-   "fid": "1631713",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "جيريروس",
-   "away": "فاكويروس رينوسا",
-   "home_en": "Guerreros",
-   "home_logo": "https://media.api-sports.io/football/teams/26426.png",
-   "away_logo": "https://media.api-sports.io/football/teams/28308.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/722.png",
-   "away_en": "Vaqueros Reynosa",
-   "league": "ليجا بريمير سيري إيه (المكسيك)",
-   "top": false,
-   "pick": "draw",
-   "confidence": 50,
-   "reason": "دوري متنافس، قوة الفريقين متقاربة والنتيجة مفتوحة"
-  },
-  {
-   "fid": "1637614",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "سيتي لندن",
-   "away": "هوب إنترناسيونال",
-   "home_en": "City London",
-   "home_logo": "https://media.api-sports.io/football/teams/26724.png",
-   "away_logo": "https://media.api-sports.io/football/teams/24825.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1138.png",
-   "away_en": "Hope Internacional",
-   "league": "باراناينسي - 3 (البرازيل)",
-   "top": false,
-   "pick": "home",
-   "confidence": 52,
-   "reason": "سيتي لندن الأقوى محلياً، الأرض تعطيه ميزة نسبية"
-  },
-  {
-   "fid": "1638067",
-   "kickoff": "2026-09-06T22:00:00+00:00",
-   "home": "ليون",
-   "away": "كلوب أمريكا",
-   "home_en": "Leon",
-   "home_logo": "https://media.api-sports.io/football/teams/2289.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2287.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/772.png",
-   "away_en": "Club America",
-   "league": "ليجس كب (عالمي)",
-   "top": false,
-   "pick": "away",
-   "confidence": 58,
-   "reason": "أمريكا تاريخياً الأقوى، تجربة أكبر في المسابقات الكبرى"
   },
   {
    "fid": "1505521",
@@ -2273,6 +1998,76 @@
   }
  ],
  "awaiting": [
+  {
+   "date": "2026-09-06",
+   "home": "بوتافوغو",
+   "away": "بالميراس",
+   "home_en": "Botafogo",
+   "away_en": "Palmeiras",
+   "league": "الدوري الأول البرازيلي",
+   "home_logo": "https://media.api-sports.io/football/teams/120.png",
+   "away_logo": "https://media.api-sports.io/football/teams/121.png",
+   "pick": "away",
+   "confidence": 64,
+   "kickoff": "2026-09-06T21:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-06",
+   "home": "بونتي بريتا",
+   "away": "ساو برناردو",
+   "home_en": "Ponte Preta",
+   "away_en": "São Bernardo",
+   "league": "الدرجة الثانية (البرازيل)",
+   "home_logo": "https://media.api-sports.io/football/teams/139.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7865.png",
+   "pick": "home",
+   "confidence": 55,
+   "kickoff": "2026-09-06T21:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-06",
+   "home": "سبورتيفو لوكينيو",
+   "away": "سبورتيفو أميليانو",
+   "home_en": "Sportivo Luqueno",
+   "away_en": "Sportivo Ameliano",
+   "league": "الدرجة الأولى - الفترة الختامية (باراجواي)",
+   "home_logo": "https://media.api-sports.io/football/teams/1183.png",
+   "away_logo": "https://media.api-sports.io/football/teams/10487.png",
+   "pick": "away",
+   "confidence": 52,
+   "kickoff": "2026-09-06T21:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-06",
+   "home": "سانتا كروز",
+   "away": "بوتافوجو بي",
+   "home_en": "Santa Cruz",
+   "away_en": "Botafogo PB",
+   "league": "الدرجة الثالثة (البرازيل)",
+   "home_logo": "https://media.api-sports.io/football/teams/753.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1197.png",
+   "pick": "draw",
+   "confidence": 50,
+   "kickoff": "2026-09-06T21:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-06",
+   "home": "ديبورتيفو تاتشيرا",
+   "away": "رايو زوليانو",
+   "home_en": "Deportivo Tachira FC",
+   "away_en": "Rayo Zuliano",
+   "league": "الدرجة الأولى (فنزويلا)",
+   "home_logo": "https://media.api-sports.io/football/teams/2807.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16847.png",
+   "pick": "home",
+   "confidence": 55,
+   "kickoff": "2026-09-06T21:30:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-06",
    "home": "ديلفين إس سي",
@@ -15810,8 +15605,8 @@
     }
    },
    "last30": {
-    "correct": 253,
-    "total": 620
+    "correct": 252,
+    "total": 617
    },
    "daily": {
     "2026-08-08": {
@@ -16628,957 +16423,6 @@
    }
   },
   "recent": [
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "FC Seoul",
-    "away": "Incheon United",
-    "league": "K League 1 (South-Korea)",
-    "minute": 10,
-    "claim": "red_advantage",
-    "side": "home",
-    "signal": null,
-    "score_at": "0-0",
-    "final": "1-0",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Shandong Luneng",
-    "away": "Sichuan Jiuniu",
-    "league": "Super League (China)",
-    "minute": 31,
-    "claim": "red_advantage",
-    "side": "away",
-    "signal": null,
-    "score_at": "1-0",
-    "final": "1-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Jeju United FC",
-    "away": "Ulsan Hyundai FC",
-    "league": "K League 1 (South-Korea)",
-    "minute": 56,
-    "claim": "red_advantage",
-    "side": "home",
-    "signal": null,
-    "score_at": "0-0",
-    "final": "0-0",
-    "hit": false,
-    "top": false
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "San Lorenzo",
-    "away": "Talleres Cordoba",
-    "league": "Liga Profesional Argentina (Argentina)",
-    "minute": 59,
-    "claim": "red_advantage",
-    "side": "home",
-    "signal": null,
-    "score_at": "0-0",
-    "final": "1-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Jeju United FC",
-    "away": "Ulsan Hyundai FC",
-    "league": "K League 1 (South-Korea)",
-    "minute": 75,
-    "claim": "next_goal",
-    "side": "home",
-    "signal": 95,
-    "score_at": "0-0",
-    "final": "0-0",
-    "hit": false,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Slavia III",
-    "away": "Písek",
-    "league": "3. liga - CFL A (Czech-Republic)",
-    "level": "amber",
-    "minute": 76,
-    "pick": "home",
-    "conf": 44,
-    "final": "1-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Fiorentina",
-    "away": "Torino",
-    "league": "Serie A (Italy)",
-    "level": "red",
-    "minute": 76,
-    "pick": "home",
-    "conf": 38,
-    "final": "1-2",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "RB Bragantino",
-    "away": "Bahia",
-    "league": "Serie A (Brazil)",
-    "level": "amber",
-    "minute": 77,
-    "pick": "away",
-    "conf": 36,
-    "final": "2-3",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "RB Bragantino",
-    "away": "Bahia",
-    "league": "Serie A (Brazil)",
-    "minute": 77,
-    "claim": "equalizer",
-    "side": "home",
-    "signal": 85,
-    "score_at": "2-3",
-    "final": "2-3",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Shandong Luneng",
-    "away": "Sichuan Jiuniu",
-    "league": "Super League (China)",
-    "level": "red",
-    "minute": 78,
-    "pick": "home",
-    "conf": 70,
-    "final": "1-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Sheffield Utd",
-    "away": "Norwich",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 78,
-    "pick": "home",
-    "conf": 40,
-    "final": "1-3",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Al-Ittihad FC",
-    "away": "Al-Nassr",
-    "league": "Pro League (Saudi-Arabia)",
-    "level": null,
-    "minute": 78,
-    "pick": null,
-    "conf": null,
-    "final": null,
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Shandong Luneng",
-    "away": "Sichuan Jiuniu",
-    "league": "Super League (China)",
-    "minute": 78,
-    "claim": "next_goal",
-    "side": "away",
-    "signal": 95,
-    "score_at": "1-1",
-    "final": "1-1",
-    "hit": false,
-    "top": false
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Brighton",
-    "away": "Leeds",
-    "league": "Premier League (England)",
-    "minute": 78,
-    "claim": "next_goal",
-    "side": "home",
-    "signal": 85,
-    "score_at": "1-1",
-    "final": "1-1",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Al Taawon",
-    "away": "Al-Fateh",
-    "league": "Pro League (Saudi-Arabia)",
-    "minute": 78,
-    "claim": "red_advantage",
-    "side": "away",
-    "signal": null,
-    "score_at": "0-0",
-    "final": "0-0",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Rasi Salai United",
-    "away": "Port FC",
-    "league": "Thai League 1 (Thailand)",
-    "level": "amber",
-    "minute": 79,
-    "pick": "away",
-    "conf": 57,
-    "final": "1-2",
-    "hit": false,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Millwall",
-    "away": "Bolton",
-    "league": "Championship (England)",
-    "level": "amber",
-    "minute": 79,
-    "pick": "home",
-    "conf": 44,
-    "final": "4-0",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Millwall",
-    "away": "Bolton",
-    "league": "Championship (England)",
-    "minute": 79,
-    "claim": "equalizer",
-    "side": "away",
-    "signal": 85,
-    "score_at": "1-0",
-    "final": "4-0",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Preußen Münster",
-    "away": "Havelse",
-    "league": "3. Liga (Germany)",
-    "level": "amber",
-    "minute": 80,
-    "pick": "home",
-    "conf": 56,
-    "final": "2-1",
-    "hit": false,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Aldosivi",
-    "away": "Banfield",
-    "league": "Liga Profesional Argentina (Argentina)",
-    "level": "red",
-    "minute": 81,
-    "pick": "away",
-    "conf": 37,
-    "final": "3-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Burnley",
-    "away": "Bristol City",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 84,
-    "pick": "away",
-    "conf": 38,
-    "final": "1-2",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Al-Ittihad FC",
-    "away": "Al-Nassr",
-    "league": "Pro League (Saudi-Arabia)",
-    "minute": 85,
-    "claim": "equalizer",
-    "side": "away",
-    "signal": 85,
-    "score_at": "2-1",
-    "final": "2-1",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Viktoriya Mykolaivka",
-    "away": "Polissya II",
-    "league": "Persha Liga (Ukraine)",
-    "level": "red",
-    "minute": 86,
-    "pick": "home",
-    "conf": 55,
-    "final": "1-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "AS Roma",
-    "away": "Atalanta",
-    "league": "Serie A (Italy)",
-    "level": "red",
-    "minute": 86,
-    "pick": "home",
-    "conf": 50,
-    "final": "2-1",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Portsmouth",
-    "away": "Cardiff",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 87,
-    "pick": "away",
-    "conf": 36,
-    "final": "2-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Estrela",
-    "away": "Famalicao",
-    "league": "Primeira Liga (Portugal)",
-    "level": "red",
-    "minute": 87,
-    "pick": "home",
-    "conf": 38,
-    "final": "2-2",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "El Nacional",
-    "away": "LDU Portoviejo",
-    "league": "Liga Pro Serie B (Ecuador)",
-    "level": "red",
-    "minute": 88,
-    "pick": "home",
-    "conf": 50,
-    "final": "0-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Lens",
-    "away": "Lorient",
-    "league": "Ligue 1 (France)",
-    "level": "red",
-    "minute": 88,
-    "pick": "home",
-    "conf": 62,
-    "final": "0-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Nice",
-    "away": "Le Mans",
-    "league": "Ligue 1 (France)",
-    "level": "red",
-    "minute": 88,
-    "pick": "home",
-    "conf": 42,
-    "final": "1-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Rayo Vallecano",
-    "away": "Racing Santander",
-    "league": "La Liga (Spain)",
-    "minute": 88,
-    "claim": "red_advantage",
-    "side": "away",
-    "signal": null,
-    "score_at": "3-2",
-    "final": "3-2",
-    "hit": false,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "D. Puerto Montt",
-    "away": "Curico Unido",
-    "league": "Primera B (Chile)",
-    "level": "red",
-    "minute": 89,
-    "pick": "away",
-    "conf": 37,
-    "final": "2-0",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Sabah FA",
-    "away": "Kuching FA",
-    "league": "Super League (Malaysia)",
-    "level": "red",
-    "minute": 89,
-    "pick": "home",
-    "conf": 52,
-    "final": "0-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Westfalia Rhynern",
-    "away": "Sportfreunde Lotte",
-    "league": "Regionalliga - West (Germany)",
-    "level": "red",
-    "minute": 89,
-    "pick": "away",
-    "conf": 51,
-    "final": "3-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Werder Bremen",
-    "away": "RB Leipzig",
-    "league": "Bundesliga (Germany)",
-    "level": "red",
-    "minute": 89,
-    "pick": "away",
-    "conf": 53,
-    "final": "3-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Athletic Club",
-    "away": "Atletico Madrid",
-    "league": "La Liga (Spain)",
-    "level": "red",
-    "minute": 89,
-    "pick": "away",
-    "conf": 43,
-    "final": "3-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Al-Hidd",
-    "away": "Al Ahli",
-    "league": "Premier League (Bahrain)",
-    "level": "red",
-    "minute": 89,
-    "pick": "home",
-    "conf": 41,
-    "final": "0-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Charlotte",
-    "away": "Houston Dynamo",
-    "league": "Major League Soccer (USA)",
-    "level": "red",
-    "minute": 89,
-    "pick": "home",
-    "conf": 50,
-    "final": "0-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Orlando City SC",
-    "away": "San Diego",
-    "league": "Major League Soccer (USA)",
-    "level": "red",
-    "minute": 89,
-    "pick": "away",
-    "conf": 39,
-    "final": "1-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Concordia",
-    "away": "CS Afumati",
-    "league": "Liga II (Romania)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 52,
-    "final": "1-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "CSA Steaua Bucureşti",
-    "away": "Cetatea Suceava",
-    "league": "Liga II (Romania)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 55,
-    "final": "2-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Busan I Park",
-    "away": "Ansan Greeners",
-    "league": "K League 2 (South-Korea)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 52,
-    "final": "0-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Avispa Fukuoka",
-    "away": "Mito Hollyhock",
-    "league": "J1 League (Japan)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "final": "1-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Lincoln",
-    "away": "Southampton",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 50,
-    "final": "1-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Newcastle",
-    "away": "Bournemouth",
-    "league": "Premier League (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 44,
-    "final": "2-2",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Phnom Penh Crown",
-    "away": "NagaWorld",
-    "league": "C-League (Cambodia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "final": "2-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Preston",
-    "away": "Blackburn",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 40,
-    "final": "2-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "VfL Wolfsburg",
-    "away": "Energie Cottbus",
-    "league": "2. Bundesliga (Germany)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 56,
-    "final": "4-4",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Hai Phong",
-    "away": "Phu Dong",
-    "league": "V.League 1 (Vietnam)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 57,
-    "final": "1-4",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Krylia Sovetov",
-    "away": "FC Krasnodar",
-    "league": "Premier League (Russia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 58,
-    "final": "2-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Tallinna Kalev",
-    "away": "Tartu Welco",
-    "league": "Esiliiga A (Estonia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "final": "1-1",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Wuhan Three Towns",
-    "away": "Qingdao Youth Island",
-    "league": "Super League (China)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "final": "2-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "SV Rodinghausen",
-    "away": "Wiedenbrück",
-    "league": "Regionalliga - West (Germany)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "final": "2-3",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "FC Bocholt",
-    "away": "Sportfreunde Siegen",
-    "league": "Regionalliga - West (Germany)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "final": "1-3",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Stuttgarter Kickers",
-    "away": "FSV Mainz 05 II",
-    "league": "Regionalliga - SudWest (Germany)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 48,
-    "final": "1-2",
-    "hit": true,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Borussia Mönchengladbach",
-    "away": "SV Elversberg",
-    "league": "Bundesliga (Germany)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 41,
-    "final": "3-4",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Brighton",
-    "away": "Leeds",
-    "league": "Premier League (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 45,
-    "final": "1-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Brentford",
-    "away": "Sunderland",
-    "league": "Premier League (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 55,
-    "final": "1-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Nottingham Forest",
-    "away": "Tottenham",
-    "league": "Premier League (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 45,
-    "final": "0-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Fulham",
-    "away": "Crystal Palace",
-    "league": "Premier League (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 41,
-    "final": "2-3",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Zakho",
-    "away": "Al Talaba",
-    "league": "Iraqi League (Iraq)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 38,
-    "final": "0-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Al Taawon",
-    "away": "Al-Fateh",
-    "league": "Pro League (Saudi-Arabia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "final": "0-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Al-Faisaly FC",
-    "away": "Al-Hazm",
-    "league": "Pro League (Saudi-Arabia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 45,
-    "final": "0-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Al-Ittihad FC",
-    "away": "Al-Nassr",
-    "league": "Pro League (Saudi-Arabia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 56,
-    "final": "2-1",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Villarreal",
-    "away": "Deportivo La Coruna",
-    "league": "La Liga (Spain)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "final": "2-3",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Swansea",
-    "away": "Wrexham",
-    "league": "Championship (England)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 48,
-    "final": "0-0",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "date": "2026-09-05",
-    "home": "Al Minaa Basra",
-    "away": "Naft",
-    "league": "Iraqi League (Iraq)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 39,
-    "final": "0-3",
-    "hit": true,
-    "top": true
-   },
-   {
-    "kind": "alert",
-    "date": "2026-09-05",
-    "home": "Wuhan Three Towns",
-    "away": "Qingdao Youth Island",
-    "league": "Super League (China)",
-    "minute": 90,
-    "claim": "red_advantage",
-    "side": "home",
-    "signal": null,
-    "score_at": "2-2",
-    "final": "2-2",
-    "hit": false,
-    "top": false
-   },
    {
     "kind": "alert",
     "date": "2026-09-06",
