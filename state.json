@@ -1,18 +1,18 @@
 {
  "xg_live": {
-  "remaining": 2496,
+  "remaining": 2495,
   "note": "",
-  "matches": 4,
+  "matches": 3,
   "radar_hits": 2,
   "radar_targets": 20
  },
  "api_quota": {
-  "remaining": 4343,
+  "remaining": 4292,
   "limit": 7500,
-  "at": "2026-09-07T19:16:42.582019+00:00"
+  "at": "2026-09-07T19:26:37.551077+00:00"
  },
  "delivery": {
-  "at": "2026-09-07T18:40:24.731580+00:00",
+  "at": "2026-09-07T19:26:36.750950+00:00",
   "delivered": 2,
   "total": 2,
   "failed": []
@@ -96,19 +96,19 @@
   "home_logo": "https://media.api-sports.io/football/teams/2977.png",
   "away_logo": "https://media.api-sports.io/football/teams/2992.png",
   "league_logo": "https://media.api-sports.io/football/leagues/308.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:20:25.064520+00:00"
  },
  "1551097": {
   "score": "0-1",
   "status": "2H",
-  "minute": 86,
+  "minute": 90,
   "home": "Dunav Ruse",
   "away": "Slavia Sofia",
   "league": "First League (Bulgaria)",
   "home_logo": "https://media.api-sports.io/football/teams/683.png",
   "away_logo": "https://media.api-sports.io/football/teams/854.png",
   "league_logo": "https://media.api-sports.io/football/leagues/172.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:25:02.992888+00:00",
   "radar": {
    "snaps": [
     {
@@ -152,24 +152,45 @@
       "sog": 3,
       "shots": 14
      }
+    },
+    {
+     "minute": 90,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "rc": 1,
+      "sog": 0,
+      "yc": 2,
+      "cor": 7,
+      "poss": 39,
+      "shots": 6
+     },
+     "a": {
+      "rc": 0,
+      "sog": 3,
+      "yc": 3,
+      "cor": 6,
+      "poss": 61,
+      "shots": 14
+     }
     }
    ],
-   "score": 25,
+   "score": 15,
    "level": "green",
    "dscores": [
     15,
-    25
+    25,
+    15
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد",
-    "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+    "تقدم هش بفارق هدف واحد"
    ],
    "pick": "away",
    "confidence": 41,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 35,
+    "signal": 0,
     "side": "home",
     "ready": false
    },
@@ -181,14 +202,14 @@
  "1555495": {
   "score": "1-4",
   "status": "2H",
-  "minute": 85,
+  "minute": 90,
   "home": "Hapoel Beer Sheva",
   "away": "Maccabi Tel Aviv",
   "league": "Ligat Ha'al (Israel)",
   "home_logo": "https://media.api-sports.io/football/teams/563.png",
   "away_logo": "https://media.api-sports.io/football/teams/604.png",
   "league_logo": "https://media.api-sports.io/football/leagues/383.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:25:02.992888+00:00",
   "radar": {
    "snaps": [
     {
@@ -262,14 +283,14 @@
  "1565245": {
   "score": "4-0",
   "status": "2H",
-  "minute": 87,
+  "minute": 90,
   "home": "Universitatea Craiova",
   "away": "Universitatea Cluj",
   "league": "Liga I (Romania)",
   "home_logo": "https://media.api-sports.io/football/teams/632.png",
   "away_logo": "https://media.api-sports.io/football/teams/2599.png",
   "league_logo": "https://media.api-sports.io/football/leagues/283.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:20:25.064520+00:00",
   "radar": {
    "snaps": [
     {
@@ -426,9 +447,32 @@
       "rc": 0,
       "poss": 46
      }
+    },
+    {
+     "minute": 90,
+     "gh": 4,
+     "ga": 0,
+     "h": {
+      "sog": 7,
+      "sv": 3,
+      "shots": 18,
+      "cor": 5,
+      "yc": 0,
+      "rc": 0,
+      "poss": 54
+     },
+     "a": {
+      "sog": 3,
+      "sv": 3,
+      "shots": 7,
+      "cor": 4,
+      "yc": 2,
+      "rc": 0,
+      "poss": 46
+     }
     }
    ],
-   "score": 8,
+   "score": 0,
    "level": "green",
    "dscores": [
     20,
@@ -437,11 +481,10 @@
     15,
     26,
     0,
-    8
+    8,
+    0
    ],
-   "factors": [
-    "موجة ركنيات لصالح الضيف"
-   ],
+   "factors": [],
    "pick": "home",
    "confidence": 54,
    "top": false,
@@ -459,18 +502,18 @@
  "1571845": {
   "score": "2-1",
   "status": "2H",
-  "minute": 89,
+  "minute": 90,
   "home": "Fehérvár FC",
   "away": "Diosgyori VTK",
   "league": "NB II (Hungary)",
   "home_logo": "https://media.api-sports.io/football/teams/610.png",
   "away_logo": "https://media.api-sports.io/football/teams/2393.png",
   "league_logo": "https://media.api-sports.io/football/leagues/272.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:20:25.064520+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 83,
+     "minute": 90,
      "gh": 2,
      "ga": 1,
      "h": {},
@@ -502,26 +545,26 @@
  "1605247": {
   "score": "2-2",
   "status": "2H",
-  "minute": 76,
+  "minute": 86,
   "home": "7 de Abril",
   "away": "Serra Macaense",
   "league": "Carioca B2 (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/17736.png",
   "away_logo": "https://media.api-sports.io/football/teams/13116.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1155.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1551785": {
   "score": "3-0",
   "status": "2H",
-  "minute": 56,
+  "minute": 66,
   "home": "Jong PSV U21",
   "away": "Den Bosch",
   "league": "Eerste Divisie (Netherlands)",
   "home_logo": "https://media.api-sports.io/football/teams/411.png",
   "away_logo": "https://media.api-sports.io/football/teams/421.png",
   "league_logo": "https://media.api-sports.io/football/leagues/89.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -613,43 +656,43 @@
      }
     },
     {
-     "minute": 56,
+     "minute": 66,
      "gh": 3,
      "ga": 0,
      "h": {
-      "sog": 7,
+      "sog": 8,
       "sv": 2,
-      "shots": 10,
-      "cor": 4,
+      "shots": 12,
+      "cor": 5,
       "yc": 0,
       "rc": 0,
-      "poss": 55
+      "poss": 57
      },
      "a": {
       "sog": 2,
-      "sv": 4,
-      "shots": 9,
-      "cor": 6,
+      "sv": 5,
+      "shots": 10,
+      "cor": 7,
       "yc": 2,
       "rc": 0,
-      "poss": 45
+      "poss": 43
      }
     }
    ],
-   "score": 74,
+   "score": 88,
    "level": "red",
    "dscores": [
     16,
     21,
     27,
     41,
-    74
+    88
    ],
    "factors": [
-    "النتيجة الحالية 3-0 تُسقط التوقع (د56)",
+    "النتيجة الحالية 3-0 تُسقط التوقع (د66)",
     "موجة تسديد على المرمى من المضيف",
-    "ضغط هجومي متصاعد من المضيف",
-    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "pick": "away",
    "confidence": 47,
@@ -668,14 +711,14 @@
  "1635548": {
   "score": "0-1",
   "status": "2H",
-  "minute": 58,
+  "minute": 68,
   "home": "Albion FC",
   "away": "Progreso",
   "league": "Primera División (Uruguay)",
   "home_logo": "https://media.api-sports.io/football/teams/2378.png",
   "away_logo": "https://media.api-sports.io/football/teams/2363.png",
   "league_logo": "https://media.api-sports.io/football/leagues/268.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -711,14 +754,14 @@
  "1551786": {
   "score": "0-0",
   "status": "2H",
-  "minute": 58,
+  "minute": 68,
   "home": "Jong Utrecht",
   "away": "FC Eindhoven",
   "league": "Eerste Divisie (Netherlands)",
   "home_logo": "https://media.api-sports.io/football/teams/428.png",
   "away_logo": "https://media.api-sports.io/football/teams/422.png",
   "league_logo": "https://media.api-sports.io/football/leagues/89.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -785,22 +828,22 @@
      }
     },
     {
-     "minute": 58,
+     "minute": 68,
      "gh": 0,
      "ga": 0,
      "h": {
       "sog": 2,
-      "sv": 2,
-      "shots": 7,
-      "cor": 4,
+      "sv": 3,
+      "shots": 11,
+      "cor": 5,
       "rc": 0,
       "yc": 0,
       "poss": 57
      },
      "a": {
-      "sog": 2,
+      "sog": 3,
       "sv": 2,
-      "shots": 4,
+      "shots": 7,
       "cor": 1,
       "rc": 0,
       "yc": 0,
@@ -808,16 +851,16 @@
      }
     }
    ],
-   "score": 63,
-   "level": "amber",
+   "score": 69,
+   "level": "red",
    "dscores": [
     20,
     26,
     32,
-    63
+    69
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د58)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د68)",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
@@ -838,14 +881,14 @@
  "1553861": {
   "score": "1-0",
   "status": "2H",
-  "minute": 53,
+  "minute": 63,
   "home": "OFK Beograd",
   "away": "IMT Novi Beograd",
   "league": "Super Liga (Serbia)",
   "home_logo": "https://media.api-sports.io/football/teams/2633.png",
   "away_logo": "https://media.api-sports.io/football/teams/12316.png",
   "league_logo": "https://media.api-sports.io/football/leagues/286.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -935,26 +978,26 @@
      }
     },
     {
-     "minute": 53,
+     "minute": 63,
      "gh": 1,
      "ga": 0,
      "h": {
       "sog": 1,
       "sv": 2,
-      "shots": 4,
+      "shots": 5,
       "yc": 3,
       "cor": 2,
       "rc": 0,
-      "poss": 42
+      "poss": 44
      },
      "a": {
       "sog": 3,
       "sv": 1,
-      "shots": 11,
-      "yc": 1,
+      "shots": 13,
+      "yc": 2,
       "cor": 3,
       "rc": 0,
-      "poss": 58
+      "poss": 56
      }
     }
    ],
@@ -988,16 +1031,16 @@
   }
  },
  "1597980": {
-  "score": "1-2",
+  "score": "1-3",
   "status": "2H",
-  "minute": 57,
+  "minute": 67,
   "home": "Metropolitano",
   "away": "Marcílio Dias",
   "league": "Copa Santa Catarina (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/7860.png",
   "away_logo": "https://media.api-sports.io/football/teams/10677.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1036.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1006,16 +1049,22 @@
      "ga": 2,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 61,
+     "gh": 1,
+     "ga": 3,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 15,
+   "score": 0,
    "level": "green",
    "dscores": [
-    15
+    15,
+    0
    ],
-   "factors": [
-    "تقدم هش بفارق هدف واحد"
-   ],
+   "factors": [],
    "pick": "away",
    "confidence": 41,
    "top": false,
@@ -1033,14 +1082,14 @@
  "1603018": {
   "score": "0-2",
   "status": "2H",
-  "minute": 54,
+  "minute": 64,
   "home": "Al-Hilal Saudi FC",
   "away": "NEOM",
   "league": "Pro League (Saudi-Arabia)",
   "home_logo": "https://media.api-sports.io/football/teams/2932.png",
   "away_logo": "https://media.api-sports.io/football/teams/10513.png",
   "league_logo": "https://media.api-sports.io/football/leagues/307.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1117,39 +1166,39 @@
      "xg_a": 0.2444
     },
     {
-     "minute": 54,
+     "minute": 64,
      "gh": 0,
      "ga": 2,
      "h": {
-      "sog": 2,
+      "sog": 3,
       "sv": 1,
-      "shots": 10,
-      "yc": 2,
-      "cor": 2,
+      "shots": 13,
+      "yc": 3,
+      "cor": 3,
       "rc": 0,
-      "poss": 62
+      "poss": 63
      },
      "a": {
       "sog": 2,
-      "sv": 2,
+      "sv": 3,
       "shots": 8,
-      "yc": 0,
+      "yc": 1,
       "cor": 2,
       "rc": 0,
-      "poss": 38
+      "poss": 37
      }
     }
    ],
-   "score": 53,
+   "score": 59,
    "level": "amber",
    "dscores": [
     20,
     32,
     32,
-    53
+    59
    ],
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د54)",
+    "النتيجة الحالية 0-2 تُسقط التوقع (د64)",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
@@ -1157,7 +1206,7 @@
    "top": true,
    "mine": true,
    "drama": {
-    "signal": 20,
+    "signal": 70,
     "side": "home",
     "ready": false
    },
@@ -1169,45 +1218,45 @@
  "1606481": {
   "score": "0-1",
   "status": "2H",
-  "minute": 54,
+  "minute": 64,
   "home": "Atletico Escobar",
   "away": "Defensores de Vilelas",
   "league": "Torneo Federal A (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/27571.png",
   "away_logo": "https://media.api-sports.io/football/teams/27572.png",
   "league_logo": "https://media.api-sports.io/football/leagues/134.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 54,
+     "minute": 64,
      "gh": 0,
      "ga": 1,
      "h": {
+      "sog": 0,
+      "poss": 51,
+      "rc": 0,
       "yc": 0,
       "cor": 0,
-      "poss": 48,
-      "rc": 0,
-      "sog": 0,
-      "shots": 3
+      "shots": 4
      },
      "a": {
-      "yc": 0,
-      "cor": 3,
-      "poss": 52,
-      "rc": 0,
       "sog": 1,
+      "poss": 49,
+      "rc": 0,
+      "yc": 0,
+      "cor": 6,
       "shots": 4
      }
     }
    ],
-   "score": 47,
+   "score": 53,
    "level": "amber",
    "dscores": [
-    47
+    53
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د54)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د64)"
    ],
    "pick": "home",
    "confidence": 40,
@@ -1224,40 +1273,40 @@
   }
  },
  "1635077": {
-  "score": "2-0",
+  "score": "2-2",
   "status": "2H",
-  "minute": 56,
+  "minute": 66,
   "home": "Paulista",
   "away": "Grêmio Prudente",
   "league": "Copa Paulista (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/10038.png",
   "away_logo": "https://media.api-sports.io/football/teams/20713.png",
   "league_logo": "https://media.api-sports.io/football/leagues/742.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1500091": {
-  "score": "0-0",
+  "score": "0-1",
   "status": "2H",
-  "minute": 48,
+  "minute": 58,
   "home": "Deportivo Muñiz",
   "away": "Sportivo Barracas",
   "league": "Primera C (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/8393.png",
   "away_logo": "https://media.api-sports.io/football/teams/1931.png",
   "league_logo": "https://media.api-sports.io/football/leagues/132.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1550116": {
   "score": "0-0",
   "status": "1H",
-  "minute": 31,
+  "minute": 41,
   "home": "Udinese",
   "away": "Lazio",
   "league": "Serie A (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/494.png",
   "away_logo": "https://media.api-sports.io/football/teams/487.png",
   "league_logo": "https://media.api-sports.io/football/leagues/135.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1286,37 +1335,37 @@
      "xg_a": 0.0269
     },
     {
-     "minute": 31,
+     "minute": 41,
      "gh": 0,
      "ga": 0,
      "h": {
-      "sog": 2,
+      "sog": 3,
       "sv": 2,
-      "shots": 3,
+      "shots": 5,
       "yc": 2,
       "cor": 1,
       "rc": 0,
-      "poss": 46
+      "poss": 62
      },
      "a": {
       "sog": 2,
-      "sv": 2,
+      "sv": 3,
       "shots": 3,
       "yc": 1,
       "cor": 1,
       "rc": 0,
-      "poss": 54
+      "poss": 38
      }
     }
    ],
-   "score": 59,
-   "level": "amber",
+   "score": 65,
+   "level": "red",
    "dscores": [
     19,
-    59
+    65
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د31)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د41)",
     "موجة تسديد على المرمى من المضيف",
     "ضغط هجومي متصاعد من المضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
@@ -1332,12 +1381,12 @@
    },
    "alerted": null,
    "red_alerted": null,
-   "warn_alerted": null
+   "warn_alerted": true
   }
  },
  "1569913": {
   "score": "2-1",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Sabadell",
   "away": "Cordoba",
@@ -1345,19 +1394,19 @@
   "home_logo": "https://media.api-sports.io/football/teams/9593.png",
   "away_logo": "https://media.api-sports.io/football/teams/713.png",
   "league_logo": "https://media.api-sports.io/football/leagues/141.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1601520": {
   "score": "2-0",
-  "status": "1H",
-  "minute": 44,
+  "status": "HT",
+  "minute": 45,
   "home": "Palermo",
   "away": "Sampdoria",
   "league": "Serie B (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/522.png",
   "away_logo": "https://media.api-sports.io/football/teams/498.png",
   "league_logo": "https://media.api-sports.io/football/leagues/136.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1405,37 +1454,39 @@
      }
     },
     {
-     "minute": 38,
+     "minute": 45,
      "gh": 2,
      "ga": 0,
      "h": {
       "sog": 3,
-      "sv": 1,
+      "sv": 2,
       "shots": 6,
       "yc": 0,
       "cor": 0,
       "rc": 0,
-      "poss": 44
+      "poss": 40
      },
      "a": {
-      "sog": 1,
+      "sog": 2,
       "sv": 1,
-      "shots": 5,
+      "shots": 7,
       "yc": 2,
-      "cor": 3,
+      "cor": 4,
       "rc": 0,
-      "poss": 56
+      "poss": 60
      }
     }
    ],
-   "score": 0,
+   "score": 6,
    "level": "green",
    "dscores": [
     15,
     15,
-    0
+    6
    ],
-   "factors": [],
+   "factors": [
+    "ضغط هجومي متصاعد من الضيف"
+   ],
    "pick": "home",
    "confidence": 54,
    "top": false,
@@ -1452,7 +1503,7 @@
  },
  "1553161": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Pogon Szczecin",
   "away": "Wisla Plock",
@@ -1460,7 +1511,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/348.png",
   "away_logo": "https://media.api-sports.io/football/teams/341.png",
   "league_logo": "https://media.api-sports.io/football/leagues/106.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1497,7 +1548,7 @@
       "cor": 4,
       "rc": 0,
       "yc": 0,
-      "poss": 67
+      "poss": 64
      },
      "a": {
       "sog": 3,
@@ -1506,7 +1557,7 @@
       "cor": 1,
       "rc": 0,
       "yc": 0,
-      "poss": 33
+      "poss": 36
      }
     }
    ],
@@ -1535,15 +1586,15 @@
  },
  "1609014": {
   "score": "1-0",
-  "status": "1H",
-  "minute": 44,
+  "status": "HT",
+  "minute": 45,
   "home": "Catania",
   "away": "Cosenza",
   "league": "Serie C - Girone C (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/1580.png",
   "away_logo": "https://media.api-sports.io/football/teams/10137.png",
   "league_logo": "https://media.api-sports.io/football/leagues/943.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1568,7 +1619,7 @@
      "a": {}
     },
     {
-     "minute": 38,
+     "minute": 45,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -1603,14 +1654,14 @@
  "1552464": {
   "score": "0-0",
   "status": "1H",
-  "minute": 32,
+  "minute": 41,
   "home": "Nantes",
   "away": "Nancy",
   "league": "Ligue 2 (France)",
   "home_logo": "https://media.api-sports.io/football/teams/83.png",
   "away_logo": "https://media.api-sports.io/football/teams/102.png",
   "league_logo": "https://media.api-sports.io/football/leagues/62.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1650,74 +1701,74 @@
      }
     },
     {
-     "minute": 32,
+     "minute": 41,
      "gh": 0,
      "ga": 0,
      "h": {
-      "shots": 1,
+      "shots": 2,
       "yc": 1,
       "cor": 0,
       "rc": 0,
       "sog": 0,
-      "poss": 54
+      "poss": 58
      },
      "a": {
       "shots": 0,
-      "yc": 0,
+      "yc": 2,
       "cor": 0,
-      "rc": 0,
+      "rc": 1,
       "sog": 0,
-      "poss": 46
+      "poss": 42
      }
     }
    ],
-   "score": 34,
+   "score": 39,
    "level": "green",
    "dscores": [
     19,
     24,
-    34
+    39
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د32)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د41)"
    ],
    "pick": "home",
    "confidence": 50,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 35,
     "side": "home",
     "ready": false
    },
    "alerted": null,
-   "red_alerted": null,
+   "red_alerted": true,
    "warn_alerted": null
   }
  },
  "1564285": {
   "score": "0-1",
   "status": "1H",
-  "minute": 17,
+  "minute": 27,
   "home": "Bromley",
   "away": "AFC Wimbledon",
   "league": "League One (England)",
   "home_logo": "https://media.api-sports.io/football/teams/1832.png",
   "away_logo": "https://media.api-sports.io/football/teams/1333.png",
   "league_logo": "https://media.api-sports.io/football/leagues/41.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1631997": {
-  "score": "0-0",
+  "score": "1-0",
   "status": "1H",
-  "minute": 17,
+  "minute": 27,
   "home": "Club Guarani",
   "away": "Deportivo Recoleta",
   "league": "Division Profesional - Clausura (Paraguay)",
   "home_logo": "https://media.api-sports.io/football/teams/1174.png",
   "away_logo": "https://media.api-sports.io/football/teams/10476.png",
   "league_logo": "https://media.api-sports.io/football/leagues/252.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1761,16 +1812,40 @@
       "yc": 0,
       "poss": 19
      }
+    },
+    {
+     "minute": 21,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 77
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "sv": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 23
+     }
     }
    ],
-   "score": 21,
+   "score": 15,
    "level": "green",
    "dscores": [
     15,
-    21
+    21,
+    15
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د11)"
+    "تقدم هش بفارق هدف واحد"
    ],
    "pick": "home",
    "confidence": 48,
@@ -1778,7 +1853,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "home",
+    "side": "away",
     "ready": false
    },
    "alerted": null,
@@ -1789,14 +1864,14 @@
  "1608252": {
   "score": "0-0",
   "status": "1H",
-  "minute": 16,
+  "minute": 26,
   "home": "Alcione",
   "away": "Treviso",
   "league": "Serie C - Girone A (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/17824.png",
   "away_logo": "https://media.api-sports.io/football/teams/22319.png",
   "league_logo": "https://media.api-sports.io/football/leagues/138.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1805,15 +1880,23 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
     }
    ],
-   "score": 21,
+   "score": 27,
    "level": "green",
    "dscores": [
-    21
+    21,
+    27
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
    ],
    "pick": "home",
    "confidence": 44,
@@ -1832,18 +1915,25 @@
  "1608258": {
   "score": "1-0",
   "status": "1H",
-  "minute": 15,
+  "minute": 25,
   "home": "PRO Vercelli",
   "away": "Folgore Caratese",
   "league": "Serie C - Girone A (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/526.png",
   "away_logo": "https://media.api-sports.io/football/teams/9450.png",
   "league_logo": "https://media.api-sports.io/football/leagues/138.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
      "minute": 9,
+     "gh": 1,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    },
+    {
+     "minute": 19,
      "gh": 1,
      "ga": 0,
      "h": {},
@@ -1853,6 +1943,7 @@
    "score": 15,
    "level": "green",
    "dscores": [
+    15,
     15
    ],
    "factors": [
@@ -1875,38 +1966,38 @@
  "1608259": {
   "score": "0-0",
   "status": "1H",
-  "minute": 14,
+  "minute": 24,
   "home": "Renate",
   "away": "Novara",
   "league": "Serie C - Girone A (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/875.png",
   "away_logo": "https://media.api-sports.io/football/teams/513.png",
   "league_logo": "https://media.api-sports.io/football/leagues/138.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1608260": {
   "score": "0-0",
   "status": "1H",
-  "minute": 16,
+  "minute": 26,
   "home": "Trento",
   "away": "Lecco",
   "league": "Serie C - Girone A (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/17147.png",
   "away_logo": "https://media.api-sports.io/football/teams/6379.png",
   "league_logo": "https://media.api-sports.io/football/leagues/138.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00"
+  "seen": "2026-09-07T19:26:35.601061+00:00"
  },
  "1609018": {
   "score": "0-0",
   "status": "1H",
-  "minute": 16,
+  "minute": 26,
   "home": "AZ Picerno",
   "away": "Inter U23",
   "league": "Serie C - Girone C (Italy)",
   "home_logo": "https://media.api-sports.io/football/teams/1587.png",
   "away_logo": "https://media.api-sports.io/football/teams/26355.png",
   "league_logo": "https://media.api-sports.io/football/leagues/943.png",
-  "seen": "2026-09-07T19:16:40.738927+00:00",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
   "radar": {
    "snaps": [
     {
@@ -1915,6 +2006,69 @@
      "ga": 0,
      "h": {},
      "a": {}
+    },
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 27,
+   "level": "green",
+   "dscores": [
+    21,
+    27
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د20)"
+   ],
+   "pick": "home",
+   "confidence": 42,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1517342": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 16,
+  "home": "HFX Wanderers FC",
+  "away": "Cavalry FC",
+  "league": "Canadian Premier League (Canada)",
+  "home_logo": "https://media.api-sports.io/football/teams/2621.png",
+  "away_logo": "https://media.api-sports.io/football/teams/2619.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/479.png",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 0,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 40
+     },
+     "a": {
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 60
+     }
     }
    ],
    "score": 21,
@@ -1925,9 +2079,62 @@
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د10)"
    ],
-   "pick": "home",
-   "confidence": 42,
+   "pick": "away",
+   "confidence": 43,
    "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1575483": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 9,
+  "home": "Estoril",
+  "away": "Arouca",
+  "league": "Primeira Liga (Portugal)",
+  "home_logo": "https://media.api-sports.io/football/teams/230.png",
+  "away_logo": "https://media.api-sports.io/football/teams/240.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/94.png",
+  "seen": "2026-09-07T19:26:35.601061+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 3,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 70
+     },
+     "a": {
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 30
+     }
+    }
+   ],
+   "score": 16,
+   "level": "green",
+   "dscores": [
+    16
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د3)"
+   ],
+   "pick": "away",
+   "confidence": 43,
+   "top": true,
    "mine": false,
    "drama": {
     "signal": 0,
