@@ -1193,17 +1193,17 @@
    "pick": "away",
    "confidence": 43,
    "level": "red",
-   "score": 73,
-   "minute": 74,
+   "score": 79,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د74)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د84)",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 59,
-   "level_xg": "amber"
+   "score_xg": 65,
+   "level_xg": "red"
   },
   {
    "fid": "1601520",
@@ -1333,6 +1333,39 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1570366",
+   "date": "2026-09-07",
+   "home": "Elche",
+   "away": "Real Sociedad",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "pick": "away",
+   "confidence": 44,
+   "level": "red",
+   "score": 96,
+   "minute": 75,
+   "factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د75)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ],
+   "alerted": true,
+   "alert_minute": 75,
+   "score_xg": null,
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 96,
+   "sent_minute": 75,
+   "sent_factors": [
+    "النتيجة الحالية 2-2 تُسقط التوقع (د75)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ]
   }
  ],
  "resolved": [
@@ -59641,6 +59674,189 @@
       "yc": 2,
       "cor": 4,
       "poss": 58
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570366",
+   "date": "2026-09-07",
+   "minute": 70,
+   "score_at": "1-2",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Elche",
+   "away": "Real Sociedad",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 50,
+     "gh": 0,
+     "ga": 2,
+     "h": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 4,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 4,
+      "sv": 1,
+      "shots": 8,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 45
+     },
+     "xg_h": 0.3811,
+     "xg_a": 0.3177
+    },
+    {
+     "minute": 60,
+     "gh": 0,
+     "ga": 2,
+     "h": {
+      "sog": 2,
+      "sv": 2,
+      "shots": 6,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 9,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 45
+     },
+     "xg_h": 0.5863,
+     "xg_a": 0.4292
+    },
+    {
+     "minute": 70,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 8,
+      "yc": 3,
+      "cor": 3,
+      "rc": 0,
+      "poss": 53
+     },
+     "a": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 10,
+      "yc": 1,
+      "cor": 4,
+      "rc": 1,
+      "poss": 47
+     },
+     "xg_h": 0.6945999999999999,
+     "xg_a": 0.46120000000000005
+    }
+   ]
+  },
+  {
+   "fid": "1570366",
+   "date": "2026-09-07",
+   "minute": 75,
+   "score_at": "2-2",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Elche",
+   "away": "Real Sociedad",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 50,
+     "gh": 0,
+     "ga": 2,
+     "h": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 4,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 4,
+      "sv": 1,
+      "shots": 8,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 45
+     },
+     "xg_h": 0.3811,
+     "xg_a": 0.3177
+    },
+    {
+     "minute": 60,
+     "gh": 0,
+     "ga": 2,
+     "h": {
+      "sog": 2,
+      "sv": 2,
+      "shots": 6,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 9,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 45
+     },
+     "xg_h": 0.5863,
+     "xg_a": 0.4292
+    },
+    {
+     "minute": 75,
+     "gh": 2,
+     "ga": 2,
+     "h": {
+      "sog": 5,
+      "sv": 2,
+      "shots": 11,
+      "yc": 3,
+      "cor": 3,
+      "rc": 0,
+      "poss": 53
+     },
+     "a": {
+      "sog": 4,
+      "sv": 4,
+      "shots": 10,
+      "yc": 1,
+      "cor": 4,
+      "rc": 1,
+      "poss": 47
      }
     }
    ]
