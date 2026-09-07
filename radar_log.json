@@ -228,11 +228,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 62,
-   "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د86)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -249,11 +249,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 55,
-   "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "level": "red",
+   "score": 66,
+   "minute": 86,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د86)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -313,10 +313,10 @@
    "pick": "away",
    "confidence": 40,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 64,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د82)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -334,10 +334,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 61,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د78)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -355,10 +355,52 @@
    "pick": "home",
    "confidence": 36,
    "level": "amber",
+   "score": 63,
+   "minute": 81,
+   "factors": [
+    "النتيجة الحالية 1-2 تُسقط التوقع (د81)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1619003",
+   "date": "2026-09-07",
+   "home": "Nacional Potosí",
+   "away": "Blooming",
+   "league": "Primera División (Bolivia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 54,
+   "level": "amber",
    "score": 42,
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1519482",
+   "date": "2026-09-07",
+   "home": "Deportivo Cuenca",
+   "away": "Libertad",
+   "league": "Liga Pro (Ecuador)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -57807,6 +57849,84 @@
       "cor": 6,
       "rc": 0,
       "poss": 55
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1519480",
+   "date": "2026-09-07",
+   "minute": 45,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Aucas",
+   "away": "Barcelona SC",
+   "league": "Liga Pro (Ecuador)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 19,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 34
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 66
+     }
+    },
+    {
+     "minute": 29,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 36
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 64
+     }
+    },
+    {
+     "minute": 45,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "rc": 1,
+      "shots": 6,
+      "cor": 1,
+      "sv": 0,
+      "yc": 0,
+      "poss": 41
+     },
+     "a": {
+      "sog": 0,
+      "rc": 0,
+      "shots": 3,
+      "cor": 3,
+      "sv": 1,
+      "yc": 0,
+      "poss": 59
      }
     }
    ]
