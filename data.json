@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-07T22:46:36.705182+00:00",
+ "updated": "2026-09-07T22:56:39.275532+00:00",
  "live": [
   {
    "fid": "1600682",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/5634.png",
    "league_logo": "https://media.api-sports.io/football/leagues/711.png",
    "score": "1-0",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-07T22:46:34.612850+00:00",
+   "seen": "2026-09-07T22:56:36.333025+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -40,7 +40,7 @@
     "top": false,
     "trend": {
      "min": [
-      86
+      90
      ],
      "danger": [
       15
@@ -71,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1211.png",
    "league_logo": "https://media.api-sports.io/football/leagues/75.png",
    "score": "1-2",
-   "minute": 83,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-07T22:46:34.612850+00:00",
+   "seen": "2026-09-07T22:56:36.333025+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -83,10 +83,10 @@
     "confidence": 48
    },
    "radar": {
-    "score": 64,
-    "level": "amber",
+    "score": 69,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د83)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 48,
@@ -99,10 +99,10 @@
     "top": false,
     "trend": {
      "min": [
-      83
+      90
      ],
      "danger": [
-      64
+      69
      ],
      "h_sog": [
       0
@@ -130,9 +130,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1175.png",
    "league_logo": "https://media.api-sports.io/football/leagues/252.png",
    "score": "0-0",
-   "minute": 57,
+   "minute": 68,
    "status": "2H",
-   "seen": "2026-09-07T22:46:34.612850+00:00",
+   "seen": "2026-09-07T22:56:36.333025+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -142,30 +142,31 @@
     "confidence": 58
    },
    "radar": {
-    "score": 67,
+    "score": 89,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د57)",
+     "النتيجة الحالية 0-0 تُسقط التوقع (د68)",
      "موجة تسديد على المرمى من الضيف",
+     "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 58,
     "drama": {
-     "signal": 45,
+     "signal": 85,
      "side": "away",
-     "ready": false
+     "ready": true
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
       24,
-      57
+      68
      ],
      "danger": [
       29,
-      67
+      89
      ],
      "h_sog": [
       1,
@@ -181,7 +182,7 @@
      ],
      "a_cor": [
       2,
-      3
+      5
      ]
     }
    }
@@ -198,8 +199,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-07T22:46:34.612850+00:00",
+   "status": "HT",
+   "seen": "2026-09-07T22:56:36.333025+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -234,7 +235,7 @@
       1
      ],
      "a_sog": [
-      1
+      2
      ],
      "h_cor": [
       1
@@ -257,8 +258,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/269.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-07T22:46:34.612850+00:00",
+   "status": "HT",
+   "seen": "2026-09-07T22:56:36.333025+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -316,8 +317,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/299.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-07T22:46:34.612850+00:00",
+   "status": "HT",
+   "seen": "2026-09-07T22:56:36.333025+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -6445,6 +6446,19 @@
     "minute": 87,
     "pick": "home",
     "conf": 46,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-07",
+    "home": "Paysandu",
+    "away": "Brusque",
+    "league": "Serie C (Brazil)",
+    "level": "red",
+    "minute": 87,
+    "pick": "home",
+    "conf": 48,
     "top": false
    },
    {
