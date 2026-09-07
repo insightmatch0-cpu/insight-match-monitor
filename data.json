@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-07T13:36:39.577958+00:00",
+ "updated": "2026-09-07T13:46:35.731181+00:00",
  "live": [
   {
    "fid": "1636737",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2099.png",
    "league_logo": "https://media.api-sports.io/football/leagues/494.png",
    "score": "0-0",
-   "minute": 36,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-07T13:36:37.691962+00:00",
+   "seen": "2026-09-07T13:46:33.305524+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -24,10 +24,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 36,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د36)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 50,
@@ -40,10 +40,69 @@
     "top": false,
     "trend": {
      "min": [
-      36
+      45
      ],
      "danger": [
-      36
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1531094",
+   "home": "Metalourg",
+   "away": "Pakhtakor II",
+   "home_en": "Metalourg",
+   "away_en": "Pakhtakor II",
+   "league": "Pro League A (Uzbekistan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4214.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27586.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1075.png",
+   "score": "1-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-09-07T13:46:33.305524+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 44
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 44,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      16
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
