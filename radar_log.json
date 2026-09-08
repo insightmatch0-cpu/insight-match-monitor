@@ -481,17 +481,24 @@
    "mine": true,
    "pick": "home",
    "confidence": 56,
-   "level": "amber",
-   "score": 57,
-   "minute": 58,
+   "level": "red",
+   "score": 65,
+   "minute": 70,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د58)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د70)",
     "موجة ركنيات لصالح الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 49,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 70,
+   "score_xg": 55,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 70,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د70)",
+    "موجة ركنيات لصالح الضيف"
+   ]
   },
   {
    "fid": "1638093",
@@ -528,10 +535,10 @@
    "pick": "away",
    "confidence": 52,
    "level": "amber",
-   "score": 54,
-   "minute": 66,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د66)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د77)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -549,10 +556,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 52,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د52)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -603,10 +610,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 45,
+   "minute": 51,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -624,10 +631,10 @@
    "pick": "home",
    "confidence": 37,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 52,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د52)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -670,6 +677,71 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635643",
+   "date": "2026-09-08",
+   "home": "Club Brugge KV",
+   "away": "Aston Villa",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 42,
+   "level": "amber",
+   "score": 40,
+   "minute": 13,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د13)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635414",
+   "date": "2026-09-08",
+   "home": "HPS",
+   "away": "PPJ",
+   "league": "Kakkonen - Lohko A (Finland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1637857",
+   "date": "2026-09-08",
+   "home": "Tromsdalen Uil",
+   "away": "Strommen",
+   "league": "NM Cupen (Norway)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 37,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 5-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -60544,6 +60616,97 @@
       "cor": 7,
       "rc": 0,
       "poss": 55
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1603019",
+   "date": "2026-09-08",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Al-Ettifaq",
+   "away": "Al-Faisaly FC",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 11,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 4,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "cor": 0,
+      "sv": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 42
+     },
+     "xg_h": 0.3843,
+     "xg_a": 0.0
+    },
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "shots": 6,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 59
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 0,
+      "sv": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 41
+     },
+     "xg_h": 0.4636,
+     "xg_a": 0.0277
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 5,
+      "sv": 1,
+      "shots": 9,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 1,
+      "sv": 5,
+      "shots": 3,
+      "yc": 0,
+      "cor": 2,
+      "rc": 0,
+      "poss": 45
      }
     }
    ]
