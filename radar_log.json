@@ -700,12 +700,13 @@
    "pick": "home",
    "confidence": 42,
    "level": "red",
-   "score": 72,
-   "minute": 66,
+   "score": 86,
+   "minute": 76,
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د66)",
+    "النتيجة الحالية 2-3 تُسقط التوقع (د76)",
     "موجة تسديد على المرمى من الضيف",
-    "ضغط هجومي متصاعد من الضيف"
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -765,10 +766,10 @@
    "pick": "away",
    "confidence": 50,
    "level": "red",
-   "score": 89,
-   "minute": 81,
+   "score": 95,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د81)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د90)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
@@ -789,10 +790,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "red",
-   "score": 81,
-   "minute": 67,
+   "score": 87,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د67)",
+    "النتيجة الحالية 1-2 تُسقط التوقع (د78)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -813,10 +814,10 @@
    "pick": "away",
    "confidence": 54,
    "level": "amber",
-   "score": 46,
-   "minute": 53,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -834,10 +835,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 46,
+   "minute": 53,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د53)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -897,10 +898,10 @@
    "pick": "away",
    "confidence": 47,
    "level": "amber",
-   "score": 46,
-   "minute": 52,
+   "score": 51,
+   "minute": 60,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د52)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د60)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -61015,6 +61016,93 @@
       "sv": 2,
       "rc": 0,
       "poss": 62
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1635643",
+   "date": "2026-09-08",
+   "minute": 76,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Club Brugge KV",
+   "away": "Aston Villa",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 23,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 2,
+      "sv": 2,
+      "shots": 3,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 48
+     },
+     "a": {
+      "sog": 4,
+      "sv": 1,
+      "shots": 8,
+      "cor": 1,
+      "yc": 1,
+      "rc": 0,
+      "poss": 52
+     }
+    },
+    {
+     "minute": 33,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 3,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 5,
+      "sv": 1,
+      "shots": 10,
+      "cor": 2,
+      "yc": 1,
+      "rc": 0,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 6,
+      "sv": 5,
+      "shots": 13,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 65
+     },
+     "a": {
+      "sog": 8,
+      "sv": 4,
+      "shots": 17,
+      "yc": 1,
+      "cor": 3,
+      "rc": 0,
+      "poss": 35
      }
     }
    ]
