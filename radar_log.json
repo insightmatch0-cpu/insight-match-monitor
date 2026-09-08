@@ -511,10 +511,10 @@
    "pick": "away",
    "confidence": 57,
    "level": "red",
-   "score": 85,
-   "minute": 61,
+   "score": 91,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د61)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د71)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
@@ -555,16 +555,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 48,
-   "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د72)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 84,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1603020",
@@ -577,10 +583,10 @@
    "pick": "draw",
    "confidence": 36,
    "level": "red",
-   "score": 78,
-   "minute": 63,
+   "score": 84,
+   "minute": 73,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د63)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د73)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -610,10 +616,10 @@
    "pick": "home",
    "confidence": 47,
    "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د71)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -652,10 +658,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "amber",
-   "score": 54,
-   "minute": 65,
+   "score": 60,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د65)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د75)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -673,10 +679,10 @@
    "pick": "away",
    "confidence": 42,
    "level": "amber",
-   "score": 49,
-   "minute": 58,
+   "score": 55,
+   "minute": 68,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د58)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د68)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -763,6 +769,27 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1552136",
+   "date": "2026-09-08",
+   "home": "NEC Nijmegen",
+   "away": "Excelsior",
+   "league": "Eredivisie (Netherlands)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 47,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -60728,6 +60755,155 @@
       "cor": 2,
       "rc": 0,
       "poss": 45
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1603020",
+   "date": "2026-09-08",
+   "minute": 76,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Al-Hazm",
+   "away": "Al Taawon",
+   "league": "Pro League (Saudi-Arabia)",
+   "top": true,
+   "mine": true,
+   "silenced": true,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 15,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 1,
+      "cor": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 1,
+      "sv": 0,
+      "shots": 5,
+      "cor": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 25,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 2,
+      "cor": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 1,
+      "sv": 0,
+      "shots": 6,
+      "cor": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "sv": 5,
+      "shots": 6,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 57
+     },
+     "a": {
+      "sog": 5,
+      "sv": 1,
+      "shots": 15,
+      "yc": 1,
+      "cor": 8,
+      "rc": 0,
+      "poss": 43
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1638093",
+   "date": "2026-09-08",
+   "minute": 76,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Gnistan",
+   "away": "KuPS",
+   "league": "Veikkausliiga (Finland)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 9,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 0,
+      "cor": 0,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 15
+     },
+     "a": {
+      "shots": 2,
+      "cor": 2,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 85
+     }
+    },
+    {
+     "minute": 76,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "shots": 8,
+      "yc": 1,
+      "cor": 4,
+      "sv": 0,
+      "rc": 0,
+      "poss": 38
+     },
+     "a": {
+      "sog": 1,
+      "shots": 12,
+      "yc": 2,
+      "cor": 3,
+      "sv": 2,
+      "rc": 0,
+      "poss": 62
      }
     }
    ]
