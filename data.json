@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T01:56:34.231596+00:00",
+ "updated": "2026-09-08T02:06:45.820229+00:00",
  "live": [
   {
    "fid": "1519483",
@@ -14,7 +14,7 @@
    "score": "1-0",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
+   "seen": "2026-09-08T02:05:11.300477+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 59
@@ -24,15 +24,16 @@
     "confidence": 44
    },
    "radar": {
-    "score": 15,
+    "score": 25,
     "level": "green",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "تقدم هش بفارق هدف واحد",
+     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
     ],
     "pick": "home",
     "confidence": 44,
     "drama": {
-     "signal": 0,
+     "signal": 35,
      "side": "away",
      "ready": false
     },
@@ -43,7 +44,7 @@
       90
      ],
      "danger": [
-      15
+      25
      ],
      "h_sog": [
       4
@@ -61,65 +62,6 @@
    }
   },
   {
-   "fid": "1519485",
-   "home": "Mushuc Runa SC",
-   "away": "Leones del Norte",
-   "home_en": "Mushuc Runa SC",
-   "away_en": "Leones del Norte",
-   "league": "Liga Pro (Ecuador)",
-   "home_logo": "https://media.api-sports.io/football/teams/1162.png",
-   "away_logo": "https://media.api-sports.io/football/teams/19034.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "score": "1-1",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 69,
-    "level": "red",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د90)"
-    ],
-    "pick": "home",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      90
-     ],
-     "danger": [
-      69
-     ],
-     "h_sog": [
-      5
-     ],
-     "a_sog": [
-      3
-     ],
-     "h_cor": [
-      6
-     ],
-     "a_cor": [
-      5
-     ]
-    }
-   }
-  },
-  {
    "fid": "1519486",
    "home": "Orense SC",
    "away": "Guayaquil City FC",
@@ -129,10 +71,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1992.png",
    "away_logo": "https://media.api-sports.io/football/teams/1159.png",
    "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "score": "3-3",
+   "score": "4-3",
    "minute": 90,
    "status": "2H",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
+   "seen": "2026-09-08T02:03:39.375359+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 56
@@ -142,17 +84,17 @@
     "confidence": 52
    },
    "radar": {
-    "score": 75,
-    "level": "red",
+    "score": 21,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 3-3 تُسقط التوقع (د90)",
+     "تقدم هش بفارق هدف واحد",
      "ضغط هجومي متصاعد من الضيف"
     ],
     "pick": "home",
     "confidence": 52,
     "drama": {
-     "signal": 45,
-     "side": "home",
+     "signal": 15,
+     "side": "away",
      "ready": false
     },
     "alerted": null,
@@ -164,11 +106,11 @@
      ],
      "danger": [
       55,
-      75
+      21
      ],
      "h_sog": [
       3,
-      5
+      6
      ],
      "a_sog": [
       3,
@@ -176,7 +118,7 @@
      ],
      "h_cor": [
       3,
-      4
+      6
      ],
      "a_cor": [
       1,
@@ -195,10 +137,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/441.png",
    "away_logo": "https://media.api-sports.io/football/teams/478.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-   "score": "3-1",
-   "minute": 82,
+   "score": "3-2",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
+   "seen": "2026-09-08T02:06:43.576957+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -208,13 +150,18 @@
     "confidence": 34
    },
    "radar": {
-    "score": 0,
+    "score": 39,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "تقدم هش بفارق هدف واحد",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف",
+     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
+    ],
     "pick": "home",
     "confidence": 34,
     "drama": {
-     "signal": 0,
+     "signal": 70,
      "side": "away",
      "ready": false
     },
@@ -223,11 +170,11 @@
     "trend": {
      "min": [
       59,
-      82
+      90
      ],
      "danger": [
       15,
-      0
+      39
      ],
      "h_sog": [
       3,
@@ -235,7 +182,7 @@
      ],
      "a_sog": [
       1,
-      1
+      2
      ],
      "h_cor": [
       1,
@@ -243,7 +190,7 @@
      ],
      "a_cor": [
       5,
-      6
+      7
      ]
     }
    }
@@ -259,9 +206,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2890.png",
    "league_logo": "https://media.api-sports.io/football/leagues/304.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-09-08T02:06:43.576957+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -271,10 +218,10 @@
     "confidence": 47
    },
    "radar": {
-    "score": 42,
+    "score": 45,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
     ],
     "pick": "away",
     "confidence": 47,
@@ -287,10 +234,10 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      51
      ],
      "danger": [
-      42
+      45
      ],
      "h_sog": [
       0
@@ -318,9 +265,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/818.png",
    "league_logo": "https://media.api-sports.io/football/leagues/163.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
+   "minute": 48,
+   "status": "2H",
+   "seen": "2026-09-08T02:06:43.576957+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -330,10 +277,10 @@
     "confidence": 41
    },
    "radar": {
-    "score": 42,
+    "score": 43,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د48)"
     ],
     "pick": "away",
     "confidence": 41,
@@ -346,10 +293,10 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      48
      ],
      "danger": [
-      42
+      43
      ],
      "h_sog": [
       0
@@ -377,9 +324,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1127.png",
    "league_logo": "https://media.api-sports.io/football/leagues/241.png",
    "score": "1-0",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-09-08T01:56:32.181028+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-08T02:06:43.576957+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 64
@@ -405,7 +352,7 @@
     "top": false,
     "trend": {
      "min": [
-      41
+      45
      ],
      "danger": [
       15
@@ -442,54 +389,6 @@
    "pick": "home",
    "confidence": 56,
    "reason": "يونيون بميزة الأرض والمستوى الأفضل في الدوري الأرجنتيني"
-  },
-  {
-   "fid": "1519483",
-   "kickoff": "2026-09-08T00:00:00+00:00",
-   "home": "إمليك",
-   "away": "مانتا إف سي",
-   "home_en": "Emelec",
-   "home_logo": "https://media.api-sports.io/football/teams/1148.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1980.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "away_en": "Manta FC",
-   "league": "الدوري الإكوادوري",
-   "top": false,
-   "pick": "home",
-   "confidence": 59,
-   "reason": "إمليك من أقوى فرق الإكوادور وعامل الأرض في صالحه"
-  },
-  {
-   "fid": "1519485",
-   "kickoff": "2026-09-08T00:00:00+00:00",
-   "home": "موشوك رونا",
-   "away": "ليونز ديل نورتي",
-   "home_en": "Mushuc Runa SC",
-   "home_logo": "https://media.api-sports.io/football/teams/1162.png",
-   "away_logo": "https://media.api-sports.io/football/teams/19034.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "away_en": "Leones del Norte",
-   "league": "الدوري الإكوادوري",
-   "top": false,
-   "pick": "draw",
-   "confidence": 52,
-   "reason": "فريقا الدوري الإكوادوري الثاني متقاربا المستوى"
-  },
-  {
-   "fid": "1519486",
-   "kickoff": "2026-09-08T00:00:00+00:00",
-   "home": "أورينسي",
-   "away": "جوايكيل سيتي",
-   "home_en": "Orense SC",
-   "home_logo": "https://media.api-sports.io/football/teams/1992.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1159.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-   "away_en": "Guayaquil City FC",
-   "league": "الدوري الإكوادوري",
-   "top": false,
-   "pick": "away",
-   "confidence": 56,
-   "reason": "جوايكيل سيتي الأقوى من أورينسي في الدوري الإكوادوري"
   },
   {
    "fid": "1583758",
@@ -5499,6 +5398,20 @@
     "pick": "home",
     "conf": 50,
     "top": false
+   },
+   {
+    "kind": "alert",
+    "pending": true,
+    "date": "2026-09-08",
+    "home": "Union Santa Fe",
+    "away": "Instituto Cordoba",
+    "league": "Liga Profesional Argentina (Argentina)",
+    "minute": 90,
+    "claim": "red_advantage",
+    "side": "away",
+    "signal": null,
+    "score_at": "3-2",
+    "top": true
    }
   ]
  },
