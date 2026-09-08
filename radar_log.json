@@ -1018,10 +1018,10 @@
    "pick": "away",
    "confidence": 45,
    "level": "amber",
-   "score": 52,
-   "minute": 63,
+   "score": 58,
+   "minute": 73,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د63)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د73)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1039,10 +1039,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 50,
-   "minute": 36,
+   "score": 56,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د36)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -1061,18 +1061,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 47,
-   "level": "amber",
-   "score": 53,
-   "minute": 34,
+   "level": "red",
+   "score": 68,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د34)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
     "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 35,
-   "level_xg": "green"
+   "alerted": true,
+   "alert_minute": 45,
+   "score_xg": 41,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 68,
+   "sent_minute": 45,
+   "sent_factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1563146",
@@ -1085,17 +1095,17 @@
    "pick": "home",
    "confidence": 37,
    "level": "red",
-   "score": 70,
-   "minute": 36,
+   "score": 76,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د36)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 36,
-   "score_xg": 44,
+   "score_xg": 50,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 70,
@@ -1106,6 +1116,90 @@
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ]
+  },
+  {
+   "fid": "1562031",
+   "date": "2026-09-08",
+   "home": "Larne",
+   "away": "Bangor",
+   "league": "Premiership (Northern-Ireland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 63,
+   "level": "amber",
+   "score": 40,
+   "minute": 43,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د43)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1593569",
+   "date": "2026-09-08",
+   "home": "Airdrie United",
+   "away": "St. Mirren U21",
+   "league": "Challenge Cup (Scotland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 62,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1593585",
+   "date": "2026-09-08",
+   "home": "Ross County",
+   "away": "Aberdeen U21",
+   "league": "Challenge Cup (Scotland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 62,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1612397",
+   "date": "2026-09-08",
+   "home": "Tre Penne",
+   "away": "Juvenes / Dogana",
+   "league": "Coppa Titano (San-Marino)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
