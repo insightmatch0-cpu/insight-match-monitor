@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T13:06:49.390817+00:00",
+ "updated": "2026-09-08T13:16:35.628275+00:00",
  "live": [
   {
    "fid": "1635874",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/28181.png",
    "away_logo": "https://media.api-sports.io/football/teams/26388.png",
    "league_logo": "https://media.api-sports.io/football/leagues/335.png",
-   "score": "1-1",
-   "minute": 46,
+   "score": "1-2",
+   "minute": 56,
    "status": "2H",
-   "seen": "2026-09-08T13:06:46.975761+00:00",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 51
@@ -24,10 +24,10 @@
     "confidence": 37
    },
    "radar": {
-    "score": 42,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د46)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د56)"
     ],
     "pick": "home",
     "confidence": 37,
@@ -40,10 +40,10 @@
     "top": false,
     "trend": {
      "min": [
-      46
+      56
      ],
      "danger": [
-      42
+      48
      ],
      "h_sog": [
       0
@@ -71,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/26352.png",
    "league_logo": "https://media.api-sports.io/football/leagues/500.png",
    "score": "3-0",
-   "minute": 35,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-08T13:06:46.975761+00:00",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 68
@@ -97,7 +97,64 @@
     "top": false,
     "trend": {
      "min": [
-      35
+      45
+     ],
+     "danger": [
+      0
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1635853",
+   "home": "Kuching FA",
+   "away": "Kelantan Red Warrior FC",
+   "home_en": "Kuching FA",
+   "away_en": "Kelantan Red Warrior FC",
+   "league": "FA Cup (Malaysia)",
+   "home_logo": "https://media.api-sports.io/football/teams/10108.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27373.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/500.png",
+   "score": "2-0",
+   "minute": 27,
+   "status": "1H",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 0,
+    "level": "green",
+    "factors": [],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      27
      ],
      "danger": [
       0
@@ -128,9 +185,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2138.png",
    "league_logo": "https://media.api-sports.io/football/leagues/251.png",
    "score": "0-0",
-   "minute": 7,
+   "minute": 16,
    "status": "1H",
-   "seen": "2026-09-08T13:06:46.975761+00:00",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 43
@@ -140,10 +197,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 19,
+    "score": 24,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د7)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
     ],
     "pick": "away",
     "confidence": 44,
@@ -156,10 +213,128 @@
     "top": false,
     "trend": {
      "min": [
-      7
+      16
      ],
      "danger": [
-      19
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1636638",
+   "home": "3 de Noviembre",
+   "away": "SOL DE America",
+   "home_en": "3 de Noviembre",
+   "away_en": "SOL DE America",
+   "league": "Division Intermedia (Paraguay)",
+   "home_logo": "https://media.api-sports.io/football/teams/21374.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1177.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/251.png",
+   "score": "0-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 42
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 41
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+    ],
+    "pick": "away",
+    "confidence": 41,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      16
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1635855",
+   "home": "Imigresen",
+   "away": "Kedah",
+   "home_en": "Imigresen",
+   "away_en": "Kedah",
+   "league": "FA Cup (Malaysia)",
+   "home_logo": "https://media.api-sports.io/football/teams/10430.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2527.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/500.png",
+   "score": "0-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 46
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+    ],
+    "pick": "away",
+    "confidence": 46,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      24
      ],
      "h_sog": [
       0
@@ -186,10 +361,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/12272.png",
    "away_logo": "https://media.api-sports.io/football/teams/12271.png",
    "league_logo": "https://media.api-sports.io/football/leagues/571.png",
-   "score": "0-0",
-   "minute": 5,
+   "score": "1-0",
+   "minute": 14,
    "status": "1H",
-   "seen": "2026-09-08T13:06:46.975761+00:00",
+   "seen": "2026-09-08T13:16:33.073897+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -199,26 +374,26 @@
     "confidence": 68
    },
    "radar": {
-    "score": 18,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د5)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 68,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      5
+      14
      ],
      "danger": [
-      18
+      15
      ],
      "h_sog": [
       0
