@@ -1072,17 +1072,17 @@
    "pick": "home",
    "confidence": 47,
    "level": "red",
-   "score": 93,
-   "minute": 74,
+   "score": 99,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د74)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 45,
-   "score_xg": 67,
+   "score_xg": 73,
    "level_xg": "red",
    "sent_level": "red",
    "sent_score": 68,
@@ -1105,17 +1105,17 @@
    "pick": "home",
    "confidence": 37,
    "level": "red",
-   "score": 96,
-   "minute": 79,
+   "score": 100,
+   "minute": 89,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د79)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د89)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 36,
-   "score_xg": 70,
+   "score_xg": 76,
    "level_xg": "red",
    "sent_level": "red",
    "sent_score": 70,
@@ -1179,11 +1179,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 62,
-   "level": "amber",
-   "score": 61,
-   "minute": 78,
+   "level": "red",
+   "score": 67,
+   "minute": 88,
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د78)"
+    "النتيجة الحالية 2-3 تُسقط التوقع (د88)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1222,15 +1222,14 @@
    "pick": "away",
    "confidence": 55,
    "level": "amber",
-   "score": 52,
-   "minute": 52,
+   "score": 58,
+   "minute": 72,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د52)",
-    "ضغط هجومي متصاعد من المضيف"
+    "النتيجة الحالية 2-2 تُسقط التوقع (د72)"
    ],
    "alerted": null,
    "alert_minute": null,
-   "score_xg": 52,
+   "score_xg": 58,
    "level_xg": "amber"
   },
   {
@@ -1243,11 +1242,14 @@
    "mine": false,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "level": "red",
+   "score": 90,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د49)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د69)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1286,10 +1288,10 @@
    "pick": "home",
    "confidence": 55,
    "level": "amber",
-   "score": 58,
-   "minute": 73,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د73)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1307,10 +1309,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "red",
-   "score": 79,
-   "minute": 61,
+   "score": 85,
+   "minute": 71,
    "factors": [
-    "النتيجة الحالية 2-3 تُسقط التوقع (د61)",
+    "النتيجة الحالية 2-3 تُسقط التوقع (د71)",
     "موجة تسديد على المرمى من الضيف",
     "ضغط هجومي متصاعد من الضيف",
     "نقص عددي ضد الطرف المُختار (بطاقة حمراء)"
@@ -61606,6 +61608,93 @@
       "yc": 2,
       "rc": 0,
       "poss": 35
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1635652",
+   "date": "2026-09-08",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Borussia Dortmund",
+   "away": "Villarreal",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 49,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 7,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 4,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 59,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 9,
+      "yc": 1,
+      "cor": 4,
+      "rc": 0,
+      "poss": 57
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 5,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 43
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "sv": 4,
+      "shots": 10,
+      "yc": 1,
+      "cor": 5,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 5,
+      "sv": 1,
+      "shots": 11,
+      "yc": 2,
+      "cor": 6,
+      "rc": 0,
+      "poss": 45
      }
     }
    ]
