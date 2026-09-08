@@ -1134,16 +1134,16 @@
   },
   "2026-09-06": {
    "v1": {
-    "correct": 373,
-    "total": 963
+    "correct": 375,
+    "total": 967
    },
    "v2": {
     "correct": 450,
-    "total": 938,
+    "total": 942,
     "buckets": {
      "<50": {
       "correct": 340,
-      "total": 768
+      "total": 772
      },
      "50-59": {
       "correct": 73,
@@ -1162,7 +1162,35 @@
   },
   "2026-09-07": {
    "v1": {
-    "correct": 2,
+    "correct": 63,
+    "total": 143
+   },
+   "v2": {
+    "correct": 69,
+    "total": 143,
+    "buckets": {
+     "<50": {
+      "correct": 58,
+      "total": 123
+     },
+     "50-59": {
+      "correct": 10,
+      "total": 14
+     },
+     "70+": {
+      "correct": 0,
+      "total": 1
+     },
+     "60-69": {
+      "correct": 1,
+      "total": 5
+     }
+    }
+   }
+  },
+  "2026-09-08": {
+   "v1": {
+    "correct": 5,
     "total": 8
    },
    "v2": {
@@ -1170,31 +1198,31 @@
     "total": 8,
     "buckets": {
      "<50": {
-      "correct": 3,
-      "total": 7
+      "correct": 2,
+      "total": 5
      },
      "50-59": {
-      "correct": 1,
-      "total": 1
+      "correct": 2,
+      "total": 3
      }
     }
    }
   }
  },
  "meta": {
-  "updated": "2026-09-07T04:18:00.820517+00:00",
-  "lessons_stored": 30
+  "updated": "2026-09-08T04:43:48.973734+00:00",
+  "lessons_stored": 65
  },
  "integrity": {
   "resolved_counts": {
-   "v2": 6836,
-   "v1": 7851,
+   "v2": 6983,
+   "v1": 7998,
    "user": 4,
-   "history_days": 54,
-   "radar_resolved": 2538,
-   "radar_alerts_resolved": 208,
-   "scen_resolved": 271
+   "history_days": 55,
+   "radar_resolved": 2618,
+   "radar_alerts_resolved": 220,
+   "scen_resolved": 278
   },
-  "checked_on": "2026-09-07"
+  "checked_on": "2026-09-08"
  }
 }

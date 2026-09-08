@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T04:20:27.081083+00:00",
+ "updated": "2026-09-08T04:43:53.118489+00:00",
  "live": [],
  "upcoming": [
   {
@@ -4845,12 +4845,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1463,
-   "hit": 1302
+   "fired": 1468,
+   "hit": 1306
   },
   "amber": {
-   "fired": 1137,
-   "hit": 512
+   "fired": 1146,
+   "hit": 515
   },
   "alerts": {
    "flip": {
@@ -4870,18 +4870,18 @@
     "hit": 25
    },
    "red_advantage": {
-    "fired": 68,
-    "hit": 38
+    "fired": 71,
+    "hit": 40
    }
   },
   "season": {
    "red": {
-    "fired": 1139,
-    "hit": 1012
+    "fired": 1144,
+    "hit": 1016
    },
    "amber": {
-    "fired": 918,
-    "hit": 431
+    "fired": 927,
+    "hit": 434
    },
    "alerts": {
     "flip": {
@@ -4897,19 +4897,19 @@
      "hit": 19
     },
     "red_advantage": {
-     "fired": 66,
-     "hit": 37
+     "fired": 69,
+     "hit": 39
     }
    },
    "start": "2026-08-13"
   },
   "top_only": {
    "red": {
-    "fired": 310,
-    "hit": 260
+    "fired": 311,
+    "hit": 261
    },
    "amber": {
-    "fired": 151,
+    "fired": 153,
     "hit": 53
    },
    "alerts": {
@@ -4926,17 +4926,17 @@
      "hit": 11
     },
     "red_advantage": {
-     "fired": 28,
+     "fired": 29,
      "hit": 12
     }
    },
    "season": {
     "red": {
-     "fired": 310,
-     "hit": 260
+     "fired": 311,
+     "hit": 261
     },
     "amber": {
-     "fired": 151,
+     "fired": 153,
      "hit": 53
     },
     "alerts": {
@@ -4953,7 +4953,7 @@
       "hit": 11
      },
      "red_advantage": {
-      "fired": 28,
+      "fired": 29,
       "hit": 12
      }
     },
@@ -5060,6 +5060,10 @@
     "2026-09-07": {
      "hit": 7,
      "total": 10
+    },
+    "2026-09-08": {
+     "hit": 1,
+     "total": 3
     }
    }
   },
@@ -5211,10 +5215,6 @@
    "red_advantage"
   ],
   "daily_warnings": {
-   "2026-08-09": {
-    "hit": 65,
-    "total": 92
-   },
    "2026-08-10": {
     "hit": 40,
     "total": 67
@@ -5330,12 +5330,15 @@
    "2026-09-07": {
     "hit": 61,
     "total": 89
+   },
+   "2026-09-08": {
+    "hit": 7,
+    "total": 14
    }
   },
   "recent": [
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-07",
     "home": "Deportes Limache",
     "away": "Cobresal",
@@ -5345,6 +5348,8 @@
     "side": "home",
     "signal": null,
     "score_at": "0-0",
+    "final": "3-0",
+    "hit": true,
     "top": false
    },
    {
@@ -6144,7 +6149,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-07",
     "home": "Barracas Central",
     "away": "Argentinos JRS",
@@ -6153,11 +6157,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 45,
+    "final": "0-0",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-07",
     "home": "Deportes Limache",
     "away": "Cobresal",
@@ -6166,11 +6171,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 42,
+    "final": "3-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-07",
     "home": "UCV",
     "away": "Puerto Cabello",
@@ -6179,11 +6185,12 @@
     "minute": 90,
     "pick": "home",
     "conf": 36,
+    "final": "0-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-08",
     "home": "Emelec",
     "away": "Manta FC",
@@ -6193,11 +6200,12 @@
     "side": "home",
     "signal": null,
     "score_at": "0-0",
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-08",
     "home": "Orense SC",
     "away": "Guayaquil City FC",
@@ -6206,11 +6214,12 @@
     "minute": 84,
     "pick": "home",
     "conf": 52,
+    "final": "4-3",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-08",
     "home": "Mushuc Runa SC",
     "away": "Leones del Norte",
@@ -6219,11 +6228,12 @@
     "minute": 85,
     "pick": "home",
     "conf": 50,
+    "final": "1-1",
+    "hit": true,
     "top": false
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-08",
     "home": "Union Santa Fe",
     "away": "Instituto Cordoba",
@@ -6233,6 +6243,8 @@
     "side": "away",
     "signal": null,
     "score_at": "3-2",
+    "final": "3-2",
+    "hit": false,
     "top": true
    }
   ]
