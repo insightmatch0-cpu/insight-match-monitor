@@ -3289,8 +3289,14 @@
   "reports": [
    {
     "fid": "1493120",
-    "score": "",
-    "s1": {},
+    "score": "3-2",
+    "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 56,
+      "correct": true
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -3349,6 +3355,11 @@
     "fid": "1603018",
     "score": "0-2",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 72,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 71,
@@ -3419,6 +3430,11 @@
     "fid": "1570368",
     "score": "1-1",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 52,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 36,
@@ -3502,6 +3518,11 @@
     "fid": "1550109",
     "score": "1-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 58,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 44,
@@ -3566,6 +3587,11 @@
     "fid": "1603017",
     "score": "0-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 55,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 37,
@@ -4074,5 +4100,5 @@
   ]
  },
  "pred_updated": "2026-09-07T04:18:00.643837+00:00",
- "updated": "2026-09-08T04:06:46.599506+00:00"
+ "updated": "2026-09-08T04:11:26.485216+00:00"
 }
