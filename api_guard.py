@@ -90,7 +90,10 @@ class ApiRefused(RuntimeError):
     """رفض من مزوّد البيانات — ليس "يوماً هادئاً" ولا يُبتلع أبداً.
 
     kind: نوع العطل، ويحدد أيضاً مفتاح التهدئة في state.json:
-      - "quota"   : نفد الرصيد / حد الطلبات (429 أو كلمة مفتاحية في errors)
+      - "quota"   : نفد الرصيد / حد الطلبات اليومي (429 أو كلمة مفتاحية في errors)
+      - "rate"    : حد الطلبات **في الدقيقة** — عابر، يُعاد بعد مهلة ولا يصرخ
+                    (إصلاح 2026-09-08: كان يُصنَّف quota فيوقظ المالك بإنذار
+                    «نفد الرصيد» والرصيد اليومي سليم)
       - "plan"    : قيد خطة أو اشتراك منتهٍ
       - "auth"    : مفتاح مرفوض (401/403)
       - "http"    : بقية أخطاء 4xx/5xx
@@ -107,6 +110,17 @@ class ApiRefused(RuntimeError):
 # بقية الأنواع (http عابر مثلاً) تُرفع استثناءً وتُلوّن التشغيلة بالأحمر بلا
 # إغراق رسائل: خطأ شبكة عابر لا يستحق إيقاظ المالك.
 SCREAMING_KINDS = ("quota", "plan", "auth")
+
+# حد الطلبات في الدقيقة (Pro: حد دقيقي منفصل عن سقف اليوم): يُعاد النداء بعد
+# مهلة قصيرة بدل إسقاط السياق — الإثراء الصباحي يطلق مئات النداءات دفعة واحدة.
+RATE_LIMIT_RETRIES = 2
+RATE_LIMIT_BACKOFF_SECONDS = (2, 5)
+
+
+def _sleep(seconds: float) -> None:
+    """غلاف قابل للاستبدال في الاختبارات."""
+    import time
+    time.sleep(seconds)
 
 # ما المطلوب من المالك بالضبط لكل نوع — الرسالة تخبره بالإجراء، لا بالعطل فقط
 OWNER_ACTION = {
@@ -661,7 +675,9 @@ def classify_errors(errors) -> tuple:
     text = json.dumps(errors, ensure_ascii=False)
     low = text.lower()
     kind = "api"
-    if "requests" in low or "limit" in low or "rate" in low:
+    if "per minute" in low or "ratelimit" in low:
+        kind = "rate"                     # عابر — يُعاد بعد مهلة، لا يصرخ
+    elif "requests" in low or "limit" in low or "rate" in low:
         kind = "quota"
     elif "plan" in low or "subscription" in low:
         kind = "plan"
@@ -687,6 +703,8 @@ def refusal_is_screaming(kind: str, text: str = "") -> bool:
     نعم لعائلة "الحساب مات" (رصيد/خطة/مفتاح)، أو حين يحمل نص الرد إحدى
     الكلمات المفتاحية الصريحة (requests / plan / limit / subscription).
     """
+    if kind == "rate":
+        return False                      # حد الدقيقة عابر بالتعريف — لا إيقاظ
     if kind in SCREAMING_KINDS:
         return True
     low = str(text or "").lower()
@@ -698,6 +716,7 @@ def build_refusal_message(component: str, kind: str, detail: str,
     """رسالة عربية صريحة: نوع العطل + المكوّن المتأثر + المطلوب من المالك."""
     titles = {
         "quota": "🚨 نفد رصيد API-Football (حد الطلبات اليومي)",
+        "rate": "⏳ حد الطلبات في الدقيقة (عابر)",
         "plan": "🚨 قيد خطة في API-Football — الاشتراك غالباً منتهٍ",
         "auth": "🚨 مفتاح API-Football مرفوض",
         "http": "🚨 مزوّد البيانات يرفض الطلبات",
@@ -816,6 +835,19 @@ def quota_line(state: dict = None) -> str:
 
 
 # ================== الاستدعاء المحروس ==================
+def _is_per_minute_limit(resp) -> bool:
+    """هل هذا الرد رفضُ «حد الطلبات في الدقيقة»؟ (يُقرأ من نص الرد أياً كان الكود)."""
+    try:
+        body = resp.json()
+    except Exception:
+        return False
+    if not isinstance(body, dict):
+        return False
+    errors = body.get("errors")
+    _, kind, _ = classify_errors(errors if errors else (body if body.get("rateLimit") else None))
+    return kind == "rate"
+
+
 def guarded_get(url: str, headers: dict, component: str, timeout: int = 30) -> list:
     """نداء API-Football واحد، محروساً — القلب المشترك بين المحركين.
 
@@ -825,10 +857,15 @@ def guarded_get(url: str, headers: dict, component: str, timeout: int = 30) -> l
       • errors غير فارغة، أو 4xx/5xx، أو حد طلبات، أو قيد خطة → **رفض**،
         يُرفع ApiRefused مصنَّفاً ولا يُبتلع أبداً.
     """
-    resp = requests.get(url, headers=headers, timeout=timeout)
-
-    # عدّاد الرصيد يُقرأ من كل رد — حتى رد الرفض يحمل الترويسات وهو أهمها
-    read_quota(getattr(resp, "headers", {}) or {})
+    resp = None
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        resp = requests.get(url, headers=headers, timeout=timeout)
+        # عدّاد الرصيد يُقرأ من كل رد — حتى رد الرفض يحمل الترويسات وهو أهمها
+        read_quota(getattr(resp, "headers", {}) or {})
+        if not _is_per_minute_limit(resp) or attempt >= RATE_LIMIT_RETRIES:
+            break
+        # حد الدقيقة: مهلة قصيرة ثم إعادة — السياق أثمن من ثانيتين
+        _sleep(RATE_LIMIT_BACKOFF_SECONDS[min(attempt, len(RATE_LIMIT_BACKOFF_SECONDS) - 1)])
 
     refused, kind = classify_status(getattr(resp, "status_code", None))
     if refused:
@@ -841,6 +878,8 @@ def guarded_get(url: str, headers: dict, component: str, timeout: int = 30) -> l
         _, body_kind, _ = classify_errors(detail if detail else None)
         if kind == "http" and body_kind in ("quota", "plan", "auth"):
             kind = body_kind
+        if body_kind == "rate":
+            kind = "rate"
         handle_refusal(component, kind, detail, status=resp.status_code)
         if not _flag("API_REFUSAL_STRICT"):
             return []

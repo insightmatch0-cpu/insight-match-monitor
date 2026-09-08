@@ -573,3 +573,62 @@ class TestPartialCreditRefusalIsLoud(unittest.TestCase):
         body = src[i:]
         self.assertLess(body.index("exit_if_claude_refused("),
                         body.index("api_guard.exit_if_owner_unreachable()"))
+
+
+# ================== (و) حد الدقيقة ليس نفاد رصيد (2026-09-08) ==================
+class TestPerMinuteRateLimit(GuardHarness):
+    """حادثة 2026-09-08: الإثراء الصباحي لامس حد الطلبات في الدقيقة، فصُنّف
+    «quota» وأيقظ المالك بإنذار «نفد رصيد API-Football» والرصيد اليومي 6,277.
+    حد الدقيقة عابر: يُعاد النداء بعد مهلة، ولا يصرخ أبداً."""
+
+    RATE = {"get": "transfers", "response": [],
+            "errors": {"rateLimit": "Too many requests. You have exceeded the "
+                       "limit of requests per minute of your subscription."}}
+
+    def setUp(self):
+        super().setUp()
+        self.slept = []
+        orig = G._sleep
+        G._sleep = lambda s: self.slept.append(s)
+        self.addCleanup(lambda: setattr(G, "_sleep", orig))
+
+    def test_classified_as_rate_not_quota(self):
+        refused, kind, _ = G.classify_errors(self.RATE["errors"])
+        self.assertTrue(refused)
+        self.assertEqual(kind, "rate")
+        # الحد اليومي يبقى quota — الحارس الأصلي لم يضعف
+        _, daily, _ = G.classify_errors(
+            {"requests": "You have reached the request limit for the day"})
+        self.assertEqual(daily, "quota")
+
+    def test_retried_after_backoff_and_returns_data(self):
+        self.responses.append(FakeResponse(self.RATE, 200, PRO_HEADERS))
+        self.responses.append(FakeResponse({"response": [{"id": 1}], "errors": []},
+                                           200, PRO_HEADERS))
+        out = G.guarded_get("https://example.invalid/x", {}, "اختبار")
+        self.assertEqual(out, [{"id": 1}])
+        self.assertEqual(len(self.requested), 2)
+        self.assertEqual(self.slept, [G.RATE_LIMIT_BACKOFF_SECONDS[0]])
+        self.assertEqual(self.sent, [])
+
+    def test_exhausted_retries_raise_rate_without_screaming(self):
+        for _ in range(G.RATE_LIMIT_RETRIES + 1):
+            self.responses.append(FakeResponse(self.RATE, 200, PRO_HEADERS))
+        with self.assertRaises(G.ApiRefused) as ctx:
+            G.guarded_get("https://example.invalid/x", {}, "اختبار")
+        self.assertEqual(ctx.exception.kind, "rate")
+        self.assertEqual(len(self.requested), G.RATE_LIMIT_RETRIES + 1)
+        self.assertEqual(self.sent, [], "حد الدقيقة لا يوقظ المالك أبداً")
+        self.assertNotIn("quota", self.read_state().get("api_alerts", {}))
+
+    def test_http_429_with_per_minute_body_is_rate(self):
+        for _ in range(G.RATE_LIMIT_RETRIES + 1):
+            self.responses.append(FakeResponse(self.RATE, 429, PRO_HEADERS))
+        with self.assertRaises(G.ApiRefused) as ctx:
+            G.guarded_get("https://example.invalid/x", {}, "اختبار")
+        self.assertEqual(ctx.exception.kind, "rate")
+        self.assertEqual(self.sent, [])
+
+    def test_rate_never_screams(self):
+        self.assertFalse(G.refusal_is_screaming("rate", json.dumps(self.RATE["errors"])))
+        self.assertTrue(G.refusal_is_screaming("quota", ""))
