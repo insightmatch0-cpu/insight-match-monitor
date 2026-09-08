@@ -1038,18 +1038,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 41,
-   "level": "amber",
-   "score": 59,
-   "minute": 50,
+   "level": "red",
+   "score": 85,
+   "minute": 60,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د50)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د60)",
+    "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
-   "score_xg": 50,
-   "level_xg": "amber"
+   "alerted": true,
+   "alert_minute": 60,
+   "score_xg": 63,
+   "level_xg": "amber",
+   "sent_level": "red",
+   "sent_score": 85,
+   "sent_minute": 60,
+   "sent_factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د60)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   },
   {
    "fid": "1563154",
@@ -1062,17 +1072,17 @@
    "pick": "home",
    "confidence": 47,
    "level": "red",
-   "score": 68,
-   "minute": 45,
+   "score": 73,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د54)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 45,
-   "score_xg": 42,
+   "score_xg": 47,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 68,
@@ -1095,17 +1105,17 @@
    "pick": "home",
    "confidence": 37,
    "level": "red",
-   "score": 78,
-   "minute": 49,
+   "score": 84,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د49)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د59)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
    "alert_minute": 36,
-   "score_xg": 52,
+   "score_xg": 58,
    "level_xg": "amber",
    "sent_level": "red",
    "sent_score": 70,
@@ -1128,10 +1138,10 @@
    "pick": "home",
    "confidence": 63,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 47,
+   "minute": 54,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د54)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1149,10 +1159,10 @@
    "pick": "home",
    "confidence": 62,
    "level": "amber",
-   "score": 45,
-   "minute": 50,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د50)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1170,10 +1180,10 @@
    "pick": "home",
    "confidence": 62,
    "level": "amber",
-   "score": 43,
-   "minute": 48,
+   "score": 49,
+   "minute": 58,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د48)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د58)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1191,10 +1201,10 @@
    "pick": "home",
    "confidence": 58,
    "level": "amber",
-   "score": 45,
-   "minute": 51,
+   "score": 51,
+   "minute": 60,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د51)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د60)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1259,6 +1269,27 @@
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1588342",
+   "date": "2026-09-08",
+   "home": "Dagenham & Redbridge",
+   "away": "Dover",
+   "league": "National League - South (England)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 55,
+   "level": "amber",
+   "score": 46,
+   "minute": 53,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د53)"
    ],
    "alerted": null,
    "alert_minute": null,
