@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08T12:06:47.373971+00:00",
+ "updated": "2026-09-08T12:16:39.845605+00:00",
  "live": [
   {
    "fid": "1507058",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2745.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
    "score": "2-1",
-   "minute": 79,
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-09-08T12:06:45.359301+00:00",
+   "seen": "2026-09-08T12:16:37.380966+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 58
@@ -40,7 +40,7 @@
     "top": false,
     "trend": {
      "min": [
-      79
+      89
      ],
      "danger": [
       15
@@ -49,13 +49,13 @@
       2
      ],
      "a_sog": [
-      3
+      4
      ],
      "h_cor": [
       5
      ],
      "a_cor": [
-      1
+      2
      ]
     }
    }
@@ -70,10 +70,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2767.png",
    "away_logo": "https://media.api-sports.io/football/teams/2766.png",
    "league_logo": "https://media.api-sports.io/football/leagues/292.png",
-   "score": "0-0",
-   "minute": 79,
+   "score": "1-0",
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-09-08T12:06:45.359301+00:00",
+   "seen": "2026-09-08T12:16:37.380966+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 62
@@ -83,35 +83,94 @@
     "confidence": 47
    },
    "radar": {
-    "score": 62,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د79)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 47,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      79
+      89
      ],
      "danger": [
-      62
+      15
      ],
      "h_sog": [
-      0
+      1
      ],
      "a_sog": [
       0
      ],
      "h_cor": [
       2
+     ],
+     "a_cor": [
+      5
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1552155",
+   "home": "Utrecht",
+   "away": "GO Ahead Eagles",
+   "home_en": "Utrecht",
+   "away_en": "GO Ahead Eagles",
+   "league": "Eredivisie (Netherlands)",
+   "home_logo": "https://media.api-sports.io/football/teams/207.png",
+   "away_logo": "https://media.api-sports.io/football/teams/410.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/88.png",
+   "score": "2-3",
+   "minute": 79,
+   "status": "2H",
+   "seen": "2026-09-08T12:16:37.380966+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 39
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 39,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      79
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      5
+     ],
+     "a_sog": [
+      7
+     ],
+     "h_cor": [
+      6
      ],
      "a_cor": [
       4
@@ -130,9 +189,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3819.png",
    "league_logo": "https://media.api-sports.io/football/leagues/196.png",
    "score": "0-1",
-   "minute": 48,
+   "minute": 58,
    "status": "2H",
-   "seen": "2026-09-08T12:06:45.359301+00:00",
+   "seen": "2026-09-08T12:16:37.380966+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 48
@@ -159,7 +218,7 @@
     "trend": {
      "min": [
       37,
-      48
+      58
      ],
      "danger": [
       15,
@@ -179,6 +238,65 @@
      ],
      "a_cor": [
       0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1635874",
+   "home": "Bazys",
+   "away": "Mayak Sarny",
+   "home_en": "Bazys",
+   "away_en": "Mayak Sarny",
+   "league": "Cup (Ukraine)",
+   "home_logo": "https://media.api-sports.io/football/teams/28181.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26388.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/335.png",
+   "score": "0-1",
+   "minute": 13,
+   "status": "1H",
+   "seen": "2026-09-08T12:16:37.380966+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 51
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 37
+   },
+   "radar": {
+    "score": 22,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-1 تُسقط التوقع (د13)"
+    ],
+    "pick": "home",
+    "confidence": 37,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      13
+     ],
+     "danger": [
+      22
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
       0
      ]
     }
@@ -4372,20 +4490,6 @@
    "pick": "home",
    "confidence": 54,
    "kickoff": "2026-09-05T22:00:00+00:00",
-   "awaiting": true
-  },
-  {
-   "date": "2026-09-05",
-   "home": "أوتريخت",
-   "away": "غو أهيد إيغلز",
-   "home_en": "Utrecht",
-   "away_en": "GO Ahead Eagles",
-   "league": "الدرجة الأولى الهولندية",
-   "home_logo": "https://media.api-sports.io/football/teams/207.png",
-   "away_logo": "https://media.api-sports.io/football/teams/410.png",
-   "pick": "home",
-   "confidence": 58,
-   "kickoff": "2026-09-05T16:45:00+00:00",
    "awaiting": true
   },
   {
