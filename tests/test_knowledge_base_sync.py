@@ -48,6 +48,8 @@ def _fact_table():
         ("حصة تقارير الظل", M.SHADOW_REPORTS_PER_DAY,
          [f"الـ<span class=\"num\">{M.SHADOW_REPORTS_PER_DAY}</span> كلها",
           f"حصص التقارير الـ{M.SHADOW_REPORTS_PER_DAY}"]),
+        ("سقف الذهبية الخفيفة بلا مرساة", P.GOLD_CHECK_CAP,
+         [f"الثقة إلى <span class=\"num\">{P.GOLD_CHECK_CAP}</span>"]),
         ("حارس العينة المفلترة", P.MIN_FILTERED_SAMPLE,
          [f"{P.MIN_FILTERED_SAMPLE}</span> عيّنة", f"{P.MIN_FILTERED_SAMPLE} عيّنة",
           f"من {P.MIN_FILTERED_SAMPLE}"]),
