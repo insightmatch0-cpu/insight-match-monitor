@@ -29,35 +29,6 @@
    "ar_away": "شافيش",
    "ar_league": "الدوري البرتغالي الدرجة الثانية"
   },
-  "1592207": {
-   "fid": "1592207",
-   "kickoff": "2026-09-06T13:00:00+00:00",
-   "date": "2026-09-06",
-   "home": "Maaslingen",
-   "away": "SpVgg Herne Horsthausen",
-   "home_id": 28002,
-   "away_id": 28001,
-   "home_logo": "https://media.api-sports.io/football/teams/28002.png",
-   "away_logo": "https://media.api-sports.io/football/teams/28001.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/747.png",
-   "league": "Oberliga - Westfalen (Germany)",
-   "league_id": 747,
-   "season": 2026,
-   "round": "Westfalen - 5",
-   "venue": "Germany",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 38,
-   "prob_home": 38,
-   "prob_draw": 30,
-   "prob_away": 32,
-   "reason": "دوري هواة قليل البيانات وفارق المستوى غير واضح مع أفضلية أرض محدودة",
-   "ar_home": "ماسلينغن",
-   "ar_away": "هيرنه هورستهاوزن",
-   "ar_league": "أوبرليغا فيستفالن الألماني"
-  },
   "1626175": {
    "fid": "1626175",
    "kickoff": "2026-09-06T13:00:00+00:00",
@@ -86,64 +57,6 @@
    "ar_home": "مونتيكيو غالو",
    "ar_away": "سانتيجيدييزي",
    "ar_league": "الدرجة الرابعة الإيطالية - المجموعة F"
-  },
-  "1592211": {
-   "fid": "1592211",
-   "kickoff": "2026-09-06T13:30:00+00:00",
-   "date": "2026-09-06",
-   "home": "TuS Hordel",
-   "away": "Arminia II",
-   "home_id": 27324,
-   "away_id": 26186,
-   "home_logo": "https://media.api-sports.io/football/teams/27324.png",
-   "away_logo": "https://media.api-sports.io/football/teams/26186.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/747.png",
-   "league": "Oberliga - Westfalen (Germany)",
-   "league_id": 747,
-   "season": 2026,
-   "round": "Westfalen - 5",
-   "venue": "Germany",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "away",
-   "confidence": 43,
-   "prob_home": 30,
-   "prob_draw": 27,
-   "prob_away": 43,
-   "reason": "رديف بيليفيلد يضم شباناً بجودة فنية أعلى من إمكانات هورديل",
-   "ar_home": "توس هورديل",
-   "ar_away": "أرمينيا بيليفيلد الرديف",
-   "ar_league": "أوبرليغا فيستفالن الألمانية"
-  },
-  "1630301": {
-   "fid": "1630301",
-   "kickoff": "2026-09-06T18:00:00+00:00",
-   "date": "2026-09-06",
-   "home": "Panambi",
-   "away": "SC Rio Grande",
-   "home_id": 28277,
-   "away_id": 25080,
-   "home_logo": "https://media.api-sports.io/football/teams/28277.png",
-   "away_logo": "https://media.api-sports.io/football/teams/25080.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1150.png",
-   "league": "Gaúcho - 3 (Brazil)",
-   "league_id": 1150,
-   "season": 2026,
-   "round": "Regular Season - 1",
-   "venue": "Brazil",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 38,
-   "prob_home": 38,
-   "prob_draw": 30,
-   "prob_away": 32,
-   "reason": "ريو غراندي أعرق تاريخياً مع تقارب يجعل الحسم صعباً",
-   "ar_home": "بانامبي",
-   "ar_away": "ريو غراندي",
-   "ar_league": "دوري غاوتشو الثالث البرازيلي"
   },
   "1605070": {
    "fid": "1605070",
@@ -191603,24 +191516,105 @@
    "actual": "home",
    "score": "1-0",
    "correct": true
+  },
+  {
+   "fid": "1592207",
+   "date": "2026-09-06",
+   "home": "Maaslingen",
+   "away": "SpVgg Herne Horsthausen",
+   "ar_home": "ماسلينغن",
+   "ar_away": "هيرنه هورستهاوزن",
+   "home_logo": "https://media.api-sports.io/football/teams/28002.png",
+   "away_logo": "https://media.api-sports.io/football/teams/28001.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/747.png",
+   "league": "Oberliga - Westfalen (Germany)",
+   "ar_league": "أوبرليغا فيستفالن الألماني",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "prob_home": 38,
+   "prob_draw": 30,
+   "prob_away": 32,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "دوري هواة قليل البيانات وفارق المستوى غير واضح مع أفضلية أرض محدودة",
+   "actual": "home",
+   "score": "2-0",
+   "correct": true
+  },
+  {
+   "fid": "1592211",
+   "date": "2026-09-06",
+   "home": "TuS Hordel",
+   "away": "Arminia II",
+   "ar_home": "توس هورديل",
+   "ar_away": "أرمينيا بيليفيلد الرديف",
+   "home_logo": "https://media.api-sports.io/football/teams/27324.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26186.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/747.png",
+   "league": "Oberliga - Westfalen (Germany)",
+   "ar_league": "أوبرليغا فيستفالن الألمانية",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 43,
+   "prob_home": 30,
+   "prob_draw": 27,
+   "prob_away": 43,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "رديف بيليفيلد يضم شباناً بجودة فنية أعلى من إمكانات هورديل",
+   "actual": "away",
+   "score": "1-3",
+   "correct": true
+  },
+  {
+   "fid": "1630301",
+   "date": "2026-09-06",
+   "home": "Panambi",
+   "away": "SC Rio Grande",
+   "ar_home": "بانامبي",
+   "ar_away": "ريو غراندي",
+   "home_logo": "https://media.api-sports.io/football/teams/28277.png",
+   "away_logo": "https://media.api-sports.io/football/teams/25080.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1150.png",
+   "league": "Gaúcho - 3 (Brazil)",
+   "ar_league": "دوري غاوتشو الثالث البرازيلي",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "prob_home": 38,
+   "prob_draw": 30,
+   "prob_away": 32,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "reason": "ريو غراندي أعرق تاريخياً مع تقارب يجعل الحسم صعباً",
+   "actual": "home",
+   "score": "4-0",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-09-09T04:36:21.805696+00:00",
+  "last_run": "2026-09-09T06:48:18.845523+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 3463,
-    "total": 7182
+    "correct": 3466,
+    "total": 7185
    },
    "top_leagues": {
     "correct": 360,
     "total": 733
    },
    "other_leagues": {
-    "correct": 3103,
-    "total": 6449
+    "correct": 3106,
+    "total": 6452
    },
    "by_confidence": {
     "70+": {
@@ -191636,13 +191630,13 @@
      "total": 1273
     },
     "<50": {
-     "correct": 2338,
-     "total": 5351
+     "correct": 2341,
+     "total": 5354
     }
    },
    "last30": {
-    "correct": 2897,
-    "total": 6036
+    "correct": 2900,
+    "total": 6039
    },
    "daily": {
     "2026-08-11": {
@@ -191750,8 +191744,8 @@
      "total": 383
     },
     "2026-09-06": {
-     "correct": 451,
-     "total": 945
+     "correct": 454,
+     "total": 948
     },
     "2026-09-07": {
      "correct": 69,
@@ -191768,16 +191762,16 @@
    },
    "season": {
     "overall": {
-     "correct": 2707,
-     "total": 5657
+     "correct": 2710,
+     "total": 5660
     },
     "top_leagues": {
      "correct": 312,
      "total": 628
     },
     "other_leagues": {
-     "correct": 2395,
-     "total": 5029
+     "correct": 2398,
+     "total": 5032
     },
     "by_confidence": {
      "70+": {
@@ -191793,8 +191787,8 @@
       "total": 1014
      },
      "<50": {
-      "correct": 1827,
-      "total": 4191
+      "correct": 1830,
+      "total": 4194
      }
     },
     "start": "2026-08-13"
@@ -192150,7 +192144,7 @@
     "disagree": 74
    }
   },
-  "claude_refused": 32,
-  "claude_refused_at": "2026-09-09T04:36:21.805710+00:00"
+  "claude_refused": 31,
+  "claude_refused_at": "2026-09-09T06:48:18.845537+00:00"
  }
 }
