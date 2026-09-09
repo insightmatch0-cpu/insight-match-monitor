@@ -137,6 +137,16 @@ ENRICH_TOP_ONLY       = True
 # لا يغيّر الطرف المُختار، ولا يمسّ التعلّم. للتعطيل الفوري: False.
 CUP_GUARDRAIL         = True
 CUP_CONF_CAP          = 65    # أقصى ثقة مسموحة في مباريات الكأس/الإقصاء
+# 🥇 HOLD-016 أ (قرار المالك 2026-09-09 — RND-027): الذهبية (≥70) لا تُمنح بلا
+# مرساة سوق. التوقع الخفيف (بلا إثراء) بثقة ≥70 يستدعي نداء أودز واحداً:
+# غياب السوق أو احتمال ضمني للاختيار < GOLD_MARKET_MIN ⇒ الثقة تُخفَّض إلى
+# GOLD_CHECK_CAP — الاختيار لا يتغير أبداً (نمط حارس الكأس). القياس: ذهبية
+# مُخصَّبة 31/34 = 91% مقابل خفيفة 27/39 = 69% منذ 08-13. صفر Claude.
+GOLD_MARKET_CHECK     = True
+GOLD_MARKET_MIN       = 70    # أدنى احتمال سوقي ضمني للاختيار يستحق الذهبية
+GOLD_CHECK_CAP        = 69    # الثقة بعد التخفيض — تحت عتبة الخانة مباشرة
+GOLD_CHECK_MAX_CALLS  = 15    # سقف نداءات الأودز لهذا الحارس في التشغيلة
+GOLD_CHECK_STATS      = {"checked": 0, "kept": 0, "capped": 0, "no_market": 0}
 CUP_MIN_DRAW          = 25    # أدنى احتمال تعادل نفرضه في مباريات الكأس/الإقصاء
 MAX_LESSONS_IN_PROMPT = 15    # أحدث الدروس التي تُحقن في كل توقع
 MAX_LESSONS_STORED    = 100   # أقصى دروس محفوظة في lessons_v2.json
@@ -1258,10 +1268,10 @@ def injuries_context(m: dict, budget: dict) -> str:
     return ("Injuries/absences: " + "; ".join(lines)) if lines else ""
 
 
-def odds_context(m: dict, budget: dict) -> str:
-    """أودز السوق (إجماع المراهنين) لنتيجة المباراة، مع الاحتمالات الضمنية
-    بعد إزالة هامش الشركة — أقوى إشارة منفردة متاحة."""
-    for entry in _enrich_call(f"odds?fixture={m['fid']}", budget):
+def parse_market(rows: list):
+    """يستخرج أول أودز «Match Winner» من رد odds?fixture= ويحوّلها احتمالات
+    ضمنية بعد إزالة الهامش. يرجع (ph, pd, pa, oh, od, oa, bookmaker) أو None."""
+    for entry in rows or []:
         for bm in (entry.get("bookmakers") or []):
             for bet in (bm.get("bets") or []):
                 if (bet.get("name") or "").lower() != "match winner":
@@ -1276,14 +1286,24 @@ def odds_context(m: dict, budget: dict) -> str:
                 inv = [1 / oh, 1 / od, 1 / oa]
                 s = sum(inv)
                 ph, pd, pa = (round(100 * x / s) for x in inv)
-                # نخزّن احتمالات السوق على المباراة نفسها → تنتقل تلقائياً إلى
-                # سجل pending (شريحة "المحرك ضد السوق" على اللوحة + قياس مستقبلي)
-                m["mkt_home"], m["mkt_draw"], m["mkt_away"] = ph, pd, pa
-                return (
-                    f"Market odds ({bm.get('name', '?')}): home {oh} / draw {od} / away {oa}"
-                    f" => implied probabilities {ph}% / {pd}% / {pa}%"
-                )
-    return ""
+                return ph, pd, pa, oh, od, oa, bm.get("name", "?")
+    return None
+
+
+def odds_context(m: dict, budget: dict) -> str:
+    """أودز السوق (إجماع المراهنين) لنتيجة المباراة، مع الاحتمالات الضمنية
+    بعد إزالة هامش الشركة — أقوى إشارة منفردة متاحة."""
+    parsed = parse_market(_enrich_call(f"odds?fixture={m['fid']}", budget))
+    if not parsed:
+        return ""
+    ph, pd, pa, oh, od, oa, name = parsed
+    # نخزّن احتمالات السوق على المباراة نفسها → تنتقل تلقائياً إلى
+    # سجل pending (شريحة "المحرك ضد السوق" على اللوحة + قياس مستقبلي)
+    m["mkt_home"], m["mkt_draw"], m["mkt_away"] = ph, pd, pa
+    return (
+        f"Market odds ({name}): home {oh} / draw {od} / away {oa}"
+        f" => implied probabilities {ph}% / {pd}% / {pa}%"
+    )
 
 
 def api_prediction_context(m: dict, budget: dict) -> str:
@@ -1761,6 +1781,64 @@ def apply_cup_guardrail(entry: dict) -> None:
         entry["pick"] = max(("home", "draw", "away"), key=lambda k: probs[k])
     # سقّف الثقة (الطرف المُختار ثابت)
     entry["confidence"] = max(30, min(CUP_CONF_CAP, int(entry["prob_" + entry["pick"]])))
+
+
+def apply_gold_market_check(entry: dict, enriched: bool, budget: dict,
+                            fetch=None, stats: dict = None) -> str:
+    """🥇 التحقق السوقي قبل الذهبية (HOLD-016 أ — قرار المالك 2026-09-09).
+
+    يعمل بعد النموذج على التوقع **الخفيف** (بلا إثراء) بثقة ≥70 فقط: نداء
+    أودز واحد؛ إن وُجد سوق واحتمالُه الضمني للاختيار ≥ GOLD_MARKET_MIN تُبقى
+    الذهبية كما هي (وتُخزَّن احتمالات السوق على الصف فتصير قابلة للقياس)،
+    وإلا تُخفَّض الثقة إلى GOLD_CHECK_CAP. **الاختيار لا يتغير أبداً** (نمط
+    حارس الكأس)، والاحتمالات الثلاثة لا تُمس، والمعايرة/الدروس تتعلمان من
+    النتيجة كالمعتاد. غياب السوق = لا مرساة = تخفيض (مقصود — RND-027:
+    الذهبية الخفيفة 69% مقابل المُخصَّبة 91%). يرجع وسماً يُحفظ في الصف
+    (`gold_check`) لقياس «المتوقع مقابل المقاس». للتعطيل: GOLD_MARKET_CHECK=False."""
+    stats = GOLD_CHECK_STATS if stats is None else stats
+    if not GOLD_MARKET_CHECK or enriched:
+        return ""
+    try:
+        conf = int(entry.get("confidence") or 0)
+    except (TypeError, ValueError):
+        return ""
+    if conf < 70:
+        return ""
+    stats["checked"] += 1
+    if stats["checked"] > GOLD_CHECK_MAX_CALLS:
+        tag = "capped:budget"                 # بلا نداء = بلا مرساة = تخفيض
+    else:
+        fetch = fetch or (lambda fid: _enrich_call(f"odds?fixture={fid}", budget))
+        try:
+            parsed = parse_market(fetch(entry.get("fid")))
+        except Exception as e:                # الحارس لا يُسقط التشغيلة أبداً
+            print("فشل التحقق السوقي:", e)
+            parsed = None
+        if parsed:
+            ph, pd, pa = parsed[0], parsed[1], parsed[2]
+            entry["mkt_home"], entry["mkt_draw"], entry["mkt_away"] = ph, pd, pa
+            mkt_pick = {"home": ph, "draw": pd, "away": pa}.get(entry.get("pick"), 0)
+            tag = "kept" if mkt_pick >= GOLD_MARKET_MIN else f"capped:market_{mkt_pick}"
+        else:
+            tag = "capped:no_market"
+    if tag.startswith("capped"):
+        entry["confidence"] = min(conf, GOLD_CHECK_CAP)
+        stats["capped"] += 1
+        if tag == "capped:no_market":
+            stats["no_market"] += 1
+    else:
+        stats["kept"] += 1
+    entry["gold_check"] = tag
+    return tag
+
+
+def gold_check_line() -> str:
+    """سطر النشرة: كم ذهبية خفيفة فُحصت وكم أُبقيت أو خُفِّضت (رؤية يومية إلزامية)."""
+    st = GOLD_CHECK_STATS
+    if not GOLD_MARKET_CHECK or not st["checked"]:
+        return ""
+    return (f"🥇 التحقق السوقي: {st['checked']} ذهبية خفيفة — أُبقيت "
+            f"{st['kept']} وخُفِّضت {st['capped']} (بلا سوق {st['no_market']})")
 
 
 # ================== ملخص تيليجرام ==================
@@ -2758,6 +2836,7 @@ def main() -> None:
                 entry = {k: v for k, v in m.items() if k != "context"}
                 entry.update(r)
                 apply_cup_guardrail(entry)   # سقف ثقة الكأس/الإقصاء
+                apply_gold_market_check(entry, is_enriched, budget)   # 🥇 HOLD-016 أ
                 store["pending"][m["fid"]] = entry
                 new_preds.append(entry)
             # 💾 نقطة حفظ بعد كل دفعة (حادثة 2026-09-06: تشغيلتان متتاليتان أُلغيتا
@@ -2780,6 +2859,8 @@ def main() -> None:
     }
     save_json(PREDICTIONS_FILE, store)
     print(f"تم حفظ {len(new_preds)} توقعاً جديداً للمحرك 2.")
+    if gold_check_line():
+        print(gold_check_line())
     # ⛔ صفر توقعات مع مرشحين موجودين = رفض Claude شامل (رصيد غالباً) —
     # تشغيلة حمراء عمداً كي يظهر العطل في Actions لا أن يمر أخضر صامتاً
     # (فجوة صبيحة 2026-08-17). التقييم والحفظ أعلاه اكتملا قبل هذا السطر.
@@ -2832,6 +2913,9 @@ def main() -> None:
         cost = claude_cost_line()
         if cost:
             digest += "\n" + cost
+        gold = gold_check_line()
+        if gold:
+            digest += "\n" + gold
         shed = load_shed_line()
         if shed:
             digest += "\n" + shed
