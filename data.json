@@ -1,73 +1,6 @@
 {
- "updated": "2026-09-10T12:06:53.444749+00:00",
+ "updated": "2026-09-10T12:16:42.497759+00:00",
  "live": [
-  {
-   "fid": "1635897",
-   "home": "Dinamo Barnaul",
-   "away": "Chelyabinsk",
-   "home_en": "Dinamo Barnaul",
-   "away_en": "Chelyabinsk",
-   "league": "Cup (Russia)",
-   "home_logo": "https://media.api-sports.io/football/teams/6794.png",
-   "away_logo": "https://media.api-sports.io/football/teams/6790.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/237.png",
-   "score": "0-2",
-   "minute": 90,
-   "status": "2H",
-   "seen": "2026-09-10T12:00:38.978279+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 49
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 48
-   },
-   "radar": {
-    "score": 26,
-    "level": "green",
-    "factors": [
-     "موجة تسديد على المرمى من المضيف",
-     "موجة ركنيات لصالح المضيف",
-     "ضغط هجومي متصاعد من المضيف"
-    ],
-    "pick": "away",
-    "confidence": 48,
-    "drama": {
-     "signal": 50,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      31,
-      90
-     ],
-     "danger": [
-      33,
-      26
-     ],
-     "h_sog": [
-      0,
-      3
-     ],
-     "a_sog": [
-      0,
-      4
-     ],
-     "h_cor": [
-      0,
-      5
-     ],
-     "a_cor": [
-      2,
-      4
-     ]
-    }
-   }
-  },
   {
    "fid": "1534852",
    "home": "Sport Academy Kairat",
@@ -78,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4556.png",
    "away_logo": "https://media.api-sports.io/football/teams/4548.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
-   "score": "0-0",
-   "minute": 51,
+   "score": "1-0",
+   "minute": 61,
    "status": "2H",
-   "seen": "2026-09-10T12:06:51.173987+00:00",
+   "seen": "2026-09-10T12:16:39.823578+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -91,26 +24,26 @@
     "confidence": 45
    },
    "radar": {
-    "score": 45,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د51)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 45,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      51
+      61
      ],
      "danger": [
-      45
+      15
      ],
      "h_sog": [
       0
@@ -138,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4545.png",
    "league_logo": "https://media.api-sports.io/football/leagues/388.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-10T12:06:51.173987+00:00",
+   "minute": 55,
+   "status": "2H",
+   "seen": "2026-09-10T12:16:39.823578+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -150,10 +83,10 @@
     "confidence": 41
    },
    "radar": {
-    "score": 42,
+    "score": 48,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د55)"
     ],
     "pick": "away",
     "confidence": 41,
@@ -166,10 +99,69 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      55
      ],
      "danger": [
-      42
+      48
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534849",
+   "home": "Aktobe Jas",
+   "away": "Turan Turkistan",
+   "home_en": "Aktobe Jas",
+   "away_en": "Turan Turkistan",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4546.png",
+   "away_logo": "https://media.api-sports.io/football/teams/21502.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-1",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-09-10T12:16:39.823578+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
