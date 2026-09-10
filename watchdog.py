@@ -121,7 +121,7 @@ def recent_activity(workflow: str, cooldown_minutes: int = 25) -> dict:
     try:
         out = subprocess.run(
             ["gh", "run", "list", "--workflow", workflow, "--repo", repo,
-             "--limit", "10", "--json", "createdAt,status"],
+             "--limit", "10", "--json", "databaseId,createdAt,updatedAt,status,conclusion"],
             check=True, timeout=60, capture_output=True, text=True,
         ).stdout
         runs = json.loads(out or "[]")
@@ -129,11 +129,68 @@ def recent_activity(workflow: str, cooldown_minutes: int = 25) -> dict:
         print(f"الحارس: تعذر فحص تشغيلات {workflow}:", e)
         return {"busy": False, "tried_today": False, "runs_today": 0, "last_created": ""}
 
-    return summarize_runs(runs, datetime.now(timezone.utc), cooldown_minutes)
+    return summarize_runs(runs, datetime.now(timezone.utc), cooldown_minutes,
+                          jobs_lookup=lambda rid: run_job_count(repo, rid))
 
 
-def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25) -> dict:
-    """يلخص قائمة تشغيلات gh (نقي): busy / tried_today / runs_today / last_created."""
+def run_job_count(repo: str, run_id) -> int:
+    """عدد وظائف تشغيلة (لتمييز الإزاحة من الطابور — 0 وظائف — عن الإلغاء أثناء
+    العمل). أي فشل في القراءة يُعاد -1 = «غير معروف» فيُطبَّق حكم المدة."""
+    try:
+        out = subprocess.run(
+            ["gh", "run", "view", str(run_id), "--repo", repo, "--json", "jobs"],
+            check=True, timeout=60, capture_output=True, text=True,
+        ).stdout
+        return len((json.loads(out or "{}") or {}).get("jobs") or [])
+    except Exception as e:
+        print(f"الحارس: تعذر قراءة وظائف التشغيلة {run_id}:", e)
+        return -1
+
+
+# تشغيلة «حقيقية» مقابل «شبح» (حادثة 2026-09-09): تشغيلة المحرك 2 المُطلَقة
+# بعد التعبئة (#207) أُزيحت من طابور مجموعة التزامن المشتركة قبل أن تبدأ
+# (0 وظائف، «cancelled» بعد 5 دقائق انتظار) — والحارس عدّها محاولة واستهلك
+# بها حصة اليوم؛ كما عدّ تشغيلتَي الجدولة الاحتياطية اللتين تخطّتا بحارس
+# «جرت اليوم» (15 ثانية) محاولتين. فبلغت «5 محاولات» بلا توقع واحد.
+ATTEMPT_MIN_SECONDS = 60       # أقل من دقيقة = تخطٍّ/إزاحة لا محاولة
+CANCELLED_ATTEMPT_MIN_SECONDS = 120   # إلغاء بعد عمل فعلي (كالقاتل المتعاون) يبقى محاولة
+
+
+def _duration(r: dict) -> float:
+    try:
+        a = datetime.fromisoformat((r.get("createdAt") or "").replace("Z", "+00:00"))
+        b = datetime.fromisoformat((r.get("updatedAt") or "").replace("Z", "+00:00"))
+        return max(0.0, (b - a).total_seconds())
+    except Exception:
+        return float("inf")   # لا قراءة للمدة = نفترض محاولة حقيقية (تحفظ)
+
+
+def is_real_attempt(r: dict, jobs_lookup=None) -> bool:
+    """هل هذه التشغيلة محاولة فعلية تُحتسب من حصة التعافي وتُصفّر فاصل الساعتين؟
+    جارية/في الانتظار: نعم · مكتملة بمدة ≥ دقيقة: نعم · مُلغاة: لا إن كانت بلا
+    وظائف (أُزيحت من الطابور قبل أن تبدأ)، وإلا فقط إن عملت ≥ دقيقتين ·
+    تخطٍّ قصير: لا. `jobs_lookup(run_id) -> int` اختياري (-1 = غير معروف)."""
+    if r.get("status") in ("queued", "in_progress"):
+        return True
+    d = _duration(r)
+    concl = (r.get("conclusion") or "").lower()
+    if concl in ("cancelled", "skipped"):
+        if jobs_lookup is not None and r.get("databaseId") is not None:
+            try:
+                n = jobs_lookup(r["databaseId"])
+            except Exception:
+                n = -1
+            if n == 0:
+                return False          # إزاحة من الطابور: لم تبدأ قط
+        return d >= CANCELLED_ATTEMPT_MIN_SECONDS
+    return d >= ATTEMPT_MIN_SECONDS
+
+
+def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25,
+                   jobs_lookup=None) -> dict:
+    """يلخص قائمة تشغيلات gh (نقي): busy / tried_today / runs_today / last_created.
+    التشغيلات الشبح (تخطٍّ بحارس اليوم، إزاحة من الطابور) لا تُحتسب محاولةً ولا
+    تُصفّر الفاصل ولا تشغل التهدئة — وإلا ضاع التعافي كما في 2026-09-09."""
     today = now.strftime("%Y-%m-%d")
     busy = False
     tried_today = False
@@ -142,6 +199,8 @@ def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25) -> dic
     for r in runs:
         if r.get("status") in ("queued", "in_progress"):
             busy = True
+        if not is_real_attempt(r, jobs_lookup):
+            continue
         created_raw = r.get("createdAt") or ""
         try:
             created = datetime.fromisoformat(created_raw.replace("Z", "+00:00"))
