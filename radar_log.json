@@ -1109,13 +1109,77 @@
    "mine": false,
    "pick": "home",
    "confidence": 40,
-   "level": "amber",
-   "score": 51,
-   "minute": 38,
+   "level": "red",
+   "score": 76,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د38)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635632",
+   "date": "2026-09-10",
+   "home": "Bayern München",
+   "away": "Bodo/Glimt",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "pick": "home",
+   "confidence": 80,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1632413",
+   "date": "2026-09-10",
+   "home": "Cerro",
+   "away": "Cerrito",
+   "league": "Copa Uruguay (Uruguay)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 48,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1564305",
+   "date": "2026-09-10",
+   "home": "Stevenage",
+   "away": "Luton",
+   "league": "League One (England)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 43,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -63180,6 +63244,167 @@
       "yc": 1,
       "sog": 4,
       "shots": 6
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1593293",
+   "date": "2026-09-10",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Panathinaikos",
+   "away": "Kifisia",
+   "league": "Super League 1 (Greece)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 4,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "poss": 67,
+      "cor": 0,
+      "sog": 0,
+      "rc": 0,
+      "yc": 0,
+      "shots": 0
+     },
+     "a": {
+      "poss": 33,
+      "cor": 0,
+      "sog": 0,
+      "rc": 0,
+      "yc": 0,
+      "shots": 0
+     }
+    },
+    {
+     "minute": 14,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "yc": 0,
+      "rc": 0,
+      "sog": 2,
+      "cor": 0,
+      "poss": 48,
+      "shots": 2
+     },
+     "a": {
+      "yc": 1,
+      "rc": 0,
+      "sog": 1,
+      "cor": 0,
+      "poss": 52,
+      "shots": 3
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "cor": 10,
+      "poss": 63,
+      "rc": 0,
+      "yc": 1,
+      "sog": 4,
+      "shots": 10
+     },
+     "a": {
+      "cor": 1,
+      "poss": 37,
+      "rc": 1,
+      "yc": 1,
+      "sog": 3,
+      "shots": 5
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1593293",
+   "date": "2026-09-10",
+   "minute": 75,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "Panathinaikos",
+   "away": "Kifisia",
+   "league": "Super League 1 (Greece)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 4,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "poss": 67,
+      "cor": 0,
+      "sog": 0,
+      "rc": 0,
+      "yc": 0,
+      "shots": 0
+     },
+     "a": {
+      "poss": 33,
+      "cor": 0,
+      "sog": 0,
+      "rc": 0,
+      "yc": 0,
+      "shots": 0
+     }
+    },
+    {
+     "minute": 14,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "yc": 0,
+      "rc": 0,
+      "sog": 2,
+      "cor": 0,
+      "poss": 48,
+      "shots": 2
+     },
+     "a": {
+      "yc": 1,
+      "rc": 0,
+      "sog": 1,
+      "cor": 0,
+      "poss": 52,
+      "shots": 3
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "cor": 10,
+      "poss": 63,
+      "rc": 0,
+      "yc": 1,
+      "sog": 4,
+      "shots": 10
+     },
+     "a": {
+      "cor": 1,
+      "poss": 37,
+      "rc": 1,
+      "yc": 1,
+      "sog": 3,
+      "shots": 5
      }
     }
    ]
