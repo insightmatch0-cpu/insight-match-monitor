@@ -4,12 +4,12 @@
   "note": "تعذر الجلب (HTTP 403)",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 1
+  "radar_targets": 2
  },
  "api_quota": {
-  "remaining": 7011,
+  "remaining": 6996,
   "limit": 7500,
-  "at": "2026-09-10T10:06:50.953456+00:00"
+  "at": "2026-09-10T10:16:33.606317+00:00"
  },
  "delivery": {
   "at": "2026-09-10T06:10:24.263962+00:00",
@@ -101,18 +101,18 @@
  "1636760": {
   "score": "0-1",
   "status": "2H",
-  "minute": 52,
+  "minute": 61,
   "home": "RTC",
   "away": "Thimphu City",
   "league": "Premier League (Bhutan)",
   "home_logo": "https://media.api-sports.io/football/teams/19005.png",
   "away_logo": "https://media.api-sports.io/football/teams/5592.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
-  "seen": "2026-09-10T10:06:50.735988+00:00",
+  "seen": "2026-09-10T10:16:33.232694+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 52,
+     "minute": 61,
      "gh": 0,
      "ga": 1,
      "h": {},
@@ -129,6 +129,63 @@
    ],
    "pick": "away",
    "confidence": 40,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1635897": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 12,
+  "home": "Dinamo Barnaul",
+  "away": "Chelyabinsk",
+  "league": "Cup (Russia)",
+  "home_logo": "https://media.api-sports.io/football/teams/6794.png",
+  "away_logo": "https://media.api-sports.io/football/teams/6790.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/237.png",
+  "seen": "2026-09-10T10:16:33.232694+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 12,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "cor": 0,
+      "rc": 0,
+      "poss": 50,
+      "sog": 0,
+      "yc": 0,
+      "shots": 0
+     },
+     "a": {
+      "cor": 1,
+      "rc": 0,
+      "poss": 50,
+      "sog": 0,
+      "yc": 0,
+      "shots": 0
+     }
+    }
+   ],
+   "score": 22,
+   "level": "green",
+   "dscores": [
+    22
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د12)"
+   ],
+   "pick": "away",
+   "confidence": 48,
    "top": false,
    "mine": false,
    "drama": {
