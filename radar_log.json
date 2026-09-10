@@ -200,11 +200,12 @@
    "mine": false,
    "pick": "away",
    "confidence": 64,
-   "level": "amber",
-   "score": 64,
-   "minute": 82,
+   "level": "red",
+   "score": 75,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د82)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د90)",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -222,10 +223,10 @@
    "pick": "away",
    "confidence": 69,
    "level": "amber",
-   "score": 57,
-   "minute": 70,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د70)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -243,10 +244,10 @@
    "pick": "away",
    "confidence": 49,
    "level": "amber",
-   "score": 44,
-   "minute": 49,
+   "score": 51,
+   "minute": 60,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د49)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د60)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -264,10 +265,10 @@
    "pick": "home",
    "confidence": 41,
    "level": "amber",
-   "score": 43,
-   "minute": 48,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د48)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -285,10 +286,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -306,10 +307,52 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 56,
-   "minute": 69,
+   "score": 63,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د69)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د80)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1519639",
+   "date": "2026-09-10",
+   "home": "Nõmme United II",
+   "away": "Tallinna Kalev",
+   "league": "Esiliiga A (Estonia)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 52,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1519637",
+   "date": "2026-09-10",
+   "home": "FC Tallinn",
+   "away": "Maardu",
+   "league": "Esiliiga A (Estonia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -62051,7 +62094,91 @@
    "graded_on": "2026-09-09"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1634286",
+   "date": "2026-09-10",
+   "minute": 80,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Al-Jazira",
+   "away": "Al Nasr",
+   "league": "Pro League (United-Arab-Emirates)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 49,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 6,
+      "cor": 2,
+      "yc": 0,
+      "rc": 0,
+      "poss": 61
+     },
+     "a": {
+      "sog": 0,
+      "shots": 4,
+      "cor": 1,
+      "yc": 2,
+      "rc": 0,
+      "poss": 39
+     }
+    },
+    {
+     "minute": 59,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 6,
+      "cor": 2,
+      "yc": 0,
+      "rc": 0,
+      "poss": 60
+     },
+     "a": {
+      "sog": 0,
+      "shots": 4,
+      "cor": 1,
+      "yc": 3,
+      "rc": 0,
+      "poss": 40
+     }
+    },
+    {
+     "minute": 80,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "shots": 10,
+      "yc": 1,
+      "cor": 4,
+      "sv": 0,
+      "rc": 0,
+      "poss": 62
+     },
+     "a": {
+      "sog": 1,
+      "shots": 6,
+      "yc": 3,
+      "cor": 2,
+      "sv": 3,
+      "rc": 0,
+      "poss": 38
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
