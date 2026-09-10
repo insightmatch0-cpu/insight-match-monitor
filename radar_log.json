@@ -1089,10 +1089,10 @@
    "pick": "away",
    "confidence": 38,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 52,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د62)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1110,10 +1110,10 @@
    "pick": "home",
    "confidence": 40,
    "level": "red",
-   "score": 76,
-   "minute": 45,
+   "score": 77,
+   "minute": 47,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د47)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -1155,10 +1155,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 44,
+   "minute": 49,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د49)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1176,10 +1176,31 @@
    "pick": "away",
    "confidence": 43,
    "level": "amber",
+   "score": 43,
+   "minute": 48,
+   "factors": [
+    "النتيجة الحالية 1-0 تُسقط التوقع (د48)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1575465",
+   "date": "2026-09-10",
+   "home": "Estrela",
+   "away": "SC Braga",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 52,
+   "level": "amber",
    "score": 42,
    "minute": 45,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -63405,6 +63426,65 @@
       "yc": 1,
       "sog": 3,
       "shots": 5
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1635729",
+   "date": "2026-09-10",
+   "minute": 50,
+   "score_at": "0-0",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Slavia Praha",
+   "away": "Lens",
+   "league": "UEFA Champions League (World)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 8,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 2,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 34
+     },
+     "a": {
+      "shots": 0,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 66
+     }
+    },
+    {
+     "minute": 50,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "sv": 2,
+      "shots": 8,
+      "cor": 3,
+      "rc": 1,
+      "yc": 0,
+      "poss": 38
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 5,
+      "cor": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 62
      }
     }
    ]
