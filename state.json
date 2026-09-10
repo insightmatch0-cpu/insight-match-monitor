@@ -4,12 +4,12 @@
   "note": "تعذر الجلب (HTTP 403)",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 1
+  "radar_targets": 3
  },
  "api_quota": {
-  "remaining": 6916,
+  "remaining": 6896,
   "limit": 7500,
-  "at": "2026-09-10T11:06:46.079913+00:00"
+  "at": "2026-09-10T11:16:36.599676+00:00"
  },
  "delivery": {
   "at": "2026-09-10T06:10:24.263962+00:00",
@@ -100,15 +100,15 @@
  },
  "1635897": {
   "score": "0-0",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 50,
   "home": "Dinamo Barnaul",
   "away": "Chelyabinsk",
   "league": "Cup (Russia)",
   "home_logo": "https://media.api-sports.io/football/teams/6794.png",
   "away_logo": "https://media.api-sports.io/football/teams/6790.png",
   "league_logo": "https://media.api-sports.io/football/leagues/237.png",
-  "seen": "2026-09-10T11:06:45.856916+00:00",
+  "seen": "2026-09-10T11:16:36.010612+00:00",
   "radar": {
    "snaps": [
     {
@@ -133,35 +133,35 @@
      }
     },
     {
-     "minute": 45,
+     "minute": 50,
      "gh": 0,
      "ga": 0,
      "h": {
+      "rc": 0,
       "sog": 1,
       "yc": 0,
-      "rc": 0,
-      "poss": 46,
+      "poss": 45,
       "cor": 2,
       "shots": 5
      },
      "a": {
-      "sog": 0,
-      "yc": 0,
       "rc": 0,
-      "poss": 54,
+      "sog": 2,
+      "yc": 0,
+      "poss": 55,
       "cor": 3,
-      "shots": 3
+      "shots": 5
      }
     }
    ],
-   "score": 50,
+   "score": 53,
    "level": "amber",
    "dscores": [
     33,
-    50
+    53
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د50)",
     "موجة ركنيات لصالح المضيف"
    ],
    "pick": "away",
@@ -169,7 +169,93 @@
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 20,
+    "signal": 30,
+    "side": "away",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1534852": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 16,
+  "home": "Sport Academy Kairat",
+  "away": "Astana II",
+  "league": "1. Division (Kazakhstan)",
+  "home_logo": "https://media.api-sports.io/football/teams/4556.png",
+  "away_logo": "https://media.api-sports.io/football/teams/4548.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+  "seen": "2026-09-10T11:16:36.010612+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 16,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 24,
+   "level": "green",
+   "dscores": [
+    24
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+   ],
+   "pick": "home",
+   "confidence": 45,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1534855": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 15,
+  "home": "Yelimay Semey 2",
+  "away": "Akademiya Ontustik",
+  "league": "1. Division (Kazakhstan)",
+  "home_logo": "https://media.api-sports.io/football/teams/27635.png",
+  "away_logo": "https://media.api-sports.io/football/teams/4545.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+  "seen": "2026-09-10T11:16:36.010612+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 15,
+     "gh": 0,
+     "ga": 0,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 24,
+   "level": "green",
+   "dscores": [
+    24
+   ],
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+   ],
+   "pick": "away",
+   "confidence": 41,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 0,
     "side": "home",
     "ready": false
    },

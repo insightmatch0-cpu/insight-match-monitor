@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-10T11:06:47.694965+00:00",
+ "updated": "2026-09-10T11:16:38.080231+00:00",
  "live": [
   {
    "fid": "1635897",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/6790.png",
    "league_logo": "https://media.api-sports.io/football/leagues/237.png",
    "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-10T11:06:45.856916+00:00",
+   "minute": 50,
+   "status": "2H",
+   "seen": "2026-09-10T11:16:36.010612+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 49
@@ -24,17 +24,17 @@
     "confidence": 48
    },
    "radar": {
-    "score": 50,
+    "score": 53,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+     "النتيجة الحالية 0-0 تُسقط التوقع (د50)",
      "موجة ركنيات لصالح المضيف"
     ],
     "pick": "away",
     "confidence": 48,
     "drama": {
-     "signal": 20,
-     "side": "home",
+     "signal": 30,
+     "side": "away",
      "ready": false
     },
     "alerted": null,
@@ -42,11 +42,11 @@
     "trend": {
      "min": [
       31,
-      45
+      50
      ],
      "danger": [
       33,
-      50
+      53
      ],
      "h_sog": [
       0,
@@ -54,7 +54,7 @@
      ],
      "a_sog": [
       0,
-      0
+      2
      ],
      "h_cor": [
       0,
@@ -63,6 +63,124 @@
      "a_cor": [
       2,
       3
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534852",
+   "home": "Sport Academy Kairat",
+   "away": "Astana II",
+   "home_en": "Sport Academy Kairat",
+   "away_en": "Astana II",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/4556.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4548.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-0",
+   "minute": 16,
+   "status": "1H",
+   "seen": "2026-09-10T11:16:36.010612+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 53
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      16
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1534855",
+   "home": "Yelimay Semey 2",
+   "away": "Akademiya Ontustik",
+   "home_en": "Yelimay Semey 2",
+   "away_en": "Akademiya Ontustik",
+   "league": "1. Division (Kazakhstan)",
+   "home_logo": "https://media.api-sports.io/football/teams/27635.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4545.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/388.png",
+   "score": "0-0",
+   "minute": 15,
+   "status": "1H",
+   "seen": "2026-09-10T11:16:36.010612+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 41
+   },
+   "radar": {
+    "score": 24,
+    "level": "green",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د15)"
+    ],
+    "pick": "away",
+    "confidence": 41,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      15
+     ],
+     "danger": [
+      24
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
      ]
     }
    }
