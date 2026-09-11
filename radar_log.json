@@ -1601,11 +1601,13 @@
    "mine": false,
    "pick": "home",
    "confidence": 58,
-   "level": "amber",
-   "score": 51,
-   "minute": 60,
+   "level": "red",
+   "score": 75,
+   "minute": 70,
    "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د60)"
+    "النتيجة الحالية 2-3 تُسقط التوقع (د70)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1623,12 +1625,33 @@
    "pick": "home",
    "confidence": 45,
    "level": "amber",
-   "score": 50,
-   "minute": 36,
+   "score": 56,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د36)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1575947",
+   "date": "2026-09-11",
+   "home": "Trefelin",
+   "away": "Penybont",
+   "league": "Premier League (Wales)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 56,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -65262,6 +65285,178 @@
       "cor": 6,
       "rc": 0,
       "poss": 47
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1552472",
+   "date": "2026-09-11",
+   "minute": 77,
+   "score_at": "1-0",
+   "side": "away",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "Montpellier",
+   "away": "PAU",
+   "league": "Ligue 2 (France)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 1,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 0,
+      "sog": 0,
+      "yc": 0,
+      "poss": 50,
+      "cor": 0,
+      "shots": 0
+     },
+     "a": {
+      "rc": 0,
+      "sog": 0,
+      "yc": 0,
+      "poss": 50,
+      "cor": 0,
+      "shots": 0
+     }
+    },
+    {
+     "minute": 11,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 2,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 73
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 0,
+      "sv": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 27
+     }
+    },
+    {
+     "minute": 77,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 4,
+      "sv": 2,
+      "shots": 12,
+      "yc": 1,
+      "cor": 6,
+      "rc": 0,
+      "poss": 76
+     },
+     "a": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 10,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 24
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1551793",
+   "date": "2026-09-11",
+   "minute": 75,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "NAC Breda",
+   "away": "Jong Utrecht",
+   "league": "Eerste Divisie (Netherlands)",
+   "top": false,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "yc": 1,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "poss": 71
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "yc": 0,
+      "cor": 0,
+      "sv": 1,
+      "rc": 0,
+      "poss": 29
+     }
+    },
+    {
+     "minute": 29,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "yc": 1,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "poss": 71
+     },
+     "a": {
+      "sog": 1,
+      "shots": 4,
+      "yc": 0,
+      "cor": 1,
+      "sv": 1,
+      "rc": 0,
+      "poss": 29
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 6,
+      "sv": 1,
+      "shots": 17,
+      "yc": 1,
+      "cor": 7,
+      "rc": 0,
+      "poss": 62
+     },
+     "a": {
+      "sog": 4,
+      "sv": 4,
+      "shots": 10,
+      "yc": 3,
+      "cor": 1,
+      "rc": 0,
+      "poss": 38
      }
     }
    ]
