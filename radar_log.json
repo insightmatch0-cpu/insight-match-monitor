@@ -1955,6 +1955,48 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1619004",
+   "date": "2026-09-11",
+   "home": "San Antonio Bulo Bulo",
+   "away": "Aurora",
+   "league": "Primera División (Bolivia)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 50,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1499636",
+   "date": "2026-09-11",
+   "home": "Ituzaingó",
+   "away": "Comunicaciones",
+   "league": "Primera B Metropolitana (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 36,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
   }
  ],
  "resolved": [
@@ -66052,6 +66094,69 @@
       "sv": 3,
       "rc": 0,
       "poss": 51
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1632002",
+   "date": "2026-09-11",
+   "minute": 63,
+   "score_at": "0-1",
+   "side": "home",
+   "key": "red_advantage",
+   "home": "2 de Mayo",
+   "away": "Libertad Asuncion",
+   "league": "Division Profesional - Clausura (Paraguay)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 40,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "sv": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 0,
+      "shots": 1,
+      "cor": 2,
+      "sv": 1,
+      "yc": 1,
+      "rc": 0,
+      "poss": 45
+     }
+    },
+    {
+     "minute": 63,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "sv": 1,
+      "shots": 8,
+      "yc": 1,
+      "cor": 2,
+      "rc": 0,
+      "poss": 51
+     },
+     "a": {
+      "sog": 1,
+      "sv": 2,
+      "shots": 4,
+      "yc": 1,
+      "cor": 3,
+      "rc": 1,
+      "poss": 49
      }
     }
    ]
