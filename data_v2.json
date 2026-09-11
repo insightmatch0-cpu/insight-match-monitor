@@ -3333,8 +3333,14 @@
   "reports": [
    {
     "fid": "1635386",
-    "score": "",
-    "s1": {},
+    "score": "0-2",
+    "s1": {
+     "v1": {
+      "pick": "away",
+      "confidence": 61,
+      "correct": true
+     }
+    },
     "s3": {
      "warnings": [],
      "alerts": []
@@ -3389,6 +3395,11 @@
     "fid": "1635697",
     "score": "4-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 78,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 76,
@@ -3453,6 +3464,11 @@
     "fid": "1635632",
     "score": "5-0",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 72,
+      "correct": true
+     },
      "v2": {
       "pick": "home",
       "confidence": 80,
@@ -3523,6 +3539,11 @@
     "fid": "1635708",
     "score": "1-1",
     "s1": {
+     "v1": {
+      "pick": "home",
+      "confidence": 62,
+      "correct": false
+     },
      "v2": {
       "pick": "home",
       "confidence": 62,
@@ -3593,6 +3614,11 @@
     "fid": "1635659",
     "score": "1-1",
     "s1": {
+     "v1": {
+      "pick": "draw",
+      "confidence": 55,
+      "correct": true
+     },
      "v2": {
       "pick": "away",
       "confidence": 45,
@@ -4062,5 +4088,5 @@
   ]
  },
  "pred_updated": "2026-09-10T04:35:59.330547+00:00",
- "updated": "2026-09-11T04:06:44.025810+00:00"
+ "updated": "2026-09-11T04:14:15.156236+00:00"
 }
