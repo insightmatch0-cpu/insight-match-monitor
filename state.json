@@ -7,9 +7,9 @@
   "radar_targets": 1
  },
  "api_quota": {
-  "remaining": 6445,
+  "remaining": 6429,
   "limit": 7500,
-  "at": "2026-09-11T04:20:39.059266+00:00"
+  "at": "2026-09-11T04:27:01.553080+00:00"
  },
  "delivery": {
   "at": "2026-09-11T04:14:14.570815+00:00",
@@ -105,24 +105,47 @@
  "1550955": {
   "score": "1-1",
   "status": "2H",
-  "minute": 54,
+  "minute": 60,
   "home": "U.N.A.M. - Pumas",
   "away": "Leon",
   "league": "Liga MX (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/2286.png",
   "away_logo": "https://media.api-sports.io/football/teams/2289.png",
   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-  "seen": "2026-09-11T04:20:38.864521+00:00",
+  "seen": "2026-09-11T04:27:01.412700+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 54,
+     "minute": 45,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "sv": 3,
+      "shots": 6,
+      "yc": 1,
+      "cor": 5,
+      "rc": 0,
+      "poss": 46
+     },
+     "a": {
+      "sog": 2,
+      "sv": 1,
+      "shots": 7,
+      "yc": 1,
+      "cor": 1,
+      "rc": 0,
+      "poss": 54
+     }
+    },
+    {
+     "minute": 60,
      "gh": 1,
      "ga": 1,
      "h": {
       "sog": 2,
       "sv": 3,
-      "shots": 7,
+      "shots": 9,
       "yc": 1,
       "cor": 7,
       "rc": 0,
@@ -131,7 +154,7 @@
      "a": {
       "sog": 3,
       "sv": 1,
-      "shots": 8,
+      "shots": 10,
       "yc": 1,
       "cor": 1,
       "rc": 0,
@@ -139,20 +162,22 @@
      }
     }
    ],
-   "score": 47,
+   "score": 57,
    "level": "amber",
    "dscores": [
-    47
+    15,
+    57
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د54)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د60)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 42,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 35,
     "side": "home",
     "ready": false
    },
