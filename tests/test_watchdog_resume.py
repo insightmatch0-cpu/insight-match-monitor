@@ -158,3 +158,35 @@ class TestGhostRunsDoNotBurnTheQuota(unittest.TestCase):
         src = (ROOT / "watchdog.py").read_text(encoding="utf-8")
         self.assertIn("databaseId,createdAt,updatedAt,status,conclusion", src)
         self.assertIn("jobs_lookup=lambda rid: run_job_count(repo, rid)", src)
+
+
+class TestStaleCheckoutRace(unittest.TestCase):
+    """سباق النسخة العتيقة (2026-09-11): تشغيلة الرصد #9299 انتظرت في الطابور
+    خلف المحرك 2 (#211، 04:26 → 04:49)، وسحبت المستودع لحظة انتهائه فقرأت
+    last_run الأمس وأطلقت #212 ثانيةً — مكرر بلا فائدة. GitHub يعرف الحقيقة:
+    تشغيلة ناجحة جرت اليوم، فيُسأل قبل الإطلاق."""
+
+    NOW = datetime(2026, 9, 11, 4, 55, tzinfo=timezone.utc)
+
+    def test_success_today_is_reported(self):
+        runs = [{"createdAt": "2026-09-11T04:26:02Z", "updatedAt": "2026-09-11T04:49:18Z",
+                 "status": "completed", "conclusion": "success"}]
+        out = W.summarize_runs(runs, self.NOW)
+        self.assertTrue(out["succeeded_today"])
+        self.assertFalse(out["busy"], "التهدئة انتهت (29 دقيقة) — الحاجز هو النجاح لا التهدئة")
+
+    def test_ghost_success_does_not_count(self):
+        """تخطي الجدولة الاحتياطية (15 ثانية «success») ليس نجاحاً يمنع الإطلاق."""
+        runs = [{"createdAt": "2026-09-11T04:30:10Z", "updatedAt": "2026-09-11T04:30:25Z",
+                 "status": "completed", "conclusion": "success"}]
+        self.assertFalse(W.summarize_runs(runs, self.NOW)["succeeded_today"])
+
+    def test_yesterday_success_does_not_block_today(self):
+        runs = [{"createdAt": "2026-09-10T04:26:35Z", "updatedAt": "2026-09-10T04:36:10Z",
+                 "status": "completed", "conclusion": "success"}]
+        self.assertFalse(W.summarize_runs(runs, self.NOW)["succeeded_today"])
+
+    def test_main_consults_github_before_firing(self):
+        src = (ROOT / "watchdog.py").read_text(encoding="utf-8")
+        body = src[src.find("def main"):src.find("def maybe_resume_v2")]
+        self.assertEqual(body.count('act.get("succeeded_today")'), 2, "كلا المحركين محميان")

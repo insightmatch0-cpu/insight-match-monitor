@@ -127,7 +127,8 @@ def recent_activity(workflow: str, cooldown_minutes: int = 25) -> dict:
         runs = json.loads(out or "[]")
     except Exception as e:
         print(f"الحارس: تعذر فحص تشغيلات {workflow}:", e)
-        return {"busy": False, "tried_today": False, "runs_today": 0, "last_created": ""}
+        return {"busy": False, "tried_today": False, "succeeded_today": False,
+                "runs_today": 0, "last_created": ""}
 
     return summarize_runs(runs, datetime.now(timezone.utc), cooldown_minutes,
                           jobs_lookup=lambda rid: run_job_count(repo, rid))
@@ -194,6 +195,7 @@ def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25,
     today = now.strftime("%Y-%m-%d")
     busy = False
     tried_today = False
+    succeeded_today = False
     runs_today = 0
     last_created = ""
     for r in runs:
@@ -202,6 +204,8 @@ def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25,
         if not is_real_attempt(r, jobs_lookup):
             continue
         created_raw = r.get("createdAt") or ""
+        if created_raw[:10] == today and (r.get("conclusion") or "").lower() == "success":
+            succeeded_today = True     # نجاح مسجَّل في GitHub يغني عن قراءة الملف
         try:
             created = datetime.fromisoformat(created_raw.replace("Z", "+00:00"))
             if (now - created).total_seconds() < cooldown_minutes * 60:
@@ -213,7 +217,7 @@ def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25,
             runs_today += 1
         if created_raw > last_created:
             last_created = created_raw
-    return {"busy": busy, "tried_today": tried_today,
+    return {"busy": busy, "tried_today": tried_today, "succeeded_today": succeeded_today,
             "runs_today": runs_today, "last_created": last_created}
 
 
@@ -238,16 +242,20 @@ def main() -> None:
         last_run_date(V1_FILE),
         last_run_date(V2_FILE),
     )
+    # سباق النسخة العتيقة (2026-09-11): تشغيلة رصد انتظرت في الطابور خلف
+    # المحرك 2 ثم سحبت المستودع قبل ثوانٍ من وصول نتيجته، فقرأت «لم يجرِ اليوم»
+    # وأطلقته ثانيةً (#212). GitHub نفسه يعرف أن تشغيلة ناجحة جرت اليوم —
+    # فنسأله قبل الإطلاق، لا الملف وحده.
     if action == "v1":
         act = recent_activity(V1_WORKFLOW)
-        if act["busy"]:
-            print("الحارس: توجد محاولة حديثة/جارية للمحرك 1 — انتظار (لا طرق متكرر).")
+        if act["busy"] or act.get("succeeded_today"):
+            print("الحارس: توجد محاولة حديثة/جارية أو ناجحة اليوم للمحرك 1 — لا إطلاق.")
         elif fire(V1_WORKFLOW) and not act["tried_today"]:
             notify("⏰ جدولة GitHub تأخرت اليوم — شغّلت توقعات المحرك 1 تلقائياً الآن.")
     elif action == "v2":
         act = recent_activity(V2_WORKFLOW)
-        if act["busy"]:
-            print("الحارس: توجد محاولة حديثة/جارية للمحرك 2 — انتظار (لا طرق متكرر).")
+        if act["busy"] or act.get("succeeded_today"):
+            print("الحارس: توجد محاولة حديثة/جارية أو ناجحة اليوم للمحرك 2 — لا إطلاق.")
         elif fire(V2_WORKFLOW) and not act["tried_today"]:
             notify("⏰ شغّلت توقعات المحرك 2 تلقائياً الآن (بعد اكتمال المحرك 1).")
     else:
