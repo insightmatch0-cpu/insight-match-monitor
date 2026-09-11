@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-11T04:49:11.492717+00:00",
+ "updated": "2026-09-11T04:55:36.741314+00:00",
  "live": [
   {
    "fid": "1550955",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2286.png",
    "away_logo": "https://media.api-sports.io/football/teams/2289.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "score": "1-1",
-   "minute": 60,
+   "score": "3-1",
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-09-11T04:27:01.412700+00:00",
+   "seen": "2026-09-11T04:55:34.107844+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 52
@@ -24,17 +24,14 @@
     "confidence": 42
    },
    "radar": {
-    "score": 57,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د60)",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
+    "score": 0,
+    "level": "green",
+    "factors": [],
     "pick": "home",
     "confidence": 42,
     "drama": {
-     "signal": 35,
-     "side": "home",
+     "signal": 0,
+     "side": "away",
      "ready": false
     },
     "alerted": null,
@@ -42,27 +39,33 @@
     "trend": {
      "min": [
       45,
-      60
+      60,
+      89
      ],
      "danger": [
       15,
-      57
+      57,
+      0
      ],
      "h_sog": [
       2,
-      2
+      2,
+      5
      ],
      "a_sog": [
       2,
+      3,
       3
      ],
      "h_cor": [
       5,
-      7
+      7,
+      8
      ],
      "a_cor": [
       1,
-      1
+      1,
+      2
      ]
     }
    }
