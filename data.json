@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-11T22:16:37.352096+00:00",
+ "updated": "2026-09-11T22:27:12.077745+00:00",
  "live": [
   {
    "fid": "1632002",
@@ -13,8 +13,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/252.png",
    "score": "0-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-11T22:16:35.181916+00:00",
+   "status": "HT",
+   "seen": "2026-09-11T22:27:09.952717+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -78,8 +78,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-11T22:16:35.181916+00:00",
+   "status": "HT",
+   "seen": "2026-09-11T22:27:09.952717+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -142,9 +142,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/8008.png",
    "league_logo": "https://media.api-sports.io/football/leagues/131.png",
    "score": "0-0",
-   "minute": 16,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-09-11T22:16:35.181916+00:00",
+   "seen": "2026-09-11T22:27:09.952717+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -154,10 +154,10 @@
     "confidence": 36
    },
    "radar": {
-    "score": 24,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
     ],
     "pick": "home",
     "confidence": 36,
@@ -170,10 +170,10 @@
     "top": false,
     "trend": {
      "min": [
-      16
+      26
      ],
      "danger": [
-      24
+      30
      ],
      "h_sog": [
       0
@@ -201,9 +201,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3637.png",
    "league_logo": "https://media.api-sports.io/football/leagues/344.png",
    "score": "0-0",
-   "minute": 16,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-09-11T22:16:35.181916+00:00",
+   "seen": "2026-09-11T22:27:09.952717+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -213,10 +213,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 24,
+    "score": 30,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د16)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د26)"
     ],
     "pick": "home",
     "confidence": 50,
@@ -229,10 +229,10 @@
     "top": false,
     "trend": {
      "min": [
-      16
+      26
      ],
      "danger": [
-      24
+      30
      ],
      "h_sog": [
       0
@@ -245,6 +245,65 @@
      ],
      "a_cor": [
       0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1493126",
+   "home": "Defensa Y Justicia",
+   "away": "Gimnasia M.",
+   "home_en": "Defensa Y Justicia",
+   "away_en": "Gimnasia M.",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/442.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1066.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
+   "score": "1-0",
+   "minute": 13,
+   "status": "1H",
+   "seen": "2026-09-11T22:27:09.952717+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 38
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 38,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      13
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      1
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      1
+     ],
+     "a_cor": [
+      1
      ]
     }
    }
