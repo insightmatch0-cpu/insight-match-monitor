@@ -769,11 +769,11 @@
    "mine": false,
    "pick": "away",
    "confidence": 68,
-   "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "level": "red",
+   "score": 66,
+   "minute": 85,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د85)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -790,11 +790,12 @@
    "mine": false,
    "pick": "home",
    "confidence": 58,
-   "level": "amber",
-   "score": 48,
-   "minute": 45,
+   "level": "red",
+   "score": 75,
+   "minute": 78,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د78)",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
@@ -855,10 +856,10 @@
    "pick": "away",
    "confidence": 44,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 63,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د81)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -64347,6 +64348,85 @@
       "sog": 3,
       "rc": 0,
       "poss": 55
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1597928",
+   "date": "2026-09-11",
+   "minute": 78,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Al-Gharafa",
+   "away": "Lusail City",
+   "league": "Stars League (Qatar)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 10,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 59
+     },
+     "a": {
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 41
+     }
+    },
+    {
+     "minute": 20,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 1,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 45
+     },
+     "a": {
+      "sog": 0,
+      "shots": 0,
+      "sv": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 55
+     }
+    },
+    {
+     "minute": 78,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 13,
+      "yc": 1,
+      "cor": 3,
+      "rc": 0,
+      "poss": 56
+     },
+     "a": {
+      "sog": 1,
+      "sv": 3,
+      "shots": 9,
+      "yc": 2,
+      "cor": 2,
+      "rc": 0,
+      "poss": 44
      }
     }
    ]
