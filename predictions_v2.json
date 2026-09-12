@@ -2578,35 +2578,6 @@
    "ar_away": "روكينغهام سيتي",
    "ar_league": "دوري غرب أستراليا الدرجة الأولى"
   },
-  "1639084": {
-   "fid": "1639084",
-   "kickoff": "2026-09-12T09:45:00+00:00",
-   "date": "2026-09-12",
-   "home": "Stallion",
-   "away": "Azkals",
-   "home_id": 16193,
-   "away_id": 16190,
-   "home_logo": "https://media.api-sports.io/football/teams/16193.png",
-   "away_logo": "https://media.api-sports.io/football/teams/16190.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/765.png",
-   "league": "PFL (Philippines)",
-   "league_id": 765,
-   "season": 2027,
-   "round": "Group Stage",
-   "venue": "Philippines",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 50,
-   "prob_home": 50,
-   "prob_draw": 26,
-   "prob_away": 24,
-   "reason": "ستاليون فريق عريق أمام فريق أزكالس التطويري الشاب الأقل خبرة",
-   "ar_home": "ستاليون",
-   "ar_away": "أزكالس",
-   "ar_league": "الدوري الفلبيني"
-  },
   "1507067": {
    "fid": "1507067",
    "kickoff": "2026-09-12T10:00:00+00:00",
@@ -215713,24 +215684,52 @@
    "actual": "away",
    "score": "0-1",
    "correct": true
+  },
+  {
+   "fid": "1639084",
+   "date": "2026-09-12",
+   "home": "Stallion",
+   "away": "Azkals",
+   "ar_home": "ستاليون",
+   "ar_away": "أزكالس",
+   "home_logo": "https://media.api-sports.io/football/teams/16193.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16190.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/765.png",
+   "league": "PFL (Philippines)",
+   "ar_league": "الدوري الفلبيني",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 50,
+   "prob_home": 50,
+   "prob_draw": 26,
+   "prob_away": 24,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "gold_check": null,
+   "reason": "ستاليون فريق عريق أمام فريق أزكالس التطويري الشاب الأقل خبرة",
+   "actual": "home",
+   "score": "4-0",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-09-12T11:37:33.717562+00:00",
+  "last_run": "2026-09-12T11:47:30.750647+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 3719,
-    "total": 7690
+    "correct": 3720,
+    "total": 7691
    },
    "top_leagues": {
     "correct": 374,
     "total": 759
    },
    "other_leagues": {
-    "correct": 3345,
-    "total": 6931
+    "correct": 3346,
+    "total": 6932
    },
    "by_confidence": {
     "70+": {
@@ -215742,8 +215741,8 @@
      "total": 511
     },
     "50-59": {
-     "correct": 753,
-     "total": 1354
+     "correct": 754,
+     "total": 1355
     },
     "<50": {
      "correct": 2522,
@@ -215751,8 +215750,8 @@
     }
    },
    "last30": {
-    "correct": 2963,
-    "total": 6165
+    "correct": 2964,
+    "total": 6166
    },
    "daily": {
     "2026-08-14": {
@@ -215872,22 +215871,22 @@
      "total": 320
     },
     "2026-09-12": {
-     "correct": 43,
-     "total": 86
+     "correct": 44,
+     "total": 87
     }
    },
    "season": {
     "overall": {
-     "correct": 2963,
-     "total": 6165
+     "correct": 2964,
+     "total": 6166
     },
     "top_leagues": {
      "correct": 326,
      "total": 654
     },
     "other_leagues": {
-     "correct": 2637,
-     "total": 5511
+     "correct": 2638,
+     "total": 5512
     },
     "by_confidence": {
      "70+": {
@@ -215899,8 +215898,8 @@
       "total": 415
      },
      "50-59": {
-      "correct": 588,
-      "total": 1095
+      "correct": 589,
+      "total": 1096
      },
      "<50": {
       "correct": 2011,
@@ -216268,7 +216267,7 @@
     "disagree": 75
    }
   },
-  "claude_refused": 98,
-  "claude_refused_at": "2026-09-12T11:37:33.717574+00:00"
+  "claude_refused": 97,
+  "claude_refused_at": "2026-09-12T11:47:30.750658+00:00"
  }
 }
