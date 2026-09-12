@@ -1,36 +1,34 @@
 {
- "updated": "2026-09-12T02:46:44.664796+00:00",
+ "updated": "2026-09-12T02:56:35.964985+00:00",
  "live": [
   {
-   "fid": "1638662",
-   "home": "Brisbane Strikers",
-   "away": "Broadbeach United",
-   "home_en": "Brisbane Strikers",
-   "away_en": "Broadbeach United",
-   "league": "Queensland Premier League (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/10213.png",
-   "away_logo": "https://media.api-sports.io/football/teams/20850.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/833.png",
-   "score": "2-1",
-   "minute": 89,
+   "fid": "1493985",
+   "home": "Boise",
+   "away": "NY Cosmos",
+   "home_en": "Boise",
+   "away_en": "NY Cosmos",
+   "league": "USL League One (USA)",
+   "home_logo": "https://media.api-sports.io/football/teams/27251.png",
+   "away_logo": "https://media.api-sports.io/football/teams/9033.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
+   "score": "2-0",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "home",
-    "confidence": 58
+    "confidence": 53
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 48
+    "confidence": 38
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
-    "confidence": 48,
+    "confidence": 38,
     "drama": {
      "signal": 0,
      "side": "away",
@@ -40,12 +38,89 @@
     "top": false,
     "trend": {
      "min": [
+      23,
+      36,
+      53,
+      84
+     ],
+     "danger": [
+      15,
+      15,
+      15,
+      0
+     ],
+     "h_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1498803",
+   "home": "Gimnasia Y Tiro",
+   "away": "Tristan Suarez",
+   "home_en": "Gimnasia Y Tiro",
+   "away_en": "Tristan Suarez",
+   "league": "Primera Nacional (Argentina)",
+   "home_logo": "https://media.api-sports.io/football/teams/1928.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1965.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
+   "score": "0-0",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 69,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
       32,
-      83
+      90
      ],
      "danger": [
       34,
-      15
+      69
      ],
      "h_sog": [
       0,
@@ -76,10 +151,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2288.png",
    "away_logo": "https://media.api-sports.io/football/teams/2291.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "score": "0-0",
-   "minute": 86,
+   "score": "0-1",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -89,10 +164,11 @@
     "confidence": 54
    },
    "radar": {
-    "score": 80,
+    "score": 100,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د86)",
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)",
+     "موجة تسديد على المرمى من الضيف",
      "موجة ركنيات لصالح الضيف",
      "ضغط هجومي متصاعد من الضيف"
     ],
@@ -108,19 +184,19 @@
     "trend": {
      "min": [
       45,
-      86
+      90
      ],
      "danger": [
       42,
-      80
+      100
      ],
      "h_sog": [
       1,
-      1
+      2
      ],
      "a_sog": [
       1,
-      2
+      4
      ],
      "h_cor": [
       2,
@@ -128,72 +204,7 @@
      ],
      "a_cor": [
       1,
-      3
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1498803",
-   "home": "Gimnasia Y Tiro",
-   "away": "Tristan Suarez",
-   "home_en": "Gimnasia Y Tiro",
-   "away_en": "Tristan Suarez",
-   "league": "Primera Nacional (Argentina)",
-   "home_logo": "https://media.api-sports.io/football/teams/1928.png",
-   "away_logo": "https://media.api-sports.io/football/teams/1965.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/129.png",
-   "score": "0-0",
-   "minute": 82,
-   "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 64,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د82)"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      32,
-      82
-     ],
-     "danger": [
-      34,
-      64
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
+      5
      ]
     }
    }
@@ -208,10 +219,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2313.png",
    "away_logo": "https://media.api-sports.io/football/teams/14276.png",
    "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-   "score": "2-1",
-   "minute": 82,
+   "score": "2-2",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -221,16 +232,16 @@
     "confidence": 41
    },
    "radar": {
-    "score": 64,
-    "level": "amber",
+    "score": 69,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 2-1 تُسقط التوقع (د82)"
+     "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
     ],
     "pick": "away",
     "confidence": 41,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -239,12 +250,12 @@
      "min": [
       18,
       45,
-      82
+      90
      ],
      "danger": [
       15,
       42,
-      64
+      69
      ],
      "h_sog": [
       0,
@@ -270,26 +281,26 @@
    }
   },
   {
-   "fid": "1493985",
-   "home": "Boise",
-   "away": "NY Cosmos",
-   "home_en": "Boise",
-   "away_en": "NY Cosmos",
-   "league": "USL League One (USA)",
-   "home_logo": "https://media.api-sports.io/football/teams/27251.png",
-   "away_logo": "https://media.api-sports.io/football/teams/9033.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-   "score": "1-0",
-   "minute": 80,
+   "fid": "1638662",
+   "home": "Brisbane Strikers",
+   "away": "Broadbeach United",
+   "home_en": "Brisbane Strikers",
+   "away_en": "Broadbeach United",
+   "league": "Queensland Premier League (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/10213.png",
+   "away_logo": "https://media.api-sports.io/football/teams/20850.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/833.png",
+   "score": "2-1",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:55:01.117854+00:00",
    "pred_v1": {
     "pick": "home",
-    "confidence": 53
+    "confidence": 58
    },
    "pred_v2": {
     "pick": "home",
-    "confidence": 38
+    "confidence": 48
    },
    "radar": {
     "score": 15,
@@ -298,7 +309,7 @@
      "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
-    "confidence": 38,
+    "confidence": 48,
     "drama": {
      "signal": 0,
      "side": "away",
@@ -308,38 +319,26 @@
     "top": false,
     "trend": {
      "min": [
-      23,
-      36,
-      53,
-      80
+      32,
+      90
      ],
      "danger": [
-      15,
-      15,
-      15,
+      34,
       15
      ],
      "h_sog": [
-      0,
-      0,
       0,
       0
      ],
      "a_sog": [
       0,
-      0,
-      0,
       0
      ],
      "h_cor": [
       0,
-      0,
-      0,
       0
      ],
      "a_cor": [
-      0,
-      0,
       0,
       0
      ]
@@ -357,9 +356,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1057.png",
    "league_logo": "https://media.api-sports.io/football/leagues/234.png",
    "score": "0-2",
-   "minute": 60,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -369,11 +368,9 @@
     "confidence": 38
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "away",
     "confidence": 38,
     "drama": {
@@ -389,16 +386,19 @@
       20,
       30,
       45,
-      53
+      53,
+      63
      ],
      "danger": [
       15,
       15,
       15,
       15,
-      15
+      15,
+      0
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -410,6 +410,7 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
@@ -417,9 +418,11 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -439,10 +442,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1139.png",
    "away_logo": "https://media.api-sports.io/football/teams/1142.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "score": "0-0",
-   "minute": 56,
+   "score": "1-0",
+   "minute": 65,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -452,29 +455,29 @@
     "confidence": 40
    },
    "radar": {
-    "score": 48,
-    "level": "amber",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د56)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 40,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      56
+      65
      ],
      "danger": [
-      48
+      15
      ],
      "h_sog": [
-      2
+      3
      ],
      "a_sog": [
       2
@@ -498,10 +501,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2882.png",
    "away_logo": "https://media.api-sports.io/football/teams/27364.png",
    "league_logo": "https://media.api-sports.io/football/leagues/304.png",
-   "score": "1-0",
-   "minute": 55,
+   "score": "3-0",
+   "minute": 64,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -511,11 +514,9 @@
     "confidence": 48
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 48,
     "drama": {
@@ -529,12 +530,12 @@
      "min": [
       7,
       20,
-      55
+      58
      ],
      "danger": [
       19,
       27,
-      15
+      0
      ],
      "h_sog": [
       0,
@@ -569,10 +570,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/4003.png",
    "away_logo": "https://media.api-sports.io/football/teams/3996.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-   "score": "2-1",
-   "minute": 50,
+   "score": "2-2",
+   "minute": 60,
    "status": "2H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -582,14 +583,16 @@
     "confidence": 47
    },
    "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
+    "score": 51,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 2-2 تُسقط التوقع (د60)"
+    ],
     "pick": "home",
     "confidence": 47,
     "drama": {
      "signal": 0,
-     "side": "away",
+     "side": "home",
      "ready": false
     },
     "alerted": null,
@@ -599,15 +602,18 @@
       14,
       23,
       33,
-      45
+      45,
+      60
      ],
      "danger": [
       23,
       0,
       0,
-      0
+      0,
+      51
      ],
      "h_sog": [
+      0,
       0,
       0,
       0,
@@ -617,15 +623,18 @@
       0,
       0,
       0,
+      0,
       0
      ],
      "h_cor": [
       0,
       0,
       0,
+      0,
       0
      ],
      "a_cor": [
+      0,
       0,
       0,
       0,
@@ -644,10 +653,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/24949.png",
    "away_logo": "https://media.api-sports.io/football/teams/22047.png",
    "league_logo": "https://media.api-sports.io/football/leagues/722.png",
-   "score": "1-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "score": "3-0",
+   "minute": 55,
+   "status": "2H",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 51
@@ -657,11 +666,9 @@
     "confidence": 38
    },
    "radar": {
-    "score": 15,
+    "score": 0,
     "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
+    "factors": [],
     "pick": "home",
     "confidence": 38,
     "drama": {
@@ -676,13 +683,13 @@
       7,
       28,
       37,
-      45
+      49
      ],
      "danger": [
       19,
       15,
       15,
-      15
+      0
      ],
      "h_sog": [
       0,
@@ -723,8 +730,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/162.png",
    "score": "0-2",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "status": "HT",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -787,9 +794,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4017.png",
    "league_logo": "https://media.api-sports.io/football/leagues/255.png",
    "score": "0-0",
-   "minute": 40,
-   "status": "1H",
-   "seen": "2026-09-12T02:46:41.154925+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-12T02:56:33.487561+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 53
@@ -799,10 +806,10 @@
     "confidence": 44
    },
    "radar": {
-    "score": 39,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 44,
@@ -815,10 +822,10 @@
     "top": false,
     "trend": {
      "min": [
-      40
+      45
      ],
      "danger": [
-      39
+      42
      ],
      "h_sog": [
       0
@@ -8440,6 +8447,45 @@
     "conf": 48,
     "final": "2-2",
     "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-12",
+    "home": "Correcaminos Uat",
+    "away": "Cancún",
+    "league": "Liga de Expansión MX (Mexico)",
+    "level": "red",
+    "minute": 86,
+    "pick": "away",
+    "conf": 41,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-12",
+    "home": "Gimnasia Y Tiro",
+    "away": "Tristan Suarez",
+    "league": "Primera Nacional (Argentina)",
+    "level": "red",
+    "minute": 86,
+    "pick": "home",
+    "conf": 40,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-12",
+    "home": "Necaxa",
+    "away": "Puebla",
+    "league": "Liga MX (Mexico)",
+    "level": "red",
+    "minute": 89,
+    "pick": "home",
+    "conf": 54,
     "top": false
    },
    {
