@@ -4,12 +4,12 @@
   "note": "تعذر الجلب (HTTP 403)",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 6
+  "radar_targets": 4
  },
  "api_quota": {
-  "remaining": 1278,
+  "remaining": 7485,
   "limit": 7500,
-  "at": "2026-09-11T23:56:39.309832+00:00"
+  "at": "2026-09-12T00:03:14.644078+00:00"
  },
  "delivery": {
   "at": "2026-09-11T23:27:02.633047+00:00",
@@ -102,103 +102,17 @@
   "days": 5,
   "last": "2026-09-06"
  },
- "1499636": {
-  "score": "2-2",
-  "status": "2H",
-  "minute": 90,
-  "home": "Ituzaingó",
-  "away": "Comunicaciones",
-  "league": "Primera B Metropolitana (Argentina)",
-  "home_logo": "https://media.api-sports.io/football/teams/8386.png",
-  "away_logo": "https://media.api-sports.io/football/teams/8008.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-09-11T23:50:24.881711+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 90,
-     "gh": 2,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 69,
-   "level": "red",
-   "dscores": [
-    69
-   ],
-   "factors": [
-    "النتيجة الحالية 2-2 تُسقط التوقع (د90)"
-   ],
-   "pick": "home",
-   "confidence": 36,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
- "1619004": {
-  "score": "0-2",
-  "status": "2H",
-  "minute": 90,
-  "home": "San Antonio Bulo Bulo",
-  "away": "Aurora",
-  "league": "Primera División (Bolivia)",
-  "home_logo": "https://media.api-sports.io/football/teams/17760.png",
-  "away_logo": "https://media.api-sports.io/football/teams/3637.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-  "seen": "2026-09-11T23:55:04.514304+00:00",
-  "radar": {
-   "snaps": [
-    {
-     "minute": 90,
-     "gh": 0,
-     "ga": 2,
-     "h": {},
-     "a": {}
-    }
-   ],
-   "score": 69,
-   "level": "red",
-   "dscores": [
-    69
-   ],
-   "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د90)"
-   ],
-   "pick": "home",
-   "confidence": 50,
-   "top": false,
-   "mine": false,
-   "drama": {
-    "signal": 0,
-    "side": "home",
-    "ready": false
-   },
-   "alerted": null,
-   "red_alerted": null,
-   "warn_alerted": null
-  }
- },
  "1493126": {
   "score": "2-0",
   "status": "2H",
-  "minute": 83,
+  "minute": 90,
   "home": "Defensa Y Justicia",
   "away": "Gimnasia M.",
   "league": "Liga Profesional Argentina (Argentina)",
   "home_logo": "https://media.api-sports.io/football/teams/442.png",
   "away_logo": "https://media.api-sports.io/football/teams/1066.png",
   "league_logo": "https://media.api-sports.io/football/leagues/128.png",
-  "seen": "2026-09-11T23:56:37.690851+00:00",
+  "seen": "2026-09-12T00:03:13.420254+00:00",
   "radar": {
    "snaps": [
     {
@@ -223,20 +137,47 @@
       "rc": 0,
       "poss": 52
      }
+    },
+    {
+     "minute": 90,
+     "gh": 2,
+     "ga": 0,
+     "h": {
+      "sog": 6,
+      "shots": 10,
+      "yc": 1,
+      "cor": 5,
+      "sv": 0,
+      "rc": 0,
+      "poss": 49
+     },
+     "a": {
+      "sog": 0,
+      "shots": 15,
+      "yc": 3,
+      "cor": 5,
+      "sv": 4,
+      "rc": 0,
+      "poss": 51
+     }
     }
    ],
-   "score": 0,
+   "score": 14,
    "level": "green",
    "dscores": [
-    0
+    0,
+    14
    ],
-   "factors": [],
+   "factors": [
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
    "pick": "home",
    "confidence": 38,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 20,
     "side": "away",
     "ready": false
    },
@@ -247,7 +188,7 @@
  },
  "1493986": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "One Knoxville",
   "away": "Naples",
@@ -255,7 +196,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/18905.png",
   "away_logo": "https://media.api-sports.io/football/teams/25485.png",
   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-  "seen": "2026-09-11T23:56:37.690851+00:00",
+  "seen": "2026-09-12T00:03:13.420254+00:00",
   "radar": {
    "snaps": [
     {
@@ -290,7 +231,7 @@
  },
  "1499628": {
   "score": "0-0",
-  "status": "1H",
+  "status": "HT",
   "minute": 45,
   "home": "Argentino de Merlo",
   "away": "Real Pilar",
@@ -298,7 +239,7 @@
   "home_logo": "https://media.api-sports.io/football/teams/2430.png",
   "away_logo": "https://media.api-sports.io/football/teams/2422.png",
   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-  "seen": "2026-09-11T23:56:37.690851+00:00",
+  "seen": "2026-09-12T00:03:13.420254+00:00",
   "radar": {
    "snaps": [
     {
@@ -334,14 +275,14 @@
  "1549779": {
   "score": "0-1",
   "status": "1H",
-  "minute": 41,
+  "minute": 45,
   "home": "Jaguares",
   "away": "Fortaleza FC",
   "league": "Primera A (Colombia)",
   "home_logo": "https://media.api-sports.io/football/teams/1133.png",
   "away_logo": "https://media.api-sports.io/football/teams/1147.png",
   "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-  "seen": "2026-09-11T23:56:37.690851+00:00",
+  "seen": "2026-09-12T00:03:13.420254+00:00",
   "radar": {
    "snaps": [
     {
@@ -366,22 +307,48 @@
       "rc": 0,
       "poss": 37
      }
+    },
+    {
+     "minute": 45,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "shots": 7,
+      "yc": 1,
+      "cor": 2,
+      "sv": 0,
+      "rc": 0,
+      "poss": 61
+     },
+     "a": {
+      "sog": 1,
+      "shots": 4,
+      "yc": 1,
+      "cor": 3,
+      "sv": 1,
+      "rc": 0,
+      "poss": 39
+     }
     }
    ],
-   "score": 15,
+   "score": 29,
    "level": "green",
    "dscores": [
-    15
+    15,
+    29
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد"
+    "تقدم هش بفارق هدف واحد",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "pick": "away",
    "confidence": 36,
    "top": false,
    "mine": false,
    "drama": {
-    "signal": 0,
+    "signal": 35,
     "side": "home",
     "ready": false
    },
