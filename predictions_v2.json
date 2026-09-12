@@ -2578,93 +2578,6 @@
    "ar_away": "روكينغهام سيتي",
    "ar_league": "دوري غرب أستراليا الدرجة الأولى"
   },
-  "1556066": {
-   "fid": "1556066",
-   "kickoff": "2026-09-12T09:30:00+00:00",
-   "date": "2026-09-12",
-   "home": "Shimizu S-pulse",
-   "away": "Avispa Fukuoka",
-   "home_id": 283,
-   "away_id": 316,
-   "home_logo": "https://media.api-sports.io/football/teams/283.png",
-   "away_logo": "https://media.api-sports.io/football/teams/316.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "league": "J1 League (Japan)",
-   "league_id": 98,
-   "season": 2027,
-   "round": "Regular Season - 7",
-   "venue": "IAI Stadium Nihondaira, Shizuoka, Japan",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 36,
-   "prob_home": 36,
-   "prob_draw": 31,
-   "prob_away": 33,
-   "reason": "مواجهة متكافئة وفوكوكا فريق دفاعي منظم يصعب اختراقه فالتعادل وارد بقوة",
-   "ar_home": "شيميزو إس بولس",
-   "ar_away": "أفيسبا فوكوكا",
-   "ar_league": "الدوري الياباني الممتاز"
-  },
-  "1606648": {
-   "fid": "1606648",
-   "kickoff": "2026-09-12T09:30:00+00:00",
-   "date": "2026-09-12",
-   "home": "Kataller Toyama",
-   "away": "Tochigi City",
-   "home_id": 4322,
-   "away_id": 7145,
-   "home_logo": "https://media.api-sports.io/football/teams/4322.png",
-   "away_logo": "https://media.api-sports.io/football/teams/7145.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/99.png",
-   "league": "J2 League (Japan)",
-   "league_id": 99,
-   "season": 2026,
-   "round": "Regular Season - 6",
-   "venue": "Toyama Athletic Stadium, Toyama, Japan",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 38,
-   "prob_home": 38,
-   "prob_draw": 30,
-   "prob_away": 32,
-   "reason": "فريقان من الفرق الصاعدة حديثاً بمستوى متقارب مع أفضلية أرضية محدودة",
-   "ar_home": "كاتالر توياما",
-   "ar_away": "توتشيغي سيتي",
-   "ar_league": "الدوري الياباني الدرجة الثانية"
-  },
-  "1606649": {
-   "fid": "1606649",
-   "kickoff": "2026-09-12T09:30:00+00:00",
-   "date": "2026-09-12",
-   "home": "Vanraure Hachinohe",
-   "away": "Shonan Bellmare",
-   "home_id": 4326,
-   "away_id": 284,
-   "home_logo": "https://media.api-sports.io/football/teams/4326.png",
-   "away_logo": "https://media.api-sports.io/football/teams/284.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/99.png",
-   "league": "J2 League (Japan)",
-   "league_id": 99,
-   "season": 2026,
-   "round": "Regular Season - 6",
-   "venue": "Prifoods Stadium, Hachinohe, Japan",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "away",
-   "confidence": 46,
-   "prob_home": 26,
-   "prob_draw": 28,
-   "prob_away": 46,
-   "reason": "شونان الهابط من الدرجة الأولى يتفوق فنياً وبعمق التشكيلة على هاتشينوهي",
-   "ar_home": "فانراوري هاتشينوهي",
-   "ar_away": "شونان بيلمار",
-   "ar_league": "الدوري الياباني الدرجة الثانية"
-  },
   "1639084": {
    "fid": "1639084",
    "kickoff": "2026-09-12T09:45:00+00:00",
@@ -215716,24 +215629,108 @@
    "actual": "away",
    "score": "1-3",
    "correct": false
+  },
+  {
+   "fid": "1556066",
+   "date": "2026-09-12",
+   "home": "Shimizu S-pulse",
+   "away": "Avispa Fukuoka",
+   "ar_home": "شيميزو إس بولس",
+   "ar_away": "أفيسبا فوكوكا",
+   "home_logo": "https://media.api-sports.io/football/teams/283.png",
+   "away_logo": "https://media.api-sports.io/football/teams/316.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "league": "J1 League (Japan)",
+   "ar_league": "الدوري الياباني الممتاز",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 36,
+   "prob_home": 36,
+   "prob_draw": 31,
+   "prob_away": 33,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "gold_check": null,
+   "reason": "مواجهة متكافئة وفوكوكا فريق دفاعي منظم يصعب اختراقه فالتعادل وارد بقوة",
+   "actual": "home",
+   "score": "1-0",
+   "correct": true
+  },
+  {
+   "fid": "1606648",
+   "date": "2026-09-12",
+   "home": "Kataller Toyama",
+   "away": "Tochigi City",
+   "ar_home": "كاتالر توياما",
+   "ar_away": "توتشيغي سيتي",
+   "home_logo": "https://media.api-sports.io/football/teams/4322.png",
+   "away_logo": "https://media.api-sports.io/football/teams/7145.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/99.png",
+   "league": "J2 League (Japan)",
+   "ar_league": "الدوري الياباني الدرجة الثانية",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 38,
+   "prob_home": 38,
+   "prob_draw": 30,
+   "prob_away": 32,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "gold_check": null,
+   "reason": "فريقان من الفرق الصاعدة حديثاً بمستوى متقارب مع أفضلية أرضية محدودة",
+   "actual": "draw",
+   "score": "0-0",
+   "correct": false
+  },
+  {
+   "fid": "1606649",
+   "date": "2026-09-12",
+   "home": "Vanraure Hachinohe",
+   "away": "Shonan Bellmare",
+   "ar_home": "فانراوري هاتشينوهي",
+   "ar_away": "شونان بيلمار",
+   "home_logo": "https://media.api-sports.io/football/teams/4326.png",
+   "away_logo": "https://media.api-sports.io/football/teams/284.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/99.png",
+   "league": "J2 League (Japan)",
+   "ar_league": "الدوري الياباني الدرجة الثانية",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 46,
+   "prob_home": 26,
+   "prob_draw": 28,
+   "prob_away": 46,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "gold_check": null,
+   "reason": "شونان الهابط من الدرجة الأولى يتفوق فنياً وبعمق التشكيلة على هاتشينوهي",
+   "actual": "away",
+   "score": "0-1",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-09-12T11:27:38.215062+00:00",
+  "last_run": "2026-09-12T11:37:33.717562+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 3717,
-    "total": 7687
+    "correct": 3719,
+    "total": 7690
    },
    "top_leagues": {
     "correct": 374,
     "total": 759
    },
    "other_leagues": {
-    "correct": 3343,
-    "total": 6928
+    "correct": 3345,
+    "total": 6931
    },
    "by_confidence": {
     "70+": {
@@ -215749,13 +215746,13 @@
      "total": 1354
     },
     "<50": {
-     "correct": 2520,
-     "total": 5731
+     "correct": 2522,
+     "total": 5734
     }
    },
    "last30": {
-    "correct": 2961,
-    "total": 6162
+    "correct": 2963,
+    "total": 6165
    },
    "daily": {
     "2026-08-14": {
@@ -215875,22 +215872,22 @@
      "total": 320
     },
     "2026-09-12": {
-     "correct": 41,
-     "total": 83
+     "correct": 43,
+     "total": 86
     }
    },
    "season": {
     "overall": {
-     "correct": 2961,
-     "total": 6162
+     "correct": 2963,
+     "total": 6165
     },
     "top_leagues": {
      "correct": 326,
      "total": 654
     },
     "other_leagues": {
-     "correct": 2635,
-     "total": 5508
+     "correct": 2637,
+     "total": 5511
     },
     "by_confidence": {
      "70+": {
@@ -215906,8 +215903,8 @@
       "total": 1095
      },
      "<50": {
-      "correct": 2009,
-      "total": 4571
+      "correct": 2011,
+      "total": 4574
      }
     },
     "start": "2026-08-13"
@@ -216271,7 +216268,7 @@
     "disagree": 75
    }
   },
-  "claude_refused": 96,
-  "claude_refused_at": "2026-09-12T11:27:38.215077+00:00"
+  "claude_refused": 98,
+  "claude_refused_at": "2026-09-12T11:37:33.717574+00:00"
  }
 }
