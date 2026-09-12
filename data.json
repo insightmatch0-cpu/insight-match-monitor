@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-12T00:56:34.902060+00:00",
+ "updated": "2026-09-12T01:06:56.015556+00:00",
  "live": [
   {
    "fid": "1493986",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25485.png",
    "league_logo": "https://media.api-sports.io/football/leagues/489.png",
    "score": "0-0",
-   "minute": 88,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -24,10 +24,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 67,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د88)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 46,
@@ -40,10 +40,10 @@
     "top": false,
     "trend": {
      "min": [
-      88
+      90
      ],
      "danger": [
-      67
+      69
      ],
      "h_sog": [
       0
@@ -71,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2422.png",
    "league_logo": "https://media.api-sports.io/football/leagues/131.png",
    "score": "0-1",
-   "minute": 86,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:05:19.599182+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -83,10 +83,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 66,
+    "score": 69,
     "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د86)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د90)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -99,10 +99,10 @@
     "top": false,
     "trend": {
      "min": [
-      86
+      90
      ],
      "danger": [
-      66
+      69
      ],
      "h_sog": [
       0
@@ -129,10 +129,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/1133.png",
    "away_logo": "https://media.api-sports.io/football/teams/1147.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
-   "score": "0-2",
-   "minute": 78,
+   "score": "2-2",
+   "minute": 89,
    "status": "2H",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -142,13 +142,18 @@
     "confidence": 36
    },
    "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
+    "score": 94,
+    "level": "red",
+    "factors": [
+     "النتيجة الحالية 2-2 تُسقط التوقع (د89)",
+     "موجة تسديد على المرمى من المضيف",
+     "موجة ركنيات لصالح المضيف",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
     "pick": "away",
     "confidence": 36,
     "drama": {
-     "signal": 0,
+     "signal": 65,
      "side": "home",
      "ready": false
     },
@@ -159,23 +164,27 @@
       45,
       54,
       62,
-      72
+      72,
+      89
      ],
      "danger": [
       15,
       0,
       0,
-      0
+      0,
+      94
      ],
      "h_sog": [
       1,
       2,
       3,
-      4
+      4,
+      6
      ],
      "a_sog": [
       1,
       1,
+      2,
       2,
       2
      ],
@@ -183,13 +192,147 @@
       2,
       2,
       2,
-      3
+      3,
+      5
      ],
      "a_cor": [
       3,
       3,
       5,
+      6,
       6
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1619005",
+   "home": "Real Potosí",
+   "away": "Oriente Petrolero",
+   "home_en": "Real Potosí",
+   "away_en": "Oriente Petrolero",
+   "league": "Primera División (Bolivia)",
+   "home_logo": "https://media.api-sports.io/football/teams/3708.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3707.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
+   "score": "1-1",
+   "minute": 51,
+   "status": "2H",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 50
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 50
+   },
+   "radar": {
+    "score": 45,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 1-1 تُسقط التوقع (د51)"
+    ],
+    "pick": "home",
+    "confidence": 50,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      13,
+      51
+     ],
+     "danger": [
+      22,
+      45
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1549486",
+   "home": "Cusco",
+   "away": "FBC Melgar",
+   "home_en": "Cusco",
+   "away_en": "FBC Melgar",
+   "league": "Primera División (Peru)",
+   "home_logo": "https://media.api-sports.io/football/teams/10013.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2554.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
+   "score": "0-0",
+   "minute": 49,
+   "status": "2H",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 55
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 45
+   },
+   "radar": {
+    "score": 58,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د49)",
+     "موجة ركنيات لصالح الضيف",
+     "ضغط هجومي متصاعد من الضيف"
+    ],
+    "pick": "home",
+    "confidence": 45,
+    "drama": {
+     "signal": 35,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      9,
+      49
+     ],
+     "danger": [
+      20,
+      58
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      1,
+      2
+     ],
+     "h_cor": [
+      0,
+      5
+     ],
+     "a_cor": [
+      0,
+      2
      ]
     }
    }
@@ -207,7 +350,7 @@
    "score": "1-2",
    "minute": 45,
    "status": "1H",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 58
@@ -239,7 +382,7 @@
       15
      ],
      "h_sog": [
-      1
+      3
      ],
      "a_sog": [
       4
@@ -249,138 +392,6 @@
      ],
      "a_cor": [
       1
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1549486",
-   "home": "Cusco",
-   "away": "FBC Melgar",
-   "home_en": "Cusco",
-   "away_en": "FBC Melgar",
-   "league": "Primera División (Peru)",
-   "home_logo": "https://media.api-sports.io/football/teams/10013.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2554.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
-   "score": "0-0",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 55
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 45
-   },
-   "radar": {
-    "score": 56,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
-     "موجة ركنيات لصالح الضيف",
-     "ضغط هجومي متصاعد من الضيف"
-    ],
-    "pick": "home",
-    "confidence": 45,
-    "drama": {
-     "signal": 35,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      9,
-      45
-     ],
-     "danger": [
-      20,
-      56
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      1,
-      2
-     ],
-     "h_cor": [
-      0,
-      5
-     ],
-     "a_cor": [
-      0,
-      2
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1619005",
-   "home": "Real Potosí",
-   "away": "Oriente Petrolero",
-   "home_en": "Real Potosí",
-   "away_en": "Oriente Petrolero",
-   "league": "Primera División (Bolivia)",
-   "home_logo": "https://media.api-sports.io/football/teams/3708.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3707.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-   "score": "1-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
-   "pred_v1": {
-    "pick": "draw",
-    "confidence": 50
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 50
-   },
-   "radar": {
-    "score": 42,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
-    ],
-    "pick": "home",
-    "confidence": 50,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      13,
-      45
-     ],
-     "danger": [
-      22,
-      42
-     ],
-     "h_sog": [
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0
      ]
     }
    }
@@ -398,7 +409,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -457,7 +468,7 @@
    "score": "1-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -528,7 +539,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -597,9 +608,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1065.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "2-0",
-   "minute": 28,
+   "minute": 38,
    "status": "1H",
-   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "seen": "2026-09-12T01:06:52.693554+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 68
@@ -624,27 +635,33 @@
     "trend": {
      "min": [
       12,
-      22
+      22,
+      32
      ],
      "danger": [
+      0,
       0,
       0
      ],
      "h_sog": [
       1,
-      3
+      3,
+      4
      ],
      "a_sog": [
+      0,
       0,
       0
      ],
      "h_cor": [
       0,
-      1
+      1,
+      2
      ],
      "a_cor": [
       0,
-      0
+      0,
+      1
      ]
     }
    }
@@ -682,54 +699,6 @@
    "pick": "home",
    "confidence": 68,
    "reason": "بوكا جونيورز عملاق الأرجنتين وفي أرضه وسنترال كوردوبا فريق ضعيف"
-  },
-  {
-   "fid": "1493986",
-   "kickoff": "2026-09-11T23:00:00+00:00",
-   "home": "وان نوكسفيل",
-   "away": "نابلز",
-   "home_en": "One Knoxville",
-   "home_logo": "https://media.api-sports.io/football/teams/18905.png",
-   "away_logo": "https://media.api-sports.io/football/teams/25485.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-   "away_en": "Naples",
-   "league": "يو إس إل ليج وان (الولايات المتحدة)",
-   "top": false,
-   "pick": "home",
-   "confidence": 53,
-   "reason": "ميزة الأرض في الدوري الأمريكي عامل إيجابي للضيافة"
-  },
-  {
-   "fid": "1499628",
-   "kickoff": "2026-09-11T23:00:00+00:00",
-   "home": "أرجنتينو دي ميرلو",
-   "away": "ريال بيلار",
-   "home_en": "Argentino de Merlo",
-   "home_logo": "https://media.api-sports.io/football/teams/2430.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2422.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/131.png",
-   "away_en": "Real Pilar",
-   "league": "الدرجة الأولى الإقليمية (الأرجنتين)",
-   "top": false,
-   "pick": "draw",
-   "confidence": 50,
-   "reason": "غياب بيانات واضحة يشير إلى تكافؤ نسبي بين الفريقين"
-  },
-  {
-   "fid": "1635959",
-   "kickoff": "2026-09-11T23:00:00+00:00",
-   "home": "تشابولينيروس",
-   "away": "سيلايا",
-   "home_en": "Chapulineros",
-   "home_logo": "https://media.api-sports.io/football/teams/26525.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2308.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1242.png",
-   "away_en": "Celaya",
-   "league": "الدرجة الأولى الممتازة (المكسيك)",
-   "top": false,
-   "pick": "away",
-   "confidence": 52,
-   "reason": "سيلايا عادة تقدم أداء جيد بعيداً عن الأرض في الدوري المكسيكي"
   },
   {
    "fid": "1549779",
