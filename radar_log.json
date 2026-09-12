@@ -32,10 +32,10 @@
    "pick": "home",
    "confidence": 52,
    "level": "red",
-   "score": 76,
-   "minute": 45,
+   "score": 97,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)",
+    "النتيجة الحالية 0-1 تُسقط التوقع (د81)",
     "موجة تسديد على المرمى من الضيف",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
@@ -203,10 +203,94 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
+   "score": 58,
+   "minute": 72,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د72)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1528707",
+   "date": "2026-09-12",
+   "home": "Changchun Yatai",
+   "away": "Heilongjiang Lava Spring",
+   "league": "League One (China)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 58,
+   "level": "amber",
    "score": 42,
    "minute": 45,
    "factors": [
     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1504536",
+   "date": "2026-09-12",
+   "home": "Trelleborg",
+   "away": "Hässleholms IF",
+   "league": "Ettan - Södra (Sweden)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 56,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1497235",
+   "date": "2026-09-12",
+   "home": "Finnsnes",
+   "away": "Alta",
+   "league": "3. Division - Girone 5 (Norway)",
+   "top": false,
+   "mine": false,
+   "pick": "away",
+   "confidence": 54,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1635416",
+   "date": "2026-09-12",
+   "home": "MyPa",
+   "away": "Union Plaani",
+   "league": "Kakkonen - Lohko A (Finland)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 50,
+   "level": "amber",
+   "score": 42,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -66909,7 +66993,127 @@
    "graded_on": "2026-09-12"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1556063",
+   "date": "2026-09-12",
+   "minute": 85,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "Machida Zelvia",
+   "away": "Yokohama F. Marinos",
+   "league": "J1 League (Japan)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 5,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 0,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 65
+     },
+     "a": {
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 35
+     }
+    },
+    {
+     "minute": 85,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "rc": 1,
+      "shots": 8,
+      "yc": 2,
+      "cor": 5,
+      "poss": 62
+     },
+     "a": {
+      "sog": 3,
+      "sv": 1,
+      "rc": 0,
+      "shots": 7,
+      "yc": 1,
+      "cor": 4,
+      "poss": 38
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1556063",
+   "date": "2026-09-12",
+   "minute": 85,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Machida Zelvia",
+   "away": "Yokohama F. Marinos",
+   "league": "J1 League (Japan)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 5,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 0,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 65
+     },
+     "a": {
+      "shots": 1,
+      "rc": 0,
+      "yc": 0,
+      "sog": 0,
+      "poss": 35
+     }
+    },
+    {
+     "minute": 85,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 3,
+      "sv": 2,
+      "rc": 1,
+      "shots": 8,
+      "yc": 2,
+      "cor": 5,
+      "poss": 62
+     },
+     "a": {
+      "sog": 3,
+      "sv": 1,
+      "rc": 0,
+      "shots": 7,
+      "yc": 1,
+      "cor": 4,
+      "poss": 38
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
