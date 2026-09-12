@@ -259,10 +259,10 @@
    "pick": "away",
    "confidence": 42,
    "level": "red",
-   "score": 90,
-   "minute": 82,
+   "score": 95,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د82)",
+    "النتيجة الحالية 2-1 تُسقط التوقع (د90)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
@@ -375,11 +375,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 55,
-   "level": "amber",
-   "score": 43,
-   "minute": 47,
+   "level": "red",
+   "score": 67,
+   "minute": 87,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د47)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د87)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -397,10 +397,10 @@
    "pick": "home",
    "confidence": 60,
    "level": "amber",
-   "score": 55,
-   "minute": 67,
+   "score": 61,
+   "minute": 77,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د67)"
+    "النتيجة الحالية 0-2 تُسقط التوقع (د77)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -460,10 +460,10 @@
    "pick": "home",
    "confidence": 55,
    "level": "amber",
-   "score": 47,
-   "minute": 40,
+   "score": 50,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د40)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
     "موجة ركنيات لصالح الضيف"
    ],
    "alerted": null,
@@ -67494,6 +67494,92 @@
       "cor": 5,
       "rc": 0,
       "poss": 40
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1570378",
+   "date": "2026-09-12",
+   "minute": 90,
+   "score_at": "2-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Racing Santander",
+   "away": "Alaves",
+   "league": "La Liga (Spain)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 1,
+      "cor": 2,
+      "yc": 0,
+      "rc": 0,
+      "poss": 65
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 2,
+      "cor": 2,
+      "yc": 2,
+      "rc": 0,
+      "poss": 35
+     }
+    },
+    {
+     "minute": 31,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 1,
+      "sv": 4,
+      "shots": 2,
+      "cor": 2,
+      "yc": 0,
+      "rc": 0,
+      "poss": 63
+     },
+     "a": {
+      "sog": 4,
+      "sv": 1,
+      "shots": 6,
+      "cor": 3,
+      "yc": 2,
+      "rc": 0,
+      "poss": 37
+     }
+    },
+    {
+     "minute": 90,
+     "gh": 2,
+     "ga": 1,
+     "h": {
+      "sog": 4,
+      "sv": 7,
+      "rc": 1,
+      "shots": 11,
+      "yc": 2,
+      "cor": 4,
+      "poss": 58
+     },
+     "a": {
+      "sog": 8,
+      "sv": 2,
+      "rc": 0,
+      "shots": 16,
+      "yc": 3,
+      "cor": 6,
+      "poss": 42
      }
     }
    ]
