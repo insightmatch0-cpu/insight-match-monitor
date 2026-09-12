@@ -481,19 +481,28 @@
    "mine": true,
    "pick": "away",
    "confidence": 42,
-   "level": "amber",
-   "score": 49,
-   "minute": 32,
+   "level": "red",
+   "score": 79,
+   "minute": 51,
    "factors": [
-    "تقدم هش بفارق هدف واحد",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د51)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 51,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 79,
+   "sent_minute": 51,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د51)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ]
   },
   {
    "fid": "1534441",
@@ -578,6 +587,39 @@
    "alert_minute": null,
    "score_xg": null,
    "level_xg": null
+  },
+  {
+   "fid": "1575163",
+   "date": "2026-09-12",
+   "home": "FSV Mainz 05",
+   "away": "Eintracht Frankfurt",
+   "league": "Bundesliga (Germany)",
+   "top": true,
+   "mine": true,
+   "pick": "home",
+   "confidence": 50,
+   "level": "red",
+   "score": 68,
+   "minute": 45,
+   "factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ],
+   "alerted": true,
+   "alert_minute": 45,
+   "score_xg": null,
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 68,
+   "sent_minute": 45,
+   "sent_factors": [
+    "النتيجة الحالية 0-2 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
+   ]
   }
  ],
  "resolved": [
