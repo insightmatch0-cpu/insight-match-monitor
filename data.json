@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-12T00:46:50.667451+00:00",
+ "updated": "2026-09-12T00:56:34.902060+00:00",
  "live": [
   {
    "fid": "1493986",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/25485.png",
    "league_logo": "https://media.api-sports.io/football/leagues/489.png",
    "score": "0-0",
-   "minute": 78,
+   "minute": 88,
    "status": "2H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -24,10 +24,10 @@
     "confidence": 46
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 67,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د78)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د88)"
     ],
     "pick": "home",
     "confidence": 46,
@@ -40,10 +40,10 @@
     "top": false,
     "trend": {
      "min": [
-      78
+      88
      ],
      "danger": [
-      61
+      67
      ],
      "h_sog": [
       0
@@ -71,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2422.png",
    "league_logo": "https://media.api-sports.io/football/leagues/131.png",
    "score": "0-1",
-   "minute": 77,
+   "minute": 86,
    "status": "2H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -83,10 +83,10 @@
     "confidence": 40
    },
    "radar": {
-    "score": 61,
-    "level": "amber",
+    "score": 66,
+    "level": "red",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د77)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د86)"
     ],
     "pick": "home",
     "confidence": 40,
@@ -99,10 +99,10 @@
     "top": false,
     "trend": {
      "min": [
-      77
+      86
      ],
      "danger": [
-      61
+      66
      ],
      "h_sog": [
       0
@@ -130,9 +130,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1147.png",
    "league_logo": "https://media.api-sports.io/football/leagues/239.png",
    "score": "0-2",
-   "minute": 68,
+   "minute": 78,
    "status": "2H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -158,32 +158,97 @@
      "min": [
       45,
       54,
-      62
+      62,
+      72
      ],
      "danger": [
       15,
+      0,
       0,
       0
      ],
      "h_sog": [
       1,
       2,
-      3
+      3,
+      4
      ],
      "a_sog": [
       1,
       1,
+      2,
       2
      ],
      "h_cor": [
       2,
       2,
-      2
+      2,
+      3
      ],
      "a_cor": [
       3,
       3,
-      5
+      5,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1492374",
+   "home": "Coritiba",
+   "away": "Atletico Paranaense",
+   "home_en": "Coritiba",
+   "away_en": "Atletico Paranaense",
+   "league": "Serie A (Brazil)",
+   "home_logo": "https://media.api-sports.io/football/teams/147.png",
+   "away_logo": "https://media.api-sports.io/football/teams/134.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/71.png",
+   "score": "1-2",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 58
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 35
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 35,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": true,
+    "trend": {
+     "min": [
+      45
+     ],
+     "danger": [
+      15
+     ],
+     "h_sog": [
+      1
+     ],
+     "a_sog": [
+      4
+     ],
+     "h_cor": [
+      3
+     ],
+     "a_cor": [
+      1
      ]
     }
    }
@@ -200,8 +265,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/281.png",
    "score": "0-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "status": "HT",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -268,7 +333,7 @@
    "score": "1-1",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -321,6 +386,65 @@
    }
   },
   {
+   "fid": "1635959",
+   "home": "Chapulineros",
+   "away": "Celaya",
+   "home_en": "Chapulineros",
+   "away_en": "Celaya",
+   "league": "Primera Premier (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/26525.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2308.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/1242.png",
+   "score": "0-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 42,
+    "level": "amber",
+    "factors": [
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45
+     ],
+     "danger": [
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
    "fid": "1636693",
    "home": "El Nacional",
    "away": "22 de Julio",
@@ -332,8 +456,8 @@
    "league_logo": "https://media.api-sports.io/football/leagues/243.png",
    "score": "1-0",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "status": "HT",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -401,10 +525,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/2376.png",
    "away_logo": "https://media.api-sports.io/football/teams/2373.png",
    "league_logo": "https://media.api-sports.io/football/leagues/269.png",
-   "score": "0-1",
+   "score": "1-1",
    "minute": 45,
-   "status": "1H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "status": "HT",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
@@ -414,10 +538,10 @@
     "confidence": 38
    },
    "radar": {
-    "score": 15,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "تقدم هش بفارق هدف واحد"
+     "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 38,
@@ -437,143 +561,27 @@
      "danger": [
       21,
       15,
-      15
-     ],
-     "h_sog": [
-      0,
-      0,
-      0
-     ],
-     "a_sog": [
-      0,
-      0,
-      0
-     ],
-     "h_cor": [
-      0,
-      0,
-      0
-     ],
-     "a_cor": [
-      0,
-      0,
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1635959",
-   "home": "Chapulineros",
-   "away": "Celaya",
-   "home_en": "Chapulineros",
-   "away_en": "Celaya",
-   "league": "Primera Premier (Mexico)",
-   "home_logo": "https://media.api-sports.io/football/teams/26525.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2308.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/1242.png",
-   "score": "0-0",
-   "minute": 42,
-   "status": "1H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 52
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 40,
-    "level": "amber",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
       42
      ],
-     "danger": [
-      40
-     ],
      "h_sog": [
+      0,
+      0,
       0
      ],
      "a_sog": [
+      0,
+      0,
       0
      ],
      "h_cor": [
+      0,
+      0,
       0
      ],
      "a_cor": [
+      0,
+      0,
       0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1492374",
-   "home": "Coritiba",
-   "away": "Atletico Paranaense",
-   "home_en": "Coritiba",
-   "away_en": "Atletico Paranaense",
-   "league": "Serie A (Brazil)",
-   "home_logo": "https://media.api-sports.io/football/teams/147.png",
-   "away_logo": "https://media.api-sports.io/football/teams/134.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/71.png",
-   "score": "0-2",
-   "minute": 38,
-   "status": "1H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 58
-   },
-   "pred_v2": {
-    "pick": "away",
-    "confidence": 35
-   },
-   "radar": {
-    "score": 0,
-    "level": "green",
-    "factors": [],
-    "pick": "away",
-    "confidence": 35,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": true,
-    "trend": {
-     "min": [
-      38
-     ],
-     "danger": [
-      0
-     ],
-     "h_sog": [
-      1
-     ],
-     "a_sog": [
-      4
-     ],
-     "h_cor": [
-      2
-     ],
-     "a_cor": [
-      1
      ]
     }
    }
@@ -589,9 +597,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/1065.png",
    "league_logo": "https://media.api-sports.io/football/leagues/128.png",
    "score": "2-0",
-   "minute": 18,
+   "minute": 28,
    "status": "1H",
-   "seen": "2026-09-12T00:46:46.017302+00:00",
+   "seen": "2026-09-12T00:56:32.360715+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 68
@@ -615,21 +623,27 @@
     "top": true,
     "trend": {
      "min": [
-      12
+      12,
+      22
      ],
      "danger": [
+      0,
       0
      ],
      "h_sog": [
-      1
+      1,
+      3
      ],
      "a_sog": [
+      0,
       0
      ],
      "h_cor": [
-      0
+      0,
+      1
      ],
      "a_cor": [
+      0,
       0
      ]
     }
@@ -7565,6 +7579,32 @@
     "score_at": "0-0",
     "final": "0-0",
     "hit": false,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-11",
+    "home": "Argentino de Merlo",
+    "away": "Real Pilar",
+    "league": "Primera B Metropolitana (Argentina)",
+    "level": "amber",
+    "minute": 81,
+    "pick": "home",
+    "conf": 40,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-11",
+    "home": "One Knoxville",
+    "away": "Naples",
+    "league": "USL League One (USA)",
+    "level": "amber",
+    "minute": 82,
+    "pick": "home",
+    "conf": 46,
     "top": false
    },
    {
