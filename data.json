@@ -1,6 +1,25 @@
 {
- "updated": "2026-09-12T10:46:42.916438+00:00",
+ "updated": "2026-09-12T10:47:16.551219+00:00",
  "live": [
+  {
+   "fid": "1637831",
+   "home": "St. George Saints",
+   "away": "Northern Tigers",
+   "home_en": "St. George Saints",
+   "away_en": "Northern Tigers",
+   "league": "New South Wales NPL (Australia)",
+   "home_logo": "https://media.api-sports.io/football/teams/16779.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16776.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/192.png",
+   "score": "3-1",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-12T10:32:06.332260+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 55
+   }
+  },
   {
    "fid": "1601135",
    "home": "Penang",
@@ -25101,12 +25120,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1583,
-   "hit": 1410
+   "fired": 1593,
+   "hit": 1419
   },
   "amber": {
-   "fired": 1283,
-   "hit": 583
+   "fired": 1294,
+   "hit": 586
   },
   "alerts": {
    "flip": {
@@ -25132,12 +25151,12 @@
   },
   "season": {
    "red": {
-    "fired": 1259,
-    "hit": 1120
+    "fired": 1269,
+    "hit": 1129
    },
    "amber": {
-    "fired": 1064,
-    "hit": 502
+    "fired": 1075,
+    "hit": 505
    },
    "alerts": {
     "flip": {
@@ -25616,8 +25635,8 @@
     "total": 100
    },
    "2026-09-12": {
-    "hit": 15,
-    "total": 20
+    "hit": 27,
+    "total": 41
    }
   },
   "recent": [
@@ -26501,7 +26520,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Aritma Praha",
     "away": "Slavia III",
@@ -26510,6 +26528,8 @@
     "minute": 76,
     "pick": "away",
     "conf": 46,
+    "final": "1-3",
+    "hit": false,
     "top": false
    },
    {
@@ -26541,7 +26561,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Slavoj Vyšehrad",
     "away": "Ostrov",
@@ -26550,11 +26569,12 @@
     "minute": 85,
     "pick": "home",
     "conf": 50,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Chrudim",
     "away": "Čáslav",
@@ -26563,6 +26583,8 @@
     "minute": 85,
     "pick": "home",
     "conf": 50,
+    "final": "2-2",
+    "hit": true,
     "top": false
    },
    {
@@ -26581,7 +26603,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Chuncheon",
     "away": "Yeoju Sejong",
@@ -26590,11 +26611,12 @@
     "minute": 87,
     "pick": "home",
     "conf": 47,
+    "final": "2-1",
+    "hit": false,
     "top": false
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Gloria Bistriţa",
     "away": "Popești-Leordeni",
@@ -26603,6 +26625,8 @@
     "minute": 88,
     "pick": "home",
     "conf": 52,
+    "final": "2-3",
+    "hit": true,
     "top": false
    },
    {
@@ -26621,7 +26645,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Maharlika",
     "away": "Dynamic Herb Cebu",
@@ -26630,6 +26653,8 @@
     "minute": 89,
     "pick": "away",
     "conf": 66,
+    "final": "1-0",
+    "hit": true,
     "top": false
    },
    {
@@ -26703,6 +26728,76 @@
     "top": false
    },
    {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Jeonbuk Motors",
+    "away": "FC Seoul",
+    "league": "K League 1 (South-Korea)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 54,
+    "final": "1-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Wofoo Tai Po",
+    "away": "Hong Kong FC",
+    "league": "Premier League (Hong-Kong)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 60,
+    "final": "1-2",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Shanghai Port II",
+    "away": "Jiangxi Liansheng",
+    "league": "League Two (China)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 48,
+    "final": "1-0",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "PSS Sleman",
+    "away": "Persepam Madura Utd",
+    "league": "Liga 1 (Indonesia)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 48,
+    "final": "1-3",
+    "hit": true,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Velké Hamry",
+    "away": "Hradec Králové II",
+    "league": "3. liga - CFL B (Czech-Republic)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 44,
+    "final": "0-0",
+    "hit": true,
+    "top": false
+   },
+   {
     "kind": "alert",
     "date": "2026-09-12",
     "home": "Coritiba",
@@ -26716,71 +26811,6 @@
     "final": "3-3",
     "hit": false,
     "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Jeonbuk Motors",
-    "away": "FC Seoul",
-    "league": "K League 1 (South-Korea)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 54,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Wofoo Tai Po",
-    "away": "Hong Kong FC",
-    "league": "Premier League (Hong-Kong)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 60,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Shanghai Port II",
-    "away": "Jiangxi Liansheng",
-    "league": "League Two (China)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 48,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "PSS Sleman",
-    "away": "Persepam Madura Utd",
-    "league": "Liga 1 (Indonesia)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 48,
-    "top": false
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Velké Hamry",
-    "away": "Hradec Králové II",
-    "league": "3. liga - CFL B (Czech-Republic)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 44,
-    "top": false
    }
   ]
  },
