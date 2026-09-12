@@ -6999,6 +6999,44 @@
    "prob_away": 30
   },
   {
+   "date": "2026-09-12",
+   "home": "كلوب تيخوانا",
+   "away": "كيريتارو",
+   "home_en": "Club Tijuana",
+   "away_en": "Club Queretaro",
+   "league": "الدوري المكسيكي الممتاز",
+   "home_logo": "https://media.api-sports.io/football/teams/2280.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2290.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "0-1",
+   "actual": "away",
+   "correct": false,
+   "reason": "تيخوانا قوي على ملعبه وكيريتارو من أضعف الفرق خارج أرضه",
+   "prob_home": 52,
+   "prob_draw": 27,
+   "prob_away": 21
+  },
+  {
+   "date": "2026-09-12",
+   "home": "أتلانتي",
+   "away": "باتشوكا",
+   "home_en": "Atlante FC",
+   "away_en": "CF Pachuca",
+   "league": "الدوري المكسيكي الممتاز",
+   "home_logo": "https://media.api-sports.io/football/teams/2312.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
+   "pick": "away",
+   "confidence": 48,
+   "score": "0-3",
+   "actual": "away",
+   "correct": true,
+   "reason": "باتشوكا أعلى جودة وفورمة بوضوح أمام أتلانتي الصاعد حديثاً",
+   "prob_home": 24,
+   "prob_draw": 28,
+   "prob_away": 48
+  },
+  {
    "date": "2026-09-11",
    "home": "ديفينسا إي خوستيسيا",
    "away": "خيمناسيا مندوزا",
@@ -7016,44 +7054,6 @@
    "prob_home": 38,
    "prob_draw": 31,
    "prob_away": 31
-  },
-  {
-   "date": "2026-09-11",
-   "home": "فيدزيف الرديف",
-   "away": "مازوفيا مينسك مازوفيتسكي",
-   "home_en": "Widzew II",
-   "away_en": "Mazovia Minsk Mazowiecki",
-   "league": "الدرجة الثالثة البولندية - المجموعة الأولى",
-   "home_logo": "https://media.api-sports.io/football/teams/26178.png",
-   "away_logo": "https://media.api-sports.io/football/teams/27901.png",
-   "pick": "home",
-   "confidence": 38,
-   "score": "2-3",
-   "actual": "away",
-   "correct": false,
-   "reason": "الفرق الرديفة غير مستقرة التشكيلة ما يقلص أفضلية أرضها في الدرجات الدنيا",
-   "prob_home": 38,
-   "prob_draw": 28,
-   "prob_away": 34
-  },
-  {
-   "date": "2026-09-11",
-   "home": "بوريرام يونايتد",
-   "away": "شيانغراي يونايتد",
-   "home_en": "Buriram United",
-   "away_en": "Chiangrai United",
-   "league": "الدوري التايلاندي الممتاز",
-   "home_logo": "https://media.api-sports.io/football/teams/2780.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2771.png",
-   "pick": "home",
-   "confidence": 66,
-   "score": "1-1",
-   "actual": "draw",
-   "correct": false,
-   "reason": "بوريرام المهيمن على اللقب متفوق بوضوح في القوة والفورمة على أرضه",
-   "prob_home": 66,
-   "prob_draw": 19,
-   "prob_away": 15
   },
   {
    "date": "2026-09-11",
@@ -8143,16 +8143,16 @@
  ],
  "accuracy": {
   "overall": {
-   "correct": 3686,
-   "total": 7622
+   "correct": 3687,
+   "total": 7624
   },
   "top_leagues": {
    "correct": 374,
    "total": 759
   },
   "other_leagues": {
-   "correct": 3312,
-   "total": 6863
+   "correct": 3313,
+   "total": 6865
   },
   "by_confidence": {
    "70+": {
@@ -8165,16 +8165,16 @@
    },
    "50-59": {
     "correct": 746,
-    "total": 1342
+    "total": 1343
    },
    "<50": {
-    "correct": 2497,
-    "total": 5681
+    "correct": 2498,
+    "total": 5682
    }
   },
   "last30": {
-   "correct": 2930,
-   "total": 6097
+   "correct": 2931,
+   "total": 6099
   },
   "daily": {
    "2026-08-14": {
@@ -8294,22 +8294,22 @@
     "total": 320
    },
    "2026-09-12": {
-    "correct": 10,
-    "total": 18
+    "correct": 11,
+    "total": 20
    }
   },
   "season": {
    "overall": {
-    "correct": 2930,
-    "total": 6097
+    "correct": 2931,
+    "total": 6099
    },
    "top_leagues": {
     "correct": 326,
     "total": 654
    },
    "other_leagues": {
-    "correct": 2604,
-    "total": 5443
+    "correct": 2605,
+    "total": 5445
    },
    "by_confidence": {
     "70+": {
@@ -8322,11 +8322,11 @@
     },
     "50-59": {
      "correct": 581,
-     "total": 1083
+     "total": 1084
     },
     "<50": {
-     "correct": 1986,
-     "total": 4521
+     "correct": 1987,
+     "total": 4522
     }
    },
    "start": "2026-08-13"
@@ -10870,6 +10870,6 @@
    }
   ]
  },
- "pred_updated": "2026-09-11T04:56:37.627658+00:00",
- "updated": "2026-09-12T05:31:30.987349+00:00"
+ "pred_updated": "2026-09-12T05:32:02.195535+00:00",
+ "updated": "2026-09-12T05:32:03.351035+00:00"
 }
