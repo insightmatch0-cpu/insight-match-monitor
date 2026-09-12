@@ -53,16 +53,22 @@
    "mine": true,
    "pick": "home",
    "confidence": 64,
-   "level": "amber",
-   "score": 53,
-   "minute": 64,
+   "level": "red",
+   "score": 65,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د64)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 84,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 65,
+   "sent_minute": 84,
+   "sent_factors": [
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
+   ]
   },
   {
    "fid": "1623123",
@@ -102,10 +108,10 @@
    "pick": "home",
    "confidence": 42,
    "level": "amber",
-   "score": 43,
-   "minute": 47,
+   "score": 55,
+   "minute": 67,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د47)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د67)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -216,10 +222,10 @@
    "pick": "away",
    "confidence": 75,
    "level": "amber",
-   "score": 40,
-   "minute": 42,
+   "score": 42,
+   "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د42)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -236,13 +242,12 @@
    "mine": true,
    "pick": "home",
    "confidence": 47,
-   "level": "amber",
-   "score": 49,
-   "minute": 55,
+   "level": "red",
+   "score": 82,
+   "minute": 82,
    "factors": [
-    "تقدم هش بفارق هدف واحد",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د82)",
     "موجة تسديد على المرمى من الضيف",
-    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": true,
@@ -68402,7 +68407,95 @@
    "graded_on": "2026-09-12"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1575165",
+   "date": "2026-09-12",
+   "minute": 85,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "1. FC Köln",
+   "away": "Werder Bremen",
+   "league": "Bundesliga (Germany)",
+   "top": true,
+   "mine": true,
+   "silenced": false,
+   "gated": null,
+   "evidence": [
+    {
+     "minute": 12,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 3,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 61
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 1,
+      "cor": 0,
+      "yc": 0,
+      "rc": 0,
+      "poss": 39
+     }
+    },
+    {
+     "minute": 62,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 3,
+      "shots": 8,
+      "cor": 4,
+      "yc": 0,
+      "rc": 0,
+      "poss": 40
+     },
+     "a": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 9,
+      "cor": 4,
+      "yc": 0,
+      "rc": 0,
+      "poss": 60
+     }
+    },
+    {
+     "minute": 85,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 5,
+      "sv": 4,
+      "shots": 12,
+      "cor": 6,
+      "yc": 0,
+      "rc": 0,
+      "poss": 44
+     },
+     "a": {
+      "sog": 5,
+      "sv": 4,
+      "shots": 13,
+      "cor": 5,
+      "yc": 1,
+      "rc": 0,
+      "poss": 56
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
