@@ -2578,35 +2578,6 @@
    "ar_away": "روكينغهام سيتي",
    "ar_league": "دوري غرب أستراليا الدرجة الأولى"
   },
-  "1556063": {
-   "fid": "1556063",
-   "kickoff": "2026-09-12T10:00:00+00:00",
-   "date": "2026-09-12",
-   "home": "Machida Zelvia",
-   "away": "Yokohama F. Marinos",
-   "home_id": 303,
-   "away_id": 296,
-   "home_logo": "https://media.api-sports.io/football/teams/303.png",
-   "away_logo": "https://media.api-sports.io/football/teams/296.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
-   "league": "J1 League (Japan)",
-   "league_id": 98,
-   "season": 2027,
-   "round": "Regular Season - 7",
-   "venue": "Machida GION Stadium, Machida, Japan",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 52,
-   "prob_home": 52,
-   "prob_draw": 26,
-   "prob_away": 22,
-   "reason": "ماتشيدا في المقدمة بدفاع صلب بينما مارينوس يعاني هذا الموسم",
-   "ar_home": "ماتشيدا زيلفيا",
-   "ar_away": "يوكوهاما إف مارينوس",
-   "ar_league": "الدوري الياباني الأول"
-  },
   "1593007": {
    "fid": "1593007",
    "kickoff": "2026-09-12T10:00:00+00:00",
@@ -2664,35 +2635,6 @@
    "ar_home": "إستريا",
    "ar_away": "فيافيردي نورتي",
    "ar_league": "الدوري الإسباني الدرجة الرابعة - المجموعة 12"
-  },
-  "1638796": {
-   "fid": "1638796",
-   "kickoff": "2026-09-12T10:00:00+00:00",
-   "date": "2026-09-12",
-   "home": "Bayswater City",
-   "away": "Perth",
-   "home_id": 3814,
-   "away_id": 3819,
-   "home_logo": "https://media.api-sports.io/football/teams/3814.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3819.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/196.png",
-   "league": "Western Australia NPL (Australia)",
-   "league_id": 196,
-   "season": 2026,
-   "round": "Final",
-   "venue": "Frank Drago Reserve, Australia",
-   "top": false,
-   "mine": false,
-   "is_cup": false,
-   "pick": "home",
-   "confidence": 50,
-   "prob_home": 50,
-   "prob_draw": 25,
-   "prob_away": 25,
-   "reason": "بايزووتر من فرق القمة تقليدياً في دوري غرب أستراليا مع عامل الأرض",
-   "ar_home": "بايزووتر سيتي",
-   "ar_away": "بيرث",
-   "ar_league": "دوري غرب أستراليا الممتاز"
   },
   "1496327": {
    "fid": "1496327",
@@ -215685,24 +215627,80 @@
    "actual": "away",
    "score": "0-3",
    "correct": false
+  },
+  {
+   "fid": "1556063",
+   "date": "2026-09-12",
+   "home": "Machida Zelvia",
+   "away": "Yokohama F. Marinos",
+   "ar_home": "ماتشيدا زيلفيا",
+   "ar_away": "يوكوهاما إف مارينوس",
+   "home_logo": "https://media.api-sports.io/football/teams/303.png",
+   "away_logo": "https://media.api-sports.io/football/teams/296.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/98.png",
+   "league": "J1 League (Japan)",
+   "ar_league": "الدوري الياباني الأول",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 52,
+   "prob_home": 52,
+   "prob_draw": 26,
+   "prob_away": 22,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "gold_check": null,
+   "reason": "ماتشيدا في المقدمة بدفاع صلب بينما مارينوس يعاني هذا الموسم",
+   "actual": "draw",
+   "score": "1-1",
+   "correct": false
+  },
+  {
+   "fid": "1638796",
+   "date": "2026-09-12",
+   "home": "Bayswater City",
+   "away": "Perth",
+   "ar_home": "بايزووتر سيتي",
+   "ar_away": "بيرث",
+   "home_logo": "https://media.api-sports.io/football/teams/3814.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3819.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/196.png",
+   "league": "Western Australia NPL (Australia)",
+   "ar_league": "دوري غرب أستراليا الممتاز",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 50,
+   "prob_home": 50,
+   "prob_draw": 25,
+   "prob_away": 25,
+   "mkt_home": null,
+   "mkt_draw": null,
+   "mkt_away": null,
+   "gold_check": null,
+   "reason": "بايزووتر من فرق القمة تقليدياً في دوري غرب أستراليا مع عامل الأرض",
+   "actual": "home",
+   "score": "2-0",
+   "correct": true
   }
  ],
  "meta": {
-  "last_run": "2026-09-12T12:07:59.797613+00:00",
+  "last_run": "2026-09-12T12:18:00.765210+00:00",
   "engine": "v2",
   "model": "claude-fable-5",
   "stats": {
    "overall": {
-    "correct": 3732,
-    "total": 7718
+    "correct": 3733,
+    "total": 7720
    },
    "top_leagues": {
     "correct": 374,
     "total": 759
    },
    "other_leagues": {
-    "correct": 3358,
-    "total": 6959
+    "correct": 3359,
+    "total": 6961
    },
    "by_confidence": {
     "70+": {
@@ -215714,8 +215712,8 @@
      "total": 511
     },
     "50-59": {
-     "correct": 755,
-     "total": 1357
+     "correct": 756,
+     "total": 1359
     },
     "<50": {
      "correct": 2533,
@@ -215723,8 +215721,8 @@
     }
    },
    "last30": {
-    "correct": 2976,
-    "total": 6193
+    "correct": 2977,
+    "total": 6195
    },
    "daily": {
     "2026-08-14": {
@@ -215844,22 +215842,22 @@
      "total": 320
     },
     "2026-09-12": {
-     "correct": 56,
-     "total": 114
+     "correct": 57,
+     "total": 116
     }
    },
    "season": {
     "overall": {
-     "correct": 2976,
-     "total": 6193
+     "correct": 2977,
+     "total": 6195
     },
     "top_leagues": {
      "correct": 326,
      "total": 654
     },
     "other_leagues": {
-     "correct": 2650,
-     "total": 5539
+     "correct": 2651,
+     "total": 5541
     },
     "by_confidence": {
      "70+": {
@@ -215871,8 +215869,8 @@
       "total": 415
      },
      "50-59": {
-      "correct": 590,
-      "total": 1098
+      "correct": 591,
+      "total": 1100
      },
      "<50": {
       "correct": 2022,
@@ -216240,7 +216238,7 @@
     "disagree": 75
    }
   },
-  "claude_refused": 103,
-  "claude_refused_at": "2026-09-12T12:07:59.797623+00:00"
+  "claude_refused": 104,
+  "claude_refused_at": "2026-09-12T12:18:00.765222+00:00"
  }
 }
