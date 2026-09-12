@@ -154,6 +154,11 @@ def run_job_count(repo: str, run_id) -> int:
 # بها حصة اليوم؛ كما عدّ تشغيلتَي الجدولة الاحتياطية اللتين تخطّتا بحارس
 # «جرت اليوم» (15 ثانية) محاولتين. فبلغت «5 محاولات» بلا توقع واحد.
 ATTEMPT_MIN_SECONDS = 60       # أقل من دقيقة = تخطٍّ/إزاحة لا محاولة
+# حالات «مشغول» كما يرجعها GitHub: تشغيلة تنتظر مجموعة التزامن football-monitor
+# تعود بحالة "pending" لا "queued" (سباق الإطلاق المزدوج 2026-09-12: الحارس
+# أطلق كلا المحركين ثانيةً بعد ثوانٍ من إطلاق روتين النبض لأنه لم يعدّ
+# "pending" انشغالاً)، و"waiting"/"requested" حالتان شقيقتان في الواجهة نفسها.
+BUSY_STATUSES = ("queued", "in_progress", "pending", "waiting", "requested")
 CANCELLED_ATTEMPT_MIN_SECONDS = 120   # إلغاء بعد عمل فعلي (كالقاتل المتعاون) يبقى محاولة
 
 
@@ -171,7 +176,7 @@ def is_real_attempt(r: dict, jobs_lookup=None) -> bool:
     جارية/في الانتظار: نعم · مكتملة بمدة ≥ دقيقة: نعم · مُلغاة: لا إن كانت بلا
     وظائف (أُزيحت من الطابور قبل أن تبدأ)، وإلا فقط إن عملت ≥ دقيقتين ·
     تخطٍّ قصير: لا. `jobs_lookup(run_id) -> int` اختياري (-1 = غير معروف)."""
-    if r.get("status") in ("queued", "in_progress"):
+    if r.get("status") in BUSY_STATUSES:
         return True
     d = _duration(r)
     concl = (r.get("conclusion") or "").lower()
@@ -199,7 +204,7 @@ def summarize_runs(runs: list, now: datetime, cooldown_minutes: int = 25,
     runs_today = 0
     last_created = ""
     for r in runs:
-        if r.get("status") in ("queued", "in_progress"):
+        if r.get("status") in BUSY_STATUSES:
             busy = True
         if not is_real_attempt(r, jobs_lookup):
             continue
