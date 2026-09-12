@@ -290,11 +290,10 @@
    "pick": "home",
    "confidence": 54,
    "level": "amber",
-   "score": 48,
-   "minute": 45,
+   "score": 50,
+   "minute": 59,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
-    "ضغط هجومي متصاعد من الضيف"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -312,10 +311,10 @@
    "pick": "home",
    "confidence": 48,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 52,
+   "minute": 63,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د63)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -333,10 +332,10 @@
    "pick": "away",
    "confidence": 41,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -349,6 +348,51 @@
    "home": "Gimnasia Y Tiro",
    "away": "Tristan Suarez",
    "league": "Primera Nacional (Argentina)",
+   "top": false,
+   "mine": false,
+   "pick": "home",
+   "confidence": 40,
+   "level": "amber",
+   "score": 48,
+   "minute": 56,
+   "factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د56)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1492374",
+   "date": "2026-09-12",
+   "home": "Coritiba",
+   "away": "Atletico Paranaense",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 35,
+   "level": "red",
+   "score": 95,
+   "minute": 90,
+   "factors": [
+    "النتيجة الحالية 3-3 تُسقط التوقع (د90)",
+    "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1549782",
+   "date": "2026-09-12",
+   "home": "Santa Fe",
+   "away": "Deportes Tolima",
+   "league": "Primera A (Colombia)",
    "top": false,
    "mine": false,
    "pick": "home",
@@ -65920,7 +65964,94 @@
    "graded_on": "2026-09-11"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1492374",
+   "date": "2026-09-12",
+   "minute": 90,
+   "score_at": "3-3",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Coritiba",
+   "away": "Atletico Paranaense",
+   "league": "Serie A (Brazil)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 69,
+     "gh": 1,
+     "ga": 3,
+     "h": {
+      "sog": 3,
+      "sv": 1,
+      "rc": 1,
+      "shots": 8,
+      "yc": 4,
+      "cor": 3,
+      "poss": 58
+     },
+     "a": {
+      "sog": 5,
+      "sv": 1,
+      "rc": 0,
+      "shots": 12,
+      "yc": 3,
+      "cor": 2,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 79,
+     "gh": 1,
+     "ga": 3,
+     "h": {
+      "sog": 4,
+      "sv": 1,
+      "rc": 1,
+      "shots": 13,
+      "yc": 4,
+      "cor": 4,
+      "poss": 58
+     },
+     "a": {
+      "sog": 5,
+      "sv": 2,
+      "rc": 0,
+      "shots": 14,
+      "yc": 3,
+      "cor": 3,
+      "poss": 42
+     }
+    },
+    {
+     "minute": 90,
+     "gh": 3,
+     "ga": 3,
+     "h": {
+      "sog": 7,
+      "sv": 1,
+      "rc": 1,
+      "shots": 22,
+      "yc": 4,
+      "cor": 8,
+      "poss": 62
+     },
+     "a": {
+      "sog": 5,
+      "sv": 2,
+      "rc": 0,
+      "shots": 15,
+      "yc": 4,
+      "cor": 3,
+      "poss": 38
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
