@@ -150,11 +150,12 @@
    "mine": false,
    "pick": "home",
    "confidence": 42,
-   "level": "amber",
-   "score": 58,
-   "minute": 73,
+   "level": "red",
+   "score": 69,
+   "minute": 80,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د73)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د80)",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -171,13 +172,14 @@
    "mine": false,
    "pick": "away",
    "confidence": 60,
-   "level": "amber",
-   "score": 54,
-   "minute": 32,
+   "level": "red",
+   "score": 86,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د32)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د62)",
     "موجة تسديد على المرمى من المضيف",
-    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -195,10 +197,10 @@
    "pick": "away",
    "confidence": 74,
    "level": "red",
-   "score": 70,
-   "minute": 49,
+   "score": 78,
+   "minute": 62,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د49)",
+    "النتيجة الحالية 1-0 تُسقط التوقع (د62)",
     "موجة تسديد على المرمى من المضيف",
     "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
@@ -228,10 +230,10 @@
    "pick": "home",
    "confidence": 56,
    "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "score": 54,
+   "minute": 65,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د65)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -248,16 +250,28 @@
    "mine": true,
    "pick": "home",
    "confidence": 47,
-   "level": "amber",
-   "score": 50,
-   "minute": 59,
+   "level": "red",
+   "score": 82,
+   "minute": 69,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د59)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د69)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
-   "alerted": null,
-   "alert_minute": null,
+   "alerted": true,
+   "alert_minute": 69,
    "score_xg": null,
-   "level_xg": null
+   "level_xg": null,
+   "sent_level": "red",
+   "sent_score": 82,
+   "sent_minute": 69,
+   "sent_factors": [
+    "النتيجة الحالية 0-0 تُسقط التوقع (د69)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
+   ]
   },
   {
    "fid": "1550117",
@@ -304,21 +318,22 @@
    "level_xg": null
   },
   {
-   "fid": "1552756",
+   "fid": "1552168",
    "date": "2026-09-12",
-   "home": "Auxerre",
-   "away": "Nice",
-   "league": "Ligue 1 (France)",
+   "home": "Cambuur",
+   "away": "NEC Nijmegen",
+   "league": "Eredivisie (Netherlands)",
    "top": true,
-   "mine": true,
-   "pick": "draw",
-   "confidence": 35,
+   "mine": false,
+   "pick": "away",
+   "confidence": 61,
    "level": "amber",
    "score": 46,
-   "minute": 32,
+   "minute": 23,
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د32)",
-    "موجة تسديد على المرمى من الضيف"
+    "النتيجة الحالية 1-0 تُسقط التوقع (د23)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -68672,7 +68687,68 @@
    "graded_on": "2026-09-12"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1493128",
+   "date": "2026-09-12",
+   "minute": 80,
+   "score_at": "1-1",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 85,
+   "home": "Estudiantes L.P.",
+   "away": "Platense",
+   "league": "Liga Profesional Argentina (Argentina)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 6,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "shots": 0,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 36
+     },
+     "a": {
+      "shots": 1,
+      "yc": 0,
+      "rc": 0,
+      "sog": 0,
+      "poss": 64
+     }
+    },
+    {
+     "minute": 80,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "sog": 7,
+      "shots": 12,
+      "yc": 4,
+      "cor": 2,
+      "sv": 0,
+      "rc": 0,
+      "poss": 58
+     },
+     "a": {
+      "sog": 1,
+      "shots": 9,
+      "yc": 3,
+      "cor": 1,
+      "sv": 6,
+      "rc": 0,
+      "poss": 42
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
