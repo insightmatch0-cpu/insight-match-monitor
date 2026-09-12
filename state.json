@@ -4,12 +4,12 @@
   "note": "تعذر الجلب (HTTP 403)",
   "matches": 0,
   "radar_hits": 0,
-  "radar_targets": 2
+  "radar_targets": 3
  },
  "api_quota": {
-  "remaining": 6150,
+  "remaining": 6119,
   "limit": 7500,
-  "at": "2026-09-12T04:06:42.037511+00:00"
+  "at": "2026-09-12T04:41:17.792365+00:00"
  },
  "delivery": {
   "at": "2026-09-12T04:34:54.434583+00:00",
@@ -112,15 +112,15 @@
  },
  "1550959": {
   "score": "0-3",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 80,
   "home": "Atlante FC",
   "away": "CF Pachuca",
   "league": "Liga MX (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/2312.png",
   "away_logo": "https://media.api-sports.io/football/teams/2292.png",
   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-  "seen": "2026-09-12T04:06:41.748590+00:00",
+  "seen": "2026-09-12T04:41:17.383361+00:00",
   "radar": {
    "snaps": [
     {
@@ -145,14 +145,41 @@
       "rc": 0,
       "poss": 49
      }
+    },
+    {
+     "minute": 80,
+     "gh": 0,
+     "ga": 3,
+     "h": {
+      "sog": 3,
+      "sv": 4,
+      "shots": 20,
+      "yc": 2,
+      "cor": 4,
+      "rc": 0,
+      "poss": 54
+     },
+     "a": {
+      "sog": 7,
+      "sv": 3,
+      "shots": 19,
+      "yc": 3,
+      "cor": 5,
+      "rc": 0,
+      "poss": 46
+     }
     }
    ],
-   "score": 0,
+   "score": 14,
    "level": "green",
    "dscores": [
-    0
+    0,
+    14
    ],
-   "factors": [],
+   "factors": [
+    "موجة ركنيات لصالح المضيف",
+    "ضغط هجومي متصاعد من المضيف"
+   ],
    "pick": "away",
    "confidence": 48,
    "top": false,
@@ -169,15 +196,15 @@
  },
  "1550958": {
   "score": "0-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 70,
   "home": "Club Tijuana",
   "away": "Club Queretaro",
   "league": "Liga MX (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/2280.png",
   "away_logo": "https://media.api-sports.io/football/teams/2290.png",
   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-  "seen": "2026-09-12T04:06:41.748590+00:00",
+  "seen": "2026-09-12T04:41:17.383361+00:00",
   "radar": {
    "snaps": [
     {
@@ -202,18 +229,85 @@
       "rc": 0,
       "poss": 39
      }
+    },
+    {
+     "minute": 70,
+     "gh": 0,
+     "ga": 1,
+     "h": {
+      "sog": 2,
+      "sv": 2,
+      "shots": 16,
+      "cor": 11,
+      "yc": 0,
+      "rc": 0,
+      "poss": 65
+     },
+     "a": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 7,
+      "cor": 2,
+      "yc": 2,
+      "rc": 0,
+      "poss": 35
+     }
     }
    ],
-   "score": 42,
+   "score": 57,
    "level": "amber",
    "dscores": [
-    42
+    42,
+    57
    ],
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-1 تُسقط التوقع (د70)"
    ],
    "pick": "home",
    "confidence": 52,
+   "top": false,
+   "mine": false,
+   "drama": {
+    "signal": 35,
+    "side": "home",
+    "ready": false
+   },
+   "alerted": null,
+   "red_alerted": null,
+   "warn_alerted": null
+  }
+ },
+ "1536692": {
+  "score": "1-2",
+  "status": "1H",
+  "minute": 39,
+  "home": "SKA Khabarovsk II",
+  "away": "Metallurg Lipetsk",
+  "league": "Second League - Group 3 (Russia)",
+  "home_logo": "https://media.api-sports.io/football/teams/17721.png",
+  "away_logo": "https://media.api-sports.io/football/teams/6815.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/650.png",
+  "seen": "2026-09-12T04:41:17.383361+00:00",
+  "radar": {
+   "snaps": [
+    {
+     "minute": 39,
+     "gh": 1,
+     "ga": 2,
+     "h": {},
+     "a": {}
+    }
+   ],
+   "score": 15,
+   "level": "green",
+   "dscores": [
+    15
+   ],
+   "factors": [
+    "تقدم هش بفارق هدف واحد"
+   ],
+   "pick": "away",
+   "confidence": 53,
    "top": false,
    "mine": false,
    "drama": {

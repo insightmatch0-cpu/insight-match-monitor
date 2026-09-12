@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-12T04:34:54.717778+00:00",
+ "updated": "2026-09-12T04:41:19.071801+00:00",
  "live": [
   {
    "fid": "1551686",
@@ -128,9 +128,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2292.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
    "score": "0-3",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-12T04:06:41.748590+00:00",
+   "minute": 80,
+   "status": "2H",
+   "seen": "2026-09-12T04:41:17.383361+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 59
@@ -140,9 +140,12 @@
     "confidence": 48
    },
    "radar": {
-    "score": 0,
+    "score": 14,
     "level": "green",
-    "factors": [],
+    "factors": [
+     "موجة ركنيات لصالح المضيف",
+     "ضغط هجومي متصاعد من المضيف"
+    ],
     "pick": "away",
     "confidence": 48,
     "drama": {
@@ -154,22 +157,28 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      45,
+      80
      ],
      "danger": [
-      0
+      0,
+      14
      ],
      "h_sog": [
-      2
+      2,
+      3
      ],
      "a_sog": [
-      6
+      6,
+      7
      ],
      "h_cor": [
-      2
+      2,
+      4
      ],
      "a_cor": [
-      3
+      3,
+      5
      ]
     }
    }
@@ -185,9 +194,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2290.png",
    "league_logo": "https://media.api-sports.io/football/leagues/262.png",
    "score": "0-1",
-   "minute": 45,
-   "status": "HT",
-   "seen": "2026-09-12T04:06:41.748590+00:00",
+   "minute": 70,
+   "status": "2H",
+   "seen": "2026-09-12T04:41:17.383361+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 56
@@ -197,13 +206,78 @@
     "confidence": 52
    },
    "radar": {
-    "score": 42,
+    "score": 57,
     "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د70)"
     ],
     "pick": "home",
     "confidence": 52,
+    "drama": {
+     "signal": 35,
+     "side": "home",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45,
+      70
+     ],
+     "danger": [
+      42,
+      57
+     ],
+     "h_sog": [
+      1,
+      2
+     ],
+     "a_sog": [
+      2,
+      3
+     ],
+     "h_cor": [
+      3,
+      11
+     ],
+     "a_cor": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1536692",
+   "home": "SKA Khabarovsk II",
+   "away": "Metallurg Lipetsk",
+   "home_en": "SKA Khabarovsk II",
+   "away_en": "Metallurg Lipetsk",
+   "league": "Second League - Group 3 (Russia)",
+   "home_logo": "https://media.api-sports.io/football/teams/17721.png",
+   "away_logo": "https://media.api-sports.io/football/teams/6815.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/650.png",
+   "score": "1-2",
+   "minute": 39,
+   "status": "1H",
+   "seen": "2026-09-12T04:41:17.383361+00:00",
+   "pred_v1": {
+    "pick": "draw",
+    "confidence": 52
+   },
+   "pred_v2": {
+    "pick": "away",
+    "confidence": 53
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "away",
+    "confidence": 53,
     "drama": {
      "signal": 0,
      "side": "home",
@@ -213,22 +287,22 @@
     "top": false,
     "trend": {
      "min": [
-      45
+      39
      ],
      "danger": [
-      42
+      15
      ],
      "h_sog": [
-      1
+      0
      ],
      "a_sog": [
-      2
+      0
      ],
      "h_cor": [
-      3
+      0
      ],
      "a_cor": [
-      1
+      0
      ]
     }
    }
@@ -21869,6 +21943,954 @@
   }
  ],
  "recent_results": [
+  {
+   "date": "2026-09-11",
+   "home": "إندبندينتي ديل فالي",
+   "away": "فلامنغو",
+   "home_en": "Independiente del Valle",
+   "away_en": "Flamengo",
+   "league": "كوبا ليبرتادوريس",
+   "home_logo": "https://media.api-sports.io/football/teams/1153.png",
+   "away_logo": "https://media.api-sports.io/football/teams/127.png",
+   "pick": "away",
+   "confidence": 61,
+   "score": "0-2",
+   "actual": "away",
+   "correct": true
+  },
+  {
+   "date": "2026-09-11",
+   "home": "ملاكاتيكو",
+   "away": "أنتيغوا جي إف سي",
+   "home_en": "Malacateco",
+   "away_en": "Antigua GFC",
+   "league": "الدرجة الأولى (غواتيمالا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3664.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3656.png",
+   "pick": "home",
+   "confidence": 51,
+   "score": "0-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-11",
+   "home": "مانانوا",
+   "away": "ريال إستيلي",
+   "home_en": "Managua",
+   "away_en": "Real Estelí",
+   "league": "الدرجة الأولى (نيكاراغوا)",
+   "home_logo": "https://media.api-sports.io/football/teams/4644.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4645.png",
+   "pick": "away",
+   "confidence": 52,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-11",
+   "home": "سبورت ريسيفي",
+   "away": "بونتي بريتا",
+   "home_en": "Sport Recife",
+   "away_en": "Ponte Preta",
+   "league": "الدرجة الثانية البرازيلية",
+   "home_logo": "https://media.api-sports.io/football/teams/123.png",
+   "away_logo": "https://media.api-sports.io/football/teams/139.png",
+   "pick": "home",
+   "confidence": 55,
+   "score": "2-0",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-11",
+   "home": "بوليفار",
+   "away": "إندبندينتي بترولوليرو",
+   "home_en": "Bolívar",
+   "away_en": "Independiente Petrolero",
+   "league": "كأس قسم الدرجة الأولى البوليفية",
+   "home_logo": "https://media.api-sports.io/football/teams/3702.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15702.png",
+   "pick": "home",
+   "confidence": 58,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-11",
+   "home": "سينسيانو",
+   "away": "أتليتيكو توركي",
+   "home_en": "Cienciano",
+   "away_en": "Atletico Torque",
+   "league": "كوبا سوداميريكانا",
+   "home_logo": "https://media.api-sports.io/football/teams/2562.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2365.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "2-0",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-11",
+   "home": "ميليونارييس",
+   "away": "ديبورتيفو كالي",
+   "home_en": "Millonarios",
+   "away_en": "Deportivo Cali",
+   "league": "الدرجة الأولى الكولومبية",
+   "home_logo": "https://media.api-sports.io/football/teams/1125.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1127.png",
+   "pick": "home",
+   "confidence": 60,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-11",
+   "home": "أليبريخس دي أواخاكا",
+   "away": "دورانغو",
+   "home_en": "Alebrijes de Oaxaca",
+   "away_en": "Durango",
+   "league": "دوري التوسع المكسيكي",
+   "home_logo": "https://media.api-sports.io/football/teams/2300.png",
+   "away_logo": "https://media.api-sports.io/football/teams/15941.png",
+   "pick": "draw",
+   "confidence": 50,
+   "score": "1-0",
+   "actual": "home",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "نيويورك سيتي",
+   "away": "نيو إنجلاند ريفولوشن",
+   "home_en": "New York City FC",
+   "away_en": "New England Revolution",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1604.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1609.png",
+   "pick": "home",
+   "confidence": 56,
+   "score": "1-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "شيكاغو فاير",
+   "away": "إنتر ميامي",
+   "home_en": "Chicago Fire",
+   "away_en": "Inter Miami",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1607.png",
+   "away_logo": "https://media.api-sports.io/football/teams/9568.png",
+   "pick": "away",
+   "confidence": 60,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "مينيسوتا يونايتد",
+   "away": "إف سي دالاس",
+   "home_en": "Minnesota United FC",
+   "away_en": "FC Dallas",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1612.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1597.png",
+   "pick": "draw",
+   "confidence": 52,
+   "score": "1-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "أوستن",
+   "away": "كولورادو رابيدز",
+   "home_en": "Austin",
+   "away_en": "Colorado Rapids",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/16489.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1610.png",
+   "pick": "home",
+   "confidence": 54,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "هيوستن ديناموز",
+   "away": "ريال سولت ليك",
+   "home_en": "Houston Dynamo",
+   "away_en": "Real Salt Lake",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1600.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1606.png",
+   "pick": "home",
+   "confidence": 57,
+   "score": "2-1",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "إستوديانتس",
+   "away": "كورينثيانز",
+   "home_en": "Estudiantes L.P.",
+   "away_en": "Corinthians",
+   "league": "دوري أبطال كونمبول",
+   "home_logo": "https://media.api-sports.io/football/teams/450.png",
+   "away_logo": "https://media.api-sports.io/football/teams/131.png",
+   "pick": "away",
+   "confidence": 59,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "لوس أنجليس إف سي",
+   "away": "نيويورك ريد بولز",
+   "home_en": "Los Angeles FC",
+   "away_en": "New York Red Bulls",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1616.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1602.png",
+   "pick": "home",
+   "confidence": 62,
+   "score": "2-0",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "فانكوفر وايتكابز",
+   "away": "لوس أنجليس جلاكسي",
+   "home_en": "Vancouver Whitecaps",
+   "away_en": "Los Angeles Galaxy",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1603.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1605.png",
+   "pick": "away",
+   "confidence": 58,
+   "score": "3-0",
+   "actual": "home",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "سان ديييغو",
+   "away": "سان خوسيه إيرثكويكس",
+   "home_en": "San Diego",
+   "away_en": "San Jose Earthquakes",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/25484.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1596.png",
+   "pick": "draw",
+   "confidence": 50,
+   "score": "2-3",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "بورتلاند تيمبرز",
+   "away": "سانت لويس سيتي",
+   "home_en": "Portland Timbers",
+   "away_en": "St. Louis City",
+   "league": "دوري كرة القدم الأمريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/1617.png",
+   "away_logo": "https://media.api-sports.io/football/teams/20787.png",
+   "pick": "home",
+   "confidence": 55,
+   "score": "2-2",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "المحرق",
+   "away": "المنامة",
+   "home_en": "Muharraq",
+   "away_en": "Manama",
+   "league": "الدوري الممتاز البحريني",
+   "home_logo": "https://media.api-sports.io/football/teams/5488.png",
+   "away_logo": "https://media.api-sports.io/football/teams/5487.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "3-1",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "الرفاع",
+   "away": "خليدية",
+   "home_en": "Al Riffa",
+   "away_en": "Khalidiya",
+   "league": "الدوري الممتاز البحريني",
+   "home_logo": "https://media.api-sports.io/football/teams/5482.png",
+   "away_logo": "https://media.api-sports.io/football/teams/17666.png",
+   "pick": "home",
+   "confidence": 51,
+   "score": "0-0",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "فنربخشة",
+   "away": "روما",
+   "home_en": "Fenerbahçe",
+   "away_en": "AS Roma",
+   "league": "دوري أبطال أوروبا",
+   "home_logo": "https://media.api-sports.io/football/teams/611.png",
+   "away_logo": "https://media.api-sports.io/football/teams/497.png",
+   "pick": "draw",
+   "confidence": 55,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "بي إس في آيندهوفن",
+   "away": "شاختار دونتسك",
+   "home_en": "PSV Eindhoven",
+   "away_en": "Shakhtar Donetsk",
+   "league": "دوري أبطال أوروبا",
+   "home_logo": "https://media.api-sports.io/football/teams/197.png",
+   "away_logo": "https://media.api-sports.io/football/teams/550.png",
+   "pick": "home",
+   "confidence": 62,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "القوة الجوية",
+   "away": "الزوراء",
+   "home_en": "Al Quwa Al Jawiya",
+   "away_en": "Al Zawra'a",
+   "league": "الدوري العراقي",
+   "home_logo": "https://media.api-sports.io/football/teams/8009.png",
+   "away_logo": "https://media.api-sports.io/football/teams/8010.png",
+   "pick": "home",
+   "confidence": 50,
+   "score": "0-1",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "بايرن ميونخ",
+   "away": "بودو/جليمت",
+   "home_en": "Bayern München",
+   "away_en": "Bodo/Glimt",
+   "league": "دوري أبطال أوروبا",
+   "home_logo": "https://media.api-sports.io/football/teams/157.png",
+   "away_logo": "https://media.api-sports.io/football/teams/327.png",
+   "pick": "home",
+   "confidence": 72,
+   "score": "5-0",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "كومو",
+   "away": "آر بي لايبزيج",
+   "home_en": "Como",
+   "away_en": "RB Leipzig",
+   "league": "دوري أبطال أوروبا",
+   "home_logo": "https://media.api-sports.io/football/teams/895.png",
+   "away_logo": "https://media.api-sports.io/football/teams/173.png",
+   "pick": "away",
+   "confidence": 62,
+   "score": "4-1",
+   "actual": "home",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "مانشستر يونايتد",
+   "away": "صباح الأحمد",
+   "home_en": "Manchester United",
+   "away_en": "Sabah FA",
+   "league": "دوري أبطال أوروبا",
+   "home_logo": "https://media.api-sports.io/football/teams/33.png",
+   "away_logo": "https://media.api-sports.io/football/teams/13976.png",
+   "pick": "home",
+   "confidence": 78,
+   "score": "4-0",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "سلافيا براغ",
+   "away": "لينس",
+   "home_en": "Slavia Praha",
+   "away_en": "Lens",
+   "league": "دوري أبطال أوروبا",
+   "home_logo": "https://media.api-sports.io/football/teams/560.png",
+   "away_logo": "https://media.api-sports.io/football/teams/116.png",
+   "pick": "draw",
+   "confidence": 54,
+   "score": "2-3",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "إستريلا دا أمادورا",
+   "away": "برايغا",
+   "home_en": "Estrela",
+   "away_en": "SC Braga",
+   "league": "الدوري البرتغالي الممتاز",
+   "home_logo": "https://media.api-sports.io/football/teams/15130.png",
+   "away_logo": "https://media.api-sports.io/football/teams/217.png",
+   "pick": "away",
+   "confidence": 58,
+   "score": "2-1",
+   "actual": "home",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "هانتسفيل سيتي",
+   "away": "تشاتانوغا",
+   "home_en": "Huntsville City",
+   "away_en": "Chattanooga",
+   "league": "إم إل إس نكست برو (الولايات المتحدة)",
+   "home_logo": "https://media.api-sports.io/football/teams/21140.png",
+   "away_logo": "https://media.api-sports.io/football/teams/9073.png",
+   "pick": "draw",
+   "confidence": 50,
+   "score": "1-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "كوموניكاسيونس",
+   "away": "ماركويزنسي",
+   "home_en": "Comunicaciones",
+   "away_en": "Marquense",
+   "league": "دوري الدرجة الأولى (غواتيمالا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3658.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3643.png",
+   "pick": "home",
+   "confidence": 55,
+   "score": "0-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "أونس كالداس",
+   "away": "اتحاد فالي ديبار",
+   "home_en": "Once Caldas",
+   "away_en": "Alianza Valledupar",
+   "league": "كأس كولومبيا",
+   "home_logo": "https://media.api-sports.io/football/teams/1136.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1141.png",
+   "pick": "home",
+   "confidence": 58,
+   "score": "1-0",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "أتليتيكو جويانيينسي",
+   "away": "سيارا",
+   "home_en": "Atletico Goianiense",
+   "away_en": "Ceara",
+   "league": "الدرجة الثانية البرازيلية",
+   "home_logo": "https://media.api-sports.io/football/teams/144.png",
+   "away_logo": "https://media.api-sports.io/football/teams/129.png",
+   "pick": "draw",
+   "confidence": 48,
+   "score": "2-1",
+   "actual": "home",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "بلومينج",
+   "away": "جوالبيرتو فيلاررويل",
+   "home_en": "Blooming",
+   "away_en": "Gualberto Villarroel SJ",
+   "league": "كأس الدرجة الأولى (بوليفيا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3701.png",
+   "away_logo": "https://media.api-sports.io/football/teams/22266.png",
+   "pick": "home",
+   "confidence": 56,
+   "score": "5-1",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "نورث تكساس",
+   "away": "هيوستن دينامو إف سي الثانية",
+   "home_en": "North Texas",
+   "away_en": "Houston Dynamo FC II",
+   "league": "إم إل إس نكست برو (أمريكا)",
+   "home_logo": "https://media.api-sports.io/football/teams/10282.png",
+   "away_logo": "https://media.api-sports.io/football/teams/18813.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "2-3",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "موناسيبال ليمينو",
+   "away": "أغيلا",
+   "home_en": "Municipal Limeño",
+   "away_en": "Águila",
+   "league": "الدرجة الأولى (السلفادور)",
+   "home_logo": "https://media.api-sports.io/football/teams/4306.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4310.png",
+   "pick": "draw",
+   "confidence": 49,
+   "score": "0-0",
+   "actual": "draw",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "ديبورتيفو باستو",
+   "away": "إنديبينديينتي ميديلين",
+   "home_en": "Deportivo Pasto",
+   "away_en": "Independiente Medellin",
+   "league": "كأس كولومبيا",
+   "home_logo": "https://media.api-sports.io/football/teams/1126.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1128.png",
+   "pick": "away",
+   "confidence": 57,
+   "score": "1-4",
+   "actual": "away",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "سوتشيتبيكيز",
+   "away": "جواستاتويا",
+   "home_en": "Suchitepéquez",
+   "away_en": "Guastatoya",
+   "league": "دوري الدرجة الأولى (غواتيمالا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3653.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3662.png",
+   "pick": "draw",
+   "confidence": 50,
+   "score": "1-1",
+   "actual": "draw",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "آر تي سي",
+   "away": "تيمفو سيتي",
+   "home_en": "RTC",
+   "away_en": "Thimphu City",
+   "league": "دوري الدرجة الأولى (بوتان)",
+   "home_logo": "https://media.api-sports.io/football/teams/19005.png",
+   "away_logo": "https://media.api-sports.io/football/teams/5592.png",
+   "pick": "home",
+   "confidence": 51,
+   "score": "1-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "ديناموا بارناول",
+   "away": "تشيليابينسك",
+   "home_en": "Dinamo Barnaul",
+   "away_en": "Chelyabinsk",
+   "league": "الكأس (روسيا)",
+   "home_logo": "https://media.api-sports.io/football/teams/6794.png",
+   "away_logo": "https://media.api-sports.io/football/teams/6790.png",
+   "pick": "draw",
+   "confidence": 49,
+   "score": "0-2",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "أكاديمية الرياضة كايرات",
+   "away": "استانة الثانية",
+   "home_en": "Sport Academy Kairat",
+   "away_en": "Astana II",
+   "league": "الدرجة الأولى (كازاخستان)",
+   "home_logo": "https://media.api-sports.io/football/teams/4556.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4548.png",
+   "pick": "home",
+   "confidence": 53,
+   "score": "2-2",
+   "actual": "draw",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "يليماي سيمي 2",
+   "away": "أكاديميا أونتوستيك",
+   "home_en": "Yelimay Semey 2",
+   "away_en": "Akademiya Ontustik",
+   "league": "الدرجة الأولى (كازاخستان)",
+   "home_logo": "https://media.api-sports.io/football/teams/27635.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4545.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "0-1",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "بتليمي",
+   "away": "مارجفيتي 2006",
+   "home_en": "Betlemi",
+   "away_en": "Margveti 2006",
+   "league": "الدرجة الثالثة (جورجيا)",
+   "home_logo": "https://media.api-sports.io/football/teams/13860.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16511.png",
+   "pick": "draw",
+   "confidence": 48,
+   "score": "0-5",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "ميراني تبليسي",
+   "away": "كولخيتي خوبي",
+   "home_en": "Merani Tbilisi",
+   "away_en": "Kolkheti Khobi",
+   "league": "الدرجة الثالثة (جورجيا)",
+   "home_logo": "https://media.api-sports.io/football/teams/3508.png",
+   "away_logo": "https://media.api-sports.io/football/teams/13853.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "4-1",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "أكتوبي جاس",
+   "away": "توران تركستان",
+   "home_en": "Aktobe Jas",
+   "away_en": "Turan Turkistan",
+   "league": "الدرجة الأولى (كازاخستان)",
+   "home_logo": "https://media.api-sports.io/football/teams/4546.png",
+   "away_logo": "https://media.api-sports.io/football/teams/21502.png",
+   "pick": "home",
+   "confidence": 53,
+   "score": "1-3",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "فيتيل",
+   "away": "كونج آن نهان دان",
+   "home_en": "Viettel",
+   "away_en": "Công An Nhân Dân",
+   "league": "الدرجة الأولى (فيتنام)",
+   "home_logo": "https://media.api-sports.io/football/teams/3681.png",
+   "away_logo": "https://media.api-sports.io/football/teams/16400.png",
+   "pick": "home",
+   "confidence": 54,
+   "score": "0-1",
+   "actual": "away",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "سباييل",
+   "away": "مينجاتشيفير",
+   "home_en": "Səbail",
+   "away_en": "Mingəçevir",
+   "league": "الدرجة الأولى (أذربيجان)",
+   "home_logo": "https://media.api-sports.io/football/teams/4199.png",
+   "away_logo": "https://media.api-sports.io/football/teams/5573.png",
+   "pick": "home",
+   "confidence": 52,
+   "score": "2-1",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "زاقاتالا",
+   "away": "باكو سبورتينج",
+   "home_en": "Zaqatala",
+   "away_en": "Baku Sportinq",
+   "league": "الدرجة الأولى (أذربيجان)",
+   "home_logo": "https://media.api-sports.io/football/teams/5500.png",
+   "away_logo": "https://media.api-sports.io/football/teams/22788.png",
+   "pick": "away",
+   "confidence": 51,
+   "score": "3-0",
+   "actual": "home",
+   "correct": false
+  },
+  {
+   "date": "2026-09-10",
+   "home": "نيفا فينيتسيا",
+   "away": "ديناموا كييف",
+   "home_en": "Nyva Vinnytsya",
+   "away_en": "Dynamo Kyiv",
+   "league": "كأس أوكرانيا",
+   "home_logo": "https://media.api-sports.io/football/teams/6494.png",
+   "away_logo": "https://media.api-sports.io/football/teams/572.png",
+   "pick": "away",
+   "confidence": 62,
+   "score": "0-1",
+   "actual": "away",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "جبرائيل",
+   "away": "خانكندي إف كي",
+   "home_en": "Cəbrayıl",
+   "away_en": "Xankəndi FK",
+   "league": "الدرجة الأولى (أذربيجان)",
+   "home_logo": "https://media.api-sports.io/football/teams/22789.png",
+   "away_logo": "https://media.api-sports.io/football/teams/26966.png",
+   "pick": "home",
+   "confidence": 53,
+   "score": "2-1",
+   "actual": "home",
+   "correct": true
+  },
+  {
+   "date": "2026-09-10",
+   "home": "لوكي إنرجيا",
+   "away": "أورال",
+   "home_en": "Luki-Energiya",
+   "away_en": "Ural",
+   "league": "كأس روسيا",
+   "home_logo": "https://media.api-sports.io/football/teams/6812.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1084.png",
+   "pick": "away",
+   "confidence": 55,
+   "score": "2-1",
+   "actual": "home",
+   "correct": false
+  }
+ ],
+ "awaiting": [
+  {
+   "date": "2026-09-12",
+   "home": "كولورادو سبرينغز",
+   "away": "سان أنطونيو",
+   "home_en": "Colorado Springs",
+   "away_en": "San Antonio",
+   "league": "بطولة يو إس إل",
+   "home_logo": "https://media.api-sports.io/football/teams/3992.png",
+   "away_logo": "https://media.api-sports.io/football/teams/4017.png",
+   "pick": "away",
+   "confidence": 53,
+   "kickoff": "2026-09-12T02:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "بيريز زيليدون",
+   "away": "سان كارلوس",
+   "home_en": "Perez Zeledon",
+   "away_en": "San Carlos",
+   "league": "الدوري الكوستاريكي",
+   "home_logo": "https://media.api-sports.io/football/teams/819.png",
+   "away_logo": "https://media.api-sports.io/football/teams/823.png",
+   "pick": "home",
+   "confidence": 54,
+   "kickoff": "2026-09-12T02:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "نيو مكسيكو يونايتد",
+   "away": "إندي إيليفن",
+   "home_en": "New Mexico United",
+   "away_en": "Indy Eleven",
+   "league": "بطولة يو إس إل",
+   "home_logo": "https://media.api-sports.io/football/teams/4003.png",
+   "away_logo": "https://media.api-sports.io/football/teams/3996.png",
+   "pick": "away",
+   "confidence": 54,
+   "kickoff": "2026-09-12T01:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "سانتا في",
+   "away": "ديبورتس تولیما",
+   "home_en": "Santa Fe",
+   "away_en": "Deportes Tolima",
+   "league": "الدوري الكولومبي",
+   "home_logo": "https://media.api-sports.io/football/teams/1139.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1142.png",
+   "pick": "home",
+   "confidence": 56,
+   "kickoff": "2026-09-12T01:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "سي دي عربة موحدة",
+   "away": "يونيون كوكلي",
+   "home_en": "CD Arabe Unido",
+   "away_en": "Union Cocle",
+   "league": "الدوري البنمي",
+   "home_logo": "https://media.api-sports.io/football/teams/2882.png",
+   "away_logo": "https://media.api-sports.io/football/teams/27364.png",
+   "pick": "home",
+   "confidence": 55,
+   "kickoff": "2026-09-12T01:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "أكاتلان",
+   "away": "ريال أبوداكا",
+   "home_en": "Acatlan",
+   "away_en": "Real Apodaca",
+   "league": "دوري ليغا برمير سيري إيه",
+   "home_logo": "https://media.api-sports.io/football/teams/24949.png",
+   "away_logo": "https://media.api-sports.io/football/teams/22047.png",
+   "pick": "draw",
+   "confidence": 51,
+   "kickoff": "2026-09-12T01:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "إستريلا روخا",
+   "away": "بلاتينسي",
+   "home_en": "Estrella Roja",
+   "away_en": "Platense FC",
+   "league": "الدوري الهندوراسي",
+   "home_logo": "https://media.api-sports.io/football/teams/11370.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1057.png",
+   "pick": "home",
+   "confidence": 57,
+   "kickoff": "2026-09-12T01:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "بويسي",
+   "away": "إن واي كوسموس",
+   "home_en": "Boise",
+   "away_en": "NY Cosmos",
+   "league": "يو إس إل ليج وان (الولايات المتحدة)",
+   "home_logo": "https://media.api-sports.io/football/teams/27251.png",
+   "away_logo": "https://media.api-sports.io/football/teams/9033.png",
+   "pick": "home",
+   "confidence": 53,
+   "kickoff": "2026-09-12T01:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "جيمناسيا وتيرو",
+   "away": "تريستان سواريز",
+   "home_en": "Gimnasia Y Tiro",
+   "away_en": "Tristan Suarez",
+   "league": "الدرجة الأولى الوطنية (الأرجنتين)",
+   "home_logo": "https://media.api-sports.io/football/teams/1928.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1965.png",
+   "pick": "home",
+   "confidence": 52,
+   "kickoff": "2026-09-12T01:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "نيكاكسا",
+   "away": "بويبلا",
+   "home_en": "Necaxa",
+   "away_en": "Puebla",
+   "league": "الدوري المكسيكي",
+   "home_logo": "https://media.api-sports.io/football/teams/2288.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2291.png",
+   "pick": "home",
+   "confidence": 55,
+   "kickoff": "2026-09-12T01:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "كوريكامينوس يو إيه تي",
+   "away": "كانكون",
+   "home_en": "Correcaminos Uat",
+   "away_en": "Cancún",
+   "league": "دوري التوسع المكسيكي",
+   "home_logo": "https://media.api-sports.io/football/teams/2313.png",
+   "away_logo": "https://media.api-sports.io/football/teams/14276.png",
+   "pick": "away",
+   "confidence": 52,
+   "kickoff": "2026-09-12T01:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "بريسبان سترايكرز",
+   "away": "برودبيتش يونايتد",
+   "home_en": "Brisbane Strikers",
+   "away_en": "Broadbeach United",
+   "league": "دوري كوينزلاند الأول",
+   "home_logo": "https://media.api-sports.io/football/teams/10213.png",
+   "away_logo": "https://media.api-sports.io/football/teams/20850.png",
+   "pick": "home",
+   "confidence": 58,
+   "kickoff": "2026-09-12T01:00:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "بوكا جونيورز",
+   "away": "سنترال كوردوبا سانتياغو",
+   "home_en": "Boca Juniors",
+   "away_en": "Central Cordoba de Santiago",
+   "league": "الدوري الأرجنتيني",
+   "home_logo": "https://media.api-sports.io/football/teams/451.png",
+   "away_logo": "https://media.api-sports.io/football/teams/1065.png",
+   "pick": "home",
+   "confidence": 68,
+   "kickoff": "2026-09-12T00:30:00+00:00",
+   "awaiting": true
+  },
+  {
+   "date": "2026-09-12",
+   "home": "كوريتيبا",
+   "away": "أتليتيكو بارانايينسي",
+   "home_en": "Coritiba",
+   "away_en": "Atletico Paranaense",
+   "league": "الدوري البرازيلي",
+   "home_logo": "https://media.api-sports.io/football/teams/147.png",
+   "away_logo": "https://media.api-sports.io/football/teams/134.png",
+   "pick": "away",
+   "confidence": 58,
+   "kickoff": "2026-09-12T00:00:00+00:00",
+   "awaiting": true
+  },
   {
    "date": "2026-09-12",
    "home": "كوسكو",
