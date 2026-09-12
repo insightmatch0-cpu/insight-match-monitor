@@ -160,3 +160,51 @@ class TestParseMarketRefactor(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestGoldCheckTagSurvivesResolution(unittest.TestCase):
+    """2026-09-12: بعد ثلاثة أيام من التحقق السوقي لم يحمل أي صف في resolved
+    وسم gold_check — resolve_pending كان ينسخ قائمة حقول ثابتة تُسقطه، فتصبح
+    إعادة القياس المسجَّلة (بعد ≥30 ذهبية خفيفة) مستحيلة. الوسم يجب أن ينجو."""
+
+    def _finished(self, fid, date):
+        return [{"fixture": {"id": int(fid), "status": {"short": "FT"}},
+                 "goals": {"home": 2, "away": 0},
+                 "score": {"fulltime": {"home": 2, "away": 0}},
+                 "teams": {"home": {"logo": ""}, "away": {"logo": ""}},
+                 "league": {"logo": ""}}]
+
+    def test_tag_copied_to_resolved(self):
+        orig = P.api_football
+        P.api_football = lambda path: self._finished("777001", "2026-09-11")
+        try:
+            store = {"pending": {"777001": {
+                "fid": "777001", "date": "2026-09-11", "home": "A", "away": "B",
+                "league": "L", "pick": "home", "confidence": 69,
+                "prob_home": 72, "prob_draw": 16, "prob_away": 12,
+                "gold_check": "capped:market_66", "mkt_home": 66}}, "resolved": []}
+            P.resolve_pending(store)
+        finally:
+            P.api_football = orig
+        self.assertEqual(len(store["resolved"]), 1)
+        self.assertEqual(store["resolved"][0].get("gold_check"), "capped:market_66")
+        self.assertTrue(store["resolved"][0]["correct"])
+
+    def test_untagged_row_stays_none(self):
+        """صف بلا فحص (مُخصَّب أو دون 70) يحمل None لا نصاً مُخترَعاً."""
+        orig = P.api_football
+        P.api_football = lambda path: self._finished("777002", "2026-09-11")
+        try:
+            store = {"pending": {"777002": {"fid": "777002", "date": "2026-09-11",
+                     "home": "A", "away": "B", "pick": "away", "confidence": 55}},
+                     "resolved": []}
+            P.resolve_pending(store)
+        finally:
+            P.api_football = orig
+        self.assertIn("gold_check", store["resolved"][0])
+        self.assertIsNone(store["resolved"][0]["gold_check"])
+
+    def test_structural(self):
+        import inspect
+        self.assertIn('"gold_check": p.get("gold_check")', inspect.getsource(P.resolve_pending))
+
