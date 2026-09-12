@@ -190,3 +190,37 @@ class TestStaleCheckoutRace(unittest.TestCase):
         src = (ROOT / "watchdog.py").read_text(encoding="utf-8")
         body = src[src.find("def main"):src.find("def maybe_resume_v2")]
         self.assertEqual(body.count('act.get("succeeded_today")'), 2, "كلا المحركين محميان")
+
+
+class TestPendingRunIsBusy(unittest.TestCase):
+    """الإطلاق المزدوج (2026-09-12): روتين النبض أطلق المحرك 1 (#272) في 04:06:11،
+    والحارس في تشغيلة الرصد #9447 فحص GitHub بعد 33 ثانية وأطلق #273 — لأن
+    التشغيلة المنتظرة في مجموعة التزامن تعود بحالة "pending"، والحارس كان
+    يعدّ "queued"/"in_progress" وحدهما انشغالاً. تكرر الشيء نفسه للمحرك 2
+    (#215 ثم #216 بعد دقيقتين). كل حالة غير مكتملة انشغال."""
+
+    NOW = datetime(2026, 9, 12, 4, 6, 44, tzinfo=timezone.utc)
+
+    def _run(self, status):
+        return {"databaseId": 34672116492, "createdAt": "2026-09-12T04:06:11Z",
+                "updatedAt": "2026-09-12T04:06:11Z", "status": status, "conclusion": None}
+
+    def test_pending_run_is_busy(self):
+        out = W.summarize_runs([self._run("pending")], self.NOW, jobs_lookup=lambda rid: 0)
+        self.assertTrue(out["busy"], "تشغيلة تنتظر مجموعة التزامن = مشغول، لا إطلاق ثانٍ")
+
+    def test_all_unfinished_statuses_are_busy(self):
+        for st in ("queued", "in_progress", "pending", "waiting", "requested"):
+            with self.subTest(status=st):
+                self.assertTrue(W.is_real_attempt(self._run(st)))
+                self.assertTrue(W.summarize_runs([self._run(st)], self.NOW)["busy"])
+
+    def test_busy_statuses_pinned(self):
+        for st in ("queued", "in_progress", "pending", "waiting", "requested"):
+            self.assertIn(st, W.BUSY_STATUSES)
+
+    def test_structural_no_bare_status_tuple(self):
+        src = (ROOT / "watchdog.py").read_text(encoding="utf-8")
+        self.assertNotIn('in ("queued", "in_progress")', src,
+                         "حالات الانشغال تُقرأ من BUSY_STATUSES فقط — لا نسخة يدوية")
+
