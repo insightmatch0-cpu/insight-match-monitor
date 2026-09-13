@@ -224,3 +224,41 @@ class TestPendingRunIsBusy(unittest.TestCase):
         self.assertNotIn('in ("queued", "in_progress")', src,
                          "حالات الانشغال تُقرأ من BUSY_STATUSES فقط — لا نسخة يدوية")
 
+
+class TestFastRefusalCountsAsAttempt(unittest.TestCase):
+    """عاصفة الإطلاق (2026-09-12): بعد نفاد الرصيد أصبحت كل تشغيلة للمحرك 2
+    تفشل عند أول دفعة خلال ~20 ثانية، وإصلاح التشغيلات الوهمية (#201) كان
+    يعدّ أي تشغيلة دون دقيقة «لا محاولة» — فلم يُحتسب فاصل الساعتين ولا حصة
+    الخمس، وأطلق التعافي المحرك 2 كل 10 دقائق: 48 تشغيلة في يوم واحد (40 دون
+    دقيقة)، كل واحدة تستهلك رصيد API-Football للتسوية والجلب. الفشل محاولة."""
+
+    NOW = datetime(2026, 9, 12, 23, 55, tzinfo=timezone.utc)
+
+    def _fail(self, hh, mm, secs=20):
+        c = datetime(2026, 9, 12, hh, mm, tzinfo=timezone.utc)
+        u = c + __import__("datetime").timedelta(seconds=secs)
+        return {"databaseId": 1000 + hh * 60 + mm, "createdAt": c.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "updatedAt": u.strftime("%Y-%m-%dT%H:%M:%SZ"), "status": "completed",
+                "conclusion": "failure"}
+
+    def test_twenty_second_failure_is_an_attempt(self):
+        self.assertTrue(W.is_real_attempt(self._fail(23, 50)))
+
+    def test_storm_replay_blocks_resume(self):
+        runs = [self._fail(23, 50), self._fail(23, 40), self._fail(23, 30),
+                self._fail(23, 20), self._fail(23, 10), self._fail(23, 0)]
+        out = W.summarize_runs(runs, self.NOW, jobs_lookup=lambda rid: 1)
+        self.assertTrue(out["busy"], "فشل قبل 5 دقائق = داخل التهدئة")
+        self.assertEqual(out["runs_today"], 6)
+        self.assertFalse(W.resume_decide(84, "2026-09-12T18:33:10", "2026-09-12",
+                                         out["runs_today"], out["last_created"],
+                                         self.NOW.isoformat()))
+
+    def test_ghost_skip_and_displacement_still_ghosts(self):
+        skip = {"createdAt": "2026-09-12T04:30:10Z", "updatedAt": "2026-09-12T04:30:25Z",
+                "status": "completed", "conclusion": "success"}
+        disp = {"databaseId": 7, "createdAt": "2026-09-12T15:05:00Z",
+                "updatedAt": "2026-09-12T15:10:00Z", "status": "completed", "conclusion": "cancelled"}
+        self.assertFalse(W.is_real_attempt(skip))
+        self.assertFalse(W.is_real_attempt(disp, jobs_lookup=lambda rid: 0))
+

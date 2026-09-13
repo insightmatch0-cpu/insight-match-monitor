@@ -173,13 +173,18 @@ def _duration(r: dict) -> float:
 
 def is_real_attempt(r: dict, jobs_lookup=None) -> bool:
     """هل هذه التشغيلة محاولة فعلية تُحتسب من حصة التعافي وتُصفّر فاصل الساعتين؟
-    جارية/في الانتظار: نعم · مكتملة بمدة ≥ دقيقة: نعم · مُلغاة: لا إن كانت بلا
+    جارية/في الانتظار: نعم · فاشلة: نعم دائماً · مكتملة بمدة ≥ دقيقة: نعم · مُلغاة: لا إن كانت بلا
     وظائف (أُزيحت من الطابور قبل أن تبدأ)، وإلا فقط إن عملت ≥ دقيقتين ·
     تخطٍّ قصير: لا. `jobs_lookup(run_id) -> int` اختياري (-1 = غير معروف)."""
     if r.get("status") in BUSY_STATUSES:
         return True
     d = _duration(r)
     concl = (r.get("conclusion") or "").lower()
+    # تشغيلة فاشلة = محاولة حقيقية مهما قصرت: رفض الرصيد يُسقط التشغيلة عند
+    # أول دفعة خلال ~20 ثانية بالتصميم، وعدم احتسابها جعل التعافي يُطلق
+    # المحرك 2 كل 10 دقائق (عاصفة 2026-09-12: 48 تشغيلة، 40 منها دون دقيقة)
+    if concl == "failure":
+        return True
     if concl in ("cancelled", "skipped"):
         if jobs_lookup is not None and r.get("databaseId") is not None:
             try:
