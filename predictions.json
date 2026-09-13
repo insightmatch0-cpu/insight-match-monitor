@@ -342,25 +342,6 @@
    "ar_away": "ديبورتيفو باستو",
    "ar_league": "الدرجة الأولى الكولومبية"
   },
-  "1550961": {
-   "fid": "1550961",
-   "kickoff": "2026-09-13T03:15:00+00:00",
-   "date": "2026-09-13",
-   "home": "Cruz Azul",
-   "away": "Club America",
-   "home_logo": "https://media.api-sports.io/football/teams/2295.png",
-   "away_logo": "https://media.api-sports.io/football/teams/2287.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
-   "league": "Liga MX (Mexico)",
-   "league_id": 262,
-   "top": false,
-   "pick": "away",
-   "confidence": 58,
-   "reason": "أمريكا فريق قوي تاريخياً برغم أن كروث أزول يملك تحسناً جديداً، لكن أداء أمريكا أكثر استقراراً",
-   "ar_home": "كروث أزول",
-   "ar_away": "كلوب أمريكا",
-   "ar_league": "الدوري المكسيكي"
-  },
   "1638609": {
    "fid": "1638609",
    "kickoff": "2026-09-13T04:00:00+00:00",
@@ -193250,18 +193231,37 @@
    "actual": "draw",
    "score": "1-1",
    "correct": true
+  },
+  {
+   "fid": "1550961",
+   "date": "2026-09-13",
+   "home": "Cruz Azul",
+   "away": "Club America",
+   "ar_home": "كروث أزول",
+   "ar_away": "كلوب أمريكا",
+   "home_logo": "https://media.api-sports.io/football/teams/2295.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2287.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+   "league": "Liga MX (Mexico)",
+   "ar_league": "الدوري المكسيكي",
+   "top": false,
+   "pick": "away",
+   "confidence": 58,
+   "actual": "home",
+   "score": "4-3",
+   "correct": false
   }
  ],
  "meta": {
-  "last_run": "2026-09-13T05:20:00.238886+00:00",
+  "last_run": "2026-09-13T05:26:59.746492+00:00",
   "stats": {
    "overall": {
     "correct": 4090,
-    "total": 10151
+    "total": 10152
    },
    "last30": {
     "correct": 3432,
-    "total": 8546
+    "total": 8547
    },
    "top_leagues": {
     "correct": 356,
@@ -193269,7 +193269,7 @@
    },
    "other_leagues": {
     "correct": 3734,
-    "total": 9286
+    "total": 9287
    },
    "by_confidence": {
     "70+": {
@@ -193282,7 +193282,7 @@
     },
     "50-59": {
      "correct": 3218,
-     "total": 7878
+     "total": 7879
     },
     "<50": {
      "correct": 311,
@@ -193408,13 +193408,13 @@
     },
     "2026-09-13": {
      "correct": 14,
-     "total": 28
+     "total": 29
     }
    },
    "season": {
     "overall": {
      "correct": 3462,
-     "total": 8626
+     "total": 8627
     },
     "top_leagues": {
      "correct": 317,
@@ -193422,7 +193422,7 @@
     },
     "other_leagues": {
      "correct": 3145,
-     "total": 7864
+     "total": 7865
     },
     "by_confidence": {
      "70+": {
@@ -193435,7 +193435,7 @@
      },
      "50-59": {
       "correct": 2724,
-      "total": 6698
+      "total": 6699
      },
      "<50": {
       "correct": 269,
