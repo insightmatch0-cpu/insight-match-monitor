@@ -7,9 +7,9 @@
   "radar_targets": 10
  },
  "api_quota": {
-  "remaining": 7071,
+  "remaining": 7014,
   "limit": 7500,
-  "at": "2026-09-13T01:16:51.134403+00:00"
+  "at": "2026-09-13T01:26:46.068546+00:00"
  },
  "delivery": {
   "at": "2026-09-13T00:00:42.407544+00:00",
@@ -121,14 +121,14 @@
  "1490466": {
   "score": "2-1",
   "status": "2H",
-  "minute": 77,
+  "minute": 88,
   "home": "Inter Miami",
   "away": "Nashville SC",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/9568.png",
   "away_logo": "https://media.api-sports.io/football/teams/9569.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -155,12 +155,12 @@
      }
     },
     {
-     "minute": 77,
+     "minute": 88,
      "gh": 2,
      "ga": 1,
      "h": {
-      "sog": 2,
-      "shots": 9,
+      "sog": 4,
+      "shots": 12,
       "yc": 1,
       "cor": 4,
       "sv": 0,
@@ -169,23 +169,26 @@
      },
      "a": {
       "sog": 1,
-      "shots": 14,
+      "shots": 15,
       "yc": 2,
       "cor": 3,
-      "sv": 1,
+      "sv": 3,
       "rc": 0,
       "poss": 38
      }
     }
    ],
-   "score": 61,
-   "level": "amber",
+   "score": 93,
+   "level": "red",
    "dscores": [
     57,
-    61
+    93
    ],
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د77)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د88)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "pick": "away",
    "confidence": 38,
@@ -204,14 +207,14 @@
  "1490467": {
   "score": "0-0",
   "status": "2H",
-  "minute": 78,
+  "minute": 88,
   "home": "Columbus Crew",
   "away": "New York Red Bulls",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/1613.png",
   "away_logo": "https://media.api-sports.io/football/teams/1602.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -238,37 +241,39 @@
      }
     },
     {
-     "minute": 78,
+     "minute": 88,
      "gh": 0,
      "ga": 0,
      "h": {
       "sog": 3,
-      "sv": 3,
-      "shots": 9,
+      "sv": 4,
+      "shots": 10,
       "yc": 1,
-      "cor": 4,
+      "cor": 5,
       "rc": 0,
-      "poss": 58
+      "poss": 57
      },
      "a": {
-      "sog": 2,
+      "sog": 4,
       "sv": 3,
-      "shots": 9,
+      "shots": 14,
       "yc": 2,
       "cor": 3,
       "rc": 0,
-      "poss": 42
+      "poss": 43
      }
     }
    ],
-   "score": 69,
+   "score": 93,
    "level": "red",
    "dscores": [
     57,
-    69
+    93
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د78)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د88)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
     "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "pick": "home",
@@ -276,7 +281,7 @@
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 20,
+    "signal": 65,
     "side": "away",
     "ready": false
    },
@@ -288,14 +293,14 @@
  "1490468": {
   "score": "2-3",
   "status": "2H",
-  "minute": 71,
+  "minute": 81,
   "home": "FC Cincinnati",
   "away": "Charlotte",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/2242.png",
   "away_logo": "https://media.api-sports.io/football/teams/18310.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -322,26 +327,26 @@
      }
     },
     {
-     "minute": 71,
+     "minute": 81,
      "gh": 2,
      "ga": 3,
      "h": {
-      "sog": 6,
+      "sog": 7,
       "sv": 1,
-      "shots": 19,
-      "cor": 5,
-      "yc": 0,
+      "shots": 21,
+      "yc": 1,
+      "cor": 8,
       "rc": 0,
-      "poss": 66
+      "poss": 68
      },
      "a": {
       "sog": 4,
-      "sv": 4,
+      "sv": 5,
       "shots": 8,
-      "cor": 3,
       "yc": 0,
+      "cor": 3,
       "rc": 0,
-      "poss": 34
+      "poss": 32
      }
     }
    ],
@@ -366,22 +371,22 @@
     "side": "home",
     "ready": true
    },
-   "alerted": null,
+   "alerted": "equalizer",
    "red_alerted": null,
    "warn_alerted": null
   }
  },
  "1490469": {
-  "score": "1-0",
+  "score": "2-0",
   "status": "2H",
-  "minute": 75,
+  "minute": 85,
   "home": "Orlando City SC",
   "away": "Toronto FC",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/1598.png",
   "away_logo": "https://media.api-sports.io/football/teams/1601.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -429,24 +434,47 @@
       "rc": 0,
       "poss": 41
      }
+    },
+    {
+     "minute": 79,
+     "gh": 1,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 3,
+      "shots": 7,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 59
+     },
+     "a": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 11,
+      "yc": 2,
+      "cor": 3,
+      "rc": 0,
+      "poss": 41
+     }
     }
    ],
-   "score": 21,
+   "score": 15,
    "level": "green",
    "dscores": [
     15,
-    21
+    21,
+    15
    ],
    "factors": [
-    "تقدم هش بفارق هدف واحد",
-    "ضغط هجومي متصاعد من الضيف"
+    "تقدم هش بفارق هدف واحد"
    ],
    "pick": "home",
    "confidence": 52,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 15,
+    "signal": 0,
     "side": "away",
     "ready": false
    },
@@ -458,14 +486,14 @@
  "1490470": {
   "score": "0-0",
   "status": "2H",
-  "minute": 79,
+  "minute": 89,
   "home": "DC United",
   "away": "Atlanta United FC",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/1615.png",
   "away_logo": "https://media.api-sports.io/football/teams/1608.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -492,11 +520,11 @@
      }
     },
     {
-     "minute": 79,
+     "minute": 89,
      "gh": 0,
      "ga": 0,
      "h": {
-      "sv": 1,
+      "sv": 2,
       "shots": 4,
       "yc": 3,
       "cor": 4,
@@ -506,31 +534,33 @@
      },
      "a": {
       "sv": 0,
-      "shots": 16,
+      "shots": 18,
       "yc": 2,
-      "cor": 6,
-      "sog": 2,
+      "cor": 7,
+      "sog": 3,
       "rc": 0,
       "poss": 68
      }
     }
    ],
-   "score": 62,
-   "level": "amber",
+   "score": 82,
+   "level": "red",
    "dscores": [
     58,
-    62
+    82
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د79)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د89)",
+    "موجة ركنيات لصالح الضيف",
+    "ضغط هجومي متصاعد من الضيف"
    ],
    "pick": "home",
    "confidence": 36,
    "top": true,
    "mine": false,
    "drama": {
-    "signal": 0,
-    "side": "home",
+    "signal": 35,
+    "side": "away",
     "ready": false
    },
    "alerted": null,
@@ -541,14 +571,14 @@
  "1492372": {
   "score": "1-1",
   "status": "2H",
-  "minute": 84,
+  "minute": 90,
   "home": "Botafogo",
   "away": "RB Bragantino",
   "league": "Serie A (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/120.png",
   "away_logo": "https://media.api-sports.io/football/teams/794.png",
   "league_logo": "https://media.api-sports.io/football/leagues/71.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -575,37 +605,38 @@
      }
     },
     {
-     "minute": 84,
+     "minute": 90,
      "gh": 1,
      "ga": 1,
      "h": {
       "sog": 6,
-      "sv": 7,
+      "sv": 8,
       "shots": 20,
       "yc": 3,
       "cor": 3,
       "rc": 0,
-      "poss": 62
+      "poss": 63
      },
      "a": {
-      "sog": 7,
+      "sog": 8,
       "sv": 5,
-      "shots": 13,
+      "shots": 14,
       "yc": 2,
       "cor": 3,
       "rc": 1,
-      "poss": 38
+      "poss": 37
      }
     }
    ],
-   "score": 65,
+   "score": 77,
    "level": "red",
    "dscores": [
     61,
-    65
+    77
    ],
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د84)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د90)",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "pick": "home",
    "confidence": 50,
@@ -624,47 +655,47 @@
  "1492379": {
   "score": "2-0",
   "status": "2H",
-  "minute": 52,
+  "minute": 63,
   "home": "Santos",
   "away": "Cruzeiro",
   "league": "Serie A (Brazil)",
   "home_logo": "https://media.api-sports.io/football/teams/128.png",
   "away_logo": "https://media.api-sports.io/football/teams/135.png",
   "league_logo": "https://media.api-sports.io/football/leagues/71.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 52,
+     "minute": 63,
      "gh": 2,
      "ga": 0,
      "h": {
       "sog": 7,
-      "sv": 1,
-      "shots": 20,
-      "cor": 5,
+      "sv": 2,
+      "shots": 24,
+      "cor": 6,
       "yc": 0,
       "rc": 0,
-      "poss": 56
+      "poss": 52
      },
      "a": {
-      "sog": 2,
+      "sog": 3,
       "sv": 6,
-      "shots": 5,
+      "shots": 7,
       "cor": 3,
       "yc": 1,
       "rc": 0,
-      "poss": 44
+      "poss": 48
      }
     }
    ],
-   "score": 46,
+   "score": 52,
    "level": "amber",
    "dscores": [
-    46
+    52
    ],
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د52)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د63)"
    ],
    "pick": "away",
    "confidence": 44,
@@ -683,134 +714,122 @@
  "1493987": {
   "score": "4-2",
   "status": "2H",
-  "minute": 53,
+  "minute": 64,
   "home": "Charlotte Independence",
   "away": "Westchester SC",
   "league": "USL League One (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/3991.png",
   "away_logo": "https://media.api-sports.io/football/teams/25488.png",
   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1513350": {
-  "score": "4-0",
+  "score": "4-1",
   "status": "2H",
-  "minute": 53,
+  "minute": 63,
   "home": "Minnesota United II",
   "away": "Vancouver Whitecaps II",
   "league": "MLS Next Pro (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/18814.png",
   "away_logo": "https://media.api-sports.io/football/teams/4028.png",
   "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1519490": {
   "score": "1-0",
   "status": "2H",
-  "minute": 59,
+  "minute": 69,
   "home": "LDU de Quito",
   "away": "Deportivo Cuenca",
   "league": "Liga Pro (Ecuador)",
   "home_logo": "https://media.api-sports.io/football/teams/1158.png",
   "away_logo": "https://media.api-sports.io/football/teams/1154.png",
   "league_logo": "https://media.api-sports.io/football/leagues/242.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1619008": {
-  "score": "2-0",
+  "score": "3-0",
   "status": "2H",
-  "minute": 51,
+  "minute": 61,
   "home": "Blooming",
   "away": "ABB",
   "league": "Primera División (Bolivia)",
   "home_logo": "https://media.api-sports.io/football/teams/3701.png",
   "away_logo": "https://media.api-sports.io/football/teams/17743.png",
   "league_logo": "https://media.api-sports.io/football/leagues/344.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1631721": {
-  "score": "1-0",
+  "score": "2-0",
   "status": "2H",
-  "minute": 53,
+  "minute": 63,
   "home": "Halcones Negros",
   "away": "Guerreros del Pacifico",
   "league": "Liga Premier Serie A (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/28305.png",
   "away_logo": "https://media.api-sports.io/football/teams/28304.png",
   "league_logo": "https://media.api-sports.io/football/leagues/722.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1638793": {
   "score": "0-0",
   "status": "2H",
-  "minute": 59,
+  "minute": 69,
   "home": "Colón",
   "away": "Rentistas",
   "league": "Segunda División (Uruguay)",
   "home_logo": "https://media.api-sports.io/football/teams/15628.png",
   "away_logo": "https://media.api-sports.io/football/teams/2371.png",
   "league_logo": "https://media.api-sports.io/football/leagues/269.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
- },
- "1513349": {
-  "score": "2-2",
-  "status": "P",
-  "minute": 0,
-  "home": "Crown Legacy",
-  "away": "Carolina Core",
-  "league": "MLS Next Pro (USA)",
-  "home_logo": "https://media.api-sports.io/football/teams/21139.png",
-  "away_logo": "https://media.api-sports.io/football/teams/23063.png",
-  "league_logo": "https://media.api-sports.io/football/leagues/909.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1493990": {
   "score": "1-3",
   "status": "2H",
-  "minute": 76,
+  "minute": 87,
   "home": "Greenville Triumph",
   "away": "Fort Wayne",
   "league": "USL League One (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/9026.png",
   "away_logo": "https://media.api-sports.io/football/teams/16679.png",
   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1493687": {
   "score": "0-1",
-  "status": "HT",
-  "minute": 45,
+  "status": "2H",
+  "minute": 50,
   "home": "Sporting JAX",
   "away": "Rhode Island",
   "league": "USL Championship (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/25959.png",
   "away_logo": "https://media.api-sports.io/football/teams/22855.png",
   "league_logo": "https://media.api-sports.io/football/leagues/255.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1493988": {
   "score": "0-1",
-  "status": "1H",
-  "minute": 40,
+  "status": "HT",
+  "minute": 45,
   "home": "Corpus Christi",
   "away": "Union Omaha",
   "league": "USL League One (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/4043.png",
   "away_logo": "https://media.api-sports.io/football/teams/10283.png",
   "league_logo": "https://media.api-sports.io/football/leagues/489.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1490471": {
   "score": "2-0",
   "status": "1H",
-  "minute": 35,
+  "minute": 45,
   "home": "Sporting Kansas City",
   "away": "Los Angeles FC",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/1611.png",
   "away_logo": "https://media.api-sports.io/football/teams/1616.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -835,15 +854,39 @@
       "rc": 0,
       "poss": 53
      }
+    },
+    {
+     "minute": 39,
+     "gh": 2,
+     "ga": 0,
+     "h": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 6,
+      "cor": 1,
+      "yc": 0,
+      "rc": 0,
+      "poss": 52
+     },
+     "a": {
+      "sog": 1,
+      "sv": 1,
+      "shots": 5,
+      "cor": 3,
+      "yc": 1,
+      "rc": 0,
+      "poss": 48
+     }
     }
    ],
-   "score": 32,
+   "score": 38,
    "level": "green",
    "dscores": [
-    32
+    32,
+    38
    ],
    "factors": [
-    "النتيجة الحالية 1-0 تُسقط التوقع (د29)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د39)"
    ],
    "pick": "away",
    "confidence": 46,
@@ -860,49 +903,49 @@
   }
  },
  "1490472": {
-  "score": "0-0",
+  "score": "1-0",
   "status": "1H",
-  "minute": 37,
+  "minute": 45,
   "home": "FC Dallas",
   "away": "Portland Timbers",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/1597.png",
   "away_logo": "https://media.api-sports.io/football/teams/1617.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
-     "minute": 37,
-     "gh": 0,
+     "minute": 45,
+     "gh": 1,
      "ga": 0,
      "h": {
-      "sog": 1,
-      "shots": 1,
-      "cor": 1,
-      "sv": 0,
+      "sog": 2,
+      "sv": 1,
+      "shots": 2,
+      "cor": 2,
       "yc": 0,
       "rc": 0,
-      "poss": 42
+      "poss": 46
      },
      "a": {
-      "sog": 0,
-      "shots": 3,
-      "cor": 1,
+      "sog": 1,
       "sv": 1,
+      "shots": 5,
+      "cor": 1,
       "yc": 0,
       "rc": 0,
-      "poss": 58
+      "poss": 54
      }
     }
    ],
-   "score": 37,
+   "score": 15,
    "level": "green",
    "dscores": [
-    37
+    15
    ],
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+    "تقدم هش بفارق هدف واحد"
    ],
    "pick": "home",
    "confidence": 40,
@@ -910,7 +953,7 @@
    "mine": false,
    "drama": {
     "signal": 0,
-    "side": "home",
+    "side": "away",
     "ready": false
    },
    "alerted": null,
@@ -919,16 +962,16 @@
   }
  },
  "1490473": {
-  "score": "2-1",
+  "score": "3-1",
   "status": "1H",
-  "minute": 36,
+  "minute": 45,
   "home": "St. Louis City",
   "away": "Minnesota United FC",
   "league": "Major League Soccer (USA)",
   "home_logo": "https://media.api-sports.io/football/teams/20787.png",
   "away_logo": "https://media.api-sports.io/football/teams/1612.png",
   "league_logo": "https://media.api-sports.io/football/leagues/253.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00",
+  "seen": "2026-09-13T01:26:44.399983+00:00",
   "radar": {
    "snaps": [
     {
@@ -955,17 +998,17 @@
      }
     },
     {
-     "minute": 36,
-     "gh": 2,
+     "minute": 45,
+     "gh": 3,
      "ga": 1,
      "h": {
-      "sog": 6,
-      "shots": 7,
-      "cor": 3,
+      "sog": 7,
+      "shots": 9,
+      "cor": 4,
       "sv": 0,
       "yc": 0,
       "rc": 0,
-      "poss": 67
+      "poss": 69
      },
      "a": {
       "sog": 1,
@@ -974,19 +1017,20 @@
       "sv": 4,
       "yc": 0,
       "rc": 0,
-      "poss": 33
+      "poss": 31
      }
     }
    ],
-   "score": 54,
-   "level": "amber",
+   "score": 68,
+   "level": "red",
    "dscores": [
     15,
-    54
+    68
    ],
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د36)",
+    "النتيجة الحالية 3-1 تُسقط التوقع (د45)",
     "موجة تسديد على المرمى من المضيف",
+    "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "pick": "away",
@@ -1006,61 +1050,85 @@
  "1581418": {
   "score": "0-1",
   "status": "1H",
-  "minute": 15,
+  "minute": 25,
   "home": "Dorados",
   "away": "Tapatío",
   "league": "Liga de Expansión MX (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/2297.png",
   "away_logo": "https://media.api-sports.io/football/teams/14278.png",
   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1581419": {
   "score": "0-0",
   "status": "1H",
-  "minute": 15,
+  "minute": 25,
   "home": "Mineros de Zacatecas",
   "away": "Monarcas",
   "league": "Liga de Expansión MX (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/2299.png",
   "away_logo": "https://media.api-sports.io/football/teams/2284.png",
   "league_logo": "https://media.api-sports.io/football/leagues/263.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1549483": {
-  "score": "0-0",
+  "score": "0-1",
   "status": "1H",
-  "minute": 14,
+  "minute": 24,
   "home": "Alianza Lima",
   "away": "Universitario",
   "league": "Primera División (Peru)",
   "home_logo": "https://media.api-sports.io/football/teams/2553.png",
   "away_logo": "https://media.api-sports.io/football/teams/2540.png",
   "league_logo": "https://media.api-sports.io/football/leagues/281.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1635962": {
-  "score": "0-0",
+  "score": "1-0",
   "status": "1H",
-  "minute": 12,
+  "minute": 22,
   "home": "Irapuato",
   "away": "Tigres de Alica",
   "league": "Primera Premier (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/15932.png",
   "away_logo": "https://media.api-sports.io/football/teams/24952.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1242.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  },
  "1635963": {
   "score": "0-0",
   "status": "1H",
-  "minute": 11,
+  "minute": 21,
   "home": "Lobos ULMX",
   "away": "Los Cabos United",
   "league": "Primera Premier (Mexico)",
   "home_logo": "https://media.api-sports.io/football/teams/17787.png",
   "away_logo": "https://media.api-sports.io/football/teams/19908.png",
   "league_logo": "https://media.api-sports.io/football/leagues/1242.png",
-  "seen": "2026-09-13T01:16:49.135465+00:00"
+  "seen": "2026-09-13T01:26:44.399983+00:00"
+ },
+ "1550965": {
+  "score": "0-0",
+  "status": "1H",
+  "minute": 13,
+  "home": "Monterrey",
+  "away": "Tigres UANL",
+  "league": "Liga MX (Mexico)",
+  "home_logo": "https://media.api-sports.io/football/teams/2282.png",
+  "away_logo": "https://media.api-sports.io/football/teams/2279.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+  "seen": "2026-09-13T01:26:44.399983+00:00"
+ },
+ "1550962": {
+  "score": "5-2",
+  "status": "2H",
+  "minute": 78,
+  "home": "Toluca",
+  "away": "Atlas",
+  "league": "Liga MX (Mexico)",
+  "home_logo": "https://media.api-sports.io/football/teams/2281.png",
+  "away_logo": "https://media.api-sports.io/football/teams/2283.png",
+  "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+  "seen": "2026-09-13T01:26:44.399983+00:00"
  }
 }

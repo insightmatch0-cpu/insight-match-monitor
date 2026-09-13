@@ -349,11 +349,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 50,
-   "level": "amber",
-   "score": 61,
-   "minute": 78,
+   "level": "red",
+   "score": 67,
+   "minute": 88,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د78)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د88)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -370,11 +370,14 @@
    "mine": false,
    "pick": "home",
    "confidence": 47,
-   "level": "amber",
-   "score": 58,
-   "minute": 72,
+   "level": "red",
+   "score": 90,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د72)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د82)",
+    "موجة تسديد على المرمى من الضيف",
+    "ضغط هجومي متصاعد من الضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -391,11 +394,13 @@
    "mine": false,
    "pick": "away",
    "confidence": 38,
-   "level": "amber",
-   "score": 57,
-   "minute": 71,
+   "level": "red",
+   "score": 77,
+   "minute": 81,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د71)"
+    "النتيجة الحالية 2-1 تُسقط التوقع (د81)",
+    "ضغط هجومي متصاعد من المضيف",
+    "حارس الطرف المُختار تحت الحصار (تصديات متتالية)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -412,11 +417,12 @@
    "mine": false,
    "pick": "home",
    "confidence": 36,
-   "level": "amber",
-   "score": 58,
-   "minute": 73,
+   "level": "red",
+   "score": 72,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د73)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د83)",
+    "موجة ركنيات لصالح الضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -434,10 +440,10 @@
    "pick": "away",
    "confidence": 44,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 48,
+   "minute": 56,
    "factors": [
-    "النتيجة الحالية 2-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 2-0 تُسقط التوقع (د56)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -455,12 +461,11 @@
    "pick": "away",
    "confidence": 36,
    "level": "amber",
-   "score": 54,
-   "minute": 23,
+   "score": 57,
+   "minute": 40,
    "factors": [
-    "النتيجة الحالية 2-1 تُسقط التوقع (د23)",
+    "النتيجة الحالية 3-1 تُسقط التوقع (د40)",
     "موجة تسديد على المرمى من المضيف",
-    "موجة ركنيات لصالح المضيف",
     "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
@@ -68998,6 +69003,70 @@
       "rc": 1,
       "yc": 0,
       "poss": 53
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1490468",
+   "date": "2026-09-13",
+   "minute": 75,
+   "score_at": "2-3",
+   "side": "home",
+   "key": "equalizer",
+   "signal": 85,
+   "home": "FC Cincinnati",
+   "away": "Charlotte",
+   "league": "Major League Soccer (USA)",
+   "top": true,
+   "mine": false,
+   "silenced": true,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 51,
+     "gh": 1,
+     "ga": 2,
+     "h": {
+      "sog": 3,
+      "sv": 1,
+      "shots": 13,
+      "cor": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 66
+     },
+     "a": {
+      "sog": 3,
+      "sv": 2,
+      "shots": 6,
+      "cor": 2,
+      "rc": 0,
+      "yc": 0,
+      "poss": 34
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 2,
+     "ga": 3,
+     "h": {
+      "sog": 6,
+      "sv": 1,
+      "shots": 19,
+      "cor": 6,
+      "yc": 0,
+      "rc": 0,
+      "poss": 67
+     },
+     "a": {
+      "sog": 4,
+      "sv": 4,
+      "shots": 8,
+      "cor": 3,
+      "yc": 0,
+      "rc": 0,
+      "poss": 33
      }
     }
    ]
