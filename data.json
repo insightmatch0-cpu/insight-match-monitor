@@ -1,6 +1,21 @@
 {
- "updated": "2026-09-13T05:36:39.670080+00:00",
+ "updated": "2026-09-13T05:45:46.654942+00:00",
  "live": [
+  {
+   "fid": "1550961",
+   "home": "Cruz Azul",
+   "away": "Club America",
+   "home_en": "Cruz Azul",
+   "away_en": "Club America",
+   "league": "Liga MX (Mexico)",
+   "home_logo": "https://media.api-sports.io/football/teams/2295.png",
+   "away_logo": "https://media.api-sports.io/football/teams/2287.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/262.png",
+   "score": "4-3",
+   "minute": 90,
+   "status": "2H",
+   "seen": "2026-09-13T05:24:48.699588+00:00"
+  },
   {
    "fid": "1638609",
    "home": "Weston Bears",
@@ -12,28 +27,13 @@
    "away_logo": "https://media.api-sports.io/football/teams/10208.png",
    "league_logo": "https://media.api-sports.io/football/leagues/481.png",
    "score": "2-0",
-   "minute": 77,
+   "minute": 67,
    "status": "2H",
-   "seen": "2026-09-13T05:36:38.242319+00:00",
+   "seen": "2026-09-13T05:26:20.569644+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 51
    }
-  },
-  {
-   "fid": "1638610",
-   "home": "APIA Leichhardt Tigers",
-   "away": "Sydney United",
-   "home_en": "APIA Leichhardt Tigers",
-   "away_en": "Sydney United",
-   "league": "New South Wales NPL (Australia)",
-   "home_logo": "https://media.api-sports.io/football/teams/3764.png",
-   "away_logo": "https://media.api-sports.io/football/teams/3776.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/192.png",
-   "score": "0-0",
-   "minute": 14,
-   "status": "1H",
-   "seen": "2026-09-13T05:36:38.242319+00:00"
   }
  ],
  "upcoming": [
@@ -1620,12 +1620,12 @@
  ],
  "radar_acc": {
   "red": {
-   "fired": 1625,
-   "hit": 1448
+   "fired": 1639,
+   "hit": 1460
   },
   "amber": {
-   "fired": 1328,
-   "hit": 603
+   "fired": 1337,
+   "hit": 611
   },
   "alerts": {
    "flip": {
@@ -1633,30 +1633,30 @@
     "hit": 2
    },
    "equalizer": {
-    "fired": 68,
-    "hit": 16
+    "fired": 69,
+    "hit": 17
    },
    "goal": {
     "fired": 1,
     "hit": 0
    },
    "next_goal": {
-    "fired": 94,
-    "hit": 29
+    "fired": 95,
+    "hit": 30
    },
    "red_advantage": {
-    "fired": 83,
-    "hit": 45
+    "fired": 84,
+    "hit": 46
    }
   },
   "season": {
    "red": {
-    "fired": 1301,
-    "hit": 1158
+    "fired": 1315,
+    "hit": 1170
    },
    "amber": {
-    "fired": 1109,
-    "hit": 522
+    "fired": 1118,
+    "hit": 530
    },
    "alerts": {
     "flip": {
@@ -1664,28 +1664,28 @@
      "hit": 1
     },
     "equalizer": {
-     "fired": 60,
-     "hit": 15
+     "fired": 61,
+     "hit": 16
     },
     "next_goal": {
-     "fired": 75,
-     "hit": 23
+     "fired": 76,
+     "hit": 24
     },
     "red_advantage": {
-     "fired": 81,
-     "hit": 44
+     "fired": 82,
+     "hit": 45
     }
    },
    "start": "2026-08-13"
   },
   "top_only": {
    "red": {
-    "fired": 358,
-    "hit": 302
+    "fired": 372,
+    "hit": 314
    },
    "amber": {
-    "fired": 171,
-    "hit": 59
+    "fired": 180,
+    "hit": 67
    },
    "alerts": {
     "flip": {
@@ -1693,26 +1693,26 @@
      "hit": 0
     },
     "equalizer": {
-     "fired": 36,
-     "hit": 9
+     "fired": 37,
+     "hit": 10
     },
     "next_goal": {
-     "fired": 44,
-     "hit": 14
+     "fired": 45,
+     "hit": 15
     },
     "red_advantage": {
-     "fired": 34,
-     "hit": 14
+     "fired": 35,
+     "hit": 15
     }
    },
    "season": {
     "red": {
-     "fired": 358,
-     "hit": 302
+     "fired": 372,
+     "hit": 314
     },
     "amber": {
-     "fired": 171,
-     "hit": 59
+     "fired": 180,
+     "hit": 67
     },
     "alerts": {
      "flip": {
@@ -1720,26 +1720,22 @@
       "hit": 0
      },
      "equalizer": {
-      "fired": 36,
-      "hit": 9
+      "fired": 37,
+      "hit": 10
      },
      "next_goal": {
-      "fired": 44,
-      "hit": 14
+      "fired": 45,
+      "hit": 15
      },
      "red_advantage": {
-      "fired": 34,
-      "hit": 14
+      "fired": 35,
+      "hit": 15
      }
     },
     "start": "2026-08-13"
    },
    "min_sample": 20,
    "daily_warnings": {
-    "2026-08-14": {
-     "hit": 5,
-     "total": 9
-    },
     "2026-08-15": {
      "hit": 1,
      "total": 1
@@ -1855,17 +1851,21 @@
     "2026-09-12": {
      "hit": 27,
      "total": 33
+    },
+    "2026-09-13": {
+     "hit": 20,
+     "total": 23
     }
    }
   },
   "mine_only": {
    "red": {
-    "fired": 164,
-    "hit": 138
+    "fired": 167,
+    "hit": 141
    },
    "amber": {
-    "fired": 51,
-    "hit": 11
+    "fired": 55,
+    "hit": 15
    },
    "alerts": {
     "flip": {
@@ -1887,12 +1887,12 @@
    },
    "season": {
     "red": {
-     "fired": 164,
-     "hit": 138
+     "fired": 167,
+     "hit": 141
     },
     "amber": {
-     "fired": 51,
-     "hit": 11
+     "fired": 55,
+     "hit": 15
     },
     "alerts": {
      "flip": {
@@ -1987,6 +1987,10 @@
     "2026-09-12": {
      "hit": 25,
      "total": 30
+    },
+    "2026-09-13": {
+     "hit": 7,
+     "total": 7
     }
    }
   },
@@ -2022,10 +2026,6 @@
    "red_advantage"
   ],
   "daily_warnings": {
-   "2026-08-14": {
-    "hit": 28,
-    "total": 40
-   },
    "2026-08-15": {
     "hit": 6,
     "total": 7
@@ -2141,6 +2141,10 @@
    "2026-09-12": {
     "hit": 73,
     "total": 107
+   },
+   "2026-09-13": {
+    "hit": 20,
+    "total": 23
    }
   },
   "recent": [
@@ -2316,7 +2320,6 @@
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Estudiantes L.P.",
     "away": "Platense",
@@ -2325,11 +2328,12 @@
     "minute": 80,
     "pick": "home",
     "conf": 42,
+    "final": "2-1",
+    "hit": false,
     "top": true
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-12",
     "home": "Estudiantes L.P.",
     "away": "Platense",
@@ -2339,6 +2343,8 @@
     "side": "home",
     "signal": 85,
     "score_at": "1-1",
+    "final": "2-1",
+    "hit": true,
     "top": true
    },
    {
@@ -3018,6 +3024,90 @@
     "top": true
    },
    {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "GO Ahead Eagles",
+    "away": "Groningen",
+    "league": "Eredivisie (Netherlands)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 42,
+    "final": "1-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Talleres Cordoba",
+    "away": "Union Santa Fe",
+    "league": "Liga Profesional Argentina (Argentina)",
+    "level": "red",
+    "minute": 90,
+    "pick": "draw",
+    "conf": 36,
+    "final": "2-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Botafogo",
+    "away": "RB Bragantino",
+    "league": "Serie A (Brazil)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 50,
+    "final": "1-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Columbus Crew",
+    "away": "New York Red Bulls",
+    "league": "Major League Soccer (USA)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 47,
+    "final": "0-1",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "Inter Miami",
+    "away": "Nashville SC",
+    "league": "Major League Soccer (USA)",
+    "level": "red",
+    "minute": 90,
+    "pick": "away",
+    "conf": 38,
+    "final": "2-2",
+    "hit": true,
+    "top": true
+   },
+   {
+    "kind": "warning",
+    "date": "2026-09-12",
+    "home": "DC United",
+    "away": "Atlanta United FC",
+    "league": "Major League Soccer (USA)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 36,
+    "final": "0-0",
+    "hit": true,
+    "top": true
+   },
+   {
     "kind": "alert",
     "date": "2026-09-12",
     "home": "Coritiba",
@@ -3048,86 +3138,7 @@
     "top": true
    },
    {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "GO Ahead Eagles",
-    "away": "Groningen",
-    "league": "Eredivisie (Netherlands)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 42,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Talleres Cordoba",
-    "away": "Union Santa Fe",
-    "league": "Liga Profesional Argentina (Argentina)",
-    "level": "red",
-    "minute": 90,
-    "pick": "draw",
-    "conf": 36,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Botafogo",
-    "away": "RB Bragantino",
-    "league": "Serie A (Brazil)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 50,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Columbus Crew",
-    "away": "New York Red Bulls",
-    "league": "Major League Soccer (USA)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 47,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "Inter Miami",
-    "away": "Nashville SC",
-    "league": "Major League Soccer (USA)",
-    "level": "red",
-    "minute": 90,
-    "pick": "away",
-    "conf": 38,
-    "top": true
-   },
-   {
-    "kind": "warning",
-    "pending": true,
-    "date": "2026-09-12",
-    "home": "DC United",
-    "away": "Atlanta United FC",
-    "league": "Major League Soccer (USA)",
-    "level": "red",
-    "minute": 90,
-    "pick": "home",
-    "conf": 36,
-    "top": true
-   },
-   {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-13",
     "home": "Botafogo",
     "away": "RB Bragantino",
@@ -3137,11 +3148,12 @@
     "side": "home",
     "signal": null,
     "score_at": "0-1",
+    "final": "1-1",
+    "hit": true,
     "top": true
    },
    {
     "kind": "alert",
-    "pending": true,
     "date": "2026-09-13",
     "home": "FC Cincinnati",
     "away": "Charlotte",
@@ -3151,11 +3163,12 @@
     "side": "home",
     "signal": 85,
     "score_at": "2-3",
+    "final": "3-3",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-13",
     "home": "St. Louis City",
     "away": "Minnesota United FC",
@@ -3164,11 +3177,12 @@
     "minute": 89,
     "pick": "away",
     "conf": 36,
+    "final": "4-2",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-13",
     "home": "Sporting Kansas City",
     "away": "Los Angeles FC",
@@ -3177,11 +3191,12 @@
     "minute": 90,
     "pick": "away",
     "conf": 46,
+    "final": "3-1",
+    "hit": true,
     "top": true
    },
    {
     "kind": "warning",
-    "pending": true,
     "date": "2026-09-13",
     "home": "Real Salt Lake",
     "away": "New York City FC",
@@ -3190,6 +3205,8 @@
     "minute": 90,
     "pick": "home",
     "conf": 40,
+    "final": "0-2",
+    "hit": true,
     "top": true
    }
   ]
