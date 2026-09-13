@@ -632,3 +632,32 @@ class TestPerMinuteRateLimit(GuardHarness):
     def test_rate_never_screams(self):
         self.assertFalse(G.refusal_is_screaming("rate", json.dumps(self.RATE["errors"])))
         self.assertTrue(G.refusal_is_screaming("quota", ""))
+
+
+class TestTotalRefusalStillWritesTheArchive(unittest.TestCase):
+    """صبيحة 2026-09-13: الرصيد فارغ من أول دفعة، المحرك 2 قيّم 428 توقعاً
+    و23 إنذاراً ثم خرج بحارس «صفر توقعات» قبل update_history() — فلم يتقدم
+    history.json، وكان الحارس الخارجي سيعلن «لم يجرِ التقييم الصباحي» عن
+    تقييم جرى فعلاً. الخروج الأحمر يأتي بعد الأرشيف والنزاهة والنشرة."""
+
+    def _main_src(self):
+        import inspect, predict_v2 as P2
+        return inspect.getsource(P2.main)
+
+    def test_archive_is_written_before_the_total_refusal_exit(self):
+        src = self._main_src()
+        guard = src.find("if upcoming and not new_preds:")
+        archive = src.find("update_history(")
+        exit_at = src.find("raise SystemExit(total_refusal)")
+        self.assertGreater(guard, 0); self.assertGreater(archive, 0); self.assertGreater(exit_at, 0)
+        self.assertLess(guard, archive, "الحارس يسجّل الرفض أولاً…")
+        self.assertLess(archive, exit_at, "…والخروج الأحمر بعد الأرشيف")
+        self.assertLess(src.find("exit_if_claude_refused("), exit_at,
+                        "الخروج الشامل بعد خروج الرفض الجزئي — نفس المكان")
+
+    def test_no_early_raise_inside_the_guard(self):
+        src = self._main_src()
+        block = src[src.find("if upcoming and not new_preds:"):src.find("update_history(")]
+        self.assertNotIn("raise SystemExit", block, "لا خروج قبل الأرشيف")
+        self.assertIn("رفض Claude شامل", block)
+
