@@ -1224,11 +1224,12 @@
    "mine": false,
    "pick": "home",
    "confidence": 64,
-   "level": "amber",
-   "score": 59,
-   "minute": 64,
+   "level": "red",
+   "score": 74,
+   "minute": 75,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د64)",
+    "النتيجة الحالية 0-0 تُسقط التوقع (د75)",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
@@ -1246,11 +1247,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 37,
-   "level": "amber",
-   "score": 64,
-   "minute": 83,
+   "level": "red",
+   "score": 69,
+   "minute": 90,
    "factors": [
-    "النتيجة الحالية 0-2 تُسقط التوقع (د83)"
+    "النتيجة الحالية 1-2 تُسقط التوقع (د90)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -1268,10 +1269,10 @@
    "pick": "away",
    "confidence": 37,
    "level": "amber",
-   "score": 43,
-   "minute": 48,
+   "score": 49,
+   "minute": 58,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د48)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د58)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -70550,6 +70551,91 @@
       "yc": 1,
       "rc": 1,
       "poss": 49
+     }
+    }
+   ]
+  },
+  {
+   "fid": "1575494",
+   "date": "2026-09-14",
+   "minute": 75,
+   "score_at": "0-0",
+   "side": "home",
+   "key": "next_goal",
+   "signal": 95,
+   "home": "SC Braga",
+   "away": "Estoril",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 23,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 1,
+      "shots": 4,
+      "cor": 1,
+      "rc": 0,
+      "yc": 0,
+      "poss": 60
+     },
+     "a": {
+      "sog": 0,
+      "shots": 2,
+      "cor": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 40
+     }
+    },
+    {
+     "minute": 34,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 2,
+      "shots": 7,
+      "cor": 1,
+      "sv": 0,
+      "rc": 0,
+      "yc": 0,
+      "poss": 55
+     },
+     "a": {
+      "sog": 0,
+      "shots": 5,
+      "cor": 0,
+      "sv": 1,
+      "rc": 0,
+      "yc": 1,
+      "poss": 45
+     }
+    },
+    {
+     "minute": 75,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 5,
+      "sv": 1,
+      "shots": 15,
+      "cor": 3,
+      "rc": 0,
+      "yc": 0,
+      "poss": 53
+     },
+     "a": {
+      "sog": 1,
+      "sv": 4,
+      "shots": 12,
+      "cor": 2,
+      "rc": 1,
+      "yc": 0,
+      "poss": 47
      }
     }
    ]
