@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-14T14:36:55.184485+00:00",
+ "updated": "2026-09-14T14:46:56.032695+00:00",
  "live": [
   {
    "fid": "1636914",
@@ -12,9 +12,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2102.png",
    "league_logo": "https://media.api-sports.io/football/leagues/494.png",
    "score": "1-0",
-   "minute": 77,
+   "minute": 87,
    "status": "2H",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -42,7 +42,7 @@
      "min": [
       50,
       60,
-      77
+      87
      ],
      "danger": [
       15,
@@ -82,10 +82,75 @@
    "home_logo": "https://media.api-sports.io/football/teams/12261.png",
    "away_logo": "https://media.api-sports.io/football/teams/12272.png",
    "league_logo": "https://media.api-sports.io/football/leagues/571.png",
-   "score": "0-0",
-   "minute": 72,
+   "score": "0-2",
+   "minute": 82,
    "status": "2H",
-   "seen": "2026-09-14T14:36:51.922122+00:00"
+   "seen": "2026-09-14T14:46:52.302024+00:00"
+  },
+  {
+   "fid": "1581901",
+   "home": "Oleksandria",
+   "away": "Viktoriya Mykolaivka",
+   "home_en": "Oleksandria",
+   "away_en": "Viktoriya Mykolaivka",
+   "league": "Persha Liga (Ukraine)",
+   "home_logo": "https://media.api-sports.io/football/teams/3619.png",
+   "away_logo": "https://media.api-sports.io/football/teams/13223.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/334.png",
+   "score": "1-0",
+   "minute": 77,
+   "status": "2H",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 55,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      46,
+      77
+     ],
+     "danger": [
+      15,
+      15
+     ],
+     "h_sog": [
+      0,
+      0
+     ],
+     "a_sog": [
+      0,
+      0
+     ],
+     "h_cor": [
+      0,
+      0
+     ],
+     "a_cor": [
+      0,
+      0
+     ]
+    }
+   }
   },
   {
    "fid": "1629911",
@@ -100,7 +165,7 @@
    "score": "0-0",
    "minute": 45,
    "status": "HT",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
    "pred_v1": {
     "pick": "draw",
     "confidence": 50
@@ -157,9 +222,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/16835.png",
    "league_logo": "https://media.api-sports.io/football/leagues/364.png",
    "score": "1-2",
-   "minute": 37,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 53
@@ -169,10 +234,10 @@
     "confidence": 45
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 1-2 تُسقط التوقع (د37)"
+     "النتيجة الحالية 1-2 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 45,
@@ -185,10 +250,10 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
-      37
+      42
      ],
      "h_sog": [
       0
@@ -216,9 +281,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/4332.png",
    "league_logo": "https://media.api-sports.io/football/leagues/371.png",
    "score": "0-0",
-   "minute": 37,
-   "status": "1H",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 55
@@ -228,10 +293,10 @@
     "confidence": 50
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 50,
@@ -244,10 +309,69 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
-      37
+      42
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1636916",
+   "home": "Panthrakikos",
+   "away": "PAOK II",
+   "home_en": "Panthrakikos",
+   "away_en": "PAOK II",
+   "league": "Super League 2 (Greece)",
+   "home_logo": "https://media.api-sports.io/football/teams/2090.png",
+   "away_logo": "https://media.api-sports.io/football/teams/18018.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/494.png",
+   "score": "1-0",
+   "minute": 45,
+   "status": "1H",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
+   "pred_v1": {
+    "pick": "away",
+    "confidence": 56
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 40
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 40,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      45
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
@@ -275,9 +399,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/14393.png",
    "league_logo": "https://media.api-sports.io/football/leagues/664.png",
    "score": "0-0",
-   "minute": 37,
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 57
@@ -287,10 +411,10 @@
     "confidence": 62
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 62,
@@ -303,10 +427,10 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
-      37
+      42
      ],
      "h_sog": [
       0
@@ -333,10 +457,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/14395.png",
    "away_logo": "https://media.api-sports.io/football/teams/15576.png",
    "league_logo": "https://media.api-sports.io/football/leagues/664.png",
-   "score": "0-0",
-   "minute": 37,
+   "score": "0-1",
+   "minute": 45,
    "status": "1H",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
+   "seen": "2026-09-14T14:46:52.302024+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -346,10 +470,10 @@
     "confidence": 55
    },
    "radar": {
-    "score": 37,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د37)"
+     "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
     ],
     "pick": "home",
     "confidence": 55,
@@ -362,69 +486,10 @@
     "top": false,
     "trend": {
      "min": [
-      37
+      45
      ],
      "danger": [
-      37
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1636916",
-   "home": "Panthrakikos",
-   "away": "PAOK II",
-   "home_en": "Panthrakikos",
-   "away_en": "PAOK II",
-   "league": "Super League 2 (Greece)",
-   "home_logo": "https://media.api-sports.io/football/teams/2090.png",
-   "away_logo": "https://media.api-sports.io/football/teams/18018.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/494.png",
-   "score": "0-0",
-   "minute": 35,
-   "status": "1H",
-   "seen": "2026-09-14T14:36:51.922122+00:00",
-   "pred_v1": {
-    "pick": "away",
-    "confidence": 56
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 40
-   },
-   "radar": {
-    "score": 36,
-    "level": "green",
-    "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د35)"
-    ],
-    "pick": "home",
-    "confidence": 40,
-    "drama": {
-     "signal": 0,
-     "side": "home",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      35
-     ],
-     "danger": [
-      36
+      42
      ],
      "h_sog": [
       0
@@ -3176,20 +3241,6 @@
    "away_logo": "https://media.api-sports.io/football/teams/3501.png",
    "pick": "away",
    "confidence": 52,
-   "kickoff": "2026-09-14T12:00:00+00:00",
-   "awaiting": true
-  },
-  {
-   "date": "2026-09-14",
-   "home": "أولكسندريا",
-   "away": "فيكتوريا ميكولايفكا",
-   "home_en": "Oleksandria",
-   "away_en": "Viktoriya Mykolaivka",
-   "league": "الدوري الأول الأوكراني",
-   "home_logo": "https://media.api-sports.io/football/teams/3619.png",
-   "away_logo": "https://media.api-sports.io/football/teams/13223.png",
-   "pick": "home",
-   "confidence": 54,
    "kickoff": "2026-09-14T12:00:00+00:00",
    "awaiting": true
   },
