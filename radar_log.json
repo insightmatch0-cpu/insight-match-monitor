@@ -609,12 +609,13 @@
    "mine": false,
    "pick": "home",
    "confidence": 48,
-   "level": "amber",
-   "score": 60,
-   "minute": 45,
+   "level": "red",
+   "score": 91,
+   "minute": 84,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د84)",
     "موجة تسديد على المرمى من الضيف",
+    "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
    "alerted": null,
@@ -633,10 +634,10 @@
    "pick": "away",
    "confidence": 65,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 62,
+   "minute": 79,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د79)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -654,10 +655,10 @@
    "pick": "away",
    "confidence": 60,
    "level": "amber",
-   "score": 42,
-   "minute": 45,
+   "score": 64,
+   "minute": 83,
    "factors": [
-    "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
+    "النتيجة الحالية 0-0 تُسقط التوقع (د83)"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -674,11 +675,11 @@
    "mine": false,
    "pick": "home",
    "confidence": 54,
-   "level": "amber",
-   "score": 56,
-   "minute": 45,
+   "level": "red",
+   "score": 78,
+   "minute": 82,
    "factors": [
-    "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
+    "النتيجة الحالية 1-1 تُسقط التوقع (د82)",
     "موجة ركنيات لصالح الضيف",
     "ضغط هجومي متصاعد من الضيف"
    ],
@@ -698,10 +699,33 @@
    "pick": "home",
    "confidence": 50,
    "level": "amber",
-   "score": 42,
+   "score": 64,
+   "minute": 83,
+   "factors": [
+    "النتيجة الحالية 0-1 تُسقط التوقع (د83)"
+   ],
+   "alerted": null,
+   "alert_minute": null,
+   "score_xg": null,
+   "level_xg": null
+  },
+  {
+   "fid": "1575499",
+   "date": "2026-09-14",
+   "home": "Rio Ave",
+   "away": "Estrela",
+   "league": "Primeira Liga (Portugal)",
+   "top": true,
+   "mine": false,
+   "pick": "away",
+   "confidence": 44,
+   "level": "amber",
+   "score": 60,
    "minute": 45,
    "factors": [
-    "النتيجة الحالية 0-1 تُسقط التوقع (د45)"
+    "النتيجة الحالية 1-1 تُسقط التوقع (د45)",
+    "موجة تسديد على المرمى من المضيف",
+    "ضغط هجومي متصاعد من المضيف"
    ],
    "alerted": null,
    "alert_minute": null,
@@ -69732,7 +69756,88 @@
    "graded_on": "2026-09-13"
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "fid": "1497702",
+   "date": "2026-09-14",
+   "minute": 86,
+   "score_at": "1-1",
+   "side": "away",
+   "key": "red_advantage",
+   "home": "Orebro SK",
+   "away": "United Nordic",
+   "league": "Superettan (Sweden)",
+   "top": false,
+   "mine": false,
+   "silenced": false,
+   "gated": true,
+   "evidence": [
+    {
+     "minute": 21,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "poss": 74,
+      "rc": 0,
+      "yc": 0,
+      "cor": 0,
+      "shots": 0
+     },
+     "a": {
+      "sog": 0,
+      "poss": 26,
+      "rc": 0,
+      "yc": 0,
+      "cor": 0,
+      "shots": 1
+     }
+    },
+    {
+     "minute": 30,
+     "gh": 0,
+     "ga": 0,
+     "h": {
+      "sog": 0,
+      "poss": 74,
+      "rc": 0,
+      "yc": 0,
+      "cor": 0,
+      "shots": 0
+     },
+     "a": {
+      "sog": 0,
+      "poss": 26,
+      "rc": 0,
+      "yc": 0,
+      "cor": 0,
+      "shots": 1
+     }
+    },
+    {
+     "minute": 86,
+     "gh": 1,
+     "ga": 1,
+     "h": {
+      "rc": 1,
+      "cor": 9,
+      "sog": 6,
+      "yc": 2,
+      "poss": 55,
+      "shots": 16
+     },
+     "a": {
+      "rc": 0,
+      "cor": 3,
+      "sog": 5,
+      "yc": 1,
+      "poss": 45,
+      "shots": 14
+     }
+    }
+   ]
+  }
+ ],
  "alerts_resolved": [
   {
    "fid": "1493033",
