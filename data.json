@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-14T13:16:47.824507+00:00",
+ "updated": "2026-09-14T13:26:50.931063+00:00",
  "live": [
   {
    "fid": "1550709",
@@ -11,10 +11,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/8015.png",
    "away_logo": "https://media.api-sports.io/football/teams/14094.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1129.png",
-   "score": "0-0",
-   "minute": 88,
+   "score": "1-0",
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 59
@@ -24,26 +24,26 @@
     "confidence": 52
    },
    "radar": {
-    "score": 67,
-    "level": "red",
+    "score": 15,
+    "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د88)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 52,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      88
+      90
      ],
      "danger": [
-      67
+      15
      ],
      "h_sog": [
       0
@@ -71,9 +71,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/10077.png",
    "league_logo": "https://media.api-sports.io/football/leagues/368.png",
    "score": "1-0",
-   "minute": 81,
+   "minute": 90,
    "status": "2H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 55
@@ -99,66 +99,7 @@
     "top": false,
     "trend": {
      "min": [
-      81
-     ],
-     "danger": [
-      15
-     ],
-     "h_sog": [
-      0
-     ],
-     "a_sog": [
-      0
-     ],
-     "h_cor": [
-      0
-     ],
-     "a_cor": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "fid": "1581901",
-   "home": "Oleksandria",
-   "away": "Viktoriya Mykolaivka",
-   "home_en": "Oleksandria",
-   "away_en": "Viktoriya Mykolaivka",
-   "league": "Persha Liga (Ukraine)",
-   "home_logo": "https://media.api-sports.io/football/teams/3619.png",
-   "away_logo": "https://media.api-sports.io/football/teams/13223.png",
-   "league_logo": "https://media.api-sports.io/football/leagues/334.png",
-   "score": "1-0",
-   "minute": 58,
-   "status": "2H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
-   "pred_v1": {
-    "pick": "home",
-    "confidence": 54
-   },
-   "pred_v2": {
-    "pick": "home",
-    "confidence": 55
-   },
-   "radar": {
-    "score": 15,
-    "level": "green",
-    "factors": [
-     "تقدم هش بفارق هدف واحد"
-    ],
-    "pick": "home",
-    "confidence": 55,
-    "drama": {
-     "signal": 0,
-     "side": "away",
-     "ready": false
-    },
-    "alerted": null,
-    "top": false,
-    "trend": {
-     "min": [
-      58
+      90
      ],
      "danger": [
       15
@@ -189,9 +130,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/19005.png",
    "league_logo": "https://media.api-sports.io/football/leagues/1031.png",
    "score": "0-2",
-   "minute": 58,
+   "minute": 69,
    "status": "2H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 52
@@ -215,10 +156,69 @@
     "top": false,
     "trend": {
      "min": [
-      58
+      69
      ],
      "danger": [
       0
+     ],
+     "h_sog": [
+      0
+     ],
+     "a_sog": [
+      0
+     ],
+     "h_cor": [
+      0
+     ],
+     "a_cor": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "fid": "1581901",
+   "home": "Oleksandria",
+   "away": "Viktoriya Mykolaivka",
+   "home_en": "Oleksandria",
+   "away_en": "Viktoriya Mykolaivka",
+   "league": "Persha Liga (Ukraine)",
+   "home_logo": "https://media.api-sports.io/football/teams/3619.png",
+   "away_logo": "https://media.api-sports.io/football/teams/13223.png",
+   "league_logo": "https://media.api-sports.io/football/leagues/334.png",
+   "score": "1-0",
+   "minute": 68,
+   "status": "2H",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
+   "pred_v1": {
+    "pick": "home",
+    "confidence": 54
+   },
+   "pred_v2": {
+    "pick": "home",
+    "confidence": 55
+   },
+   "radar": {
+    "score": 15,
+    "level": "green",
+    "factors": [
+     "تقدم هش بفارق هدف واحد"
+    ],
+    "pick": "home",
+    "confidence": 55,
+    "drama": {
+     "signal": 0,
+     "side": "away",
+     "ready": false
+    },
+    "alerted": null,
+    "top": false,
+    "trend": {
+     "min": [
+      68
+     ],
+     "danger": [
+      15
      ],
      "h_sog": [
       0
@@ -246,9 +246,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3501.png",
    "league_logo": "https://media.api-sports.io/football/leagues/327.png",
    "score": "0-1",
-   "minute": 55,
+   "minute": 66,
    "status": "2H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 52
@@ -274,7 +274,7 @@
     "top": false,
     "trend": {
      "min": [
-      55
+      64
      ],
      "danger": [
       15
@@ -304,10 +304,10 @@
    "home_logo": "https://media.api-sports.io/football/teams/572.png",
    "away_logo": "https://media.api-sports.io/football/teams/14434.png",
    "league_logo": "https://media.api-sports.io/football/leagues/333.png",
-   "score": "0-0",
-   "minute": 41,
-   "status": "1H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "score": "1-0",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 72
@@ -317,26 +317,26 @@
     "confidence": 69
    },
    "radar": {
-    "score": 39,
+    "score": 15,
     "level": "green",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د41)"
+     "تقدم هش بفارق هدف واحد"
     ],
     "pick": "home",
     "confidence": 69,
     "drama": {
      "signal": 0,
-     "side": "home",
+     "side": "away",
      "ready": false
     },
     "alerted": null,
     "top": false,
     "trend": {
      "min": [
-      41
+      45
      ],
      "danger": [
-      39
+      15
      ],
      "h_sog": [
       0
@@ -364,9 +364,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/3632.png",
    "league_logo": "https://media.api-sports.io/football/leagues/336.png",
    "score": "0-0",
-   "minute": 40,
-   "status": "1H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "minute": 45,
+   "status": "HT",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "away",
     "confidence": 54
@@ -376,10 +376,10 @@
     "confidence": 52
    },
    "radar": {
-    "score": 39,
-    "level": "green",
+    "score": 42,
+    "level": "amber",
     "factors": [
-     "النتيجة الحالية 0-0 تُسقط التوقع (د40)"
+     "النتيجة الحالية 0-0 تُسقط التوقع (د45)"
     ],
     "pick": "away",
     "confidence": 52,
@@ -392,10 +392,10 @@
     "top": false,
     "trend": {
      "min": [
-      40
+      45
      ],
      "danger": [
-      39
+      42
      ],
      "h_sog": [
       0
@@ -423,9 +423,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/2102.png",
    "league_logo": "https://media.api-sports.io/football/leagues/494.png",
    "score": "1-0",
-   "minute": 16,
+   "minute": 26,
    "status": "1H",
-   "seen": "2026-09-14T13:16:43.578530+00:00",
+   "seen": "2026-09-14T13:26:47.654324+00:00",
    "pred_v1": {
     "pick": "home",
     "confidence": 54
@@ -451,7 +451,7 @@
     "top": false,
     "trend": {
      "min": [
-      16
+      26
      ],
      "danger": [
       15
@@ -482,9 +482,9 @@
    "away_logo": "https://media.api-sports.io/football/teams/12272.png",
    "league_logo": "https://media.api-sports.io/football/leagues/571.png",
    "score": "0-0",
-   "minute": 14,
+   "minute": 25,
    "status": "1H",
-   "seen": "2026-09-14T13:16:43.578530+00:00"
+   "seen": "2026-09-14T13:26:47.654324+00:00"
   }
  ],
  "upcoming": [
@@ -4692,6 +4692,19 @@
     "minute": 90,
     "pick": "home",
     "conf": 36,
+    "top": false
+   },
+   {
+    "kind": "warning",
+    "pending": true,
+    "date": "2026-09-14",
+    "home": "Shan United",
+    "away": "Ezra",
+    "league": "ASEAN Club Championship (World)",
+    "level": "red",
+    "minute": 90,
+    "pick": "home",
+    "conf": 52,
     "top": false
    }
   ]
