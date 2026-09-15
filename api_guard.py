@@ -58,7 +58,10 @@ QUOTA_LOW_RATIO = 0.20
 
 # الكلمات المفتاحية في رد API-Football التي تعني "اشتراك/حد طلبات" — أي منها
 # يعني أن الحساب نفسه هو المشكلة، لا شبكة عابرة، فيستحق صراخاً فورياً
-REFUSAL_KEYWORDS = ("requests", "plan", "limit", "subscription")
+# «suspended»/«access» أُضيفتا 2026-09-15: يوم انتهاء الاشتراك أرجع المزوّد
+# {"access": "Your account is suspended…"} — لا كلمة من الأربع فيه، فصُنّف
+# «api» عابراً ولم يوقظ المالك (القائمة السوداء تفشل مفتوحة — درس WK-League).
+REFUSAL_KEYWORDS = ("requests", "plan", "limit", "subscription", "suspend", "access")
 
 # أسماء متغيرات البيئة التي تحمل أسراراً — تُمسح من أي نص يُرسل
 SECRET_ENV_NAMES = (
@@ -126,8 +129,8 @@ def _sleep(seconds: float) -> None:
 OWNER_ACTION = {
     "quota": "افتح dashboard.api-football.com وتحقق من الرصيد اليومي والخطة — "
              "الأرجح أن الاشتراك انتهى وارتدّ الحساب إلى الخطة المجانية.",
-    "plan": "الخطة الحالية لا تسمح بهذا الطلب — جدّد اشتراك API-Football Pro "
-            "(7,500 نداء/يوم) من dashboard.api-football.com.",
+    "plan": "الخطة الحالية لا تسمح بهذا الطلب أو الحساب موقوف — جدّد اشتراك "
+            "API-Football Pro (7,500 نداء/يوم) من dashboard.api-football.com.",
     "auth": "مفتاح API-Football مرفوض — أنشئ مفتاحاً جديداً وضعه في "
             "GitHub Secrets باسم API_FOOTBALL_KEY (لا ترسله في أي رسالة).",
 }
@@ -679,8 +682,9 @@ def classify_errors(errors) -> tuple:
         kind = "rate"                     # عابر — يُعاد بعد مهلة، لا يصرخ
     elif "requests" in low or "limit" in low or "rate" in low:
         kind = "quota"
-    elif "plan" in low or "subscription" in low:
-        kind = "plan"
+    elif ("plan" in low or "subscription" in low
+          or "suspend" in low or "access" in low):
+        kind = "plan"                     # حساب موقوف/اشتراك منتهٍ = عائلة الخطة
     elif "token" in low or "key" in low:
         kind = "auth"
     return True, kind, text

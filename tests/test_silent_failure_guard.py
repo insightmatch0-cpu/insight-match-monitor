@@ -153,6 +153,22 @@ class TestRefusalRaises(GuardHarness):
                 "plan": "Your subscription does not allow this endpoint"}})
         self.assertEqual(ctx.exception.kind, "plan")
 
+    def test_suspended_account_raises_plan_and_screams(self):
+        """الرد الحرفي صباح 2026-09-15 (انتهاء الاشتراك): كان يُصنَّف «api»
+        عابراً فلا يوقظ المالك — لولا مسار جانبي صادف كلمة plan لصمت كل شيء."""
+        with self.assertRaises(G.ApiRefused) as ctx:
+            self.call({"response": [], "errors": {
+                "access": "Your account is suspended, check on "
+                          "https://dashboard.api-football.com."}})
+        self.assertEqual(ctx.exception.kind, "plan")
+        self.assertEqual(len(self.sent), 1, "الحساب الموقوف لم يُرسل إنذاراً")
+        self.assertIn("dashboard.api-football.com", self.sent[0][1])
+
+    def test_suspended_wording_is_screaming_even_if_kind_unknown(self):
+        """طبقة ثانية: الكلمة نفسها تصرخ حتى لو أخطأ التصنيف مستقبلاً."""
+        self.assertTrue(G.refusal_is_screaming(
+            "api", '{"access": "Your account is suspended"}'))
+
     def test_bad_token_raises_classified(self):
         with self.assertRaises(G.ApiRefused) as ctx:
             self.call({"response": [], "errors": {"token": "invalid api key"}})
